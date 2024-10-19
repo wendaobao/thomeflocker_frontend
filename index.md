@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Course Descriptions
-description: An overview of Computer Science pathway at Del Norte High School
+title: My Space 
+description: My Interests
 hide: true
 menu: nav/home.html
 ---
