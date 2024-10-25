@@ -8,21 +8,13 @@ menu: nav/home.html
 
 # Community Rules/Guidelines:
 - Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.
-
 - Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.
-
 - Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.
-
 - Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.
-
 - One Account Only: Just one account per person—no extra accounts to sway votes.
-
 - Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.
-
 - Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.
-
 - Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.
-
 
 <head>
     <title>Futuristic Debate Forum</title>
@@ -38,12 +30,17 @@ menu: nav/home.html
             background-color: #0d0d0d;
             color: #fff;
             display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            padding: 1rem;
         }
 
         .container {
-            width: 60%;
+            width: 100%;
+            max-width: 800px;
             text-align: center;
+            padding: 2rem;
         }
 
         header h1 {
@@ -61,6 +58,7 @@ menu: nav/home.html
         .buttons {
             display: flex;
             justify-content: space-around;
+            margin-bottom: 2rem;
         }
 
         .side-btn {
@@ -93,6 +91,7 @@ menu: nav/home.html
             padding: 1rem;
             margin-bottom: 1rem;
             font-size: 1rem;
+            resize: none;
         }
 
         .submit-btn {
@@ -109,6 +108,7 @@ menu: nav/home.html
         ul {
             list-style: none;
             padding: 0;
+            margin: 1rem 0;
         }
 
         li {
@@ -117,6 +117,7 @@ menu: nav/home.html
             padding: 1rem;
             border-radius: 10px;
             position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         li .rate {
@@ -131,14 +132,13 @@ menu: nav/home.html
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin: 0 0.5rem;
             color: #00e5ff;
+            border-radius: 50px;
+            padding: 0.2rem 0.5rem;
+            background-color: rgba(0, 229, 255, 0.1);
             transition: transform 0.3s ease;
-        }
-
-        .rate button:hover {
-            transform: scale(1.2);
         }
 
         .hidden {
@@ -160,19 +160,15 @@ menu: nav/home.html
             </div>
         </section>
 
-        <!-- Argument Submission -->
         <section id="argument-section" class="hidden">
             <h2 id="selected-side">Your Side:</h2>
             <textarea id="argument-input" placeholder="Submit your argument"></textarea>
             <button id="submit-argument" class="submit-btn">Submit Argument</button>
         </section>
 
-        <!-- Argument List -->
         <section id="arguments-list" class="hidden">
             <h2>Arguments</h2>
-            <ul id="argument-container">
-                <!-- Arguments will go here -->
-            </ul>
+            <ul id="argument-container"></ul>
         </section>
     </div>
 
@@ -186,10 +182,9 @@ menu: nav/home.html
             const submitButton = document.getElementById('submit-argument');
             const argumentContainer = document.getElementById('argument-container');
             const selectedSideText = document.getElementById('selected-side');
-            
+
             let selectedSide = '';
 
-            // Side selection logic
             milkButton.addEventListener('click', () => {
                 selectedSide = 'Milk First';
                 showArgumentSection();
@@ -200,36 +195,51 @@ menu: nav/home.html
                 showArgumentSection();
             });
 
-            // Show the argument submission section
             function showArgumentSection() {
                 argumentSection.classList.remove('hidden');
                 selectedSideText.textContent = `Your Side: ${selectedSide}`;
             }
 
-            // Submit argument and display it in the list
             submitButton.addEventListener('click', () => {
                 const argumentText = argumentInput.value.trim();
                 if (argumentText) {
                     const argumentElement = document.createElement('li');
+                    let upvotes = 0;
+                    let downvotes = 0;
+                    let hasVoted = false;
+
                     argumentElement.innerHTML = `
                         <p><strong>${selectedSide}:</strong> ${argumentText}</p>
                         <div class="rate">
-                            <button class="upvote">👍</button>
-                            <button class="downvote">👎</button>
+                            <button class="upvote">👍 <span class="upvote-count">0</span></button>
+                            <button class="downvote">👎 <span class="downvote-count">0</span></button>
                         </div>
                     `;
-                    argumentContainer.appendChild(argumentElement);
-                    argumentInput.value = ''; // clear input
 
-                    // Show argument list if hidden
+                    argumentContainer.appendChild(argumentElement);
+                    argumentInput.value = '';
+
                     argumentsList.classList.remove('hidden');
 
-                    // Handle upvote/downvote
-                    argumentElement.querySelector('.upvote').addEventListener('click', () => {
-                        alert('Upvoted!');
+                    const upvoteBtn = argumentElement.querySelector('.upvote');
+                    const downvoteBtn = argumentElement.querySelector('.downvote');
+                    const upvoteCount = argumentElement.querySelector('.upvote-count');
+                    const downvoteCount = argumentElement.querySelector('.downvote-count');
+
+                    upvoteBtn.addEventListener('click', () => {
+                        if (!hasVoted) {
+                            upvotes++;
+                            upvoteCount.textContent = upvotes;
+                            hasVoted = true;
+                        }
                     });
-                    argumentElement.querySelector('.downvote').addEventListener('click', () => {
-                        alert('Downvoted!');
+
+                    downvoteBtn.addEventListener('click', () => {
+                        if (!hasVoted) {
+                            downvotes++;
+                            downvoteCount.textContent = downvotes;
+                            hasVoted = true;
+                        }
                     });
                 }
             });
