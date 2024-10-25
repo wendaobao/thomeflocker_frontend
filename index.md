@@ -134,7 +134,6 @@ menu: nav/home.html
             <h1>Choose Your Side</h1>
         </header>
 
-        <!-- Debate Selection -->
         <section id="debate-selection">
             <h2>Current Debate: Milk or Cereal First?</h2>
             <div class="buttons">
