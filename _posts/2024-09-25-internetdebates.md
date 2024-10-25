@@ -1,5 +1,4 @@
 ---
-toc: true
 layout: post
 title: Internet debates
 description: internet debates
