@@ -6,6 +6,24 @@ hide: true
 menu: nav/home.html
 ---
 
+# Community Rules/Guidelines:
+- Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.
+
+- Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.
+
+- Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.
+
+- Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.
+
+- One Account Only: Just one account per person—no extra accounts to sway votes.
+
+- Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.
+
+- Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.
+
+- Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.
+
+
 <head>
     <title>Futuristic Debate Forum</title>
     <style>
