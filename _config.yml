@@ -17,7 +17,4 @@ plugins:
   - jekyll-remote-theme
 header_pages:
   - navigation/ai.md
-  - navigation/clubs.md
-  - navigation/events.md
-  - navigation/hangouts.md
-  - navigation/sports.md
+  - navigation/create_and_compete/home.md
