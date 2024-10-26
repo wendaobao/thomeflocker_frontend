@@ -90,13 +90,7 @@ show_reading_time: false
                     <input type="password" name="signupPassword" id="signupPassword" required>
                 </label>
             </p>
-            <p>
-                <label>
-                    <input type="checkbox" name="kasmNeeded" id="kasmNeeded">
-                    Kasm Server Needed
-                </label>
-            </p>
-            <p>
+x            <p>
                 <button type="submit">Sign Up</button>
             </p>
             <p id="signupMessage" style="color: green;"></p>
@@ -173,7 +167,7 @@ show_reading_time: false
 
     // Function to fetch and display Python data
     function pythonDatabase() {
-        const URL = `${pythonURI}/api/id`;
+        const URL = `${pythonURI}/api/user`;
 
         fetch(URL, fetchOptions)
             .then(response => {
