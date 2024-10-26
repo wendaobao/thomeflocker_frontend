@@ -5,4 +5,4 @@ search_exclude: true
 permalink: /hangouts/ai
 ---
 
-{% include nav/home.html %}
+{% include nav/hangouts.html %}
