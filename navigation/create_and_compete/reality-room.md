@@ -4,6 +4,7 @@ title: Create and Compete - Reality Room
 search_exclude: true
 permalink: /create_and_compete/realityroom
 menu: nav/create_and_compete.html
+author: Yash, Nikhil, Rohan, Neil
 ---
 
 
