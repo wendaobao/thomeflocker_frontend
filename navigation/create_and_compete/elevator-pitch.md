@@ -4,6 +4,7 @@ title: Create and Compete - Elevator Pitch
 search_exclude: true
 permalink: /create_and_compete/elevatorpitch
 menu: nav/create_and_compete.html
+author: Manas, Lalita, Shriya, Ethan
 ---
 
 <details>
