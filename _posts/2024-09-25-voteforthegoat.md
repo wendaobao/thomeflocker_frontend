@@ -6,8 +6,3 @@ description: Internet debates
 permalink: /hangouts/voteforthegoat
 comments: true
 ---
-
-
-Room 1:
-
-[Internet Debates]({{site.baseurl}}/hangouts/voteforthegoat/internetdebates) 

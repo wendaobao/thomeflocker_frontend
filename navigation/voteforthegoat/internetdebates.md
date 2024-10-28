@@ -2,7 +2,7 @@
 layout: post
 title: Internet debates
 description: internet debates
-permalink: /hangouts/voteforthegoat/internetdebates
+permalink: /voteforthegoat/internetdebates
 comments: true
 ---
 
