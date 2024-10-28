@@ -28,7 +28,7 @@ search_exclude: true
     .form-container label {
         margin-bottom: 5px;
     }
-    .form-container input, .form-container textarea {
+    .form-container input, .form-container textarea, .form-container select {
         margin-bottom: 10px;
         padding: 10px;
         border-radius: 5px;
@@ -52,8 +52,10 @@ search_exclude: true
             <input type="text" id="title" name="title" required>
             <label for="content">Content:</label>
             <textarea id="content" name="content" required></textarea>
-            <label for="group_id">Group ID:</label>
-            <input type="number" id="group_id" name="group_id" required>
+            <label for="group_id">Group:</label>
+            <select id="group_id" name="group_id" required>
+                <option value="">Select a group</option>
+            </select>
             <button type="submit">Add Post</button>
         </form>
     </div>
@@ -61,6 +63,25 @@ search_exclude: true
 
 <script type="module">
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
+    async function fetchGroups() {
+        try {
+            const response = await fetch(`${pythonURI}/api/group`, fetchOptions);
+            if (!response.ok) {
+                throw new Error('Failed to fetch groups: ' + response.statusText);
+            }
+            const groups = await response.json();
+            const groupSelect = document.getElementById('group_id');
+            groups.forEach(group => {
+                const option = document.createElement('option');
+                option.value = group.id;
+                option.textContent = group.name;
+                groupSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching groups:', error);
+        }
+    }
 
     document.getElementById('postForm').addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -98,4 +119,7 @@ search_exclude: true
             alert('Error adding post: ' + error.message);
         }
     });
+
+    // Fetch groups when the page loads
+    fetchGroups();
 </script>
