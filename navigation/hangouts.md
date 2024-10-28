@@ -1,6 +1,6 @@
 ---
 layout: search 
 title: Hangouts 
-search_excldude: true
+search_exclude: true
 permalink: /hangouts/
 ---
