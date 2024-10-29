@@ -1,9 +1,8 @@
 ---
 layout: post
 title: Beverage Debates
-description: Beverage Debate
-permalink: /voteforthegoat/beveragedebates
-comments: true
+menu: nav/vote_for_the_goat.html
+permalink: /voteforthegoat/beveragedebates/
 author: Thomas, Collin
 ---
 
