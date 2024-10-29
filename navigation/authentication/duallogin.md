@@ -215,7 +215,7 @@ search_exclude: true
 
     // Function to fetch and display Python data
     function pythonDatabase() {
-        const URL = `${pythonURI}/api/id`;
+        const URL = `${pythonURI}/api/user`;
         const loginForm = document.getElementById('pythonForm');
         const dataTable = document.getElementById('pythonTable');
         const dataButton = document.getElementById('pythonButton');
@@ -251,7 +251,7 @@ search_exclude: true
                 kasm.textContent = data.kasm_server_needed;
 
                 if (Array.isArray(data.sections)) {
-                    classes.innerHTML = data.sections.map(section => `${section.abbreviation} - ${section.name}`).join('<br>');
+                    classes.innerHTML = data.sections.map(section => `${section.theme} - ${section.name}`).join('<br>');
                 } else {
                     classes.textContent = '';
                 }
