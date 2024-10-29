@@ -15,8 +15,6 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
   
   <a href="{{site.baseurl}}/moderation/rules_zoominguess/">Moderation Rules</a>
 
-    <a href="{{site.baseurl}}/moderation/rules_riddle/">Moderation Rules</a>
-
 
 
 
