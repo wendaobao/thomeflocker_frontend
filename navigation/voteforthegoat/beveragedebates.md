@@ -166,7 +166,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
 </head>
 <body>
     <div class="voting-container">
-        <h2>Choose Your Favorite Beverage</h2>
+        <h2>Choose Your an Beverage that you would like to be added to Del Norte Cafeteria</h2>
         <div>
             <button class="option-button" onclick="selectOption('Coke')">Coke</button>
             <button class="option-button" onclick="selectOption('Gatorade')">Gatorade</button>
