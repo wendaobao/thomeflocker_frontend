@@ -2,7 +2,7 @@
 layout: post 
 title: Create and Compete - Zoom n guess
 search_exclude: true
-permalink: /create_and_compete/zoom
+permalink: /create_and_compete/zoomnguess
 menu: nav/create_and_compete.html
 author: Arhaan, Mihir, Keerthan, and Akshaj
 ---
