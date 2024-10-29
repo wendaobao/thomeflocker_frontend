@@ -1,9 +1,9 @@
 ---
 layout: post
-title: My Space 
-description: My Interests
-hide: true
-menu: nav/home.html
+title: Chess Champion
+description: The Chat to Become the Number 1 Del Norte Chess Champion
+permalink: /chesschampions/
+comments: true
 ---
 
 <html lang="en">
