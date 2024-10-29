@@ -63,8 +63,8 @@ baseurl: "/portfolio_2025"
 
 ```make
 # Configuration, override port with usage: make PORT=4200
-PORT ?= 4100
-REPO_NAME ?= portfolio_2025
+PORT ?= 4887
+REPO_NAME ?= flocker_frontend 
 LOG_FILE = /tmp/jekyll$(PORT).log
 ```
 
@@ -132,7 +132,7 @@ Start the preview server in the terminal,
 The terminal output from `make` shows the server address. "Cmd" or "Ctl" click the http location to open the preview server in a browser. Here is an example Server address message, click on the Server address to load:...
 
   ```text
-  http://0.0.0.0:4100/portfolio_2025/
+  http://0.0.0.0:4887/flocker_frontend/
   ```
 
 ### Regeneration of web application
