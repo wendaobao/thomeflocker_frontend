@@ -62,8 +62,10 @@ search_exclude: true
 </div>
 
 <script type="module">
+    // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
+    // Fetch groups for dropdown selection
     async function fetchGroups() {
         try {
             const response = await fetch(`${pythonURI}/api/group`, fetchOptions);
@@ -83,20 +85,26 @@ search_exclude: true
         }
     }
 
+    // Handle form submission
     document.getElementById('postForm').addEventListener('submit', async function(event) {
+        // Prevent default from submission
         event.preventDefault();
 
+        // Extract data from form
         const title = document.getElementById('title').value;
         const content = document.getElementById('content').value;
         const group_id = document.getElementById('group_id').value;
 
+        // Create API payload
         const postData = {
             title: title,
             content: content,
             group_id: group_id
         };
 
+        // Trap errors
         try {
+            // Send POST request to backend, purpose is to write to database
             const response = await fetch(`${pythonURI}/api/post`, {
                 ...fetchOptions,
                 method: 'POST',
@@ -110,11 +118,12 @@ search_exclude: true
                 throw new Error('Failed to add post: ' + response.statusText);
             }
 
+            // Succesfull post
             const result = await response.json();
             alert('Post added successfully!');
-            // Optionally, you can redirect to another page or clear the form
             document.getElementById('postForm').reset();
         } catch (error) {
+            // Present alert on error from backend
             console.error('Error adding post:', error);
             alert('Error adding post: ' + error.message);
         }
