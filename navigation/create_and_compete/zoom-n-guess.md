@@ -1,16 +1,23 @@
 ---
 layout: post 
-title: Create and Compete - zoom n guess
+title: Create and Compete - Zoom n guess
 search_exclude: true
 permalink: /create_and_compete/zoom
 menu: nav/create_and_compete.html
-author: Arhaan, Mihir, Akshaj, and Keerthan
+author: Arhaan, Mihir, Keerthan, and Akshaj
 ---
 
-# Main Topic - Create and Compete: Zoom-In Guess
-**Scrum Master:** Arhaan Memon
 
-<a href="{{site.baseurl}}/moderation/rules_zoominguess/">Moderation Rules</a>
+<details>
+
+<br>
+  <summary>Room Details</summary>
+
+  <a href="{{site.baseurl}}/moderation/rules_zoominguess/">Moderation Rules</a>
+
+
+  # Main Topic - Create and Compete: Zoom-In Guess
+**Scrum Master:** Arhaan Memon
 
 ---
 
