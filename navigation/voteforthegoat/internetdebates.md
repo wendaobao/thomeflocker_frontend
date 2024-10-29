@@ -3,9 +3,9 @@ layout: post
 title: Internet debates
 description: internet debates
 permalink: /voteforthegoat/internetdebates
+menu: nav/vote_for_the_goat.html
 comments: true
 ---
-
 
 # Community Rules/Guidelines:
 - Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.
@@ -17,14 +17,16 @@ comments: true
 - Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.
 - Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.
 
+
 <head>
-    <title>Futuristic Debate Forum</title>
+    <title>Internet Debate Forum</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -37,12 +39,14 @@ comments: true
             padding: 1rem;
         }
 
+
         .container {
             width: 100%;
             max-width: 800px;
             text-align: center;
             padding: 2rem;
         }
+
 
         header h1 {
             font-size: 3rem;
@@ -51,16 +55,19 @@ comments: true
             text-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
         }
 
+
         #debate-selection h2, #arguments-list h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
         }
+
 
         .buttons {
             display: flex;
             justify-content: space-around;
             margin-bottom: 2rem;
         }
+
 
         .side-btn {
             padding: 1rem 2rem;
@@ -74,13 +81,16 @@ comments: true
             transition: background 0.3s ease;
         }
 
+
         .side-btn:hover {
             background: linear-gradient(45deg, #0099cc, #006699);
         }
 
+
         #argument-section {
             margin-top: 2rem;
         }
+
 
         #argument-input {
             width: 100%;
@@ -95,6 +105,7 @@ comments: true
             resize: none;
         }
 
+
         .submit-btn {
             padding: 1rem 2rem;
             font-size: 1rem;
@@ -106,11 +117,13 @@ comments: true
             box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
         }
 
+
         ul {
             list-style: none;
             padding: 0;
             margin: 1rem 0;
         }
+
 
         li {
             background: #1a1a1a;
@@ -121,6 +134,7 @@ comments: true
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+
         li .rate {
             position: absolute;
             right: 1rem;
@@ -128,6 +142,7 @@ comments: true
             transform: translateY(-50%);
             display: flex;
         }
+
 
         .rate button {
             background: none;
@@ -142,6 +157,7 @@ comments: true
             transition: transform 0.3s ease;
         }
 
+
         .hidden {
             display: none;
         }
@@ -153,6 +169,7 @@ comments: true
             <h1>Choose Your Side</h1>
         </header>
 
+
         <section id="debate-selection">
             <h2>Current Debate: Milk or Cereal First?</h2>
             <div class="buttons">
@@ -161,17 +178,20 @@ comments: true
             </div>
         </section>
 
+
         <section id="argument-section" class="hidden">
             <h2 id="selected-side">Your Side:</h2>
             <textarea id="argument-input" placeholder="Submit your argument"></textarea>
             <button id="submit-argument" class="submit-btn">Submit Argument</button>
         </section>
 
+
         <section id="arguments-list" class="hidden">
             <h2>Arguments</h2>
             <ul id="argument-container"></ul>
         </section>
     </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -184,22 +204,27 @@ comments: true
             const argumentContainer = document.getElementById('argument-container');
             const selectedSideText = document.getElementById('selected-side');
 
+
             let selectedSide = '';
+
 
             milkButton.addEventListener('click', () => {
                 selectedSide = 'Milk First';
                 showArgumentSection();
             });
 
+
             cerealButton.addEventListener('click', () => {
                 selectedSide = 'Cereal First';
                 showArgumentSection();
             });
 
+
             function showArgumentSection() {
                 argumentSection.classList.remove('hidden');
                 selectedSideText.textContent = `Your Side: ${selectedSide}`;
             }
+
 
             submitButton.addEventListener('click', () => {
                 const argumentText = argumentInput.value.trim();
@@ -209,6 +234,7 @@ comments: true
                     let downvotes = 0;
                     let hasVoted = false;
 
+
                     argumentElement.innerHTML = `
                         <p><strong>${selectedSide}:</strong> ${argumentText}</p>
                         <div class="rate">
@@ -217,15 +243,19 @@ comments: true
                         </div>
                     `;
 
+
                     argumentContainer.appendChild(argumentElement);
                     argumentInput.value = '';
 
+
                     argumentsList.classList.remove('hidden');
+
 
                     const upvoteBtn = argumentElement.querySelector('.upvote');
                     const downvoteBtn = argumentElement.querySelector('.downvote');
                     const upvoteCount = argumentElement.querySelector('.upvote-count');
                     const downvoteCount = argumentElement.querySelector('.downvote-count');
+
 
                     upvoteBtn.addEventListener('click', () => {
                         if (!hasVoted) {
@@ -234,6 +264,7 @@ comments: true
                             hasVoted = true;
                         }
                     });
+
 
                     downvoteBtn.addEventListener('click', () => {
                         if (!hasVoted) {
