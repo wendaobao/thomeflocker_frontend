@@ -20,6 +20,7 @@ minima:
 plugins:
   - jekyll-remote-theme
 header_pages:
+  - navigation/cipherhome.html
   - navigation/academics.md
   - navigation/clubs.md
   - navigation/events.md
