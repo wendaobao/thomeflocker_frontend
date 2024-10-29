@@ -13,7 +13,7 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
 <br>
   <summary>Room Details</summary>
 
-  <a href="{{site.baseurl}}/moderation/rules_zoominguess/">Moderation Rules</a>
+ <a href="{{site.baseurl}}/create_and_compete/zoominguess">Moderation Rules</a>
 
 
   # Main Topic - Create and Compete: Zoom-In Guess
