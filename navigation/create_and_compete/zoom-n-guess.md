@@ -2,7 +2,7 @@
 layout: post 
 title: Create and Compete - Zoom n guess
 search_exclude: true
-permalink: /create_and_compete/zoomnguess
+permalink: /create_and_compete/zoominguess
 menu: nav/create_and_compete.html
 author: Arhaan, Mihir, Keerthan, and Akshaj
 ---
@@ -13,7 +13,7 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
 <br>
   <summary>Room Details</summary>
 
- <a href="{{site.baseurl}}/create_and_compete/zoominguess">Moderation Rules</a>
+ <a href="{{site.baseurl}}/create_and_compete/zoominguess/">Moderation Rules</a>
 
 
   # Main Topic - Create and Compete: Zoom-In Guess
