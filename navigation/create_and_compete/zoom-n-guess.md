@@ -16,10 +16,7 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
  <a href="{{site.baseurl}}/create_and_compete/zoominguess/">Moderation Rules</a>
 
 
-
----
-  # Main Topic - Create and Compete: Zoom-In Guess
-**Scrum Master:** Arhaan Memon
+ 
 
 <p>The main purpose of our Zoom-In Guess room is to have people think critically and collaborate with other members of the channel to identify the image as fast as possible.</p>
 
