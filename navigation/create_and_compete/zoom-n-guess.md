@@ -13,10 +13,10 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
 <br>
   <summary>Room Details</summary>
 
- <a href="{{site.baseurl}}/create_and_compete/zoominguess/">Moderation Rules</a>
+ <a href="{{site.baseurl}}/create_and_compete/zoominguess">Moderation Rules</a>
 
 
- 
+
 
 <p>The main purpose of our Zoom-In Guess room is to have people think critically and collaborate with other members of the channel to identify the image as fast as possible.</p>
 
