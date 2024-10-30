@@ -157,7 +157,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Chiyo 1">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Syvanian Family Restraunt">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/chiyo.png">
     </div>
@@ -178,7 +178,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Emi" data-house="Sylvanian Families Restaurant">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Emi" data-house="Magical Mermaid Castle">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/emi.png">
     </div>
@@ -199,7 +199,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Nory" data-house="Spooky Surprise">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Nory" data-house="Woody School">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/nory.png">
     </div>
@@ -220,7 +220,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Rin 1">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Spooky Supprise Haunted">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/rin.png">
     </div>
@@ -241,7 +241,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Junko" data-house="Junko 1">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Junko" data-house="Brick Oven Bakery">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/junko.png">
     </div>
