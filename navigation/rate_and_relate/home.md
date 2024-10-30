@@ -8,4 +8,4 @@ menu: nav/rate_and_relate.html
 
 
 
-Period 5 yahoo!
+This is the page where groups from Mr. Brown's period 5 AP CSP class will have their websites!
