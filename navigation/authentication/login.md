@@ -91,12 +91,6 @@ show_reading_time: false
                 </label>
             </p>
             <p>
-                <label>
-                    <input type="checkbox" name="kasmNeeded" id="kasmNeeded">
-                    Kasm Server Needed
-                </label>
-            </p>
-            <p>
                 <button type="submit">Sign Up</button>
             </p>
             <p id="signupMessage" style="color: green;"></p>
@@ -125,55 +119,53 @@ show_reading_time: false
 
     // Function to handle signup
     window.signup = function() {
-    const signupButton = document.querySelector(".signup-card button");
+        const signupButton = document.querySelector(".signup-card button");
 
-    // Disable the button and change its color
-    signupButton.disabled = true;
-    signupButton.style.backgroundColor = '#d3d3d3'; // Light gray to indicate disabled state
+        // Disable the button and change its color
+        signupButton.disabled = true;
+        signupButton.style.backgroundColor = '#d3d3d3'; // Light gray to indicate disabled state
 
-    const signupOptions = {
-        URL: `${pythonURI}/api/user`,
-        method: "POST",
-        cache: "no-cache",
-        body: {
-            name: document.getElementById("name").value,
-            uid: document.getElementById("signupUid").value,
-            password: document.getElementById("signupPassword").value,
-            kasm_server_needed: document.getElementById("kasmNeeded").checked,
-        }
-    };
+        const signupOptions = {
+            URL: `${pythonURI}/api/user`,
+            method: "POST",
+            cache: "no-cache",
+            body: {
+                name: document.getElementById("name").value,
+                uid: document.getElementById("signupUid").value,
+                password: document.getElementById("signupPassword").value,
+            }
+        };
 
-    fetch(signupOptions.URL, {
-        method: signupOptions.method,
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(signupOptions.body)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Signup failed: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById("signupMessage").textContent = "Signup successful!";
-        // Optionally redirect to login page or handle as needed
-        // window.location.href = '{{site.baseurl}}/profile';
-    })
-    .catch(error => {
-        console.error("Signup Error:", error);
-        document.getElementById("signupMessage").textContent = `Signup Error: ${error.message}`;
-        // Re-enable the button if there is an error
-        signupButton.disabled = false;
-        signupButton.style.backgroundColor = ''; // Reset to default color
-    });
-}
-
+        fetch(signupOptions.URL, {
+            method: signupOptions.method,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(signupOptions.body)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Signup failed: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById("signupMessage").textContent = "Signup successful!";
+            // Optionally redirect to login page or handle as needed
+            // window.location.href = '{{site.baseurl}}/profile';
+        })
+        .catch(error => {
+            console.error("Signup Error:", error);
+            document.getElementById("signupMessage").textContent = `Signup Error: ${error.message}`;
+            // Re-enable the button if there is an error
+            signupButton.disabled = false;
+            signupButton.style.backgroundColor = ''; // Reset to default color
+        });
+    }
 
     // Function to fetch and display Python data
     function pythonDatabase() {
-        const URL = `${pythonURI}/api/id`;
+        const URL = `${pythonURI}/api/user`;
 
         fetch(URL, fetchOptions)
             .then(response => {
@@ -191,8 +183,12 @@ show_reading_time: false
             });
     }
 
-    // Call relevant database functions on the page load
+    // Check for cookies and call relevant database functions on page load
     window.onload = function() {
-         pythonDatabase();
+        // Check if user is authenticated by checking cookies or local storage
+        const isAuthenticated = document.cookie.includes('auth_token'); // Example check
+        if (isAuthenticated) {
+            pythonDatabase();
+        }
     };
 </script>

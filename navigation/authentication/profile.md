@@ -22,11 +22,6 @@ show_reading_time: false
        <input type="text" id="newPassword" placeholder="New Password">
      </div>
      <br>
-     <div>
-       <label for="kasmServerNeeded">Kasm Server Needed:
-       <input type="checkbox" id="kasmServerNeeded" onclick="toggleKasmServerNeeded()">
-       </label>
-     </div>
      <br>
      <div>
        <label for="sectionDropdown">Select and Add Section:</label>
@@ -40,9 +35,8 @@ show_reading_time: false
      <table>
        <thead>
          <tr>
-           <th>Abbreviation</th>
+           <th>Theme</th>
            <th>Name</th>
-           <th>Year</th>
          </tr>
        </thead>
        <tbody id="profileResult">
@@ -60,24 +54,18 @@ show_reading_time: false
  </div>
 </div>
 
-
 <script type="module">
 // Import fetchOptions from config.js
 import {pythonURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
 // Import functions from config.js
 import { putUpdate, postUpdate, deleteData, logoutUser } from "{{site.baseurl}}/assets/js/api/profile.js";
 
-
-
-
 // Global variable to hold predefined sections
 let predefinedSections = [];
-
 
 // Function to fetch  sections from kasm2_backend
 async function fetchPredefinedSections() {
     const URL = pythonURI + "/api/section";
-
 
     try {
         const response = await fetch(URL, fetchOptions);
@@ -102,8 +90,8 @@ function populateSectionDropdown(predefinedSections) {
 
     predefinedSections.forEach(section => {
         const option = document.createElement('option');
-        option.value = section.abbreviation;
-        option.textContent = `${section.abbreviation} - ${section.name}`;
+        option.value = section.theme;
+        option.textContent = `${section.theme} - ${section.name}`;
         sectionDropdown.appendChild(option);
     });
 
@@ -121,11 +109,11 @@ let userSections = [];
 window.addSection = async function () {
     const dropdown = document.getElementById('sectionDropdown');
     const selectedOption = dropdown.options[dropdown.selectedIndex];
-    const abbreviation = selectedOption.value;
+    const theme = selectedOption.value;
     const name = selectedOption.textContent.split(' ').slice(1).join(' ');
 
 
-    if (!abbreviation || !name) {
+    if (!theme || !name) {
         document.getElementById('profile-message').textContent = 'Please select a section from the dropdown.';
         return;
     }
@@ -136,9 +124,9 @@ window.addSection = async function () {
 
 
     // Add section to userSections array if not already added
-    const sectionExists = userSections.some(section => section.abbreviation === abbreviation && section.name === name);
+    const sectionExists = userSections.some(section => section.theme === theme && section.name === name);
     if (!sectionExists) {
-        userSections.push({ abbreviation, name });
+        userSections.push({ theme, name });
 
 
         // Display added section in the table
@@ -160,21 +148,16 @@ function displayProfileSections() {
        // Create a new row and cell for each section
        userSections.forEach(section => {
            const tr = document.createElement('tr');
-           const abbreviationCell = document.createElement('td');
+           const themeCell = document.createElement('td');
            const nameCell = document.createElement('td');
-           const yearCell = document.createElement('td');
-
 
            // Fill in the corresponding cells with data
-           abbreviationCell.textContent = section.abbreviation;
+           themeCell.textContent = section.theme;
            nameCell.textContent = section.name;
-           yearCell.textContent = section.year;
 
-
-           tr.appendChild(abbreviationCell);
+           tr.appendChild(themeCell);
            tr.appendChild(nameCell);
            tr.appendChild(yearCell);
-
 
            // Add the row to table
            tableBody.appendChild(tr);
@@ -184,16 +167,13 @@ function displayProfileSections() {
 
 // Function to save sections in the specified format
 async function saveSections() {
-   const sectionAbbreviations = userSections.map(section => section.abbreviation);
-
+   const sectionThemes = userSections.map(section => section.theme);
 
    const sectionsData = {
-       sections: sectionAbbreviations
+       sections: sectionThemes
    };
 
-
    const URL = pythonURI + "/api/user/section";
-
 
    const options = {
        URL,
@@ -219,13 +199,11 @@ async function saveSections() {
 async function fetchDataAndPopulateTable() {
     const URL = pythonURI + "/api/user/section"; // Endpoint to fetch sections data
 
-
     try {
         const response = await fetch(URL, fetchOptions);
         if (!response.ok) {
             throw new Error(`Failed to fetch sections: ${response.status}`);
         }
-
 
         const sectionsData = await response.json();
         updateTableWithData(sectionsData); // Call function to update table with fetched data
@@ -244,36 +222,28 @@ function updateTableWithData(data) {
 
    data.sections.forEach((section, index) => {
        const tr = document.createElement('tr');
-       const abbreviationCell = document.createElement('td');
+       const themeCell = document.createElement('td');
        const nameCell = document.createElement('td');
-       const yearCell = document.createElement('td');
 
-
-      
-       abbreviationCell.textContent = section.abbreviation;
+       themeCell.textContent = section.theme;
        nameCell.textContent = section.name;
-       yearCell.textContent = section.year;
-
-
-
 
        const trashIcon = document.createElement('i');
        trashIcon.className = 'fas fa-trash-alt trash-icon';
        trashIcon.style.marginLeft = '10px';
-       abbreviationCell.appendChild(trashIcon);
+       themeCell.appendChild(trashIcon);
 
 
        trashIcon.addEventListener('click', async function (event) {
            event.preventDefault();
            const URL = pythonURI + "/api/user/section";
-          
            // Remove the row from the table
            tr.remove();
 
 
            const options = {
                URL,
-               body: { sections: [section.abbreviation] },
+               body: { sections: [section.theme] },
                message: 'profile-message',
                callback: async () => {
                    console.log('Section deleted successfully!');
@@ -289,14 +259,6 @@ function updateTableWithData(data) {
                document.getElementById('profile-message').textContent = 'Error deleting section: ' + error.message;
            }
        });
-
-
-
-
-     
-
-
-
 
       yearCell.classList.add('editable'); // Make year cell editable
       yearCell.innerHTML = `${section.year} <i class="fas fa-pencil-alt edit-icon" style="margin-left: 10px;"></i>`;
@@ -320,7 +282,7 @@ function updateTableWithData(data) {
                const URL = pythonURI + "/api/user/section";
                const options = {
                    URL,
-                   body: { section: { abbreviation: section.abbreviation, year: newYear } },
+                   body: { section: { theme: section.theme, year: newYear } },
                    message: 'profile-message',
                    callback: async () => {
                        console.log('Year updated successfully!');
@@ -347,16 +309,12 @@ function updateTableWithData(data) {
                }
            });
        });
-       tr.appendChild(abbreviationCell);
+       tr.appendChild(themeCell);
        tr.appendChild(nameCell);
-       tr.appendChild(yearCell);
-
 
        tableBody.appendChild(tr);
    });
 
-
-  
 }
 
 
@@ -475,20 +433,12 @@ window.updateUidField = function(newUid) {
   uidInput.placeholder = newUid;
 }
 
-
 // Function to update UI with new Name and change placeholder
 window.updateNameField = function(newName) {
   const nameInput = document.getElementById('newName');
   nameInput.value = newName;
   nameInput.placeholder = newName;
 }
-
-
-
-
-
-
-
 
 // Function to change UID
 window.changeUid = async function(uid) {
@@ -613,7 +563,7 @@ document.getElementById('newPassword').addEventListener('change', function() {
 
 
 window.fetchKasmServerNeeded = async function() {
- const URL = pythonURI + "/api/id"; // Adjusted endpoint
+ const URL = pythonURI + "/api/user"; // Adjusted endpoint
  try {
      const response = await fetch(URL, fetchOptions);
      if (!response.ok) {
@@ -630,52 +580,9 @@ window.fetchKasmServerNeeded = async function() {
  }
 };
 
-
-// Function to toggle kasm_server_needed attribute on checkbox change
-window.toggleKasmServerNeeded = async function() {
-   const checkbox = document.getElementById('kasmServerNeeded');
-   const newKasmServerNeeded = checkbox.checked;
-   const URL = pythonURI + "/api/user"; // Adjusted endpoint
-   const options = {
-       URL,
-       body: { kasm_server_needed: newKasmServerNeeded },
-       message: 'kasm-server-message', // Adjust the message area as needed
-       callback: () => {
-           console.log('Kasm Server Needed updated successfully!');
-       }
-   };
-
-
-   try {
-       await putUpdate(options);
-   } catch (error) {
-       console.error('Error updating kasm_server_needed:', error.message);
-       document.getElementById('kasm-server-message').textContent = 'Error updating kasm_server_needed: ' + error.message;
-   }
-}
-   window.fetchUid = async function() {
-    const URL = pythonURI + "/api/id"; // Adjusted endpoint
-
-
-    try {
-        const response = await fetch(URL, fetchOptions);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch UID: ${response.status}`);
-        }
-
-
-        const data = await response.json();
-        return data.uid;
-    } catch (error) {
-        console.error('Error fetching UID:', error.message);
-        return null;
-    }
-};
-
-
 // Function to fetch Name from backend
 window.fetchName = async function() {
-    const URL = pythonURI + "/api/id"; // Adjusted endpoint
+    const URL = pythonURI + "/api/user"; // Adjusted endpoint
 
 
     try {
@@ -733,11 +640,4 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-
 </script>
-
-
-
-
-
-

@@ -1,12 +1,6 @@
 <table>
     <tr>
-        <td><img src="{{site.baseurl}}/images/logo.png" height="60" title="Home" alt=""></td>
-        <td><a href="{{site.baseurl}}/academics/math">Integrated</a></td>
-        <td><a href="{{site.baseurl}}/academics/english">APEL</a></td>
-        <td><a href="{{site.baseurl}}/electives/band">Orchestra</a></td>
-        <td><a href="{{site.baseurl}}/electives/compsci">CompSci</a></td>
-        <td><a href="{{site.baseurl}}/hangouts/community">Panera</a></td>
-        <td id="loginArea"><a href="{{site.baseurl}}/login">Profile</a></td>
+        <td id="loginArea"><a href="{{site.baseurl}}/login">Login</a></td>
     </tr>
 </table>
 
@@ -25,13 +19,14 @@
                         <div class="dropdown-content">
                             <a href="{{site.baseurl}}/logout">Logout</a>
                             <a href="{{site.baseurl}}/profile">Profile</a>
-                            <a href="{{site.baseurl}}/analytics">Analytics</a>
+                            <a href="{{site.baseurl}}/post">Post</a>
+                            <a href="{{site.baseurl}}/history">History</a>
                         </div>
                     </div>
                 `;
             } else {
                 // User is not authenticated, then "Login" link is shown
-                loginArea.innerHTML = '<a href="{{site.baseurl}}/login">Profile</a>';
+                loginArea.innerHTML = '<a href="{{site.baseurl}}/login">Login</a>';
             }
         })
         .catch(err => { // General error handler
@@ -41,7 +36,7 @@
     });
 
     function getCredentials() {
-        const URL = pythonURI + '/api/id';
+        const URL = pythonURI + '/api/user';
         return fetch(URL, fetchOptions)
             .then(response => { // API response handler 
                 if (response.status !== 200) {
