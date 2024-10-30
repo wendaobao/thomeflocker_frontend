@@ -30,7 +30,7 @@ Your goal is to **decode the hidden message** provided. Use your problem-solving
 
 Once you’ve cracked the code, submit your answer here:
 
-```markdown
+
 - **Answer**: `type-your-answer-here`
 
 
