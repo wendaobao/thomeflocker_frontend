@@ -40,58 +40,6 @@ author: Manas, Lalita, Shriya, Ethan
         <p>Your feedback has been submitted successfully.</p>
     </div>
 </div>
-<div>
-    <!-- Dropdown to select a category -->
-    <label for="category-select">Choose a category:</label>
-    <select id="category-select">
-        <option value="inventions">Inventions</option>
-        <option value="stories">Stories</option>
-        <option value="apps">Apps</option>
-        <option value="businesses">Businesses</option>
-    </select>
-</div>
-
-<div>
-    <!-- Button to generate a prompt -->
-    <button id="generate-prompt">Generate Random Prompt</button>
-</div>
-
-<div>
-    <!-- Display for the generated prompt -->
-    <h3>Generated Prompt:</h3>
-    <p id="prompt-display">Select a category and click 'Generate Random Prompt' to see a prompt here.</p>
-</div>
-
-<div>
-    <!-- Input for the pitch and submit button -->
-    <textarea id="pitch-input" placeholder="Enter your pitch here..."></textarea>
-    <button id="submit-pitch">Submit Pitch</button>
-</div>
-
-<div>
-    <!-- Input for feedback and submit button -->
-    <textarea id="feedback-input" placeholder="Enter feedback here..."></textarea>
-    <button id="submit-feedback">Submit Feedback</button>
-</div>
-
-<div id="pitch-display">
-    <!-- Display for all pitches -->
-    <h3>Pitches</h3>
-</div>
-
-<div id="feedback-display">
-    <!-- Display for all feedback -->
-    <h3>Feedbacks</h3>
-</div>
-
-<!-- Feedback Modal (optional) -->
-<div id="feedback-modal" style="display:none;">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <p>Thank you for your feedback!</p>
-    </div>
-</div>
-
 
 <!-- Styles for modal -->
 <style>
