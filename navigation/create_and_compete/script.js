@@ -58,6 +58,21 @@ class SubmissionManager {
             }
         };
     }
+
+    downloadJSON() {
+        const data = {
+            pitches: this.pitches,
+            feedbacks: this.feedbacks
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'submissions.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
 }
 
 const prompts = [
@@ -96,4 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Please enter feedback before submitting.");
         }
     });
+
+    // New button for downloading JSON
+    const downloadButton = document.createElement('button');
+    downloadButton.innerText = 'Download Submissions as JSON';
+    downloadButton.addEventListener('click', () => submissionManager.downloadJSON());
+    document.body.appendChild(downloadButton); // Append the button to the body
 });

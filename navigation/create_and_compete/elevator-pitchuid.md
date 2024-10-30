@@ -6,7 +6,7 @@ permalink: /create_and_compete/elevatorpitchgame
 author: Manas, Lalita, Shriya, Ethan
 ---
 
-<link rel="style" href="/navigation/create_and_compete/style.css">
+<link rel="stylesheet" href="/navigation/create_and_compete/style.css">
 <script src="/navigation/create_and_compete/script.js"></script>
 
 <h1>Create and Compete – Elevator Pitch</h1>
