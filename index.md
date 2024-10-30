@@ -5,7 +5,17 @@ description: Login and explore our social media hub for everything DNHS
 hide: true
 menu: nav/home.html
 ---
-Do these changes work
+<div style="text-align:center;">
+    <a href="https://darsh220.github.io/flocker_frontend/" style="text-decoration:none;">
+        <button style="padding: 10px 20px; font-size: 16px;">Home</button>
+    </a>
+    <a href="https://darsh220.github.io/flocker_frontend/about" style="text-decoration:none;">
+        <button style="padding: 10px 20px; font-size: 16px;">About</button>
+    </a>
+    <a href="https://darsh220.github.io/flocker_frontend/contact" style="text-decoration:none;">
+        <button style="padding: 10px 20px; font-size: 16px;">Contact</button>
+    </a>
+</div>
 
 <style>
     body {
