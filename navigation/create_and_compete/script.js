@@ -1,11 +1,50 @@
 class PromptGenerator {
-    constructor(prompts) {
-        this.prompts = prompts;
+    constructor() {
+        this.prompts = {
+            "Inventions": [
+                "Create a device that solves a common daily problem.",
+                "Imagine a machine that can help with household chores.",
+                "Invent a gadget for improving personal health.",
+                "Design an eco-friendly transportation solution.",
+                "Create a wearable technology for safety."
+            ],
+            "Stories": [
+                "Write a story that begins with finding an ancient map.",
+                "Imagine a world where dreams are real.",
+                "Create a tale set in a future where robots control daily life.",
+                "Write about a person who can read minds.",
+                "Imagine a scenario where humanity lives underwater."
+            ],
+            "Apps": [
+                "Design an app that promotes healthy habits.",
+                "Create an educational game for children.",
+                "Imagine an app that connects people based on hobbies.",
+                "Design an app that monitors environmental changes.",
+                "Create a social media platform for artists."
+            ],
+            "Business Ventures": [
+                "Pitch a business idea that tackles food waste.",
+                "Imagine a startup focused on sustainable fashion.",
+                "Design a service to simplify online shopping.",
+                "Create a business model for mental health support.",
+                "Pitch an idea for a local community space."
+            ]
+        };
     }
 
-    generateRandomPrompt() {
-        const randomIndex = Math.floor(Math.random() * this.prompts.length);
-        return this.prompts[randomIndex];
+    generateRandomPrompt(category) {
+        if (category && this.prompts[category]) {
+            const randomIndex = Math.floor(Math.random() * this.prompts[category].length);
+            return this.prompts[category][randomIndex];
+        } else {
+            const allPrompts = Object.values(this.prompts).flat();
+            const randomIndex = Math.floor(Math.random() * allPrompts.length);
+            return allPrompts[randomIndex];
+        }
+    }
+
+    getCategories() {
+        return Object.keys(this.prompts);
     }
 }
 
@@ -24,97 +63,82 @@ class SubmissionManager {
         localStorage.setItem(key, JSON.stringify(data));
     }
 
-    submitPitch(pitch) {
-        this.pitches.push(pitch);
+    submitPitch(pitch, category) {
+        const newPitch = { text: pitch, category, score: 0, feedback: [] };
+        this.pitches.push(newPitch);
         this.saveToLocalStorage('pitches', this.pitches);
         this.renderSubmissions();
     }
 
-    submitFeedback(feedback) {
-        this.feedbacks.push(feedback);
-        this.saveToLocalStorage('feedbacks', this.feedbacks);
-        this.renderFeedbacks();
-        this.showModal();
+    submitFeedback(pitchIndex, feedbackText) {
+        const feedbackEntry = { text: feedbackText, score: 0 };
+        this.pitches[pitchIndex].feedback.push(feedbackEntry);
+        this.saveToLocalStorage('pitches', this.pitches);
+        this.renderSubmissions();
+    }
+
+    upvotePitch(pitchIndex) {
+        this.pitches[pitchIndex].score += 1;
+        this.saveToLocalStorage('pitches', this.pitches);
+        this.renderSubmissions();
+    }
+
+    upvoteFeedback(pitchIndex, feedbackIndex) {
+        this.pitches[pitchIndex].feedback[feedbackIndex].score += 1;
+        this.saveToLocalStorage('pitches', this.pitches);
+        this.renderSubmissions();
     }
 
     renderSubmissions() {
         const pitchDisplay = document.getElementById('pitch-display');
-        pitchDisplay.innerHTML = this.pitches.map(pitch => `<div>${pitch}</div>`).join('');
-    }
-
-    renderFeedbacks() {
-        const feedbackDisplay = document.getElementById('feedback-display');
-        feedbackDisplay.innerHTML = this.feedbacks.map(feedback => `<div>${feedback}</div>`).join('');
-    }
-
-    showModal() {
-        const modal = document.getElementById('feedback-modal');
-        modal.style.display = 'block';
-        const closeButton = document.querySelector('.close-button');
-        closeButton.onclick = () => modal.style.display = 'none';
-        window.onclick = event => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
-    }
-
-    downloadJSON() {
-        const data = {
-            pitches: this.pitches,
-            feedbacks: this.feedbacks
-        };
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'submissions.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        pitchDisplay.innerHTML = this.pitches.map((pitch, index) => `
+            <div class="pitch">
+                <p><strong>Category:</strong> ${pitch.category}</p>
+                <p>${pitch.text}</p>
+                <button onclick="submissionManager.upvotePitch(${index})">👍 ${pitch.score}</button>
+                <h4>Feedback:</h4>
+                <div class="feedback-list">
+                    ${pitch.feedback.map((fb, fbIndex) => `
+                        <p>${fb.text} <button onclick="submissionManager.upvoteFeedback(${index}, ${fbIndex})">👍 ${fb.score}</button></p>
+                    `).join('')}
+                </div>
+                <textarea id="feedback-input-${index}" placeholder="Offer feedback..."></textarea>
+                <button onclick="submissionManager.submitFeedback(${index}, document.getElementById('feedback-input-${index}').value)">Submit Feedback</button>
+            </div>
+        `).join('');
     }
 }
 
-const prompts = [
-    "Invent a new app that solves a common problem.",
-    "Create a story that starts with a character finding a mysterious object.",
-    "Design a gadget that can help in daily life.",
-    "Pitch an innovative business idea focused on sustainability.",
-    "Imagine a world where technology has completely changed education."
-];
-
-const promptGenerator = new PromptGenerator(prompts);
+// Set up the prompt generator and submission manager
+const promptGenerator = new PromptGenerator();
 const submissionManager = new SubmissionManager();
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('generate-prompt').addEventListener('click', () => {
-        const promptDisplay = document.getElementById('prompt-display');
-        promptDisplay.innerText = promptGenerator.generateRandomPrompt();
+    // Populate categories in the dropdown
+    const categorySelect = document.getElementById('category-select');
+    promptGenerator.getCategories().forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categorySelect.appendChild(option);
     });
 
+    // Generate prompt based on selected category
+    document.getElementById('generate-prompt').addEventListener('click', () => {
+        const category = categorySelect.value;
+        const promptDisplay = document.getElementById('prompt-display');
+        promptDisplay.innerText = promptGenerator.generateRandomPrompt(category);
+    });
+
+    // Submit pitch
     document.getElementById('submit-pitch').addEventListener('click', () => {
         const pitchInput = document.getElementById('pitch-input');
+        const category = categorySelect.value;
         if (pitchInput.value.trim() !== "") {
-            submissionManager.submitPitch(pitchInput.value);
+            submissionManager.submitPitch(pitchInput.value, category);
             pitchInput.value = ""; // Clear input
         } else {
             alert("Please enter a pitch before submitting.");
         }
     });
-
-    document.getElementById('submit-feedback').addEventListener('click', () => {
-        const feedbackInput = document.getElementById('feedback-input');
-        if (feedbackInput.value.trim() !== "") {
-            submissionManager.submitFeedback(feedbackInput.value);
-            feedbackInput.value = ""; // Clear input
-        } else {
-            alert("Please enter feedback before submitting.");
-        }
-    });
-
-    // New button for downloading JSON
-    const downloadButton = document.createElement('button');
-    downloadButton.innerText = 'Download Submissions as JSON';
-    downloadButton.addEventListener('click', () => submissionManager.downloadJSON());
-    document.body.appendChild(downloadButton); // Append the button to the body
 });
