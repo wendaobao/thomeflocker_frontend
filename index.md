@@ -6,3 +6,4 @@ hide: true
 menu: nav/home.html
 ---
 
+[To level one](navigation/levelone.md)
