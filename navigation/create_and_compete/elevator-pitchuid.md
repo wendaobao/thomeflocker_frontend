@@ -6,37 +6,39 @@ permalink: /create_and_compete/elevatorpitchgame
 author: Manas, Lalita, Shriya, Ethan
 ---
 
-
-
-
+<h1>Create and Compete – Elevator Pitch</h1>
 <p>Where creativity meets competition and collaboration.</p>
-<button id="generate-prompt">Generate Random Prompt</button>
-<div id="prompt-display"></div>
+
+<p>Click the button below to generate a random prompt for your pitch. Share your ideas and provide feedback to others!</p>
+<button id="generate-prompt" aria-label="Generate a random pitch prompt">Generate Random Prompt</button>
+<div id="prompt-display" aria-live="polite"></div>
 
 <section id="pitch-section">
     <h2>Your Pitch</h2>
-    <textarea id="pitch-input" placeholder="Write your pitch here..."></textarea>
-    <button id="submit-pitch">Submit Pitch</button>
-    <div id="pitch-display"></div>
+    <textarea id="pitch-input" placeholder="Write your pitch here..." aria-label="Pitch input area"></textarea>
+    <button id="submit-pitch" aria-label="Submit your pitch">Submit Pitch</button>
+    <div id="pitch-display" aria-live="polite"></div>
 </section>
 
 <section id="feedback-section">
     <h2>Feedback & Challenges</h2>
-    <textarea id="feedback-input" placeholder="Offer feedback or ask a question..."></textarea>
-    <button id="submit-feedback">Submit Feedback</button>
-    <div id="feedback-display"></div>
+    <textarea id="feedback-input" placeholder="Offer feedback or ask a question..." aria-label="Feedback input area"></textarea>
+    <button id="submit-feedback" aria-label="Submit your feedback">Submit Feedback</button>
+    <div id="feedback-display" aria-live="polite"></div>
 </section>
 
 <section id="leaderboard-section">
     <h2>Top Contributors</h2>
-    <ul id="leaderboard"></ul>
+    <ul id="leaderboard">
+        <li>No contributors yet. Join the competition!</li>
+    </ul>
 </section>
 
 <!-- Feedback Modal -->
-<div id="feedback-modal" class="modal">
+<div id="feedback-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Feedback Submitted!</h2>
+        <span class="close-button" aria-label="Close modal">&times;</span>
+        <h2 id="modal-title">Feedback Submitted!</h2>
         <p>Your feedback has been submitted successfully.</p>
     </div>
 </div>
@@ -52,8 +54,7 @@ author: Manas, Lalita, Shriya, Ethan
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {

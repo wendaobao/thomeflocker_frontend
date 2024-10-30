@@ -5,8 +5,11 @@ class PromptGenerator {
 
     generateRandomPrompt(category) {
         const categoryPrompts = this.prompts[category] || [];
+        if (categoryPrompts.length === 0) {
+            return "No prompts available for this category.";
+        }
         const randomIndex = Math.floor(Math.random() * categoryPrompts.length);
-        return categoryPrompts[randomIndex] || "No prompts available for this category.";
+        return categoryPrompts[randomIndex];
     }
 }
 
@@ -15,6 +18,7 @@ class SubmissionManager {
         this.pitches = this.loadFromLocalStorage('pitches') || [];
         this.feedbacks = this.loadFromLocalStorage('feedbacks') || [];
         this.renderSubmissions();
+        this.renderFeedbacks();
     }
 
     loadFromLocalStorage(key) {
@@ -29,6 +33,7 @@ class SubmissionManager {
         this.pitches.push(pitch);
         this.saveToLocalStorage('pitches', this.pitches);
         this.renderSubmissions();
+        alert("Pitch submitted successfully!");
     }
 
     submitFeedback(feedback) {
@@ -36,6 +41,7 @@ class SubmissionManager {
         this.saveToLocalStorage('feedbacks', this.feedbacks);
         this.renderFeedbacks();
         this.showModal();
+        alert("Feedback submitted successfully!");
     }
 
     renderSubmissions() {
@@ -52,12 +58,16 @@ class SubmissionManager {
         const modal = document.getElementById('feedback-modal');
         modal.style.display = 'block';
         const closeButton = document.querySelector('.close-button');
-        closeButton.onclick = () => modal.style.display = 'none';
+        closeButton.onclick = () => this.closeModal(modal);
         window.onclick = event => {
             if (event.target === modal) {
-                modal.style.display = 'none';
+                this.closeModal(modal);
             }
         };
+    }
+
+    closeModal(modal) {
+        modal.style.display = 'none';
     }
 
     downloadJSON() {
