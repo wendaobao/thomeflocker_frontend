@@ -15,6 +15,7 @@ menu: nav/home.html
     <a href="https://darsh220.github.io/flocker_frontend/contact" style="text-decoration:none;">
         <button style="padding: 10px 20px; font-size: 16px;">Contact</button>
     </a>
+    
 </div>
 
 <style>
