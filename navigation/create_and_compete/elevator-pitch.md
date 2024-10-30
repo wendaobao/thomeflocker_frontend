@@ -7,6 +7,9 @@ menu: nav/create_and_compete.html
 author: Manas, Lalita, Shriya, Ethan
 ---
 
+<link rel="style" href="/navigation/create_and_compete/style.css">
+<script src="/navigation/create_and_compete/script.js"></script>
+
 <details>
   <summary>Room Details</summary>
 
@@ -22,3 +25,28 @@ author: Manas, Lalita, Shriya, Ethan
 </p>
 
 </details>
+
+<h1>Create and Compete – Elevator Pitch</h1>
+<p>Where creativity meets competition and collaboration.</p>
+<button id="generate-prompt">Generate Random Prompt</button>
+<div id="prompt-display"></div>
+
+<section id="pitch-section">
+    <h2>Your Pitch</h2>
+    <textarea id="pitch-input" placeholder="Write your pitch here..."></textarea>
+    <button id="submit-pitch">Submit Pitch</button>
+    <div id="pitch-display"></div>
+</section>
+
+<section id="feedback-section">
+    <h2>Feedback & Challenges</h2>
+    <textarea id="feedback-input" placeholder="Offer feedback or ask a question..."></textarea>
+    <button id="submit-feedback">Submit Feedback</button>
+    <div id="feedback-display"></div>
+</section>
+
+<section id="leaderboard-section">
+    <h2>Top Contributors</h2>
+    <ul id="leaderboard"></ul>
+</section>
+
