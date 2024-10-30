@@ -287,6 +287,7 @@ p, h2, h3, body {
     <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
     <button onclick="addComment();" class="comment-button">Submit</button>
     <div id="commentList" style="margin-top: 10px;"></div>
+    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
 </div>
 
 
@@ -386,6 +387,12 @@ function displayComments() {
         commentList.appendChild(commentItem);
     });
 }
+
+function clearComments() {
+    localStorage.removeItem('comments'); // Remove comments from local storage
+    displayComments(); // Refresh the comment display
+}
+
 
 // Display comments on page load
 window.onload = displayComments;
