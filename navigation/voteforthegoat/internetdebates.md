@@ -17,6 +17,7 @@ comments: true
 - Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.
 - Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.
 
+<button id="acknowledge-rules" class="acknowledge-btn">I have read and acknowledged the rules</button>
 
 <head>
     <title>Internet Debate Forum</title>
@@ -26,7 +27,6 @@ comments: true
             padding: 0;
             box-sizing: border-box;
         }
-
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -39,14 +39,15 @@ comments: true
             padding: 1rem;
         }
 
-
         .container {
             width: 100%;
             max-width: 800px;
             text-align: center;
             padding: 2rem;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
 
         header h1 {
             font-size: 3rem;
@@ -55,19 +56,16 @@ comments: true
             text-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
         }
 
-
         #debate-selection h2, #arguments-list h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
         }
-
 
         .buttons {
             display: flex;
             justify-content: space-around;
             margin-bottom: 2rem;
         }
-
 
         .side-btn {
             padding: 1rem 2rem;
@@ -81,16 +79,13 @@ comments: true
             transition: background 0.3s ease;
         }
 
-
         .side-btn:hover {
             background: linear-gradient(45deg, #0099cc, #006699);
         }
 
-
         #argument-section {
             margin-top: 2rem;
         }
-
 
         #argument-input {
             width: 100%;
@@ -105,7 +100,6 @@ comments: true
             resize: none;
         }
 
-
         .submit-btn {
             padding: 1rem 2rem;
             font-size: 1rem;
@@ -117,13 +111,11 @@ comments: true
             box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
         }
 
-
         ul {
             list-style: none;
             padding: 0;
             margin: 1rem 0;
         }
-
 
         li {
             background: #1a1a1a;
@@ -134,7 +126,6 @@ comments: true
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-
         li .rate {
             position: absolute;
             right: 1rem;
@@ -142,7 +133,6 @@ comments: true
             transform: translateY(-50%);
             display: flex;
         }
-
 
         .rate button {
             background: none;
@@ -157,9 +147,25 @@ comments: true
             transition: transform 0.3s ease;
         }
 
-
         .hidden {
             display: none;
+        }
+
+        .acknowledge-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #00e5ff, #0099cc);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+            transition: background 0.3s ease;
+        }
+
+        .acknowledge-btn:hover {
+            background: linear-gradient(45deg, #0099cc, #006699);
         }
     </style>
 </head>
@@ -169,7 +175,6 @@ comments: true
             <h1>Choose Your Side</h1>
         </header>
 
-
         <section id="debate-selection">
             <h2>Current Debate: Milk or Cereal First?</h2>
             <div class="buttons">
@@ -178,20 +183,17 @@ comments: true
             </div>
         </section>
 
-
         <section id="argument-section" class="hidden">
             <h2 id="selected-side">Your Side:</h2>
             <textarea id="argument-input" placeholder="Submit your argument"></textarea>
             <button id="submit-argument" class="submit-btn">Submit Argument</button>
         </section>
 
-
         <section id="arguments-list" class="hidden">
             <h2>Arguments</h2>
             <ul id="argument-container"></ul>
         </section>
     </div>
-
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -203,28 +205,30 @@ comments: true
             const submitButton = document.getElementById('submit-argument');
             const argumentContainer = document.getElementById('argument-container');
             const selectedSideText = document.getElementById('selected-side');
-
+            const acknowledgeButton = document.getElementById('acknowledge-rules');
+            const communityRules = document.querySelector('body > :first-child');
 
             let selectedSide = '';
 
+            acknowledgeButton.addEventListener('click', () => {
+                communityRules.classList.add('hidden');
+                acknowledgeButton.classList.add('hidden');
+            });
 
             milkButton.addEventListener('click', () => {
                 selectedSide = 'Milk First';
                 showArgumentSection();
             });
 
-
             cerealButton.addEventListener('click', () => {
                 selectedSide = 'Cereal First';
                 showArgumentSection();
             });
 
-
             function showArgumentSection() {
                 argumentSection.classList.remove('hidden');
                 selectedSideText.textContent = `Your Side: ${selectedSide}`;
             }
-
 
             submitButton.addEventListener('click', () => {
                 const argumentText = argumentInput.value.trim();
@@ -234,7 +238,6 @@ comments: true
                     let downvotes = 0;
                     let hasVoted = false;
 
-
                     argumentElement.innerHTML = `
                         <p><strong>${selectedSide}:</strong> ${argumentText}</p>
                         <div class="rate">
@@ -243,34 +246,37 @@ comments: true
                         </div>
                     `;
 
-
                     argumentContainer.appendChild(argumentElement);
                     argumentInput.value = '';
 
-
                     argumentsList.classList.remove('hidden');
-
 
                     const upvoteBtn = argumentElement.querySelector('.upvote');
                     const downvoteBtn = argumentElement.querySelector('.downvote');
                     const upvoteCount = argumentElement.querySelector('.upvote-count');
                     const downvoteCount = argumentElement.querySelector('.downvote-count');
 
-
                     upvoteBtn.addEventListener('click', () => {
                         if (!hasVoted) {
                             upvotes++;
                             upvoteCount.textContent = upvotes;
                             hasVoted = true;
+                        } else if (hasVoted && upvotes > 0) {
+                            upvotes--;
+                            upvoteCount.textContent = upvotes;
+                            hasVoted = false;
                         }
                     });
-
 
                     downvoteBtn.addEventListener('click', () => {
                         if (!hasVoted) {
                             downvotes++;
                             downvoteCount.textContent = downvotes;
                             hasVoted = true;
+                        } else if (hasVoted && downvotes > 0) {
+                            downvotes--;
+                            downvoteCount.textContent = downvotes;
+                            hasVoted = false;
                         }
                     });
                 }
