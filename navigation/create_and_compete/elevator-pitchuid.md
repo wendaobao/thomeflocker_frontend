@@ -7,8 +7,7 @@ author: Manas, Lalita, Shriya, Ethan
 ---
 
 <link rel="stylesheet" href="/navigation/create_and_compete/style.css">
-<script src="script.js"></script>
-</body>
+<script src="/navigation/create_and_compete/script.js"></script>
 
 <h1>Create and Compete – Elevator Pitch</h1>
 <p>Where creativity meets competition and collaboration.</p>
