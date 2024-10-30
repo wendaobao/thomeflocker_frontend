@@ -182,6 +182,7 @@ show_reading_time: false
             .catch(error => {
                 console.error("Python Database Error:", error);
                 const errorMsg = `Python Database Error: ${error.message}`;
+                alert(errorMsg);
             });
     }
 
