@@ -88,6 +88,22 @@ comments: true
             background: linear-gradient(45deg, #0099cc, #006699);
         }
 
+        .switch-debate-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff6347, #ff4500);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+            transition: background 0.3s ease;
+        }
+
+        .switch-debate-btn:hover {
+            background: linear-gradient(45deg, #ff4500, #ff6347);
+        }
+
         #argument-section {
             margin-top: 2rem;
         }
@@ -172,6 +188,23 @@ comments: true
         .acknowledge-btn:hover {
             background: linear-gradient(45deg, #0099cc, #006699);
         }
+
+        .reply-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #00e5ff, #0099cc);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+            transition: background 0.3s ease;
+        }
+
+        .reply-btn:hover {
+            background: linear-gradient(45deg, #0099cc, #006699);
+        }
     </style>
 </head>
 <body>
@@ -199,11 +232,12 @@ comments: true
         </header>
 
         <section id="debate-selection">
-            <h2>Current Debate: Milk or Cereal First?</h2>
+            <h2 id="current-debate">Current Debate: Milk or Cereal First?</h2>
             <div class="buttons">
                 <button id="milkFirst" class="side-btn">Milk First</button>
                 <button id="cerealFirst" class="side-btn">Cereal First</button>
             </div>
+            <button id="switch-debate" class="switch-debate-btn">Switch Debate</button>
         </section>
 
         <section id="argument-section" class="hidden">
@@ -222,16 +256,27 @@ comments: true
         document.addEventListener("DOMContentLoaded", () => {
             const milkButton = document.getElementById('milkFirst');
             const cerealButton = document.getElementById('cerealFirst');
+            const switchDebateButton = document.getElementById('switch-debate');
             const argumentSection = document.getElementById('argument-section');
             const argumentsList = document.getElementById('arguments-list');
             const argumentInput = document.getElementById('argument-input');
             const submitButton = document.getElementById('submit-argument');
             const argumentContainer = document.getElementById('argument-container');
             const selectedSideText = document.getElementById('selected-side');
+            const currentDebateText = document.getElementById('current-debate');
             const acknowledgeButton = document.getElementById('acknowledge-rules');
             const communityRules = document.querySelector('body > :first-child');
 
             let selectedSide = '';
+            let lastMessageTime = 0;
+            const userMessages = new Set();
+            let currentDebate = 'Milk or Cereal First?';
+            const debates = ['Milk or Cereal First?', 'Is a Hot Dog a Sandwich?'];
+            let currentDebateIndex = 0;
+            const chatHistory = {
+                'Milk or Cereal First?': [],
+                'Is a Hot Dog a Sandwich?': []
+            };
 
             acknowledgeButton.addEventListener('click', () => {
                 communityRules.classList.add('hidden');
@@ -239,23 +284,64 @@ comments: true
             });
 
             milkButton.addEventListener('click', () => {
-                selectedSide = 'Milk First';
+                selectedSide = milkButton.textContent;
                 showArgumentSection();
             });
 
             cerealButton.addEventListener('click', () => {
-                selectedSide = 'Cereal First';
+                selectedSide = cerealButton.textContent;
                 showArgumentSection();
             });
+
+            switchDebateButton.addEventListener('click', () => {
+                currentDebateIndex = (currentDebateIndex + 1) % debates.length;
+                currentDebate = debates[currentDebateIndex];
+                currentDebateText.textContent = `Current Debate: ${currentDebate}`;
+                argumentContainer.innerHTML = '';
+                userMessages.clear();
+                argumentSection.classList.add('hidden');
+                argumentsList.classList.add('hidden');
+                updateButtons();
+                loadChatHistory();
+            });
+
+            function updateButtons() {
+                if (currentDebate === 'Milk or Cereal First?') {
+                    milkButton.textContent = 'Milk First';
+                    cerealButton.textContent = 'Cereal First';
+                } else if (currentDebate === 'Is a Hot Dog a Sandwich?') {
+                    milkButton.textContent = 'Yes';
+                    cerealButton.textContent = 'No';
+                }
+                selectedSideText.textContent = 'Your Side:';
+            }
 
             function showArgumentSection() {
                 argumentSection.classList.remove('hidden');
                 selectedSideText.textContent = `Your Side: ${selectedSide}`;
             }
 
+            function loadChatHistory() {
+                const history = chatHistory[currentDebate];
+                history.forEach(argument => {
+                    const argumentElement = document.createElement('li');
+                    argumentElement.innerHTML = argument;
+                    argumentContainer.appendChild(argumentElement);
+                });
+                if (history.length > 0) {
+                    argumentsList.classList.remove('hidden');
+                }
+            }
+
             submitButton.addEventListener('click', () => {
+                const currentTime = new Date().getTime();
+                if (currentTime - lastMessageTime < 5000) {
+                    alert('You can only send a message once every 5 seconds.');
+                    return;
+                }
+
                 const argumentText = argumentInput.value.trim();
-                if (argumentText) {
+                if (argumentText && !userMessages.has(selectedSide)) {
                     const argumentElement = document.createElement('li');
                     let upvotes = 0;
                     let downvotes = 0;
@@ -267,10 +353,16 @@ comments: true
                             <button class="upvote">👍 <span class="upvote-count">0</span></button>
                             <button class="downvote">👎 <span class="downvote-count">0</span></button>
                         </div>
+                        <button class="reply-btn">Reply</button>
+                        <ul class="replies hidden"></ul>
                     `;
 
                     argumentContainer.appendChild(argumentElement);
                     argumentInput.value = '';
+                    userMessages.add(selectedSide);
+                    lastMessageTime = currentTime;
+
+                    chatHistory[currentDebate].push(argumentElement.outerHTML);
 
                     argumentsList.classList.remove('hidden');
 
@@ -278,6 +370,8 @@ comments: true
                     const downvoteBtn = argumentElement.querySelector('.downvote');
                     const upvoteCount = argumentElement.querySelector('.upvote-count');
                     const downvoteCount = argumentElement.querySelector('.downvote-count');
+                    const replyBtn = argumentElement.querySelector('.reply-btn');
+                    const repliesContainer = argumentElement.querySelector('.replies');
 
                     upvoteBtn.addEventListener('click', () => {
                         if (!hasVoted) {
@@ -302,8 +396,23 @@ comments: true
                             hasVoted = false;
                         }
                     });
+
+                    replyBtn.addEventListener('click', () => {
+                        const replyText = prompt('Enter your reply:');
+                        if (replyText) {
+                            const replyElement = document.createElement('li');
+                            replyElement.textContent = replyText;
+                            repliesContainer.appendChild(replyElement);
+                            repliesContainer.classList.remove('hidden');
+                            chatHistory[currentDebate].push(argumentElement.outerHTML);
+                        }
+                    });
+                } else if (userMessages.has(selectedSide)) {
+                    alert('You can only post one message per debate.');
                 }
             });
+
+            loadChatHistory();
         });
     </script>
 </body>
