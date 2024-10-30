@@ -28,7 +28,8 @@ menu: nav/home.html
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
-        background-color: #fff;
+        background-color: #000; /* Changed to black */
+        color: #fff; /* Changed to white text */
         height: 400px;
         overflow-y: scroll;
     }
