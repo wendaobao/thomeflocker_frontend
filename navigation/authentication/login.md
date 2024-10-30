@@ -90,7 +90,7 @@ show_reading_time: false
                     <input type="password" name="signupPassword" id="signupPassword" required>
                 </label>
             </p>
-x            <p>
+            <p>
                 <button type="submit">Sign Up</button>
             </p>
             <p id="signupMessage" style="color: green;"></p>
@@ -182,6 +182,7 @@ x            <p>
             .catch(error => {
                 console.error("Python Database Error:", error);
                 const errorMsg = `Python Database Error: ${error.message}`;
+                alert(errorMsg);
             });
     }
 
