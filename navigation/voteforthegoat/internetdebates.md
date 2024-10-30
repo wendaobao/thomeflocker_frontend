@@ -8,16 +8,21 @@ comments: true
 ---
 
 # Community Rules/Guidelines:
-- Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.
-- Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.
-- Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.
-- Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.
-- One Account Only: Just one account per person—no extra accounts to sway votes.
-- Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.
-- Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.
-- Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.
+<div id="rules-section">
+    <ul>
+        <li>Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.</li>
+        <li>Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.</li>
+        <li>Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.</li>
+        <li>Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.</li>
+        <li>One Account Only: Just one account per person—no extra accounts to sway votes.</li>
+        <li>Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.</li>
+        <li>Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.</li>
+        <li>Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.</li>
+    </ul>
+</div>
 
 <button id="acknowledge-rules" class="acknowledge-btn">I have read and acknowledged the rules</button>
+<button id="show-rules" class="acknowledge-btn" style="display: none;">Rules</button>
 
 <head>
     <title>Internet Debate Forum</title>
@@ -170,6 +175,24 @@ comments: true
     </style>
 </head>
 <body>
+    <script>
+        document.getElementById('acknowledge-rules').addEventListener('click', function() {
+            var rulesSection = document.getElementById('rules-section');
+            var acknowledgeButton = document.getElementById('acknowledge-rules');
+            var showRulesButton = document.getElementById('show-rules');
+            rulesSection.style.display = 'none';
+            acknowledgeButton.style.display = 'none';
+            showRulesButton.style.display = 'block';
+        });
+        document.getElementById('show-rules').addEventListener('click', function() {
+            var rulesSection = document.getElementById('rules-section');
+            var acknowledgeButton = document.getElementById('acknowledge-rules');
+            var showRulesButton = document.getElementById('show-rules');
+            rulesSection.style.display = 'block';
+            acknowledgeButton.style.display = 'block';
+            showRulesButton.style.display = 'none';
+        });
+    </script>
     <div class="container">
         <header>
             <h1>Choose Your Side</h1>
