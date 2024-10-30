@@ -8,7 +8,7 @@ author: Manas, Lalita, Shriya, Ethan
 
 
 
-<h1>Create and Compete – Elevator Pitch</h1>
+
 <p>Where creativity meets competition and collaboration.</p>
 <button id="generate-prompt">Generate Random Prompt</button>
 <div id="prompt-display"></div>
