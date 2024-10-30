@@ -71,3 +71,6 @@ author: Manas, Lalita, Shriya, Ethan
     font-weight: bold;
 }
 </style>
+
+<link rel="stylesheet" href="/navigation/create_and_compete/style.css">
+<script src="/navigation/create_and_compete/script.js"></script>
