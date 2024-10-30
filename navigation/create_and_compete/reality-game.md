@@ -1,28 +1,11 @@
 ---
-layout: post 
-title: Create and Compete - Reality Room
+layout: base
+title: Create and Compete - Reality Room Game
 search_exclude: true
-permalink: /create_and_compete/realityroom
-menu: nav/create_and_compete.html
+permalink: /create_and_compete/reality_game
 author: Yash, Nikhil, Rohan, Neil
 ---
 
-
-<details>
-  <summary>Room Details</summary>
-
-  <a href="{{site.baseurl}}/moderation/rules_realityroom/">Moderation Rules</a>
-
-  <p>The idea behind reality room is that the discussion of real and fake topics will be brought up.</p>
-
-  <p>Room includes:</p>
-  <ul>
-    <li>Mini game - Am I talking to a human or an AI chatbot?</li>
-    <li>Posts that people can make about a certain topic, such as an AI generated image, and ask people if its AI generated or real, who will then comment on their choice.</li>
-    <li>In order to fit in with the "rate and relate" theme, people could rate how believable/unbelievable the post topic was and how if it fooled them or not. Then they could relate with others who also thought of a similar opinion</li>
-  </ul>
-
-</details>
 
 
 <table class="sub-menu">
@@ -38,72 +21,13 @@ author: Yash, Nikhil, Rohan, Neil
 
 <div id="main-content">
     <div id="chatPanel">
-        <h3>Chat</h3>
+        <h3>Game</h3>
         <div id="outputDiv"></div>
         <form>
             <button class="plus-button" onclick="triggerFileUpload()">+</button>
             <input type="file" id="file-input">
             <input placeholder="Enter message to send:" type="text" id="messageBox" name="message">
         </form>
-    </div>
-    <div id="userPanel">
-        <h3>Users</h3>
-        <table>
-            <tr>
-                <td class="cell">
-                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="30" height="30" class="profile-photo">
-                    <div class="cell-content">
-                        <p>John</p>
-                        <p class="small">Status goes here.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="cell">
-                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="30" height="30" class="profile-photo">
-                    <div class="cell-content">
-                        <p>John</p>
-                        <p class="small">Status goes here.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="cell">
-                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="30" height="30" class="profile-photo">
-                    <div class="cell-content">
-                        <p>John</p>
-                        <p class="small">Status goes here.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="cell">
-                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="30" height="30" class="profile-photo">
-                    <div class="cell-content">
-                        <p>John</p>
-                        <p class="small">Status goes here.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="cell">
-                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="30" height="30" class="profile-photo">
-                    <div class="cell-content">
-                        <p>John</p>
-                        <p class="small">Status goes here.</p>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="cell">
-                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="30" height="30" class="profile-photo">
-                    <div class="cell-content">
-                        <p>John</p>
-                        <p class="small">Status goes here.</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
     </div>
 </div>
 
@@ -344,7 +268,7 @@ author: Yash, Nikhil, Rohan, Neil
     function toggleRedirect() {
         const checkbox = document.getElementById('toggle-switch');
         if (checkbox.checked) {
-            window.location.href = '{{site.baseurl}}/create_and_compete/reality_game';
+            window.location.href = '{{site.baseurl}}/create_and_compete/realityroom';
         }
     }
 </script>
