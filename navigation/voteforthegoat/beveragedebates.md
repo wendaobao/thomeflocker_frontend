@@ -21,7 +21,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             padding: 0;
             box-sizing: border-box;
         }
-
         /* Body Styling */
         body {
             background: linear-gradient(135deg, #1d2671, #c33764);
@@ -33,7 +32,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             justify-content: center;
             align-items: center;
         }
-
         /* Container Styling */
         .voting-container {
             background: rgba(255, 255, 255, 0.1);
@@ -47,11 +45,9 @@ Our group has chosen to focus on discussions about which drinks should be added 
             transition: transform 0.3s ease;
             margin: auto;
         }
-
         .voting-container:hover {
             transform: scale(1.05);
         }
-
         /* Header Styling */
         .voting-container h2 {
             color: #00c6ff;
@@ -59,7 +55,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             margin-bottom: 20px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-
         /* Option Buttons Styling */
         .option-button {
             background: linear-gradient(135deg, #ff8a00, #e52e71);
@@ -73,17 +68,14 @@ Our group has chosen to focus on discussions about which drinks should be added 
             transition: background 0.3s ease, transform 0.2s ease;
             outline: none;
         }
-
         .option-button:hover {
             background: linear-gradient(135deg, #e52e71, #ff8a00);
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
         }
-
         .option-button:active {
             transform: scale(0.95);
         }
-
         /* Selected Option Display */
         .selected-option {
             margin-top: 15px;
@@ -92,7 +84,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             color: #00e6ff;
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
-
         /* Submit Button Styling */
         .submit-button {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
@@ -107,24 +98,20 @@ Our group has chosen to focus on discussions about which drinks should be added 
             transition: background 0.3s ease, transform 0.2s ease;
             outline: none;
         }
-
         .submit-button:hover {
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0, 198, 255, 0.3);
         }
-
         .submit-button:active {
             transform: scale(0.95);
         }
-
         /* Reasoning Input Box */
         .reasoning-container {
             display: none;
             margin-top: 20px;
             text-align: center;
         }
-
         .reasoning-container textarea {
             width: 100%;
             max-width: 350px;
@@ -138,7 +125,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             resize: none;
             outline: none;
         }
-
         .reasoning-submit {
             margin-top: 10px;
             background: linear-gradient(135deg, #00c6ff, #0072ff);
@@ -151,19 +137,30 @@ Our group has chosen to focus on discussions about which drinks should be added 
             transition: background 0.3s ease, transform 0.2s ease;
             outline: none;
         }
-
         .reasoning-submit:hover {
             background: linear-gradient(135deg, #0072ff, #00c6ff);
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0, 198, 255, 0.3);
         }
-
         .reasoning-submit:active {
             transform: scale(0.95);
+        }
+        /* Add some basic styling for the clickable image */
+        .clickable-image {
+            cursor: pointer;
+            max-width: 100%;
+            height: auto;
+            transition: opacity 0.3s ease;
+        }
+        .clickable-image:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
+    <a href="https://example.com" target="_blank">
+        <img src="path/to/your/image.jpg" alt="Description of image">
+    </a>
     <div class="voting-container">
         <h2>Choose Your an Beverage that you would like to be added to Del Norte Cafeteria</h2>
         <div>
@@ -174,7 +171,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
         </div>
         <div class="selected-option" id="selectedOption">Your Choice: None</div>
         <button class="submit-button" onclick="submitVote()">Submit Vote</button>
-
         <!-- Reasoning Input Container -->
         <div class="reasoning-container" id="reasoningContainer">
             <h3>Why did you choose this beverage?</h3>
@@ -182,15 +178,12 @@ Our group has chosen to focus on discussions about which drinks should be added 
             <button class="reasoning-submit" onclick="submitReasoning()">Submit Reasoning</button>
         </div>
     </div>
-
     <script>
         let selectedBeverage = null;
-
         function selectOption(beverage) {
             selectedBeverage = beverage;
             document.getElementById('selectedOption').textContent = 'Your Choice: ' + beverage;
         }
-
         function submitVote() {
             if (selectedBeverage) {
                 alert('Thank you for voting for ' + selectedBeverage + '!');
@@ -200,7 +193,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
                 alert('Please select a beverage before submitting your vote.');
             }
         }
-
         function submitReasoning() {
             const reasoning = document.getElementById('reasoningText').value;
             if (reasoning.trim()) {
