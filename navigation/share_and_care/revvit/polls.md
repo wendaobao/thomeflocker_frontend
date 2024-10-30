@@ -2,7 +2,7 @@
 layout: page
 title: REVVIT (Polls)
 description: Review polls
-permalink: /revvit/polls
+permalink: /share_and_care/revvit/polls
 ---
 
 {%- include nav/revvit.html -%}
