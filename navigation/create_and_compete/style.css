@@ -1,45 +1,100 @@
+/* Base Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #e9ecef;
+    color: #212529;
+    line-height: 1.6;
 }
 
+/* Header Styling */
 h1 {
-    color: #333;
+    color: #343a40;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
+p {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Button Styling */
 button {
-    background-color: #007bff;
+    background-color: #17a2b8;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 5px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #138496;
 }
 
+/* Text Area Styling */
 textarea {
     width: 100%;
     height: 100px;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s ease;
 }
 
+textarea:focus {
+    outline: none;
+    border-color: #17a2b8;
+}
+
+/* Display Sections */
 #pitch-display, #feedback-display, #leaderboard {
     margin-top: 20px;
-    padding: 10px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Section Headers */
+h2 {
+    color: #495057;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #17a2b8;
+    padding-bottom: 5px;
+}
+
+/* Leaderboard */
+#leaderboard {
+    list-style: none;
+    padding: 0;
+}
+
+#leaderboard li {
+    padding: 8px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#leaderboard li:last-child {
+    border-bottom: none;
+}
+
+/* Modal Styling */
 #feedback-modal {
     display: none;
     position: fixed;
@@ -53,23 +108,47 @@ textarea {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #ffffff;
     margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
+    padding: 30px;
+    border-radius: 8px;
     width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
 }
 
 .close-button {
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.close-button:hover {
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
 }
