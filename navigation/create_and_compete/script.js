@@ -36,6 +36,13 @@ class SubmissionManager {
         alert("Pitch submitted successfully!");
     }
 
+    submitFeedback(feedback) {
+        this.feedbacks.push(feedback);
+        this.saveToLocalStorage('feedbacks', this.feedbacks);
+        this.renderFeedbacks();
+        this.showModal(); // Show the feedback submission modal
+    }
+
     renderSubmissions() {
         const pitchDisplay = document.getElementById('pitch-display');
         pitchDisplay.innerHTML = this.pitches.map(pitch => `<div>${pitch}</div>`).join('');
