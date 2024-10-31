@@ -4,6 +4,7 @@ title: Chess Hangout
 permalink: /chess/hangout
 comments: true
 ---
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,19 +26,19 @@ comments: true
         }
         .chessboard {
             display: grid;
-            grid-template-columns: repeat(8, 80px);
-            grid-template-rows: repeat(8, 80px);
+            grid-template-columns: repeat(8, 100px);
+            grid-template-rows: repeat(8, 100px);
             border: 2px solid #444;
             margin: 20px auto;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
         }
         .chessboard div {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
@@ -54,7 +55,7 @@ comments: true
         }
         .chat-box {
             width: 30%;
-            background-color: #222;
+            background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
         }
@@ -64,24 +65,34 @@ comments: true
             border: 1px solid #444;
             margin-bottom: 15px;
             padding: 10px;
-            background-color: #111;
+            background-color: #1b1b1b;
+            border-radius: 10px;
         }
         .message {
-            padding: 8px;
-            border-radius: 8px;
-            margin: 5px 0;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 8px 0;
             font-size: 16px;
             word-wrap: break-word;
+            display: inline-block;
+            max-width: 80%;
         }
         .user-message {
-            background-color: #1e90ff;
+            background-color: #3498db;
             color: white;
             text-align: right;
+            margin-left: auto;
+            border-radius: 15px 15px 0 15px;
         }
         .bot-message {
-            background-color: #4caf50;
+            background-color: #27ae60;
             color: white;
             text-align: left;
+            margin-right: auto;
+            border-radius: 15px 15px 15px 0;
+        }
+        .bot-message::after {
+            content: " 🤖";
         }
         .message-input {
             margin-top: 10px;
@@ -105,7 +116,7 @@ comments: true
 
             <!-- Chat Section -->
             <div class="chat-box">
-                <h4>Chat Room</h4>
+                <h4 class="text-center">Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
 
                 <div class="message-input">
@@ -119,7 +130,7 @@ comments: true
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    <!-- JS to handle chess pieces and board -->
+    <!-- JS for Chessboard functionality -->
     <script>
         const pieces = {
             'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
@@ -181,13 +192,20 @@ comments: true
         generateBoard();
     </script>
 
-    <!-- JS to handle chat and bot functionality -->
+    <!-- JS for Chat and Enhanced Moderation Bot functionality -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
 
+        const inappropriateWords = ['badword1', 'badword2', 'badword3']; // Replace with actual words or regex patterns
+
         let messages = [];
+
+        function addMessage(text, isBot = false) {
+            messages.push({ text, isBot, timestamp: Date.now() });
+            renderMessages();
+        }
 
         function renderMessages() {
             chatMessages.innerHTML = '';
@@ -196,14 +214,58 @@ comments: true
                 msgElement.className = `message ${msg.isBot ? 'bot-message' : 'user-message'}`;
                 msgElement.textContent = msg.text;
                 chatMessages.appendChild(msgElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             });
         }
 
-        function addMessage(text, isBot = false) {
-            messages.push({ text, isBot });
-            renderMessages();
+        function isInappropriate(message) {
+            const regex = new RegExp(inappropriateWords.join('|'), 'i');
+            return regex.test(message);
         }
+
+        function detectSentiment(message) {
+            const negativeWords = ['sad', 'angry', 'frustrated', 'dislike'];
+            const positiveWords = ['love', 'happy', 'great', 'excited'];
+            
+            const isNegative = negativeWords.some(word => message.toLowerCase().includes(word));
+            const isPositive = positiveWords.some(word => message.toLowerCase().includes(word));
+
+            return isNegative ? 'negative' : isPositive ? 'positive' : 'neutral';
+        }
+
+        function respondToUserMessage(userMessage) {
+            if (isInappropriate(userMessage)) {
+                const warningMessage = "Please avoid inappropriate language. This is a friendly space!";
+                setTimeout(() => addMessage(warningMessage, true), 1000);
+                return;
+            }
+
+            const sentiment = detectSentiment(userMessage);
+            let botResponse;
+
+            if (sentiment === 'negative') {
+                botResponse = "I'm here to help! Anything in chess I can assist you with?";
+            } else if (sentiment === 'positive') {
+                botResponse = "I'm glad you're enjoying the conversation! Any favorite chess openings?";
+            } else if (userMessage.toLowerCase().includes('help')) {
+                botResponse = "I can guide you on chess strategies! Any specific area you'd like advice on?";
+            } else if (userMessage.toLowerCase().includes('chess')) {
+                botResponse = "Chess is a game of patience and strategy. Have you been practicing any openings?";
+            } else {
+                botResponse = "Thanks for sharing! Let's keep the chat active.";
+            }
+
+            setTimeout(() => addMessage(botResponse, true), 1000);
+        }
+
+        // Auto-engage after inactivity
+        setInterval(() => {
+            if (messages.length > 0 && Date.now() - messages[messages.length - 1].timestamp > 30000) {
+                addMessage("It's quiet here! Any thoughts on recent chess games or strategies?", true);
+            }
+        }, 30000);
+
+        sendBtn.addEventListener('click', handleUserMessage);
 
         function handleUserMessage() {
             const userMessage = messageInput.value.trim();
@@ -213,23 +275,8 @@ comments: true
                 respondToUserMessage(userMessage);
             }
         }
-
-        function respondToUserMessage(userMessage) {
-            const lowerMessage = userMessage.toLowerCase();
-            let botResponse;
-
-            if (lowerMessage.includes('help')) {
-                botResponse = "How can I help? Need advice on chess strategies or specific moves?";
-            } else if (lowerMessage.includes('move')) {
-                botResponse = "Here's a tip: control the center and develop your pieces quickly!";
-            } else {
-                botResponse = "I'm here to chat! Let's talk chess!";
-            }
-
-            setTimeout(() => addMessage(botResponse, true), 1000); // Slight delay for bot response
-        }
-
-        sendBtn.addEventListener('click', handleUserMessage);
     </script>
 </body>
 </html>
+
+
