@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Vote for the Goat
+title: Vote for the GOAT
 search_exclude: true
 permalink: /voteforthegoat/home
 menu: nav/vote_for_the_goat.html
@@ -38,33 +38,33 @@ menu: nav/vote_for_the_goat.html
     }
 </style>
 
-## Introduction to Vote for the GOAT
+## Welcome to Vote for the GOAT!
 
-Welcome to Mr. Brown's class initiative, "Vote for the GOAT"! This project is a fun and engaging way for students to express their preferences on various topics through a series of voting activities. Each group will explore different themes and debates, making this not just an academic exercise but also a chance to share opinions and learn from one another.
+We're excited to bring you "Vote for the GOAT," a fun and interactive project from Mr. Brown's class! Here, students can dive into different topics, cast their votes, and have some great conversations. Each group has their own theme, so there's something for everyone to get excited about. Let’s jump into what each group is up to and how you can get involved!
 
 ### Group Themes and Activities
 
 <div class="group-theme">
     **Anvay's Group: Internet Debates**  
-    Dive into the realm of popular internet debates! Anvay's group will spark discussions on quirky topics like the age-old "milk first or cereal first?" question. Students will have the chance to present their arguments and cast votes, encouraging critical thinking and engagement with social media culture.
+    Step right up to join some of the internet’s hottest debates! Anvay’s group is tackling the big questions—from “milk or cereal first?” to other internet classics. Get ready to bring your best arguments, learn from different perspectives, and, of course, vote on which side you’re on!
 </div>
 
 <div class="group-theme">
     **Risha's Group: Dinero Store Favorites**  
-    Risha's group will focus on the beloved Dinero Store. Students will vote on their favorite items, creating a platform for discussion about the products they love. This initiative also aims to build communities among students with similar tastes, fostering connections and friendships based on shared interests.
+    Got a favorite snack or item at the Dinero Store? Risha’s group is all about sharing those favorites and seeing what the top picks are. Join in, cast your votes, and discover which items are the most-loved among your classmates!
 </div>
 
 <div class="group-theme">
     **Maryam's Group: Calico Critters Showdown**  
-    For all the Calico Critters enthusiasts, Maryam's group will host a voting event to determine the best critters! This activity not only showcases creativity but also taps into nostalgia, as students reflect on their childhood favorites and make arguments for their top picks.
+    Calling all Calico Critter fans! Maryam’s group is diving into the world of these cute critters to find out which ones are the absolute favorites. Whether you’re here for nostalgia or just want to see which ones win, it’s time to vote for the critters that hold a special place in your heart.
 </div>
 
 <div class="group-theme">
     **Weston's Group: Car Preferences**  
-    Weston's group will get into the fast lane by voting on cars! Students will discuss what cars they currently drive, what their dream cars are, and which vehicles they believe are ideal for students. This is a great opportunity to blend personal experience with automotive knowledge.
+    Love cars? So does Weston’s group! They’re setting up a discussion about the best cars for students, dream cars, and what everyone’s actually driving. Share your picks, vote, and maybe even find a new favorite!
 </div>
 
 <div class="group-theme">
     **Noah's Group: NFL GOATs Debate**  
-    Noah's group will engage in an electrifying debate about the greatest of all time (GOAT) in the NFL, with a special focus on the Green Bay Packers. This not only ties into local pride with Del Norte but also allows students to analyze sports history and the impact of legendary players.
+    Noah’s group is here for all the NFL fans, especially those who love a good debate about the greatest players of all time. With a focus on the Green Bay Packers, this one’s bound to get exciting. Whether you’re in it for local pride or just love the game, join in to share your take on the GOATs of the NFL.
 </div>
