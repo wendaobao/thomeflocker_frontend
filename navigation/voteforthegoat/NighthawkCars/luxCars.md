@@ -26,7 +26,7 @@ permalink: /luxCars/
             padding: 10px; /* Space around the text */
         }
         p {
-            color: #333;
+            color: white;   
         }
         button {
             background-color: rgb(255, 80, 80);
@@ -56,16 +56,16 @@ permalink: /luxCars/
 </head>
 <body>
 
-<h3 style="color: rgb(0, 0, 0)">Examples</h3>
+<h3>Examples</h3>
 <p>- (Here goes all the information for Luxury Car examples)</p>
 
-<h3 style="color: rgb(0, 0, 0)">Pricing</h3>
+<h3>Pricing</h3>
 <p>- (Here goes all the information for Luxury Car pricing)</p>
 
-<h3 style="color: rgb(0, 0, 0)">Target Market</h3>
+<h3>Target Market</h3>
 <p>- (Here goes all the information for Luxury Car target market)</p>
 
-<h3 style="color: rgb(0, 0, 0)">Voting</h3>
+<h3>Voting</h3>
 <div>
     <button>1st car</button>
     <button>2nd car</button>
@@ -73,7 +73,7 @@ permalink: /luxCars/
     <button>4th car</button>
 </div>
 
-<h2 style="color: rgb(0, 0, 0)">Discussion</h2>
+<h2>Discussion</h2>
 <p>- (Discussion content goes here)</p>
 <textarea placeholder="Enter your thoughts or comments here..." id="comment"></textarea>
 
