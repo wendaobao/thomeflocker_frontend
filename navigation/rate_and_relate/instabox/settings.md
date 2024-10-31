@@ -122,8 +122,8 @@ menu: nav/rate_and_relate.html
     <hr>
     <!-- Navbar -->
     <div class="navbar">
-        <a href=".">Home</a>
-        <a href="./profile">Profile</a>
+        <a href="{{site.baseurl}}/rate_and_relate/instabox">Home</a>
+        <a href="{{site.baseurl}}/rate_and_relate/instabox/profile">Profile</a>
         <a href="">Settings</a>
     </div>
     <div class="container">
