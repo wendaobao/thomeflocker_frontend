@@ -6,124 +6,197 @@ permalink: /shared_interests/satire/
 
 
 <style>
-    /* General styles */
-    body {
-        margin: 0;
-        background-color: #FDF5E6; /* Light background for good contrast */
-    }
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    /* Header at the top of the page */
-    .page-header {
-        text-align: center;
-        padding: 20px;
-        background-color: #001F3F; /* Navy Blue */
-        color: #FFD700; /* Gold */
-        border-radius: 8px;
-        border: 2px solid #C5B358; /* Vegas Gold */
-    }
+  html {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f2f5;
+  }
 
-    /* Chatroom wrapper - aligns the chatroom to the right */
-    .chatroom-wrapper {
-        display: flex;
-        justify-content: flex-end;
-        padding: 20px;
-        box-sizing: border-box;
-    }
+  /* Banner */
+  .banner {
+    width: 100%;
+    background-color: #cde0ff;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
 
-    .chatroom-container {
-        width: 50%; /* Takes up half the width of the screen */
-        border: 2px solid #C5B358; /* Vegas Gold */
-        border-radius: 8px;
-        background-color: #001F3F; /* Navy Blue */
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column; /* Ensure children stack vertically */
-        max-height: 725px; /* Maximum height for the blue part */
-        overflow: hidden; /* Prevents the content from overflowing */
-    }
+  /* Intro Blurb */
+  .intro-blurb {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+  }
 
-    .chatroom-header {
-        text-align: center;
-        color: #FFD700; /* Gold */
-        margin-bottom: 10px;
-    }
+  /* Main Container */
+  .main-container {
+    display: flex;
+    width: 90%;
+    gap: 15px;
+    margin-top: 15px;
+  }
 
-    .chat-area {
-        flex-grow: 1; /* Expands to fill available space */
-        min-height: 450px; /* Ensures the green chat area takes up space even without messages */
-        max-height: 450px; /* Limits the height of the chat area */
-        overflow-y: auto;
-        background-color: #008504; /* Forest Green */
-        border: 2px solid #C5B358; /* Vegas Gold */
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 10px;
-        color: white;
-    }
+  /* Left Sidebar */
+  .left-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .message-form {
-        display: flex;
-        align-items: center; /* Aligns the input and button properly */
-    }
+  .add-post {
+    background-color: #3b5998;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
-    #messageInput {
-        flex: 1;
-        padding: 10px;
-        border: 2px solid #C5B358; /* Vegas Gold */
-        border-radius: 5px;
-        margin-right: 10px;
-    }
+  .search-bar input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
-    button {
-        background-color: #FFD700; /* Gold */
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  /* Feed Section */
+  .feed {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-    button:hover {
-        background-color: #C5B358; /* Vegas Gold Hover */
-    }
+  .post {
+    background-color: #e0f0ff;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .post-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .post-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .like {
+    background-color: #f783ac;
+    color: white;
+  }
+
+  .comment {
+    background-color: #3b5998;
+    color: white;
+  }
+
+  .share {
+    background-color: #333;
+    color: white;
+  }
+
+  /* Right Sidebar */
+  .right-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .profile {
+    background-color: #f9cedf;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e0a3b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .activity button, .followers-following button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f9cedf;
+    color: black;
+  }
 </style>
 
-<!-- Page Header at the top -->
-<div class="page-header">
-    <h1>Welcome to the Satire Flocker Room</h1>
-    <p>View announcements, posts, or engage with others in the chat!</p>
-</div>
+<!-- HTML Structure -->
+<div class="banner">Banner</div>
 
-<!-- Chatroom Section aligned to the right -->
-<div class="chatroom-wrapper">
-    <div class="chatroom-container">
-        <header class="chatroom-header">
-            <h2>Flocker Chatroom</h2>
-        </header>
-        <div class="chat-area" id="chatArea">
-            <!-- Messages will appear here -->
-        </div>
-        <form class="message-form" id="messageForm">
-            <input type="text" id="messageInput" placeholder="Enter your message..." required>
-            <button type="submit">Send</button>
-        </form>
+<div class="intro-blurb">Intro Blurb</div>
+
+<div class="main-container">
+
+  <!-- Left Sidebar (Add Post and Search Bar) -->
+  <div class="left-sidebar">
+    <button class="add-post">+</button> Add new post
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
     </div>
-</div>
+  </div>
 
-<script>
-    const chatArea = document.getElementById('chatArea');
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = document.getElementById('messageInput');
-    
-    messageForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const messageText = messageInput.value.trim();
-        if (messageText !== "") {
-            const messageElement = document.createElement('p');
-            messageElement.textContent = messageText;
-            chatArea.appendChild(messageElement);
-            messageInput.value = "";
-            chatArea.scrollTop = chatArea.scrollHeight; // Auto-scroll to the newest message
-        }
-    });
-</script>
+  <!-- Center Feed (Posts) -->
+  <div class="feed">
+    <div class="post">Post</div>
+    <div class="post-actions">
+      <button class="like">Like</button>
+      <button class="comment">Comment</button>
+      <button class="share">Share</button>
+    </div>
+  </div>
+
+  <!-- Right Sidebar (Profile Info) -->
+  <div class="right-sidebar">
+    <div class="profile">
+      <div class="profile-pic">Profile</div>
+      <p>Account Information + Satire Score + Age (click profile)</p>
+    </div>
+    <div class="activity">
+      <button>Activity</button>
+    </div>
+    <div class="followers-following">
+      <button>Followers/Following</button>
+    </div>
+  </div>
+
+</div>
