@@ -76,7 +76,7 @@ comments: true
         padding: 0.5rem;
         margin: 0.5rem 0;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
         transition: background 0.3s ease;
     }
@@ -90,7 +90,7 @@ comments: true
         background: linear-gradient(to right, #05aff7, #4b1f30);
         color: #fff;
         margin: 0; /* Remove default margin */
-        height: 100vh; /* Ensure the body takes full height */
+        min-height: 100vh; /* Ensure the body takes full height */
         display: flex;
         flex-direction: column;
     }
@@ -144,6 +144,7 @@ comments: true
         color: #fff;
         transition: background 0.3s ease;
         background: linear-gradient(45deg, #00e5ff, #0099cc);
+        border-radius: 10px;
     }
 
     .side-btn:hover {
@@ -177,6 +178,8 @@ comments: true
 
     li .rate {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 0.5rem;
     }
 
@@ -186,6 +189,7 @@ comments: true
         font-size: 1.2rem;
         color: #00e5ff;
         cursor: pointer;
+        border-radius: 10px;
     }
 
     .hidden {
@@ -263,12 +267,49 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="rate">
                     <button class="upvote">👍 <span class="upvote-count">0</span></button>
                     <button class="downvote">👎 <span class="downvote-count">0</span></button>
+                    <button class="remove-vote">Remove Vote</button>
                 </div>`;
             argumentContainer.appendChild(argumentElement);
             argumentInput.value = '';
             chatHistory[currentDebate].push(argumentElement.outerHTML);
             argumentsList.classList.remove('hidden');
+            addVoteFunctionality(argumentElement);
         }
     };
+
+    function addVoteFunctionality(argumentElement) {
+        const upvoteButton = argumentElement.querySelector('.upvote');
+        const downvoteButton = argumentElement.querySelector('.downvote');
+        const removeVoteButton = argumentElement.querySelector('.remove-vote');
+        const upvoteCount = argumentElement.querySelector('.upvote-count');
+        const downvoteCount = argumentElement.querySelector('.downvote-count');
+
+        let hasUpvoted = false;
+        let hasDownvoted = false;
+
+        upvoteButton.onclick = () => {
+            if (!hasUpvoted && !hasDownvoted) {
+                upvoteCount.textContent = parseInt(upvoteCount.textContent) + 1;
+                hasUpvoted = true;
+            }
+        };
+
+        downvoteButton.onclick = () => {
+            if (!hasUpvoted && !hasDownvoted) {
+                downvoteCount.textContent = parseInt(downvoteCount.textContent) + 1;
+                hasDownvoted = true;
+            }
+        };
+
+        removeVoteButton.onclick = () => {
+            if (hasUpvoted) {
+                upvoteCount.textContent = parseInt(upvoteCount.textContent) - 1;
+                hasUpvoted = false;
+            } else if (hasDownvoted) {
+                downvoteCount.textContent = parseInt(downvoteCount.textContent) - 1;
+                hasDownvoted = false;
+            }
+        };
+    }
 });
 </script>
