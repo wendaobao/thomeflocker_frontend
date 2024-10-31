@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #181818;
+    background: linear-gradient(135deg, #141e30, #243b55);
     color: #e0e0e0;
     line-height: 1.6;
 }
@@ -11,11 +11,21 @@ body {
 /* Header Styling */
 h1 {
     color: #00d9ff;
-    font-size: 2.2em;
+    font-size: 2.5em;
     text-align: center;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #00d9ff;
-    padding-bottom: 5px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #00d9ff;
+    background: linear-gradient(90deg, #00d9ff, #008cff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: color 0.3s ease;
+}
+
+h1:hover {
+    color: #00d9ff;
+    transition: color 0.3s ease;
 }
 
 p {
@@ -27,23 +37,25 @@ p {
 
 /* Button Styling */
 button {
-    background-color: #272727;
-    color: #00d9ff;
-    border: 2px solid #00d9ff;
-    border-radius: 8px;
+    background: linear-gradient(90deg, #00d9ff, #008cff);
+    color: #181818;
+    border: none;
+    border-radius: 12px;
     padding: 12px 24px;
     cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
     margin-top: 10px;
     display: inline-block;
-    margin-right: 5px;
 }
 
 button:hover {
-    background-color: #00d9ff;
+    background: linear-gradient(90deg, #008cff, #00d9ff);
     color: #181818;
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.5);
 }
 
 /* Text Area Styling */
@@ -58,6 +70,7 @@ textarea {
     background-color: #222831;
     color: #eeeeee;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
 }
 
 textarea:focus {
@@ -69,18 +82,18 @@ textarea:focus {
 /* Display Sections */
 #pitch-display, #feedback-display, #leaderboard {
     margin-top: 20px;
-    padding: 20px;
-    background-color: #1e1e1e;
+    padding: 25px;
+    background: #1e1e1e;
+    border-radius: 12px;
     border: 1px solid #00d9ff;
-    border-radius: 10px;
     color: #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #pitch-display:hover, #feedback-display:hover, #leaderboard:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
 }
 
 /* Section Headers */
@@ -99,8 +112,15 @@ h2 {
 }
 
 #leaderboard li {
-    padding: 8px;
+    padding: 10px;
     border-bottom: 1px solid #3e3e3e;
+    display: flex;
+    justify-content: space-between;
+    transition: background 0.2s ease;
+}
+
+#leaderboard li:hover {
+    background: rgba(0, 217, 255, 0.1);
 }
 
 #leaderboard li:last-child {
@@ -111,20 +131,21 @@ h2 {
 .vote-buttons {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-top: 10px;
 }
 
 .vote-button {
-    background-color: transparent;
+    background: transparent;
     border: none;
     color: #00d9ff;
     font-size: 20px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .vote-button:hover {
+    color: #00ffff;
     transform: scale(1.2);
 }
 
@@ -154,10 +175,11 @@ h2 {
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 217, 255, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 217, 255, 0.4);
     position: relative;
     text-align: center;
     color: #eeeeee;
+    animation: slideDown 0.5s ease;
 }
 
 .close-button {
@@ -178,6 +200,11 @@ h2 {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
 }
 
 /* Responsive Design */
