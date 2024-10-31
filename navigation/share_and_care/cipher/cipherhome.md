@@ -13,7 +13,7 @@ permalink: /cipherhome/
 <!-- Rules Button -->
 <div style="display: flex; justify-content: center; margin-top: -50px; margin-left: 250px;">
     <button id="rulesButton" style="padding: 10px 20px; background-color: #ffce00; color: #27293d; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer;">
-        📜 View Rules
+        📜 View Rules Here
     </button>
 </div>
 
