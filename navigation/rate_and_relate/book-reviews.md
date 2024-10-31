@@ -48,7 +48,7 @@ let liked = false;
 // Initialize comments from local storage
 let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
-document.getElementById('bookContainer').innerHTML = 
+document.getElementById('bookContainer').innerHTML = `
   <div class="book-card">
     <h3 class="book-title">${book.title}</h3>
     <img src="${book.cover_url}" alt="Book Cover" width="600" height="400" title="${book.title}" class="book-cover" />
@@ -76,7 +76,7 @@ document.getElementById('bookContainer').innerHTML =
       <ul id="commentsList"></ul>
     </div>
   </div>
-;
+`;
 
 // Display initial comments
 function displayComments() {
@@ -241,4 +241,3 @@ displayComments();
     padding-left: 0;
   }
 </style>
-
