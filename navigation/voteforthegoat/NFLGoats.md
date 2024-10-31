@@ -90,7 +90,7 @@ There are five different polls where you vote for the greatest Quarterback, Wide
     <button onclick="alert('You voted for Jerry Rice!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
-    <img src="image-url-2" alt="Randy Moss" style="width: 100%;">
+    <img src="{{site.baseurl}}/images/nfl-icons/Randy_Moss.png" alt="Randy Moss" style="width: 100%;">
     <button onclick="alert('You voted for Randy Moss!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
