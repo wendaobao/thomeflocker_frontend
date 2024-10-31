@@ -90,7 +90,7 @@ show_reading_time: false
                     <input type="password" name="signupPassword" id="signupPassword" required>
                 </label>
             </p>
-x            <p>
+            <p>
                 <button type="submit">Sign Up</button>
             </p>
             <p id="signupMessage" style="color: green;"></p>
@@ -133,7 +133,6 @@ x            <p>
                 name: document.getElementById("name").value,
                 uid: document.getElementById("signupUid").value,
                 password: document.getElementById("signupPassword").value,
-                kasm_server_needed: document.getElementById("kasmNeeded").checked,
             }
         };
 
@@ -146,7 +145,7 @@ x            <p>
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Signup failed: ${response.status} because ${response.message}`);
+                throw new Error(`Signup failed: ${response.status}`);
             }
             return response.json();
         })
@@ -163,7 +162,6 @@ x            <p>
             signupButton.style.backgroundColor = ''; // Reset to default color
         });
     }
-
 
     // Function to fetch and display Python data
     function pythonDatabase() {
@@ -185,8 +183,12 @@ x            <p>
             });
     }
 
-    // Call relevant database functions on the page load
+    // Check for cookies and call relevant database functions on page load
     window.onload = function() {
-         pythonDatabase();
+        // Check if user is authenticated by checking cookies or local storage
+        const isAuthenticated = document.cookie.includes('auth_token'); // Example check
+        if (isAuthenticated) {
+            pythonDatabase();
+        }
     };
 </script>
