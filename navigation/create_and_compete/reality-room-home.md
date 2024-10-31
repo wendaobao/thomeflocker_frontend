@@ -10,18 +10,20 @@ author: Yash, Nikhil, Rohan, Neil
 <div class="form-container">
     <h2>Add New Post</h2>
     <form id="postForm">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="content">Content:</label>
+        <label for="title" class="label">Title:</label> <br>
+        <input type="text" id="title" name="title" required> <br>
+        <label for="content" class="label">Content:</label>
         <textarea id="content" name="content" required></textarea>
         <button type="submit">Add Post</button>
     </form>
 </div>
 
-
 <div id="posts"></div>
 
 <style>
+    #posts {
+        display: inline-grid;
+    }
     .card {
         width: 300px;
         padding: 20px;
@@ -60,36 +62,65 @@ author: Yash, Nikhil, Rohan, Neil
     }
 </style>
 
+<style>
+.form-container {
+    width: 500px;
+    margin: 20px auto;
+    padding: 16px;
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#content {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    padding: 12px;
+    color: #14171a;
+    border-bottom: 1px solid #e1e8ed;
+    box-sizing: border-box;
+    height: 100px;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 12px;
+}
+
+button[type="submit"] {
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #1a91da;
+}
+
+h2 {
+    color: #ff4d4d !important;
+}
+
+.label {
+    color: #ff4d4d !important;
+}
+</style>
+
 <script type="module">
     import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
     const container = document.getElementById("posts");
-
-    // function deletePost(formID) {
-    //     event.preventDefault();
-
-    //     // Create API payload
-    //     const deleteData = {
-    //         id: formID,
-    //     };
-
-    //     try {
-    //         const response = await fetch(`${pythonURI}/api/post`, {
-    //             ...fetchOptions,
-    //             method: 'DELETE',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(postData)
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error('Failed to delete post: ' + response.statusText);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error deleting post:', error);
-    //         alert('Error deleting post: ' + error.message);
-    //     }
-    // }
 
     async function fetchPosts() {
         try {
@@ -172,6 +203,34 @@ author: Yash, Nikhil, Rohan, Neil
             alert('Error adding post: ' + error.message);
         }
     });
+
+
+    // function deletePost(formID) {
+    //     event.preventDefault();
+
+    //     // Create API payload
+    //     const deleteData = {
+    //         id: formID,
+    //     };
+
+    //     try {
+    //         const response = await fetch(`${pythonURI}/api/post`, {
+    //             ...fetchOptions,
+    //             method: 'DELETE',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(postData)
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error('Failed to delete post: ' + response.statusText);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error deleting post:', error);
+    //         alert('Error deleting post: ' + error.message);
+    //     }
+    // }
 
     fetchPosts();
 </script>
