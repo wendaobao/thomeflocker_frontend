@@ -1,3 +1,30 @@
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    td {
+        padding: 1rem;
+        text-align: center;
+        background: #1a1a1a;
+        border-bottom: 1px solid #333;
+    }
+
+    td:first-child {
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+    td:last-child {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+</style>
+
 <table>
     <tr>
         <td id="createandcompete">
@@ -9,6 +36,5 @@
         <td id="calicovote"><a href="{{site.baseurl}}/voteforthegoat/calicovote">Calico Vote</a></td>
         <td id="dnerostore"><a href="{{site.baseurl}}/voteforthegoat/dnerostore">D'nero Store</a></td>
         <td id="Beveragedebates"><a href="{{site.baseurl}}/voteforthegoat/beveragedebates">Beverage Debates</a></td>
-
     </tr>
 </table>

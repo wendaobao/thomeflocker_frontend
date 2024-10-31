@@ -11,6 +11,9 @@ comments: true
     <h3>Debate Topics</h3>
     <button class="debate-btn" data-debate="Milk or Cereal First?">Milk or Cereal First?</button>
     <button class="debate-btn" data-debate="Is a Hot Dog a Sandwich?">Is a Hot Dog a Sandwich?</button>
+    <button class="debate-btn" data-debate="Pineapple on Pizza?">Pineapple on Pizza?</button>
+    <button class="debate-btn" data-debate="Cats or Dogs?">Cats or Dogs?</button>
+    <button class="debate-btn" data-debate="Coffee or Tea?">Coffee or Tea?</button>
 </div>
 
 <div id="rules-popup" class="modal">
@@ -28,15 +31,13 @@ comments: true
 </div>
 
 <div class="container">
-    
     <h1>Choose Your Side</h1>
-
 
     <section id="debate-selection">
         <h2 id="current-debate">Current Debate: Milk or Cereal First?</h2>
         <div class="buttons">
-            <button id="milkFirst" class="side-btn">Milk First</button>
-            <button id="cerealFirst" class="side-btn">Cereal First</button>
+            <button id="side1" class="side-btn">Milk First</button>
+            <button id="side2" class="side-btn">Cereal First</button>
         </div>
     </section>
 
@@ -54,46 +55,46 @@ comments: true
 
 <style>
     .sidebar {
-    width: 200px;
-    background: #222;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    top: 100px; 
-    left: 20px;
-}
-
-.sidebar h3 {
-    color: #00e5ff;
-}
-
-.debate-btn {
-    display: block;
-    background: #00e5ff;
-    color: #fff;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.debate-btn:hover {
-    background: #0099cc;
-}
-    header {
-        background: #000000
+        width: 200px;
+        background: #222;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 100px; 
+        left: 20px;
     }
+
+    .sidebar h3 {
+        color: #00e5ff;
+    }
+
+    .debate-btn {
+        display: block;
+        background: #00e5ff;
+        color: #fff;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .debate-btn:hover {
+        background: #0099cc;
+    }
+
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #0d0d0d;
-        color: #fff;
-        padding: 1rem;
-        display: flex;
         background: linear-gradient(to right, #05aff7, #4b1f30);
+        color: #fff;
+        margin: 0; /* Remove default margin */
+        height: 100vh; /* Ensure the body takes full height */
+        display: flex;
+        flex-direction: column;
     }
+
     .modal {
         display: flex;
         justify-content: center;
@@ -106,6 +107,7 @@ comments: true
         height: 100%;
         background-color: rgba(0, 0, 0, 0.8);
     }
+
     .modal-content {
         background-color: #333;
         padding: 20px;
@@ -114,24 +116,28 @@ comments: true
         max-width: 600px;
         text-align: center;
     }
+
     .container {
         max-width: 800px;
         margin: auto;
         text-align: center;
         padding: 2rem;
-        background: #1a1a1a;
+        background: rgba(26, 26, 26, 0.9); /* Slightly transparent to see the background */
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
     h1 {
         font-size: 3rem;
         margin-bottom: 2rem;
         color: #00e5ff;
     }
+
     h2 {
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
     }
+
     .side-btn, .submit-btn, .acknowledge-btn {
         padding: 1rem 2rem;
         border-radius: 10px;
@@ -139,9 +145,11 @@ comments: true
         transition: background 0.3s ease;
         background: linear-gradient(45deg, #00e5ff, #0099cc);
     }
+
     .side-btn:hover {
         background: linear-gradient(45deg, #0099cc, #006699);
     }
+
     #argument-input {
         width: 100%;
         height: 100px;
@@ -153,10 +161,12 @@ comments: true
         resize: none;
         margin-bottom: 1rem;
     }
+
     ul {
         list-style: none;
         padding: 0;
     }
+
     li {
         background: #1a1a1a;
         margin: 1rem 0;
@@ -164,10 +174,12 @@ comments: true
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
     li .rate {
         display: flex;
         gap: 0.5rem;
     }
+
     .rate button {
         background: none;
         border: none;
@@ -175,6 +187,7 @@ comments: true
         color: #00e5ff;
         cursor: pointer;
     }
+
     .hidden {
         display: none;
     }
@@ -186,8 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('rules-popup').style.display = 'none';
     };
 
-    const milkButton = document.getElementById('milkFirst');
-    const cerealButton = document.getElementById('cerealFirst');
     const argumentSection = document.getElementById('argument-section');
     const argumentsList = document.getElementById('arguments-list');
     const argumentInput = document.getElementById('argument-input');
@@ -195,24 +206,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const argumentContainer = document.getElementById('argument-container');
     const selectedSideText = document.getElementById('selected-side');
     const currentDebateText = document.getElementById('current-debate');
+    const side1Button = document.getElementById('side1');
+    const side2Button = document.getElementById('side2');
 
     let selectedSide = '';
-    const debates = ['Milk or Cereal First?', 'Is a Hot Dog a Sandwich?'];
-    let currentDebateIndex = 0;
-    const chatHistory = { 'Milk or Cereal First?': [], 'Is a Hot Dog a Sandwich?': [] };
-
-    milkButton.onclick = () => { selectedSide = 'Milk First'; showArgumentSection(); };
-    cerealButton.onclick = () => { selectedSide = 'Cereal First'; showArgumentSection(); };
+    const debates = {
+        'Milk or Cereal First?': ['Milk First', 'Cereal First'],
+        'Is a Hot Dog a Sandwich?': ['Yes', 'No'],
+        'Pineapple on Pizza?': ['Yes', 'No'],
+        'Cats or Dogs?': ['Cats', 'Dogs'],
+        'Coffee or Tea?': ['Coffee', 'Tea']
+    };
+    let currentDebate = 'Milk or Cereal First?';
+    const chatHistory = {
+        'Milk or Cereal First?': [],
+        'Is a Hot Dog a Sandwich?': [],
+        'Pineapple on Pizza?': [],
+        'Cats or Dogs?': [],
+        'Coffee or Tea?': []
+    };
 
     document.querySelectorAll('.debate-btn').forEach(button => {
         button.onclick = () => {
-            const debateName = button.getAttribute('data-debate');
-            currentDebateText.textContent = `Current Debate: ${debateName}`;
-            currentDebateIndex = debates.indexOf(debateName);
+            currentDebate = button.getAttribute('data-debate');
+            currentDebateText.textContent = `Current Debate: ${currentDebate}`;
+            side1Button.textContent = debates[currentDebate][0];
+            side2Button.textContent = debates[currentDebate][1];
             argumentContainer.innerHTML = '';
             loadChatHistory();
         };
     });
+
+    side1Button.onclick = () => { selectedSide = side1Button.textContent; showArgumentSection(); };
+    side2Button.onclick = () => { selectedSide = side2Button.textContent; showArgumentSection(); };
 
     function showArgumentSection() {
         argumentSection.classList.remove('hidden');
@@ -220,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function loadChatHistory() {
-        const history = chatHistory[debates[currentDebateIndex]];
+        const history = chatHistory[currentDebate];
         history.forEach(argument => {
             const argumentElement = document.createElement('li');
             argumentElement.innerHTML = argument;
@@ -240,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
             argumentContainer.appendChild(argumentElement);
             argumentInput.value = '';
-            chatHistory[debates[currentDebateIndex]].push(argumentElement.outerHTML);
+            chatHistory[currentDebate].push(argumentElement.outerHTML);
             argumentsList.classList.remove('hidden');
         }
     };
