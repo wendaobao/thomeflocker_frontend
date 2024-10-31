@@ -114,8 +114,8 @@ menu: nav/rate_and_relate.html
     <!-- Navbar -->
     <div class="navbar">
         <a href="">Home</a>
-        <a href="../instabox/profile">Profile</a>
-        <a href="../instabox/settings">Settings</a>
+        <a href="./profile">Profile</a>
+        <a href="./settings">Settings</a>
     </div>
     <div class="container">
         <!-- Instabox chatbox -->
