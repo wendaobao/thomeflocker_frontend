@@ -1,7 +1,7 @@
 ---
 permalink: /flavor-fusion/dock/
 layout: post 
-title: doc
+title: Dock
 description: Flavor Fusion dock
 ---
 
