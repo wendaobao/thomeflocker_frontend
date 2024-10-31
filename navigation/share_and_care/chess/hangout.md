@@ -4,9 +4,7 @@ title: Chess Hangout
 permalink: /chess/hangout
 comments: true
 ---
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,13 +38,15 @@ comments: true
             justify-content: center;
             align-items: center;
             font-size: 40px;
+            font-weight: bold;
+            font-family: 'Segoe UI Symbol', sans-serif; /* Modern look */
             cursor: pointer;
         }
-        .green {
-            background-color: #769656;
+        .orange {
+            background-color: #f39c12;
         }
-        .white {
-            background-color: #eeeed2;
+        .yellow {
+            background-color: #f7dc6f;
         }
         .chat-container {
             display: flex;
@@ -84,9 +84,7 @@ comments: true
         <h2 class="text-center">Chess Hangout Zone</h2>
         <div class="chat-container">
             <!-- Chessboard -->
-            <div class="chessboard" id="chessboard">
-                <!-- Generate chessboard squares dynamically -->
-            </div>
+            <div class="chessboard" id="chessboard"></div>
 
             <!-- Chat Section -->
             <div class="chat-box">
@@ -135,14 +133,13 @@ comments: true
         const chessboard = document.getElementById('chessboard');
         let selectedSquare = null;
 
-        // Create chessboard squares
         function generateBoard() {
             chessboard.innerHTML = '';
-            let isWhite = true;
+            let isYellow = true;
             for (let row = 0; row < 8; row++) {
                 for (let col = 0; col < 8; col++) {
                     const square = document.createElement('div');
-                    square.className = isWhite ? 'white' : 'green';
+                    square.className = isYellow ? 'yellow' : 'orange';
                     square.dataset.row = row;
                     square.dataset.col = col;
 
@@ -152,9 +149,9 @@ comments: true
 
                     square.addEventListener('click', () => handleSquareClick(row, col, square));
                     chessboard.appendChild(square);
-                    isWhite = !isWhite;
+                    isYellow = !isYellow;
                 }
-                isWhite = !isWhite;
+                isYellow = !isYellow;
             }
         }
 
@@ -171,11 +168,10 @@ comments: true
             const piece = boardLayout[selected.row][selected.col];
             boardLayout[selected.row][selected.col] = '';
             boardLayout[row][col] = piece;
-            generateBoard(); // Re-render the board
+            generateBoard();
         }
 
         generateBoard();
-
     </script>
 
     <!-- JS to handle chat functionality -->
@@ -203,11 +199,7 @@ comments: true
                 renderMessages();
             }
         });
-
-        setInterval(() => {
-            // Polling for new messages can go here
-        }, 3000);
     </script>
 </body>
-
 </html>
+
