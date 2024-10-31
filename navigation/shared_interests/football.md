@@ -2,6 +2,7 @@
 layout: base
 title: Football
 permalink: /shared_interests/football/
+menu: nav/shared_interests.html
 ---
 
 
