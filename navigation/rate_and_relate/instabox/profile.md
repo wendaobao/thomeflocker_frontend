@@ -99,9 +99,9 @@ menu: nav/rate_and_relate.html
     <hr>
     <!-- Navbar -->
     <div class="navbar">
-        <a href=".">Home</a>
+        <a href="{{site.baseurl}}/rate_and_relate/instabox">Home</a>
         <a href="">Profile</a>
-        <a href="./settings">Settings</a>
+        <a href="{{site.baseurl}}/rate_and_relate/instabox/settings">Settings</a>
     </div>
     <div class="container">
         <!-- Profile card -->
