@@ -6,13 +6,13 @@ permalink: /create_and_compete/elevatorpitchgame
 author: Manas, Lalita, Shriya, Ethan
 ---
 
-
-
-<h1>Create and Compete – Elevator Pitch</h1>
 <p>Where creativity meets competition and collaboration.</p>
+
+<!-- Prompt Generation Section -->
 <button id="generate-prompt">Generate Random Prompt</button>
 <div id="prompt-display"></div>
 
+<!-- Pitch Submission Section -->
 <section id="pitch-section">
     <h2>Your Pitch</h2>
     <textarea id="pitch-input" placeholder="Write your pitch here..."></textarea>
@@ -20,6 +20,7 @@ author: Manas, Lalita, Shriya, Ethan
     <div id="pitch-display"></div>
 </section>
 
+<!-- Feedback Section -->
 <section id="feedback-section">
     <h2>Feedback & Challenges</h2>
     <textarea id="feedback-input" placeholder="Offer feedback or ask a question..."></textarea>
@@ -27,6 +28,7 @@ author: Manas, Lalita, Shriya, Ethan
     <div id="feedback-display"></div>
 </section>
 
+<!-- Leaderboard Section -->
 <section id="leaderboard-section">
     <h2>Top Contributors</h2>
     <ul id="leaderboard"></ul>
@@ -41,36 +43,36 @@ author: Manas, Lalita, Shriya, Ethan
     </div>
 </div>
 
-<!-- Styles for modal -->
+<!-- Styles for Modal -->
 <style>
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        text-align: center;
+    }
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
 
-<link rel="stylesheet" href="/navigation/create_and_compete/style.css">
-<script src="/navigation/create_and_compete/script.js"></script>
+<!-- Link to Custom CSS and Script -->
+<link rel="stylesheet" href="{{site.baseurl}}/navigation/create_and_compete/style.css">
+<script src="{{site.baseurl}}/navigation/create_and_compete/script.js"></script>
