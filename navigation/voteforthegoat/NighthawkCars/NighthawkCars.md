@@ -3,7 +3,7 @@ layout: post
 title: Nighthawk Cars
 description: A site all about cars
 permalink: /voteforthegoat/nighthawkCars/
-menu: /SlawFrontend/navigation/voteforthegoat/NighthawkCoders/_includes/table.html
+menu: /_includes/table.html
 comments: true
 ---
 
