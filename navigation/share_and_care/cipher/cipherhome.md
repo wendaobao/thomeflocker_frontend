@@ -13,7 +13,7 @@ permalink: /cipherhome/
 <!-- Rules Button -->
 <div style="display: flex; justify-content: center; margin-top: -50px; margin-left: 250px;">
     <button id="rulesButton" style="padding: 10px 20px; background-color: #ffce00; color: #27293d; border: none; border-radius: 5px; font-size: 1.2em; cursor: pointer;">
-        📜 View Rules Here
+        📜 Click to View Rules
     </button>
 </div>
 
@@ -26,7 +26,10 @@ permalink: /cipherhome/
             <li>No spamming or irrelevant content.</li>
             <li>Stay on topic and keep discussions related to ciphers.</li>
             <li>Help others in the community when possible.</li>
+            <li>No sharing answers to level!</li>
             <li>Have fun and enjoy decoding!</li>
+            
+
         </ul>
         <button id="closeModal" style="padding: 5px 10px; background-color: #ff6b6b; color: #ffffff; border: none; border-radius: 5px; cursor: pointer; position: absolute; top: 10px; right: 10px;">✖️ Close</button>
     </div>
