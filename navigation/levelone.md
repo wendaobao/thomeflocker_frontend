@@ -4,7 +4,6 @@ title: Levelone
 search_exclude: true
 permalink: /levelone/
 ---
-    
 # 🔐 **Cipher Challenge: Level 1**
 
 Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
@@ -27,11 +26,11 @@ Your goal is to **decode the hidden message** below using a Caesar Cipher techni
 
 ## 🔢 **Cipher Text**
 
+Ciphered message:  
+`Krod, Krz duh brx grlqj? Brx duh doprvw wkhuh!`
 
-
-1. The numbers might correspond to **ASCII characters** or **another encoding format**.
-2. Pay attention to the **structure of the numbers**—do they look like hex, binary, or something else?
-3. Don’t overlook **spaces** or groupings—they might contain clues.
+1. **Hint**: Shift each letter **back by 3** to reveal the message.
+2. **Hint**: Trust that each word will form a coherent sentence after decryption.
 
 ---
 
@@ -64,7 +63,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
-  const correctAnswer = '12345'; // Define the correct answer here
+  const correctAnswer = 'Hold, How are you doing? You are almost there!'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');
