@@ -1,73 +1,10 @@
 ---
 layout: post
-title: Chess Champion
-description: The Chat to Become the Number 1 Del Norte Chess Champion
-permalink: /chesschampions/
+title: Chess Hangout
+permalink: /chess/hangout
 comments: true
 ---
-
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Hangout Zone - Moderation Rules</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        h1 {
-            color: #4CAF50;
-            text-align: center;
-        }
-        h2 {
-            color: #333;
-            margin-top: 20px;
-        }
-        p {
-            margin-left: 15px;
-        }
-        ul {
-            margin-left: 30px;
-            list-style-type: disc;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Chess Hangout Zone - Moderation Rules</h1>
-
-    <h2>1. Respect All Players</h2>
-    <p>Be courteous and respectful towards all members. Disrespectful language, personal attacks, and inappropriate comments will not be tolerated.</p>
-
-    <h2>2. Stay On-Topic</h2>
-    <p>Conversations should be chess-related. Off-topic discussions and unrelated posts may be removed to maintain the focus on chess and related activities.</p>
-
-    <h2>3. No Cheating</h2>
-    <p>Play fair. Using external assistance, bots, or analysis engines to gain an unfair advantage is strictly prohibited and may result in a ban.</p>
-
-    <h2>4. Constructive Criticism Only</h2>
-    <p>When discussing strategies or analyzing games, provide constructive feedback. Criticize ideas, not individuals, to foster a positive learning environment.</p>
-
-    <h2>5. No Spamming or Advertising</h2>
-    <p>Refrain from posting repetitive messages, spamming, or advertising unrelated content. This platform is for genuine chess interaction and discussions.</p>
-
-    <h2>6. Keep It Safe for Everyone</h2>
-    <p>No sharing of personal information or content that may harm others' privacy and safety. Protecting everyone's privacy is a priority.</p>
-
-    <h2>7. Respect Moderators</h2>
-    <p>Follow guidance from moderators and admins. If you have concerns about moderation, reach out to the team respectfully.</p>
-
-    <h2>8. Reporting Violations</h2>
-    <p>If you observe any rule violations, report them to the moderation team promptly. Help us maintain a welcoming community.</p>
-
-</body>
-</html>
-
-
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,13 +38,15 @@ comments: true
             justify-content: center;
             align-items: center;
             font-size: 40px;
+            font-weight: bold;
+            font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
         }
-        .green {
-            background-color: #769656;
+        .orange {
+            background-color: #f39c12;
         }
-        .white {
-            background-color: #eeeed2;
+        .yellow {
+            background-color: #f7dc6f;
         }
         .chat-container {
             display: flex;
@@ -127,6 +66,23 @@ comments: true
             padding: 10px;
             background-color: #111;
         }
+        .message {
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: #1e90ff;
+            color: white;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #4caf50;
+            color: white;
+            text-align: left;
+        }
         .message-input {
             margin-top: 10px;
         }
@@ -145,9 +101,7 @@ comments: true
         <h2 class="text-center">Chess Hangout Zone</h2>
         <div class="chat-container">
             <!-- Chessboard -->
-            <div class="chessboard" id="chessboard">
-                <!-- Generate chessboard squares dynamically -->
-            </div>
+            <div class="chessboard" id="chessboard"></div>
 
             <!-- Chat Section -->
             <div class="chat-box">
@@ -168,18 +122,8 @@ comments: true
     <!-- JS to handle chess pieces and board -->
     <script>
         const pieces = {
-            'R': '&#9814;', // White Rook
-            'N': '&#9816;', // White Knight
-            'B': '&#9815;', // White Bishop
-            'Q': '&#9813;', // White Queen
-            'K': '&#9812;', // White King
-            'P': '&#9817;', // White Pawn
-            'r': '&#9820;', // Black Rook
-            'n': '&#9822;', // Black Knight
-            'b': '&#9821;', // Black Bishop
-            'q': '&#9819;', // Black Queen
-            'k': '&#9818;', // Black King
-            'p': '&#9823;'  // Black Pawn
+            'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
+            'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
         };
 
         const boardLayout = [
@@ -196,14 +140,13 @@ comments: true
         const chessboard = document.getElementById('chessboard');
         let selectedSquare = null;
 
-        // Create chessboard squares
         function generateBoard() {
             chessboard.innerHTML = '';
-            let isWhite = true;
+            let isYellow = true;
             for (let row = 0; row < 8; row++) {
                 for (let col = 0; col < 8; col++) {
                     const square = document.createElement('div');
-                    square.className = isWhite ? 'white' : 'green';
+                    square.className = isYellow ? 'yellow' : 'orange';
                     square.dataset.row = row;
                     square.dataset.col = col;
 
@@ -213,9 +156,9 @@ comments: true
 
                     square.addEventListener('click', () => handleSquareClick(row, col, square));
                     chessboard.appendChild(square);
-                    isWhite = !isWhite;
+                    isYellow = !isYellow;
                 }
-                isWhite = !isWhite;
+                isYellow = !isYellow;
             }
         }
 
@@ -232,14 +175,13 @@ comments: true
             const piece = boardLayout[selected.row][selected.col];
             boardLayout[selected.row][selected.col] = '';
             boardLayout[row][col] = piece;
-            generateBoard(); // Re-render the board
+            generateBoard();
         }
 
         generateBoard();
-
     </script>
 
-    <!-- JS to handle chat functionality -->
+    <!-- JS to handle chat and bot functionality -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
@@ -251,24 +193,43 @@ comments: true
             chatMessages.innerHTML = '';
             messages.forEach(msg => {
                 const msgElement = document.createElement('p');
-                msgElement.textContent = msg;
+                msgElement.className = `message ${msg.isBot ? 'bot-message' : 'user-message'}`;
+                msgElement.textContent = msg.text;
                 chatMessages.appendChild(msgElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
             });
         }
 
-        sendBtn.addEventListener('click', () => {
-            const newMessage = messageInput.value.trim();
-            if (newMessage) {
-                messages.push(newMessage);
-                messageInput.value = '';
-                renderMessages();
-            }
-        });
+        function addMessage(text, isBot = false) {
+            messages.push({ text, isBot });
+            renderMessages();
+        }
 
-        setInterval(() => {
-            // Polling for new messages can go here
-        }, 3000);
+        function handleUserMessage() {
+            const userMessage = messageInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, false);
+                messageInput.value = '';
+                respondToUserMessage(userMessage);
+            }
+        }
+
+        function respondToUserMessage(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            let botResponse;
+
+            if (lowerMessage.includes('help')) {
+                botResponse = "How can I help? Need advice on chess strategies or specific moves?";
+            } else if (lowerMessage.includes('move')) {
+                botResponse = "Here's a tip: control the center and develop your pieces quickly!";
+            } else {
+                botResponse = "I'm here to chat! Let's talk chess!";
+            }
+
+            setTimeout(() => addMessage(botResponse, true), 1000); // Slight delay for bot response
+        }
+
+        sendBtn.addEventListener('click', handleUserMessage);
     </script>
 </body>
-
 </html>
