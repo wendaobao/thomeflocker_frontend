@@ -7,9 +7,6 @@ menu: nav/vote_for_the_goat.html
 comments: true
 ---
 
-
-# Community Rules/Guidelines:
-
 <div class="sidebar">
     <h3>Debate Topics</h3>
     <button class="debate-btn" data-debate="Milk or Cereal First?">Milk or Cereal First?</button>
