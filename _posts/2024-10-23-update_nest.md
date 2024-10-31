@@ -8,7 +8,7 @@ permalink: /rateandrelate/update_the_nest/
 <style>
 
 .textContainer {
-    transform: translateY(30px)
+    transform: translateY(20px)
 }
 
 .textInfo {
@@ -20,7 +20,7 @@ permalink: /rateandrelate/update_the_nest/
     display: inline;
     float: left;
     width: 50%;
-     transform: translateX(20px) translateY(100px);
+     transform: translateX(20px) translateY(50px);
 }
 
 .feed {
