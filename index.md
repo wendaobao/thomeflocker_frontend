@@ -1,7 +1,7 @@
 ---
 layout: post
-title: My Space 
-description: My Interests
+title: Home Page
+description: Login and explore our social media hub for everything DNHS 
 hide: true
 menu: nav/home.html
 ---
