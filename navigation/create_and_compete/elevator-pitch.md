@@ -7,6 +7,8 @@ menu: nav/create_and_compete.html
 author: Manas, Lalita, Shriya, Ethan
 ---
 
+
+
 <details>
   <summary>Room Details</summary>
 
@@ -22,3 +24,7 @@ author: Manas, Lalita, Shriya, Ethan
 </p>
 
 </details>
+
+<h2>Check out our game!! (Still in Beta)</h2>
+<a href="{{site.baseurl}}/create_and_compete/elevatorpitchgame">Elevator Pitch UI</a>
+
