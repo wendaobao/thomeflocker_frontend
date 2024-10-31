@@ -1,70 +1,9 @@
 ---
 layout: post
-title: Chess Champion
-description: The Chat to Become the Number 1 Del Norte Chess Champion
-permalink: /chesschampions/
+title: Chess Hangout
+permalink: /chess/hangout
 comments: true
 ---
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Hangout Zone - Moderation Rules</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        h1 {
-            color: #4CAF50;
-            text-align: center;
-        }
-        h2 {
-            color: #333;
-            margin-top: 20px;
-        }
-        p {
-            margin-left: 15px;
-        }
-        ul {
-            margin-left: 30px;
-            list-style-type: disc;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Chess Hangout Zone - Moderation Rules</h1>
-
-    <h2>1. Respect All Players</h2>
-    <p>Be courteous and respectful towards all members. Disrespectful language, personal attacks, and inappropriate comments will not be tolerated.</p>
-
-    <h2>2. Stay On-Topic</h2>
-    <p>Conversations should be chess-related. Off-topic discussions and unrelated posts may be removed to maintain the focus on chess and related activities.</p>
-
-    <h2>3. No Cheating</h2>
-    <p>Play fair. Using external assistance, bots, or analysis engines to gain an unfair advantage is strictly prohibited and may result in a ban.</p>
-
-    <h2>4. Constructive Criticism Only</h2>
-    <p>When discussing strategies or analyzing games, provide constructive feedback. Criticize ideas, not individuals, to foster a positive learning environment.</p>
-
-    <h2>5. No Spamming or Advertising</h2>
-    <p>Refrain from posting repetitive messages, spamming, or advertising unrelated content. This platform is for genuine chess interaction and discussions.</p>
-
-    <h2>6. Keep It Safe for Everyone</h2>
-    <p>No sharing of personal information or content that may harm others' privacy and safety. Protecting everyone's privacy is a priority.</p>
-
-    <h2>7. Respect Moderators</h2>
-    <p>Follow guidance from moderators and admins. If you have concerns about moderation, reach out to the team respectfully.</p>
-
-    <h2>8. Reporting Violations</h2>
-    <p>If you observe any rule violations, report them to the moderation team promptly. Help us maintain a welcoming community.</p>
-
-</body>
-</html>
-
 
 <html lang="en">
 
