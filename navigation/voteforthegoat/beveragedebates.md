@@ -160,10 +160,10 @@ Our group has chosen to focus on discussions about which drinks should be added 
 </head>
 <body>
     <a href="https://example.com" target="_blank">
-        <img src="path/to/your/image.jpg" alt="Description of image">
+        <img src="/mnt/data/image.png" alt="Description of image" class="clickable-image">
     </a>
     <div class="voting-container">
-        <h2>Choose Your an Beverage that you would like to be added to Del Norte Cafeteria</h2>
+        <h2>Choose a Beverage that you would like to be added to Del Norte Cafeteria</h2>
         <div>
             <button class="option-button" onclick="selectOption('Coke')">Coke</button>
             <button class="option-button" onclick="selectOption('Gatorade')">Gatorade</button>
@@ -208,3 +208,4 @@ Our group has chosen to focus on discussions about which drinks should be added 
     </script>
 </body>
 </html>
+
