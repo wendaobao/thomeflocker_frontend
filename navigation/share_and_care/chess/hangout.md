@@ -25,19 +25,19 @@ comments: true
         }
         .chessboard {
             display: grid;
-            grid-template-columns: repeat(8, 80px);
-            grid-template-rows: repeat(8, 80px);
+            grid-template-columns: repeat(8, 100px); /* Larger squares */
+            grid-template-rows: repeat(8, 100px);
             border: 2px solid #444;
             margin: 20px auto;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
         }
         .chessboard div {
-            width: 80px;
-            height: 80px;
+            width: 100px; /* Larger square size */
+            height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 50px; /* Larger piece size */
             font-weight: bold;
             font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
@@ -54,7 +54,7 @@ comments: true
         }
         .chat-box {
             width: 30%;
-            background-color: #222;
+            background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
         }
@@ -64,24 +64,34 @@ comments: true
             border: 1px solid #444;
             margin-bottom: 15px;
             padding: 10px;
-            background-color: #111;
+            background-color: #1b1b1b;
+            border-radius: 10px;
         }
         .message {
-            padding: 8px;
-            border-radius: 8px;
-            margin: 5px 0;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 8px 0;
             font-size: 16px;
             word-wrap: break-word;
+            display: inline-block;
+            max-width: 80%;
         }
         .user-message {
-            background-color: #1e90ff;
+            background-color: #3498db;
             color: white;
             text-align: right;
+            margin-left: auto;
+            border-radius: 15px 15px 0 15px;
         }
         .bot-message {
-            background-color: #4caf50;
+            background-color: #27ae60;
             color: white;
             text-align: left;
+            margin-right: auto;
+            border-radius: 15px 15px 15px 0;
+        }
+        .bot-message::after {
+            content: " 🤖";
         }
         .message-input {
             margin-top: 10px;
@@ -105,7 +115,7 @@ comments: true
 
             <!-- Chat Section -->
             <div class="chat-box">
-                <h4>Chat Room</h4>
+                <h4 class="text-center">Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
 
                 <div class="message-input">
@@ -196,7 +206,7 @@ comments: true
                 msgElement.className = `message ${msg.isBot ? 'bot-message' : 'user-message'}`;
                 msgElement.textContent = msg.text;
                 chatMessages.appendChild(msgElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             });
         }
 
@@ -218,12 +228,18 @@ comments: true
             const lowerMessage = userMessage.toLowerCase();
             let botResponse;
 
-            if (lowerMessage.includes('help')) {
-                botResponse = "How can I help? Need advice on chess strategies or specific moves?";
+            if (lowerMessage.includes('opening')) {
+                botResponse = "Consider starting with the King's Pawn or Queen's Pawn opening!";
             } else if (lowerMessage.includes('move')) {
-                botResponse = "Here's a tip: control the center and develop your pieces quickly!";
+                botResponse = "Focus on controlling the center and developing pieces. Move safely!";
+            } else if (lowerMessage.includes('check')) {
+                botResponse = "You’re putting pressure on the opponent! Aim for more control.";
+            } else if (lowerMessage.includes('blunder')) {
+                botResponse = "It's okay! Recover by focusing on protecting your King and controlling the center.";
+            } else if (lowerMessage.includes('fork')) {
+                botResponse = "Great tactic! A fork can put significant pressure on your opponent.";
             } else {
-                botResponse = "I'm here to chat! Let's talk chess!";
+                botResponse = "I'm here to chat! Let me know if you want advice on specific moves or tactics.";
             }
 
             setTimeout(() => addMessage(botResponse, true), 1000); // Slight delay for bot response
