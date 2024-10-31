@@ -120,4 +120,7 @@ th {
     cursor: not-allowed;
 }
 </style>
->>>>>>> 52ff572 (store changes)
+
+<a href="{{site.baseurl}}/dnhscafestudyroom">
+<button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>
+</a>
