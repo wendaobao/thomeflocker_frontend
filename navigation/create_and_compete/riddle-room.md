@@ -182,7 +182,7 @@ author: Kush, Tarun, Vincent, and Nolan
             chatBox.appendChild(messageElement);
             chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
         }
-    </script>
+</script>
 
 </body>
 </html>
