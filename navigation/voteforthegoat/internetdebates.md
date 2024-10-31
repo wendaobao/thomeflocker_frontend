@@ -17,9 +17,6 @@ comments: true
             <li>Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.</li>
             <li>Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.</li>
             <li>One Account Only: Just one account per person—no extra accounts to sway votes.</li>
-            <li>Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.</li>
-            <li>Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.</li>
-            <li>Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.</li>
         </ul>
         <button id="acknowledge-rules" class="acknowledge-btn">I have read and acknowledged the rules</button>
     </div>
