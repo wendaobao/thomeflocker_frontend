@@ -68,7 +68,7 @@ There are five different polls where you vote for the greatest Quarterback, Wide
     <button onclick="alert('You voted for Fran Tarkenton!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
-    <img src="image-url-13" alt="Patrick Mahomes" style="width: 100%;">
+    <img src="{{site.baseurl}}/images/nfl-icons/Patrick_Mahomes.png" alt="Patrick Mahomes" style="width: 100%;">
     <button onclick="alert('You voted for Patrick Mahomes!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
@@ -86,7 +86,7 @@ There are five different polls where you vote for the greatest Quarterback, Wide
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
-    <img src="image-url-1" alt="Jerry Rice" style="width: 100%;">
+    <img src="{{site.baseurl}}/images/nfl-icons/Jerry_Rice.png" alt="Jerry Rice" style="width: 100%;">
     <button onclick="alert('You voted for Jerry Rice!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
@@ -134,8 +134,8 @@ There are five different polls where you vote for the greatest Quarterback, Wide
     <button onclick="alert('You voted for Stefon Diggs!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
-    <img src="image-url-13" alt="Rob Gronkowski" style="width: 100%;">
-    <button onclick="alert('You voted for Rob Gronkowski!')">Vote!</button>
+    <img src="image-url-13" alt="DK Metcalf" style="width: 100%;">
+    <button onclick="alert('You voted for DK Metcalf!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
     <img src="image-url-14" alt="A.J. Brown" style="width: 100%;">
@@ -203,7 +203,14 @@ There are five different polls where you vote for the greatest Quarterback, Wide
     <button onclick="alert('You voted for Fred Warner!')">Vote!</button>
   </div>
   <div style="width: 30%; text-align: center; margin-bottom: 20px;">
-   
+    <img src="image-url-13" alt="Mike Singletary" style="width: 100%;">
+    <button onclick="alert('You voted for Mike Singletary!')">Vote!</button>
+  </div>
+    <div style="width: 30%; text-align: center; margin-bottom: 20px;">
+    <img src="image-url-13" alt="Derrick Thomas" style="width: 100%;">
+    <button onclick="alert('You voted for Derrick Thomas!')">Vote!</button>
+  </div>
+</div>
 
 ## Runningback Voting
 
