@@ -85,67 +85,125 @@ permalink: /cipherhome/
     <div style="flex: 2;">
         <!-- Level Buttons Container -->
         <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;">
-            <!-- Level 1 Button -->
-            <a href="/flocker_frontend/levelone/" style="text-decoration: none;">
-                <div style="display: flex; align-items: center; background-color: #ffdd57; color: #27293d; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ffb400; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
-                    <div style="flex-grow: 1;">
-                        <strong>Level 1: Beginner 🔰</strong><br>
-                        ➡️ Learn basic ciphers.<br>
-                        🔑 Unlock simple puzzles.
-                    </div>
-                    <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
-                </div>
-            </a>
-
-            <!-- Level 2 Button -->
-            <a href="/flocker_frontend/leveltwo/" style="text-decoration: none;">
-                <div style="display: flex; align-items: center; background-color: #80c0ff; color: #27293d; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #4293ff; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
-                    <div style="flex-grow: 1;">
-                        <strong>Level 2: Intermediate 🌐</strong><br>
-                        ➡️ Decipher longer codes.<br>
-                        📜 Moderate challenges await.
-                    </div>
-                    <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
-                </div>
-            </a>
-
-            <!-- Level 3 Button -->
-            <a href="/flocker_frontend/levelthree/" style="text-decoration: none;">
-                <div style="display: flex; align-items: center; background-color: #7cf9a1; color: #27293d; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #4adb6f; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
-                    <div style="flex-grow: 1;">
-                        <strong>Level 3: Advanced 🔵</strong><br>
-                        ➡️ Crack complex patterns.<br>
-                        🧩 For seasoned decoders!
-                    </div>
-                    <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
-                </div>
-            </a>
-
-            <!-- Level 4 Button -->
-            <a href="/flocker_frontend/levelfour/" style="text-decoration: none;">
-                <div style="display: flex; align-items: center; background-color: #ff6b6b; color: #27293d; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ff3c3c; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
-                    <div style="flex-grow: 1;">
-                        <strong>Level 4: Expert 🔴</strong><br>
-                        ➡️ Master advanced encryption.<br>
-                        🚀 Very challenging!
-                    </div>
-                    <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
-                </div>
-            </a>
-
-            <!-- Level 5 Button -->
-            <a href="/flocker_frontend/levelfive/" style="text-decoration: none;">
-                <div style="display: flex; align-items: center; background-color: #4d4d4d; color: #e0e0e0; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #272727; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
-                    <div style="flex-grow: 1;">
-                        <strong>Level 5: Master ⚫️</strong><br>
-                        ➡️ Final boss of ciphers!<br>
-                        🏆 Only for the brave!
-                    </div>
-                    <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
-                </div>
-            </a>
+          <!-- Level 1 Button -->
+<a href="/flocker_frontend/levelone/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #e1f7d5; color: #005500; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #a0d99a; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 1: Beginner 🌱</strong><br>
+            🌐 Intro to basic ciphers.<br>
+            💡 Start your journey.
         </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
     </div>
+</a>
+
+<!-- Level 2 Button -->
+<a href="/flocker_frontend/leveltwo/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #d9f1ff; color: #004466; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #8ecae6; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 2: Novice 💻</strong><br>
+            ➡️ Decode harder puzzles.<br>
+            📜 Rise up the ranks.
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 3 Button -->
+<a href="/flocker_frontend/levelthree/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #ffefcc; color: #664400; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ffa500; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 3: Intermediate 🔐</strong><br>
+            🧩 Tackle complex codes.<br>
+            🎯 Sharpen your skills.
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 4 Button -->
+<a href="/flocker_frontend/levelfour/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #ffc8c8; color: #550000; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ff6961; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 4: Pro 🚀</strong><br>
+            ➡️ Advanced encryption skills.<br>
+            ⚔️ Join the elite!
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 5 Button -->
+<a href="/flocker_frontend/levelfive/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #d3d3d3; color: #333333; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #707070; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 5: Expert ⚔️</strong><br>
+            🏆 Master challenging codes.<br>
+            🌌 Only for the skilled!
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 6 Button -->
+<a href="/flocker_frontend/levelsix/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #cce0ff; color: #003366; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #66b2ff; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 6: Master 🔥</strong><br>
+            💥 Conquer supreme puzzles.<br>
+            🏅 Rare skills required!
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 7 Button -->
+<a href="/flocker_frontend/levelseven/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #e6c9d4; color: #6d003b; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #bc5090; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 7: Grand-Master 🏅</strong><br>
+            🎖️ Face ultimate codes.<br>
+            🏆 Legends are made here.
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 8 Button -->
+<a href="/flocker_frontend/leveleight/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #ffbaba; color: #a10000; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #e63946; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 8: Alpha 👑</strong><br>
+            🌠 Beyond mastery.<br>
+            💪 Enter cipher elite!
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 9 Button -->
+<a href="/flocker_frontend/levelnine/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #d6d4e0; color: #4e4b9b; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #6a5acd; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 9: God ✨</strong><br>
+            ☄️ Celestial cipher powers.<br>
+            🌌 Only the chosen survive.
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;">⬇️</div>
+    </div>
+</a>
+
+<!-- Level 10 Button -->
+<a href="/flocker_frontend/levelten/" style="text-decoration: none;">
+    <div style="display: flex; align-items: center; background-color: #0a0a0a; color: #ffd700; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #6b6b6b; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+        <div style="flex-grow: 1;">
+            <strong>Level 10: SIGMA 🌌</strong><br>
+            🌟 Final cipher legend.<br>
+            💥 Ultimate skill awaits.
+        </div>
+        <div style="font-size: 2em; padding-left: 20px;"></div>
+    </div>
+</a>
 
     <!-- Additional Tips Section -->
     <div style="flex: 1; max-width: 200px; background-color: #1e1f2b; padding: 15px; border-radius: 8px; color: #ffffff;">
