@@ -96,8 +96,6 @@ comments: true
     }
     .side-btn, .switch-debate-btn, .submit-btn, .acknowledge-btn {
         padding: 1rem 2rem;
-        border: none;
-        cursor: pointer;
         border-radius: 10px;
         color: #fff;
         transition: background 0.3s ease;
