@@ -4,6 +4,7 @@ title: Chess Hangout
 permalink: /chess/hangout
 comments: true
 ---
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
