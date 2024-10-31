@@ -39,7 +39,7 @@ comments: true
             align-items: center;
             font-size: 40px;
             font-weight: bold;
-            font-family: 'Segoe UI Symbol', sans-serif; /* Modern look */
+            font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
         }
         .orange {
@@ -65,6 +65,23 @@ comments: true
             margin-bottom: 15px;
             padding: 10px;
             background-color: #111;
+        }
+        .message {
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: #1e90ff;
+            color: white;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #4caf50;
+            color: white;
+            text-align: left;
         }
         .message-input {
             margin-top: 10px;
@@ -105,18 +122,8 @@ comments: true
     <!-- JS to handle chess pieces and board -->
     <script>
         const pieces = {
-            'R': '&#9814;', // White Rook
-            'N': '&#9816;', // White Knight
-            'B': '&#9815;', // White Bishop
-            'Q': '&#9813;', // White Queen
-            'K': '&#9812;', // White King
-            'P': '&#9817;', // White Pawn
-            'r': '&#9820;', // Black Rook
-            'n': '&#9822;', // Black Knight
-            'b': '&#9821;', // Black Bishop
-            'q': '&#9819;', // Black Queen
-            'k': '&#9818;', // Black King
-            'p': '&#9823;'  // Black Pawn
+            'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
+            'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
         };
 
         const boardLayout = [
@@ -174,7 +181,7 @@ comments: true
         generateBoard();
     </script>
 
-    <!-- JS to handle chat functionality -->
+    <!-- JS to handle chat and bot functionality -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
@@ -186,20 +193,43 @@ comments: true
             chatMessages.innerHTML = '';
             messages.forEach(msg => {
                 const msgElement = document.createElement('p');
-                msgElement.textContent = msg;
+                msgElement.className = `message ${msg.isBot ? 'bot-message' : 'user-message'}`;
+                msgElement.textContent = msg.text;
                 chatMessages.appendChild(msgElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
             });
         }
 
-        sendBtn.addEventListener('click', () => {
-            const newMessage = messageInput.value.trim();
-            if (newMessage) {
-                messages.push(newMessage);
+        function addMessage(text, isBot = false) {
+            messages.push({ text, isBot });
+            renderMessages();
+        }
+
+        function handleUserMessage() {
+            const userMessage = messageInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, false);
                 messageInput.value = '';
-                renderMessages();
+                respondToUserMessage(userMessage);
             }
-        });
+        }
+
+        function respondToUserMessage(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            let botResponse;
+
+            if (lowerMessage.includes('help')) {
+                botResponse = "How can I help? Need advice on chess strategies or specific moves?";
+            } else if (lowerMessage.includes('move')) {
+                botResponse = "Here's a tip: control the center and develop your pieces quickly!";
+            } else {
+                botResponse = "I'm here to chat! Let's talk chess!";
+            }
+
+            setTimeout(() => addMessage(botResponse, true), 1000); // Slight delay for bot response
+        }
+
+        sendBtn.addEventListener('click', handleUserMessage);
     </script>
 </body>
 </html>
-
