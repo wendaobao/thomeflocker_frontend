@@ -24,39 +24,76 @@ class SubmissionManager {
         localStorage.setItem(key, JSON.stringify(data));
     }
 
-    submitPitch(pitch) {
-        this.pitches.push(pitch);
+    submitPitch(pitch, user) {
+        const pitchData = {
+            text: pitch,
+            user: user,
+            upvotes: 0,
+            downvotes: 0
+        };
+        this.pitches.push(pitchData);
         this.saveToLocalStorage('pitches', this.pitches);
         this.renderSubmissions();
     }
 
-    submitFeedback(feedback) {
-        this.feedbacks.push(feedback);
+    submitFeedback(feedback, pitchIndex) {
+        const feedbackData = { feedback, timestamp: new Date().toLocaleString() };
+        this.feedbacks[pitchIndex] = this.feedbacks[pitchIndex] || [];
+        this.feedbacks[pitchIndex].push(feedbackData);
         this.saveToLocalStorage('feedbacks', this.feedbacks);
-        this.renderFeedbacks();
-        this.showModal();
+        this.showModal("Feedback submitted!");
+        this.renderFeedbacks(pitchIndex);
+    }
+
+    upvotePitch(index) {
+        this.pitches[index].upvotes++;
+        this.saveToLocalStorage('pitches', this.pitches);
+        this.renderSubmissions();
+    }
+
+    downvotePitch(index) {
+        this.pitches[index].downvotes++;
+        this.saveToLocalStorage('pitches', this.pitches);
+        this.renderSubmissions();
     }
 
     renderSubmissions() {
         const pitchDisplay = document.getElementById('pitch-display');
-        pitchDisplay.innerHTML = this.pitches.map(pitch => `<div>${pitch}</div>`).join('');
+        pitchDisplay.innerHTML = this.pitches.map((pitch, index) => `
+            <div class="pitch">
+                <p><strong>${pitch.user}:</strong> ${pitch.text}</p>
+                <div class="vote-controls">
+                    <button onclick="submissionManager.upvotePitch(${index})">👍 ${pitch.upvotes}</button>
+                    <button onclick="submissionManager.downvotePitch(${index})">👎 ${pitch.downvotes}</button>
+                </div>
+                <button onclick="submissionManager.showFeedbackModal(${index})">Give Feedback</button>
+                <div id="feedback-display-${index}" class="feedback-display">
+                    ${this.renderFeedbacks(index)}
+                </div>
+            </div>
+        `).join('');
     }
 
-    renderFeedbacks() {
-        const feedbackDisplay = document.getElementById('feedback-display');
-        feedbackDisplay.innerHTML = this.feedbacks.map(feedback => `<div>${feedback}</div>`).join('');
+    renderFeedbacks(pitchIndex) {
+        const feedbackDisplay = document.getElementById(`feedback-display-${pitchIndex}`);
+        if (!feedbackDisplay || !this.feedbacks[pitchIndex]) return "";
+        feedbackDisplay.innerHTML = this.feedbacks[pitchIndex].map(
+            feedback => `<p>${feedback.timestamp}: ${feedback.feedback}</p>`
+        ).join('');
     }
 
-    showModal() {
+    showModal(message) {
         const modal = document.getElementById('feedback-modal');
         modal.style.display = 'block';
-        const closeButton = document.querySelector('.close-button');
-        closeButton.onclick = () => modal.style.display = 'none';
-        window.onclick = event => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
+        modal.querySelector('.modal-content p').innerText = message;
+        modal.querySelector('.close-button').onclick = () => modal.style.display = 'none';
+    }
+
+    showFeedbackModal(index) {
+        const feedbackInput = prompt("Enter your feedback:");
+        if (feedbackInput.trim()) {
+            this.submitFeedback(feedbackInput, index);
+        }
     }
 
     downloadJSON() {
@@ -75,12 +112,16 @@ class SubmissionManager {
     }
 }
 
+// Expanded prompt list
 const prompts = [
-    "Invent a new app that solves a common problem.",
-    "Create a story that starts with a character finding a mysterious object.",
-    "Design a gadget that can help in daily life.",
-    "Pitch an innovative business idea focused on sustainability.",
-    "Imagine a world where technology has completely changed education."
+    "Invent an app that helps users disconnect from screens and reconnect with nature.",
+    "Pitch a business model focused on converting waste into sustainable materials.",
+    "Design a story that follows a character who uncovers a hidden, tech-free civilization.",
+    "Create a gadget to help people manage daily stress in innovative ways.",
+    "Develop an app aimed at making physical exercise more social and enjoyable.",
+    "Imagine a world where AI governs society. Pitch the pros and cons.",
+    "Write a sci-fi story about the first human settlement on a distant planet.",
+    // Add more prompts as needed
 ];
 
 const promptGenerator = new PromptGenerator(prompts);
@@ -94,27 +135,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('submit-pitch').addEventListener('click', () => {
         const pitchInput = document.getElementById('pitch-input');
-        if (pitchInput.value.trim() !== "") {
-            submissionManager.submitPitch(pitchInput.value);
-            pitchInput.value = ""; // Clear input
+        const user = prompt("Please enter your username:");
+        if (pitchInput.value.trim() && user.trim()) {
+            submissionManager.submitPitch(pitchInput.value, user);
+            pitchInput.value = "";
         } else {
-            alert("Please enter a pitch before submitting.");
+            alert("Please enter a pitch and username before submitting.");
         }
     });
 
     document.getElementById('submit-feedback').addEventListener('click', () => {
         const feedbackInput = document.getElementById('feedback-input');
-        if (feedbackInput.value.trim() !== "") {
-            submissionManager.submitFeedback(feedbackInput.value);
-            feedbackInput.value = ""; // Clear input
+        const pitchIndex = prompt("Enter the pitch index for feedback:");
+        if (feedbackInput.value.trim() && pitchIndex !== null) {
+            submissionManager.submitFeedback(feedbackInput.value, parseInt(pitchIndex, 10));
+            feedbackInput.value = "";
         } else {
-            alert("Please enter feedback before submitting.");
+            alert("Please enter feedback and specify a pitch index.");
         }
     });
 
-    // New button for downloading JSON
     const downloadButton = document.createElement('button');
     downloadButton.innerText = 'Download Submissions as JSON';
     downloadButton.addEventListener('click', () => submissionManager.downloadJSON());
-    document.body.appendChild(downloadButton); // Append the button to the body
+    document.body.appendChild(downloadButton);
 });
+function upvote(button) {
+    const voteCountElement = button.nextElementSibling;
+    let count = parseInt(voteCountElement.textContent, 10);
+    voteCountElement.textContent = count + 1;
+}
+
+function downvote(button) {
+    const voteCountElement = button.previousElementSibling;
+    let count = parseInt(voteCountElement.textContent, 10);
+    voteCountElement.textContent = count - 1;
+}
