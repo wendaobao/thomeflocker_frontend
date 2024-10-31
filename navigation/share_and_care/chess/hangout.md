@@ -5,7 +5,6 @@ permalink: /chess/hangout
 comments: true
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -90,13 +89,12 @@ comments: true
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
         .user-message {
-            background-color: #222;
             text-align: right;
             margin-left: auto;
             border-radius: 15px 15px 0 15px;
         }
         .bot-message {
-            background-color: #333;
+            background-color: #b29800;
             text-align: left;
             margin-right: auto;
             border-radius: 15px 15px 15px 0;
@@ -215,10 +213,26 @@ comments: true
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
 
+        let userColors = {};
+
+        function getRandomColor() {
+            const colors = ["#8a7b6d", "#77665c", "#634944", "#504238", "#3d3832", "#6b665a", "#d9ae7d"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
         function addMessage(text, isBot = false) {
             const msgElement = document.createElement('p');
             msgElement.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
             msgElement.textContent = text;
+
+            if (!isBot) {
+                const userId = `user_${messages.length}`; // Assign a unique user ID
+                if (!userColors[userId]) {
+                    userColors[userId] = getRandomColor();
+                }
+                msgElement.style.backgroundColor = userColors[userId];
+            }
+
             chatMessages.appendChild(msgElement);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -233,8 +247,10 @@ comments: true
         }
 
         function respondToUserMessage(userMessage) {
-            const botResponse = "Got it! Let's keep chatting.";
-            setTimeout(() => addMessage(botResponse, true), 1000);
+            setTimeout(() => {
+                const botResponse = "Thanks for sharing! Let's keep the conversation going.";
+                addMessage(botResponse, true);
+            }, 1000);
         }
 
         sendBtn.addEventListener('click', handleUserMessage);
