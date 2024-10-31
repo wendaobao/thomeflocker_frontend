@@ -20,7 +20,7 @@ permalink: /rateandrelate/update_the_nest/
     display: inline;
     float: left;
     width: 50%;
-     transform: translateX(20px) translateY(20px);
+     transform: translateX(20px) translateY(100px);
 }
 
 .feed {
@@ -93,7 +93,7 @@ permalink: /rateandrelate/update_the_nest/
 
 <div class="feed">
     <div class="post">
-             <h2> Feed </h2>
+             <h1> Feed </h1>
         <div class="imageContainer">
             <img src="{{site.baseurl}}/images/tempPhoto.jpg">
         </div>
