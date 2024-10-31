@@ -21,7 +21,7 @@ description: Flavor Fusion main page
         padding: 0;
     }
 
-    main {
+    .flavorflux  {
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -83,15 +83,9 @@ description: Flavor Fusion main page
     .left, .right {
         width: 100%; /* Make them stack on small screens */
     }
-
-    .right {
-        display: flex;
-        flex-direction: column; /* Aligns contents in the right column vertically */
-        align-items: flex-start; /* Aligns items to the start */
-    }
 </style>
 
-<div id="flavorfux">
+<div id="flavorflux">
     <div class="left">
         <h1>Profile</h1>
         <p><strong>Username:</strong> timmy</p>
@@ -109,15 +103,9 @@ description: Flavor Fusion main page
             </ul>
         </div>
     </div>
-    <div class="right">
-        <h2>Your Combos</h2>
-        <div class="combo">
-            <h3>Bob Combo</h3>
-            <p>Code: 1i5jn. I am juanbobojohn</p>
-        </div>
-    </div>
 </div>
-<button onclick="timmy()">Main Page</button>
+<button onclick="mainPage()">Main Page</button>
+<button onclick="leaderboard()">Leaderboard</button>
 
 <script>
     window.currentPage = "/";
@@ -182,16 +170,60 @@ description: Flavor Fusion main page
                     <button type="submit" onclick="addComment('456');">Submit</button>
                 </form>
             </div>
-        </div>
-        <div class="right">
-            <h2>Your Combos</h2>
-            <div class="combo">
-                <h3>Bob Combo</h3>
-                <p>Code: 1i5jn. I am juanbobojohn</p>
-            </div>
         </div>`;
 
-    function timmy() {
+        let leaderboardCode = `<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Chef</th>
+<th>Combos</th>
+<th>Spins</th>
+<th>Average Rating</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Claire</td>
+<td>18893</td>
+<td>38909</td>
+<td>4.99</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mickey</td>
+<td>18687</td>
+<td>37012</td>
+<td>4.95</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Minnie</td>
+<td>17234</td>
+<td>36890</td>
+<td>4.87</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Donald</td>
+<td>15873</td>
+<td>29734</td>
+<td>4.55</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Goofy</td>
+<td>13731</td>
+<td>28394</td>
+<td>4.32</td>
+</tr>
+</tbody></table>`;
+
+    function mainPage() {
         document.getElementById("flavorflux").innerHTML = mainCode;
+    }
+
+    function leaderboard() {
+      document.getElementById("flavorflux").innerHTML = leaderboardCode;
     }
 </script>
