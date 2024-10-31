@@ -109,7 +109,7 @@ h2 {
 
 /* Modal Styling */
 #feedback-modal {
-    display: none; /* Default to hidden */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -172,21 +172,4 @@ h2 {
     .modal-content {
         width: 90%;
     }
-}
-
-/* Styling for the category dropdown */
-#category-select {
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Styling for the generated prompt display */
-#prompt-display {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 15px;
-    color: #333;
 }
