@@ -5,6 +5,7 @@ permalink: /chess/hangout
 comments: true
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -55,36 +56,47 @@ comments: true
         }
         .chat-box {
             width: 30%;
-            background-color: #2a2a2a;
+            background-color: #1a1a1a;
             padding: 20px;
             border-radius: 8px;
+            border: 2px solid #444;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .chat-box h4 {
+            color: #f7dc6f;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
         }
         .chat-messages {
             height: 400px;
             overflow-y: scroll;
+            background-color: #1b1b1b;
             border: 2px solid #444;
             margin-bottom: 15px;
             padding: 10px;
-            background-color: #333;
             border-radius: 10px;
         }
         .message {
-            padding: 12px;
+            padding: 10px 15px;
             border-radius: 10px;
             margin: 8px 0;
             font-size: 16px;
             word-wrap: break-word;
             display: inline-block;
             max-width: 80%;
+            color: #f0f0f0;
+            border: 1px solid #444;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
         .user-message {
+            background-color: #222;
             text-align: right;
             margin-left: auto;
             border-radius: 15px 15px 0 15px;
         }
         .bot-message {
-            background-color: #1f8f4b;
-            color: white;
+            background-color: #333;
             text-align: left;
             margin-right: auto;
             border-radius: 15px 15px 15px 0;
@@ -93,7 +105,14 @@ comments: true
             content: " 🤖";
         }
         .message-input {
-            margin-top: 10px;
+            display: flex;
+            gap: 5px;
+        }
+        .message-input input {
+            flex-grow: 1;
+            background-color: #2a2a2a;
+            border: 1px solid #555;
+            color: #f0f0f0;
         }
         .send-btn {
             background-color: #444;
@@ -114,12 +133,12 @@ comments: true
 
             <!-- Chat Section -->
             <div class="chat-box">
-                <h4 class="text-center">Chess-Themed Chat Room</h4>
+                <h4>Chess-Themed Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
 
                 <div class="message-input">
                     <input type="text" id="messageInput" class="form-control" placeholder="Type your message">
-                    <button id="sendBtn" class="btn send-btn mt-2">Send</button>
+                    <button id="sendBtn" class="btn send-btn">Send</button>
                 </div>
             </div>
         </div>
@@ -190,24 +209,15 @@ comments: true
         generateBoard();
     </script>
 
-    <!-- JS for Chat and Moderation Bot functionality with Unique User Colors -->
+    <!-- JS for Chat and Moderation Bot functionality -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
 
-        const userColors = ['#3498db', '#9b59b6', '#e74c3c', '#f1c40f', '#1abc9c'];
-        let userColorIndex = 0;
-
-        let messages = [];
-
         function addMessage(text, isBot = false) {
-            const color = isBot ? '#27ae60' : userColors[userColorIndex % userColors.length];
-            userColorIndex++;
-
             const msgElement = document.createElement('p');
             msgElement.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
-            msgElement.style.backgroundColor = color;
             msgElement.textContent = text;
             chatMessages.appendChild(msgElement);
             chatMessages.scrollTop = chatMessages.scrollHeight;
