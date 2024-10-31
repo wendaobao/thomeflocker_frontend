@@ -7,7 +7,7 @@ description: Login and explore our social media hub for everything DNHS
 hide: true
 menu: nav/home.html
 ---
-
+<a href="{{site.baseurl}}create_and_compete/culinarypage">Culinary Page</a>
 <details>
   <summary>Room Details</summary>
 
