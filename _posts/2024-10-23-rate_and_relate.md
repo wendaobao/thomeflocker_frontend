@@ -1,9 +1,9 @@
 ---
 toc: true
 layout: post
-title: Rate and Relate
+title: Update the Nest
 description:
-permalink: /rateandrelate/ 
+permalink: /updatethenest/ 
 ---
 <style>
 
