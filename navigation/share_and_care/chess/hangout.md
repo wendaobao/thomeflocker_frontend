@@ -4,7 +4,8 @@ title: Chess Hangout
 permalink: /chess/hangout
 comments: true
 ---
-<!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -192,7 +193,7 @@ comments: true
         generateBoard();
     </script>
 
-    <!-- JS to handle chat and bot functionality -->
+    <!-- JS to handle chat and moderator bot functionality -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
@@ -225,28 +226,41 @@ comments: true
             }
         }
 
+        // Inappropriate keywords for moderation
+        const inappropriateWords = ['badword1', 'badword2', 'badword3']; // Replace with actual words
+
+        function isInappropriate(message) {
+            return inappropriateWords.some(word => message.toLowerCase().includes(word));
+        }
+
         function respondToUserMessage(userMessage) {
-            const lowerMessage = userMessage.toLowerCase();
-            let botResponse;
-
-            if (lowerMessage.includes('opening')) {
-                botResponse = "Consider starting with the King's Pawn or Queen's Pawn opening!";
-            } else if (lowerMessage.includes('move')) {
-                botResponse = "Focus on controlling the center and developing pieces. Move safely!";
-            } else if (lowerMessage.includes('check')) {
-                botResponse = "You’re putting pressure on the opponent! Aim for more control.";
-            } else if (lowerMessage.includes('blunder')) {
-                botResponse = "It's okay! Recover by focusing on protecting your King and controlling the center.";
-            } else if (lowerMessage.includes('fork')) {
-                botResponse = "Great tactic! A fork can put significant pressure on your opponent.";
+            if (isInappropriate(userMessage)) {
+                const botResponse = "Please refrain from using inappropriate language. Let's keep the chat friendly!";
+                setTimeout(() => addMessage(botResponse, true), 1000);
             } else {
-                botResponse = "I'm here to chat! Let me know if you want advice on specific moves or tactics.";
-            }
+                const lowerMessage = userMessage.toLowerCase();
+                let botResponse;
 
-            setTimeout(() => addMessage(botResponse, true), 1000); // Slight delay for bot response
+                if (lowerMessage.includes('chess')) {
+                    botResponse = "Great topic! Remember to review your strategies.";
+                } else if (lowerMessage.includes('help')) {
+                    botResponse = "If you need help, feel free to ask specific questions about chess!";
+                } else {
+                    botResponse = "Thanks for sharing! Let's keep the conversation going.";
+                }
+
+                setTimeout(() => addMessage(botResponse, true), 1000);
+            }
         }
 
         sendBtn.addEventListener('click', handleUserMessage);
+
+        // Optional: Automatically respond if no activity is detected
+        setInterval(() => {
+            if (messages.length > 0 && (Date.now() - messages[messages.length - 1].timestamp > 30000)) {
+                addMessage("It's a bit quiet! What do you think about chess strategies?", true);
+            }
+        }, 30000);
     </script>
 </body>
 </html>
