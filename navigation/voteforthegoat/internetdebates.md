@@ -8,21 +8,23 @@ comments: true
 ---
 
 # Community Rules/Guidelines:
-<div id="rules-section">
-    <ul>
-        <li>Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.</li>
-        <li>Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.</li>
-        <li>Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.</li>
-        <li>Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.</li>
-        <li>One Account Only: Just one account per person—no extra accounts to sway votes.</li>
-        <li>Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.</li>
-        <li>Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.</li>
-        <li>Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.</li>
-    </ul>
+<div id="rules-popup" class = "modal">
+    <div class="modal-content">
+        <h2>Community Rules/Guidelines</h2>
+        <ul>
+            <li>Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.</li>
+            <li>Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.</li>
+            <li>Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.</li>
+            <li>Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.</li>
+            <li>One Account Only: Just one account per person—no extra accounts to sway votes.</li>
+            <li>Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.</li>
+            <li>Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.</li>
+            <li>Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.</li>
+        </ul>
+        <button id="acknowledge-rules" class="acknowledge-btn">I have read and acknowledged the rules</button>
+    </div>
 </div>
 
-<button id="acknowledge-rules" class="acknowledge-btn">I have read and acknowledged the rules</button>
-<button id="show-rules" class="acknowledge-btn" style="display: none;">Rules</button>
 
 <head>
     <title>Internet Debate Forum</title>
@@ -43,7 +45,42 @@ comments: true
             height: 100vh;
             padding: 1rem;
         }
+         .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .modal-content li {
+            margin-bottom: 10px;
+        }
         .container {
             width: 100%;
             max-width: 800px;
@@ -209,22 +246,14 @@ comments: true
 </head>
 <body>
     <script>
-        document.getElementById('acknowledge-rules').addEventListener('click', function() {
-            var rulesSection = document.getElementById('rules-section');
-            var acknowledgeButton = document.getElementById('acknowledge-rules');
-            var showRulesButton = document.getElementById('show-rules');
-            rulesSection.style.display = 'none';
-            acknowledgeButton.style.display = 'none';
-            showRulesButton.style.display = 'block';
+       document.getElementById('acknowledge-rules').addEventListener('click', function() {
+            var rulesPopup = document.getElementById('rules-popup');
+            rulesPopup.style.display = 'none';
         });
-        document.getElementById('show-rules').addEventListener('click', function() {
-            var rulesSection = document.getElementById('rules-section');
-            var acknowledgeButton = document.getElementById('acknowledge-rules');
-            var showRulesButton = document.getElementById('show-rules');
-            rulesSection.style.display = 'block';
-            acknowledgeButton.style.display = 'block';
-            showRulesButton.style.display = 'none';
-        });
+        window.onload = function() {
+            var rulesPopup = document.getElementById('rules-popup');
+            rulesPopup.style.display = 'flex';
+        };
     </script>
     <div class="container">
         <header>
