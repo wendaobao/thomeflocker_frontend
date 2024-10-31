@@ -4,7 +4,7 @@ title: Chess Hangout
 permalink: /chess/hangout
 comments: true
 ---
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,10 +62,10 @@ comments: true
         .chat-messages {
             height: 400px;
             overflow-y: scroll;
-            border: 1px solid #444;
+            border: 2px solid #444;
             margin-bottom: 15px;
             padding: 10px;
-            background-color: #1b1b1b;
+            background-color: #333;
             border-radius: 10px;
         }
         .message {
@@ -78,14 +78,12 @@ comments: true
             max-width: 80%;
         }
         .user-message {
-            background-color: #3498db;
-            color: white;
             text-align: right;
             margin-left: auto;
             border-radius: 15px 15px 0 15px;
         }
         .bot-message {
-            background-color: #27ae60;
+            background-color: #1f8f4b;
             color: white;
             text-align: left;
             margin-right: auto;
@@ -116,7 +114,7 @@ comments: true
 
             <!-- Chat Section -->
             <div class="chat-box">
-                <h4 class="text-center">Chat Room</h4>
+                <h4 class="text-center">Chess-Themed Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
 
                 <div class="message-input">
@@ -192,80 +190,28 @@ comments: true
         generateBoard();
     </script>
 
-    <!-- JS for Chat and Enhanced Moderation Bot functionality -->
+    <!-- JS for Chat and Moderation Bot functionality with Unique User Colors -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
 
-        const inappropriateWords = ['badword1', 'badword2', 'badword3']; // Replace with actual words or regex patterns
+        const userColors = ['#3498db', '#9b59b6', '#e74c3c', '#f1c40f', '#1abc9c'];
+        let userColorIndex = 0;
 
         let messages = [];
 
         function addMessage(text, isBot = false) {
-            messages.push({ text, isBot, timestamp: Date.now() });
-            renderMessages();
+            const color = isBot ? '#27ae60' : userColors[userColorIndex % userColors.length];
+            userColorIndex++;
+
+            const msgElement = document.createElement('p');
+            msgElement.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
+            msgElement.style.backgroundColor = color;
+            msgElement.textContent = text;
+            chatMessages.appendChild(msgElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
-        function renderMessages() {
-            chatMessages.innerHTML = '';
-            messages.forEach(msg => {
-                const msgElement = document.createElement('p');
-                msgElement.className = `message ${msg.isBot ? 'bot-message' : 'user-message'}`;
-                msgElement.textContent = msg.text;
-                chatMessages.appendChild(msgElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            });
-        }
-
-        function isInappropriate(message) {
-            const regex = new RegExp(inappropriateWords.join('|'), 'i');
-            return regex.test(message);
-        }
-
-        function detectSentiment(message) {
-            const negativeWords = ['sad', 'angry', 'frustrated', 'dislike'];
-            const positiveWords = ['love', 'happy', 'great', 'excited'];
-            
-            const isNegative = negativeWords.some(word => message.toLowerCase().includes(word));
-            const isPositive = positiveWords.some(word => message.toLowerCase().includes(word));
-
-            return isNegative ? 'negative' : isPositive ? 'positive' : 'neutral';
-        }
-
-        function respondToUserMessage(userMessage) {
-            if (isInappropriate(userMessage)) {
-                const warningMessage = "Please avoid inappropriate language. This is a friendly space!";
-                setTimeout(() => addMessage(warningMessage, true), 1000);
-                return;
-            }
-
-            const sentiment = detectSentiment(userMessage);
-            let botResponse;
-
-            if (sentiment === 'negative') {
-                botResponse = "I'm here to help! Anything in chess I can assist you with?";
-            } else if (sentiment === 'positive') {
-                botResponse = "I'm glad you're enjoying the conversation! Any favorite chess openings?";
-            } else if (userMessage.toLowerCase().includes('help')) {
-                botResponse = "I can guide you on chess strategies! Any specific area you'd like advice on?";
-            } else if (userMessage.toLowerCase().includes('chess')) {
-                botResponse = "Chess is a game of patience and strategy. Have you been practicing any openings?";
-            } else {
-                botResponse = "Thanks for sharing! Let's keep the chat active.";
-            }
-
-            setTimeout(() => addMessage(botResponse, true), 1000);
-        }
-
-        // Auto-engage after inactivity
-        setInterval(() => {
-            if (messages.length > 0 && Date.now() - messages[messages.length - 1].timestamp > 30000) {
-                addMessage("It's quiet here! Any thoughts on recent chess games or strategies?", true);
-            }
-        }, 30000);
-
-        sendBtn.addEventListener('click', handleUserMessage);
 
         function handleUserMessage() {
             const userMessage = messageInput.value.trim();
@@ -275,8 +221,18 @@ comments: true
                 respondToUserMessage(userMessage);
             }
         }
+
+        function respondToUserMessage(userMessage) {
+            const botResponse = "Got it! Let's keep chatting.";
+            setTimeout(() => addMessage(botResponse, true), 1000);
+        }
+
+        sendBtn.addEventListener('click', handleUserMessage);
+        messageInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
     </script>
 </body>
 </html>
-
-
