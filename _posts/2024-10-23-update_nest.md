@@ -7,13 +7,6 @@ permalink: /rateandrelate/update_the_nest/
 ---
 <style>
 
-    .post {
-    border: 2px solid #1509; 
-    border-radius: 10px;
-    background-color: light pink; 
-    padding: 10px;
-    margin: 20px; 
-    }
 
 .textContainer {
     transform: translateY(20px)
