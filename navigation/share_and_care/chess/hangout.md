@@ -214,6 +214,7 @@ comments: true
         const sendBtn = document.getElementById('sendBtn');
 
         let userColors = {};
+        let userIdCounter = 0;
 
         function getRandomColor() {
             const colors = ["#8a7b6d", "#77665c", "#634944", "#504238", "#3d3832", "#6b665a", "#d9ae7d"];
@@ -226,7 +227,7 @@ comments: true
             msgElement.textContent = text;
 
             if (!isBot) {
-                const userId = `user_${messages.length}`; // Assign a unique user ID
+                const userId = `user_${userIdCounter++}`;
                 if (!userColors[userId]) {
                     userColors[userId] = getRandomColor();
                 }
