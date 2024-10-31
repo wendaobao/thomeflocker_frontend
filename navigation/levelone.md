@@ -5,20 +5,29 @@ search_exclude: true
 permalink: /levelone/
 ---
     
-
 # 🔐 **Cipher Challenge: Level 1**
 
-Welcome to **Level 1** of the Cipher Challenge! 🧩 Get ready to put your code-breaking skills to the test. Decipher the message, find the hidden phrase, and unlock the path to the next level.
+Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
 
 ---
 
 ## 🔍 **Challenge Objective**
 
-Your goal is to **decode the hidden message** provided. Use your problem-solving skills and creativity to reveal the secret phrase.
+Your goal is to **decode the hidden message** below using a Caesar Cipher technique. Find the hidden word to unlock the path to the next level.
 
 ---
 
 ## 🧩 **Hints to Get You Started**
+
+1. Each letter in the message has been **shifted forward by 3**. To decode it, shift each letter **back by 3**.
+2. Example: If the coded letter is "D," shifting back by 3 reveals "A."
+3. The message should make sense once decoded—trust your instincts on the word!
+
+---
+
+## 🔢 **Cipher Text**
+
+
 
 1. The numbers might correspond to **ASCII characters** or **another encoding format**.
 2. Pay attention to the **structure of the numbers**—do they look like hex, binary, or something else?
@@ -55,6 +64,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
+  const correctAnswer = '12345'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');
@@ -63,7 +73,19 @@ This is a basic chat box rendered with HTML inside Markdown.
     messageElement.style.margin = '5px 0';
     messageElement.style.padding = '5px';
     messageElement.style.borderRadius = '5px';
-    messageElement.style.backgroundColor = className === 'user-message' ? '#dcf8c6' : '#e0e0e0';
+    messageElement.style.backgroundColor = className === 'user-message' ? 'black' : 'red';
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+function addCorrectMessage(text, className) {
+    const messageElement = document.createElement('div');
+    messageElement.className = className;
+    messageElement.textContent = text;
+    messageElement.style.margin = '5px 0';
+    messageElement.style.padding = '5px';
+    messageElement.style.borderRadius = '5px';
+    messageElement.style.backgroundColor = className === 'user-message' ? 'black' : 'green';
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
@@ -71,11 +93,20 @@ This is a basic chat box rendered with HTML inside Markdown.
   sendButton.addEventListener('click', () => {
     const userMessage = chatInput.value.trim();
     if (userMessage) {
-      addMessage(`User: ${userMessage}`, 'user-message');
+      addMessage(`Your answer is: ${userMessage}`, 'user-message');
       chatInput.value = '';
-      setTimeout(() => {
-        addMessage("Bot: I'm here to help!", 'bot-message');
-      }, 1000);
+
+      // Check if the message is correct
+      if (userMessage === correctAnswer) {
+        setTimeout(() => {
+          
+          addCorrectMessage("Correct answer! Now you can move on!", 'bot-message');
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          addMessage("Try again!", 'bot-message');
+        }, 1000);
+      }
     }
   });
 
@@ -83,5 +114,6 @@ This is a basic chat box rendered with HTML inside Markdown.
     if (e.key === 'Enter') sendButton.click();
   });
 </script>
+
 
 This is a simple interactive chat box. Type a message and hit "Send" or press "Enter" to see it displayed.
