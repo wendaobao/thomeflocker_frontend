@@ -5,10 +5,11 @@ description: Genres
 permalink: /voteforthegoat/genres/
 comments: true
 ---
-<html lang=“en”>
+
+<html lang="en">
 <head>
-    <meta charset=“UTF-8">
-    <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Genre Poll</title>
     <style>
         body {
@@ -35,12 +36,17 @@ comments: true
             flex-direction: column;
             align-items: center;
         }
+        .vinyl-item button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
         .vinyl-item img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
             transition: transform 0.3s;
         }
         .vinyl-item img:hover {
@@ -62,9 +68,6 @@ comments: true
             width: 50px;
             text-align: center;
         }
-        .button-container {
-            text-align: center;
-        }
         .button-container button {
             padding: 10px 20px;
             font-size: 16px;
@@ -82,42 +85,63 @@ comments: true
     </style>
 </head>
 <body>
-    <div class=“container”>
-        <div class=“vinyl-grid”>
-            <div class=“vinyl-item”>
-                <img src=“/flocker_frontend/images/vinyl.jpg” alt=“Rock Vinyl” onclick=“alert(‘Rock selected!’)“>
+    <div class="container">
+        <div class="vinyl-grid">
+            <div class="vinyl-item">
+                <button onclick="vote('Rock')">
+                    <img src="/flocker_frontend/images/whitevinyl.png" alt="Rock Vinyl">
+                </button>
                 <span>Rock</span>
             </div>
-            <div class=“vinyl-item”>
-                <img src=“/flocker_frontend/images/vinyl.jpg” alt=“Pop Vinyl” onclick=“alert(‘Pop selected!’)“>
+            <div class="vinyl-item">
+                <button onclick="vote('Pop')">
+                    <img src="/flocker_frontend/images/whitevinyl.png" alt="Pop Vinyl">
+                </button>
                 <span>Pop</span>
             </div>
-            <div class=“vinyl-item”>
-                <img src=“/flocker_frontend/images/vinyl.jpg” alt=“Hip-Hop Vinyl” onclick=“alert(‘Hip-Hop selected!’)“>
+            <div class="vinyl-item">
+                <button onclick="vote('Hip-Hop')">
+                    <img src="/flocker_frontend/images/whitevinyl.png" alt="Hip-Hop Vinyl">
+                </button>
                 <span>Hip-Hop</span>
             </div>
-            <div class=“vinyl-item”>
-                <img src=“/flocker_frontend/images/vinyl.jpg” alt=“Jazz Vinyl” onclick=“alert(‘Jazz selected!’)“>
+            <div class="vinyl-item">
+                <button onclick="vote('Jazz')">
+                    <img src="/flocker_frontend/images/whitevinyl.png" alt="Jazz Vinyl">
+                </button>
                 <span>Jazz</span>
             </div>
-            <div class=“vinyl-item”>
-                <img src=“/flocker_frontend/images/vinyl.jpg” alt=“Classical Vinyl” onclick=“alert(‘Classical selected!’)“>
+            <div class="vinyl-item">
+                <button onclick="vote('Classical')">
+                    <img src="/flocker_frontend/images/whitevinyl.png" alt="Classical Vinyl">
+                </button>
                 <span>Classical</span>
             </div>
-            <div class=“vinyl-item”>
-                <img src=“/flocker_frontend/images/vinyl.jpg” alt=“Electronic Vinyl” onclick=“alert(‘Electronic selected!’)“>
+            <div class="vinyl-item">
+                <button onclick="vote('Electronic')">
+                    <img src="/flocker_frontend/images/whitevinyl.png" alt="Electronic Vinyl">
+                </button>
                 <span>Electronic</span>
             </div>
         </div>
-        <div class=“input-container”>
-            <label for=“grade”>What grade are you in?</label>
-            <input type=“text” id=“grade” name=“grade” placeholder=“Enter grade”>
+        <div class="input-container">
+            <label for="grade">What grade are you in?</label>
+            <input type="text" id="grade" name="grade" placeholder="Enter grade">
         </div>
-        <label for=“genre”>Click on one vinyl to select your favorite genre</label>
-        <div class=“button-container”>
-            <button onclick=“alert(‘Music report coming soon!’)“>See Your Music Report and Recommendations!</button>
+        <label for="genre">Pick Your Favorite Genre Out of These!</label>
+        <div class="button-container">
+            <button onclick="showReport()">See Your Music Report And Recommendations!</button>
         </div>
     </div>
+
+    <script>
+        function vote(genre) {
+            alert(genre + " selected!");
+        }
+
+        function showReport() {
+            alert("Music report coming soon!");
+        }
+    </script>
 </body>
 </html>
-<body style=“background-color: pink !important;“>
