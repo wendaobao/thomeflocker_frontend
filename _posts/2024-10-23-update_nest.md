@@ -3,7 +3,7 @@ toc: true
 layout: post
 title: Update the Nest
 description:
-permalink: /updatethenest/ 
+permalink: /rateandrelate/update_the_nest/
 ---
 <style>
 
