@@ -25,5 +25,6 @@ author: Manas, Lalita, Shriya, Ethan
 
 </details>
 
+<h2>Check out our game!! (Still in Beta)</h2>
 <a href="{{site.baseurl}}/create_and_compete/elevatorpitchgame">Elevator Pitch UI</a>
 
