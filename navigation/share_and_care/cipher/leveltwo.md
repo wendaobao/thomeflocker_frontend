@@ -4,9 +4,11 @@ title: Levelone
 search_exclude: true
 permalink: /leveltwo/
 ---
-# 🔐 **Cipher Challenge: Level 1**
+# 🔐 **Cipher Challenge: Level 2**
 
-Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
+Welcome to **Level** 2 of the Cipher Challenge! 🧩 This level tests your skills with a slightly tougher message. Decode it and advance!
+
+
 
 ---
 
@@ -18,19 +20,19 @@ Your goal is to **decode the hidden message** below using a Caesar Cipher techni
 
 ## 🧩 **Hints to Get You Started**
 
-1. Each letter in the message has been **shifted forward by 3**. To decode it, shift each letter **back by 3**.
-2. Example: If the coded letter is "D," shifting back by 3 reveals "A."
-3. The message should make sense once decoded—trust your instincts on the word!
+1. Each letter in the message has been ****shifted forward by 5**. To decode it, shift each letter **back by 5**.
+2. Example: If the coded letter is "F," shifting back by 5 reveals "A."
+3. After decryption, the message should be a coherent sentence—trust the flow of the words!
 
 ---
 
 ## 🔢 **Cipher Text**
 
 Ciphered message:  
-`Krod, Krz duh brx grlqj? Brx duh doprvw wkhuh!`
+`Mtxk, Mtb zlud htj fmnsj? F dtz htwt jzzy jshw ymjwj!`
 
-1. **Hint**: Shift each letter **back by 3** to reveal the message.
-2. **Hint**: Trust that each word will form a coherent sentence after decryption.
+1. **Hint**: Hint: Shift each letter **back by 5** to reveal the message.
+2. **Hint**: Decryption should lead to a phrase that makes logical sense!
 
 ---
 
@@ -63,7 +65,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
-  const correctAnswer = 'Hold, How are you doing? You are almost there!'; // Define the correct answer here
+  const correctAnswer = 'Hope, How will you manage? A you move into next level!'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');

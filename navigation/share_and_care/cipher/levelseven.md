@@ -5,33 +5,33 @@ search_exclude: true
 permalink: /levelseven/
 ---
 
-# 🔐 **Cipher Challenge: Level 1**
+# 🔐 **Cipher Challenge: Level 7**
 
-Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
+You’ve made it to **Level 7!** 🧩 Now it’s time for a Vigenère Cipher, adding a new level of complexity.
 
 ---
 
 ## 🔍 **Challenge Objective**
 
-Your goal is to **decode the hidden message** below using a Caesar Cipher technique. Find the hidden word to unlock the path to the next level.
+Decode the message below using a **Vigenère Cipher** with the keyword **"STAR".**
 
 ---
 
 ## 🧩 **Hints to Get You Started**
 
-1. Each letter in the message has been **shifted forward by 3**. To decode it, shift each letter **back by 3**.
-2. Example: If the coded letter is "D," shifting back by 3 reveals "A."
-3. The message should make sense once decoded—trust your instincts on the word!
+1. A **Vigenère Cipher** uses the keyword to shift each letter in a rotating pattern.
+2. Use the keyword "STAR" to guide the shifts.
+3. Example: Each letter in "STAR" represents a shift for each corresponding letter in the ciphered message.
 
 ---
 
 ## 🔢 **Cipher Text**
 
 Ciphered message:  
-`Krod, Krz duh brx grlqj? Brx duh doprvw wkhuh!`
+`Rvmj, Js zq vbgy oqtwu? Qzr vjg yp kfie oq hrqi!`
 
-1. **Hint**: Shift each letter **back by 3** to reveal the message.
-2. **Hint**: Trust that each word will form a coherent sentence after decryption.
+1. **Hint**: Use **"STAR"** as the keyword to decode the message.
+2. **Hint**: Focus on recognizing short words and repeating patterns for guidance.
 
 ---
 
@@ -64,7 +64,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
-  const correctAnswer = 'Hold, How are you doing? You are almost there!'; // Define the correct answer here
+  const correctAnswer = 'Well, Is it clear now? You have the key to the end!'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');

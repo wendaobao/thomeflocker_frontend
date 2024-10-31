@@ -5,33 +5,35 @@ search_exclude: true
 permalink: /levelfour/
 ---
 
-# 🔐 **Cipher Challenge: Level 1**
+# 🔐 **Cipher Challenge: Level 4**
 
-Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
+You’ve reached **Level 4!** 🧩 Let’s see if you can keep decoding.
+
+
 
 ---
 
 ## 🔍 **Challenge Objective**
 
-Your goal is to **decode the hidden message** below using a Caesar Cipher technique. Find the hidden word to unlock the path to the next level.
+Decode the message below with a new shift.
 
 ---
 
 ## 🧩 **Hints to Get You Started**
 
-1. Each letter in the message has been **shifted forward by 3**. To decode it, shift each letter **back by 3**.
-2. Example: If the coded letter is "D," shifting back by 3 reveals "A."
-3. The message should make sense once decoded—trust your instincts on the word!
+1. Each letter has been **shifted forward by 10**. Shift **back by 10** to decode.
+2. Example: If the coded letter is "K," shifting back by 10 reveals "A."
+3. Read carefully for familiar patterns.
 
 ---
 
 ## 🔢 **Cipher Text**
 
 Ciphered message:  
-`Krod, Krz duh brx grlqj? Brx duh doprvw wkhuh!`
+`Yviu, Yvi sky pc emncx? L jzn zg nyjwh xlwv zm jzevr!`
 
-1. **Hint**: Shift each letter **back by 3** to reveal the message.
-2. **Hint**: Trust that each word will form a coherent sentence after decryption.
+1. **Hint**: Shift back by 10.
+2. **Hint**: Some words may seem intuitive while decoding.
 
 ---
 
@@ -64,7 +66,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
-  const correctAnswer = 'Hold, How are you doing? You are almost there!'; // Define the correct answer here
+  const correctAnswer = 'Come, You are in track? B keep up with the work!'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');

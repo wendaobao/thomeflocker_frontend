@@ -7,31 +7,32 @@ permalink: /levelten/
 
 # 🔐 **Cipher Challenge: Level 1**
 
-Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
+Welcome to the **final level—Level 10**! 🧩 This last challenge uses a **Substitution Cipher** to test your skill.
+
 
 ---
 
 ## 🔍 **Challenge Objective**
 
-Your goal is to **decode the hidden message** below using a Caesar Cipher technique. Find the hidden word to unlock the path to the next level.
+Decode the message by figuring out the consistent letter substitutions.
 
 ---
 
 ## 🧩 **Hints to Get You Started**
 
-1. Each letter in the message has been **shifted forward by 3**. To decode it, shift each letter **back by 3**.
-2. Example: If the coded letter is "D," shifting back by 3 reveals "A."
-3. The message should make sense once decoded—trust your instincts on the word!
+1. Each letter has been replaced by a different letter consistently across the message.
+2. Look for frequently occurring letters and common short words in English to help deduce substitutions.
+3.  If "X" = "A" in one part of the message, "X" will be "A" throughout.
 
 ---
 
 ## 🔢 **Cipher Text**
 
 Ciphered message:  
-`Krod, Krz duh brx grlqj? Brx duh doprvw wkhuh!`
+`Jznv, Lzx bu rld zvym? Zm zl kx bvzub sld zn jlhv!`
 
-1. **Hint**: Shift each letter **back by 3** to reveal the message.
-2. **Hint**: Trust that each word will form a coherent sentence after decryption.
+1. **Hint**: Start with common letters like "e," "a," and "t" for decoding.
+2. **Hint**: Once you identify a few letters, the rest should start to fit into place.
 
 ---
 
@@ -64,7 +65,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
-  const correctAnswer = 'Hold, How are you doing? You are almost there!'; // Define the correct answer here
+  const correctAnswer = 'Now, Are you all set? It is the path you to take!'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');
