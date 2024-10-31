@@ -6,31 +6,52 @@ permalink: /levelthree/
 ---
 
 
+# 🔐 **Cipher Challenge: Level 1**
 
-# 🔐 **Cipher Challenge: Level 3**
-
-Welcome to **Level 3**! 🔒 You've made it this far, but things are about to get more challenging. At this level, you’ll need to rely on pattern recognition, logic, and perhaps even a bit of research. Can you decode the next cipher?
+Welcome to **Level 1** of the Cipher Challenge! 🧩 Start here to warm up your code-breaking skills with a classic substitution cipher.
 
 ---
 
 ## 🔍 **Challenge Objective**
 
-Your goal is to **crack the Level 3 encrypted message**. This cipher may contain multiple layers or use unfamiliar methods, so approach with an open mind!
+Your goal is to **decode the hidden message** below using a Caesar Cipher technique. Find the hidden word to unlock the path to the next level.
 
 ---
 
-## 📜 **Encrypted Message**
+## 🧩 **Hints to Get You Started**
 
-```plaintext
-// Place Level 3 encrypted message here
+1. Each letter in the message has been **shifted forward by 3**. To decode it, shift each letter **back by 3**.
+2. Example: If the coded letter is "D," shifting back by 3 reveals "A."
+3. The message should make sense once decoded—trust your instincts on the word!
 
+---
 
-1. Explore **substitution ciphers** and consider letter frequencies in the English language.
-2. Watch out for **common phrases** or patterns that may repeat—these could provide a foothold.
-3. This level may require knowledge of **more advanced ciphers** (e.g., Vigenère, Atbash). Research might be necessary.
+## 🔢 **Cipher Text**
+
+Ciphered message:  
+`Krod, Krz duh brx grlqj? Brx duh doprvw wkhuh!`
+
+1. **Hint**: Shift each letter **back by 3** to reveal the message.
+2. **Hint**: Trust that each word will form a coherent sentence after decryption.
+
+---
+
+## 📝 **Submit Your Answer**
+
+Once you’ve cracked the code, submit your answer here:
 
 
 - **Answer**: `type-your-answer-here`
+
+
+
+
+
+
+
+# Chat Box Demo
+
+This is a basic chat box rendered with HTML inside Markdown.
 
 <div id="chat-container" style="width: 300px; margin: 20px 0; border: 2px solid #ddd; border-radius: 5px; padding: 10px; font-family: Arial, sans-serif;">
   <div id="chat-box" style="height: 200px; overflow-y: scroll; border-bottom: 2px solid #ddd; margin-bottom: 10px; padding: 10px; background-color: #f9f9f9;">
@@ -44,6 +65,7 @@ Your goal is to **crack the Level 3 encrypted message**. This cipher may contain
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
+  const correctAnswer = 'Hold, How are you doing? You are almost there!'; // Define the correct answer here
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');
@@ -52,7 +74,19 @@ Your goal is to **crack the Level 3 encrypted message**. This cipher may contain
     messageElement.style.margin = '5px 0';
     messageElement.style.padding = '5px';
     messageElement.style.borderRadius = '5px';
-    messageElement.style.backgroundColor = className === 'user-message' ? '#dcf8c6' : '#e0e0e0';
+    messageElement.style.backgroundColor = className === 'user-message' ? 'black' : 'red';
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+function addCorrectMessage(text, className) {
+    const messageElement = document.createElement('div');
+    messageElement.className = className;
+    messageElement.textContent = text;
+    messageElement.style.margin = '5px 0';
+    messageElement.style.padding = '5px';
+    messageElement.style.borderRadius = '5px';
+    messageElement.style.backgroundColor = className === 'user-message' ? 'black' : 'green';
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
@@ -60,11 +94,20 @@ Your goal is to **crack the Level 3 encrypted message**. This cipher may contain
   sendButton.addEventListener('click', () => {
     const userMessage = chatInput.value.trim();
     if (userMessage) {
-      addMessage(`User: ${userMessage}`, 'user-message');
+      addMessage(`Your answer is: ${userMessage}`, 'user-message');
       chatInput.value = '';
-      setTimeout(() => {
-        addMessage("Bot: I'm here to help!", 'bot-message');
-      }, 1000);
+
+      // Check if the message is correct
+      if (userMessage === correctAnswer) {
+        setTimeout(() => {
+          
+          addCorrectMessage("Correct answer! Now you can move on!", 'bot-message');
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          addMessage("Try again!", 'bot-message');
+        }, 1000);
+      }
     }
   });
 
@@ -72,3 +115,6 @@ Your goal is to **crack the Level 3 encrypted message**. This cipher may contain
     if (e.key === 'Enter') sendButton.click();
   });
 </script>
+
+
+This is a simple interactive chat box. Type a message and hit "Send" or press "Enter" to see it displayed.
