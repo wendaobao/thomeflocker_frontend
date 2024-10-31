@@ -4,8 +4,7 @@ title: Chess Hangout
 permalink: /chess/hangout
 comments: true
 ---
-
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,19 +26,19 @@ comments: true
         }
         .chessboard {
             display: grid;
-            grid-template-columns: repeat(8, 100px); /* Larger squares */
+            grid-template-columns: repeat(8, 100px);
             grid-template-rows: repeat(8, 100px);
             border: 2px solid #444;
             margin: 20px auto;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
         }
         .chessboard div {
-            width: 100px; /* Larger square size */
+            width: 100px;
             height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 50px; /* Larger piece size */
+            font-size: 50px;
             font-weight: bold;
             font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
@@ -131,7 +130,7 @@ comments: true
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    <!-- JS to handle chess pieces and board -->
+    <!-- JS for Chessboard functionality -->
     <script>
         const pieces = {
             'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
@@ -193,13 +192,20 @@ comments: true
         generateBoard();
     </script>
 
-    <!-- JS to handle chat and moderator bot functionality -->
+    <!-- JS for Chat and Enhanced Moderation Bot functionality -->
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
 
+        const inappropriateWords = ['badword1', 'badword2', 'badword3']; // Replace with actual words or regex patterns
+
         let messages = [];
+
+        function addMessage(text, isBot = false) {
+            messages.push({ text, isBot, timestamp: Date.now() });
+            renderMessages();
+        }
 
         function renderMessages() {
             chatMessages.innerHTML = '';
@@ -212,10 +218,54 @@ comments: true
             });
         }
 
-        function addMessage(text, isBot = false) {
-            messages.push({ text, isBot });
-            renderMessages();
+        function isInappropriate(message) {
+            const regex = new RegExp(inappropriateWords.join('|'), 'i');
+            return regex.test(message);
         }
+
+        function detectSentiment(message) {
+            const negativeWords = ['sad', 'angry', 'frustrated', 'dislike'];
+            const positiveWords = ['love', 'happy', 'great', 'excited'];
+            
+            const isNegative = negativeWords.some(word => message.toLowerCase().includes(word));
+            const isPositive = positiveWords.some(word => message.toLowerCase().includes(word));
+
+            return isNegative ? 'negative' : isPositive ? 'positive' : 'neutral';
+        }
+
+        function respondToUserMessage(userMessage) {
+            if (isInappropriate(userMessage)) {
+                const warningMessage = "Please avoid inappropriate language. This is a friendly space!";
+                setTimeout(() => addMessage(warningMessage, true), 1000);
+                return;
+            }
+
+            const sentiment = detectSentiment(userMessage);
+            let botResponse;
+
+            if (sentiment === 'negative') {
+                botResponse = "I'm here to help! Anything in chess I can assist you with?";
+            } else if (sentiment === 'positive') {
+                botResponse = "I'm glad you're enjoying the conversation! Any favorite chess openings?";
+            } else if (userMessage.toLowerCase().includes('help')) {
+                botResponse = "I can guide you on chess strategies! Any specific area you'd like advice on?";
+            } else if (userMessage.toLowerCase().includes('chess')) {
+                botResponse = "Chess is a game of patience and strategy. Have you been practicing any openings?";
+            } else {
+                botResponse = "Thanks for sharing! Let's keep the chat active.";
+            }
+
+            setTimeout(() => addMessage(botResponse, true), 1000);
+        }
+
+        // Auto-engage after inactivity
+        setInterval(() => {
+            if (messages.length > 0 && Date.now() - messages[messages.length - 1].timestamp > 30000) {
+                addMessage("It's quiet here! Any thoughts on recent chess games or strategies?", true);
+            }
+        }, 30000);
+
+        sendBtn.addEventListener('click', handleUserMessage);
 
         function handleUserMessage() {
             const userMessage = messageInput.value.trim();
@@ -225,42 +275,8 @@ comments: true
                 respondToUserMessage(userMessage);
             }
         }
-
-        // Inappropriate keywords for moderation
-        const inappropriateWords = ['badword1', 'badword2', 'badword3']; // Replace with actual words
-
-        function isInappropriate(message) {
-            return inappropriateWords.some(word => message.toLowerCase().includes(word));
-        }
-
-        function respondToUserMessage(userMessage) {
-            if (isInappropriate(userMessage)) {
-                const botResponse = "Please refrain from using inappropriate language. Let's keep the chat friendly!";
-                setTimeout(() => addMessage(botResponse, true), 1000);
-            } else {
-                const lowerMessage = userMessage.toLowerCase();
-                let botResponse;
-
-                if (lowerMessage.includes('chess')) {
-                    botResponse = "Great topic! Remember to review your strategies.";
-                } else if (lowerMessage.includes('help')) {
-                    botResponse = "If you need help, feel free to ask specific questions about chess!";
-                } else {
-                    botResponse = "Thanks for sharing! Let's keep the conversation going.";
-                }
-
-                setTimeout(() => addMessage(botResponse, true), 1000);
-            }
-        }
-
-        sendBtn.addEventListener('click', handleUserMessage);
-
-        // Optional: Automatically respond if no activity is detected
-        setInterval(() => {
-            if (messages.length > 0 && (Date.now() - messages[messages.length - 1].timestamp > 30000)) {
-                addMessage("It's a bit quiet! What do you think about chess strategies?", true);
-            }
-        }, 30000);
     </script>
 </body>
 </html>
+
+
