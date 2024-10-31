@@ -57,6 +57,6 @@ Pay with **dneros**, our exclusive currency! Just add your order to the cart and
 
 *Thank you for visiting DNHS Cafe! We hope our cozy corner brings you a taste of joy and warmth.*
 
-<a href="{{site.baseurl}}/dnhscafestore">
+<a href="{{site.baseurl}}/dnhscafestudyroom">
 <button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>
 </a>
