@@ -2,7 +2,7 @@
 layout: post
 title: The Hungry Games - home page
 description: Dive into the world of scrumptious foods and get to cooking today!
-permalink: /food/home
+permalink: share_and_care/hungry_games
 comments: true 
 ---
 <html lang="en">
