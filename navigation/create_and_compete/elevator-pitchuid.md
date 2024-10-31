@@ -43,6 +43,15 @@ author: Manas, Lalita, Shriya, Ethan
         <p>Your feedback has been submitted successfully.</p>
     </div>
 </div>
+<div class="pitch-entry">
+    <p>Pitch text goes here...</p>
+    <div class="vote-buttons">
+        <button class="vote-button" onclick="upvote(this)">▲</button>
+        <span class="vote-count">0</span>
+        <button class="vote-button" onclick="downvote(this)">▼</button>
+    </div>
+</div>
+
 
 <!-- Styles for Modal -->
 <style>

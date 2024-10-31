@@ -160,3 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadButton.addEventListener('click', () => submissionManager.downloadJSON());
     document.body.appendChild(downloadButton);
 });
+function upvote(button) {
+    const voteCountElement = button.nextElementSibling;
+    let count = parseInt(voteCountElement.textContent, 10);
+    voteCountElement.textContent = count + 1;
+}
+
+function downvote(button) {
+    const voteCountElement = button.previousElementSibling;
+    let count = parseInt(voteCountElement.textContent, 10);
+    voteCountElement.textContent = count - 1;
+}
