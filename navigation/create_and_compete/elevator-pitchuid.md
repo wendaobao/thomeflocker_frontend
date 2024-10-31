@@ -6,7 +6,6 @@ permalink: /create_and_compete/elevatorpitchgame
 author: Manas, Lalita, Shriya, Ethan
 ---
 
-<h1>Create and Compete</h1>
 <p>Where creativity meets competition and collaboration.</p>
 
 <!-- Prompt Generation Section -->
