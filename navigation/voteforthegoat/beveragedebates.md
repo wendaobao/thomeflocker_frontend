@@ -24,9 +24,10 @@ Our group has chosen to focus on discussions about which drinks should be added 
         /* Body Styling */
         body {
             background: linear-gradient(135deg, #1d2671, #c33764);
+            background-attachment: fixed; /* Makes background fixed */
             color: #ffffff;
             font-family: Arial, sans-serif;
-            height: 100vh;
+            min-height: 100vh; /* Ensures it covers the viewport height */
             margin: 0;
             display: flex;
             justify-content: center;
