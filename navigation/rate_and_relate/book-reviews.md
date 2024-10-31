@@ -34,6 +34,11 @@ const books = [
         "author": "Suzanne Collins",
         "cover_url": "https://m.media-amazon.com/images/I/71XqqKTZz7L._AC_UF1000,1000_QL80_.jpg"
     }
+    {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "cover_url": "https://www.pluggedin.com/wp-content/uploads/2020/01/harry-potter-and-the-chamber-of-secrets-cover-image-718x1024.jpeg"
+    },
 ];
 
 // Pick a random book
