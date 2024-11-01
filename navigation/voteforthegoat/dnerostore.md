@@ -12,13 +12,12 @@ comments: true
 
 <img src="{{ site.baseurl }}/images/dnerostore/Dnero_Store_Header.png" alt="Title">
 
-
-<!-- Moderator Rules Image Link -->
 <div style="display: flex; justify-content: center; margin: 20px 0;">
   <a href="{{ site.baseurl }}/dnerostore-mod/" target="_blank">
-    <img src="{{ site.baseurl }}/images/dnerostore/mod_rules_button.png" alt="Mod Rules" style="cursor: pointer;">
+    <img src="{{ site.baseurl }}/images/dnerostore/mod_rules_button.png" alt="Mod Rules" style="cursor: pointer; width: 400px;"> <!-- Adjust width as needed -->
   </a>
 </div>
+
 
 
 <div class="container">
