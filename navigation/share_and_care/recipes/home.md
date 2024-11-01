@@ -5,6 +5,23 @@ description: Have fun talking about food, resturants, and more!
 permalink: share_and_care/hungry_games
 comments: true
 ---
+<a href="/moderation/rules_hungry_games/" class="button">Rules</a>
+<style>
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+</style>
 
 <html lang="en">
 <head>
