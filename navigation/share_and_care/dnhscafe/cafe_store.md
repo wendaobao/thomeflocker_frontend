@@ -39,12 +39,12 @@ permalink: /dnhscafestore/
 
 ### Points: <span id="userPoints">50</span> dneros
 
-| Coffee                        | Cost (dneros) | Action   |
-|-------------------------------|---------------|----------|
-| **Classic Espresso**          | 15            | <button class="buy-button" onclick="buyCoffee(15)">Buy</button> |
-| **Pumpkin Spice Latte**       | 20            | <button class="buy-button" onclick="buyCoffee(20)">Buy</button> |
-| **Cappuccino**                | 18            | <button class="buy-button" onclick="buyCoffee(18)">Buy</button> |
-| **Mocha Latte**               | 22            | <button class="buy-button" onclick="buyCoffee(22)">Buy</button> |
+| Coffee        | Cost (dneros) | Action   |
+|---------------|---------------|----------|
+| **Classic Espresso**  | 15            | <button class="buy-button" onclick="buyCoffee(15)">Buy</button> |
+| **Pumpkin Spice Latte**     | 20            | <button class="buy-button" onclick="buyCoffee(20)">Buy</button> |
+| **Cappuccino**| 18            | <button class="buy-button" onclick="buyCoffee(18)">Buy</button> |
+| **Mocha Latte**     | 22            | <button class="buy-button" onclick="buyCoffee(22)">Buy</button> |
 | **Vanilla Caramel Macchiato** | 25            | <button class="buy-button" onclick="buyCoffee(25)">Buy</button> |
 
 ---
@@ -71,6 +71,17 @@ function buyCoffee(cost) {
 updatePointsDisplay(); // Initial display update
 </script>
 
+<<<<<<< HEAD
+1. Choose your favorite drink(s).
+2. Message us to confirm your order.
+3. Enjoy the cozy vibes and delicious flavors of DNHS Cafe!
+
+*Thank you for visiting DNHS Cafe! We hope our cozy corner brings you a taste of joy and warmth.*
+
+<a href="{{site.baseurl}}/dnhscafestudyroom">
+<button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>
+</a>
+=======
 <style>
 body {
     font-family: Arial, sans-serif;
