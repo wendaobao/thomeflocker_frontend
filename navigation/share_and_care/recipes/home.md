@@ -1,13 +1,11 @@
 ---
 layout: post
 title: The Hungry Games (Home and Chat)
-description: Have fun talking about food, resturants, and more! Favorite people's chat messages to store them! 
+description: Have fun talking about food, resturants, and more! 
 permalink: share_and_care/hungry_games
 comments: true
 ---
 
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -76,6 +74,7 @@ comments: true
             word-wrap: break-word;
             max-width: 80%;
             position: relative; 
+            color: #000; /* Change this to a darker color */
         }
         .chat-label {
             color: #333;
@@ -168,4 +167,5 @@ comments: true
 
 </body>
 </html>
+
 
