@@ -170,22 +170,24 @@ author: Ryan, Jowan, Gabriela, Michelle
             color: #ff8c00; 
         }
         .collapsible {
-            background-color: #f1f1f1;
-            color: #444;
+            background-color: #333; /* Black background */
+            color: white; /* White text */
             cursor: pointer;
-            padding: 10px;
+            padding: 15px; /* Increased padding */
             width: 100%;
             border: none;
             text-align: left;
             outline: none;
-            font-size: 16px;
+            font-size: 20px; /* Larger font size */
             transition: 0.4s;
+            border-radius: 5px; /* Rounded corners */
         }
         .content {
             padding: 0 18px;
             display: none;
             overflow: hidden;
-            background-color: #f9f9f9;
+            background-color: #222; /* Darker background for content */
+            color: white; /* White text for content */
         }
     </style>
 </head>
