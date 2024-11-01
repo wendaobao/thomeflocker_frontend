@@ -201,16 +201,113 @@ Our group has chosen to focus on discussions about which drinks should be added 
             position: relative;
         }
 
+        /* Add or update these styles */
+        nav {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: transparent;
+        }
+
+        nav a, .DNHS-title {
+            background: rgba(0, 0, 0, 0.5);
+            color: #00c6ff;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        nav a:hover, .DNHS-title:hover {
+            background: rgba(0, 0, 0, 0.7);
+            color: #00e6ff;
+            transform: scale(1.05);
+        }
+
+        .nav-container {
+            border-bottom: 2px solid #00c6ff;
+            background: transparent;
+        }
+
+        .header-container {
+            background: transparent;
+            padding: 20px;
+        }
+
+        /* Style for the DNHS Flocker title */
+        .header-title, 
+        h1, 
+        .DNHS-title {  /* Use whichever class/element your title uses */
+            background: transparent;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
         .header-title:hover,
         h1:hover,
         .DNHS-title:hover {
             transform: scale(1.1);
             text-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
         }
-    </style>
 
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #333;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        #closeModal {
+            background-color: #00c6ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #closeModal:hover {
+            background-color: #00e6ff;
+        }
+    </style>
 </head>
 <body>
+    <div id="guidelinesModal" class="modal">
+        <div class="modal-content">
+            <h2>Community Rules/Guidelines</h2>
+            <ul>
+                <li>Be Respectful: Keep things light and friendly.</li>
+                <li>Keep it Family-Friendly: Use clean language.</li>
+                <li>Stay On-Topic: Focus on the debate question.</li>
+                <li>Vote Honestly: Vote once per debate.</li>
+                <li>One Account Only: Just one account per person.</li>
+            </ul>
+            <button id="closeModal">I have read and acknowledged the rules</button>
+        </div>
+    </div>
+
     <div class="voting-container">
         <h2>Choose Your an Beverage that you would like to be added to Del Norte Cafeteria</h2>
         <div class="voting-layout">
@@ -292,6 +389,19 @@ Our group has chosen to focus on discussions about which drinks should be added 
                 alert('Please enter a reasoning before submitting.');
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("guidelinesModal");
+            const closeModal = document.getElementById("closeModal");
+
+            // Show the modal on page load
+            modal.style.display = "block";
+
+            // Close the modal when the button is clicked
+            closeModal.onclick = function() {
+                modal.style.display = "none";
+            }
+        });
     </script>
 </body>
 </html>
