@@ -176,12 +176,11 @@ menu: nav/shared_interests.html
             </div>
         </div>
     </div>
-    
     <button onclick="togglePostForm()">Add a Post</button>
     <div id="postForm" style="display: none; margin-top: 10px;">
         <label for="identity">Identity:</label>
         <select id="identity" required>
-            <option value="">Select your identity</option>
+            <option value="">Select your role</option>
             <option value="Coach">Coach</option>
             <option value="Player">Player</option>
             <option value="Fan">Fan</option>
@@ -190,7 +189,6 @@ menu: nav/shared_interests.html
         <textarea id="message" placeholder="Your message..." required></textarea>
         <button onclick="addPost()">Submit Post</button>
     </div>
-
     <!-- Chatroom Section on the Right -->
     <div class="chatroom-container">
         <header class="chatroom-header">
