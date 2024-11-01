@@ -7,6 +7,7 @@ comments: true
 ---
 
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -105,11 +106,6 @@ comments: true
         .input-box button:hover {
             background-color: #e67e22;
         }
-        .heart {
-            cursor: pointer;
-            margin-left: 5px;
-            display: inline; /* Ensure hearts are displayed inline */
-        }
     </style>
 </head>
 <body>
@@ -161,39 +157,6 @@ comments: true
             messageDiv.classList.add("chat-message");
             messageDiv.textContent = message.text;
 
-            const heart = document.createElement("span");
-            heart.textContent = "❤️";
-            heart.classList.add("heart");
-            heart.style.display = "none"; // Initially hidden
-
-            // Toggle heart visibility on click
-            messageDiv.onclick = function(event) {
-                const clickX = event.clientX - messageDiv.getBoundingClientRect().left;
-                const messageWidth = messageDiv.offsetWidth;
-                if (clickX > messageWidth) { // Clicked to the right of the message
-                    heart.style.display = heart.style.display === "none" ? "inline" : "none";
-                }
-            };
-
-            heart.onclick = async function(event) {
-                event.stopPropagation(); // Prevent triggering messageDiv click
-                const userId = "currentUserId"; // Replace with actual user ID
-                const hearted = heart.style.display === "inline";
-
-                heart.style.display = hearted ? 'none' : 'inline'; // Toggle visibility of heart
-
-                const heartResponse = await fetch(`http://localhost:5000/messages/${message.id}/heart`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ user_id: userId }), // Send user_id to server
-                });
-                const updatedMessage = await heartResponse.json();
-                console.log(updatedMessage.hearts); // Log the updated heart count
-            };
-
-            messageDiv.appendChild(heart);
             document.getElementById("chatBox").appendChild(messageDiv);
             document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
         }
