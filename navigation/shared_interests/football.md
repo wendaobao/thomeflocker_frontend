@@ -2,17 +2,27 @@
 layout: base
 title: Football
 permalink: /shared_interests/football/
-menu: nav/shared_interests.html
 ---
 
-<style>
-    /* General styles */
-    body {
-        margin: 0;
-        background-color: #FDF5E6; /* Light background for good contrast */
-        font-family: Arial, sans-serif;
-    }
+<!-- FOR THE NAV MENU AS IT IS NOT WORKING ON YOUR PAGE -->
+<table>
+    <tr>
+        <td id="sharedinterests">
+            <a href="{{site.baseurl}}/shared_interests/home">
+                <img src="{{site.baseurl}}/images/school_logo.png" alt="logo" width="150" height="150">
+            </a>
+        </td>
+        <td id="PLACEHOLDER1"><a href="{{site.baseurl}}/shared_interests/">PLACEHOLDER 1 </a></td>
+        <td id="DNHS Football"><a href="{{site.baseurl}}/shared_interests/football">DNHS Football</a></td>
+        <td id="School Subjects"><a href="{{site.baseurl}}/shared_interests/jupyter/chatroom">School Subjects</a></td>
+        <td id="Music"><a href="{{site.baseurl}}/music/">Music</a></td>
+        <td id="Satire"><a href="{{site.baseurl}}/shared_interests/satire">Satire</a></td>
+        <td id="PLACEHOLDER6"><a href="{{site.baseurl}}/shared_interests/agk.html">AGK</a></td>
+    </tr>
+</table>
+<!-- END OF NAV MENU -->
 
+<style>
     /* Header at the top of the page */
     .page-header {
         text-align: center;
@@ -176,12 +186,11 @@ menu: nav/shared_interests.html
             </div>
         </div>
     </div>
-    
     <button onclick="togglePostForm()">Add a Post</button>
     <div id="postForm" style="display: none; margin-top: 10px;">
         <label for="identity">Identity:</label>
         <select id="identity" required>
-            <option value="">Select your identity</option>
+            <option value="">Select your role</option>
             <option value="Coach">Coach</option>
             <option value="Player">Player</option>
             <option value="Fan">Fan</option>
@@ -190,7 +199,6 @@ menu: nav/shared_interests.html
         <textarea id="message" placeholder="Your message..." required></textarea>
         <button onclick="addPost()">Submit Post</button>
     </div>
-
     <!-- Chatroom Section on the Right -->
     <div class="chatroom-container">
         <header class="chatroom-header">
