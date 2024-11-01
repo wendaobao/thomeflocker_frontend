@@ -1,8 +1,10 @@
 // Array of zoomed-in image URLs
 const imageList = [
-    "zoomed-image1.jpg",
-    "zoomed-image2.jpg",
-    "zoomed-image3.jpg"
+    "einstein.jpg",
+    "kanye.jpg",
+    "lnx.jpg",
+    "ryangosling.jpg",
+    "tombrady.jpg"
 
     // Add more image URLs as needed
  ];

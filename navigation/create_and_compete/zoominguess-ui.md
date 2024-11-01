@@ -21,7 +21,7 @@ author: Arhaan, Akshaj, Mihir, Keerthan
     <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
     <div id="image-display" class="zoom-image-box">
         <!-- Random zoomed-in image will be displayed here -->
-        <img id="zoomed-image" src="default-image.jpg" alt="Zoomed Image" class="zoom-image">
+        <img id="zoomed-image" src="einstein.jpg" alt="Zoomed Image" class="zoom-image">
     </div>
 </div>
 
