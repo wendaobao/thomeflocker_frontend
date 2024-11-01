@@ -17,6 +17,7 @@ comments: true
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Center vertically */
             min-height: 100vh;
             margin: 0;
         }
@@ -45,8 +46,8 @@ comments: true
             transform: scale(1.1);
         }
         .chat-container {
-            width: 400px;  
-            height: 500px; 
+            width: 600px;  /* Increased width */
+            height: 600px; /* Increased height */
             display: flex;
             flex-direction: column;
             border: 2px solid #ff8c00;
@@ -74,7 +75,7 @@ comments: true
             word-wrap: break-word;
             max-width: 80%;
             position: relative; 
-            color: #000; /* Change this to a darker color */
+            color: #000; /* Dark text color */
         }
         .chat-label {
             color: #333;
@@ -167,5 +168,3 @@ comments: true
 
 </body>
 </html>
-
-
