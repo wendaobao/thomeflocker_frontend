@@ -71,7 +71,7 @@ function buyCoffee(cost) {
 updatePointsDisplay(); // Initial display update
 </script>
 
-<<<<<<< HEAD
+
 1. Choose your favorite drink(s).
 
 2. Message us to confirm your order.
@@ -80,8 +80,6 @@ updatePointsDisplay(); // Initial display update
 
 *Thank you for visiting DNHS Cafe! We hope our cozy corner brings you a taste of joy and warmth.*
 
-=======
->>>>>>> 0849622 (image addition)
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -136,11 +134,8 @@ img {
     cursor: not-allowed;
 }
 </style>
-<<<<<<< HEAD
 
 
 <a href="{{site.baseurl}}/dnhscafestudyroom">
 <button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>
 </a>
-=======
->>>>>>> 0849622 (image addition)
