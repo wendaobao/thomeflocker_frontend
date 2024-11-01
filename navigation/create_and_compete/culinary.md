@@ -187,8 +187,8 @@ author: Daksha, Zach, Alex, Darsh
             cookingTime: "5 minutes",
             cookingProcess: "1. Slice cucumber and mix with yogurt, dill, and lemon juice. 2. Toss well and serve."
         }
-    ];
-  
+        ];
+    
     function getRandomIngredients() {
         const ingredients = [
 'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
@@ -248,10 +248,7 @@ author: Daksha, Zach, Alex, Darsh
         </div>`;
     });
 
-   customRecipeButton.addEventListener('click', () => {
-    const ingredients = getRandomIngredients(); 
-    displayIngredients(ingredients); 
-});
+    document.getElementById('customRecipeButton').addEventListener('click', function() {
         if (confirm("Would you like to create your own recipe with 5 random ingredients?")) {
             const randomIngredients = [];
             const ingredients = [
@@ -268,16 +265,19 @@ author: Daksha, Zach, Alex, Darsh
 'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
 'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon',
             ];
-           const randomIngredients = [];
-    while (randomIngredients.length < 5) {
-        const randomIndex = Math.floor(Math.random() * allIngredients.length);
-        const ingredient = allIngredients[randomIndex];
-        if (!randomIngredients.includes(ingredient)) {
-            randomIngredients.push(ingredient);
+            for (let i = 0; i < 5; i++) {
+                const randomIndex = Math.floor(Math.random() * ingredients.length);
+                randomIngredients.push(ingredients[randomIndex]);
+            }
+            const resultsContainer = document.getElementById('recipeResults');
+            resultsContainer.innerHTML = `<div class="recipe">
+                <strong>Create Your Own Recipe!</strong><br>
+                <em>Use these ingredients:</em> ${randomIngredients.join(', ')}
+            </div>`;
         }
-    }
-    return randomIngredients;
-}
+    });
+
+    window.onload = getRandomIngredients;
 </script>
 
 
