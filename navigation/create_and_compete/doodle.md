@@ -22,7 +22,7 @@ The page is a place where people can explore themselves creatively and compete t
 </a>
 
 <a href="{{site.baseurl}}/moderation/doodle_competition/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
-  Competition
+  Competition Room
 </a>
 
 <a href="{{site.baseurl}}/moderation/artpost_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
