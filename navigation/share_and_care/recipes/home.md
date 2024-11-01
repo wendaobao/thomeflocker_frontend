@@ -123,7 +123,8 @@ comments: true
 </head>
 <body>
 
-Check out the [Rules](/moderation/rules_hungry_games/) or our [Local Restaurants]({{ site.baseurl }}/recommendations).
+<a href="/moderation/rules_hungry_games/" class="button">Rules</a>
+<a href="navigation/share_and_care/recipes.md" class="button">Local Restaurants</a>
 
 
     <div class="image-row">
