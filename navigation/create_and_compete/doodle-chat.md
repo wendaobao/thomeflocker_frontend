@@ -6,6 +6,7 @@ permalink: /moderation/chat_doodle/
 author: Arshia, Prajna, Mirabelle, Alex
 ---
 
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,17 +14,60 @@ author: Arshia, Prajna, Mirabelle, Alex
   <title>Chat Room</title>
   <style>
     /* Basic styling */
-    #chatContainer {
-      width: 150%;
-      max-width: 600px;
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      background-color: #f0f2f5;
+    }
+    #mainContainer {
+      display: flex;
+      width: 80%;
+      max-width: 900px;
       margin: 20px auto;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Sidebar styling */
+    #sidebar {
+      width: 30%;
+      background-color: #ffffff;
+      border-right: 1px solid #ddd;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .chatBox {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .chatBox:hover {
+      background-color: #f0f2f5;
+    }
+    .chatBox h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+    .chatBox p {
+      margin: 4px 0 0;
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* Chat area styling */
+    #chatContainer {
+      flex: 1;
+      padding: 10px;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     #messages {
-      height: 300px;
+      height: 400px;
       overflow-y: scroll;
       border: 1px solid #ddd;
       padding: 10px;
@@ -31,11 +75,11 @@ author: Arshia, Prajna, Mirabelle, Alex
       margin-bottom: 10px;
     }
     .message {
-        margin: 5px 0;
+      margin: 5px 0;
       padding: 5px;
-        border-radius: 5px;
-         background-color: #d0e6f5; /* Light blue background for messages */
-        color: #333; /* Darker text color for readability */
+      border-radius: 5px;
+      background-color: #d0e6f5;
+      color: #333;
     }
     #inputContainer {
       display: flex;
@@ -61,21 +105,61 @@ author: Arshia, Prajna, Mirabelle, Alex
 </head>
 <body>
 
-<div id="chatContainer">
-  <h2>Chat Room</h2>
-  <div id="messages"></div>
-  <div id="inputContainer">
-    <input type="text" id="inputMessage" placeholder="Type a message..." />
-    <button id="sendButton">Send</button>
+<div id="mainContainer">
+  <!-- Sidebar with chat boxes -->
+  <div id="sidebar">
+    <div class="chatBox" onclick="loadConversation('Chat 1')">
+      <h3>Chat 1</h3>
+      <p>Hey! How's it going?</p>
+    </div>
+    <div class="chatBox" onclick="loadConversation('Chat 2')">
+      <h3>Chat 2</h3>
+      <p>Are we still meeting later?</p>
+    </div>
+    <div class="chatBox" onclick="loadConversation('Chat 3')">
+      <h3>Chat 3</h3>
+      <p>Thanks for the update!</p>
+    </div>
+    <div class="chatBox" onclick="loadConversation('Chat 4')">
+      <h3>Chat 4</h3>
+      <p>Let me know when you're free.</p>
+    </div>
+  </div>
+
+  <!-- Main chat area -->
+  <div id="chatContainer">
+    <h2>Chat Room</h2>
+    <div id="messages"></div>
+    <div id="inputContainer">
+      <input type="text" id="inputMessage" placeholder="Type a message..." />
+      <button id="sendButton">Send</button>
+    </div>
   </div>
 </div>
 
 <script>
-  // Simple front-end chat function
   const messages = document.getElementById('messages');
   const inputMessage = document.getElementById('inputMessage');
   const sendButton = document.getElementById('sendButton');
 
+  // Fake conversations data
+  const conversations = {
+    'Chat 1': ["Hey! How's it going?", "Pretty good! You?"],
+    'Chat 2': ["Are we still meeting later?", "Yes, see you at 5!"],
+    'Chat 3': ["Thanks for the update!", "You're welcome!"],
+    'Chat 4': ["Let me know when you're free.", "Will do!"]
+  };
+
+  // Load a selected conversation
+  function loadConversation(chatName) {
+    messages.innerHTML = ''; // Clear existing messages
+    const chatMessages = conversations[chatName] || [];
+    chatMessages.forEach((msg, index) => {
+      addMessage(msg, index % 2 === 0 ? "Other" : "You");
+    });
+  }
+
+  // Function to add a message
   function addMessage(message, sender = "You") {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message');
@@ -84,6 +168,7 @@ author: Arshia, Prajna, Mirabelle, Alex
     messages.scrollTop = messages.scrollHeight; // Auto-scroll
   }
 
+  // Send message functionality
   sendButton.addEventListener('click', () => {
     const messageText = inputMessage.value.trim();
     if (messageText) {
@@ -95,6 +180,9 @@ author: Arshia, Prajna, Mirabelle, Alex
   inputMessage.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') sendButton.click(); // Send on Enter key press
   });
+
+  // Load the first conversation by default
+  loadConversation('Chat 1');
 </script>
 
 </body>
