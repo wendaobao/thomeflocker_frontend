@@ -4,6 +4,13 @@ title: Underground Music
 description: Share music with others!
 permalink: /undgdmusic/
 ---
+
+<table>
+    <tr>
+        <td><a href="{{site.baseurl}}/UndgdMusic/moderation">Moderation</a></td>  
+    </tr>
+</table>
+
   <title>Underground Rapper Chatroom</title>
   <style>
     * {
