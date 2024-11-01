@@ -122,6 +122,7 @@ comments: true
             <!-- Messages will appear here -->
         </div>
         <div class="input-box">
+            <input type="text" id="userName" placeholder="Enter your name..." />
             <input type="text" id="userInput" placeholder="Share a recipe or restaurant...">
             <button onclick="sendMessage()">Send</button>
         </div>
@@ -137,25 +138,29 @@ comments: true
         }
 
         async function sendMessage() {
-            const inputText = document.getElementById("userInput").value;
-            if (inputText.trim() !== "") {
+            const userName = document.getElementById("userName").value.trim();
+            const inputText = document.getElementById("userInput").value.trim();
+
+            if (inputText !== "" && userName !== "") {
                 const response = await fetch('http://localhost:5000/messages', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ text: inputText }),
+                    body: JSON.stringify({ user: userName, text: inputText }),
                 });
                 const message = await response.json();
                 displayMessage(message);
                 document.getElementById("userInput").value = ''; // Clear input box
+            } else {
+                alert("Please enter both your name and a message.");
             }
         }
 
         function displayMessage(message) {
             const messageDiv = document.createElement("div");
             messageDiv.classList.add("chat-message");
-            messageDiv.textContent = message.text;
+            messageDiv.textContent = `${message.user}: ${message.text}`; // Include user name
 
             document.getElementById("chatBox").appendChild(messageDiv);
             document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
