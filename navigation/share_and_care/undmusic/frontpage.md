@@ -1,4 +1,9 @@
-
+---
+layout: page
+title: Underground Music
+description: Share music with others!
+permalink: /undgdmusic/
+---
   <title>Underground Rapper Chatroom</title>
   <style>
     * {
@@ -239,4 +244,52 @@
     });
   </script>
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        /* Optional: Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #user-list {
+            margin-top: 20px;
+        }
+        #user-list li {
+            list-style-type: none; /* Removes bullets from the list */
+            margin: 5px 0; /* Space between list items */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>User List</h1>
+    <button id="load-users" onclick="fetchUsers()">Load Users</button>
+    <ul id="user-list"></ul>
+    <script>
+        async function fetchUsers() {
+            try {
+                const response = await fetch('http://127.0.0.1:8887'); // Update with your backend URL
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const users = await response.json();
+                const userList = document.getElementById('user-list');
+                userList.innerHTML = ''; // Clear any existing list items
+                users.forEach(user => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${user.name} (${user.role})`; // Adjust according to your user object structure
+                    userList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+    </script>
+</body>
 </html>
+
