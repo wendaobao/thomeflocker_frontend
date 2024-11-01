@@ -319,3 +319,64 @@ author: Ryan, Jowan, Gabriela, Michelle
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingredient Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f7f7f7; }
+    .container { max-width: 500px; margin: 2rem auto; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+    input, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    button { background-color: #4CAF50; color: white; font-size: 16px; cursor: pointer; }
+    .recipes { margin-top: 20px; }
+    .recipe-item { background-color: #f0f8ff; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>What's in Your Fridge?</h2>
+  <p>Enter ingredients separated by commas, and we'll suggest a recipe!</p>
+  <input type="text" id="ingredientInput" placeholder="e.g., tomato, pasta, cheese">
+  <button onclick="suggestRecipes()">Find Recipes</button>
+  
+  <div class="recipes" id="recipeSuggestions"></div>
+</div>
+
+<script>
+// Sample recipe data
+const recipes = [
+  { name: "Tomato Pasta", ingredients: ["tomato", "pasta", "olive oil", "garlic"] },
+  { name: "Grilled Cheese", ingredients: ["bread", "cheese", "butter"] },
+  { name: "Avocado Salad", ingredients: ["avocado", "lettuce", "tomato", "olive oil"] },
+  { name: "Omelette", ingredients: ["egg", "cheese", "milk", "pepper"] },
+];
+
+// Suggest recipes based on ingredients
+function suggestRecipes() {
+  const userInput = document.getElementById("ingredientInput").value.toLowerCase().split(",").map(ingredient => ingredient.trim());
+  const matchingRecipes = recipes.filter(recipe => 
+    recipe.ingredients.every(ingredient => userInput.includes(ingredient))
+  );
+
+  const recipeSuggestions = document.getElementById("recipeSuggestions");
+  recipeSuggestions.innerHTML = ""; // Clear previous results
+
+  if (matchingRecipes.length > 0) {
+    matchingRecipes.forEach(recipe => {
+      const recipeDiv = document.createElement("div");
+      recipeDiv.classList.add("recipe-item");
+      recipeDiv.innerHTML = `<strong>${recipe.name}</strong><br>Ingredients: ${recipe.ingredients.join(", ")}`;
+      recipeSuggestions.appendChild(recipeDiv);
+    });
+  } else {
+    recipeSuggestions.innerHTML = "<p>No recipes found with the ingredients you have.</p>";
+  }
+}
+</script>
+
+</body>
+</html>
