@@ -206,6 +206,7 @@ author: Ryan, Jowan, Gabriela, Michelle
     <p class="rules-paragraph">3. Reminder that your data is stored in a (local) backend.</p>
     <p class="rules-paragraph">4. Please do NOT spam flood the chat.</p>
     <p class="rules-paragraph">5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
+    <p class="rules-paragraph">6. Do NOT impersonate people.</p>
 </div>
 
 <div class="image-row">
