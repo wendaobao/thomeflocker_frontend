@@ -3,6 +3,7 @@ layout: post
 title: The Hungry Games (Home, Chat, Hunger Calls)
 permalink: share_and_care/hungry_games
 comments: true
+author: Ryan, Jowan, Gabriela, Michelle
 ---
 
 <html lang="en">
