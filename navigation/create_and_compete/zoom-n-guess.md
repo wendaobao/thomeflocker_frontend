@@ -4,7 +4,7 @@ title: Create and Compete - Zoom n guess
 search_exclude: true
 permalink: /create_and_compete/zoominguess
 menu: nav/create_and_compete.html
-author: Arhaan, Mihir, Keerthan, and Akshaj
+author: Arhaan, Akshaj, Mihir, and Keerthan
 ---
 
 
@@ -19,8 +19,7 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
 <div class="zoom-image-section">
     <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
     <div id="image-display" class="zoom-image-box">
-        <!-- Random zoomed-in image will be displayed here -->
-        <img id="einstein.jpg" src="{{site.baseurl}}/images/zoomin-guess/einstein.jpg" alt="Zoomed Image" class="zoom-image">
+        <img id="zoomed-image" src="{{site.baseurl}}/images/zoomin-guess/einstein.jpg" alt="Zoomed Image" class="zoom-image">
     </div>
 </div>
 
@@ -39,10 +38,16 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
 <!-- Submit Button -->
 <button id="submit-guess" class="submit-button">Submit Guess</button>
 
-<!-- Guess Feedback Section -->
+<!-- Feedback Button -->
+<button id="feedback-button" class="feedback-button" onclick="window.location.href='{{site.baseurl}}/create_and_compete/feedback'">Feedback</button>
+
+<!-- Separate Feedback Sections -->
 <div id="feedback-section">
-    <h2>Your Feedback</h2>
-    <div id="feedback-display" class="info-box">Your guess and explanation will appear here after submission.</div>
+    <h2>Your Guess</h2>
+    <div id="guess-feedback" class="info-box">Your guess will appear here after submission.</div>
+
+    <h2>Your Explanation</h2>
+    <div id="explanation-feedback" class="info-box">Your explanation will appear here after submission.</div>
 </div>
 
 <!-- Leaderboard Section -->
@@ -62,6 +67,7 @@ author: Arhaan, Mihir, Keerthan, and Akshaj
     </div>
 </div>
 </div>
+
 
 <style>
     .zoomnguess-container {
