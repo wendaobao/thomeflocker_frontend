@@ -160,7 +160,7 @@ comments: true
         function displayMessage(message) {
             const messageDiv = document.createElement("div");
             messageDiv.classList.add("chat-message");
-            messageDiv.textContent = `${message.user}: ${message.text}`; // Include user name
+            messageDiv.innerHTML = `<strong>${message.user}</strong>: ${message.text}`; // Bold user name
 
             document.getElementById("chatBox").appendChild(messageDiv);
             document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
