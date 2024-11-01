@@ -67,38 +67,37 @@ permalink: /voteforthegoat/nighthawkCars/luxuryCars/
             overflow-y: auto; /* Scrollable */
             margin-top: 10px; /* Space above message box */
         }
-        /* Style the textarea */
-    #comment {
-        width: 100%;
-        height: 80px;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        resize: vertical;
-    }
-    button {
-        margin-top: 10px;
-        padding: 8px 16px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        background-color: rgb(255, 80, 80);
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    button:hover {
-        background-color: #45a049;
-    }
-    .message-box {
-        margin-top: 20px;
-        padding: 10px;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        background-color: rgb(255, 80, 80);
-    }
+        #comment {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            resize: vertical;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(255, 80, 80);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: rgb(255, 80, 80);
+        }
     </style>
 </head>
 <body>
