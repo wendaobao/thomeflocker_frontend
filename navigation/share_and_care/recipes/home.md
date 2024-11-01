@@ -45,8 +45,8 @@ comments: true
             transform: scale(1.1);
         }
         .chat-container {
-            width: 400px;  /* Increased width */
-            height: 500px; /* Increased height */
+            width: 400px;  
+            height: 500px; 
             display: flex;
             flex-direction: column;
             border: 2px solid #ff8c00;
@@ -55,7 +55,7 @@ comments: true
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             background-color: #fff3e0;
             margin-top: 20px;
-            text-align: center; /* Center text */
+            text-align: center; 
         }
         .chat-box {
             flex: 1;
@@ -73,7 +73,7 @@ comments: true
             background-color: #ffcc80;
             word-wrap: break-word;
             max-width: 80%;
-            position: relative; /* For absolute positioning of heart */
+            position: relative; 
         }
         .input-box {
             display: flex;
@@ -102,14 +102,6 @@ comments: true
         .heart {
             cursor: pointer;
             margin-left: 5px;
-            display: inline-block; /* Allow toggling visibility */
-        }
-        .hidden {
-            display: none; /* Hide the heart */
-        }
-        .chat-label {
-            margin-bottom: 10px; /* Spacing between label and chat box */
-            font-weight: bold; /* Make the label bold */
         }
     </style>
 </head>
@@ -122,7 +114,7 @@ comments: true
     </div>
 
     <div class="chat-container">
-        <div class="chat-label">Chat Box</div> <!-- Added chat label -->
+        <div class="chat-label">Chat Box</div>
         <div class="chat-box" id="chatBox">
             <!-- Messages will appear here -->
         </div>
@@ -165,12 +157,25 @@ comments: true
             const heart = document.createElement("span");
             heart.textContent = "❤️";
             heart.classList.add("heart");
+            heart.dataset.hearts = message.hearts; // Store the current heart count
+            heart.dataset.messageId = message.id; // Store the message ID
+            
             heart.onclick = async function() {
-                heart.classList.toggle("hidden"); // Toggle the hidden class to show/hide heart
+                const userId = "currentUserId"; // Replace with actual user ID
+                const hearted = heart.dataset.hearted === 'true';
+                
+                heart.classList.toggle("hidden", hearted); // Toggle visibility of heart
+                heart.dataset.hearted = !hearted; // Update hearted state
+
                 const heartResponse = await fetch(`http://localhost:5000/messages/${message.id}/heart`, {
                     method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ user_id: userId }), // Send user_id to server
                 });
                 const updatedMessage = await heartResponse.json();
+                heart.dataset.hearts = updatedMessage.hearts; // Update heart count
                 console.log(updatedMessage.hearts); // Log the updated heart count
             };
 
@@ -185,4 +190,3 @@ comments: true
 
 </body>
 </html>
-
