@@ -29,140 +29,187 @@ author: Kush, Tarun, Vincent, and Nolan
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Riddle</title>
-  <style>
-    /* Optional styling for better visibility */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: 50px;
-      margin-top: 50px;
-    }
-    #riddle-container {
-      display: inline-block;
-      text-align: 50px;
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    #riddle {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #333;
-    }
-  </style>
-</head>
-<body>
-  <div id="riddle-container">
-    <button id="riddleButton" onclick="displayRiddle()">Get Today's Riddle</button>
-  </div>
-
-  <script>
-    // Array of riddles
-    const riddles = [
-      "What has keys but can't open locks? (A piano)",
-      "What has a head, a tail, but no body? (A coin)",
-      "What comes once in a minute, twice in a moment, but never in a thousand years? (The letter 'M')",
-      "I'm tall when I'm young, and I'm short when I'm old. What am I? (A candle)",
-      "What has to be broken before you can use it? (An egg)"
-    ];
-
-    // Function to check and display today's riddle
-    function displayRiddle() {
-      const date = new Date().toDateString(); // Get the current date as a string
-      const savedRiddle = localStorage.getItem('todayRiddle');
-      const savedDate = localStorage.getItem('riddleDate');
-      const riddleButton = document.getElementById('riddleButton');
-
-      if (savedDate === date && savedRiddle) {
-        // If a riddle is already set for today, use the saved one
-        riddleButton.innerText = savedRiddle;
-      } else {
-        // Otherwise, generate a new riddle and save it
-        const riddleIndex = new Date().getDate() % riddles.length;
-        const todayRiddle = riddles[riddleIndex];
-        riddleButton.innerText = todayRiddle;
-        
-        // Save the riddle and date to localStorage
-        localStorage.setItem('todayRiddle', todayRiddle);
-        localStorage.setItem('riddleDate', date);
-      }
-    }
-  </script>
-</body>
-</html>
-
-
-
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chat Box</title>
+    <title>Riddle Room Chat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: black; /* Set the body background to black */
-            color: white; /* Set text color to white */
+            background-color: black;
+            color: white;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #chat-container {
+            display: flex;
+            width: 130%;
         }
         #chat-box {
-            border: 1px solid #444; /* Darker border for contrast */
+            flex-grow: 1;
+            border: 1px solid #444;
             padding: 10px;
-            height: 300px;
+            height: 500px;
             overflow-y: scroll;
-            background-color: #222; /* Dark gray background for chat box */
+            background-color: #222;
+            margin-right: 20px;
         }
-        #message-input {
-            width: 100%;
+        #message-input, #answer-input {
+            width: calc(100% - 100px);
             padding: 10px;
             margin-top: 10px;
-            border: 1px solid #444; /* Dark border for input */
-            background-color: #333; /* Dark background for input */
-            color: white; /* White text for input */
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+        }
+        #send-button, #check-answer {
+            width: 100px;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 5px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
         .message {
             margin: 5px 0;
             padding: 8px;
             border-radius: 5px;
-            background-color: #555; /* Dark background for messages */
+            background-color: #555;
+        }
+        #riddle-container {
+            margin-bottom: 20px;
+        }
+        #riddle-text {
+            font-size: 18px;
+            color: #ffcc00;
+        }
+        #users-list {
+            width: 150px;
+        }
+        #users-list h4 {
+            margin-bottom: 10px;
+        }
+        #users-list ul {
+            list-style-type: none;
+            padding: 0;
         }
     </style>
 </head>
 <body>
-
     <h3>Riddle Room Chat</h3>
+    <h7>Please enter no extra characters beside the answer</h7>
+    <div id="riddle-container">
+        <h4>Riddle of the Day</h4>
+        <p id="riddle-text"></p>
+    </div>
 
-    <br>
-    
-    <div id="chat-box"></div>
-    <input type="text" id="message-input" placeholder="Type your message...">
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        
+        <div id="users-list">
+            <h4>Users</h4>
+            <ul id="userList">
+                <li>System</li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+
+    <div>
+        <input type="text" id="answer-input" placeholder="Enter your answer...">
+        <button id="check-answer" onclick="checkAnswer()">Check Answer</button>
+    </div>
 
     <script>
         const chatBox = document.getElementById('chat-box');
         const messageInput = document.getElementById('message-input');
+        const answerInput = document.getElementById('answer-input');
+        const userList = document.getElementById('userList');
+        const riddleText = document.getElementById('riddle-text');
+        const users = new Set(['System']);
+        let username;
+        let currentRiddle;
 
-        messageInput.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                const messageText = messageInput.value;
-                if (messageText.trim() !== '') {
-                    displayMessage(messageText);
-                    messageInput.value = ''; // Clear the input
+        function displayRiddle() {
+            const riddles = [
+                { question: "What has keys but can't open locks?", answer: "piano" },
+                { question: "What has a head, a tail, but no body?", answer: "coin" },
+                { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "m" },
+                { question: "I'm tall when I'm young, and I'm short when I'm old. What am I?", answer: "candle" },
+                { question: "What has to be broken before you can use it?", answer: "egg" }
+            ];
+            const riddleIndex = new Date().getDate() % riddles.length;
+            currentRiddle = riddles[riddleIndex];
+            riddleText.textContent = currentRiddle.question;
+        }
+
+        function checkForMidnight() {
+            const currentDate = new Date().toDateString();
+            if (localStorage.getItem('riddleDate') !== currentDate) {
+                displayRiddle();
+                localStorage.setItem('riddleDate', currentDate);
+            }
+        }
+
+        function requestUsername() {
+            while (true) {
+                const enteredUsername = prompt("Enter your username:");
+                if (enteredUsername && !users.has(enteredUsername)) {
+                    username = enteredUsername;
+                    addUser(username);
+                    displayMessage(`You have joined as ${username}.`, true);
+                    break;
+                } else {
+                    alert("Username is taken or invalid. Please try again.");
                 }
             }
-        });
+        }
 
-        function displayMessage(message) {
+        function displayMessage(message, isSystem = false) {
             const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
+            messageElement.classList.add('message', isSystem ? 'system-message' : 'user-message');
             messageElement.textContent = message;
             chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
-    </script>
 
+        function addUser(newUsername) {
+            users.add(newUsername);
+            const userItem = document.createElement('li');
+            userItem.textContent = newUsername;
+            userList.appendChild(userItem);
+        }
+
+        function sendMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText !== '') {
+                displayMessage(`${username}: ${messageText}`);
+                messageInput.value = '';
+            }
+        }
+
+        function checkAnswer() {
+            const userAnswer = answerInput.value.trim().toLowerCase();
+            if (userAnswer === currentRiddle.answer) {
+                displayMessage(`${username} got it right!`, true);
+            } else {
+                displayMessage(`${username} guessed wrong! Try again.`, true);
+            }
+            answerInput.value = '';
+        }
+
+        displayMessage("Welcome to the Riddle Room Chat!", true);
+        requestUsername();
+        displayRiddle();
+        localStorage.setItem('riddleDate', new Date().toDateString());
+        setInterval(checkForMidnight, 60000);
+    </script>
 </body>
 </html>
