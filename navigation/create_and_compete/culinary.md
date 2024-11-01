@@ -172,26 +172,29 @@ author: Daksha, Alex, Darsh, Zach
     });
 
     document.getElementById('customRecipeButton').addEventListener('click', function() {
-        const randomIngredients = [];
-        const ingredients = [
-            'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 
-            'Corn', 'Avocado', 'Mushrooms', 'Spinach', 'Peppers', 'Carrots', 
-            'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 
-            'Cauliflower', 'Potatoes'
-        ];
-        for (let i = 0; i < 5; i++) {
-            const randomIndex = Math.floor(Math.random() * ingredients.length);
-            randomIngredients.push(ingredients[randomIndex]);
+        if (confirm("Would you like to create your own recipe with 5 random ingredients?")) {
+            const randomIngredients = [];
+            const ingredients = [
+                'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 
+                'Corn', 'Avocado', 'Mushrooms', 'Spinach', 'Peppers', 'Carrots', 
+                'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 
+                'Cauliflower', 'Potatoes'
+            ];
+            for (let i = 0; i < 5; i++) {
+                const randomIndex = Math.floor(Math.random() * ingredients.length);
+                randomIngredients.push(ingredients[randomIndex]);
+            }
+            const resultsContainer = document.getElementById('recipeResults');
+            resultsContainer.innerHTML = `<div class="recipe">
+                <strong>Create Your Own Recipe!</strong><br>
+                <em>Use these ingredients:</em> ${randomIngredients.join(', ')}
+            </div>`;
         }
-        const resultsContainer = document.getElementById('recipeResults');
-        resultsContainer.innerHTML = `<div class="recipe">
-            <strong>Create Your Own Recipe!</strong><br>
-            <em>Use these ingredients:</em> ${randomIngredients.join(', ')}
-        </div>`;
     });
 
     window.onload = getRandomIngredients;
 </script>
+
 
 
 <details>
