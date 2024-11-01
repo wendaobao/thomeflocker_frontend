@@ -321,3 +321,4 @@ author: Ryan, Jowan, Gabriela, Michelle
 <a href="favorites.md" class="link-button">Go to Favorite Restaurants</a>
 </body>
 </html>
+
