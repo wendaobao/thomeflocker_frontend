@@ -4,6 +4,7 @@ title: Instabox
 search_exclude: true
 permalink: rate_and_relate/instabox
 menu: nav/rate_and_relate.html
+author: Aadi, Aaditya, Aditya, Kanhay
 ---
 
 <style>
