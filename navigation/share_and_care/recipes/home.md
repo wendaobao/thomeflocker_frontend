@@ -21,7 +21,6 @@ comments: true
             min-height: 100vh;
             margin: 0;
         }
-
         .image-row {
             display: flex;
             justify-content: center;
@@ -108,6 +107,11 @@ comments: true
         .input-box button:hover {
             background-color: #e67e22; /* Darker orange on hover */
         }
+
+        .heart {
+            cursor: pointer;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -129,17 +133,54 @@ comments: true
     </div>
 
     <script>
-        function sendMessage() {
+        async function fetchMessages() {
+            const response = await fetch('http://localhost:5000/messages');
+            const messages = await response.json();
+            messages.forEach(message => {
+                displayMessage(message);
+            });
+        }
+
+        async function sendMessage() {
             const inputText = document.getElementById("userInput").value;
-            if (inputText.trim() !== "") {  // Ensure it is not empty
-                const message = document.createElement("div");
-                message.classList.add("chat-message");
-                message.textContent = inputText;
-                document.getElementById("chatBox").appendChild(message);
-                document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight;
-                document.getElementById("userInput").value = ''; // Clear the input box
+            if (inputText.trim() !== "") {
+                const response = await fetch('http://localhost:5000/messages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text: inputText }),
+                });
+                const message = await response.json();
+                displayMessage(message);
+                document.getElementById("userInput").value = ''; // Clear input box
             }
         }
+
+        function displayMessage(message) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("chat-message");
+            messageDiv.textContent = message.text;
+
+            const heart = document.createElement("span");
+            heart.textContent = "❤️";
+            heart.classList.add("heart");
+            heart.onclick = async function() {
+                heart.classList.toggle("favorited");
+                const heartResponse = await fetch(`http://localhost:5000/messages/${message.id}/heart`, {
+                    method: 'PUT',
+                });
+                const updatedMessage = await heartResponse.json();
+                console.log(updatedMessage.hearts); // Log the updated heart count
+            };
+
+            messageDiv.appendChild(heart);
+            document.getElementById("chatBox").appendChild(messageDiv);
+            document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
+        }
+
+        // Fetch existing messages when the page loads
+        window.onload = fetchMessages;
     </script>
 
 </body>
