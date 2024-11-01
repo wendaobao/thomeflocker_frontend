@@ -97,7 +97,7 @@ comments: true
             border-radius: 5px;
         }
 
-        button {
+        .add-button {
             padding: 10px 15px;
             background-color: #00796B;
             color: white;
@@ -108,8 +108,23 @@ comments: true
             margin-top: 10px;
         }
 
-        button:hover {
+        .add-button:hover {
             background-color: #005b4f;
+        }
+
+        .finish-button {
+            padding: 10px 15px;
+            background-color: #007BFF; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .finish-button:hover {
+            background-color: #0056b3;
         }
 
         ul {
@@ -133,22 +148,31 @@ comments: true
             margin-top: 20px;
             text-align: center;
         }
+
+        /* Darker background for added items */
+        .fridge-items {
+            background-color: rgba(0, 0, 0, 0.1); /* Slightly darker */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center; /* Center text */
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
     <div class="fridge-container">
         <div class="fridge" id="fridge">
+            <button class="finish-button" onclick="toggleFridge()">Open/Close Fridge</button>
             <div class="fridge-door" id="fridgeDoor"></div>
             <div class="fridge-content" id="fridgeContent">
                 <p>Add ingredients here!</p>
-                <ul id="fridgeItems"></ul>
+                <ul class="fridge-items" id="fridgeItems"></ul>
                 <input type="text" id="itemInput" placeholder="Add item...">
-                <button onclick="addItem()">Add</button>
-                <button onclick="finishAdding()">Finish Adding Items</button>
+                <button class="add-button" onclick="addItem()">Add</button>
+                <button class="finish-button" onclick="finishAdding()">Finish Adding Items</button>
             </div>
         </div>
-        <button onclick="toggleFridge()">Open/Close Fridge</button>
     </div>
 
     <div class="recipe-list" id="recipeList"></div>
