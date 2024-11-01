@@ -2,7 +2,7 @@
 layout: post 
 title: Book Reviews
 search_exclude: true
-permalink: rate_and_relate/book_reviews
+permalink: rate_and_relate/book_reviews/
 menu: nav/rate_and_relate.html
 author: Soumini, Ahmad, Nikith, Kush
 ---
