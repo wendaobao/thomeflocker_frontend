@@ -135,8 +135,8 @@ menu: nav/shared_interests.html
     <div class="section" id="lettersReceivedSection">
         <h2>Letters Received</h2>
         <div id="letters">
-            <div class="letter">Letter 1: Hello! Hope you're doing well!</div>
-            <div class="letter">Letter 2: Looking forward to your reply!</div>
+            <!-- <div class="letter">Letter 1: Hello! Hope you're doing well!</div>
+            <div class="letter">Letter 2: Looking forward to your reply!</div> -->
         </div>
     </div>
 </div>
