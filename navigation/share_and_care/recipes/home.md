@@ -6,6 +6,7 @@ permalink: share_and_care/hungry_games
 comments: true
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -75,6 +76,11 @@ comments: true
             max-width: 80%;
             position: relative; 
         }
+        .chat-label {
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
         .input-box {
             display: flex;
         }
@@ -102,6 +108,7 @@ comments: true
         .heart {
             cursor: pointer;
             margin-left: 5px;
+            display: inline; /* Ensure hearts are displayed inline */
         }
     </style>
 </head>
@@ -123,7 +130,7 @@ comments: true
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-
+    
     <script>
         async function fetchMessages() {
             const response = await fetch('http://localhost:5000/messages');
@@ -157,15 +164,23 @@ comments: true
             const heart = document.createElement("span");
             heart.textContent = "❤️";
             heart.classList.add("heart");
-            heart.dataset.hearts = message.hearts; // Store the current heart count
-            heart.dataset.messageId = message.id; // Store the message ID
-            
-            heart.onclick = async function() {
+            heart.style.display = "none"; // Initially hidden
+
+            // Toggle heart visibility on click
+            messageDiv.onclick = function(event) {
+                const clickX = event.clientX - messageDiv.getBoundingClientRect().left;
+                const messageWidth = messageDiv.offsetWidth;
+                if (clickX > messageWidth) { // Clicked to the right of the message
+                    heart.style.display = heart.style.display === "none" ? "inline" : "none";
+                }
+            };
+
+            heart.onclick = async function(event) {
+                event.stopPropagation(); // Prevent triggering messageDiv click
                 const userId = "currentUserId"; // Replace with actual user ID
-                const hearted = heart.dataset.hearted === 'true';
-                
-                heart.classList.toggle("hidden", hearted); // Toggle visibility of heart
-                heart.dataset.hearted = !hearted; // Update hearted state
+                const hearted = heart.style.display === "inline";
+
+                heart.style.display = hearted ? 'none' : 'inline'; // Toggle visibility of heart
 
                 const heartResponse = await fetch(`http://localhost:5000/messages/${message.id}/heart`, {
                     method: 'PUT',
@@ -175,7 +190,6 @@ comments: true
                     body: JSON.stringify({ user_id: userId }), // Send user_id to server
                 });
                 const updatedMessage = await heartResponse.json();
-                heart.dataset.hearts = updatedMessage.hearts; // Update heart count
                 console.log(updatedMessage.hearts); // Log the updated heart count
             };
 
@@ -186,7 +200,9 @@ comments: true
 
         // Fetch existing messages when the page loads
         window.onload = fetchMessages;
+
     </script>
 
 </body>
 </html>
+
