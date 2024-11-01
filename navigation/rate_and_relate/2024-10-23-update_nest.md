@@ -6,7 +6,17 @@ description:
 permalink: /rateandrelate/update_the_nest/
 ---
 <style>
+.feedContainer {
+    transform: translateY(-90px);
+}
 
+.postFeed {
+    border: 6px solid black;
+    background-color: #FBC3C3;
+    border-color: #F5E1E7;
+    border-radius: 50px;
+    height: 350px;
+}
 
 .textContainer {
     transform: translateY(20px)
@@ -17,23 +27,22 @@ permalink: /rateandrelate/update_the_nest/
 }
 
 .imageContainer {
-     height: auto;
+    height: auto;
     display: inline;
     float: left;
     width: 50%;
-     transform: translateX(20px) translateY(50px);
+    transform: translateX(20px) translateY(23px);
 }
 
 .feed {
-     border: 10px solid black;
-        border-radius: 50px;
-        background-color: pink;
-        text-align: center;
-        padding: 10px 0 3px 0;
-        height: 1000px;
-        font-family: 'Playfair Display', serif;
-        float: left;
-
+    border: 10px solid black;
+    border-radius: 50px;
+    background-color: pink;
+    text-align: center;
+    padding: 100px 0 3px 0;
+    height: 1000px;
+    font-family: 'Playfair Display', serif;
+    float: left;
 }
 
 .header {
@@ -53,6 +62,7 @@ permalink: /rateandrelate/update_the_nest/
     float: left;
     transform: translateY(-80px);
   }
+
 .styled-button {
             background-color: #4CAF50;
             border: none;
@@ -93,8 +103,9 @@ permalink: /rateandrelate/update_the_nest/
 </div>
 
 <div class="feed">
-    <div class="post">
-             <h1> Feed </h1>
+    <div class="feedContainer">
+    <h1> Feed </h1>
+    <div class="postFeed">
         <div class="imageContainer">
             <img src="{{site.baseurl}}/images/tempPhoto.jpg">
         </div>
