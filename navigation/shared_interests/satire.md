@@ -203,26 +203,26 @@ DNHS Satire Home Page
   <div class="main-layout">
     
     <!-- Left Sidebar (Add Post and Search Bar) -->
-    <div class="left-sidebar">
+  <div class="left-sidebar">
       <button class="add-post">+</button>
       <p>Add new post</p>
       <div class="search-bar">
         <input type="text" placeholder="Search...">
       </div>
-    </div>
+  </div>
 
     <!-- Center Feed (Posts) -->
-    <div class="feed">
+  <div class="feed">
       <div class="post">This is a sample post content. Users can post here.</div>
       <div class="post-actions">
         <button class="like">Like</button>
         <button class="comment">Comment</button>
         <button class="share">Share</button>
       </div>
-    </div>
+  </div>
 
     <!-- Right Sidebar (Profile and Activity) -->
-    <div class="right-sidebar">
+  <div class="right-sidebar">
       <div class="profile">
         <div class="profile-pic">Profile</div>
         <p>Account Information + Satire Score + Age (click profile)</p>
