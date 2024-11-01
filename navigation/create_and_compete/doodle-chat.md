@@ -2,6 +2,7 @@
 layout: post
 title: Chat Room for Doodle
 description: Chat freely with everyone
+menu: nav/doodle.html
 permalink: /moderation/chat_doodle/
 author: Arshia, Prajna, Mirabelle, Alex
 ---

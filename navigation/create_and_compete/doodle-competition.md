@@ -2,6 +2,7 @@
 layout: post 
 title: Create and Compete - Doodle Game UI
 search_exclude: true
+menu: nav/doodle.html
 permalink: /moderation/doodle_competition/
 author: Arshia, Prajna, Mirabelle, Alex
 ---
