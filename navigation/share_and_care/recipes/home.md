@@ -1,147 +1,143 @@
 ---
 layout: post
-title: The Hungry Games (Home)
-description: Welcome to the Hungry Games! Explore our interactive "fridge," chat with others about food, and more!
+title: The Hungry Games (Home and Chat)
+description: Have fun talking about food, resturants, and more! Favorite people's chat messages to store them! 
 permalink: share_and_care/hungry_games
-comments: true 
+comments: true
 ---
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Food Layout</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa; 
-            display: flex; 
+            font-family: 'Calibri', sans-serif; 
+            background-color: #f8f9fa; /* Light background for the whole page */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
             margin: 0;
         }
 
-        .sidebar {
-            width: 200px;
-            background-color: #007BFF; /* Blue background for sidebar */
-            color: white;
+        .image-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adds spacing between images */
             padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            border: 10px solid #FFD700; /* Larger gold border around the row */
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+            background-color: #fff7e6; /* Soft background color */
+            max-width: 90%;
+            margin: 20px 0;
         }
 
-        .sidebar h2 {
-            margin: 0 0 20px;
-            text-align: center;
+        .image-row img {
+            width: 300px; /* All images are the same width */
+            height: 300px; /* All images are the same height */
+            border-radius: 20px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Individual image shadow */
+            object-fit: cover; /* Ensures images fill their box without distortion */
         }
 
-        .chat-area {
-            flex: 1;
+        .image-row img:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        .chat-container {
+            width: 350px;
+            height: 450px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            border: 2px solid #ff8c00;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background-color: #fff3e0; /* Soft food-themed background */
+            margin-top: 20px; /* Space above the chat */
         }
 
         .chat-box {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
+            flex: 1;
             overflow-y: auto;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border: 1px solid #ffe0b2;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
         }
 
-        .message-input {
-            width: 100%;
-            max-width: 600px;
+        .chat-message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            background-color: #ffcc80; /* Darker orange for better visibility */
+            word-wrap: break-word;
+            max-width: 80%;
+        }
+
+        .input-box {
             display: flex;
-            margin-top: 10px;
         }
 
-        .message-input input {
+        .input-box input {
             flex: 1;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 10px;
+            border: 1px solid #ffcc80;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
         }
 
-        .message-input button {
+        .input-box button {
             padding: 10px 15px;
-            background-color: #007BFF; /* Button color */
-            color: white;
+            margin-left: 5px;
+            background-color: #ff8c00; /* Bright food theme */
             border: none;
-            border-radius: 5px;
+            color: #fff;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 14px;
         }
 
-        .message-input button:hover {
-            background-color: #0056b3;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #e0f7fa;
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        li:hover {
-            background-color: #b2ebf2;
-        }
-
-        .recipe-list {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .recipe-list h3 {
-            margin-bottom: 10px;
+        .input-box button:hover {
+            background-color: #e67e22; /* Darker orange on hover */
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <h2>User Profiles</h2>
-        <ul>
-            <li>User 1</li>
-            <li>User 2</li>
-            <li>User 3</li>
-            <li>User 4</li>
-        </ul>
+    <div class="image-row">
+        <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
+        <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
+        <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
     </div>
 
-    <div class="chat-area">
-        <div class="chat-box" id="chatBox"></div>
-        <div class="message-input">
-            <input type="text" id="messageInput" placeholder="Type your message...">
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="input-box">
+            <input type="text" id="userInput" placeholder="Share a recipe or restaurant...">
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
 
-    <div class="recipe-list" id="recipeList"></div>
-
     <script>
         function sendMessage() {
-            const messageInput = document.getElementById('messageInput');
-            const chatBox = document.getElementById('chatBox');
-
-            if (messageInput.value.trim()) {
-                const messageElement = document.createElement('div');
-                messageElement.textContent = messageInput.value;
-                chatBox.appendChild(messageElement);
-                messageInput.value = ''; // Clear the input after sending
-                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+            const inputText = document.getElementById("userInput").value;
+            if (inputText.trim() !== "") {  // Ensure it is not empty
+                const message = document.createElement("div");
+                message.classList.add("chat-message");
+                message.textContent = inputText;
+                document.getElementById("chatBox").appendChild(message);
+                document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight;
+                document.getElementById("userInput").value = ''; // Clear the input box
             }
         }
     </script>
