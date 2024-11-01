@@ -6,15 +6,15 @@ permalink: share_and_care/hungry_games
 comments: true
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Food Layout</title>
     <style>
         body {
             font-family: 'Calibri', sans-serif; 
-            background-color: #f8f9fa; /* Light background for the whole page */
+            background-color: #f8f9fa;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,29 +25,26 @@ comments: true
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px; /* Adds spacing between images */
+            gap: 20px;
             padding: 20px;
-            border: 10px solid #FFD700; /* Larger gold border around the row */
+            border: 10px solid #FFD700;
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
-            background-color: #fff7e6; /* Soft background color */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #fff7e6;
             max-width: 90%;
             margin: 20px 0;
         }
-
         .image-row img {
-            width: 300px; /* All images are the same width */
-            height: 300px; /* All images are the same height */
+            width: 300px;
+            height: 300px;
             border-radius: 20px;
             transition: transform 0.3s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Individual image shadow */
-            object-fit: cover; /* Ensures images fill their box without distortion */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
         }
-
         .image-row img:hover {
-            transform: scale(1.1); /* Slight zoom effect on hover */
+            transform: scale(1.1);
         }
-
         .chat-container {
             width: 350px;
             height: 450px;
@@ -57,10 +54,9 @@ comments: true
             border-radius: 12px;
             padding: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            background-color: #fff3e0; /* Soft food-themed background */
-            margin-top: 20px; /* Space above the chat */
+            background-color: #fff3e0;
+            margin-top: 20px;
         }
-
         .chat-box {
             flex: 1;
             overflow-y: auto;
@@ -70,20 +66,17 @@ comments: true
             margin-bottom: 10px;
             background-color: #ffffff;
         }
-
         .chat-message {
             padding: 10px;
             margin: 5px 0;
             border-radius: 10px;
-            background-color: #ffcc80; /* Darker orange for better visibility */
+            background-color: #ffcc80;
             word-wrap: break-word;
             max-width: 80%;
         }
-
         .input-box {
             display: flex;
         }
-
         .input-box input {
             flex: 1;
             padding: 10px;
@@ -92,25 +85,25 @@ comments: true
             outline: none;
             font-size: 14px;
         }
-
         .input-box button {
             padding: 10px 15px;
             margin-left: 5px;
-            background-color: #ff8c00; /* Bright food theme */
+            background-color: #ff8c00;
             border: none;
             color: #fff;
             border-radius: 10px;
             cursor: pointer;
             font-size: 14px;
         }
-
         .input-box button:hover {
-            background-color: #e67e22; /* Darker orange on hover */
+            background-color: #e67e22;
         }
-
         .heart {
             cursor: pointer;
             margin-left: 5px;
+        }
+        .favorited {
+            color: red; /* Change heart color when favorited */
         }
     </style>
 </head>
@@ -166,7 +159,7 @@ comments: true
             heart.textContent = "❤️";
             heart.classList.add("heart");
             heart.onclick = async function() {
-                heart.classList.toggle("favorited");
+                heart.classList.toggle("favorited"); // Toggle the favorited class
                 const heartResponse = await fetch(`http://localhost:5000/messages/${message.id}/heart`, {
                     method: 'PUT',
                 });
