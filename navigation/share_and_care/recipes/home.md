@@ -119,13 +119,38 @@ comments: true
         .input-box button:hover {
             background-color: #e67e22;
         }
+         .restaurant-list {
+            list-style: none;
+            padding: 0;
+        }
+        .restaurant-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .heart {
+            font-size: 24px;
+            color: grey;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .heart.liked {
+            color: red;
+        }
     </style>
 </head>
 <body>
 
-<a href="/moderation/rules_hungry_games/" class="button">Rules</a>
-<a href="reccomendations.html" class="button">Local Restaurants</a>
+<h1>ABOUT THIS HANGOUT:</h1>
+<p> This is a hangout all about people's favorite food, restaurants, and more! We have a (local) backend running that stores chat messages in a database. We have a list of local restaurants where you can browse. Explore and have fun! 
 
+<h1>MODERATION RULES:</h1>
+<p>1. Please do not use profanity in the hangout.</p>
+<p>2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
+<p>3. Reminder that your data is stored in a (local) backend.</p>
+<p>4. Please do NOT spam flood the chat.</p>
+<p>5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
 
     <div class="image-row">
         <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
@@ -144,7 +169,25 @@ comments: true
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-    
+    <body>
+
+    <h1>Local Restaurants</h1>
+    <ul class="restaurant-list">
+        <li class="restaurant-item">
+            <span>Restaurant A</span>
+            <span class="heart" onclick="toggleHeart(this)">♡</span>
+        </li>
+        <li class="restaurant-item">
+            <span>Restaurant B</span>
+            <span class="heart" onclick="toggleHeart(this)">♡</span>
+        </li>
+        <li class="restaurant-item">
+            <span>Restaurant C</span>
+            <span class="heart" onclick="toggleHeart(this)">♡</span>
+        </li>
+    </ul>
+
+
     <script>
         async function fetchMessages() {
             const response = await fetch('http://localhost:5000/messages');
@@ -185,8 +228,14 @@ comments: true
 
         // Fetch existing messages when the page loads
         window.onload = fetchMessages;
-
     </script>
 
+<script>
+        function toggleHeart(element) {
+            element.classList.toggle('liked');
+            element.textContent = element.classList.contains('liked') ? '❤️' : '♡';
+            
+        }
+    </script>
 </body>
 </html>
