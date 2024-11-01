@@ -7,19 +7,19 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 ---
 
 
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chess Hangout Zone</title>
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/88dpz+q8MBn5E2p3zFcTtv1z5JyyprjSAz5gUm" crossorigin="anonymous">
+    <title>Chess Hangout Zone - Chess Game with Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #1B1B1B;
             color: #F0F0F0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
         .container {
             margin-top: 30px;
@@ -99,9 +99,6 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             margin-right: auto;
             border-radius: 15px 15px 15px 0;
         }
-        .bot-message::after {
-            content: " :robot_face:";
-        }
         .message-input {
             display: flex;
             gap: 5px;
@@ -119,11 +116,35 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         .send-btn:hover {
             background-color: #555;
         }
+        .captured-pieces {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .turn-popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #444;
+            color: #F0F0F0;
+            border: 2px solid #F39C12;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="text-center">Chess Hangout Zone</h2>
+        <div class="captured-pieces">
+            <h4>White's Captured Pieces</h4>
+            <div id="whiteCaptured"></div>
+            <h4>Black's Captured Pieces</h4>
+            <div id="blackCaptured"></div>
+        </div>
         <div class="chat-container">
             <!-- Chessboard -->
             <div class="chessboard" id="chessboard"></div>
@@ -137,10 +158,9 @@ authors: Ahaan, Xavier, Spencer, Vasanth
                 </div>
             </div>
         </div>
+        <div class="turn-popup" id="turnPopup">White's Turn</div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <!-- JS for Chessboard functionality -->
+
     <script>
         const pieces = {
             'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
@@ -157,7 +177,11 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
         ];
         const chessboard = document.getElementById('chessboard');
+        const turnPopup = document.getElementById('turnPopup');
+        const whiteCaptured = document.getElementById('whiteCaptured');
+        const blackCaptured = document.getElementById('blackCaptured');
         let selectedSquare = null;
+        let turn = 'white';
         function generateBoard() {
             chessboard.innerHTML = '';
             let isYellow = true;
@@ -187,100 +211,51 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         }
         function movePiece(selected, row, col) {
             const piece = boardLayout[selected.row][selected.col];
+            const target = boardLayout[row][col];
+            if (target) {
+                if (turn === 'white') {
+                    blackCaptured.innerHTML += pieces[target];
+                } else {
+                    whiteCaptured.innerHTML += pieces[target];
+                }
+            }
             boardLayout[selected.row][selected.col] = '';
             boardLayout[row][col] = piece;
+            turn = turn === 'white' ? 'black' : 'white';
+            displayTurnPopup();
             generateBoard();
         }
+        function displayTurnPopup() {
+            turnPopup.textContent = `${turn === 'white' ? "White's" : "Black's"} Turn`;
+            turnPopup.style.display = 'block';
+            setTimeout(() => turnPopup.style.display = 'none', 1000);
+        }
         generateBoard();
-    </script>
-    <!-- JS for Chat and Moderation Bot functionality -->
-    <script>
+
+        // Chat Bot Functionality
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
-        let userColors = {};
-        let userIdCounter = 0;
-        // List of offensive words (expand this list as needed)
-        const offensiveWords = ["offensiveWord1", "offensiveWord2", "curseWord1"];
-        // Function to get a random color
-        function getRandomColor() {
-            const colors = ["#8A7B6D", "#77665C", "#634944", "#504238", "#3D3832", "#6B665A", "#D9AE7D"];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-        // Function to add a message to the chat
-        function addMessage(text, isBot = false) {
-            const msgElement = document.createElement('p');
-            msgElement.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
-            msgElement.textContent = text;
-            if (!isBot) {
-                const userId = `user_${userIdCounter++}`;
-                if (!userColors[userId]) {
-                    userColors[userId] = getRandomColor();
-                }
-                msgElement.style.backgroundColor = userColors[userId];
+
+        sendBtn.addEventListener('click', handleUserMessage);
+        messageInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserMessage(); });
+
+        function handleUserMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText) {
+                addMessage(messageText, 'user-message');
+                messageInput.value = '';
+                setTimeout(() => addMessage('That sounds like an interesting move!', 'bot-message'), 500);
             }
-            chatMessages.appendChild(msgElement);
+        }
+
+        function addMessage(text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${className}`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-        // Function to handle user messages
-        function handleUserMessage() {
-            const userMessage = messageInput.value.trim();
-            if (userMessage) {
-                if (isMessageOffensive(userMessage)) {
-                    addMessage("Your message contains inappropriate language and cannot be sent.", true);
-                } else {
-                    addMessage(userMessage, false);
-                    messageInput.value = '';
-                    respondToUserMessage(userMessage);
-                }
-            }
-        }
-        // Function to check for offensive words
-        function isMessageOffensive(message) {
-            const lowerCaseMessage = message.toLowerCase();
-            return offensiveWords.some(word => lowerCaseMessage.includes(word));
-        }
-        // Function to respond to user messages
-        function respondToUserMessage(userMessage) {
-            setTimeout(() => {
-                const responses = [
-                    "Interesting point! What are your thoughts on that?",
-                    "That's a great insight! How did you come to that conclusion?",
-                    "I'm glad you shared that. Let's keep the discussion lively!",
-                    "Wow, that's quite the move! Are you planning your next one?",
-                    "Chess is all about strategy. What's your favorite opening?"
-                ];
-                const botResponse = responses[Math.floor(Math.random() * responses.length)];
-                addMessage(botResponse, true);
-            }, 1000);
-        }
-        sendBtn.addEventListener('click', handleUserMessage);
-        messageInput.addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                handleUserMessage();
-            }
-        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
