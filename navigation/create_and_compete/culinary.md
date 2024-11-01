@@ -116,7 +116,7 @@ author: Daksha, Zach, Alex, Darsh
             description: "A rich and creamy chocolate dessert.",
             cookingTime: "20 minutes + chilling",
             cookingProcess: "1. Melt chocolate. 2. Whip cream with sugar. 3. Fold chocolate into cream and chill before serving."
-        }
+        },
         {
             name: "Spaghetti Carbonara",
             ingredients: ["pasta", "cheese", "bacon", "eggs"],
@@ -188,7 +188,7 @@ author: Daksha, Zach, Alex, Darsh
             cookingProcess: "1. Slice cucumber and mix with yogurt, dill, and lemon juice. 2. Toss well and serve."
         }
     ];
-    save
+  
     function getRandomIngredients() {
         const ingredients = [
 'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
@@ -248,10 +248,15 @@ author: Daksha, Zach, Alex, Darsh
         </div>`;
     });
 
-    document.getElementById('customRecipeButton').addEventListener('click', function() {
+   customRecipeButton.addEventListener('click', () => {
+    const ingredients = getRandomIngredients(); 
+    displayIngredients(ingredients); 
+});
         if (confirm("Would you like to create your own recipe with 5 random ingredients?")) {
             const randomIngredients = [];
             const ingredients = [
+              function getRandomIngredients() {
+    const allIngredients = [
 'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
 'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
 'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
@@ -263,19 +268,16 @@ author: Daksha, Zach, Alex, Darsh
 'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
 'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon',
             ];
-            for (let i = 0; i < 5; i++) {
-                const randomIndex = Math.floor(Math.random() * ingredients.length);
-                randomIngredients.push(ingredients[randomIndex]);
-            }
-            const resultsContainer = document.getElementById('recipeResults');
-            resultsContainer.innerHTML = `<div class="recipe">
-                <strong>Create Your Own Recipe!</strong><br>
-                <em>Use these ingredients:</em> ${randomIngredients.join(', ')}
-            </div>`;
+           const randomIngredients = [];
+    while (randomIngredients.length < 5) {
+        const randomIndex = Math.floor(Math.random() * allIngredients.length);
+        const ingredient = allIngredients[randomIndex];
+        if (!randomIngredients.includes(ingredient)) {
+            randomIngredients.push(ingredient);
         }
-    });
-
-    window.onload = getRandomIngredients;
+    }
+    return randomIngredients;
+}
 </script>
 
 
