@@ -6,7 +6,6 @@ permalink: share_and_care/hungry_games
 comments: true
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,8 +45,8 @@ comments: true
             transform: scale(1.1);
         }
         .chat-container {
-            width: 350px;
-            height: 450px;
+            width: 400px;  /* Increased width */
+            height: 500px; /* Increased height */
             display: flex;
             flex-direction: column;
             border: 2px solid #ff8c00;
@@ -56,6 +55,7 @@ comments: true
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             background-color: #fff3e0;
             margin-top: 20px;
+            text-align: center; /* Center text */
         }
         .chat-box {
             flex: 1;
@@ -73,6 +73,7 @@ comments: true
             background-color: #ffcc80;
             word-wrap: break-word;
             max-width: 80%;
+            position: relative; /* For absolute positioning of heart */
         }
         .input-box {
             display: flex;
@@ -101,9 +102,14 @@ comments: true
         .heart {
             cursor: pointer;
             margin-left: 5px;
+            display: inline-block; /* Allow toggling visibility */
         }
-        .favorited {
-            color: red; /* Change heart color when favorited */
+        .hidden {
+            display: none; /* Hide the heart */
+        }
+        .chat-label {
+            margin-bottom: 10px; /* Spacing between label and chat box */
+            font-weight: bold; /* Make the label bold */
         }
     </style>
 </head>
@@ -116,6 +122,7 @@ comments: true
     </div>
 
     <div class="chat-container">
+        <div class="chat-label">Chat Box</div> <!-- Added chat label -->
         <div class="chat-box" id="chatBox">
             <!-- Messages will appear here -->
         </div>
@@ -159,7 +166,7 @@ comments: true
             heart.textContent = "❤️";
             heart.classList.add("heart");
             heart.onclick = async function() {
-                heart.classList.toggle("favorited"); // Toggle the favorited class
+                heart.classList.toggle("hidden"); // Toggle the hidden class to show/hide heart
                 const heartResponse = await fetch(`http://localhost:5000/messages/${message.id}/heart`, {
                     method: 'PUT',
                 });
@@ -178,3 +185,4 @@ comments: true
 
 </body>
 </html>
+
