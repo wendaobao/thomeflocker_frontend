@@ -4,7 +4,7 @@ title: Create and Compete - Culinary
 search_exclude: true
 permalink: /create_and_compete/culinary
 menu: nav/create_and_compete.html
-author: Daksha, Alex, Darsh, Zach
+author: Daksha, Zach, Alex, Darsh
 ---
 
 <style>
@@ -65,7 +65,7 @@ author: Daksha, Alex, Darsh, Zach
 
 <h2>Ingredient Input</h2>
 <form id="ingredientForm">
-    <input type="text" id="ingredients" placeholder="e.g., chicken, broccoli, rice">
+    <input type="text" id="ingredients" placeholder="e.g., chicken, mushrooms, tomatoes">
     <button type="submit">Find Recipes</button>
 </form>
 
@@ -118,77 +118,77 @@ author: Daksha, Alex, Darsh, Zach
             cookingProcess: "1. Melt chocolate. 2. Whip cream with sugar. 3. Fold chocolate into cream and chill before serving."
         }
         {
-    name: "Spaghetti Carbonara",
-    ingredients: ["pasta", "cheese", "bacon", "eggs"],
-    description: "Creamy pasta with cheese, bacon, and eggs.",
-    cookingTime: "15 minutes",
-    cookingProcess: "1. Cook pasta. 2. Fry bacon until crispy. 3. Mix pasta with bacon, cheese, and whisked eggs. Serve hot."
-},
-{
-    name: "Garlic Butter Shrimp",
-    ingredients: ["shrimp", "garlic", "butter", "parsley"],
-    description: "Tender shrimp cooked in a garlic butter sauce with fresh parsley.",
-    cookingTime: "10 minutes",
-    cookingProcess: "1. Melt butter in a pan. 2. Add garlic and shrimp, cook until pink. 3. Garnish with parsley and serve."
-},
-{
-    name: "Avocado Toast",
-    ingredients: ["bread", "avocado", "lemon", "pepper"],
-    description: "Quick and healthy avocado toast with lemon and pepper.",
-    cookingTime: "5 minutes",
-    cookingProcess: "1. Mash avocado with lemon juice. 2. Spread on toasted bread. 3. Sprinkle with pepper and serve."
-},
-{
-    name: "Fruit Salad",
-    ingredients: ["strawberries", "blueberries", "grapes", "mint"],
-    description: "A refreshing mix of fresh berries and grapes with mint.",
-    cookingTime: "5 minutes",
-    cookingProcess: "1. Slice strawberries and mix with blueberries and grapes. 2. Garnish with mint and serve."
-},
-{
-    name: "Chicken Tacos",
-    ingredients: ["chicken", "tortillas", "onion", "cilantro"],
-    description: "Tasty chicken tacos with fresh cilantro and onion.",
-    cookingTime: "20 minutes",
-    cookingProcess: "1. Cook chicken with spices. 2. Assemble in tortillas with chopped onion and cilantro. Serve."
-},
-{
-    name: "Vegetable Stir-Fry",
-    ingredients: ["bell peppers", "broccoli", "carrots", "soy sauce"],
-    description: "Quick vegetable stir-fry with a soy sauce glaze.",
-    cookingTime: "15 minutes",
-    cookingProcess: "1. Chop vegetables. 2. Stir-fry in a hot pan with soy sauce. Serve hot."
-},
-{
-    name: "Banana Pancakes",
-    ingredients: ["banana", "eggs", "cinnamon"],
-    description: "Fluffy banana pancakes with a hint of cinnamon.",
-    cookingTime: "10 minutes",
-    cookingProcess: "1. Mash banana and mix with eggs and cinnamon. 2. Pour batter onto a hot griddle. Cook until golden brown on both sides. Serve."
-},
-{
-    name: "Mango Smoothie",
-    ingredients: ["mango", "yogurt", "honey"],
-    description: "Refreshing mango smoothie with yogurt and honey.",
-    cookingTime: "5 minutes",
-    cookingProcess: "1. Blend mango, yogurt, and honey until smooth. 2. Pour into a glass and enjoy."
-},
-{
-    name: "Lemon Herb Chicken",
-    ingredients: ["chicken", "lemon", "thyme", "garlic"],
-    description: "Juicy lemon herb chicken with garlic and thyme.",
-    cookingTime: "25 minutes",
-    cookingProcess: "1. Marinate chicken with lemon, thyme, and garlic. 2. Bake at 400°F until cooked through. Serve."
-},
-{
-    name: "Cucumber Salad",
-    ingredients: ["cucumber", "dill", "yogurt", "lemon"],
-    description: "Refreshing cucumber salad with dill and a creamy yogurt dressing.",
-    cookingTime: "5 minutes",
-    cookingProcess: "1. Slice cucumber and mix with yogurt, dill, and lemon juice. 2. Toss well and serve."
-}
+            name: "Spaghetti Carbonara",
+            ingredients: ["pasta", "cheese", "bacon", "eggs"],
+            description: "Creamy pasta with cheese, bacon, and eggs.",
+            cookingTime: "15 minutes",
+            cookingProcess: "1. Cook pasta. 2. Fry bacon until crispy. 3. Mix pasta with bacon, cheese, and whisked eggs. Serve hot."
+        },
+        {
+            name: "Garlic Butter Shrimp",
+            ingredients: ["shrimp", "garlic", "butter", "parsley"],
+            description: "Tender shrimp cooked in a garlic butter sauce with fresh parsley.",
+            cookingTime: "10 minutes",
+            cookingProcess: "1. Melt butter in a pan. 2. Add garlic and shrimp, cook until pink. 3. Garnish with parsley and serve."
+        },
+        {
+            name: "Avocado Toast",
+            ingredients: ["bread", "avocado", "lemon", "pepper"],
+            description: "Quick and healthy avocado toast with lemon and pepper.",
+            cookingTime: "5 minutes",
+            cookingProcess: "1. Mash avocado with lemon juice. 2. Spread on toasted bread. 3. Sprinkle with pepper and serve."
+        },
+        {
+            name: "Fruit Salad",
+            ingredients: ["strawberries", "blueberries", "grapes", "mint"],
+            description: "A refreshing mix of fresh berries and grapes with mint.",
+            cookingTime: "5 minutes",
+            cookingProcess: "1. Slice strawberries and mix with blueberries and grapes. 2. Garnish with mint and serve."
+        },
+        {
+            name: "Chicken Tacos",
+            ingredients: ["chicken", "tortillas", "onion", "cilantro"],
+            description: "Tasty chicken tacos with fresh cilantro and onion.",
+            cookingTime: "20 minutes",
+            cookingProcess: "1. Cook chicken with spices. 2. Assemble in tortillas with chopped onion and cilantro. Serve."
+        },
+        {
+            name: "Vegetable Stir-Fry",
+            ingredients: ["bell peppers", "broccoli", "carrots", "soy sauce"],
+            description: "Quick vegetable stir-fry with a soy sauce glaze.",
+            cookingTime: "15 minutes",
+            cookingProcess: "1. Chop vegetables. 2. Stir-fry in a hot pan with soy sauce. Serve hot."
+        },
+        {
+            name: "Banana Pancakes",
+            ingredients: ["banana", "eggs", "cinnamon"],
+            description: "Fluffy banana pancakes with a hint of cinnamon.",
+            cookingTime: "10 minutes",
+            cookingProcess: "1. Mash banana and mix with eggs and cinnamon. 2. Pour batter onto a hot griddle. Cook until golden brown on both sides. Serve."
+        },  
+        {
+            name: "Mango Smoothie",
+            ingredients: ["mango", "yogurt", "honey"],
+            description: "Refreshing mango smoothie with yogurt and honey.",
+            cookingTime: "5 minutes",
+            cookingProcess: "1. Blend mango, yogurt, and honey until smooth. 2. Pour into a glass and enjoy."
+        },
+        {
+            name: "Lemon Herb Chicken",
+            ingredients: ["chicken", "lemon", "thyme", "garlic"],
+            description: "Juicy lemon herb chicken with garlic and thyme.",
+            cookingTime: "25 minutes",
+            cookingProcess: "1. Marinate chicken with lemon, thyme, and garlic. 2. Bake at 400°F until cooked through. Serve."
+        },
+        {
+            name: "Cucumber Salad",
+            ingredients: ["cucumber", "dill", "yogurt", "lemon"],
+            description: "Refreshing cucumber salad with dill and a creamy yogurt dressing.",
+            cookingTime: "5 minutes",
+            cookingProcess: "1. Slice cucumber and mix with yogurt, dill, and lemon juice. 2. Toss well and serve."
+        }
     ];
-
+    save
     function getRandomIngredients() {
         const ingredients = [
 'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
@@ -200,7 +200,7 @@ author: Daksha, Alex, Darsh, Zach
 'Chia Seeds', 'Walnuts', 'Pecans', 'Hazelnuts', 'Macadamia Nuts', 'Pine Nuts', 'Sesame Seeds', 'Poppy Seeds', 'Coconut', 'Coconut Milk', 
 'Cocoa Powder', 'Honey', 'Maple Syrup', 'Brown Sugar', 'White Sugar', 'Vanilla Extract', 'Cinnamon', 'Nutmeg', 'Cloves', 'Cardamom',
 'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
-'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon'
+'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon', 
         ];
         const randomItems = [];
         for (let i = 0; i < 5; i++) {
@@ -261,7 +261,7 @@ author: Daksha, Alex, Darsh, Zach
 'Chia Seeds', 'Walnuts', 'Pecans', 'Hazelnuts', 'Macadamia Nuts', 'Pine Nuts', 'Sesame Seeds', 'Poppy Seeds', 'Coconut', 'Coconut Milk', 
 'Cocoa Powder', 'Honey', 'Maple Syrup', 'Brown Sugar', 'White Sugar', 'Vanilla Extract', 'Cinnamon', 'Nutmeg', 'Cloves', 'Cardamom',
 'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
-'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon'
+'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon',
             ];
             for (let i = 0; i < 5; i++) {
                 const randomIndex = Math.floor(Math.random() * ingredients.length);
