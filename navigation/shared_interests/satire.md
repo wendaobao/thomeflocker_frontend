@@ -33,19 +33,6 @@ DNHS Satire Home Page
     padding: 20px;
   }
 
-  /* Header/Login Bar */
-  .login-bar {
-    background-color: #000000;
-    text-align: right;
-    padding: 10px;
-  }
-
-  .login-bar a {
-    color: #00aaff;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
   /* Banner */
   .banner {
     width: 100%;
