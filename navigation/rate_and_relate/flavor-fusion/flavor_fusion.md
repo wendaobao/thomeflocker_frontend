@@ -2,7 +2,7 @@
 layout: post
 title: Flavor Fusion
 search_exclude: true
-permalink: rate_and_relate/flavor_fusion
+permalink: rate_and_relate/flavor_fusion/
 menu: nav/rate_and_relate.html
 author: Nolan, Jacob, Claire
 ---
