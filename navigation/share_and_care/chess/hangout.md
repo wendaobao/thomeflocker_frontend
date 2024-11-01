@@ -16,6 +16,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
     <title>Chess Hangout Zone - Chess Game with Chat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Styles */
         body {
             background-color: #1B1B1B;
             color: #F0F0F0;
@@ -44,30 +45,21 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             cursor: pointer;
             color: #3E3E3E; /* Darker color for better contrast */
         }
-        .orange {
-            background-color: #F39C12;
-        }
-        .yellow {
-            background-color: #F7DC6F;
-        }
+        .orange { background-color: #F39C12; }
+        .yellow { background-color: #F7DC6F; }
         .chat-container {
             display: flex;
             justify-content: space-between;
         }
         .chat-box {
-            width: 30%;
+            width: 40%;
             background-color: #1A1A1A;
             padding: 20px;
             border-radius: 8px;
             border: 2px solid #444;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
-        .chat-box h4 {
-            color: #F7DC6F;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-        }
+        .chat-box h4 { color: #F7DC6F; font-weight: bold; text-align: center; margin-bottom: 15px; }
         .chat-messages {
             height: 400px;
             overflow-y: scroll;
@@ -77,69 +69,25 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             padding: 10px;
             border-radius: 10px;
         }
-        .message {
-            padding: 10px 15px;
-            border-radius: 10px;
-            margin: 8px 0;
-            font-size: 16px;
-            word-wrap: break-word;
-            display: inline-block;
-            max-width: 80%;
-            color: #F0F0F0;
-            border: 1px solid #444;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .user-message {
-            text-align: right;
-            margin-left: auto;
-            border-radius: 15px 15px 0 15px;
-        }
-        .bot-message {
-            background-color: #B29800;
-            text-align: left;
-            margin-right: auto;
-            border-radius: 15px 15px 15px 0;
-        }
-        .message-input {
-            display: flex;
-            gap: 5px;
-        }
-        .message-input input {
-            flex-grow: 1;
-            background-color: #2A2A2A;
-            border: 1px solid #555;
-            color: #F0F0F0;
-        }
-        .send-btn {
-            background-color: #444;
-            color: #F0F0F0;
-        }
-        .send-btn:hover {
-            background-color: #555;
-        }
-        .captured-pieces {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .turn-popup {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            background-color: #444;
-            color: #F0F0F0;
-            border: 2px solid #F39C12;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            display: none;
-        }
+        .message { padding: 10px 15px; border-radius: 10px; margin: 8px 0; font-size: 16px; display: inline-block; max-width: 80%; color: #F0F0F0; border: 1px solid #444; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+        .user-message { text-align: right; margin-left: auto; border-radius: 15px 15px 0 15px; }
+        .bot-message { background-color: #B29800; text-align: left; margin-right: auto; border-radius: 15px 15px 15px 0; }
+        .message-input { display: flex; gap: 5px; }
+        .message-input input { flex-grow: 1; background-color: #2A2A2A; border: 1px solid #555; color: #F0F0F0; }
+        .send-btn { background-color: #444; color: #F0F0F0; }
+        .send-btn:hover { background-color: #555; }
+        .captured-pieces { text-align: center; margin-top: 20px; }
+        .turn-popup { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; background-color: #444; color: #F0F0F0; border: 2px solid #F39C12; border-radius: 5px; font-size: 18px; font-weight: bold; display: none; }
+        .game-mode { text-align: center; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="text-center">Chess Hangout Zone</h2>
+        <div class="game-mode">
+            <button onclick="startGame('human')" class="btn btn-primary">Play Against Human</button>
+            <button onclick="startGame('bot')" class="btn btn-secondary">Play Against Bot</button>
+        </div>
         <div class="captured-pieces">
             <h4>White's Captured Pieces</h4>
             <div id="whiteCaptured"></div>
@@ -161,6 +109,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
     </div>
 
     <script>
+        // Variables
         const pieces = {
             'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
             'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
@@ -179,8 +128,21 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         const turnPopup = document.getElementById('turnPopup');
         const whiteCaptured = document.getElementById('whiteCaptured');
         const blackCaptured = document.getElementById('blackCaptured');
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
         let selectedSquare = null;
         let turn = 'white';
+        let gameMode = 'human'; // Default to human
+        let botMessages = ["Nice move!", "You're doing great!", "Keep it up!", "This is a tough game!", "Impressive!"];
+        
+        function startGame(mode) {
+            gameMode = mode;
+            generateBoard();
+            displayTurnPopup();
+            addMessage(`You are playing against ${mode === 'bot' ? 'the bot!' : 'another player!'}`, 'bot-message');
+        }
+        
         function generateBoard() {
             chessboard.innerHTML = '';
             let isYellow = true;
@@ -200,16 +162,16 @@ authors: Ahaan, Xavier, Spencer, Vasanth
                 isYellow = !isYellow;
             }
         }
+
         function handleSquareClick(row, col, square) {
             if (selectedSquare) {
-                if (isLegalMove(selectedSquare, row, col)) {
-                    movePiece(selectedSquare, row, col);
-                }
+                movePiece(selectedSquare, row, col);
                 selectedSquare = null;
-            } else if (boardLayout[row][col] && isTurn(boardLayout[row][col])) {
+            } else if (boardLayout[row][col]) {
                 selectedSquare = { row, col, square };
             }
         }
+
         function movePiece(selected, row, col) {
             const piece = boardLayout[selected.row][selected.col];
             const target = boardLayout[row][col];
@@ -223,63 +185,61 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             boardLayout[selected.row][selected.col] = '';
             boardLayout[row][col] = piece;
             turn = turn === 'white' ? 'black' : 'white';
-            displayTurnPopup();
             generateBoard();
-        }
-        function displayTurnPopup() {
-            turnPopup.textContent = `${turn === 'white' ? "White's" : "Black's"} Turn`;
-            turnPopup.style.display = 'block';
-            setTimeout(() => turnPopup.style.display = 'none', 1000);
-        }
-        function isTurn(piece) {
-            return (turn === 'white' && piece === piece.toUpperCase()) ||
-                   (turn === 'black' && piece === piece.toLowerCase());
-        }
-        function isLegalMove(selected, row, col) {
-            const piece = boardLayout[selected.row][selected.col].toLowerCase();
-            const dx = Math.abs(row - selected.row);
-            const dy = Math.abs(col - selected.col);
-            if (piece === 'p') {
-                if (dy === 0 && (dx === 1 || (dx === 2 && (selected.row === 1 || selected.row === 6)))) return true;
-                if (dy === 1 && dx === 1 && boardLayout[row][col]) return true;
-            } else if (piece === 'r') {
-                return dx === 0 || dy === 0;
-            } else if (piece === 'n') {
-                return dx * dy === 2;
-            } else if (piece === 'b') {
-                return dx === dy;
-            } else if (piece === 'q') {
-                return dx === dy || dx === 0 || dy === 0;
-            } else if (piece === 'k') {
-                return dx <= 1 && dy <= 1;
+            displayTurnPopup();
+            if (gameMode === 'bot' && turn === 'black') {
+                setTimeout(botMove, 1000);
             }
-            return false;
         }
-        generateBoard();
-        const chatMessages = document.getElementById("chatMessages");
-        const messageInput = document.getElementById("messageInput");
-        const sendBtn = document.getElementById("sendBtn");
-        sendBtn.addEventListener("click", sendMessage);
-        messageInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-        function sendMessage() {
+
+        function botMove() {
+            // Random move for simplicity
+            let moved = false;
+            while (!moved) {
+                const row = Math.floor(Math.random() * 8);
+                const col = Math.floor(Math.random() * 8);
+                if (boardLayout[row][col] && boardLayout[row][col].toLowerCase() === boardLayout[row][col]) {
+                    const targetRow = Math.floor(Math.random() * 8);
+                    const targetCol = Math.floor(Math.random() * 8);
+                    if (!boardLayout[targetRow][targetCol] || boardLayout[targetRow][targetCol].toUpperCase() === boardLayout[targetRow][targetCol]) {
+                        movePiece({ row, col }, targetRow, targetCol);
+                        sendBotMessage();
+                        moved = true;
+                    }
+                }
+            }
+        }
+
+        function sendBotMessage() {
+            const message = botMessages[Math.floor(Math.random() * botMessages.length)];
+            addMessage(message, 'bot-message');
+        }
+
+        function displayTurnPopup() {
+            turnPopup.innerText = `${turn.charAt(0).toUpperCase() + turn.slice(1)}'s Turn`;
+            turnPopup.style.display = 'block';
+            setTimeout(() => turnPopup.style.display = 'none', 1500);
+        }
+
+        function addMessage(text, className) {
+            const message = document.createElement('div');
+            message.className = `message ${className}`;
+            message.innerText = text;
+            chatMessages.appendChild(message);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', () => {
             const message = messageInput.value.trim();
             if (message) {
-                const userMessage = document.createElement("div");
-                userMessage.classList.add("message", "user-message");
-                userMessage.textContent = message;
-                chatMessages.appendChild(userMessage);
-                messageInput.value = "";
-                simulateBotReply();
+                addMessage(message, 'user-message');
+                messageInput.value = '';
             }
-        }
-        function simulateBotReply() {
-            const botMessage = document.createElement("div");
-            botMessage.classList.add("message", "bot-message");
-            botMessage.textContent = "Thanks for your message!";
-            chatMessages.appendChild(botMessage);
-        }
+        });
+
+        // Initial board setup
+        generateBoard();
     </script>
 </body>
 </html>
+
