@@ -6,7 +6,7 @@ permalink: share_and_care/hungry_games
 comments: true
 ---
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
