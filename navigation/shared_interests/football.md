@@ -13,7 +13,7 @@ menu: nav/shared_interests.html
                 <img src="{{site.baseurl}}/images/school_logo.png" alt="logo" width="150" height="150">
             </a>
         </td>
-        <td id="Limitless Connections"><a href="{{site.baseurl}}/shared_interests/limitconnect/">Limitless Connections</a></td>
+        <td id="Limitless Connections"><a href="{{site.baseurl}}/shared_interests/limitconnect">Limitless Connections</a></td>
         <td id="DNHS Football"><a href="{{site.baseurl}}/shared_interests/football">DNHS Football</a></td>
         <td id="School Subjects"><a href="{{site.baseurl}}/shared_interests/jupyter/chatroom">School Subjects</a></td>
         <td id="Music"><a href="{{site.baseurl}}/music/">Music</a></td>
