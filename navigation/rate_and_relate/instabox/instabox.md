@@ -4,11 +4,13 @@ title: Instabox
 search_exclude: true
 permalink: rate_and_relate/instabox
 menu: nav/rate_and_relate.html
+author: Aadi, Aaditya, Aditya, Kanhay
 ---
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: "Poppins", sans-serif;
         background-color: #333;
         color: white;
         margin: 0;
@@ -114,8 +116,8 @@ menu: nav/rate_and_relate.html
     <!-- Navbar -->
     <div class="navbar">
         <a href="">Home</a>
-        <a href="../instabox/profile">Profile</a>
-        <a href="../instabox/settings">Settings</a>
+        <a href="{{site.baseurl}}/rate_and_relate/instabox/profile">Profile</a>
+        <a href="{{site.baseurl}}/rate_and_relate/instabox/settings">Settings</a>
     </div>
     <div class="container">
         <!-- Instabox chatbox -->

@@ -1,9 +1,70 @@
 ---
 layout: post 
-title: Vote for the Goat
+title: Vote for the GOAT
 search_exclude: true
 permalink: /voteforthegoat/home
 menu: nav/vote_for_the_goat.html
 ---
 
-P4 Mr. Brown's class Vote for the GOAT rooms.
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #000;
+        color: #e0e0e0;
+        padding: 20px;
+    }
+
+    h2, h3 {
+        color: #00d4ff;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    .group-theme {
+        background: #000;
+        color: #e0e0e0;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 212, 255, 0.2), 0 6px 20px 0 rgba(0, 212, 255, 0.19);
+        border: 1px solid #00d4ff;
+    }
+
+    .group-theme h3 {
+        margin-top: 0;
+    }
+</style>
+
+## Welcome to Vote for the GOAT!
+
+We're excited to bring you "Vote for the GOAT," a fun and interactive project from Mr. Brown's class! Here, students can dive into different topics, cast their votes, and have some great conversations. Each group has their own theme, so there's something for everyone to get excited about. Let’s jump into what each group is up to and how you can get involved!
+
+### Group Themes and Activities
+
+<div class="group-theme">
+    **Anvay's Group: Internet Debates**  
+    Step right up to join some of the internet’s hottest debates! Anvay’s group is tackling the big questions—from “milk or cereal first?” to other internet classics. Get ready to bring your best arguments, learn from different perspectives, and, of course, vote on which side you’re on!
+</div>
+
+<div class="group-theme">
+    **Risha's Group: Dinero Store Favorites**  
+    Got a favorite snack or item at the Dinero Store? Risha’s group is all about sharing those favorites and seeing what the top picks are. Join in, cast your votes, and discover which items are the most-loved among your classmates!
+</div>
+
+<div class="group-theme">
+    **Maryam's Group: Calico Critters Showdown**  
+    Calling all Calico Critter fans! Maryam’s group is diving into the world of these cute critters to find out which ones are the absolute favorites. Whether you’re here for nostalgia or just want to see which ones win, it’s time to vote for the critters that hold a special place in your heart.
+</div>
+
+<div class="group-theme">
+    **Weston's Group: Car Preferences**  
+    Love cars? So does Weston’s group! They’re setting up a discussion about the best cars for students, dream cars, and what everyone’s actually driving. Share your picks, vote, and maybe even find a new favorite!
+</div>
+
+<div class="group-theme">
+    **Noah's Group: NFL GOATs Debate**  
+    Noah’s group is here for all the NFL fans, especially those who love a good debate about the greatest players of all time. With a focus on the Green Bay Packers, this one’s bound to get exciting. Whether you’re in it for local pride or just love the game, join in to share your take on the GOATs of the NFL.
+</div>
