@@ -42,6 +42,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             font-weight: bold;
             font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
+            color: #3E3E3E; /* Darker color for better contrast */
         }
         .orange {
             background-color: #F39C12;
@@ -146,9 +147,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             <div id="blackCaptured"></div>
         </div>
         <div class="chat-container">
-            <!-- Chessboard -->
             <div class="chessboard" id="chessboard"></div>
-            <!-- Chat Section -->
             <div class="chat-box">
                 <h4>Chess-Themed Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
@@ -203,9 +202,11 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         }
         function handleSquareClick(row, col, square) {
             if (selectedSquare) {
-                movePiece(selectedSquare, row, col);
+                if (isLegalMove(selectedSquare, row, col)) {
+                    movePiece(selectedSquare, row, col);
+                }
                 selectedSquare = null;
-            } else if (boardLayout[row][col]) {
+            } else if (boardLayout[row][col] && isTurn(boardLayout[row][col])) {
                 selectedSquare = { row, col, square };
             }
         }
@@ -230,31 +231,54 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             turnPopup.style.display = 'block';
             setTimeout(() => turnPopup.style.display = 'none', 1000);
         }
+        function isTurn(piece) {
+            return (turn === 'white' && piece === piece.toUpperCase()) ||
+                   (turn === 'black' && piece === piece.toLowerCase());
+        }
+        function isLegalMove(selected, row, col) {
+            const piece = boardLayout[selected.row][selected.col].toLowerCase();
+            const dx = Math.abs(row - selected.row);
+            const dy = Math.abs(col - selected.col);
+            if (piece === 'p') {
+                if (dy === 0 && (dx === 1 || (dx === 2 && (selected.row === 1 || selected.row === 6)))) return true;
+                if (dy === 1 && dx === 1 && boardLayout[row][col]) return true;
+            } else if (piece === 'r') {
+                return dx === 0 || dy === 0;
+            } else if (piece === 'n') {
+                return dx * dy === 2;
+            } else if (piece === 'b') {
+                return dx === dy;
+            } else if (piece === 'q') {
+                return dx === dy || dx === 0 || dy === 0;
+            } else if (piece === 'k') {
+                return dx <= 1 && dy <= 1;
+            }
+            return false;
+        }
         generateBoard();
-
-        // Chat Bot Functionality
-        const chatMessages = document.getElementById('chatMessages');
-        const messageInput = document.getElementById('messageInput');
-        const sendBtn = document.getElementById('sendBtn');
-
-        sendBtn.addEventListener('click', handleUserMessage);
-        messageInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserMessage(); });
-
-        function handleUserMessage() {
-            const messageText = messageInput.value.trim();
-            if (messageText) {
-                addMessage(messageText, 'user-message');
-                messageInput.value = '';
-                setTimeout(() => addMessage('That sounds like an interesting move!', 'bot-message'), 500);
+        const chatMessages = document.getElementById("chatMessages");
+        const messageInput = document.getElementById("messageInput");
+        const sendBtn = document.getElementById("sendBtn");
+        sendBtn.addEventListener("click", sendMessage);
+        messageInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message) {
+                const userMessage = document.createElement("div");
+                userMessage.classList.add("message", "user-message");
+                userMessage.textContent = message;
+                chatMessages.appendChild(userMessage);
+                messageInput.value = "";
+                simulateBotReply();
             }
         }
-
-        function addMessage(text, className) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${className}`;
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+        function simulateBotReply() {
+            const botMessage = document.createElement("div");
+            botMessage.classList.add("message", "bot-message");
+            botMessage.textContent = "Thanks for your message!";
+            chatMessages.appendChild(botMessage);
         }
     </script>
 </body>
