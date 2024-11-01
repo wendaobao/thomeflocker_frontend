@@ -207,7 +207,7 @@ permalink: /shared_interests/football/
         <div class="chat-area" id="chatArea">
             <!-- Messages will appear here -->
         </div>
-        <form class="message-form" id="messageForm">
+        <form class="message-form" id="messageForm" onsubmit="sendMessage(event)">
             <input type="text" id="messageInput" placeholder="Enter your message..." required>
             <button type="submit">Send</button>
         </form>
@@ -257,4 +257,17 @@ permalink: /shared_interests/football/
             togglePostForm();
         }
     }
+
+    function sendMessage(event) {
+        event.preventDefault(); // Prevent the default form submission
+        const messageInput = document.getElementById("messageInput").value;
+
+        if (messageInput) {
+            const messageElement = document.createElement("div");
+            messageElement.textContent = messageInput;
+            document.getElementById("chatArea").appendChild(messageElement);
+            document.getElementById("messageInput").value = ""; // Clear the input
+        }
+    }
 </script>
+
