@@ -145,10 +145,10 @@ author: Arshia, Prajna, Mirabelle, Alex
 
   // Fake conversations data
   const conversations = {
-    'Chat 1': ["Hey! How's it going?", "Pretty good! You?"],
-    'Chat 2': ["Are we still meeting later?", "Yes, see you at 5!"],
-    'Chat 3': ["Thanks for the update!", "You're welcome!"],
-    'Chat 4': ["Let me know when you're free.", "Will do!"]
+    'Mirabelle': ["Hey! How's it going, nice doodle!", "Pretty good! Thank you so much!"],
+    'Arshia': ["Are we still meeting later to doodle?", "Yes, see you at 5!"],
+    'Prajna': ["Thanks for the update, these doodle is going to be awesome!", "You're welcome!"],
+    'Alex': ["Let me know when you're free to doodle..", "Will do!"]
   };
 
   // Load a selected conversation
