@@ -65,6 +65,12 @@ menu: nav/shared_interests.html
         color: #FFD700; /* Gold */
     }
 
+    /* Reactions */
+    .reaction-icons {
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
     /* Chatroom section on the right */
     .chatroom-container {
         width: 45%;
@@ -132,13 +138,18 @@ menu: nav/shared_interests.html
 
 <div class="main-container">
     <!-- Posts Section on the Left -->
-    <div class="posts-wrapper">
+    <div class="posts-wrapper" id="postsWrapper">
         <div class="post">
             <div class="post-header">
                 <div class="post-icon"></div>
                 <span class="post-username">Coach Thompson</span>
             </div>
             <p>Congratulations to the Del Norte High School team for an incredible win last night! Keep the spirit up for the next game!</p>
+            <div class="reaction-icons">
+                <span class="emoji" onclick="addReaction(this)">👍</span>
+                <span class="emoji" onclick="addReaction(this)">❤️</span>
+                <span class="emoji" onclick="addReaction(this)">🔥</span>
+            </div>
         </div>
         <div class="post">
             <div class="post-header">
@@ -146,6 +157,11 @@ menu: nav/shared_interests.html
                 <span class="post-username">Team Captain</span>
             </div>
             <p>Shoutout to all the fans who showed up to support us! Let’s make it even bigger for the next home game. Go Nighthawks!</p>
+            <div class="reaction-icons">
+                <span class="emoji" onclick="addReaction(this)">👍</span>
+                <span class="emoji" onclick="addReaction(this)">❤️</span>
+                <span class="emoji" onclick="addReaction(this)">🔥</span>
+            </div>
         </div>
         <div class="post">
             <div class="post-header">
@@ -153,8 +169,28 @@ menu: nav/shared_interests.html
                 <span class="post-username">Assistant Coach</span>
             </div>
             <p>Reminder: Practice starts at 5:30 AM tomorrow. Let's stay focused and build on our recent success.</p>
+            <div class="reaction-icons">
+                <span class="emoji" onclick="addReaction(this)">👍</span>
+                <span class="emoji" onclick="addReaction(this)">❤️</span>
+                <span class="emoji" onclick="addReaction(this)">🔥</span>
+            </div>
         </div>
     </div>
+    
+    <button onclick="togglePostForm()">Add a Post</button>
+    <div id="postForm" style="display: none; margin-top: 10px;">
+        <label for="identity">Identity:</label>
+        <select id="identity" required>
+            <option value="">Select your identity</option>
+            <option value="Coach">Coach</option>
+            <option value="Player">Player</option>
+            <option value="Fan">Fan</option>
+            <option value="Captain">Captain</option>
+        </select>
+        <textarea id="message" placeholder="Your message..." required></textarea>
+        <button onclick="addPost()">Submit Post</button>
+    </div>
+
     <!-- Chatroom Section on the Right -->
     <div class="chatroom-container">
         <header class="chatroom-header">
@@ -171,20 +207,46 @@ menu: nav/shared_interests.html
 </div>
 
 <script>
-    const chatArea = document.getElementById('chatArea');
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = document.getElementById('messageInput');
-    
-    messageForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const messageText = messageInput.value.trim();
-        if (messageText !== "") {
-            const messageElement = document.createElement('p');
-            messageElement.textContent = messageText;
-            chatArea.appendChild(messageElement);
-            messageInput.value = "";
-            chatArea.scrollTop = chatArea.scrollHeight; // Auto-scroll to the newest message
+    function addReaction(emojiElement) {
+        let countSpan = emojiElement.querySelector(".count");
+        if (!countSpan) {
+            countSpan = document.createElement("span");
+            countSpan.className = "count";
+            countSpan.textContent = "1";
+            emojiElement.appendChild(countSpan);
+        } else {
+            countSpan.textContent = parseInt(countSpan.textContent) + 1;
         }
-    });
-</script>
+    }
 
+    function togglePostForm() {
+        const postForm = document.getElementById("postForm");
+        postForm.style.display = postForm.style.display === "none" ? "block" : "none";
+    }
+
+    function addPost() {
+        const identity = document.getElementById("identity").value;
+        const message = document.getElementById("message").value;
+        
+        if (identity && message) {
+            const newPost = document.createElement("div");
+            newPost.classList.add("post");
+            newPost.innerHTML = `
+                <div class="post-header">
+                    <div class="post-icon"></div>
+                    <span class="post-username">${identity}</span>
+                </div>
+                <p>${message}</p>
+                <div class="reaction-icons">
+                    <span class="emoji" onclick="addReaction(this)">👍</span>
+                    <span class="emoji" onclick="addReaction(this)">❤️</span>
+                    <span class="emoji" onclick="addReaction(this)">🔥</span>
+                </div>
+            `;
+            document.getElementById("postsWrapper").prepend(newPost);
+            document.getElementById("identity").value = "";
+            document.getElementById("message").value = "";
+            togglePostForm();
+        }
+    }
+</script>
