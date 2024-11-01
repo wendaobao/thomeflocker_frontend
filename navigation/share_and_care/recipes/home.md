@@ -124,7 +124,7 @@ comments: true
 <body>
 
 <a href="/moderation/rules_hungry_games/" class="button">Rules</a>
-<a href="navigation/share_and_care/recipes.md" class="button">Local Restaurants</a>
+<a href="navigation/share_and_care/recipes/reccomendations.html" class="button">Local Restaurants</a>
 
 
     <div class="image-row">
