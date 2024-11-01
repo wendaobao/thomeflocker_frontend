@@ -18,19 +18,12 @@ menu: nav/shared_interests.html
         <td id="School Subjects"><a href="{{site.baseurl}}/shared_interests/jupyter/chatroom">School Subjects</a></td>
         <td id="Music"><a href="{{site.baseurl}}/music/">Music</a></td>
         <td id="Satire"><a href="{{site.baseurl}}/shared_interests/satire">Satire</a></td>
-        <td id="PLACEHOLDER6"><a href="{{site.baseurl}}/shared_interests/agk.html">AGK</a></td>
+        <td id="AGK"><a href="{{site.baseurl}}/shared_interests/agk/agk.html">AGK</a></td>
     </tr>
 </table>
 <!-- END OF NAV MENU -->
 
 <style>
-    /* General styles */
-    body {
-        margin: 0;
-        background-color: #FDF5E6;
-        font-family: Arial, sans-serif;
-    }
-
     .page-header {
         text-align: center;
         padding: 20px;
