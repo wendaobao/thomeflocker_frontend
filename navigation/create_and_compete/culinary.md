@@ -34,7 +34,7 @@ author: Daksha, Alex, Darsh, Zach
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #28a745;
+        background-color: #28A745;
         color: white;
         cursor: pointer;
         transition: background-color 0.3s;
@@ -82,48 +82,55 @@ author: Daksha, Alex, Darsh, Zach
 
 <script>
     const recipes = [
-        { 
-            name: "Chicken Stir-Fry", 
-            ingredients: ["chicken", "broccoli", "soy sauce"], 
-            description: "Quick and healthy chicken stir-fry with vegetables.", 
-            cookingTime: "20 minutes", 
-            cookingProcess: "1. Cut chicken and vegetables. 2. Stir-fry in a pan with soy sauce. 3. Serve hot." 
+        {
+            name: "Chicken Stir-Fry",
+            ingredients: ["chicken", "broccoli", "soy sauce"],
+            description: "Quick and healthy chicken stir-fry with vegetables.",
+            cookingTime: "20 minutes",
+            cookingProcess: "1. Cut chicken and vegetables. 2. Stir-fry in a pan with soy sauce. 3. Serve hot."
         },
-        { 
-            name: "Vegan Tacos", 
-            ingredients: ["beans", "corn", "avocado"], 
-            description: "Flavorful tacos filled with beans, corn, and avocado.", 
-            cookingTime: "25 minutes", 
-            cookingProcess: "1. Mash beans and mix with corn. 2. Fill tortillas and top with avocado. 3. Serve fresh." 
+        {
+            name: "Vegan Tacos",
+            ingredients: ["beans", "corn", "avocado"],
+            description: "Flavorful tacos filled with beans, corn, and avocado.",
+            cookingTime: "25 minutes",
+            cookingProcess: "1. Mash beans and mix with corn. 2. Fill tortillas and top with avocado. 3. Serve fresh."
         },
-        { 
-            name: "Stuffed Mushrooms", 
-            ingredients: ["mushrooms", "cheese", "herbs"], 
-            description: "Mushrooms filled with a savory mixture of cheese and herbs.", 
-            cookingTime: "30 minutes", 
-            cookingProcess: "1. Remove stems from mushrooms. 2. Mix cheese and herbs, fill mushrooms. 3. Bake at 350°F for 20 mins." 
+        {
+            name: "Stuffed Mushrooms",
+            ingredients: ["mushrooms", "cheese", "herbs"],
+            description: "Mushrooms filled with a savory mixture of cheese and herbs.",
+            cookingTime: "30 minutes",
+            cookingProcess: "1. Remove stems from mushrooms. 2. Mix cheese and herbs, fill mushrooms. 3. Bake at 350°F for 20 mins."
         },
-        { 
-            name: "Bruschetta", 
-            ingredients: ["tomatoes", "basil", "bread"], 
-            description: "A delicious Italian starter with tomatoes and basil.", 
-            cookingTime: "15 minutes", 
-            cookingProcess: "1. Toast bread. 2. Mix tomatoes and basil. 3. Top bread with mixture and serve." 
+        {
+            name: "Bruschetta",
+            ingredients: ["tomatoes", "basil", "bread"],
+            description: "A delicious Italian starter with tomatoes and basil.",
+            cookingTime: "15 minutes",
+            cookingProcess: "1. Toast bread. 2. Mix tomatoes and basil. 3. Top bread with mixture and serve."
         },
-        { 
-            name: "Chocolate Mousse", 
-            ingredients: ["chocolate", "cream", "sugar"], 
-            description: "A rich and creamy chocolate dessert.", 
-            cookingTime: "20 minutes + chilling", 
-            cookingProcess: "1. Melt chocolate. 2. Whip cream with sugar. 3. Fold chocolate into cream and chill before serving." 
+        {
+            name: "Chocolate Mousse",
+            ingredients: ["chocolate", "cream", "sugar"],
+            description: "A rich and creamy chocolate dessert.",
+            cookingTime: "20 minutes + chilling",
+            cookingProcess: "1. Melt chocolate. 2. Whip cream with sugar. 3. Fold chocolate into cream and chill before serving."
         }
     ];
 
     function getRandomIngredients() {
         const ingredients = [
-            'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 
-            'Avocado', 'Mushrooms', 'Spinach', 'Peppers', 'Carrots', 'Lentils', 
-            'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes'
+'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
+'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
+'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
+'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
+'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
+'Basil', 'Cilantro', 'Parsley', 'Thyme', 'Rosemary', 'Dill', 'Sage', 'Oregano', 'Mint', 'Bay Leaves',
+'Chia Seeds', 'Walnuts', 'Pecans', 'Hazelnuts', 'Macadamia Nuts', 'Pine Nuts', 'Sesame Seeds', 'Poppy Seeds', 'Coconut', 'Coconut Milk', 
+'Cocoa Powder', 'Honey', 'Maple Syrup', 'Brown Sugar', 'White Sugar', 'Vanilla Extract', 'Cinnamon', 'Nutmeg', 'Cloves', 'Cardamom',
+'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
+'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon'
         ];
         const randomItems = [];
         for (let i = 0; i < 5; i++) {
@@ -175,10 +182,16 @@ author: Daksha, Alex, Darsh, Zach
         if (confirm("Would you like to create your own recipe with 5 random ingredients?")) {
             const randomIngredients = [];
             const ingredients = [
-                'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 
-                'Corn', 'Avocado', 'Mushrooms', 'Spinach', 'Peppers', 'Carrots', 
-                'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 
-                'Cauliflower', 'Potatoes'
+'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
+'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
+'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
+'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
+'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
+'Basil', 'Cilantro', 'Parsley', 'Thyme', 'Rosemary', 'Dill', 'Sage', 'Oregano', 'Mint', 'Bay Leaves',
+'Chia Seeds', 'Walnuts', 'Pecans', 'Hazelnuts', 'Macadamia Nuts', 'Pine Nuts', 'Sesame Seeds', 'Poppy Seeds', 'Coconut', 'Coconut Milk', 
+'Cocoa Powder', 'Honey', 'Maple Syrup', 'Brown Sugar', 'White Sugar', 'Vanilla Extract', 'Cinnamon', 'Nutmeg', 'Cloves', 'Cardamom',
+'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
+'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon'
             ];
             for (let i = 0; i < 5; i++) {
                 const randomIndex = Math.floor(Math.random() * ingredients.length);
