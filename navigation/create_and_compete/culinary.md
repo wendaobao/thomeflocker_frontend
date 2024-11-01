@@ -291,3 +291,44 @@ author: Daksha, Zach, Alex, Darsh
 The page offers an intuitive design where users can enter their available ingredients to receive a range of recipe ideas. It features sections for appetizers, main dishes, and desserts, with options to filter by dietary needs (such as vegan or gluten-free). Each recipe includes a short description, estimated cooking time, and difficulty rating. Users can bookmark their favorite recipes and compile shopping lists based on required ingredients. Additionally, there's an interactive feature for substituting ingredients, providing greater flexibility in meal preparation. </p>
 
 </details>
+
+<style>
+.culinary-posts-btn {
+  position: relative;
+  font-size: 1.2em;
+  padding: 0.7em 1.4em;
+  background-color: #BF0426;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.5em;
+  color: #DEDEDE;
+  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.culinary-posts-btn::before {
+  position: absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(33,33,33,1) 0%, rgba(33,33,33,1) 50%, rgba(150,4,31,1) 50%, rgba(191,4,38,1) 60%);
+  border-radius: 0 0 0.5em 0;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.culinary-posts-btn:hover::before {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.culinary-posts-btn:active {
+  box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+  transform: translate(0.1em, 0.1em);
+}
+</style>
+
+<a href="http://127.0.0.1:4887/flocker_frontend/create_and_compete/culinaryposts">
+  <button class="culinary-posts-btn">Culinary Posts</button>
+</a>
