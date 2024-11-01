@@ -198,16 +198,16 @@ permalink: /undgdmusic/
       <button id="clear-chat">Clear Chat</button>
     </section>
     <section id="artist-discovery">
-      <h2>Discover Artists</h2>
-      <ul>
-        <li><a href="#">Artist 1</a><br><span class="artist-info">Top Song: "Track A" | Monthly Listeners: 800k</span></li>
-        <li><a href="#">Artist 2</a><br><span class="artist-info">Top Song: "Track B" | Monthly Listeners: 500k</span></li>
-        <li><a href="#">Artist 3</a><br><span class="artist-info">Top Song: "Track C" | Monthly Listeners: 300k</span></li>
-        <!-- Add more artists here -->
-      </ul>
-    </section>
-  </main>
-
+      <section id="artist-discovery">
+  <h2>Discover Artists</h2>
+  <ul>
+    <li><a href="https://open.spotify.com/artist/0C8Z52x2g4Tc0cQjC8yT1h" target="_blank">Drake</a><br><span class="artist-info">Top Song: "God's Plan" | Monthly Listeners: 66M</span></li>
+    <li><a href="https://open.spotify.com/artist/06HL4z0CxNuxWcW1wC0YwW" target="_blank">Ariana Grande</a><br><span class="artist-info">Top Song: "7 rings" | Monthly Listeners: 57M</span></li>
+    <li><a href="https://open.spotify.com/artist/3t8h03t8p28l2St1s3TtZZ" target="_blank">The Weeknd</a><br><span class="artist-info">Top Song: "Blinding Lights" | Monthly Listeners: 92M</span></li>
+    <li><a href="https://open.spotify.com/artist/6jJ0s89zZK8Z9j9D5m37n1" target="_blank">Billie Eilish</a><br><span class="artist-info">Top Song: "bad guy" | Monthly Listeners: 61M</span></li>
+    <li><a href="https://open.spotify.com/artist/0EmeKx5U1Jcdk0aKZ2rVna" target="_blank">Post Malone</a><br><span class="artist-info">Top Song: "Circles" | Monthly Listeners: 64M</span></li>
+  </ul>
+</section>
   <footer>
     <p>&copy; 2024 Underground Rapper Chatroom | <a href="#">Privacy Policy</a></p>
   </footer>
@@ -249,52 +249,7 @@ permalink: /undgdmusic/
       document.getElementById('messages').innerHTML = '';
     });
   </script>
-</body>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
-    <style>
-        /* Optional: Basic styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #user-list {
-            margin-top: 20px;
-        }
-        #user-list li {
-            list-style-type: none; /* Removes bullets from the list */
-            margin: 5px 0; /* Space between list items */
-        }
-    </style>
-</head>
-
-<body>
-    <h1>User List</h1>
-    <button id="load-users" onclick="fetchUsers()">Load Users</button>
-    <ul id="user-list"></ul>
-    <script>
-        async function fetchUsers() {
-            try {
-                const response = await fetch('http://127.0.0.1:8887'); // Update with your backend URL
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const users = await response.json();
-                const userList = document.getElementById('user-list');
-                userList.innerHTML = ''; // Clear any existing list items
-                users.forEach(user => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${user.name} (${user.role})`; // Adjust according to your user object structure
-                    userList.appendChild(listItem);
-                });
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        }
-    </script>
-</body>
-</html>
-
