@@ -35,18 +35,18 @@ author: Ryan, Jowan, Gabriela, Michelle
             background-color: #0056b3;
         }
         .image-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    border: 10px solid #FFD700;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    background-color: #fff7e6;
-    max-width: 1200px; 
-    margin: 20px auto; 
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border: 10px solid #FFD700;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #fff7e6;
+            max-width: 1200px; 
+            margin: 20px auto; 
+        }
         .image-row img {
             width: 300px;
             height: 300px;
@@ -124,23 +124,22 @@ author: Ryan, Jowan, Gabriela, Michelle
             padding: 0;
         }
         .restaurant-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-    font-weight: bold; 
-}
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            font-weight: bold; 
+        }
         .heart {
-    margin-left: 15px; /
-    font-size: 50px;
-    color: grey;
-    cursor: pointer;
-    transition: color 0.3s;
-}
+            margin-left: 15px; 
+            font-size: 50px;
+            color: grey;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
         .heart.liked {
             color: red;
         }
-        /* New styles for moderation rules and about section */
         .about-header,
         .rules-header {
             color: #DFAF8A; /* Pastel orange */
@@ -149,7 +148,6 @@ author: Ryan, Jowan, Gabriela, Michelle
         .rules-paragraph {
             color: #C88F66; /* Darker pastel orange */
         }
-        /* New styles for links */
         .link-row {
             display: flex;
             justify-content: center;
@@ -169,7 +167,25 @@ author: Ryan, Jowan, Gabriela, Michelle
             font-size: 20px; /* Font size */
         }
         h1 {
-    color: #ff8c00; 
+            color: #ff8c00; 
+        }
+        .collapsible {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            transition: 0.4s;
+        }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
@@ -178,12 +194,14 @@ author: Ryan, Jowan, Gabriela, Michelle
 <h1 class="about-header">ABOUT THIS HANGOUT:</h1>
 <p class="about-paragraph">This is a hangout all about people's favorite food, restaurants, and more! We have a (local) backend running that stores chat messages in a database. We have a list of local restaurants where you can browse. Explore and have fun!</p>
 
-<h1 class="rules-header">MODERATION RULES:</h1>
-<p class="rules-paragraph">1. Please do not use profanity in the hangout.</p>
-<p class="rules-paragraph">2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
-<p class="rules-paragraph">3. Reminder that your data is stored in a (local) backend.</p>
-<p class="rules-paragraph">4. Please do NOT spam flood the chat.</p>
-<p class="rules-paragraph">5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
+<button class="collapsible">MODERATION RULES</button>
+<div class="content">
+    <p class="rules-paragraph">1. Please do not use profanity in the hangout.</p>
+    <p class="rules-paragraph">2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
+    <p class="rules-paragraph">3. Reminder that your data is stored in a (local) backend.</p>
+    <p class="rules-paragraph">4. Please do NOT spam flood the chat.</p>
+    <p class="rules-paragraph">5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
+</div>
 
 <div class="image-row">
     <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
@@ -227,13 +245,11 @@ author: Ryan, Jowan, Gabriela, Michelle
     </li>
 </ul>
 
-
 <div class="image-row">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s" alt="Image 1">
     <img src="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg" alt="Image 2">
     <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg" alt="Image 3">
 </div>
-
 
 <script>
     async function fetchMessages() {
@@ -279,6 +295,20 @@ author: Ryan, Jowan, Gabriela, Michelle
     function toggleHeart(element) {
         element.classList.toggle('liked');
         element.textContent = element.classList.contains('liked') ? '❤️' : '♡';
+    }
+
+    // Collapsible functionality for moderation rules
+    const coll = document.getElementsByClassName("collapsible");
+    for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
     }
 </script>
 </body>
