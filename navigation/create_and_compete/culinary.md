@@ -428,3 +428,98 @@ author: Daksha, Zach, Alex, Darsh
         document.getElementById('recipeResults').innerHTML = recipeResult;
     });
 </script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
+        color: #fff;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+        min-height: 100vh;
+    }
+    h1, h2 {
+        color: #ddd;
+    }
+    form {
+        margin: 20px 0;
+    }
+    input[type="text"] {
+        width: calc(100% - 150px);
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+    }
+    button {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #28A745;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+    .recipe-category {
+        margin-top: 40px;
+    }
+    .recipe {
+        border: 1px solid #555;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+        background-color: rgba(34, 34, 34, 0.8);
+    }
+    .suggestions {
+        margin: 20px 0;
+        padding: 10px;
+        background-color: rgba(68, 68, 68, 0.8);
+        border-radius: 5px;
+    }
+</style>
+
+<style>
+.culinary-posts-btn {
+  position: relative;
+  font-size: 1.2em;
+  padding: 0.7em 1.4em;
+  background-color: #BF0426;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.5em;
+  color: #DEDEDE;
+  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.culinary-posts-btn::before {
+  position: absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(33,33,33,1) 0%, rgba(33,33,33,1) 50%, rgba(150,4,31,1) 50%, rgba(191,4,38,1) 60%);
+  border-radius: 0 0 0.5em 0;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.culinary-posts-btn:hover::before {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.culinary-posts-btn:active {
+  box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+  transform: translate(0.1em, 0.1em);
+}
+</style>
+
+<a href="http://127.0.0.1:4887/flocker_frontend/create_and_compete/culinaryposts">
+  <button class="culinary-posts-btn">Culinary Posts</button>
+</a>
