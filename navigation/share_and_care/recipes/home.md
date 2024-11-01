@@ -58,7 +58,7 @@ comments: true
             transform: scale(1.1);
         }
         .chat-container {
-            width: 600px;  
+            width: 1000px;  
             height: 600px; 
             display: flex;
             flex-direction: column;
@@ -123,17 +123,19 @@ comments: true
             padding: 0;
         }
         .restaurant-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 10px 0;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    font-weight: bold; /* Make text bold */
+}
         .heart {
-            font-size: 24px;
-            color: grey;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
+    margin-left: 6px; /
+    font-size: 24px;
+    color: grey;
+    cursor: pointer;
+    transition: color 0.3s;
+}
         .heart.liked {
             color: red;
         }
@@ -203,26 +205,27 @@ comments: true
 <h1>Local Restaurants</h1>
 <ul class="restaurant-list">
     <li class="restaurant-item">
-        <span>Burger Lounge (Del Sur)</span>
+        <strong>Burger Lounge (Del Sur)</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
-        <span>Chick-fil-A (Del Sur)</span>
+        <strong>Chick-fil-A (Del Sur)</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
-        <span>Board And Brew (Del Sur)</span>
+        <strong>Board And Brew (Del Sur)</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
-        <span>Luna Grill (Del Sur)</span>
+        <strong>Luna Grill (Del Sur)</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
-        <span>Piacere Mio Del Sur</span>
+        <strong>Piacere Mio Del Sur</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
 </ul>
+
 
 <div class="image-row">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s" alt="Image 1">
