@@ -83,29 +83,91 @@ description: Flavor Fusion main page
     .left, .right {
         width: 100%; /* Make them stack on small screens */
     }
+
+         .slot-machine {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .slots {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        height: 100px;
+        border: 4px solid #333;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: white;
+      }
+
+      .slot {
+        width: 100px;
+        height: 100%;
+        font-size: 50px;
+        text-align: center;
+        line-height: 100px;
+      }
+
+      .spin-button {
+        padding: 10px 20px;
+        font-size: 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .spin-button:active {
+        background-color: #45a049;
+      }
+
+      #dock {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        border-radius: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Style for each dock icon */
+    .dock-icon {
+        transition: transform 0.2s;
+    }
+
+    .dock-icon img {
+        width: 50px;
+        height: auto;
+        cursor: pointer;
+    }
+
+    /* Scale effect on hover */
+    .dock-icon:hover {
+        transform: scale(1.2);
+    }
 </style>
 
 <div id="flavorflux">
-    <div class="left">
-        <h1>Profile</h1>
-        <p><strong>Username:</strong> timmy</p>
-        <p><strong>Total Combos:</strong> 412</p>
-        <h2>Current Combos:</h2>
-        <div class="combo">
-            <h3>Timmy's Combo</h3>
-            <p>A super cool food combo</p>
-            <p>🍌 - 🍫 - 🌶️</p>
-            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐</p>
-            <p>Comments:</p>
-            <ul>
-                <li>This is dumb</li>
-                <li>I hate Timmy &gt;:(</li>
-            </ul>
-        </div>
+</div>
+<div id="dock">
+    <div class="dock-icon" onclick="mainPage()">
+        <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-house-icon-png-image_695726.jpg" alt="Home Icon">
+    </div>
+    <div class="dock-icon" onclick="slotmachine()">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVDOfJMYbL8Ekir9MIcZTjcgBRklFFWKWVctb03176jZ1WZk8:https://images.vexels.com/media/users/3/332336/isolated/preview/b78d5146c45000b5e33daeafc9dbad97-slot-machine-with-three-sevens-illustration.png&s" alt="Slot Machine Icon">
+    </div>
+    <div class="dock-icon" onclick="profile()">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh0X2Lo_idlvIQzBezXKOXFWFdDJn1WZt9EzwXVr1kzlAswvyE:https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png&s" alt="Profile Icon">
     </div>
 </div>
-<button onclick="mainPage()">Main Page</button>
-<button onclick="leaderboard()">Leaderboard</button>
 
 <script>
     window.currentPage = "/";
@@ -134,6 +196,57 @@ description: Flavor Fusion main page
     ].join(";");
 
     console.log("%c Flavor Fusion. Best fusion.", msgStyles);
+
+    window.comboBeingCreated = "t";
+
+    const emojis = [
+        "🍕",
+        "🍔",
+        "🍟",
+        "🌭",
+        "🍎",
+        "🍇",
+        "🍉",
+        "🍣",
+        "🥗",
+        "🍩",
+      ];
+
+      // Store interval IDs to control the emoji changes
+      let intervals = [];
+
+      function getRandomEmoji() {
+        return emojis[Math.floor(Math.random() * emojis.length)];
+      }
+
+      function spinSlots() {
+        const slot1 = document.getElementById("slot1");
+        const slot2 = document.getElementById("slot2");
+        const slot3 = document.getElementById("slot3");
+
+        // Start fast-changing emojis for each slot
+        intervals = [
+          startSpinning(slot1, 100), // Slot 1 changes every 100ms
+          startSpinning(slot2, 100), // Slot 2 changes every 100ms
+          startSpinning(slot3, 100), // Slot 3 changes every 100ms
+        ];
+
+        // Stop each slot after different intervals
+        setTimeout(() => stopSlot(0, slot1), 1000); // Stop slot 1 after 1 second
+        setTimeout(() => stopSlot(1, slot2), 1500); // Stop slot 2 after 1.5 seconds
+        setTimeout(() => stopSlot(2, slot3), 2000); // Stop slot 3 after 2 seconds
+      }
+
+      function startSpinning(slot, speed) {
+        return setInterval(() => {
+          slot.textContent = getRandomEmoji(); // Change to a random emoji
+        }, speed);
+      }
+
+      function stopSlot(intervalIndex, slot) {
+        clearInterval(intervals[intervalIndex]); // Stop the interval
+        slot.textContent = getRandomEmoji(); // Set the final emoji
+      }
 
     let mainCode = `<h1>Flavor Fusion</h1>
         <div class="left">
@@ -219,11 +332,86 @@ description: Flavor Fusion main page
 </tr>
 </tbody></table>`;
 
+let slotCode = `<div class="slot-machine">
+      <div class="slots">
+        <div class="slot" id="slot1">🍕</div>
+        <div class="slot" id="slot2">🍔</div>
+        <div class="slot" id="slot3">🍟</div>
+      </div>
+      <button class="spin-button" onclick="spinSlots()">SPIN</button>
+      <br />
+      <button onclick="submissionPage()">Submit</button>
+    </div>`;
+
+    let submissionCode = `<div class="form-container">
+    <h2>Add Description and Title to a Submission</h2>
+    <h3 id="beingCreated">Combo being created: </h3>
+    <form id="submissionForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <br />
+
+        <button type="submit" onclick="submitCombo()">Submit</button>
+    </form>
+</div>`;
+
+    function submissionPage() {
+        const _slot1 = document.getElementById("slot1");
+        const _slot2 = document.getElementById("slot2");
+        const _slot3 = document.getElementById("slot3");
+        let _creariv = _slot1.innerText + _slot2.innerText + _slot3.innerText;
+        console.log(_creariv);
+        document.getElementById("flavorflux").innerHTML = submissionCode;
+        document.getElementById("beingCreated").innerText += _creariv;
+    }
+    function submitCombo() {
+        let comboData;
+        let exampleData = {
+            ingredients: [],
+            user: "",
+            title: "",
+            description: "",
+            rating: 0,    
+        }
+    }
+
+
     function mainPage() {
         document.getElementById("flavorflux").innerHTML = mainCode;
     }
 
+    mainPage();
+
     function leaderboard() {
       document.getElementById("flavorflux").innerHTML = leaderboardCode;
+    }
+
+    function slotmachine() {
+        document.getElementById("flavorflux").innerHTML = slotCode;
+    }
+
+    let profileCode = `    <div class="left">
+        <h1>Profile</h1>
+        <p><strong>Username:</strong> timmy</p>
+        <p><strong>Total Combos:</strong> 412</p>
+        <h2>Current Combos:</h2>
+        <div class="combo">
+            <h3>Timmy's Combo</h3>
+            <p>A super cool food combo</p>
+            <p>🍌 - 🍫 - 🌶️</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐</p>
+            <p>Comments:</p>
+            <ul>
+                <li>This is dumb</li>
+                <li>I hate Timmy &gt;:(</li>
+            </ul>
+        </div>
+    </div>`;
+    function profile() {
+        document.getElementById("flavorflux").innerHTML = profileCode;
     }
 </script>
