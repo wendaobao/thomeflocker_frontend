@@ -5,4 +5,4 @@ search_exclude: true
 permalink: /shared_interests/jupyter/timer/
 ---
 
-{% include timer.html %}
+{% include jupyter_timer.html %}

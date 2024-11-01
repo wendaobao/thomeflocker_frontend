@@ -5,4 +5,4 @@ search_exclude: true
 permalink: /shared_interests/jupyter/resources/
 ---
 
-{% include resources.html %}
+{% include jupyter_resources.html %}

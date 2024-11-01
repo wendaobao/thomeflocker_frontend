@@ -5,4 +5,4 @@ search_exclude: true
 permalink: /shared_interests/jupyter/chatroom/
 ---
 
-{% include chatroom.html %}
+{% include jupyter_chatroom.html %}
