@@ -131,7 +131,7 @@ comments: true
 }
         .heart {
     margin-left: 15px; /
-    font-size: 24px;
+    font-size: 50px;
     color: grey;
     cursor: pointer;
     transition: color 0.3s;
