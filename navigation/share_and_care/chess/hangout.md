@@ -8,6 +8,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 
 
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -159,6 +160,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         </div>
         <div class="turn-popup" id="turnPopup">White's Turn</div>
     </div>
+
     <script>
         const pieces = {
             'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
@@ -229,12 +231,15 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             setTimeout(() => turnPopup.style.display = 'none', 1000);
         }
         generateBoard();
+
         // Chat Bot Functionality
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
+
         sendBtn.addEventListener('click', handleUserMessage);
         messageInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserMessage(); });
+
         function handleUserMessage() {
             const messageText = messageInput.value.trim();
             if (messageText) {
@@ -243,6 +248,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
                 setTimeout(() => addMessage('That sounds like an interesting move!', 'bot-message'), 500);
             }
         }
+
         function addMessage(text, className) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${className}`;
