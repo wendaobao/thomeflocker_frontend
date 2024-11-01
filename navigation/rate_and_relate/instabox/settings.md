@@ -4,11 +4,13 @@ title: Settings
 search_exclude: true
 permalink: rate_and_relate/instabox/settings
 menu: nav/rate_and_relate.html
+author: Aadi, Aaditya, Aditya, Kanhay
 ---
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: "Poppins", sans-serif;
         background-color: #333;
         color: white;
         margin: 0;
