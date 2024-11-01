@@ -50,6 +50,7 @@ author: Yash, Nikhil, Rohan, Neil
         color: white;
         border: none;
         padding: 8px 16px;
+        margin: 5px;
         border-radius: 4px;
         cursor: pointer;
         font-size: 0.9em;
@@ -122,6 +123,12 @@ h2 {
     import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
     const container = document.getElementById("posts");
 
+    function openChatRoom(button) {
+        const postId = button.getAttribute("id");
+        window.location.href = `{{site.baseurl}}/create_and_compete/realityroom?postId=${postId}`;
+    }
+
+
     async function fetchPosts() {
         try {
             const response = await fetch(`${pythonURI}/api/post`, fetchOptions);
@@ -153,9 +160,19 @@ h2 {
                 deleteButton.classList.add("delete-button");
                 deleteButton.textContent = "Delete";
 
+                const commentButton = document.createElement("button");
+                commentButton.classList.add("delete-button");
+                commentButton.textContent = "Comment";
+                commentButton.setAttribute("id", post.id);
+
+                commentButton.onclick = function () {
+                    openChatRoom(commentButton);
+                };
+
                 card.appendChild(title);
                 card.appendChild(description);
                 card.appendChild(deleteButton);
+                card.appendChild(commentButton);
 
                 container.appendChild(card);
             });
@@ -203,6 +220,10 @@ h2 {
             alert('Error adding post: ' + error.message);
         }
     });
+
+    function redirect() {
+
+    }
 
 
     // function deletePost(formID) {
