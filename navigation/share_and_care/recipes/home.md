@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Hungry Games - home page
+title: The Hungry Games (Home)
 description: Welcome to the Hungry Games! Explore our interactive "fridge," chat with others about food, and more!
 permalink: share_and_care/hungry_games
 comments: true 
@@ -15,46 +15,53 @@ comments: true
             font-family: Arial, sans-serif;
             background-color: #f8f9fa; 
             display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
         .image-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px; /* Adds spacing between images */
+            gap: 20px;
             padding: 20px;
-            border: 10px solid #1F456E; /* Changed border color to match fridge */
+            border: 10px solid #1F456E;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-            background-color: #fff7e6; /* Soft background color */
+            background-color: #fff7e6;
             max-width: 90%;
-            margin: auto;
+            margin: 20px 0;
         }
 
         .image-row img {
-            width: 300px; /* All images are the same width */
-            height: 300px; /* All images are the same height */
+            width: 300px;
+            height: 300px;
             border-radius: 20px;
             transition: transform 0.3s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Individual image shadow */
-            object-fit: cover; /* Ensures images fill their box without distortion */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
         }
 
         .image-row img:hover {
-            transform: scale(1.1); /* Slight zoom effect on hover */
+            transform: scale(1.1);
         }
 
-        /* Fridge styles */
         .fridge {
             position: relative;
-            width: 250px; /* Enlarged fridge width */
-            height: 400px; /* Enlarged fridge height */
-            margin: 20px; /* Margin around the fridge */
-            background-color: #1F456E; /* Fridge color */
+            width: 250px;
+            height: 400px;
+            margin: 20px;
+            background-color: #1F456E;
             border: 5px solid #00796B;
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .fridge-door {
@@ -64,6 +71,7 @@ comments: true
             background-color: #B2DFDB;
             transform-origin: left;
             transition: transform 0.5s ease;
+            border-radius: 10px;
         }
 
         .fridge-door.open {
@@ -73,18 +81,57 @@ comments: true
         .fridge-content {
             display: none;
             padding: 10px;
-            color: #333; /* Dark text color */
+            color: #333;
+            text-align: center;
         }
 
         .fridge.open .fridge-content {
             display: block;
         }
 
-        /* Position fridge on the left */
-        .fridge-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        #itemInput {
+            width: 80%;
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #00796B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005b4f;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #e0f7fa;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background-color: #b2ebf2;
+        }
+
+        .recipe-list {
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -94,14 +141,17 @@ comments: true
         <div class="fridge" id="fridge">
             <div class="fridge-door" id="fridgeDoor"></div>
             <div class="fridge-content" id="fridgeContent">
-                <p>Contents:</p>
+                <p>Add ingredients here!</p>
                 <ul id="fridgeItems"></ul>
                 <input type="text" id="itemInput" placeholder="Add item...">
                 <button onclick="addItem()">Add</button>
+                <button onclick="finishAdding()">Finish Adding Items</button>
             </div>
         </div>
         <button onclick="toggleFridge()">Open/Close Fridge</button>
     </div>
+
+    <div class="recipe-list" id="recipeList"></div>
 
     <div class="image-row">
         <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
@@ -110,6 +160,12 @@ comments: true
     </div>
 
     <script>
+        const recipes = {
+            'Pizza': ['Cheese', 'Tomato', 'Pepperoni'],
+            'Pasta': ['Pasta', 'Tomato', 'Cheese', 'Basil'],
+            'Ramen': ['Noodles', 'Broth', 'Egg', 'Green Onion']
+        };
+
         function toggleFridge() {
             const fridge = document.getElementById('fridge');
             const fridgeDoor = document.getElementById('fridgeDoor');
@@ -124,7 +180,26 @@ comments: true
                 const li = document.createElement('li');
                 li.textContent = itemInput.value;
                 fridgeItems.appendChild(li);
-                itemInput.value = ''; // Clear input after adding
+                itemInput.value = '';
+            }
+        }
+
+        function finishAdding() {
+            const fridgeItems = document.getElementById('fridgeItems');
+            const recipeList = document.getElementById('recipeList');
+            const items = Array.from(fridgeItems.children).map(li => li.textContent);
+
+            let foundRecipes = Object.keys(recipes).filter(recipe =>
+                recipes[recipe].every(ingredient => items.includes(ingredient))
+            );
+
+            recipeList.innerHTML = '<h3>Suggested Recipes:</h3>';
+            if (foundRecipes.length > 0) {
+                foundRecipes.forEach(recipe => {
+                    recipeList.innerHTML += `<p>${recipe}</p>`;
+                });
+            } else {
+                recipeList.innerHTML += '<p>No recipes found for the selected ingredients.</p>';
             }
         }
     </script>
