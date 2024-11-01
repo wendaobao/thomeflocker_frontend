@@ -7,7 +7,7 @@ permalink: /undgdmusic/
 
 <table>
     <tr>
-        <td><a href="{{site.baseurl}}/UndgdMusic/moderation">Moderation</a></td>  
+        <td><a href="{{site.baseurl}}/undgdmusic/moderation">Moderation</a></td>  
     </tr>
 </table>
 
