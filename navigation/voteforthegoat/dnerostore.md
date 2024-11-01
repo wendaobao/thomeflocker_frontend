@@ -12,11 +12,47 @@ comments: true
 
 <img src="{{ site.baseurl }}/images/dnerostore/Dnero_Store_Header.png" alt="Title">
 
-<div style="display: flex; justify-content: center; margin: 20px 0;">
-  <a href="{{ site.baseurl }}/dnerostore-mod/" target="_blank">
-    <img src="{{ site.baseurl }}/images/dnerostore/mod_rules_button.png" alt="Mod Rules" style="cursor: pointer; width: 400px;"> <!-- Adjust width as needed -->
-  </a>
-</div>
+<details>
+  <summary>Room Details</summary>
+
+  <a href="{{ site.baseurl }}/dnerostore-mod/">Moderation Rules</a>
+  <p>Discuss your favorite D'Nero store items here!</p>
+  <h4>D'Nero Store</h4>
+  <ul>
+    <li>Food/Drink</li>
+    <ul>
+      <li>Trail Mix</li>
+      <li>Nutella</li>
+      <li>Famous Amos</li>
+      <li>Chips</li>
+      <li>Sports Drinks</li>
+      <li>Fruit Snacks</li>
+      <li>Water</li>
+    </ul>
+    <li>Pizza</li>
+    <ul>
+      <li>Whole Pizza</li>
+    </ul>
+    <li>Spirit</li>
+    <ul>
+      <li>Morning Song</li>
+      <li>DNHS T-shirt</li>
+      <li>1 Pom Pom</li>
+    </ul>
+    <li>Limited Edition</li>
+    <ul>
+      <li>Candy</li>
+      <li>Squishmallow mini</li>
+      <li>Starbucks SDSU Tumbler</li>
+    </ul>
+    <li>Gift Card</li>
+    <ul>
+      <li>Chik-fil-a</li>
+      <li>Canes</li>
+    </ul>
+  </ul>
+</details>
+
 
 
 
