@@ -1,14 +1,13 @@
 ---
 layout: post
-title: Shared Interests - AGK
+title: Shared Interests - AGK Chatroom
 search_exclude: true
-permalink: /shared_interests/agk
+permalink: /shared_interests/agk/agk-chatroom
 menu: nav/shared_interests.html
 author: Mihir, Pradyun, Derek, Ansh
 ---
 
 <style>
-    /* Chatroom styles */
     body {
         margin: 0;
         font-family: Arial, sans-serif;
