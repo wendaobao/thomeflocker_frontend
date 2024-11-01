@@ -3,7 +3,26 @@ layout: base
 title: Satire
 permalink: /shared_interests/satire/
 menu: nav/shared_interests.html
+author: Bailey, Travis, Leon, Anyi
 ---
+
+<!-- FOR THE NAV MENU AS IT IS NOT WORKING ON YOUR PAGE -->
+<table>
+    <tr>
+        <td id="sharedinterests">
+            <a href="{{site.baseurl}}/shared_interests/home">
+                <img src="{{site.baseurl}}/images/school_logo.png" alt="logo" width="150" height="150">
+            </a>
+        </td>
+        <td id="PLACEHOLDER1"><a href="{{site.baseurl}}/shared_interests/">PLACEHOLDER 1 </a></td>
+        <td id="DNHS Football"><a href="{{site.baseurl}}/shared_interests/football">DNHS Football</a></td>
+        <td id="School Subjects"><a href="{{site.baseurl}}/shared_interests/jupyter/chatroom">School Subjects</a></td>
+        <td id="Music"><a href="{{site.baseurl}}/music/">Music</a></td>
+        <td id="Satire"><a href="{{site.baseurl}}/shared_interests/satire">Satire</a></td>
+        <td id="PLACEHOLDER6"><a href="{{site.baseurl}}/shared_interests/agk.html">AGK</a></td>
+    </tr>
+</table>
+<!-- END OF NAV MENU -->
 
 DNHS Satire Home Page
 
@@ -30,19 +49,6 @@ DNHS Satire Home Page
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-  }
-
-  /* Header/Login Bar */
-  .login-bar {
-    background-color: #000000;
-    text-align: right;
-    padding: 10px;
-  }
-
-  .login-bar a {
-    color: #00aaff;
-    font-weight: bold;
-    text-decoration: none;
   }
 
   /* Banner */
@@ -102,6 +108,37 @@ DNHS Satire Home Page
     border: 1px solid #555;
     border-radius: 5px;
     color: #ffffff;
+  }
+
+  /* Add Post Form */
+  .post-form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #333333;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    width: 100%;
+  }
+
+  .post-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #444444;
+    color: #ffffff;
+  }
+
+  .post-form button {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
 
   /* Center Feed */
@@ -207,24 +244,30 @@ DNHS Satire Home Page
 
   <!-- Intro Blurb -->
   <div class="intro-blurb">
-    <h1>DNHS Social Media Home Page</h1>
-    <p>Login and explore our social media hub for everything DNHS</p>
+    <h1>DNHS Satire Home Page</h1>
+    <p>Login and explore our satire hub for everything that's not quite true about DNHS</p>
   </div>
 
   <!-- Main Layout with Sidebar and Feed -->
   <div class="main-layout">
     
     <!-- Left Sidebar (Add Post and Search Bar) -->
-    <div class="left-sidebar">
-      <button class="add-post">+</button>
+  <div class="left-sidebar">
+      <button class="add-post" onclick="togglePostForm()">+</button>
       <p>Add new post</p>
       <div class="search-bar">
         <input type="text" placeholder="Search...">
       </div>
-    </div>
+
+      <!-- Add Post Form -->
+   <div class="post-form" id="postForm">
+        <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+        <button onclick="addPost()">Post</button>
+      </div>
+  </div>
 
     <!-- Center Feed (Posts) -->
-    <div class="feed">
+  <div class="feed" id="feed">
       <div class="post">This is a sample post content. Users can post here.</div>
       <div class="post-actions">
         <button class="like">Like</button>
@@ -234,7 +277,7 @@ DNHS Satire Home Page
     </div>
 
     <!-- Right Sidebar (Profile and Activity) -->
-    <div class="right-sidebar">
+   <div class="right-sidebar">
       <div class="profile">
         <div class="profile-pic">Profile</div>
         <p>Account Information + Satire Score + Age (click profile)</p>
@@ -249,3 +292,53 @@ DNHS Satire Home Page
 
   </div>
 </div>
+
+<script>
+  function togglePostForm() {
+    const form = document.getElementById("postForm");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+  }
+
+  function addPost() {
+    const content = document.getElementById("postContent").value;
+    if (content.trim() === "") {
+      alert("Please enter some content for your post!");
+      return;
+    }
+
+    const feed = document.getElementById("feed");
+
+    // Create a new post element
+    const newPost = document.createElement("div");
+    newPost.className = "post";
+    newPost.textContent = content;
+
+    // Add post actions (like, comment, share)
+    const postActions = document.createElement("div");
+    postActions.className = "post-actions";
+
+    const likeButton = document.createElement("button");
+    likeButton.className = "like";
+    likeButton.textContent = "Like";
+
+    const commentButton = document.createElement("button");
+    commentButton.className = "comment";
+    commentButton.textContent = "Comment";
+
+    const shareButton = document.createElement("button");
+    shareButton.className = "share";
+    shareButton.textContent = "Share";
+
+    postActions.appendChild(likeButton);
+    postActions.appendChild(commentButton);
+    postActions.appendChild(shareButton);
+
+    // Append actions to the post and post to the feed
+    newPost.appendChild(postActions);
+    feed.prepend(newPost);
+
+    // Clear the form and hide it
+    document.getElementById("postContent").value = "";
+    togglePostForm();
+  }
+</script>
