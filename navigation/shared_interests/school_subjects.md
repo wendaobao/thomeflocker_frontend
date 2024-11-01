@@ -1,3 +1,12 @@
+---
+layout: page
+title: Chatroom
+search_exclude: true
+permalink: /shared_interests/jupyter/chatroom/
+menu: nav/shared_interests.html
+---
+
+<!-- FOR THE NAV MENU AS IT IS NOT WORKING ON YOUR PAGE -->
 <table>
     <tr>
         <td id="sharedinterests">
@@ -13,3 +22,6 @@
         <td id="PLACEHOLDER6"><a href="{{site.baseurl}}/shared_interests/agk.html">AGK</a></td>
     </tr>
 </table>
+<!-- END OF NAV MENU -->
+
+{% include jupyter_chatroom.html %}

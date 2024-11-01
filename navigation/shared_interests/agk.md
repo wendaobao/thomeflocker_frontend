@@ -6,6 +6,7 @@ permalink: /shared_interests/agk
 menu: nav/shared_interests.html
 author: Mihir, Pradyun, Derek, Ansh
 ---
+
 <style>
     /* Chatroom styles */
     body {
