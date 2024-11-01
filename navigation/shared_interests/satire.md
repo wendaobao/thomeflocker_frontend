@@ -92,6 +92,37 @@ DNHS Satire Home Page
     color: #ffffff;
   }
 
+  /* Add Post Form */
+  .post-form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #333333;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    width: 100%;
+  }
+
+  .post-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #444444;
+    color: #ffffff;
+  }
+
+  .post-form button {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
   /* Center Feed */
   .feed {
     display: flex;
@@ -204,25 +235,31 @@ DNHS Satire Home Page
     
     <!-- Left Sidebar (Add Post and Search Bar) -->
   <div class="left-sidebar">
-      <button class="add-post">+</button>
+      <button class="add-post" onclick="togglePostForm()">+</button>
       <p>Add new post</p>
       <div class="search-bar">
         <input type="text" placeholder="Search...">
       </div>
+
+      <!-- Add Post Form -->
+   <div class="post-form" id="postForm">
+        <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+        <button onclick="addPost()">Post</button>
+      </div>
   </div>
 
     <!-- Center Feed (Posts) -->
-  <div class="feed">
+  <div class="feed" id="feed">
       <div class="post">This is a sample post content. Users can post here.</div>
       <div class="post-actions">
         <button class="like">Like</button>
         <button class="comment">Comment</button>
         <button class="share">Share</button>
       </div>
-  </div>
+    </div>
 
     <!-- Right Sidebar (Profile and Activity) -->
-  <div class="right-sidebar">
+   <div class="right-sidebar">
       <div class="profile">
         <div class="profile-pic">Profile</div>
         <p>Account Information + Satire Score + Age (click profile)</p>
@@ -237,3 +274,53 @@ DNHS Satire Home Page
 
   </div>
 </div>
+
+<script>
+  function togglePostForm() {
+    const form = document.getElementById("postForm");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+  }
+
+  function addPost() {
+    const content = document.getElementById("postContent").value;
+    if (content.trim() === "") {
+      alert("Please enter some content for your post!");
+      return;
+    }
+
+    const feed = document.getElementById("feed");
+
+    // Create a new post element
+    const newPost = document.createElement("div");
+    newPost.className = "post";
+    newPost.textContent = content;
+
+    // Add post actions (like, comment, share)
+    const postActions = document.createElement("div");
+    postActions.className = "post-actions";
+
+    const likeButton = document.createElement("button");
+    likeButton.className = "like";
+    likeButton.textContent = "Like";
+
+    const commentButton = document.createElement("button");
+    commentButton.className = "comment";
+    commentButton.textContent = "Comment";
+
+    const shareButton = document.createElement("button");
+    shareButton.className = "share";
+    shareButton.textContent = "Share";
+
+    postActions.appendChild(likeButton);
+    postActions.appendChild(commentButton);
+    postActions.appendChild(shareButton);
+
+    // Append actions to the post and post to the feed
+    newPost.appendChild(postActions);
+    feed.prepend(newPost);
+
+    // Clear the form and hide it
+    document.getElementById("postContent").value = "";
+    togglePostForm();
+  }
+</script>
