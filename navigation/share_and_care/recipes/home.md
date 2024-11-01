@@ -15,115 +15,70 @@ comments: true
             font-family: Arial, sans-serif;
             background-color: #f8f9fa; 
             display: flex; 
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             min-height: 100vh;
+            margin: 0;
         }
 
-        .image-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
+        .sidebar {
+            width: 200px;
+            background-color: #007BFF; /* Blue background for sidebar */
+            color: white;
             padding: 20px;
-            border: 10px solid #1F456E;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-            background-color: #fff7e6;
-            max-width: 90%;
-            margin: 20px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        .image-row img {
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            object-fit: cover;
-        }
-
-        .image-row img:hover {
-            transform: scale(1.1);
-        }
-
-        .fridge {
-            position: relative;
-            width: 250px;
-            height: 400px;
-            margin: 20px;
-            background-color: #1F456E;
-            border: 5px solid #00796B;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fridge-door {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #B2DFDB;
-            transform-origin: left;
-            transition: transform 0.5s ease;
-            border-radius: 10px;
-        }
-
-        .fridge-door.open {
-            transform: rotateY(-150deg);
-        }
-
-        .fridge-content {
-            display: none;
-            padding: 10px;
-            color: #333;
+        .sidebar h2 {
+            margin: 0 0 20px;
             text-align: center;
         }
 
-        .fridge.open .fridge-content {
-            display: block;
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        #itemInput {
-            width: 80%;
-            padding: 8px;
+        .chat-box {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-input {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
             margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
         }
 
-        .add-button {
+        .message-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .message-input button {
             padding: 10px 15px;
-            background-color: #4CAF50; /* Green */
+            background-color: #007BFF; /* Button color */
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-top: 10px;
         }
 
-        .add-button:hover {
-            background-color: #45a049;
-        }
-
-        .finish-button {
-            padding: 10px 15px;
-            background-color: #007BFF; /* Light Blue */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
-
-        .finish-button:hover {
+        .message-input button:hover {
             background-color: #0056b3;
         }
 
@@ -149,81 +104,44 @@ comments: true
             text-align: center;
         }
 
-        /* Darker background for added items */
-        .fridge-items {
-            background-color: rgba(0, 0, 0, 0.1); /* Slightly darker */
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center; /* Center text */
-            margin-top: 10px;
+        .recipe-list h3 {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="fridge-container">
-        <div class="fridge" id="fridge">
-            <button class="finish-button" onclick="toggleFridge()">Open/Close Fridge</button>
-            <div class="fridge-door" id="fridgeDoor"></div>
-            <div class="fridge-content" id="fridgeContent">
-                <p>Add ingredients here!</p>
-                <ul class="fridge-items" id="fridgeItems"></ul>
-                <input type="text" id="itemInput" placeholder="Add item...">
-                <button class="add-button" onclick="addItem()">Add</button>
-                <button class="finish-button" onclick="finishAdding()">Finish Adding Items</button>
-            </div>
+    <div class="sidebar">
+        <h2>User Profiles</h2>
+        <ul>
+            <li>User 1</li>
+            <li>User 2</li>
+            <li>User 3</li>
+            <li>User 4</li>
+        </ul>
+    </div>
+
+    <div class="chat-area">
+        <div class="chat-box" id="chatBox"></div>
+        <div class="message-input">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
         </div>
     </div>
 
     <div class="recipe-list" id="recipeList"></div>
 
-    <div class="image-row">
-        <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
-        <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
-        <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
-    </div>
-
     <script>
-        const recipes = {
-            'Pizza': ['Cheese', 'Tomato', 'Pepperoni'],
-            'Pasta': ['Pasta', 'Tomato', 'Cheese', 'Basil'],
-            'Ramen': ['Noodles', 'Broth', 'Egg', 'Green Onion']
-        };
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const chatBox = document.getElementById('chatBox');
 
-        function toggleFridge() {
-            const fridge = document.getElementById('fridge');
-            const fridgeDoor = document.getElementById('fridgeDoor');
-            fridge.classList.toggle('open');
-            fridgeDoor.classList.toggle('open');
-        }
-
-        function addItem() {
-            const itemInput = document.getElementById('itemInput');
-            const fridgeItems = document.getElementById('fridgeItems');
-            if (itemInput.value) {
-                const li = document.createElement('li');
-                li.textContent = itemInput.value;
-                fridgeItems.appendChild(li);
-                itemInput.value = '';
-            }
-        }
-
-        function finishAdding() {
-            const fridgeItems = document.getElementById('fridgeItems');
-            const recipeList = document.getElementById('recipeList');
-            const items = Array.from(fridgeItems.children).map(li => li.textContent);
-
-            let foundRecipes = Object.keys(recipes).filter(recipe =>
-                recipes[recipe].every(ingredient => items.includes(ingredient))
-            );
-
-            recipeList.innerHTML = '<h3>Suggested Recipes:</h3>';
-            if (foundRecipes.length > 0) {
-                foundRecipes.forEach(recipe => {
-                    recipeList.innerHTML += `<p>${recipe}</p>`;
-                });
-            } else {
-                recipeList.innerHTML += '<p>No recipes found for the selected ingredients.</p>';
+            if (messageInput.value.trim()) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = messageInput.value;
+                chatBox.appendChild(messageElement);
+                messageInput.value = ''; // Clear the input after sending
+                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
             }
         }
     </script>
