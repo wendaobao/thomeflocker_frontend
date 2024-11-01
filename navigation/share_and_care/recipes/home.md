@@ -99,7 +99,7 @@ comments: true
 
         .add-button {
             padding: 10px 15px;
-            background-color: #00796B;
+            background-color: #4CAF50; /* Green */
             color: white;
             border: none;
             border-radius: 5px;
@@ -109,12 +109,12 @@ comments: true
         }
 
         .add-button:hover {
-            background-color: #005b4f;
+            background-color: #45a049;
         }
 
         .finish-button {
             padding: 10px 15px;
-            background-color: #007BFF; /* Blue color */
+            background-color: #007BFF; /* Light Blue */
             color: white;
             border: none;
             border-radius: 5px;
