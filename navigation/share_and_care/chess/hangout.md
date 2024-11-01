@@ -42,6 +42,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             font-weight: bold;
             font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
+            color: #3E3E3E; /* Darker color for better contrast */
         }
         .orange {
             background-color: #F39C12;
@@ -231,7 +232,8 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             setTimeout(() => turnPopup.style.display = 'none', 1000);
         }
         function isTurn(piece) {
-            return (turn === 'white' && piece === piece.toUpperCase()) || (turn === 'black' && piece === piece.toLowerCase());
+            return (turn === 'white' && piece === piece.toUpperCase()) ||
+                   (turn === 'black' && piece === piece.toLowerCase());
         }
         function isLegalMove(selected, row, col) {
             const piece = boardLayout[selected.row][selected.col].toLowerCase();
