@@ -65,7 +65,7 @@ author: Kush, Tarun, Vincent, and Nolan
 </head>
 <body>
 
-    <h1>Riddle Room</h1>
+    <h1>Collaborative Chat Box</h1>
     <div id="chat-box"></div>
     <input type="text" id="message-input" placeholder="Type your message...">
 
