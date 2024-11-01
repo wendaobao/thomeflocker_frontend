@@ -9,7 +9,6 @@ author: Kush, Tarun, Vincent, and Nolan
 
 
 <details>
-
 <br>
   <summary>Room Details</summary>
 
@@ -26,100 +25,78 @@ author: Kush, Tarun, Vincent, and Nolan
     <li>AI which posts the answer if someone gets it, else posts the answer at the end of the day</li>
     <li>Profanity is censored</li>
   </ul>
+</details>
 
- 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Riddle Generator</title>
-    <style>
-        body {
-            background-color: #F0F0F0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-        }
-        button {
-            background-color: #4CAF50; /* Green color */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        button:disabled {
-            background-color: #999;
-            cursor: not-allowed;
-        }
-        button:hover:not(:disabled) {
-            background-color: #45A049;
-        }
-        #riddle {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
-        }
-        #message {
-            margin-top: 10px;
-            font-size: 1em;
-            color: #FF6347; /* Red color for message */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Riddle</title>
+  <style>
+    /* Optional styling for better visibility */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: 50px;
+      margin-top: 50px;
+    }
+    #riddle-container {
+      display: inline-block;
+      text-align: 50px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #riddle {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <button id="riddleButton" onclick="generateRiddle()">Generate Random Riddle</button>
-        <div id="riddle"></div>
-        <div id="message"></div>
-    </div>
-    <script>
-        const riddles = [
-            "What has keys but can't open locks? (Answer: A piano)",
-            "What has to be broken before you can use it? (Answer: An egg)",
-            "I'm tall when I'm young and short when I'm old. What am I? (Answer: A candle)",
-            "What comes once in a minute, twice in a moment, but never in a thousand years? (Answer: The letter M)",
-            "What has a head, a tail, is brown, and has no legs? (Answer: A penny)"
-        ];
-        const riddleButton = document.getElementById("riddleButton");
-        const riddleDisplay = document.getElementById("riddle");
-        const messageDisplay = document.getElementById("message");
-        function generateRiddle() {
-            const currentTime = Date.now();
-            const lastRiddleTime = localStorage.getItem("lastRiddleTime");
-            if (lastRiddleTime && currentTime - lastRiddleTime < 24 * 60 * 60 * 1000) {
-                // Display stored riddle if within 24-hour period
-                const storedRiddle = localStorage.getItem("lastRiddle");
-                riddleDisplay.innerText = storedRiddle;
-                // Calculate and display remaining time
-                const hoursRemaining = Math.ceil((24 * 60 * 60 * 1000 - (currentTime - lastRiddleTime)) / (60 * 60 * 1000));
-                messageDisplay.innerText = `Next riddle in ${hoursRemaining} hours`;
-                // Disable button
-                riddleButton.disabled = true;
-            } else {
-                // Generate a new riddle and store it
-                const randomIndex = Math.floor(Math.random() * riddles.length);
-                const newRiddle = riddles[randomIndex];
-                riddleDisplay.innerText = newRiddle;
-                messageDisplay.innerText = "";
-                // Store new riddle and current timestamp
-                localStorage.setItem("lastRiddle", newRiddle);
-                localStorage.setItem("lastRiddleTime", currentTime);
-                // Disable the button
-                riddleButton.disabled = true;
-            }
-        }
-        // Check on page load if the button should be disabled and display the stored
+  <div id="riddle-container">
+    <button id="riddleButton" onclick="displayRiddle()">Get Today's Riddle</button>
+  </div>
 
-</details>
+  <script>
+    // Array of riddles
+    const riddles = [
+      "What has keys but can't open locks? (A piano)",
+      "What has a head, a tail, but no body? (A coin)",
+      "What comes once in a minute, twice in a moment, but never in a thousand years? (The letter 'M')",
+      "I'm tall when I'm young, and I'm short when I'm old. What am I? (A candle)",
+      "What has to be broken before you can use it? (An egg)"
+    ];
+
+    // Function to check and display today's riddle
+    function displayRiddle() {
+      const date = new Date().toDateString(); // Get the current date as a string
+      const savedRiddle = localStorage.getItem('todayRiddle');
+      const savedDate = localStorage.getItem('riddleDate');
+      const riddleButton = document.getElementById('riddleButton');
+
+      if (savedDate === date && savedRiddle) {
+        // If a riddle is already set for today, use the saved one
+        riddleButton.innerText = savedRiddle;
+      } else {
+        // Otherwise, generate a new riddle and save it
+        const riddleIndex = new Date().getDate() % riddles.length;
+        const todayRiddle = riddles[riddleIndex];
+        riddleButton.innerText = todayRiddle;
+        
+        // Save the riddle and date to localStorage
+        localStorage.setItem('todayRiddle', todayRiddle);
+        localStorage.setItem('riddleDate', date);
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -157,11 +134,14 @@ author: Kush, Tarun, Vincent, and Nolan
 </head>
 <body>
 
-    <h1>Riddle Room</h1>
+    <h3>Riddle Room Chat</h3>
+
+    <br>
+    
     <div id="chat-box"></div>
     <input type="text" id="message-input" placeholder="Type your message...">
 
-<script>
+    <script>
         const chatBox = document.getElementById('chat-box');
         const messageInput = document.getElementById('message-input');
 
@@ -182,7 +162,7 @@ author: Kush, Tarun, Vincent, and Nolan
             chatBox.appendChild(messageElement);
             chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
         }
-</script>
+    </script>
 
 </body>
 </html>
