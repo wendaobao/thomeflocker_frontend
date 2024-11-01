@@ -174,15 +174,15 @@ author: Ryan, Jowan, Gabriela, Michelle
     color: white; /* White text */
     cursor: pointer;
     padding: 15px; 
-    width: 80%; /* Set width to 80% for better alignment */
-    margin-left: 10%; /* Center it by adding left margin */
+    width: 80%; /* Set width to 80% for alignment */
+    margin: 10px auto; /* Center it horizontally */
     border: none;
     text-align: left;
     outline: none;
     font-size: 40px; 
     transition: 0.4s;
     border-radius: 5px; 
-    font-family: 'Calibri', sans-serif; 
+    font-family: 'Calibri', sans-serif; /* Set font to Calibri */
 }
 
         .content {
