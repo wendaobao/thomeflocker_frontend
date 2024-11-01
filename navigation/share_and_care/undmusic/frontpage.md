@@ -1,11 +1,4 @@
----
-layout: post
-title: Underground Music Frontpage
-description: The Frontpage for the Underground Music Chatroom
-hide: true
-permalink: /UndgdMusic/
----
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -90,6 +83,7 @@ permalink: /UndgdMusic/
     #chat-form {
       display: flex;
       gap: 10px;
+      align-items: center;
     }
     #chat-form input[type="text"] {
       flex: 1;
@@ -109,6 +103,21 @@ permalink: /UndgdMusic/
       cursor: pointer;
       font-weight: bold;
       font-size: 1rem;
+    }
+    #clear-chat {
+      padding: 8px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #f44336;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    #char-count {
+      font-size: 0.8rem;
+      color: #888;
+      margin-left: 10px;
     }
     #artist-discovery h2 {
       margin-bottom: 10px;
@@ -175,9 +184,11 @@ permalink: /UndgdMusic/
       </div>
       <form id="chat-form">
         <input type="text" id="username" placeholder="Your Name" required>
-        <input type="text" id="message" placeholder="Type a message..." required>
+        <input type="text" id="message" placeholder="Type a message..." maxlength="200" required>
         <button type="submit">Send</button>
+        <span id="char-count">0/200</span>
       </form>
+      <button id="clear-chat">Clear Chat</button>
     </section>
     <section id="artist-discovery">
       <h2>Discover Artists</h2>
@@ -195,19 +206,40 @@ permalink: /UndgdMusic/
   </footer>
 
   <script>
-    // Sample function to mimic adding messages (can be replaced with actual chat functionality)
+    // Scroll to the latest message
+    function scrollToLatestMessage() {
+      const messages = document.getElementById('messages');
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    // Add a new message to the chat
     document.getElementById('chat-form').addEventListener('submit', function(event) {
       event.preventDefault();
-      const username = document.getElementById('username').value;
-      const message = document.getElementById('message').value;
+      const usernameInput = document.getElementById('username');
+      const messageInput = document.getElementById('message');
       const timestamp = new Date().toLocaleTimeString();
 
       const messageElement = document.createElement('p');
-      messageElement.innerHTML = `<span class="username">${username}</span>: ${message} <span class="timestamp">[${timestamp}]</span>`;
+      messageElement.innerHTML = `<span class="username">${usernameInput.value}</span>: ${messageInput.value} <span class="timestamp">[${timestamp}]</span>`;
       document.getElementById('messages').appendChild(messageElement);
 
-      // Clear message input after sending
-      document.getElementById('message').value = '';
+      // Auto-scroll to the latest message
+      scrollToLatestMessage();
+
+      // Clear message input and update character count
+      messageInput.value = '';
+      document.getElementById('char-count').textContent = '0/200';
+    });
+
+    // Character counter for message input
+    document.getElementById('message').addEventListener('input', function() {
+      const charCount = this.value.length;
+      document.getElementById('char-count').textContent = `${charCount}/200`;
+    });
+
+    // Clear chat history
+    document.getElementById('clear-chat').addEventListener('click', function() {
+      document.getElementById('messages').innerHTML = '';
     });
   </script>
 </body>
