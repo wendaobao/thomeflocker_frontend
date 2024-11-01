@@ -74,7 +74,12 @@ for (i = 0; i < coll.length; i++) {
 </script>
 </body>
 <div>
+<center>
+<span>
 <a href="{{site.baseurl}}/dnhscafestore">
 <button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe! </button>
 </a>
-</div>
+<span>
+<a href="{{site.baseurl}}/dnhscafestudyroom">
+<button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>
+</a>
