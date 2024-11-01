@@ -9,6 +9,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 
 
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,9 +23,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             color: #F0F0F0;
             font-family: Arial, sans-serif;
         }
-        .container {
-            margin-top: 30px;
-        }
+        .container { margin-top: 30px; }
         .chessboard {
             display: grid;
             grid-template-columns: repeat(8, 100px);
@@ -41,16 +40,12 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             align-items: center;
             font-size: 50px;
             font-weight: bold;
-            font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
-            color: #3E3E3E; /* Darker color for better contrast */
+            color: #3E3E3E;
         }
         .orange { background-color: #F39C12; }
         .yellow { background-color: #F7DC6F; }
-        .chat-container {
-            display: flex;
-            justify-content: space-between;
-        }
+        .chat-container { display: flex; justify-content: space-between; }
         .chat-box {
             width: 40%;
             background-color: #1A1A1A;
@@ -109,11 +104,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
     </div>
 
     <script>
-        // Variables
-        const pieces = {
-            'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
-            'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
-        };
+        const pieces = { 'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;', 'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;' };
         const boardLayout = [
             ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
             ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
@@ -133,7 +124,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         const sendBtn = document.getElementById('sendBtn');
         let selectedSquare = null;
         let turn = 'white';
-        let gameMode = 'human'; // Default to human
+        let gameMode = 'human';
         let botMessages = ["Nice move!", "You're doing great!", "Keep it up!", "This is a tough game!", "Impressive!"];
         
         function startGame(mode) {
@@ -193,53 +184,78 @@ authors: Ahaan, Xavier, Spencer, Vasanth
         }
 
         function botMove() {
-            // Random move for simplicity
-            let moved = false;
-            while (!moved) {
-                const row = Math.floor(Math.random() * 8);
-                const col = Math.floor(Math.random() * 8);
-                if (boardLayout[row][col] && boardLayout[row][col].toLowerCase() === boardLayout[row][col]) {
-                    const targetRow = Math.floor(Math.random() * 8);
-                    const targetCol = Math.floor(Math.random() * 8);
-                    if (!boardLayout[targetRow][targetCol] || boardLayout[targetRow][targetCol].toUpperCase() === boardLayout[targetRow][targetCol]) {
-                        movePiece({ row, col }, targetRow, targetCol);
-                        sendBotMessage();
-                        moved = true;
+            let validMoves = [];
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const piece = boardLayout[row][col];
+                    if (piece && piece === piece.toLowerCase()) {
+                        validMoves.push(...getLegalMoves(piece, row, col));
                     }
                 }
             }
+            if (validMoves.length > 0) {
+                const move = validMoves[Math.floor(Math.random() * validMoves.length)];
+                movePiece({ row: move.startRow, col: move.startCol }, move.endRow, move.endCol);
+                sendBotMessage();
+            }
+        }
+
+        function getLegalMoves(piece, startRow, startCol) {
+            const moves = [];
+            switch (piece) {
+                case 'p': // Pawn
+                    // Add pawn movement and capture rules
+                    break;
+                case 'r': // Rook
+                    // Add rook movement rules
+                    break;
+                case 'n': // Knight
+                    // Add knight movement rules
+                    break;
+                case 'b': // Bishop
+                    // Add bishop movement rules
+                    break;
+                case 'q': // Queen
+                    // Add queen movement rules
+                    break;
+                case 'k': // King
+                    // Add king movement rules
+                    break;
+            }
+            return moves.filter(move => isLegalMove(move));
+        }
+
+        function isLegalMove(move) {
+            return true; // Implement legality check
         }
 
         function sendBotMessage() {
-            const message = botMessages[Math.floor(Math.random() * botMessages.length)];
-            addMessage(message, 'bot-message');
+            addMessage(botMessages[Math.floor(Math.random() * botMessages.length)], 'bot-message');
         }
 
-        function displayTurnPopup() {
-            turnPopup.innerText = `${turn.charAt(0).toUpperCase() + turn.slice(1)}'s Turn`;
-            turnPopup.style.display = 'block';
-            setTimeout(() => turnPopup.style.display = 'none', 1500);
-        }
-
-        function addMessage(text, className) {
+        function addMessage(text, type) {
             const message = document.createElement('div');
-            message.className = `message ${className}`;
-            message.innerText = text;
+            message.className = `message ${type}`;
+            message.textContent = text;
             chatMessages.appendChild(message);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
         sendBtn.addEventListener('click', () => {
-            const message = messageInput.value.trim();
-            if (message) {
-                addMessage(message, 'user-message');
+            const text = messageInput.value.trim();
+            if (text) {
+                addMessage(text, 'user-message');
                 messageInput.value = '';
             }
         });
 
-        // Initial board setup
+        function displayTurnPopup() {
+            turnPopup.textContent = turn === 'white' ? "White's Turn" : "Black's Turn";
+            turnPopup.style.display = 'block';
+            setTimeout(() => turnPopup.style.display = 'none', 2000);
+        }
+
         generateBoard();
     </script>
 </body>
 </html>
-
