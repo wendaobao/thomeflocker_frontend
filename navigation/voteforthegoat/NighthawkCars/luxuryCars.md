@@ -85,21 +85,52 @@ permalink: /voteforthegoat/nighthawkCars/luxuryCars/
 
 
 <h3>Pricing</h3>
-<p>- (Here goes all the information for luxury car pricing)</p>
+<table>
+    <tr>
+        <td><p></p></td>
+        <td><p>Average Price</p></td>
+        <td><p>Lowest Price</p></td>
+        <td><p>Highest Price</p></td>
+    </tr>
+    <tr>
+        <td><p>Lamborghini</p></td>
+        <td><p>$212,000</p></td>
+        <td><p>$209,000</p></td>
+        <td><p>$8,300,000</p></td>
+    </tr>
+    <tr>
+        <td><p>Bugatti</p></td>
+        <td><p>$2,990,000</p></td>
+        <td><p>$1,900,000</p></td>
+        <td><p>$35,000,000</p></td>
+    </tr>
+    <tr>
+        <td><p>Ferrari</p></td>
+        <td><p>$230,950</p></td>
+        <td><p>$50,000</p></td>
+        <td><p>$70,000,000</p></td>
+    </tr>
+    <tr>
+        <td><p>McLaren</p></td>
+        <td><p>$310,500</p></td>
+        <td><p>$195,000</p></td>
+        <td><p>$3,500,000</p></td>
+    </tr>
+
+</table>
 
 <h3>Target Market</h3>
 <p>- (Here goes all the information for luxury car target market)</p>
 
 <h3>Voting</h3>
 <div>
-    <button>1st car</button>
-    <button>2nd car</button>
-    <button>3rd car</button>
-    <button>4th car</button>
+    <button style="width:150px;"><p style="background-color: rgb(255, 80, 80)">Lamborghini</p></button>
+    <button style="width:150px"><p style="background-color: rgb(255, 80, 80)">Bugatti</p></button>
+    <button style="width:150px"><p style="background-color: rgb(255, 80, 80)">Ferrari</p></button>
+    <button style="width:150px"><p style="background-color: rgb(255, 80, 80)">McLaren</p></button>
 </div>
 
 <h2>Discussion</h2>
-<p>- (Discussion content goes here)</p>
 <textarea placeholder="Enter your thoughts or comments here..." id="comment"></textarea>
 
 <div class="message-box">
