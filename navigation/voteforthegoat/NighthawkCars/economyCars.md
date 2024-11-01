@@ -77,10 +77,10 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
 
 <h3>Voting</h3>
 <div>
-    <button>1st car</button>
-    <button>2nd car</button>
-    <button>3rd car</button>
-    <button>4th car</button>
+    <button style="width:150px;"><p style="background-color: rgb(255, 80, 80)">Car1</p></button>
+    <button style="width:150px"><p style="background-color: rgb(255, 80, 80)">Car2</p></button>
+    <button style="width:150px"><p style="background-color: rgb(255, 80, 80)">Car3</p></button>
+    <button style="width:150px"><p style="background-color: rgb(255, 80, 80)">Car4</p></button>
 </div>
 
 <h2>Discussion</h2>

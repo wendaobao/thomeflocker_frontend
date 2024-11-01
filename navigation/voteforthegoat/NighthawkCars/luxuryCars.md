@@ -151,9 +151,6 @@ permalink: /voteforthegoat/nighthawkCars/luxuryCars/
 
 </table>
 
-<h3>Target Market</h3>
-<p>- (Here goes all the information for luxury car target market)</p>
-
 <h3>Voting</h3>
 <div>
     <button style="width:175px;"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd;">Lamborghini</p></button>
