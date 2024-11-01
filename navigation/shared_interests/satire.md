@@ -3,6 +3,7 @@ layout: base
 title: Satire
 permalink: /shared_interests/satire/
 menu: nav/shared_interests.html
+author: Bailey, Travis, Leon, Anyi
 ---
 
 DNHS Satire Home Page
