@@ -3,8 +3,7 @@ const imageList = [
     "zoomed-image1.jpg",
     "zoomed-image2.jpg",
     "zoomed-image3.jpg"
- 
- 
+
     // Add more image URLs as needed
  ];
  

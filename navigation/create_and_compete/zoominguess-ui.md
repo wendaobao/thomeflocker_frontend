@@ -18,11 +18,11 @@ author: Arhaan, Akshaj, Mihir, Keerthan
 
 <!-- Random Image Section -->
 <div class="zoom-image-section">
-   <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
-   <div id="image-display" class="zoom-image-box">
-       <!-- Random zoomed-in image will be displayed here -->
-       <img id="zoomed-image" src="default-image.jpg" alt="Zoomed Image" class="zoom-image">
-   </div>
+    <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
+    <div id="image-display" class="zoom-image-box">
+        <!-- Random zoomed-in image will be displayed here -->
+        <img id="zoomed-image" src="default-image.jpg" alt="Zoomed Image" class="zoom-image">
+    </div>
 </div>
 
 
@@ -62,11 +62,11 @@ author: Arhaan, Akshaj, Mihir, Keerthan
 
 <!-- Feedback Modal -->
 <div id="feedback-modal" class="modal">
-   <div class="modal-content">
-       <span class="close-button">&times;</span>
-       <h2>Feedback Submitted!</h2>
-       <p>Your feedback has been submitted successfully.</p>
-   </div>
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Feedback Submitted!</h2>
+        <p>Your feedback has been submitted successfully.</p>
+    </div>
 </div>
 </div>
 
@@ -90,18 +90,17 @@ author: Arhaan, Akshaj, Mihir, Keerthan
    }
 
 
-   .zoom-image-section,
-   .guess-box,
-   .explanation-box,
-   #feedback-section,
-   #leaderboard-section {
-       margin-top: 20px;
-       padding: 15px;
-       background-color: #fff;
-       border-radius: 8px;
-       box-shadow: 0 4px 6px rgba(0, 0, 255, 0.2); /* Blue shadow for sections */
-   }
-
+    .zoom-image-section,
+    .guess-box,
+    .explanation-box,
+    #feedback-section,
+    #leaderboard-section {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 255, 0.2); /* Blue shadow for sections */
+    }
 
    .zoom-image-box {
        display: inline-block;
@@ -109,28 +108,25 @@ author: Arhaan, Akshaj, Mihir, Keerthan
    }
 
 
-   .zoom-image {
-       max-width: 100%;
-       border-radius: 8px;
-   }
+    .zoom-image {
+        max-width: 100%;
+        border-radius: 8px;
+    }
 
+    .submit-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 255, 0.3); /* Blue shadow for buttons */
+        transition: box-shadow 0.3s ease;
+    }
 
-   .submit-button {
-       background-color: #007bff;
-       color: #fff;
-       padding: 10px 20px;
-       border: none;
-       border-radius: 8px;
-       cursor: pointer;
-       box-shadow: 0 4px 6px rgba(0, 0, 255, 0.3); /* Blue shadow for buttons */
-       transition: box-shadow 0.3s ease;
-   }
-
-
-   .submit-button:hover {
-       box-shadow: 0 6px 12px rgba(0, 0, 255, 0.4); /* Stronger shadow on hover */
-   }
-
+    .submit-button:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 255, 0.4); /* Stronger shadow on hover */
+    }
 
    .modal {
        display: none;
@@ -145,28 +141,26 @@ author: Arhaan, Akshaj, Mihir, Keerthan
    }
 
 
-   .modal-content {
-       background-color: #fefefe;
-       margin: auto;
-       padding: 20px;
-       border-radius: 10px;
-       box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3); /* Blue shadow for modal */
-       width: 80%;
-       max-width: 500px;
-       text-align: center;
-   }
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3); /* Blue shadow for modal */
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+    }
 
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-   .close-button {
-       color: #aaa;
-       float: right;
-       font-size: 28px;
-       font-weight: bold;
-       cursor: pointer;
-   }
-
-
-   .close-button:hover {
-       color: #000;
-   }
+    .close-button:hover {
+        color: #000;
+    }
 </style>
