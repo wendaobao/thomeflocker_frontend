@@ -4,6 +4,7 @@ title: DNHS Cafe Study Room
 description: Help out your peers with school work to earn d'neros!
 permalink: /dnhscafestudyroom/
 ---
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
