@@ -24,17 +24,6 @@ author: Arshia, Prajna, Mirabelle, Alex
 </head>
 <body>
 
-<div>
-    <button onclick="clearCanvas()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Clear Drawing</button>
-    <div style="margin-top: 10px;">
-        <button class="color-button" style="background-color: #333;" onclick="changeColor('#333')"></button>
-        <button class="color-button" style="background-color: #ff0000;" onclick="changeColor('#ff0000')"></button>
-        <button class="color-button" style="background-color: #008000;" onclick="changeColor('#008000')"></button>
-        <button class="color-button" style="background-color: #0000ff;" onclick="changeColor('#0000ff')"></button>
-        <button class="color-button" style="background-color: #ffa500;" onclick="changeColor('#ffa500')"></button>
-    </div>
-</div>
-
 <canvas id="drawingCanvas" width="600" height="400"></canvas>
 
 <script>
@@ -75,5 +64,17 @@ author: Arshia, Prajna, Mirabelle, Alex
         currentColor = color;
     }
 </script>
+
+<div>
+    <button onclick="clearCanvas()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Clear Drawing</button>
+</div>
+
+<div style="margin-top: 10px;">
+        <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
+        <button style="background-color: #3a63e8!important;  display:inline-block" onclick="changeColor('#3a63e8')">Blue</button>
+        <button style="background-color: #3c7d2c!important;  display:inline-block" onclick="changeColor('#3c7d2c')">Green</button>
+        <button style="background-color: #992222!important;  display:inline-block" onclick="changeColor('#992222')">Red</button>
+        <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
+</div>
 
 </body>
