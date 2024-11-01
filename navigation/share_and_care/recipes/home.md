@@ -1,7 +1,6 @@
 ---
 layout: post
-title: The Hungry Games (Home and Chat)
-description: Have fun talking about food, resturants, and more! 
+title: The Hungry Games (Home, Chat, Hunger Calls)
 permalink: share_and_care/hungry_games
 comments: true
 ---
@@ -17,7 +16,7 @@ comments: true
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Center vertically */
+            justify-content: center; 
             min-height: 100vh;
             margin: 0;
         }
@@ -59,8 +58,8 @@ comments: true
             transform: scale(1.1);
         }
         .chat-container {
-            width: 600px;  /* Increased width */
-            height: 600px; /* Increased height */
+            width: 600px;  
+            height: 600px; 
             display: flex;
             flex-direction: column;
             border: 2px solid #ff8c00;
@@ -88,7 +87,7 @@ comments: true
             word-wrap: break-word;
             max-width: 80%;
             position: relative; 
-            color: #000; /* Dark text color */
+            color: #000; 
         }
         .chat-label {
             color: #333;
@@ -119,7 +118,7 @@ comments: true
         .input-box button:hover {
             background-color: #e67e22;
         }
-         .restaurant-list {
+        .restaurant-list {
             list-style: none;
             padding: 0;
         }
@@ -138,104 +137,141 @@ comments: true
         .heart.liked {
             color: red;
         }
+        /* New styles for moderation rules and about section */
+        .about-header,
+        .rules-header {
+            color: #DFAF8A; /* Pastel orange */
+        }
+        .about-paragraph,
+        .rules-paragraph {
+            color: #C88F66; /* Darker pastel orange */
+        }
+        /* New styles for links */
+        .link-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border: 10px solid #D7C9E5; /* Pastel light purple */
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #fff7e6; /* Same background color */
+            max-width: 90%;
+            margin: 20px 0;
+        }
+        .link-row a {
+            text-decoration: none;
+            color: #6A0DAD; /* Text color */
+            font-size: 20px; /* Font size */
+        }
     </style>
 </head>
 <body>
 
-<h1>ABOUT THIS HANGOUT:</h1>
-<p> This is a hangout all about people's favorite food, restaurants, and more! We have a (local) backend running that stores chat messages in a database. We have a list of local restaurants where you can browse. Explore and have fun! 
+<h1 class="about-header">ABOUT THIS HANGOUT:</h1>
+<p class="about-paragraph">This is a hangout all about people's favorite food, restaurants, and more! We have a (local) backend running that stores chat messages in a database. We have a list of local restaurants where you can browse. Explore and have fun!</p>
 
-<h1>MODERATION RULES:</h1>
-<p>1. Please do not use profanity in the hangout.</p>
-<p>2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
-<p>3. Reminder that your data is stored in a (local) backend.</p>
-<p>4. Please do NOT spam flood the chat.</p>
-<p>5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
+<h1 class="rules-header">MODERATION RULES:</h1>
+<p class="rules-paragraph">1. Please do not use profanity in the hangout.</p>
+<p class="rules-paragraph">2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
+<p class="rules-paragraph">3. Reminder that your data is stored in a (local) backend.</p>
+<p class="rules-paragraph">4. Please do NOT spam flood the chat.</p>
+<p class="rules-paragraph">5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
 
-    <div class="image-row">
-        <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
-        <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
-        <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
+<div class="image-row">
+    <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
+    <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
+    <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
+</div>
+
+<div class="chat-container">
+    <div class="chat-label">Chat Box</div>
+    <div class="chat-box" id="chatBox">
+        <!-- Messages will appear here -->
     </div>
-
-    <div class="chat-container">
-        <div class="chat-label">Chat Box</div>
-        <div class="chat-box" id="chatBox">
-            <!-- Messages will appear here -->
-        </div>
-        <div class="input-box">
-            <input type="text" id="userName" placeholder="Enter your name..." />
-            <input type="text" id="userInput" placeholder="Share a recipe or restaurant...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
+    <div class="input-box">
+        <input type="text" id="userName" placeholder="Enter your name..." />
+        <input type="text" id="userInput" placeholder="Share a recipe or restaurant...">
+        <button onclick="sendMessage()">Send</button>
     </div>
-    <body>
+</div>
 
-    <h1>Local Restaurants</h1>
-    <ul class="restaurant-list">
-        <li class="restaurant-item">
-            <span>Restaurant A</span>
-            <span class="heart" onclick="toggleHeart(this)">♡</span>
-        </li>
-        <li class="restaurant-item">
-            <span>Restaurant B</span>
-            <span class="heart" onclick="toggleHeart(this)">♡</span>
-        </li>
-        <li class="restaurant-item">
-            <span>Restaurant C</span>
-            <span class="heart" onclick="toggleHeart(this)">♡</span>
-        </li>
-    </ul>
+<h1>Local Restaurants</h1>
+<ul class="restaurant-list">
+    <li class="restaurant-item">
+        <span>Burger Lounge (Del Sur)</span>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <span>Chick-fil-A (Del Sur)</span>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <span>Board And Brew (Del Sur)</span>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <span>Luna Grill (Del Sur)</span>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <span>Piacere Mio Del Sur</span>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+</ul>
 
-
-    <script>
-        async function fetchMessages() {
-            const response = await fetch('http://localhost:5000/messages');
-            const messages = await response.json();
-            messages.forEach(message => {
-                displayMessage(message);
-            });
-        }
-
-        async function sendMessage() {
-            const userName = document.getElementById("userName").value.trim();
-            const inputText = document.getElementById("userInput").value.trim();
-
-            if (inputText !== "" && userName !== "") {
-                const response = await fetch('http://localhost:5000/messages', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ user: userName, text: inputText }),
-                });
-                const message = await response.json();
-                displayMessage(message);
-                document.getElementById("userInput").value = ''; // Clear input box
-            } else {
-                alert("Please enter both your name and a message.");
-            }
-        }
-
-        function displayMessage(message) {
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("chat-message");
-            messageDiv.innerHTML = `<strong>${message.user}</strong>: ${message.text}`; // Bold user name
-
-            document.getElementById("chatBox").appendChild(messageDiv);
-            document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
-        }
-
-        // Fetch existing messages when the page loads
-        window.onload = fetchMessages;
-    </script>
+<div class="link-row">
+    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s">Link 1</a>
+    <a href="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg">Link 2</a>
+    <a href="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg">Link 3</a>
+</div>
 
 <script>
-        function toggleHeart(element) {
-            element.classList.toggle('liked');
-            element.textContent = element.classList.contains('liked') ? '❤️' : '♡';
-            
+    async function fetchMessages() {
+        const response = await fetch('http://localhost:5000/messages');
+        const messages = await response.json();
+        messages.forEach(message => {
+            displayMessage(message);
+        });
+    }
+
+    async function sendMessage() {
+        const userName = document.getElementById("userName").value.trim();
+        const inputText = document.getElementById("userInput").value.trim();
+
+        if (inputText !== "" && userName !== "") {
+            const response = await fetch('http://localhost:5000/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user: userName, text: inputText }),
+            });
+            const message = await response.json();
+            displayMessage(message);
+            document.getElementById("userInput").value = ''; // Clear input box
+        } else {
+            alert("Please enter both your name and a message.");
         }
-    </script>
+    }
+
+    function displayMessage(message) {
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("chat-message");
+        messageDiv.innerHTML = `<strong>${message.user}</strong>: ${message.text}`; // Bold user name
+
+        document.getElementById("chatBox").appendChild(messageDiv);
+        document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
+    }
+
+    // Fetch existing messages when the page loads
+    window.onload = fetchMessages;
+
+    function toggleHeart(element) {
+        element.classList.toggle('liked');
+        element.textContent = element.classList.contains('liked') ? '❤️' : '♡';
+    }
+</script>
 </body>
 </html>
