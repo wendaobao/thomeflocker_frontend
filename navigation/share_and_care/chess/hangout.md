@@ -9,13 +9,12 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 
 
 
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Hangout Zone - Chess Game with Chat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Styles */
         body {
@@ -179,7 +178,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             generateBoard();
             displayTurnPopup();
             if (gameMode === 'bot' && turn === 'black') {
-                setTimeout(botMove, 1000);
+                setTimeout(botMove, 5000); // 5 seconds delay for bot move
             }
         }
 
@@ -202,31 +201,12 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 
         function getLegalMoves(piece, startRow, startCol) {
             const moves = [];
-            switch (piece) {
-                case 'p': // Pawn
-                    // Add pawn movement and capture rules
-                    break;
-                case 'r': // Rook
-                    // Add rook movement rules
-                    break;
-                case 'n': // Knight
-                    // Add knight movement rules
-                    break;
-                case 'b': // Bishop
-                    // Add bishop movement rules
-                    break;
-                case 'q': // Queen
-                    // Add queen movement rules
-                    break;
-                case 'k': // King
-                    // Add king movement rules
-                    break;
-            }
+            // Add move logic here
             return moves.filter(move => isLegalMove(move));
         }
 
         function isLegalMove(move) {
-            return true; // Implement legality check
+            return true; // Add legality check
         }
 
         function sendBotMessage() {
