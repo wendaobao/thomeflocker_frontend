@@ -146,6 +146,9 @@ p {
         <p>5. Do not be toxic, negative, or attack others for their opinions.</p>
   </details>
 
+<a href="{{site.baseurl}}/voteforthegoat/calicoworkflow">See our workflow here!</a>
+
+
 
 <p class="header-text">Click on a critter below to vote!</p>
 
