@@ -10,7 +10,7 @@ permalink: /share_and_care/revvit/mycar
 <html>
   <div class="card">
     <h4><b>JOHN DOE</b></h4>
-    <img src="{{site.baseurl}}/images/nitd_rpg/mort.png" alt="Avatar" class="pfp">
+    <img id="pfp" alt="Profile Picture" class="pfp">
     <div class="container">
       <h5>MY RIDE</h5>
       <p>I will write more about my sick ride here! I will provide the MAKE, MODEL, and YEAR of my vehicle along with any other relavant information I would like to include!</p>
@@ -53,3 +53,5 @@ permalink: /share_and_care/revvit/mycar
   padding: 2px 16px;
 }
 </style>
+
+<script type="module" src="{{site.baseurl}}/assets/js/revvit/myCar.js">

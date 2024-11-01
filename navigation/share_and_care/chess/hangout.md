@@ -3,50 +3,50 @@ layout: post
 title: Chess Hangout
 permalink: /chess/hangout
 comments: true
+authors: Ahaan, Xavier, Spencer, Vasanth
 ---
 
-<html lang="en">
 
+
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chess Hangout Zone</title>
-
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/88dpz+q8MBn5E2p3zFcTtv1z5JyyprjSAz5gUm" crossorigin="anonymous">
-    
+    <title>Chess Hangout Zone - Chess Game with Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #1b1b1b;
-            color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
+            background-color: #1B1B1B;
+            color: #F0F0F0;
+            font-family: Arial, sans-serif;
         }
         .container {
             margin-top: 30px;
         }
         .chessboard {
             display: grid;
-            grid-template-columns: repeat(8, 80px);
-            grid-template-rows: repeat(8, 80px);
+            grid-template-columns: repeat(8, 100px);
+            grid-template-rows: repeat(8, 100px);
             border: 2px solid #444;
             margin: 20px auto;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
         }
         .chessboard div {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 50px;
+            font-weight: bold;
+            font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
         }
-        .green {
-            background-color: #769656;
+        .orange {
+            background-color: #F39C12;
         }
-        .white {
-            background-color: #eeeed2;
+        .yellow {
+            background-color: #F7DC6F;
         }
         .chat-container {
             display: flex;
@@ -54,73 +54,116 @@ comments: true
         }
         .chat-box {
             width: 30%;
-            background-color: #222;
+            background-color: #1A1A1A;
             padding: 20px;
             border-radius: 8px;
+            border: 2px solid #444;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .chat-box h4 {
+            color: #F7DC6F;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
         }
         .chat-messages {
             height: 400px;
             overflow-y: scroll;
-            border: 1px solid #444;
+            background-color: #1B1B1B;
+            border: 2px solid #444;
             margin-bottom: 15px;
             padding: 10px;
-            background-color: #111;
+            border-radius: 10px;
+        }
+        .message {
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+            word-wrap: break-word;
+            display: inline-block;
+            max-width: 80%;
+            color: #F0F0F0;
+            border: 1px solid #444;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .user-message {
+            text-align: right;
+            margin-left: auto;
+            border-radius: 15px 15px 0 15px;
+        }
+        .bot-message {
+            background-color: #B29800;
+            text-align: left;
+            margin-right: auto;
+            border-radius: 15px 15px 15px 0;
         }
         .message-input {
-            margin-top: 10px;
+            display: flex;
+            gap: 5px;
+        }
+        .message-input input {
+            flex-grow: 1;
+            background-color: #2A2A2A;
+            border: 1px solid #555;
+            color: #F0F0F0;
         }
         .send-btn {
             background-color: #444;
-            color: #f0f0f0;
+            color: #F0F0F0;
         }
         .send-btn:hover {
             background-color: #555;
         }
+        .captured-pieces {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .turn-popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #444;
+            color: #F0F0F0;
+            border: 2px solid #F39C12;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h2 class="text-center">Chess Hangout Zone</h2>
+        <div class="captured-pieces">
+            <h4>White's Captured Pieces</h4>
+            <div id="whiteCaptured"></div>
+            <h4>Black's Captured Pieces</h4>
+            <div id="blackCaptured"></div>
+        </div>
         <div class="chat-container">
             <!-- Chessboard -->
-            <div class="chessboard" id="chessboard">
-                <!-- Generate chessboard squares dynamically -->
-            </div>
-
+            <div class="chessboard" id="chessboard"></div>
             <!-- Chat Section -->
             <div class="chat-box">
-                <h4>Chat Room</h4>
+                <h4>Chess-Themed Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
-
                 <div class="message-input">
                     <input type="text" id="messageInput" class="form-control" placeholder="Type your message">
-                    <button id="sendBtn" class="btn send-btn mt-2">Send</button>
+                    <button id="sendBtn" class="btn send-btn">Send</button>
                 </div>
             </div>
         </div>
+        <div class="turn-popup" id="turnPopup">White's Turn</div>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <!-- JS to handle chess pieces and board -->
     <script>
         const pieces = {
-            'R': '&#9814;', // White Rook
-            'N': '&#9816;', // White Knight
-            'B': '&#9815;', // White Bishop
-            'Q': '&#9813;', // White Queen
-            'K': '&#9812;', // White King
-            'P': '&#9817;', // White Pawn
-            'r': '&#9820;', // Black Rook
-            'n': '&#9822;', // Black Knight
-            'b': '&#9821;', // Black Bishop
-            'q': '&#9819;', // Black Queen
-            'k': '&#9818;', // Black King
-            'p': '&#9823;'  // Black Pawn
+            'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
+            'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
         };
-
         const boardLayout = [
             ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
             ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
@@ -131,33 +174,31 @@ comments: true
             ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
             ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
         ];
-
         const chessboard = document.getElementById('chessboard');
+        const turnPopup = document.getElementById('turnPopup');
+        const whiteCaptured = document.getElementById('whiteCaptured');
+        const blackCaptured = document.getElementById('blackCaptured');
         let selectedSquare = null;
-
-        // Create chessboard squares
+        let turn = 'white';
         function generateBoard() {
             chessboard.innerHTML = '';
-            let isWhite = true;
+            let isYellow = true;
             for (let row = 0; row < 8; row++) {
                 for (let col = 0; col < 8; col++) {
                     const square = document.createElement('div');
-                    square.className = isWhite ? 'white' : 'green';
+                    square.className = isYellow ? 'yellow' : 'orange';
                     square.dataset.row = row;
                     square.dataset.col = col;
-
                     if (boardLayout[row][col]) {
                         square.innerHTML = pieces[boardLayout[row][col]];
                     }
-
                     square.addEventListener('click', () => handleSquareClick(row, col, square));
                     chessboard.appendChild(square);
-                    isWhite = !isWhite;
+                    isYellow = !isYellow;
                 }
-                isWhite = !isWhite;
+                isYellow = !isYellow;
             }
         }
-
         function handleSquareClick(row, col, square) {
             if (selectedSquare) {
                 movePiece(selectedSquare, row, col);
@@ -166,48 +207,49 @@ comments: true
                 selectedSquare = { row, col, square };
             }
         }
-
         function movePiece(selected, row, col) {
             const piece = boardLayout[selected.row][selected.col];
+            const target = boardLayout[row][col];
+            if (target) {
+                if (turn === 'white') {
+                    blackCaptured.innerHTML += pieces[target];
+                } else {
+                    whiteCaptured.innerHTML += pieces[target];
+                }
+            }
             boardLayout[selected.row][selected.col] = '';
             boardLayout[row][col] = piece;
-            generateBoard(); // Re-render the board
+            turn = turn === 'white' ? 'black' : 'white';
+            displayTurnPopup();
+            generateBoard();
         }
-
+        function displayTurnPopup() {
+            turnPopup.textContent = `${turn === 'white' ? "White's" : "Black's"} Turn`;
+            turnPopup.style.display = 'block';
+            setTimeout(() => turnPopup.style.display = 'none', 1000);
+        }
         generateBoard();
-
-    </script>
-
-    <!-- JS to handle chat functionality -->
-    <script>
+        // Chat Bot Functionality
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
-
-        let messages = [];
-
-        function renderMessages() {
-            chatMessages.innerHTML = '';
-            messages.forEach(msg => {
-                const msgElement = document.createElement('p');
-                msgElement.textContent = msg;
-                chatMessages.appendChild(msgElement);
-            });
-        }
-
-        sendBtn.addEventListener('click', () => {
-            const newMessage = messageInput.value.trim();
-            if (newMessage) {
-                messages.push(newMessage);
+        sendBtn.addEventListener('click', handleUserMessage);
+        messageInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleUserMessage(); });
+        function handleUserMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText) {
+                addMessage(messageText, 'user-message');
                 messageInput.value = '';
-                renderMessages();
+                setTimeout(() => addMessage('That sounds like an interesting move!', 'bot-message'), 500);
             }
-        });
-
-        setInterval(() => {
-            // Polling for new messages can go here
-        }, 3000);
+        }
+        function addMessage(text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${className}`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
     </script>
 </body>
-
 </html>
