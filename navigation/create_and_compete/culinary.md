@@ -165,7 +165,7 @@ author: Daksha, Zach, Alex, Darsh
             description: "Fluffy banana pancakes with a hint of cinnamon.",
             cookingTime: "10 minutes",
             cookingProcess: "1. Mash banana and mix with eggs and cinnamon. 2. Pour batter onto a hot griddle. Cook until golden brown on both sides. Serve."
-        },  
+        },
         {
             name: "Mango Smoothie",
             ingredients: ["mango", "yogurt", "honey"],
@@ -187,148 +187,69 @@ author: Daksha, Zach, Alex, Darsh
             cookingTime: "5 minutes",
             cookingProcess: "1. Slice cucumber and mix with yogurt, dill, and lemon juice. 2. Toss well and serve."
         }
-        ];
-    
+    ];
+
     function getRandomIngredients() {
         const ingredients = [
-'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
-'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
-'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
-'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
-'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
-'Basil', 'Cilantro', 'Parsley', 'Thyme', 'Rosemary', 'Dill', 'Sage', 'Oregano', 'Mint', 'Bay Leaves',
-'Chia Seeds', 'Walnuts', 'Pecans', 'Hazelnuts', 'Macadamia Nuts', 'Pine Nuts', 'Sesame Seeds', 'Poppy Seeds', 'Coconut', 'Coconut Milk', 
-'Cocoa Powder', 'Honey', 'Maple Syrup', 'Brown Sugar', 'White Sugar', 'Vanilla Extract', 'Cinnamon', 'Nutmeg', 'Cloves', 'Cardamom',
-'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
-'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon', 
+            'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
+            'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
+            'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
+            'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
+            'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
+            'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Sage', 'Chives', 'Mint', 'Parsley', 'Cilantro', 'Tarragon',
+            'Caraway', 'Cumin', 'Paprika', 'Chili Powder', 'Turmeric', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Cloves', 'Vanilla', 
+            'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 
+            'Cornstarch', 'Rice Vinegar', 'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 
+            'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto', 'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 
+            'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk', 'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 
+            'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows'
         ];
-        const randomItems = [];
+
+        const randomIngredients = [];
         for (let i = 0; i < 5; i++) {
             const randomIndex = Math.floor(Math.random() * ingredients.length);
-            randomItems.push(ingredients[randomIndex]);
+            randomIngredients.push(ingredients[randomIndex]);
         }
-        document.getElementById('randomIngredients').innerHTML = randomItems.map(item => `<li>${item}</li>`).join('');
+        return randomIngredients;
     }
 
-    function findRecipes(ingredient) {
-        const results = recipes.filter(recipe => recipe.ingredients.includes(ingredient.toLowerCase()));
-        const resultsContainer = document.getElementById('recipeResults');
-        resultsContainer.innerHTML = ''; // Clear previous results
-        if (results.length > 0) {
-            results.forEach(recipe => {
-                const recipeDiv = document.createElement('div');
-                recipeDiv.classList.add('recipe');
-                recipeDiv.innerHTML = `<strong>${recipe.name}</strong><br>
-                    <em>Description:</em> ${recipe.description}<br>
-                    <em>Cooking Time:</em> ${recipe.cookingTime}<br>
-                    <em>Ingredients:</em> ${recipe.ingredients.join(', ')}<br>
-                    <em>Cooking Process:</em> ${recipe.cookingProcess}`;
-                resultsContainer.appendChild(recipeDiv);
-            });
-        } else {
-            resultsContainer.innerHTML = `<p>No recipes found with the ingredient "${ingredient}".</p>`;
-        }
-    }
+    document.getElementById('customRecipeButton').addEventListener('click', () => {
+        const randomIngredients = getRandomIngredients();
+        document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    });
 
-    document.getElementById('ingredientForm').addEventListener('submit', function(event) {
+    document.getElementById('ingredientForm').addEventListener('submit', (event) => {
         event.preventDefault();
-        const input = document.getElementById('ingredients').value;
-        findRecipes(input);
-    });
-
-    document.getElementById('randomRecipeButton').addEventListener('click', function() {
-        const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-        const resultsContainer = document.getElementById('recipeResults');
-        resultsContainer.innerHTML = `<div class="recipe">
-            <strong>${randomRecipe.name}</strong><br>
-            <em>Description:</em> ${randomRecipe.description}<br>
-            <em>Cooking Time:</em> ${randomRecipe.cookingTime}<br>
-            <em>Ingredients:</em> ${randomRecipe.ingredients.join(', ')}<br>
-            <em>Cooking Process:</em> ${randomRecipe.cookingProcess}
-        </div>`;
-    });
-
-    document.getElementById('customRecipeButton').addEventListener('click', function() {
-        if (confirm("Would you like to create your own recipe with 5 random ingredients?")) {
-            const randomIngredients = [];
-            const ingredients = [
-              function getRandomIngredients() {
-    const allIngredients = [
-'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
-'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
-'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
-'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
-'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
-'Basil', 'Cilantro', 'Parsley', 'Thyme', 'Rosemary', 'Dill', 'Sage', 'Oregano', 'Mint', 'Bay Leaves',
-'Chia Seeds', 'Walnuts', 'Pecans', 'Hazelnuts', 'Macadamia Nuts', 'Pine Nuts', 'Sesame Seeds', 'Poppy Seeds', 'Coconut', 'Coconut Milk', 
-'Cocoa Powder', 'Honey', 'Maple Syrup', 'Brown Sugar', 'White Sugar', 'Vanilla Extract', 'Cinnamon', 'Nutmeg', 'Cloves', 'Cardamom',
-'Cumin', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'Chili Powder', 'Red Pepper Flakes', 'Lemon', 'Lime', 'Orange', 'Grapes',
-'Apples', 'Bananas', 'Strawberries', 'Blueberries', 'Blackberries', 'Raspberries', 'Pineapple', 'Mango', 'Pear', 'Watermelon',
-            ];
-            for (let i = 0; i < 5; i++) {
-                const randomIndex = Math.floor(Math.random() * ingredients.length);
-                randomIngredients.push(ingredients[randomIndex]);
-            }
-            const resultsContainer = document.getElementById('recipeResults');
-            resultsContainer.innerHTML = `<div class="recipe">
-                <strong>Create Your Own Recipe!</strong><br>
-                <em>Use these ingredients:</em> ${randomIngredients.join(', ')}
-            </div>`;
+        const inputIngredients = document.getElementById('ingredients').value.split(',').map(ingredient => ingredient.trim().toLowerCase());
+        const filteredRecipes = recipes.filter(recipe => recipe.ingredients.some(ingredient => inputIngredients.includes(ingredient)));
+        
+        if (filteredRecipes.length > 0) {
+            const recipeResults = filteredRecipes.map(recipe => `
+                <div class="recipe">
+                    <h3>${recipe.name}</h3>
+                    <p>${recipe.description}</p>
+                    <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
+                    <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
+                    <p><strong>Cooking Process:</strong> ${recipe.cookingProcess}</p>
+                </div>
+            `).join('');
+            document.getElementById('recipeResults').innerHTML = recipeResults;
+        } else {
+            document.getElementById('recipeResults').innerHTML = '<p>No recipes found with the provided ingredients.</p>';
         }
     });
 
-    window.onload = getRandomIngredients;
+    document.getElementById('randomRecipeButton').addEventListener('click', () => {
+        const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+        const recipeResult = `
+            <div class="recipe">
+                <h3>${randomRecipe.name}</h3>
+                <p>${randomRecipe.description}</p>
+                <p><strong>Cooking Time:</strong> ${randomRecipe.cookingTime}</p>
+                <p><strong>Ingredients:</strong> ${randomRecipe.ingredients.join(', ')}</p>
+                <p><strong>Cooking Process:</strong> ${randomRecipe.cookingProcess}</p>
+            </div>
+        `;
+        document.getElementById('recipeResults').innerHTML = recipeResult;
+    });
 </script>
-
-
-
-<details>
-  <summary>Room Details</summary>
-
-<a href="{{site.baseurl}}/moderation/rules_food/">Moderation Rules</a>
-
-<p> 
-The page offers an intuitive design where users can enter their available ingredients to receive a range of recipe ideas. It features sections for appetizers, main dishes, and desserts, with options to filter by dietary needs (such as vegan or gluten-free). Each recipe includes a short description, estimated cooking time, and difficulty rating. Users can bookmark their favorite recipes and compile shopping lists based on required ingredients. Additionally, there's an interactive feature for substituting ingredients, providing greater flexibility in meal preparation. </p>
-
-</details>
-
-<style>
-.culinary-posts-btn {
-  position: relative;
-  font-size: 1.2em;
-  padding: 0.7em 1.4em;
-  background-color: #BF0426;
-  text-decoration: none;
-  border: none;
-  border-radius: 0.5em;
-  color: #DEDEDE;
-  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
-}
-
-.culinary-posts-btn::before {
-  position: absolute;
-  content: '';
-  height: 0;
-  width: 0;
-  top: 0;
-  left: 0;
-  background: linear-gradient(135deg, rgba(33,33,33,1) 0%, rgba(33,33,33,1) 50%, rgba(150,4,31,1) 50%, rgba(191,4,38,1) 60%);
-  border-radius: 0 0 0.5em 0;
-  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
-}
-
-.culinary-posts-btn:hover::before {
-  width: 1.6em;
-  height: 1.6em;
-}
-
-.culinary-posts-btn:active {
-  box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
-  transform: translate(0.1em, 0.1em);
-}
-</style>
-
-<a href="http://127.0.0.1:4887/flocker_frontend/create_and_compete/culinaryposts">
-  <button class="culinary-posts-btn">Culinary Posts</button>
-</a>
