@@ -6,6 +6,7 @@ permalink: /create_and_compete/realityroom-home
 author: Yash, Nikhil, Rohan, Neil
 ---
 
+TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/realityroom)
 
 <div class="form-container">
     <h2>Add New Post</h2>
