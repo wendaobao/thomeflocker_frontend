@@ -23,6 +23,8 @@ comments: true
 }
 </style>
 
+<a href="/local-restaurants/" class="button">Local Restaurants</a>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
