@@ -122,8 +122,9 @@ comments: true
     </style>
 </head>
 <body>
-    <a href="/moderation/rules_hungry_games/" class="button">Rules</a>
-    <a href="reccomendations.html" class="button">Local Restaurants</a>
+
+Check out the [Rules](/moderation/rules_hungry_games/) or our [Local Restaurants]({{ site.baseurl }}/recommendations).
+
 
     <div class="image-row">
         <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
