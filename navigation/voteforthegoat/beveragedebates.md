@@ -201,68 +201,14 @@ Our group has chosen to focus on discussions about which drinks should be added 
             position: relative;
         }
 
-        /* Add or update these styles */
-        nav {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: transparent;
-        }
-
-        nav a, .DNHS-title {
-            background: rgba(0, 0, 0, 0.5);
-            color: #00c6ff;
-            padding: 12px 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-        }
-
-        nav a:hover, .DNHS-title:hover {
-            background: rgba(0, 0, 0, 0.7);
-            color: #00e6ff;
-            transform: scale(1.05);
-        }
-
-        .nav-container {
-            border-bottom: 2px solid #00c6ff;
-            background: transparent;
-        }
-
-        .header-container {
-            background: transparent;
-            padding: 20px;
-        }
-
-        /* Style for the DNHS Flocker title */
-        .header-title, 
-        h1, 
-        .DNHS-title {  /* Use whichever class/element your title uses */
-            background: transparent;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            padding: 12px 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
         .header-title:hover,
         h1:hover,
         .DNHS-title:hover {
             transform: scale(1.1);
             text-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
         }
-
-        /* Revert paragraph font to default or previous style */
-        p {
-            font-family: Arial, sans-serif; /* Or your previous font */
-            font-size: 16px; /* Adjust size as needed */
-            color: #ffffff; /* Ensure text is readable */
-        }
     </style>
+
 </head>
 <body>
     <div class="voting-container">
