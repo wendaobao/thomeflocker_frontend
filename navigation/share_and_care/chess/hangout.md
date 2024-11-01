@@ -9,7 +9,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 
 
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
