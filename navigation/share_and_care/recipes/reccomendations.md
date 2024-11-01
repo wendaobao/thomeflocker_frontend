@@ -13,7 +13,6 @@ author: Jowan, Ryan, Michelle, Gabriela
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Restaurants</title>
     <style>
         /* Basic styling for the page and heart icons */
         .restaurant-list {
@@ -52,7 +51,6 @@ author: Jowan, Ryan, Michelle, Gabriela
             <span>Restaurant C</span>
             <span class="heart" onclick="toggleHeart(this)">♡</span>
         </li>
-        <!-- Add more restaurants as needed -->
     </ul>
 
     <script>
