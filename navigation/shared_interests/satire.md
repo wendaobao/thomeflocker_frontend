@@ -226,8 +226,8 @@ DNHS Satire Home Page
 
   <!-- Intro Blurb -->
   <div class="intro-blurb">
-    <h1>DNHS Social Media Home Page</h1>
-    <p>Login and explore our social media hub for everything DNHS</p>
+    <h1>DNHS Satire Home Page</h1>
+    <p>Login and explore our satire hub for everything that's not quite true about DNHS</p>
   </div>
 
   <!-- Main Layout with Sidebar and Feed -->
