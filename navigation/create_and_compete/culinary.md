@@ -1,11 +1,10 @@
 ---
-layout: post
+layout: post 
 title: Create and Compete - Culinary
 search_exclude: true
 permalink: /create_and_compete/culinary
-description: Login and explore our social media hub for everything DNHS 
-hide: true
-menu: nav/home.html
+menu: nav/create_and_compete.html
+author: Daksha, Alex, Darsh, Zach
 ---
 
 <style>
