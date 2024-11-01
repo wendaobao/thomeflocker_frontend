@@ -175,7 +175,6 @@ permalink: /undgdmusic/
       border-radius: 4px;
     }
   </style>
-</head>
 <body>
   <header>
     <h1>Underground Rapper Chatroom</h1>
@@ -251,7 +250,6 @@ permalink: /undgdmusic/
     });
   </script>
 </body>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
