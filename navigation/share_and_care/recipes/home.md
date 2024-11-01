@@ -153,10 +153,10 @@ comments: true
             align-items: center;
             gap: 20px;
             padding: 20px;
-            border: 10px solid #D7C9E5; /* Pastel light purple */
+            border: 10px solid #D7C9E5; 
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background-color: #fff7e6; /* Same background color */
+            background-color: #fff7e6; 
             max-width: 90%;
             margin: 20px 0;
         }
@@ -164,6 +164,9 @@ comments: true
             text-decoration: none;
             color: #6A0DAD; /* Text color */
             font-size: 20px; /* Font size */
+        }
+        h1 {
+    color: #ff8c00; 
         }
     </style>
 </head>
@@ -221,11 +224,12 @@ comments: true
     </li>
 </ul>
 
-<div class="link-row">
-    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s">Link 1</a>
-    <a href="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg">Link 2</a>
-    <a href="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg">Link 3</a>
+<div class="image-row">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s" alt="Image 1">
+    <img src="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg" alt="Image 2">
+    <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg" alt="Image 3">
 </div>
+
 
 <script>
     async function fetchMessages() {
