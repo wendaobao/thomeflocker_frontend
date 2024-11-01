@@ -101,60 +101,42 @@ p, h2, h3, body {
     margin-top:15px;
     justify-content: center;
 }
+/* Style summary */
+summary {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+    transition: text-shadow 0.3s ease;
+}
+summary:hover {
+    text-shadow: 0 0 8px #F5AAF5, 0 0 12px #F5AAF5;
+}
+/* Style for dropdown details */
+details[open] p {
+    margin: 0;
+    padding: 8px;
+    background-color: #CC99CC;
+    border-radius: 10px;
+    border: 1px solid #F5AAF5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 10px;
+}
+p {
+    margin: 0;
+}
+    summary::before {
+    content: '✿'; /* Unicode for vertical ellipsis */
+}
 </style>
 
 <div>
 <img src="{{site.baseurl}}/images/calicocritters/voteheading.png" alt="Calico Critters Voting header">
+</div>
 
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Media Rules</title>
-  <style>
-    /* Position dropdown in top right */
-    .dropdown {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      text-align: right;
-    }
-    /* Style summary */
-    summary {
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      list-style: none;
-      display: inline-block;
-      transition: text-shadow 0.3s ease;
-    }
-    summary:hover {
-      text-shadow: 0 0 8px #F5AAF5, 0 0 12px #F5AAF5;
-    }
-    /* Style for dropdown details */
-    details[open] p {
-      margin: 0;
-      padding: 8px;
-      background-color: #CC99CC;
-      border-radius: 10px;
-      border: 1px solid #F5AAF5;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: left;
-       margin-bottom: 10px;
-    }
-    p {
-      margin: 0;
-    }
-     summary::before {
-      content: '✿'; /* Unicode for vertical ellipsis */
-    }
-  </style>
-</head>
-
-<body>
-    <h2>Moderator Rules for Calico Critters</h2>
+<h2>Moderator Rules for Calico Critters</h2>
   <details>
     <summary> Rules are put in place to make this page a safe environment!</summary>
         <p>1. No cussing in the chats.</p>
