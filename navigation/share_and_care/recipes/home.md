@@ -5,25 +5,6 @@ description: Have fun talking about food, resturants, and more!
 permalink: share_and_care/hungry_games
 comments: true
 ---
-<a href="/moderation/rules_hungry_games/" class="button">Rules</a>
-<style>
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #0056b3;
-}
-</style>
-
-<a href="/local-restaurants/" class="button">Local Restaurants</a>
 
 <html lang="en">
 <head>
@@ -39,6 +20,19 @@ comments: true
             justify-content: center; /* Center vertically */
             min-height: 100vh;
             margin: 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
         }
         .image-row {
             display: flex;
@@ -128,6 +122,9 @@ comments: true
     </style>
 </head>
 <body>
+
+    <a href="/moderation/rules_hungry_games/" class="button">Rules</a>
+    <a href="reccomendations.html" class="button">Local Restaurants</a>
 
     <div class="image-row">
         <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
