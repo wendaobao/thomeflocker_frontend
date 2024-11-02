@@ -183,5 +183,8 @@ function addComment() {
         // Clear the textarea
         document.getElementById("comment").value = "";
     }
+    else {
+        alert("Please say something")
+    }
 }
 </script>
