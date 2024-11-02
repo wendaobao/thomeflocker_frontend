@@ -65,7 +65,7 @@ search_exclude: true
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
     // URLs to fetch profile links, user data, and commits
-    const postApiUrl = `${pythonURI}/api/post`;
+    const postApiUrl = `${pythonURI}/api/posts`;
 
     async function fetchData() {
         try {
@@ -100,9 +100,9 @@ search_exclude: true
                 postElement.className = 'post-item';
                 postElement.innerHTML = `
                     <h3>${postItem.title}</h3>
-                    <p><strong>Group:</strong> ${postItem.group_name}</p>
+                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
                     <p><strong>User:</strong> ${postItem.user_name}</p>
-                    <p>${postItem.content}</p>
+                    <p>${postItem.comment}</p>
                 `;
                 detailsDiv.appendChild(postElement);
             });
