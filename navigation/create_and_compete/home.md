@@ -38,7 +38,7 @@ menu: nav/create_and_compete.html
     }
 </style>
 
-<h2>We're thrilled to introduce "Create and Compete," a fun and interactive project from Mr. Mort's class! Here, students explore unique categories, put their creativity to the test, and compete to see whose ideas stand out. Each group has crafted their own theme, so there’s something here for everyone. Whether you're into art, tech, storytelling, or innovation, there's a space for you to jump in, get inspired, and join the fun. Let's dive into what each group is creating and how you can join in on the excitement!</h2>
+<h4>We're thrilled to introduce "Create and Compete," a fun and interactive project from Mr. Mort's class! Here, students explore unique categories, put their creativity to the test, and compete to see whose ideas stand out. Each group has crafted their own theme, so there’s something here for everyone. Whether you're into art, tech, storytelling, or innovation, there's a space for you to jump in, get inspired, and join the fun. Let's dive into what each group is creating and how you can join in on the excitement!</h4>
 
 ### Group Themes and Activities
 
