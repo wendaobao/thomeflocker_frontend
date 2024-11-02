@@ -789,7 +789,7 @@ author: Daksha, Zach, Alex, Darsh
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    
+
     const inputIngredients = document.getElementById('ingredients').value.split(',')
         .map(ingredient => ingredient.trim().toLowerCase());
 
@@ -817,7 +817,7 @@ function displayFilteredRecipes(filteredRecipes) {
     if (filteredRecipes.length > 0) {
         const recipeResults = filteredRecipes.map(recipe => `
             <div class="recipe">
-                <h2>${recipe.name}</h2>
+                <h3>${recipe.name}</h3>
                 <p>${recipe.description}</p>
                 <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
                 <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
@@ -831,7 +831,7 @@ function displayFilteredRecipes(filteredRecipes) {
     }
 }
     function getRandomIngredients() {
-        const ingredients = [
+const ingredients = [
 'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach', 
 'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
 'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
@@ -860,10 +860,10 @@ function displayFilteredRecipes(filteredRecipes) {
 'Pickled Ginger', 'Rice Noodles', 'Soba Noodles', 'Udon Noodles', 'Ramen Noodles', 'Spaghetti', 'Linguine', 'Fettuccine', 'Rigatoni', 'Penne',
 'Macaroni', 'Orzo', 'Gnocchi', 'Matzo Meal', 'Breadcrumbs', 'Croutons', 'Spring Roll Wrappers', 'Wonton Wrappers', 'Phyllo Dough', 'Pie Crust',
 'Tapioca', 'Arrowroot Powder', 'Molasses', 'Agave Syrup', 'Date Syrup', 'Palm Sugar', 'Rapadura', 'Coconut Sugar', 'Cane Sugar', 'Birch Syrup'
-        ];
+];
      
 
-        const randomIngredients = [];
+const randomIngredients = [];
         for (let i = 0; i < 5; i++) {
             const randomIndex = Math.floor(Math.random() * ingredients.length);
             randomIngredients.push(ingredients[randomIndex]);
