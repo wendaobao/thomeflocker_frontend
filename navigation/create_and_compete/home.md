@@ -47,12 +47,12 @@ We're thrilled to introduce "Create and Compete," a fun and interactive project 
 ### Group Themes and Activities
 
 <div class="group-theme">
-    <h1>REAL OR FAKE?!??!?!!?!</h1>  
-    The <h2>Reality Room</h2> is designed to spark engaging discussions about what’s real and what’s fake in today's world. Participants can play a mini-game where they guess if they’re talking to a human or an AI chatbot, post images or content and ask others to guess if it's AI-generated or authentic, and rate the believability of each post. In line with the "rate and relate" theme, users can share reactions and connect with others who had similar experiences, fostering a community around spotting and discussing what’s real versus AI-created.
+    **REAL OR FAKE?!??!?!!?!** 
+    The **Reality Room** is designed to spark engaging discussions about what’s real and what’s fake in today's world. Participants can play a mini-game where they guess if they’re talking to a human or an AI chatbot, post images or content and ask others to guess if it's AI-generated or authentic, and rate the believability of each post. In line with the "rate and relate" theme, users can share reactions and connect with others who had similar experiences, fostering a community around spotting and discussing what’s real versus AI-created.
 </div>
 
 <div class="group-theme">
-    <h1>PITCH OR DITCH!</h1> 
-    Step into a space where your wildest ideas come to life and face the ultimate test—can they stand up to the challenge? Our </<h2>Elevator Pitch</h2> platform invites participants to create and compete by writing pitches for innovative ideas, whether it's an invention, a story, an app, or a business venture. With random prompts to spark creativity, users are pushed to think outside the box. Once ideas are pitched, the game heats up: others can question, critique, and help evolve each concept, fostering both competition and collaboration. This platform isn't just about winning—it's about growing through feedback and transforming initial sparks into something extraordinary.
+    **PITCH OR DITCH!**
+    Step into a space where your wildest ideas come to life and face the ultimate test—can they stand up to the challenge? Our **Elevator Pitch** platform invites participants to create and compete by writing pitches for innovative ideas, whether it's an invention, a story, an app, or a business venture. With random prompts to spark creativity, users are pushed to think outside the box. Once ideas are pitched, the game heats up: others can question, critique, and help evolve each concept, fostering both competition and collaboration. This platform isn't just about winning—it's about growing through feedback and transforming initial sparks into something extraordinary.
 </div>
 
