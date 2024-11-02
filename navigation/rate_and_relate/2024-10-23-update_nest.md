@@ -103,24 +103,24 @@ permalink: /rateandrelate/update_the_nest/
 </div>
 
 <div class="feed">
-    <div class="feedContainer">
+    <div class="feedContainer" id="feedContainer">
     <h1> Feed </h1>
-    <div class="postFeed">
-        <div class="imageContainer">
-            <img src="{{site.baseurl}}/images/tempPhoto.jpg">
-        </div>
-        <div class="textContainer">
-            <h3>Caption</h3><br>
-            <div class="textInfo">
-                <p>Posted by: Abby Manalo</p><p>Date Posted: 10/25/24</p>
+        <div class="postFeed">
+            <div class="imageContainer">
+                <img src="{{site.baseurl}}/images/tempPhoto.jpg">
+            </div>
+            <div class="textContainer">
+                <h3>Caption</h3><br>
+                <div class="textInfo">
+                    <p>Posted by: Abby Manalo</p><p>Date Posted: 10/25/24</p>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 
 <script type="module">
 import { createImagePost } from '{{site.baseurl}}/assets/js/createRateAndRelateFeedList.js';
-import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+import { pythonURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
 
 const postApiUrl = `${pythonURI}/api/nestPost`;
 
@@ -138,14 +138,20 @@ async function generatePosts() {
         }        
         // Parse the JSON data
         const postData = await postApiResponse.json();
-        console.log(postData)
 
         // Iterate over the postData and create HTML elements for each item
         const feedList = document.getElementById("feedContainer")
+        // Create an array of promises
+        const postPromises = [];
+
         postData.forEach(postItem => {
             // Use imported function
-            feedList.append(createImagePost(postItem));
+            postPromises.push(createImagePost(postItem).then(postElement => {
+                feedList.appendChild(postElement);
+            }));
         });
+        await Promise.all(postPromises);
+
     } catch (error) {
         console.error('Error fetching data:', error);
     }

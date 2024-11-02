@@ -1,7 +1,34 @@
+import { pythonURI, fetchOptions } from "./api/config.js";
+
+async function generateImage(int) {
+    try {
+        const postApiUrl = `${pythonURI}/api/id/nestImg`
+        const postApiRequest = await fetch(postApiUrl, {
+            ...fetchOptions,
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"imageID": int})
+        });
+
+        if (!postApiRequest.ok) {
+            throw new Error('Failed to fetch image API source: ' + postApiRequest.statusText);
+        }
+        const postData = await postApiRequest.json();
+        return postData
+    } catch (error) {
+        console.error('Error fetching data:', error);
+
+    }
+}
+
 // Function to create an image post with caption and user/date info
-export function createImagePost(postObj) {
+export async function createImagePost(postObj) {
     // Destructure the object to extract necessary details
-    const imageUrl = postObj.image_url;
+    const imageData = await generateImage(1)
+    const imageUrl = imageData.postImg
+    console.log(imageUrl)
     const caption = postObj.title;
     const user = postObj.user_name;
     const datePosted = "10/10/10";
@@ -14,7 +41,7 @@ export function createImagePost(postObj) {
     const imageDiv = document.createElement("div");
     imageDiv.classList.add("imageContainer");
     const imageElement = document.createElement("img");
-    imageElement.src = imageUrl;
+    imageElement.src = `data:image/jpeg;base64,${imageUrl}`;
     imageDiv.appendChild(imageElement);
 
     // Create the caption container
@@ -32,14 +59,12 @@ export function createImagePost(postObj) {
     infoDiv.append(datePostedElement);
     const userPostedElement = document.createElement("p");
     userPostedElement.innerHTML = "Posted by: " + user
+    infoDiv.append(userPostedElement);
     
     // Append everything to the post container
     postContainer.appendChild(imageDiv);
     postContainer.appendChild(captionDiv);
     postContainer.appendChild(infoDiv);
-
-    // Append the post to the page (assuming there's a <div id="image-posts">)
-    const imagePostsContainer = document.getElementById("feed");
-    // imagePostsContainer.appendChild(postContainer);
+    
     return postContainer
 }
