@@ -392,14 +392,15 @@ displayComments();
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
   /* General styling */
   body {
-    background-color: #ffe6f0;
+    background-color: #ab6782;
     font-family: Arial, sans-serif;
   }
   .book-card {
-    background-color: #fff;
-    color: #333;
+    background-color: #edc2d4;
+    color: #fafafa;
     padding: 20px;
     max-width: 700px;
     margin: auto;
@@ -409,12 +410,13 @@ displayComments();
   .book-title {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #fafafa;
     margin-bottom: 10px;
+    font-family: 'Alex Brush', cursive;
   }
   .book-author {
     font-size: 18px;
-    color: #555;
+    color: #fafafa;
     margin-bottom: 15px;
   }
   .book-cover {
@@ -433,7 +435,7 @@ displayComments();
   #rating span {
     font-size: 24px;
     cursor: pointer;
-    color: #ccc;
+    color: #030202;
     transition: color 0.2s;
   }
 
@@ -441,7 +443,7 @@ displayComments();
   .heart-button {
     display: block;
     width: 100%;
-    background-color: transparent;
+    background-color: #edc2d4;
     color: #ff6f61;
     border: none;
     padding: 10px;
@@ -473,7 +475,7 @@ displayComments();
     cursor: pointer;
   }
   .comment-item, .reply-item {
-    background-color: #ffe6f0;
+    background-color: #edc2d4;
     color: #b3005e; /* Dark pink color for comments */
     padding: 10px;
     border-radius: 5px;
