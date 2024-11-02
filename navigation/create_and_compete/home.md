@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Welcome to Create and Compete 
+title: Create and Compete 
 search_exclude: true
 permalink: /create_and_compete/home
 menu: nav/create_and_compete.html
