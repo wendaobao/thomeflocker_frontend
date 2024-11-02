@@ -859,7 +859,7 @@ function displayFilteredRecipes(filteredRecipes) {
 'Tapioca', 'Arrowroot Powder', 'Molasses', 'Agave Syrup', 'Date Syrup', 'Palm Sugar', 'Rapadura', 'Coconut Sugar', 'Cane Sugar', 'Birch Syrup'
         ];
      
-    }
+
         const randomIngredients = [];
         for (let i = 0; i < 5; i++) {
             const randomIndex = Math.floor(Math.random() * ingredients.length);
@@ -867,6 +867,7 @@ function displayFilteredRecipes(filteredRecipes) {
         }
         return randomIngredients;
     
+
     document.getElementById('customRecipeButton').addEventListener('click', () => {
         const randomIngredients = getRandomIngredients();
         document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
@@ -906,6 +907,7 @@ function displayFilteredRecipes(filteredRecipes) {
         `;
         document.getElementById('recipeResults').innerHTML = recipeResult;
     });
+    }
 </script>
 
 <style>
