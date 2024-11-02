@@ -863,57 +863,53 @@ function displayFilteredRecipes(filteredRecipes) {
         ];
      
 
-const getRandomIngredients = () => {
-    const randomIngredients = [];
-    for (let i = 0; i < 5; i++) {
-        const randomIndex = Math.floor(Math.random() * ingredients.length);
-        randomIngredients.push(ingredients[randomIndex]);
+        const randomIngredients = [];
+        for (let i = 0; i < 5; i++) {
+            const randomIndex = Math.floor(Math.random() * ingredients.length);
+            randomIngredients.push(ingredients[randomIndex]);
+        }
+        return randomIngredients;
     }
-    return randomIngredients;
-};
 
-document.getElementById('customRecipeButton').addEventListener('click', () => {
-    const randomIngredients = getRandomIngredients();
-    document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
-});
+    document.getElementById('customRecipeButton').addEventListener('click', () => {
+        const randomIngredients = getRandomIngredients();
+        document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    });
 
-document.getElementById('ingredientForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const inputIngredients = document.getElementById('ingredients').value.split(',').map(ingredient => ingredient.trim().toLowerCase());
-    
-   
-    const filteredRecipes = recipes.filter(recipe => recipe.ingredients.some(ingredient => inputIngredients.includes(ingredient)));
-    
-  
-    if (filteredRecipes.length > 0) {
-        const recipeResults = filteredRecipes.map(recipe => `
+    document.getElementById('ingredientForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const inputIngredients = document.getElementById('ingredients').value.split(',').map(ingredient => ingredient.trim().toLowerCase());
+        const filteredRecipes = recipes.filter(recipe => recipe.ingredients.some(ingredient => inputIngredients.includes(ingredient)));
+        
+        if (filteredRecipes.length > 0) {
+            const recipeResults = filteredRecipes.map(recipe => `
+                <div class="recipe">
+                    <h3>${recipe.name}</h3>
+                    <p>${recipe.description}</p>
+                    <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
+                    <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
+                    <p><strong>Cooking Process:</strong> ${recipe.cookingProcess}</p>
+                </div>
+            `).join('');
+            document.getElementById('recipeResults').innerHTML = recipeResults;
+        } else {
+            document.getElementById('recipeResults').innerHTML = '<p>No recipes found with the provided ingredients.</p>';
+        }
+    });
+
+    document.getElementById('randomRecipeButton').addEventListener('click', () => {
+        const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+        const recipeResult = `
             <div class="recipe">
-                <h3>${recipe.name}</h3>
-                <p>${recipe.description}</p>
-                <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
-                <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
-                <p><strong>Cooking Process:</strong> ${recipe.cookingProcess}</p>
+                <h3>${randomRecipe.name}</h3>
+                <p>${randomRecipe.description}</p>
+                <p><strong>Cooking Time:</strong> ${randomRecipe.cookingTime}</p>
+                <p><strong>Ingredients:</strong> ${randomRecipe.ingredients.join(', ')}</p>
+                <p><strong>Cooking Process:</strong> ${randomRecipe.cookingProcess}</p>
             </div>
-        `).join('');
-        document.getElementById('recipeResults').innerHTML = recipeResults;
-    } else {
-        document.getElementById('recipeResults').innerHTML = '<p>No recipes found with the provided ingredients.</p>';
-    }
-});
-
-document.getElementById('randomRecipeButton').addEventListener('click', () => {
-    const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-    const recipeResult = `
-        <div class="recipe">
-            <h3>${randomRecipe.name}</h3>
-            <p>${randomRecipe.description}</p>
-            <p><strong>Cooking Time:</strong> ${randomRecipe.cookingTime}</p>
-            <p><strong>Ingredients:</strong> ${randomRecipe.ingredients.join(', ')}</p>
-            <p><strong>Cooking Process:</strong> ${randomRecipe.cookingProcess}</p>
-        </div>
-    `;
-    document.getElementById('recipeResults').innerHTML = recipeResult;
-});
+        `;
+        document.getElementById('recipeResults').innerHTML = recipeResult;
+    });
 
 </script>
 
