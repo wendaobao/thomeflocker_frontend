@@ -8,7 +8,7 @@ export function createImagePost(postObj) {
 
     // Create a container for the post
     const postContainer = document.createElement("div");
-    postContainer.classList.add("post");
+    postContainer.classList.add("postFeed");
 
     // Create the image element
     const imageDiv = document.createElement("div");
