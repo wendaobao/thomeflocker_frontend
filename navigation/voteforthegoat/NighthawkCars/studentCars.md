@@ -8,11 +8,11 @@ permalink: /voteforthegoat/nighthawkCars/studentCars/
 
 <table>
     <tr>
+        <td id="homepage"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars">Home Page</a></td>
         <td id="internetdebates"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/luxuryCars">Luxury Cars</a></td>
         <td id="calicovote"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/vintageCars">Vintage Cars</a></td>
         <td id="dnerostore"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/studentCars">Student Cars</a></td>
         <td id="Beveragedebates"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/economyCars">Economy Cars</a></td>
-    </tr>
 </table>
 
 <html lang="en">
@@ -67,6 +67,7 @@ permalink: /voteforthegoat/nighthawkCars/studentCars/
 <body>
 
 <h3> Top 10 best cars for teens (if you are looking to buy one): </h3>
+<p>   </p>
 <p>1. Honda Civic </p> 
 <p>2. Subaru BRZ </p> 
 <p>3. Toyota GR86 </p> 
@@ -79,9 +80,14 @@ permalink: /voteforthegoat/nighthawkCars/studentCars/
 <p>10. Mazda 3 </p> 
 
 <h3>Helpful tip</h3>
+<p>   </p>
 <p> - The cars that are cheap and last the longest are typically $15000 for used cars and $25000 for new cars</p>
+<p> - Get the car with the best mileage and that is from a reliable car company and doesn't require frequent maintainence </p>
+<p> - Make sure the car has good ratings, and research about the top cars that fit your needs </p>
+<p> - Note about above comment: Use reliable sites to do your research (Edmunds, Car and Driver, KBB, TrueCar, etc) </p>
+<p> - Once you get your car, drive safely and have fun! </p>
 
-<h3>Submit which car you have here!</h3>
+<h2>Submit which car you have here!</h2>
 
 <head>
     <meta charset="UTF-8">
@@ -101,42 +107,43 @@ permalink: /voteforthegoat/nighthawkCars/studentCars/
 </head>
 <body>
 
-<h2>Select an Option</h2>
+<h3>Select an Option</h3>
+<p>   </p>
 <input type="text" id="nameInput" placeholder="Enter your name">
 <br><br>
 <select id="optionSelect">
-    <option value="Select">Select an option</option>
-    <option value="Option 1">Toyota</option>
-    <option value="Option 2">Ford</option>
-    <option value="Option 3">Chevrolet</option>
-    <option value="Option 4">Honda</option>
-    <option value="Option 5">Nissan</option>
-    <option value="Option 6">Jeep</option>
-    <option value="Option 7">Hyundai</option>
-    <option value="Option 8">KIA</option>
-    <option value="Option 9">RAM</option>
-    <option value="Option 10">Subaru</option>
-    <option value="Option 11">GMC</option>
-    <option value="Option 12">Volkswagen</option>
-    <option value="Option 13">BMW</option>
-    <option value="Option 14">Mazda</option>
-    <option value="Option 15">Mercedes-Benz</option>
-    <option value="Option 16">Lexus</option>
-    <option value="Option 17">Tesla</option>
-    <option value="Option 18">Dodge</option>
-    <option value="Option 19">Audi</option>
-    <option value="Option 20">Buick</option>
-    <option value="Option 21">Acura</option>
-    <option value="Option 22">Volvo</option>
-    <option value="Option 23">Cadillac</option>
-    <option value="Option 24">Chrysler</option>
-    <option value="Option 25">Mitsubishi</option>
-    <option value="Option 26">Land Rover</option>
-    <option value="Option 27">Lincoln</option>
-    <option value="Option 28">Porsche</option>
-    <option value="Option 29">Infiniti</option>
-    <option value="Option 30">Mini Cooper</option>
-    <option value="Option 31">Other</option>
+    <option value="">Select an option</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Ford">Ford</option>
+    <option value="Chevrolet">Chevrolet</option>
+    <option value="Honda">Honda</option>
+    <option value="Nissan">Nissan</option>
+    <option value="Jeep">Jeep</option>
+    <option value="Hyundai">Hyundai</option>
+    <option value="KIA">KIA</option>
+    <option value="RAM">RAM</option>
+    <option value="Subaru">Subaru</option>
+    <option value="GMC">GMC</option>
+    <option value="Volkswagen">Volkswagen</option>
+    <option value="BMW">BMW</option>
+    <option value="Mazda">Mazda</option>
+    <option value="Mercedes-Benz">Mercedes-Benz</option>
+    <option value="Lexus">Lexus</option>
+    <option value="Tesla">Tesla</option>
+    <option value="Dodge">Dodge</option>
+    <option value="Audi">Audi</option>
+    <option value="Buick">Buick</option>
+    <option value="Acura">Acura</option>
+    <option value="Volvo">Volvo</option>
+    <option value="Cadillac">Cadillac</option>
+    <option value="Chrysler">Chrysler</option>
+    <option value="Mitsubishi">Mitsubishi</option>
+    <option value="Land Rover">Land Rover</option>
+    <option value="Lincoln">Lincoln</option>
+    <option value="Porsche">Porsche</option>
+    <option value="Infiniti">Infiniti</option>
+    <option value="Mini Cooper">Mini Cooper</option>
+    <option value="Other">Other</option>
 </select>
 <br><br>
 <textarea id="commentInput" placeholder="Enter car make, year, specifics..."></textarea>
@@ -176,8 +183,10 @@ function submitOption() {
 }
 </script>
 
-<h2>Discussion</h2>
+<h3>Discussion</h3>
+<p>   </p>
 <textarea placeholder="Enter your thoughts about cars here..." id="comment"></textarea>
+<br><br>
 <button onclick="addComment()"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Add Comment</p></button>
 
 <div class="message-box" id="messageBox">
