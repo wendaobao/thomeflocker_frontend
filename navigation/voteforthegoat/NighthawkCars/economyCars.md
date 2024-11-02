@@ -8,7 +8,6 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
 
 <table>
     <tr>
-        <td id="homepage"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars">Home Page</a></td>
         <td id="internetdebates"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/luxuryCars">Luxury Cars</a></td>
         <td id="calicovote"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/vintageCars">Vintage Cars</a></td>
         <td id="dnerostore"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/studentCars">Student Cars</a></td>
