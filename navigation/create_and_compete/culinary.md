@@ -785,31 +785,31 @@ author: Daksha, Zach, Alex, Darsh
   
     ];
 
-
-
+// Event listener for ingredient form submission
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-   
+    // Get and normalize input ingredients
     const inputIngredients = document.getElementById('ingredients').value.split(',')
         .map(ingredient => ingredient.trim().toLowerCase());
 
-  
+    // Filter recipes based on input ingredients
     const filteredRecipes = recipes.filter(recipe => {
-
+        // Normalize recipe ingredients for comparison
         const recipeIngredientsLower = recipe.ingredients.map(ingredient => ingredient.toLowerCase());
         
-      
+        // Check if any input ingredient matches any recipe ingredient
         return inputIngredients.some(input => recipeIngredientsLower.includes(input));
     });
 
-
+    // Display the filtered recipes
     displayFilteredRecipes(filteredRecipes);
 });
 
+// Function to display filtered recipes
 function displayFilteredRecipes(filteredRecipes) {
     const resultsContainer = document.getElementById('recipeResults');
-    resultsContainer.innerHTML = ''; 
+    resultsContainer.innerHTML = ''; // Clear previous results
 
     if (filteredRecipes.length > 0) {
         const recipeResults = filteredRecipes.map(recipe => `
@@ -858,6 +858,7 @@ function displayFilteredRecipes(filteredRecipes) {
 'Macaroni', 'Orzo', 'Gnocchi', 'Matzo Meal', 'Breadcrumbs', 'Croutons', 'Spring Roll Wrappers', 'Wonton Wrappers', 'Phyllo Dough', 'Pie Crust',
 'Tapioca', 'Arrowroot Powder', 'Molasses', 'Agave Syrup', 'Date Syrup', 'Palm Sugar', 'Rapadura', 'Coconut Sugar', 'Cane Sugar', 'Birch Syrup'
         ];
+     
 
         const randomIngredients = [];
         for (let i = 0; i < 5; i++) {
