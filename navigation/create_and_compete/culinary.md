@@ -65,7 +65,7 @@ author: Daksha, Zach, Alex, Darsh
 
 <h2>Ingredient Input</h2>
 <form id="ingredientForm">
-    <input type="text" id="ingredients" placeholder="e.g., chicken, rice, cheese">
+    <input type="text" id="ingredients" placeholder="e.g., Chicken, Rice, Cheese">
     <button type="submit">Find Recipes</button>
 </form>
 
@@ -832,7 +832,7 @@ function displayFilteredRecipes(filteredRecipes) {
 }
     function getRandomIngredients() {
 const ingredients = [
-'chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach', 
+'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach', 
 'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
 'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
 'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
