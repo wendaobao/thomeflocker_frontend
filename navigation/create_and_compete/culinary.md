@@ -783,33 +783,33 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Chop veggies. 2. Toss with oil and herbs. 3. Roast until tender."
     },
   
-    ];
+];
 
-// Event listener for ingredient form submission
+
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    // Get and normalize input ingredients
+
     const inputIngredients = document.getElementById('ingredients').value.split(',')
         .map(ingredient => ingredient.trim().toLowerCase());
 
-    // Filter recipes based on input ingredients
+   
     const filteredRecipes = recipes.filter(recipe => {
-        // Normalize recipe ingredients for comparison
+     
         const recipeIngredientsLower = recipe.ingredients.map(ingredient => ingredient.toLowerCase());
         
-        // Check if any input ingredient matches any recipe ingredient
+  
         return inputIngredients.some(input => recipeIngredientsLower.includes(input));
     });
 
-    // Display the filtered recipes
+  
     displayFilteredRecipes(filteredRecipes);
 });
 
-// Function to display filtered recipes
+
 function displayFilteredRecipes(filteredRecipes) {
     const resultsContainer = document.getElementById('recipeResults');
-    resultsContainer.innerHTML = ''; // Clear previous results
+    resultsContainer.innerHTML = ''; 
 
     if (filteredRecipes.length > 0) {
         const recipeResults = filteredRecipes.map(recipe => `
@@ -859,15 +859,14 @@ function displayFilteredRecipes(filteredRecipes) {
 'Tapioca', 'Arrowroot Powder', 'Molasses', 'Agave Syrup', 'Date Syrup', 'Palm Sugar', 'Rapadura', 'Coconut Sugar', 'Cane Sugar', 'Birch Syrup'
         ];
      
-
+    }
         const randomIngredients = [];
         for (let i = 0; i < 5; i++) {
             const randomIndex = Math.floor(Math.random() * ingredients.length);
             randomIngredients.push(ingredients[randomIndex]);
         }
         return randomIngredients;
-    }
-
+    
     document.getElementById('customRecipeButton').addEventListener('click', () => {
         const randomIngredients = getRandomIngredients();
         document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
