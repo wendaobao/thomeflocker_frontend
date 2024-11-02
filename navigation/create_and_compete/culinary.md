@@ -789,20 +789,23 @@ author: Daksha, Zach, Alex, Darsh
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-
+    
     const inputIngredients = document.getElementById('ingredients').value.split(',')
         .map(ingredient => ingredient.trim().toLowerCase());
 
-   
+    console.log("Input Ingredients:", inputIngredients); 
+
     const filteredRecipes = recipes.filter(recipe => {
-     
+       
         const recipeIngredientsLower = recipe.ingredients.map(ingredient => ingredient.toLowerCase());
         
-  
+        console.log("Recipe Ingredients:", recipeIngredientsLower); 
+        
+       
         return inputIngredients.some(input => recipeIngredientsLower.includes(input));
     });
 
-  
+ 
     displayFilteredRecipes(filteredRecipes);
 });
 
@@ -866,7 +869,7 @@ function displayFilteredRecipes(filteredRecipes) {
             randomIngredients.push(ingredients[randomIndex]);
         }
         return randomIngredients;
-    
+    }
 
     document.getElementById('customRecipeButton').addEventListener('click', () => {
         const randomIngredients = getRandomIngredients();
@@ -907,7 +910,7 @@ function displayFilteredRecipes(filteredRecipes) {
         `;
         document.getElementById('recipeResults').innerHTML = recipeResult;
     });
-    }
+
 </script>
 
 <style>
