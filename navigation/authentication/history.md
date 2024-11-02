@@ -102,7 +102,7 @@ search_exclude: true
                     <h3>${postItem.title}</h3>
                     <p><strong>Channel:</strong> ${postItem.channel_name}</p>
                     <p><strong>User:</strong> ${postItem.user_name}</p>
-                    <p>${postItem.content}</p>
+                    <p>${postItem.comment}</p>
                 `;
                 detailsDiv.appendChild(postElement);
             });

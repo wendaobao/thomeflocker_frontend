@@ -50,8 +50,8 @@ search_exclude: true
         <form id="postForm">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" required></textarea>
+            <label for="comment">comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
@@ -92,13 +92,13 @@ search_exclude: true
 
         // Extract data from form
         const title = document.getElementById('title').value;
-        const content = document.getElementById('content').value;
+        const comment = document.getElementById('cchannelontent').value;
         const channel_id = document.getElementById('channel_id').value;
 
         // Create API payload
         const postData = {
             title: title,
-            content: content,
+            comment: comment,
             channel_id: channel_id
         };
 
