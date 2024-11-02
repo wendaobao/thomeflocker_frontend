@@ -1,12 +1,10 @@
 ---
 layout: post 
-title: Create and Compete 
+title: Welcome to Create and Compete 
 search_exclude: true
 permalink: /create_and_compete/home
 menu: nav/create_and_compete.html
 ---
-
-Imagine a platform where creativity meets competition—this is the essence of our project. Presented to you by Period 2 Mr. Mort's CSP class!
 
 <style>
     body {
@@ -40,9 +38,7 @@ Imagine a platform where creativity meets competition—this is the essence of o
     }
 </style>
 
-## Welcome to Create and Compete!
-
-We're thrilled to introduce "Create and Compete," a fun and interactive project from Mr. Mort's class! Here, students explore unique categories, put their creativity to the test, and compete to see whose ideas stand out. Each group has crafted their own theme, so there’s something here for everyone. Whether you're into art, tech, storytelling, or innovation, there's a space for you to jump in, get inspired, and join the fun. Let's dive into what each group is creating and how you can join in on the excitement!
+<h2>We're thrilled to introduce "Create and Compete," a fun and interactive project from Mr. Mort's class! Here, students explore unique categories, put their creativity to the test, and compete to see whose ideas stand out. Each group has crafted their own theme, so there’s something here for everyone. Whether you're into art, tech, storytelling, or innovation, there's a space for you to jump in, get inspired, and join the fun. Let's dive into what each group is creating and how you can join in on the excitement!</h2>
 
 ### Group Themes and Activities
 
