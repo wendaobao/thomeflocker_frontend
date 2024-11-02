@@ -92,9 +92,9 @@ permalink: /rateandrelate/update_the_nest/
     </div>
 </div>
 
-<div class="feed">
+<div class="feed" id="feed">
+    <h1> Feed </h1>
     <div class="post">
-             <h1> Feed </h1>
         <div class="imageContainer">
             <img src="{{site.baseurl}}/images/tempPhoto.jpg">
         </div>
@@ -106,3 +106,38 @@ permalink: /rateandrelate/update_the_nest/
         </div>
     </div>
 </div>
+
+<script type="module">
+import { createImagePost } from '{{site.baseurl}}/assets/js/createRateAndRelateFeedList.js';
+import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
+const postApiUrl = `${pythonURI}/api/nestPost`;
+
+async function generatePosts() {
+    try {
+        // Define the fetch requests
+        const postApiRequest = fetch(postApiUrl, fetchOptions);
+        // Run all fetch requests concurrently
+        const [postApiResponse] = await Promise.all([
+            postApiRequest
+        ]);
+        // Check for errors in the responses
+        if (!postApiResponse.ok) {
+            throw new Error('Failed to fetch post API links: ' + postApiResponse.statusText);
+        }        
+        // Parse the JSON data
+        const postData = await postApiResponse.json();
+        console.log(postData)
+
+        // Iterate over the postData and create HTML elements for each item
+        const feedList = document.getElementById("feed")
+        postData.forEach(postItem => {
+            feedList.append(createImagePost(postItem));
+        });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+generatePosts()
+</script>
