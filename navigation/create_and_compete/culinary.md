@@ -82,302 +82,739 @@ author: Daksha, Zach, Alex, Darsh
 
 <script>
     const recipes = [
-        {
-            name: "Chicken Stir-Fry",
-            ingredients: ["chicken", "broccoli", "soy sauce"],
-            description: "Quick and healthy chicken stir-fry with vegetables.",
-            cookingTime: "20 minutes",
-            cookingProcess: "1. Cut chicken and vegetables. 2. Stir-fry in a pan with soy sauce. 3. Serve hot."
-        },
-        {
-            name: "Vegan Tacos",
-            ingredients: ["beans", "corn", "avocado"],
-            description: "Flavorful tacos filled with beans, corn, and avocado.",
-            cookingTime: "25 minutes",
-            cookingProcess: "1. Mash beans and mix with corn. 2. Fill tortillas and top with avocado. 3. Serve fresh."
-        },
-        {
-            name: "Stuffed Mushrooms",
-            ingredients: ["mushrooms", "cheese", "herbs"],
-            description: "Mushrooms filled with a savory mixture of cheese and herbs.",
-            cookingTime: "30 minutes",
-            cookingProcess: "1. Remove stems from mushrooms. 2. Mix cheese and herbs, fill mushrooms. 3. Bake at 350°F for 20 mins."
-        },
-        {
-            name: "Bruschetta",
-            ingredients: ["tomatoes", "basil", "bread"],
-            description: "A delicious Italian starter with tomatoes and basil.",
-            cookingTime: "15 minutes",
-            cookingProcess: "1. Toast bread. 2. Mix tomatoes and basil. 3. Top bread with mixture and serve."
-        },
-        {
-            name: "Chocolate Mousse",
-            ingredients: ["chocolate", "cream", "sugar"],
-            description: "A rich and creamy chocolate dessert.",
-            cookingTime: "20 minutes + chilling",
-            cookingProcess: "1. Melt chocolate. 2. Whip cream with sugar. 3. Fold chocolate into cream and chill before serving."
-        },
-        {
-            name: "Spaghetti Carbonara",
-            ingredients: ["pasta", "cheese", "bacon", "eggs"],
-            description: "Creamy pasta with cheese, bacon, and eggs.",
-            cookingTime: "15 minutes",
-            cookingProcess: "1. Cook pasta. 2. Fry bacon until crispy. 3. Mix pasta with bacon, cheese, and whisked eggs. Serve hot."
-        },
-        {
-            name: "Garlic Butter Shrimp",
-            ingredients: ["shrimp", "garlic", "butter", "parsley"],
-            description: "Tender shrimp cooked in a garlic butter sauce with fresh parsley.",
-            cookingTime: "10 minutes",
-            cookingProcess: "1. Melt butter in a pan. 2. Add garlic and shrimp, cook until pink. 3. Garnish with parsley and serve."
-        },
-        {
-            name: "Avocado Toast",
-            ingredients: ["bread", "avocado", "lemon", "pepper"],
-            description: "Quick and healthy avocado toast with lemon and pepper.",
-            cookingTime: "5 minutes",
-            cookingProcess: "1. Mash avocado with lemon juice. 2. Spread on toasted bread. 3. Sprinkle with pepper and serve."
-        },
-        {
-            name: "Fruit Salad",
-            ingredients: ["strawberries", "blueberries", "grapes", "mint"],
-            description: "A refreshing mix of fresh berries and grapes with mint.",
-            cookingTime: "5 minutes",
-            cookingProcess: "1. Slice strawberries and mix with blueberries and grapes. 2. Garnish with mint and serve."
-        },
-        {
-            name: "Chicken Tacos",
-            ingredients: ["chicken", "tortillas", "onion", "cilantro"],
-            description: "Tasty chicken tacos with fresh cilantro and onion.",
-            cookingTime: "20 minutes",
-            cookingProcess: "1. Cook chicken with spices. 2. Assemble in tortillas with chopped onion and cilantro. Serve."
-        },
-        {
-            name: "Vegetable Stir-Fry",
-            ingredients: ["bell peppers", "broccoli", "carrots", "soy sauce"],
-            description: "Quick vegetable stir-fry with a soy sauce glaze.",
-            cookingTime: "15 minutes",
-            cookingProcess: "1. Chop vegetables. 2. Stir-fry in a hot pan with soy sauce. Serve hot."
-        },
-        {
-            name: "Banana Pancakes",
-            ingredients: ["banana", "eggs", "cinnamon"],
-            description: "Fluffy banana pancakes with a hint of cinnamon.",
-            cookingTime: "10 minutes",
-            cookingProcess: "1. Mash banana and mix with eggs and cinnamon. 2. Pour batter onto a hot griddle. Cook until golden brown on both sides. Serve."
-        },
-        {
-            name: "Mango Smoothie",
-            ingredients: ["mango", "yogurt", "honey"],
-            description: "Refreshing mango smoothie with yogurt and honey.",
-            cookingTime: "5 minutes",
-            cookingProcess: "1. Blend mango, yogurt, and honey until smooth. 2. Pour into a glass and enjoy."
-        },
-        {
-            name: "Lemon Herb Chicken",
-            ingredients: ["chicken", "lemon", "thyme", "garlic"],
-            description: "Juicy lemon herb chicken with garlic and thyme.",
-            cookingTime: "25 minutes",
-            cookingProcess: "1. Marinate chicken with lemon, thyme, and garlic. 2. Bake at 400°F until cooked through. Serve."
-        },
-        {
-            name: "Cucumber Salad",
-            ingredients: ["cucumber", "dill", "yogurt", "lemon"],
-            description: "Refreshing cucumber salad with dill and a creamy yogurt dressing.",
-            cookingTime: "5 minutes",
-            cookingProcess: "1. Slice cucumber and mix with yogurt, dill, and lemon juice. 2. Toss well and serve."
-        },
-        {
-    name: "Beef Stir-Fry",
-    ingredients: ["beef", "broccoli", "soy sauce", "ginger"],
-    description: "Quick beef stir-fry with broccoli and a ginger-soy sauce.",
-    cookingTime: "20 minutes",
-    cookingProcess: "1. Slice beef and marinate with soy sauce and ginger. 2. Stir-fry with broccoli. 3. Serve with rice."
-},
-{
-    name: "Vegetable Quesadilla",
-    ingredients: ["tortillas", "cheese", "bell peppers", "onion"],
-    description: "Cheesy quesadilla filled with bell peppers and onions.",
-    cookingTime: "15 minutes",
-    cookingProcess: "1. Sauté bell peppers and onion. 2. Place on a tortilla with cheese. 3. Cook on a skillet until crispy."
-},
-{
-    name: "Salmon with Quinoa",
-    ingredients: ["salmon", "quinoa", "lemon", "parsley"],
-    description: "Healthy salmon served on a bed of quinoa with lemon and parsley.",
-    cookingTime: "25 minutes",
-    cookingProcess: "1. Cook quinoa. 2. Bake salmon with lemon. 3. Serve salmon over quinoa and garnish with parsley."
-},
-{
-    name: "Chickpea Curry",
-    ingredients: ["chickpeas", "coconut milk", "curry powder", "spinach"],
-    description: "Creamy chickpea curry with spinach.",
-    cookingTime: "30 minutes",
-    cookingProcess: "1. Sauté chickpeas with curry powder. 2. Add coconut milk and spinach. 3. Simmer and serve."
-},
-{
-    name: "Zucchini Noodles",
-    ingredients: ["zucchini", "tomato sauce", "basil"],
-    description: "A healthy alternative to pasta using zucchini noodles and tomato sauce.",
-    cookingTime: "15 minutes",
-    cookingProcess: "1. Spiralize zucchini. 2. Sauté with tomato sauce and basil. 3. Serve hot."
-},
-{
-    name: "Stuffed Bell Peppers",
-    ingredients: ["bell peppers", "rice", "ground beef", "tomato sauce"],
-    description: "Bell peppers stuffed with a savory mixture of rice and ground beef.",
-    cookingTime: "40 minutes",
-    cookingProcess: "1. Cook rice and mix with beef and tomato sauce. 2. Stuff bell peppers and bake. 3. Serve warm."
-},
-{
-    name: "Spinach Feta Omelette",
-    ingredients: ["eggs", "spinach", "cheese"],
-    description: "Fluffy omelette filled with spinach and feta cheese.",
-    cookingTime: "10 minutes",
-    cookingProcess: "1. Whisk eggs and pour into a hot pan. 2. Add spinach and cheese. 3. Cook until set and serve."
-},
-{
-    name: "Pasta Primavera",
-    ingredients: ["pasta", "bell peppers", "zucchini", "olive oil"],
-    description: "Light pasta dish with fresh vegetables.",
-    cookingTime: "20 minutes",
-    cookingProcess: "1. Cook pasta. 2. Sauté bell peppers and zucchini in olive oil. 3. Toss with pasta and serve."
-},
-{
-    name: "Sweet Potato Fries",
-    ingredients: ["sweet potatoes", "olive oil", "paprika"],
-    description: "Crispy sweet potato fries seasoned with paprika.",
-    cookingTime: "30 minutes",
-    cookingProcess: "1. Cut sweet potatoes into fries. 2. Toss with olive oil and paprika. 3. Bake until crispy."
-},
-{
-    name: "Mushroom Risotto",
-    ingredients: ["rice", "mushrooms", "vegetable broth", "parmesan cheese"],
-    description: "Creamy risotto with mushrooms and parmesan cheese.",
-    cookingTime: "35 minutes",
-    cookingProcess: "1. Sauté mushrooms. 2. Add rice and gradually pour in broth. 3. Stir until creamy and serve."
-},
-{
-    name: "Garlic Lemon Shrimp",
-    ingredients: ["shrimp", "garlic", "lemon", "parsley"],
-    description: "Shrimp sautéed in garlic and lemon sauce.",
-    cookingTime: "10 minutes",
-    cookingProcess: "1. Sauté garlic in olive oil. 2. Add shrimp and cook until pink. 3. Add lemon juice and parsley, then serve."
-},
-{
-    name: "Creamy Tomato Soup",
-    ingredients: ["tomatoes", "cream", "basil"],
-    description: "Rich and creamy tomato soup garnished with basil.",
-    cookingTime: "25 minutes",
-    cookingProcess: "1. Cook tomatoes and blend until smooth. 2. Stir in cream and heat through. 3. Serve with fresh basil."
-},
-{
-    name: "Cabbage Rolls",
-    ingredients: ["cabbage", "rice", "ground pork", "tomato sauce"],
-    description: "Savory cabbage rolls filled with rice and ground pork.",
-    cookingTime: "60 minutes",
-    cookingProcess: "1. Blanch cabbage leaves. 2. Mix pork and rice, roll in leaves. 3. Bake with tomato sauce."
-},
-{
-    name: "Eggplant Parmesan",
-    ingredients: ["eggplant", "cheese", "tomato sauce", "basil"],
-    description: "Layers of eggplant, cheese, and tomato sauce baked to perfection.",
-    cookingTime: "45 minutes",
-    cookingProcess: "1. Slice and roast eggplant. 2. Layer with cheese and sauce in a dish. 3. Bake until bubbly."
-},
-{
-    name: "Quinoa Salad",
-    ingredients: ["quinoa", "cucumber", "tomatoes", "parsley"],
-    description: "A refreshing salad with quinoa, cucumber, and tomatoes.",
-    cookingTime: "15 minutes",
-    cookingProcess: "1. Cook quinoa. 2. Mix with diced cucumber, tomatoes, and parsley. 3. Dress with olive oil and serve."
-},
-{
-    name: "Peanut Butter Banana Smoothie",
-    ingredients: ["banana", "milk", "peanut butter", "honey"],
-    description: "A creamy smoothie made with banana and peanut butter.",
-    cookingTime: "5 minutes",
-    cookingProcess: "1. Blend banana, milk, peanut butter, and honey until smooth. 2. Pour and enjoy."
-},
-{
-    name: "Vegetable Fried Rice",
-    ingredients: ["rice", "peas", "carrots", "soy sauce"],
-    description: "Fried rice loaded with vegetables and soy sauce.",
-    cookingTime: "15 minutes",
-    cookingProcess: "1. Cook rice. 2. Sauté peas and carrots. 3. Add rice and soy sauce, stir-fry until heated."
-},
-{
-    name: "Chicken Fajitas",
-    ingredients: ["chicken", "bell peppers", "onion", "tortillas"],
-    description: "Sizzling chicken fajitas with bell peppers and onion.",
-    cookingTime: "25 minutes",
-    cookingProcess: "1. Cook chicken with spices. 2. Add peppers and onion, cook until tender. 3. Serve in tortillas."
-},
-{
-    name: "Broccoli Cheddar Soup",
-    ingredients: ["broccoli", "cheese", "cream"],
-    description: "Creamy soup filled with broccoli and cheddar cheese.",
-    cookingTime: "30 minutes",
-    cookingProcess: "1. Cook broccoli until tender. 2. Blend with cream and cheese until smooth. 3. Heat through and serve."
-},
-{
-    name: "Avocado Chickpea Salad",
-    ingredients: ["chickpeas", "avocado", "onion", "cilantro"],
-    description: "A refreshing salad with chickpeas, avocado, and onion.",
-    cookingTime: "10 minutes",
-    cookingProcess: "1. Mash avocado. 2. Mix with chickpeas, diced onion, and cilantro. 3. Serve chilled."
-},
-{
-    name: "Herb Roasted Potatoes",
-    ingredients: ["potatoes", "olive oil", "rosemary"],
-    description: "Crispy roasted potatoes with rosemary and olive oil.",
-    cookingTime: "30 minutes",
-    cookingProcess: "1. Cut potatoes and toss with olive oil and rosemary. 2. Roast until golden brown. 3. Serve hot."
-},
-{
-    name: "Tuna Salad Sandwich",
-    ingredients: ["tuna", "bread", "mayonnaise", "celery"],
-    description: "Simple tuna salad sandwich with celery and mayonnaise.",
-    cookingTime: "10 minutes",
-    cookingProcess: "1. Mix tuna with mayonnaise and chopped celery. 2. Spread on bread. 3. Serve with lettuce."
-},
-{
-    name: "Oven-Baked Tofu",
-    ingredients: ["tofu", "soy sauce", "garlic", "ginger"],
-    description: "Crispy oven-baked tofu marinated in soy sauce.",
-    cookingTime: "25 minutes",
-    cookingProcess: "1. Marinate tofu with soy sauce, garlic, and ginger. 2. Bake until golden. 3. Serve with rice."
-},
-{
-    name: "Carrot Ginger Soup",
-    ingredients: ["carrots", "ginger", "vegetable broth", "cream"],
-    description: "A warm soup of carrots and ginger with a creamy finish.",
-    cookingTime: "30 minutes",
-    cookingProcess: "1. Sauté carrots and ginger. 2. Add broth and simmer. 3. Blend until smooth and stir in cream."
-},
-{
-    name: "Almond Flour Pancakes",
-    ingredients: ["almond flour", "eggs", "milk", "honey"],
-    description: "Fluffy pancakes made with almond flour and sweetened with honey.",
-    cookingTime: "20 minutes",
-    cookingProcess: "1. Mix almond flour, eggs, milk, and honey. 2. Cook on a skillet until golden. 3. Serve with syrup."
-}
+  {
+        name: "Chicken Stir Fry",
+        ingredients: ["Chicken", "Broccoli", "Carrots", "Soy Sauce", "Garlic"],
+        description: "A quick stir fry with chicken and fresh vegetables.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Heat oil in a pan. 2. Add chicken and cook until browned. 3. Toss in vegetables and sauce. 4. Stir fry until cooked. 5. Serve hot."
+    },
+    {
+        name: "Beef Tacos",
+        ingredients: ["Ground Beef", "Taco Seasoning", "Tortillas", "Lettuce", "Cheese"],
+        description: "Flavorful tacos filled with seasoned ground beef.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook beef with seasoning. 2. Warm tortillas. 3. Fill tortillas with beef and toppings. 4. Serve with salsa."
+    },
+    {
+        name: "Vegetable Curry",
+        ingredients: ["Coconut Milk", "Mixed Vegetables", "Curry Powder", "Onion", "Garlic"],
+        description: "A rich and creamy curry packed with veggies.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Sauté onion and garlic. 2. Add vegetables and curry powder. 3. Stir in coconut milk. 4. Simmer until cooked."
+    },
+    {
+        name: "Spaghetti Bolognese",
+        ingredients: ["Pasta", "Ground Beef", "Tomato Sauce", "Onion", "Garlic"],
+        description: "Classic Italian pasta dish with a hearty meat sauce.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Cook spaghetti. 2. Sauté onion and garlic. 3. Add beef and cook until browned. 4. Stir in tomato sauce. 5. Serve over pasta."
+    },
+    {
+        name: "Caprese Salad",
+        ingredients: ["Tomatoes", "Mozzarella", "Basil", "Olive Oil", "Balsamic Vinegar"],
+        description: "Fresh salad with tomatoes, mozzarella, and basil.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Slice tomatoes and mozzarella. 2. Layer with basil. 3. Drizzle with olive oil and vinegar."
+    },
+    {
+        name: "Shrimp Fried Rice",
+        ingredients: ["Shrimp", "Rice", "Soy Sauce", "Egg", "Peas"],
+        description: "Delicious fried rice with shrimp and vegetables.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cook rice. 2. Sauté shrimp and peas. 3. Add rice and soy sauce. 4. Stir in scrambled egg. 5. Serve hot."
+    },
+    {
+        name: "Quinoa Salad",
+        ingredients: ["Quinoa", "Cucumber", "Tomatoes", "Olive Oil", "Feta Cheese"],
+        description: "Light and refreshing quinoa salad.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook quinoa. 2. Chop vegetables. 3. Mix quinoa with veggies and olive oil. 4. Top with feta."
+    },
+    {
+        name: "Stuffed Bell Peppers",
+        ingredients: ["Bell Peppers", "Ground Beef", "Rice", "Tomato Sauce", "Cheese"],
+        description: "Bell peppers stuffed with a savory meat mixture.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Preheat oven. 2. Cook beef and rice. 3. Stuff peppers with mixture. 4. Bake until peppers are tender."
+    },
+    {
+        name: "Chicken Caesar Salad",
+        ingredients: ["Romaine Lettuce", "Grilled Chicken", "Caesar Dressing", "Croutons", "Parmesan Cheese"],
+        description: "Classic Caesar salad topped with grilled chicken.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Chop lettuce. 2. Top with sliced chicken. 3. Drizzle with dressing. 4. Add croutons and cheese."
+    },
+    {
+        name: "Baked Ziti",
+        ingredients: ["Ziti Pasta", "Tomato Sauce", "Mozzarella Cheese", "Parmesan Cheese", "Ground Beef"],
+        description: "Comforting baked pasta with cheese and sauce.",
+        cookingTime: "50 minutes",
+        cookingProcess: "1. Cook pasta. 2. Mix with sauce and beef. 3. Layer with cheese in a baking dish. 4. Bake until bubbly."
+    },
+    {
+        name: "Vegetable Stir Fry",
+        ingredients: ["Broccoli", "Carrots", "Bell Peppers", "Soy Sauce", "Ginger"],
+        description: "A colorful mix of stir-fried vegetables.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Heat oil in a pan. 2. Add vegetables and stir fry. 3. Add soy sauce and ginger. 4. Cook until tender."
+    },
+    {
+        name: "Salmon with Dill Sauce",
+        ingredients: ["Salmon", "Dill", "Lemon", "Garlic", "Olive Oil"],
+        description: "Oven-baked salmon topped with a fresh dill sauce.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Preheat oven. 2. Mix sauce ingredients. 3. Place salmon in a dish and top with sauce. 4. Bake until cooked."
+    },
+    {
+        name: "Pasta Primavera",
+        ingredients: ["Pasta", "Mixed Vegetables", "Olive Oil", "Parmesan Cheese", "Garlic"],
+        description: "A light pasta dish with fresh vegetables.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cook pasta. 2. Sauté vegetables and garlic. 3. Toss with pasta and olive oil. 4. Serve with cheese."
+    },
+    {
+        name: "Creamy Mushroom Risotto",
+        ingredients: ["Arborio Rice", "Mushrooms", "Chicken Broth", "Parmesan Cheese", "Onion"],
+        description: "Rich and creamy risotto with mushrooms.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Sauté onion and mushrooms. 2. Add rice and broth gradually. 3. Stir until creamy. 4. Finish with cheese."
+    },
+    {
+        name: "Sweet Potato Fries",
+        ingredients: ["Sweet Potatoes", "Olive Oil", "Paprika", "Salt", "Pepper"],
+        description: "Crispy sweet potato fries baked to perfection.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cut sweet potatoes into fries. 2. Toss with oil and spices. 3. Bake until crispy."
+    },
+    {
+        name: "Eggplant Parmesan",
+        ingredients: ["Eggplant", "Tomato Sauce", "Mozzarella Cheese", "Parmesan Cheese", "Basil"],
+        description: "Baked eggplant layered with cheese and sauce.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Slice and salt eggplant. 2. Bread and fry slices. 3. Layer with sauce and cheese in a dish. 4. Bake until bubbly."
+    },
+    {
+        name: "Garlic Butter Shrimp",
+        ingredients: ["Shrimp", "Butter", "Garlic", "Parsley", "Lemon"],
+        description: "Quick and flavorful garlic butter shrimp.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Melt butter in a pan. 2. Add garlic and shrimp. 3. Cook until shrimp are pink. 4. Finish with parsley and lemon."
+    },
+    {
+        name: "Chocolate Chip Cookies",
+        ingredients: ["Flour", "Butter", "Brown Sugar", "Chocolate Chips", "Eggs"],
+        description: "Classic cookies with gooey chocolate chips.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Cream butter and sugar. 2. Add eggs and flour. 3. Stir in chocolate chips. 4. Bake until golden."
+    },
+    {
+        name: "Roasted Brussels Sprouts",
+        ingredients: ["Brussels Sprouts", "Olive Oil", "Salt", "Pepper", "Balsamic Vinegar"],
+        description: "Crispy roasted Brussels sprouts with a tangy glaze.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Preheat oven. 2. Toss sprouts in oil and seasonings. 3. Roast until golden. 4. Drizzle with vinegar."
+    },
+    {
+        name: "Pumpkin Soup",
+        ingredients: ["Pumpkin", "Onion", "Vegetable Broth", "Cream", "Nutmeg"],
+        description: "Creamy pumpkin soup perfect for fall.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Sauté onion. 2. Add pumpkin and broth. 3. Simmer until soft. 4. Blend and stir in cream."
+    },
+    {
+        name: "Beef Stroganoff",
+        ingredients: ["Beef", "Mushrooms", "Onion", "Sour Cream", "Egg Noodles"],
+        description: "Tender beef in a creamy mushroom sauce.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Sauté beef and onions. 2. Add mushrooms and cook. 3. Stir in sour cream. 4. Serve over noodles."
+    },
+    {
+        name: "Chickpea Salad",
+        ingredients: ["Chickpeas", "Cucumber", "Tomatoes", "Feta Cheese", "Lemon"],
+        description: "A refreshing salad with protein-packed chickpeas.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Rinse chickpeas. 2. Chop veggies. 3. Mix with cheese and dressing. 4. Serve cold."
+    },
+    {
+        name: "Pancakes",
+        ingredients: ["Flour", "Milk", "Eggs", "Sugar", "Baking Powder"],
+        description: "Fluffy pancakes perfect for breakfast.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Mix dry ingredients. 2. Add milk and eggs. 3. Cook on a griddle until golden."
+    },
+    {
+        name: "Lentil Soup",
+        ingredients: ["Lentils", "Carrots", "Celery", "Vegetable Broth", "Onion"],
+        description: "Hearty soup made with lentils and vegetables.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Sauté onion and vegetables. 2. Add lentils and broth. 3. Simmer until lentils are tender."
+    },
+    {
+        name: "Pesto Pasta",
+        ingredients: ["Pasta", "Basil Pesto", "Parmesan Cheese", "Pine Nuts", "Cherry Tomatoes"],
+        description: "Simple and flavorful pasta with pesto sauce.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook pasta. 2. Toss with pesto and tomatoes. 3. Top with cheese and nuts."
+    },
+    {
+        name: "Hummus",
+        ingredients: ["Chickpeas", "Tahini", "Lemon Juice", "Garlic", "Olive Oil"],
+        description: "Creamy dip made from blended chickpeas.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Blend all ingredients until smooth. 2. Adjust seasoning. 3. Serve with pita or veggies."
+    },
+    {
+        name: "BBQ Chicken",
+        ingredients: ["Chicken", "BBQ Sauce", "Olive Oil", "Garlic Powder", "Paprika"],
+        description: "Juicy chicken coated in tangy BBQ sauce.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Preheat grill. 2. Rub chicken with spices. 3. Grill until cooked, basting with sauce."
+    },
+    {
+        name: "Mushroom Risotto",
+        ingredients: ["Arborio Rice", "Mushrooms", "Chicken Broth", "Onion", "Parmesan Cheese"],
+        description: "Creamy risotto infused with mushrooms.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Sauté onion and mushrooms. 2. Add rice and broth gradually. 3. Stir in cheese."
+    },
+    {
+        name: "Apple Crisp",
+        ingredients: ["Apples", "Oats", "Brown Sugar", "Butter", "Cinnamon"],
+        description: "Warm baked apples topped with a crumbly oat topping.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Slice apples and mix with sugar. 2. Combine oats and butter. 3. Bake until bubbly."
+    },
+    {
+        name: "Turkey Chili",
+        ingredients: ["Ground Turkey", "Beans", "Tomato Sauce", "Onion", "Chili Powder"],
+        description: "Spicy and hearty turkey chili.",
+        cookingTime: "50 minutes",
+        cookingProcess: "1. Sauté onion and turkey. 2. Add beans and sauce. 3. Simmer until thickened."
+    },
+    {
+        name: "Greek Salad",
+        ingredients: ["Cucumber", "Tomatoes", "Olives", "Feta Cheese", "Olive Oil"],
+        description: "Fresh salad with Mediterranean flavors.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Chop vegetables. 2. Mix with olives and cheese. 3. Drizzle with olive oil."
+    },
+    {
+        name: "Peanut Butter Banana Smoothie",
+        ingredients: ["Banana", "Peanut Butter", "Milk", "Honey", "Ice"],
+        description: "Creamy smoothie perfect for breakfast.",
+        cookingTime: "5 minutes",
+        cookingProcess: "1. Blend all ingredients until smooth. 2. Serve immediately."
+    },
+    {
+        name: "Vegetable Frittata",
+        ingredients: ["Eggs", "Spinach", "Tomatoes", "Onion", "Cheese"],
+        description: "A fluffy frittata packed with vegetables.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Sauté vegetables. 2. Whisk eggs and pour over. 3. Cook until set, then broil to finish."
+    },
+    {
+        name: "Chicken Alfredo",
+        ingredients: ["Fettuccine", "Chicken", "Alfredo Sauce", "Parmesan Cheese", "Garlic"],
+        description: "Creamy pasta dish with chicken and sauce.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cook fettuccine. 2. Cook chicken and garlic. 3. Add sauce and mix with pasta."
+    },
+    {
+        name: "Beet Salad",
+        ingredients: ["Beets", "Goat Cheese", "Walnuts", "Arugula", "Balsamic Vinaigrette"],
+        description: "Colorful salad with roasted beets and cheese.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Roast beets and slice. 2. Toss with arugula, walnuts, and cheese. 3. Drizzle with dressing."
+    },
+    {
+        name: "Spinach and Cheese Stuffed Shells",
+        ingredients: ["Jumbo Pasta Shells", "Ricotta Cheese", "Spinach", "Marinara Sauce", "Mozzarella Cheese"],
+        description: "Pasta shells filled with creamy cheese and spinach.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Cook shells. 2. Mix cheese and spinach. 3. Stuff shells, top with sauce, and bake."
+    },
+    {
+        name: "Zucchini Noodles",
+        ingredients: ["Zucchini", "Olive Oil", "Garlic", "Cherry Tomatoes", "Parmesan Cheese"],
+        description: "A healthy pasta alternative using zucchini.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Spiralize zucchini. 2. Sauté with garlic and tomatoes. 3. Top with cheese."
+    },
+    {
+        name: "Teriyaki Salmon",
+        ingredients: ["Salmon", "Teriyaki Sauce", "Sesame Seeds", "Green Onions", "Rice"],
+        description: "Baked salmon glazed with sweet teriyaki sauce.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Preheat oven. 2. Brush salmon with sauce. 3. Bake and garnish with seeds and onions."
+    },
+    {
+        name: "Fruit Salad",
+        ingredients: ["Mixed Fruits", "Honey", "Lime Juice", "Mint"],
+        description: "Refreshing salad with seasonal fruits.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Chop fruits. 2. Mix with honey and lime. 3. Garnish with mint."
+    },
+    {
+        name: "Roasted Chicken",
+        ingredients: ["Whole Chicken", "Olive Oil", "Herbs", "Lemon", "Garlic"],
+        description: "Juicy roasted chicken with crispy skin.",
+        cookingTime: "1.5 hours",
+        cookingProcess: "1. Preheat oven. 2. Rub chicken with oil and herbs. 3. Roast until golden."
+    },
+    {
+        name: "Mango Salsa",
+        ingredients: ["Mango", "Red Onion", "Cilantro", "Lime Juice", "Jalapeño"],
+        description: "Sweet and spicy salsa great with chips.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Dice mango and onion. 2. Mix with cilantro and lime. 3. Serve chilled."
+    },
+    {
+        name: "Chocolate Mousse",
+        ingredients: ["Dark Chocolate", "Eggs", "Sugar", "Cream", "Vanilla Extract"],
+        description: "Rich and airy chocolate dessert.",
+        cookingTime: "30 minutes + chilling",
+        cookingProcess: "1. Melt chocolate. 2. Whisk eggs and sugar. 3. Fold in chocolate and whipped cream. 4. Chill before serving."
+    },
+    {
+        name: "Vegetable Lasagna",
+        ingredients: ["Lasagna Noodles", "Ricotta Cheese", "Spinach", "Marinara Sauce", "Mozzarella Cheese"],
+        description: "Layers of pasta, cheese, and vegetables baked to perfection.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Cook noodles. 2. Layer with cheese, sauce, and spinach. 3. Bake until golden."
+    },
+    {
+        name: "Chili Con Carne",
+        ingredients: ["Ground Beef", "Kidney Beans", "Tomato Sauce", "Chili Powder", "Onion"],
+        description: "Spicy and hearty beef chili.",
+        cookingTime: "50 minutes",
+        cookingProcess: "1. Sauté onion and beef. 2. Add beans and sauce. 3. Simmer until thick."
+    },
+    {
+        name: "Caprese Salad",
+        ingredients: ["Tomatoes", "Mozzarella Cheese", "Basil", "Olive Oil", "Balsamic Vinegar"],
+        description: "Fresh salad with tomatoes, mozzarella, and basil.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Slice tomatoes and cheese. 2. Layer with basil. 3. Drizzle with oil and vinegar."
+    },
+    {
+        name: "Stuffed Bell Peppers",
+        ingredients: ["Bell Peppers", "Rice", "Ground Turkey", "Tomato Sauce", "Cheese"],
+        description: "Bell peppers filled with savory meat and rice.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Preheat oven. 2. Cook filling. 3. Stuff peppers and bake until tender."
+    },
+    {
+        name: "Baked Ziti",
+        ingredients: ["Ziti Pasta", "Marinara Sauce", "Ricotta Cheese", "Mozzarella Cheese", "Parmesan Cheese"],
+        description: "Pasta baked with cheese and sauce for a comforting dish.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Cook ziti. 2. Mix with sauce and cheese. 3. Bake until bubbly."
+    },
+    {
+        name: "Sushi Rolls",
+        ingredients: ["Sushi Rice", "Seaweed", "Cucumber", "Avocado", "Crab"],
+        description: "Fresh sushi rolls filled with crab and veggies.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cook rice. 2. Roll with seaweed and fillings. 3. Slice and serve with soy sauce."
+    },
+    {
+        name: "Pork Stir-Fry",
+        ingredients: ["Pork", "Vegetables", "Soy Sauce", "Ginger", "Garlic"],
+        description: "Quick stir-fry with tender pork and colorful veggies.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Sauté pork. 2. Add veggies and sauce. 3. Cook until tender."
+    },
+    {
+        name: "Chocolate Chip Cookies",
+        ingredients: ["Flour", "Butter", "Sugar", "Chocolate Chips", "Eggs"],
+        description: "Classic cookies loaded with chocolate chips.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Cream butter and sugar. 2. Add flour and chips. 3. Bake until golden."
+    },
+    {
+        name: "Pumpkin Pie",
+        ingredients: ["Pumpkin Puree", "Sugar", "Eggs", "Spices", "Pie Crust"],
+        description: "Traditional pumpkin pie for dessert.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Mix ingredients. 2. Pour into crust. 3. Bake until set."
+    },
+    {
+        name: "Shrimp Tacos",
+        ingredients: ["Shrimp", "Tortillas", "Cabbage", "Avocado", "Lime"],
+        description: "Tasty shrimp tacos topped with fresh ingredients.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook shrimp. 2. Assemble tacos with toppings. 3. Serve with lime."
+    },
+    {
+        name: "Egg Fried Rice",
+        ingredients: ["Rice", "Eggs", "Soy Sauce", "Green Onions", "Vegetables"],
+        description: "Quick and easy fried rice with eggs and veggies.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Scramble eggs. 2. Stir-fry rice with veggies. 3. Add eggs and soy sauce."
+    },
+    {
+        name: "Beef Stir-Fry",
+        ingredients: ["Beef", "Broccoli", "Soy Sauce", "Garlic", "Ginger"],
+        description: "Tender beef stir-fried with fresh broccoli.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Sauté beef. 2. Add broccoli and sauce. 3. Cook until beef is done."
+    },
+    {
+        name: "Orange Chicken",
+        ingredients: ["Chicken", "Orange Juice", "Soy Sauce", "Honey", "Garlic"],
+        description: "Sweet and tangy orange chicken.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Marinate chicken. 2. Cook with sauce. 3. Serve with rice."
+    },
+    {
+        name: "Teriyaki Chicken",
+        ingredients: ["Chicken", "Teriyaki Sauce", "Sesame Seeds", "Green Onions", "Rice"],
+        description: "Grilled chicken glazed with teriyaki sauce.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Preheat grill. 2. Brush chicken with sauce. 3. Grill until cooked."
+    },
+    {
+        name: "Cauliflower Fried Rice",
+        ingredients: ["Cauliflower", "Eggs", "Soy Sauce", "Green Onions", "Carrots"],
+        description: "Low-carb fried rice made with cauliflower.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Rice cauliflower. 2. Scramble eggs. 3. Stir-fry with veggies and sauce."
+    },
+    {
+        name: "Vegetable Curry",
+        ingredients: ["Mixed Vegetables", "Coconut Milk", "Curry Powder", "Onion", "Garlic"],
+        description: "A rich and creamy vegetable curry.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Sauté onion and garlic. 2. Add vegetables and curry. 3. Stir in coconut milk and simmer."
+    },
+    {
+        name: "Baked Salmon",
+        ingredients: ["Salmon", "Lemon", "Garlic", "Dill", "Olive Oil"],
+        description: "Healthy baked salmon with fresh herbs.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Preheat oven. 2. Season salmon. 3. Bake until cooked through."
+    },
+    {
+        name: "Coconut Rice",
+        ingredients: ["Rice", "Coconut Milk", "Salt", "Sugar"],
+        description: "Fluffy rice cooked in coconut milk.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Rinse rice. 2. Cook with coconut milk. 3. Fluff before serving."
+    },
+    {
+        name: "Chili Garlic Noodles",
+        ingredients: ["Noodles", "Chili Sauce", "Garlic", "Vegetables", "Soy Sauce"],
+        description: "Spicy noodle dish with garlic and veggies.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook noodles. 2. Sauté garlic and veggies. 3. Mix with sauce and noodles."
+    },
+    {
+        name: "Stuffed Mushrooms",
+        ingredients: ["Mushrooms", "Cream Cheese", "Garlic", "Herbs", "Bread Crumbs"],
+        description: "Savory mushrooms stuffed with cream cheese.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Preheat oven. 2. Stuff mushrooms. 3. Bake until golden."
+    },
+    {
+        name: "Fish Tacos",
+        ingredients: ["Fish", "Tortillas", "Cabbage", "Avocado", "Lime"],
+        description: "Delicious fish tacos with fresh toppings.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Cook fish. 2. Assemble tacos with toppings. 3. Serve with lime."
+    },
+    {
+        name: "Cinnamon Rolls",
+        ingredients: ["Flour", "Sugar", "Butter", "Cinnamon", "Yeast"],
+        description: "Soft and sweet cinnamon rolls.",
+        cookingTime: "1.5 hours",
+        cookingProcess: "1. Make dough. 2. Roll with filling. 3. Bake until golden."
+    },
+    {
+        name: "Carrot Cake",
+        ingredients: ["Carrots", "Flour", "Sugar", "Eggs", "Spices"],
+        description: "Moist and flavorful carrot cake.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Mix ingredients. 2. Bake until toothpick comes out clean. 3. Cool before frosting."
+    },
+    {
+        name: "Garlic Bread",
+        ingredients: ["Bread", "Butter", "Garlic", "Parsley", "Cheese"],
+        description: "Crunchy garlic bread perfect for dipping.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Mix butter and garlic. 2. Spread on bread. 3. Bake until crispy."
+    },
+    {
+        name: "Quiche",
+        ingredients: ["Eggs", "Milk", "Cheese", "Spinach", "Pie Crust"],
+        description: "Savory pie filled with eggs and cheese.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Preheat oven. 2. Whisk eggs and milk. 3. Pour into crust and bake."
+    },
+    {
+        name: "Cabbage Rolls",
+        ingredients: ["Cabbage", "Ground Meat", "Rice", "Tomato Sauce", "Onion"],
+        description: "Cabbage leaves filled with savory meat and rice.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Preheat oven. 2. Roll filling in leaves. 3. Bake in sauce until cooked."
+    },
+    {
+        name: "Maple Glazed Carrots",
+        ingredients: ["Carrots", "Maple Syrup", "Butter", "Salt", "Pepper"],
+        description: "Sweet and savory glazed carrots.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook carrots. 2. Add syrup and butter. 3. Simmer until glazed."
+    },
+    {
+        name: "Fruit Salad",
+        ingredients: ["Mixed Fruits", "Honey", "Mint", "Lemon Juice"],
+        description: "Refreshing fruit salad drizzled with honey.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Chop fruits. 2. Toss with honey and mint. 3. Serve chilled."
+    },
+    {
+        name: "Eggplant Parmesan",
+        ingredients: ["Eggplant", "Marinara Sauce", "Mozzarella Cheese", "Parmesan Cheese", "Basil"],
+        description: "Layers of eggplant with marinara and cheese.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Preheat oven. 2. Layer ingredients. 3. Bake until bubbly."
+    },
+    {
+        name: "Chicken Fajitas",
+        ingredients: ["Chicken", "Bell Peppers", "Onion", "Tortillas", "Spices"],
+        description: "Sizzling chicken and peppers served in tortillas.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cook chicken with spices. 2. Add veggies. 3. Serve in tortillas."
+    },
+    {
+        name: "Greek Salad",
+        ingredients: ["Cucumbers", "Tomatoes", "Feta Cheese", "Olives", "Olive Oil"],
+        description: "Traditional Greek salad with fresh veggies.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Chop vegetables. 2. Mix with cheese and olives. 3. Drizzle with oil."
+    },
+    {
+        name: "Peach Cobbler",
+        ingredients: ["Peaches", "Flour", "Sugar", "Butter", "Cinnamon"],
+        description: "Warm peach cobbler served with ice cream.",
+        cookingTime: "45 minutes",
+        cookingProcess: "1. Mix peaches with sugar. 2. Pour batter over. 3. Bake until golden."
+    },
+    {
+        name: "Honey Garlic Chicken",
+        ingredients: ["Chicken", "Honey", "Garlic", "Soy Sauce", "Vegetables"],
+        description: "Sweet and savory chicken stir-fry.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Sauté chicken. 2. Add sauce and veggies. 3. Cook until done."
+    },
+    {
+        name: "Cheesy Broccoli Casserole",
+        ingredients: ["Broccoli", "Cheddar Cheese", "Cream of Mushroom Soup", "Rice", "Bread Crumbs"],
+        description: "Comforting casserole packed with broccoli and cheese.",
+        cookingTime: "35 minutes",
+        cookingProcess: "1. Cook broccoli. 2. Mix with cheese and soup. 3. Bake until bubbly."
+    },
+    {
+        name: "Tortellini Salad",
+        ingredients: ["Tortellini", "Cherry Tomatoes", "Spinach", "Feta Cheese", "Olive Oil"],
+        description: "Refreshing salad with tortellini and veggies.",
+        cookingTime: "15 minutes",
+        cookingProcess: "1. Cook tortellini. 2. Mix with veggies and cheese. 3. Drizzle with oil."
+    },
+    {
+        name: "Pasta Primavera",
+        ingredients: ["Pasta", "Mixed Vegetables", "Olive Oil", "Parmesan Cheese", "Garlic"],
+        description: "Colorful pasta dish with fresh vegetables.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Cook pasta. 2. Sauté veggies with garlic. 3. Toss with pasta and cheese."
+    },
+    {
+        name: "Banana Bread",
+        ingredients: ["Bananas", "Flour", "Sugar", "Butter", "Eggs"],
+        description: "Moist banana bread perfect for breakfast.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Mash bananas. 2. Mix with other ingredients. 3. Bake until golden."
+    },
+    {
+        name: "Sweet Potato Casserole",
+        ingredients: ["Sweet Potatoes", "Butter", "Brown Sugar", "Marshmallows", "Pecans"],
+        description: "Sweet casserole topped with marshmallows.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Cook sweet potatoes. 2. Mix with sugar and butter. 3. Top with marshmallows and bake."
+    },
+    {
+        name: "Lemon Bars",
+        ingredients: ["Lemon Juice", "Sugar", "Flour", "Butter", "Eggs"],
+        description: "Tangy and sweet lemon bars for dessert.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Mix ingredients. 2. Pour into pan. 3. Bake until set."
+    },
+    {
+        name: "Pineapple Fried Rice",
+        ingredients: ["Rice", "Pineapple", "Shrimp", "Soy Sauce", "Peas"],
+        description: "Fried rice with sweet pineapple and shrimp.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Cook rice. 2. Stir-fry with pineapple and shrimp. 3. Add soy sauce and peas."
+    },
+    {
+        name: "Beef Tacos",
+        ingredients: ["Ground Beef", "Tortillas", "Lettuce", "Cheese", "Tomatoes"],
+        description: "Delicious beef tacos with fresh toppings.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook beef. 2. Assemble tacos with toppings. 3. Serve with salsa."
+    },
+    {
+        name: "Caprese Pasta",
+        ingredients: ["Pasta", "Tomatoes", "Mozzarella Cheese", "Basil", "Olive Oil"],
+        description: "Pasta with fresh tomatoes, cheese, and basil.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Cook pasta. 2. Toss with tomatoes, cheese, and oil. 3. Serve warm."
+    },
+    {
+        name: "Oven-Baked Chicken",
+        ingredients: ["Chicken", "Olive Oil", "Garlic", "Rosemary", "Lemon"],
+        description: "Herb-seasoned chicken baked to perfection.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Preheat oven. 2. Season chicken. 3. Bake until cooked through."
+    },
+    {
+        name: "Chocolate Mousse",
+        ingredients: ["Chocolate", "Eggs", "Cream", "Sugar", "Vanilla"],
+        description: "Rich and creamy chocolate mousse for dessert.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Melt chocolate. 2. Whip cream. 3. Fold together and chill."
+    },
+    {
+        name: "Spinach Artichoke Dip",
+        ingredients: ["Spinach", "Artichokes", "Cream Cheese", "Parmesan Cheese", "Garlic"],
+        description: "Creamy dip served with chips or bread.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Mix ingredients. 2. Bake until bubbly. 3. Serve warm."
+    },
+    {
+        name: "Grilled Cheese Sandwich",
+        ingredients: ["Bread", "Cheese", "Butter"],
+        description: "Classic grilled cheese sandwich.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Butter bread. 2. Place cheese between slices. 3. Grill until golden."
+    },
+    {
+        name: "Pasta Salad",
+        ingredients: ["Pasta", "Olive Oil", "Vegetables", "Feta Cheese", "Basil"],
+        description: "Refreshing pasta salad with vegetables and cheese.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook pasta. 2. Mix with veggies and cheese. 3. Drizzle with oil."
+    },
+    {
+        name: "Coconut Macaroons",
+        ingredients: ["Coconut", "Sugar", "Egg Whites", "Vanilla"],
+        description: "Sweet coconut treats baked until golden.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Mix ingredients. 2. Scoop onto baking sheet. 3. Bake until golden."
+    },
+    {
+        name: "Lentil Soup",
+        ingredients: ["Lentils", "Carrots", "Celery", "Onions", "Vegetable Broth"],
+        description: "Hearty lentil soup with vegetables.",
+        cookingTime: "40 minutes",
+        cookingProcess: "1. Sauté vegetables. 2. Add lentils and broth. 3. Simmer until cooked."
+    },
+    {
+        name: "Baked Apples",
+        ingredients: ["Apples", "Brown Sugar", "Cinnamon", "Butter"],
+        description: "Warm baked apples with a sweet topping.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Core apples. 2. Stuff with mixture. 3. Bake until tender."
+    },
+    {
+        name: "Stuffed Shells",
+        ingredients: ["Pasta Shells", "Ricotta Cheese", "Marinara Sauce", "Parmesan Cheese"],
+        description: "Pasta shells filled with cheese and baked.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Cook shells. 2. Stuff with ricotta. 3. Top with sauce and bake."
+    },
+    {
+        name: "Chocolate Cake",
+        ingredients: ["Flour", "Cocoa Powder", "Sugar", "Butter", "Eggs"],
+        description: "Decadent chocolate cake for celebrations.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Mix ingredients. 2. Pour into pan. 3. Bake until done."
+    },
+    {
+        name: "Tomato Basil Soup",
+        ingredients: ["Tomatoes", "Basil", "Onion", "Garlic", "Vegetable Broth"],
+        description: "Creamy tomato soup with fresh basil.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Sauté onions and garlic. 2. Add tomatoes and broth. 3. Blend until smooth."
+    },
+    {
+        name: "Zucchini Bread",
+        ingredients: ["Zucchini", "Flour", "Sugar", "Eggs", "Walnuts"],
+        description: "Moist zucchini bread with a nutty flavor.",
+        cookingTime: "1 hour",
+        cookingProcess: "1. Grate zucchini. 2. Mix with other ingredients. 3. Bake until golden."
+    },
+    {
+        name: "Shrimp Scampi",
+        ingredients: ["Shrimp", "Garlic", "Butter", "Lemon Juice", "Pasta"],
+        description: "Sautéed shrimp with garlic and lemon.",
+        cookingTime: "20 minutes",
+        cookingProcess: "1. Cook shrimp with garlic. 2. Toss with pasta and lemon. 3. Serve warm."
+    },
+    {
+        name: "Caesar Salad",
+        ingredients: ["Romaine Lettuce", "Caesar Dressing", "Croutons", "Parmesan Cheese"],
+        description: "Classic Caesar salad with crispy croutons.",
+        cookingTime: "10 minutes",
+        cookingProcess: "1. Chop lettuce. 2. Toss with dressing and croutons. 3. Serve chilled."
+    },
+    {
+        name: "Baked Salmon",
+        ingredients: ["Salmon", "Lemon", "Garlic", "Dill"],
+        description: "Oven-baked salmon with herbs.",
+        cookingTime: "25 minutes",
+        cookingProcess: "1. Preheat oven. 2. Season salmon. 3. Bake until flaky."
+    },
+    {
+        name: "Roasted Vegetables",
+        ingredients: ["Mixed Vegetables", "Olive Oil", "Herbs", "Salt"],
+        description: "Savory roasted vegetables, perfect as a side.",
+        cookingTime: "30 minutes",
+        cookingProcess: "1. Chop veggies. 2. Toss with oil and herbs. 3. Roast until tender."
+    },
+  
     ];
 
     function getRandomIngredients() {
         const ingredients = [
-            'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach',
-            'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
-            'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
-            'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
-            'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
-            'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Sage', 'Chives', 'Mint', 'Parsley', 'Cilantro', 'Tarragon',
-            'Caraway', 'Cumin', 'Paprika', 'Chili Powder', 'Turmeric', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Cloves', 'Vanilla', 
-            'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 
-            'Cornstarch', 'Rice Vinegar', 'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 
-            'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto', 'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 
-            'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk', 'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 
-            'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows'
+'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach', 
+'Peppers', 'Carrots', 'Lentils', 'Quinoa', 'Eggplant', 'Zucchini', 'Cabbage', 'Cauliflower', 'Potatoes', 'Onion', 
+'Garlic', 'Ginger', 'Beef', 'Pork', 'Salmon', 'Tuna', 'Shrimp', 'Tofu', 'Chickpeas', 'Black Beans',
+'Asparagus', 'Green Beans', 'Sweet Potatoes', 'Bell Peppers', 'Kale', 'Arugula', 'Olives', 'Cheese', 'Bread', 'Tortillas', 
+'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
+'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Sage', 'Chives', 'Mint', 'Parsley', 'Cilantro', 'Tarragon',
+'Caraway', 'Cumin', 'Paprika', 'Chili Powder', 'Turmeric', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Cloves', 'Vanilla', 
+'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 
+'Cornstarch', 'Rice Vinegar', 'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 
+'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto', 'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 
+'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk', 'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 
+'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows',
+'Bacon', 'Eggs', 'Parmesan Cheese', 'Mozzarella', 'Feta Cheese', 'Goat Cheese', 'Blue Cheese', 'Provolone', 'Cheddar Cheese', 'Swiss Cheese',
+'Pineapple', 'Mango', 'Papaya', 'Peaches', 'Plums', 'Apricots', 'Grapes', 'Strawberries', 'Blueberries', 'Raspberries',
+'Blackberries', 'Cranberries', 'Watermelon', 'Cantaloupe', 'Honeydew', 'Oranges', 'Lemons', 'Limes', 'Apples', 'Pears',
+'Pomegranate', 'Kiwi', 'Guava', 'Lychee', 'Starfruit', 'Dragonfruit', 'Passion Fruit', 'Cactus Pear', 'Banana', 'Coconut',
+'Artichokes', 'Brussels Sprouts', 'Leeks', 'Scallions', 'Radishes', 'Turnips', 'Parsnips', 'Beets', 'Rutabaga', 'Bok Choy',
+'Napa Cabbage', 'Fennel', 'Butternut Squash', 'Acorn Squash', 'Spaghetti Squash', 'Yellow Squash', 'Hemp Seeds', 'Chia Seeds', 'Buckwheat', 'Millet',
+'Sorghum', 'Farro', 'Barley', 'Bulgur', 'Polenta', 'Couscous', 'Macadamia Nuts', 'Hazelnuts', 'Brazil Nuts', 'Pecans',
+'Walnuts', 'Poppy Seeds', 'Saffron', 'Fenugreek', 'Allspice', 'Cardamom', 'Wasabi', 'Lemongrass', 'Galangal', 'Horseradish',
+'Sriracha', 'Hot Sauce', 'Hoisin Sauce', 'Oyster Sauce', 'Fish Sauce', 'Anchovies', 'Capers', 'Sundried Tomatoes', 'Tomato Paste', 'Clam Juice',
+'Canned Tuna', 'Canned Salmon', 'Sardines', 'Mackerel', 'Crab Meat', 'Lobster Meat', 'Venison', 'Duck', 'Lamb', 'Veal',
+'Quail Eggs', 'Duck Eggs', 'Goose Eggs', 'Oat Milk', 'Almond Milk', 'Soy Milk', 'Rice Milk', 'Coconut Oil', 'Avocado Oil', 'Grape Seed Oil',
+'Truffle Oil', 'Lard', 'Ghee', 'Crème Fraîche', 'Mascarpone', 'Ricotta Cheese', 'Mozzarella Cheese', 'Gelato', 'Sorbet', 'Gelatin',
+'Agar Agar', 'Miso Paste', 'Tahini', 'Hummus', 'Tofu Skin', 'Tempeh', 'Kimchi', 'Sauerkraut', 'Natto', 'Pickled Onions',
+'Pickled Ginger', 'Rice Noodles', 'Soba Noodles', 'Udon Noodles', 'Ramen Noodles', 'Spaghetti', 'Linguine', 'Fettuccine', 'Rigatoni', 'Penne',
+'Macaroni', 'Orzo', 'Gnocchi', 'Matzo Meal', 'Breadcrumbs', 'Croutons', 'Spring Roll Wrappers', 'Wonton Wrappers', 'Phyllo Dough', 'Pie Crust',
+'Tapioca', 'Arrowroot Powder', 'Molasses', 'Agave Syrup', 'Date Syrup', 'Palm Sugar', 'Rapadura', 'Coconut Sugar', 'Cane Sugar', 'Birch Syrup'
         ];
 
         const randomIngredients = [];
