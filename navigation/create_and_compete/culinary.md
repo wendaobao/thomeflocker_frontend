@@ -785,6 +785,48 @@ author: Daksha, Zach, Alex, Darsh
   
     ];
 
+
+
+document.getElementById('ingredientForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+   
+    const inputIngredients = document.getElementById('ingredients').value.split(',')
+        .map(ingredient => ingredient.trim().toLowerCase());
+
+  
+    const filteredRecipes = recipes.filter(recipe => {
+
+        const recipeIngredientsLower = recipe.ingredients.map(ingredient => ingredient.toLowerCase());
+        
+      
+        return inputIngredients.some(input => recipeIngredientsLower.includes(input));
+    });
+
+
+    displayFilteredRecipes(filteredRecipes);
+});
+
+function displayFilteredRecipes(filteredRecipes) {
+    const resultsContainer = document.getElementById('recipeResults');
+    resultsContainer.innerHTML = ''; 
+
+    if (filteredRecipes.length > 0) {
+        const recipeResults = filteredRecipes.map(recipe => `
+            <div class="recipe">
+                <h3>${recipe.name}</h3>
+                <p>${recipe.description}</p>
+                <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
+                <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
+                <p><strong>Cooking Process:</strong> ${recipe.cookingProcess}</p>
+            </div>
+        `).join('');
+
+        resultsContainer.innerHTML = recipeResults;
+    } else {
+        resultsContainer.innerHTML = '<p>No recipes found with the provided ingredients.</p>';
+    }
+}
     function getRandomIngredients() {
         const ingredients = [
 'Chicken', 'Broccoli', 'Rice', 'Tomatoes', 'Pasta', 'Beans', 'Corn', 'Avocado', 'Mushrooms', 'Spinach', 
