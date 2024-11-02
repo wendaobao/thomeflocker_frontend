@@ -65,7 +65,7 @@ author: Daksha, Zach, Alex, Darsh
 
 <h2>Ingredient Input</h2>
 <form id="ingredientForm">
-    <input type="text" id="ingredients" placeholder="e.g., chicken, mushrooms, tomatoes">
+    <input type="text" id="ingredients" placeholder="e.g., chicken, rice, cheese">
     <button type="submit">Find Recipes</button>
 </form>
 
@@ -817,7 +817,7 @@ function displayFilteredRecipes(filteredRecipes) {
     if (filteredRecipes.length > 0) {
         const recipeResults = filteredRecipes.map(recipe => `
             <div class="recipe">
-                <h3>${recipe.name}</h3>
+                <h2>${recipe.name}</h2>
                 <p>${recipe.description}</p>
                 <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
                 <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
