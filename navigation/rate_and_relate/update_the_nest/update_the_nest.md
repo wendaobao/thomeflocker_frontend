@@ -84,7 +84,7 @@ author: Justin, Abby, Shriya, Nathan
 <div style="text-align: center;" class="header">
     <h1> Update the Nest </h1>
     <div class="headerImage">
-        <img src="{{site.baseurl}}/images/about/CSP_LOGO-removebg-preview.png" style="display: block; margin: 0 auto;" alt="Logo">
+        <img src="{{site.baseurl}}/images/rate_and_relate/update_the_nest/update_the_nest.png" style="display: block; margin: 0 auto;" alt="Logo">
     </div>
     <div class="headerText">
         <button class="styled-button"><a href="">Leaderboard</a></button>
@@ -98,7 +98,7 @@ author: Justin, Abby, Shriya, Nathan
     <div class="post">
              <h1> Feed </h1>
         <div class="imageContainer">
-            <img src="{{site.baseurl}}/images/tempPhoto.jpg">
+            <img src="{{site.baseurl}}/images/rate_and_relate/update_the_nest/temp_photo.jpg">
         </div>
         <div class="textContainer">
             <h3>Caption</h3><br>
