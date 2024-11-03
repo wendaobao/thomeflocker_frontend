@@ -8,12 +8,19 @@ permalink: /voteforthegoat/nighthawkCars/studentCars/
 
 <table>
     <tr>
+        <td id="homepage"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars">Nighthawk Cars (Home Page)</a></td>
         <td id="internetdebates"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/luxuryCars">Luxury Cars</a></td>
         <td id="calicovote"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/vintageCars">Vintage Cars</a></td>
         <td id="dnerostore"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/studentCars">Student Cars</a></td>
         <td id="Beveragedebates"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/economyCars">Economy Cars</a></td>
     </tr>
 </table>
+
+<p>   </p>
+
+<img src="https://images.cars.com/cldstatic/wp-content/uploads/img-1572710542-1463520964458.jpg" alt="Top 10 Cars" width="900" height="600">
+
+Note, some of the cars may not be in the most recent top 10 cars list. This is just an image of cars students typically own.
 
 <html lang="en">
 <head>
