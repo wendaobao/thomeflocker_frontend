@@ -57,30 +57,55 @@ comments: true
             font-size: 16px;
             color: #333;
         }
-        .input-container {
-            margin-bottom: 20px;
+        .comments-section {
+            display: none;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
         }
-        .input-container input {
-            padding: 8px;
-            font-size: 16px;
+        .comments-section h3 {
+            margin-top: 0;
+        }
+        .comment-box {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .comment-box textarea {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            width: 50px;
-            text-align: center;
         }
-        .button-container button {
+        .comment-box button {
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 14px;
+            margin-left: 10px;
             background-color: #6C63FF;
             color: #fff;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            transition: background-color 0.3s;
         }
-        .button-container button:hover {
+        .comment-box button:hover {
             background-color: #554FD6;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .comments-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .comments-list li {
+            padding: 10px;
+            background-color: #000; /* Black background */
+            color: #FFF; /* White text */
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .username {
+            font-weight: bold;
+            color: #FFDD57; /* Distinct color for usernames */
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -124,23 +149,58 @@ comments: true
                 <span>Electronic</span>
             </div>
         </div>
-        <div class="input-container">
-            <label for="grade">What grade are you in?</label>
-            <input type="text" id="grade" name="grade" placeholder="Enter grade">
-        </div>
         <label for="genre">Pick Your Favorite Genre Out of These!</label>
-        <div class="button-container">
-            <button onclick="showReport()">See Your Music Report And Recommendations!</button>
+        
+        <!-- Comments Section -->
+        <div class="comments-section" id="comments-section">
+            <h3>Comment Your Opinion!</h3>
+            <div class="comment-box">
+                <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+                <button onclick="addComment()">Submit</button>
+            </div>
+            <ul class="comments-list" id="commentsList"></ul>
         </div>
     </div>
 
     <script>
         function vote(genre) {
             alert(genre + " selected!");
+            // Display the comments section after a genre is selected
+            document.getElementById('comments-section').style.display = 'block';
         }
 
-        function showReport() {
-            alert("Music report coming soon!");
+        function getRandomUsername() {
+            const adjectives = ["Mysterious", "Cool", "Chill", "Groovy", "Silent"];
+            const animals = ["Penguin", "Fox", "Tiger", "Panda", "Eagle"];
+            const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+            const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+            const randomNumber = Math.floor(Math.random() * 1000);
+            return `${randomAdjective}${randomAnimal}${randomNumber}`;
+        }
+
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+            if (commentText !== "") {
+                const commentItem = document.createElement('li');
+                
+                // Create username element
+                const usernameSpan = document.createElement('span');
+                usernameSpan.classList.add('username');
+                usernameSpan.textContent = getRandomUsername() + ": ";
+                
+                // Append username and comment text
+                commentItem.appendChild(usernameSpan);
+                commentItem.appendChild(document.createTextNode(commentText));
+                
+                // Add comment to the comments list
+                document.getElementById('commentsList').appendChild(commentItem);
+                
+                // Clear input field
+                commentInput.value = '';
+            } else {
+                alert("Please enter a comment before submitting.");
+            }
         }
     </script>
 </body>
