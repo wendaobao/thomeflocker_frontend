@@ -122,7 +122,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
         <!-- Profile card -->
         <div class="profile-card">
             <label for="file-upload">
-                <img id="profile-pic" src="../../images/rate_and_relate/instabox/pfp_placeholder.jpg" alt="Profile Picture">
+                <img id="profile-pic" src="{{site.baseurl}}/images/rate_and_relate/instabox/pfp_placeholder.jpg" alt="Profile Picture">
             </label>
             <input id="file-upload" type="file" class="file-input" accept="image/*" onchange="updateProfilePic(event)">
             <h2>Username</h2>
