@@ -50,11 +50,11 @@ search_exclude: true
         <form id="postForm">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" required></textarea>
-            <label for="group_id">Group:</label>
-            <select id="group_id" name="group_id" required>
-                <option value="">Select a group</option>
+            <label for="comment">comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
+            <label for="channel_id">Channel:</label>
+            <select id="channel_id" name="channel_id" required>
+                <option value="">Select a channel</option>
             </select>
             <button type="submit">Add Post</button>
         </form>
@@ -65,23 +65,23 @@ search_exclude: true
     // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-    // Fetch groups for dropdown selection
-    async function fetchGroups() {
+    // Fetch channels for dropdown selection
+    async function fetchChannels() {
         try {
-            const response = await fetch(`${pythonURI}/api/group`, fetchOptions);
+            const response = await fetch(`${pythonURI}/api/channels`, fetchOptions);
             if (!response.ok) {
-                throw new Error('Failed to fetch groups: ' + response.statusText);
+                throw new Error('Failed to fetch channels: ' + response.statusText);
             }
-            const groups = await response.json();
-            const groupSelect = document.getElementById('group_id');
-            groups.forEach(group => {
+            const channels = await response.json();
+            const channelSelect = document.getElementById('channel_id');
+            channels.forEach(channel => {
                 const option = document.createElement('option');
-                option.value = group.id;
-                option.textContent = group.name;
-                groupSelect.appendChild(option);
+                option.value = channel.id;
+                option.textContent = channel.name;
+                channelSelect.appendChild(option);
             });
         } catch (error) {
-            console.error('Error fetching groups:', error);
+            console.error('Error fetching channels:', error);
         }
     }
 
@@ -92,14 +92,14 @@ search_exclude: true
 
         // Extract data from form
         const title = document.getElementById('title').value;
-        const content = document.getElementById('content').value;
-        const group_id = document.getElementById('group_id').value;
+        const comment = document.getElementById('cchannelontent').value;
+        const channel_id = document.getElementById('channel_id').value;
 
         // Create API payload
         const postData = {
             title: title,
-            content: content,
-            group_id: group_id
+            comment: comment,
+            channel_id: channel_id
         };
 
         // Trap errors
@@ -129,6 +129,6 @@ search_exclude: true
         }
     });
 
-    // Fetch groups when the page loads
-    fetchGroups();
+    // Fetch channels when the page loads
+    fetchChannels();
 </script>
