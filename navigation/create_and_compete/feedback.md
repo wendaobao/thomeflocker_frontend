@@ -26,3 +26,78 @@ menu: nav/create_and_compete.html
 </div>
 
 <script src="{{site.baseurl}}/navigation/create_and_compete/chat.js"></script>
+
+<style>
+/* General Container Styling */
+.chat-room-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
+.chat-header {
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Chat Box Styling */
+.chat-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  height: 300px;
+  overflow-y: scroll;
+  padding: 15px;
+  font-size: 1.2em;
+  background-color: #fff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Message Styling */
+.message {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #eef2f7;
+  color: #444;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Box Styling */
+.chat-input {
+  display: flex;
+  margin-top: 15px;
+}
+
+.chat-message {
+  flex: 1;
+  padding: 10px;
+  font-size: 1.2em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.send-button {
+  padding: 10px 15px;
+  font-size: 1.2em;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+</style>
