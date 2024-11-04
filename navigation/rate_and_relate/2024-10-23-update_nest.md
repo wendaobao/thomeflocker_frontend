@@ -32,6 +32,12 @@ permalink: /rateandrelate/update_the_nest/
     float: left;
     width: 50%;
     transform: translateX(20px) translateY(23px);
+    text-align: center;
+}
+
+.imageContainer > img {
+    width: 50%;
+    display: inline-block;
 }
 
 .feed {
