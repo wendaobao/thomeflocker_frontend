@@ -7,30 +7,31 @@ author: Arshia, Prajna, Mirabelle, Alex
 ---
 
 
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat Room</title>
   <style>
-    /* Basic styling */
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
+      align-items: center;
       background-color: #f0f2f5;
+      height: 100vh;
+      margin: 0;
     }
     #mainContainer {
+      width: 100vw;
+      height: 100vh;
       display: flex;
-      width: 80%;
-      max-width: 900px;
-      margin: 20px auto;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
     }
-
-    /* Sidebar styling */
     #sidebar {
       width: 30%;
       background-color: #ffffff;
@@ -56,19 +57,24 @@ author: Arshia, Prajna, Mirabelle, Alex
       color: #777;
       font-size: 14px;
     }
-
-    /* Chat area styling */
     #chatContainer {
       flex: 1;
       padding: 10px;
       background-color: #ffffff;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      height: 100%;
+    }
+    #doodleImage {
+      width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      object-fit: cover;
     }
     #messages {
-      height: 400px;
-      overflow-y: scroll;
+      flex: 1;
+      overflow-y: auto;
       border: 1px solid #ddd;
       padding: 10px;
       border-radius: 8px;
@@ -106,29 +112,27 @@ author: Arshia, Prajna, Mirabelle, Alex
 <body>
 
 <div id="mainContainer">
-  <!-- Sidebar with chat boxes -->
   <div id="sidebar">
-    <div class="chatBox" onclick="loadConversation('Chat 1')">
-      <h3>Chat 1</h3>
-      <p>Hey! How's it going?</p>
+    <div class="chatBox" onclick="loadConversation('Alex')">
+      <h3>Alex</h3>
+      <p>"Check out this doodle!"</p>
     </div>
-    <div class="chatBox" onclick="loadConversation('Chat 2')">
-      <h3>Chat 2</h3>
-      <p>Are we still meeting later?</p>
+    <div class="chatBox" onclick="loadConversation('Prajna')">
+      <h3>Prajna</h3>
+      <p>"I tried a new shading technique!"</p>
     </div>
-    <div class="chatBox" onclick="loadConversation('Chat 3')">
-      <h3>Chat 3</h3>
-      <p>Thanks for the update!</p>
+    <div class="chatBox" onclick="loadConversation('Arshia')">
+      <h3>Arshia</h3>
+      <p>"Let’s brainstorm more ideas!"</p>
     </div>
-    <div class="chatBox" onclick="loadConversation('Chat 4')">
-      <h3>Chat 4</h3>
-      <p>Let me know when you're free.</p>
+    <div class="chatBox" onclick="loadConversation('Mirabelle')">
+      <h3>Mirabelle</h3>
+      <p>"Look at the details on this one!"</p>
     </div>
   </div>
 
-  <!-- Main chat area -->
   <div id="chatContainer">
-    <h2>Chat Room</h2>
+    <img id="doodleImage" src="https://via.placeholder.com/400" alt="Doodle Image">
     <div id="messages"></div>
     <div id="inputContainer">
       <input type="text" id="inputMessage" placeholder="Type a message..." />
@@ -141,48 +145,46 @@ author: Arshia, Prajna, Mirabelle, Alex
   const messages = document.getElementById('messages');
   const inputMessage = document.getElementById('inputMessage');
   const sendButton = document.getElementById('sendButton');
+  const doodleImage = document.getElementById('doodleImage');
 
-  // Fake conversations data
   const conversations = {
-    'Mirabelle': ["Hey! How's it going, nice doodle!", "Pretty good! Thank you so much!"],
-    'Arshia': ["Are we still meeting later to doodle?", "Yes, see you at 5!"],
-    'Prajna': ["Thanks for the update, these doodle is going to be awesome!", "You're welcome!"],
-    'Alex': ["Let me know when you're free to doodle..", "Will do!"]
+    'Alex': ["Alex: Check out this doodle!", "You: Wow! Did you use ink?", "Alex: Yes, and some shading too."],
+    'Prajna': ["Prajna: I tried a new shading technique!", "You: Looks amazing! It adds depth.", "Prajna: Thanks! I've been practicing!"],
+    'Arshia': ["Arshia: Let’s brainstorm more ideas!", "You: How about some abstract doodles?", "Arshia: Great idea! I'll sketch something."],
+    'Mirabelle': ["Mirabelle: Look at the details on this one!", "You: That’s so intricate!", "Mirabelle: Thanks! It took ages."]
   };
 
-  // Load a selected conversation
   function loadConversation(chatName) {
-    messages.innerHTML = ''; // Clear existing messages
+    messages.innerHTML = '';
     const chatMessages = conversations[chatName] || [];
-    chatMessages.forEach((msg, index) => {
-      addMessage(msg, index % 2 === 0 ? "Other" : "You");
+    doodleImage.src = "https://via.placeholder.com/400"; // Replace with specific images per chat if available
+
+    chatMessages.forEach((msg) => {
+      addMessage(msg);
     });
   }
 
-  // Function to add a message
-  function addMessage(message, sender = "You") {
+  function addMessage(message) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message');
-    messageDiv.textContent = `${sender}: ${message}`;
+    messageDiv.textContent = message;
     messages.appendChild(messageDiv);
-    messages.scrollTop = messages.scrollHeight; // Auto-scroll
+    messages.scrollTop = messages.scrollHeight;
   }
 
-  // Send message functionality
   sendButton.addEventListener('click', () => {
     const messageText = inputMessage.value.trim();
     if (messageText) {
-      addMessage(messageText);  // Display the message
-      inputMessage.value = '';  // Clear the input field
+      addMessage(`You: ${messageText}`);
+      inputMessage.value = '';
     }
   });
 
   inputMessage.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendButton.click(); // Send on Enter key press
+    if (e.key === 'Enter') sendButton.click();
   });
 
-  // Load the first conversation by default
-  loadConversation('Chat 1');
+  loadConversation('Alex');
 </script>
 
 </body>
