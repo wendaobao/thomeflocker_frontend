@@ -3,9 +3,101 @@ layout: post
 title: Create and Compete - Doodle
 search_exclude: true
 permalink: /create_and_compete/doodle
-menu: nav/create_and_compete.html
+menu: nav/doodle.html
 author: Alex, Arshia, Prajna, and Mirabelle 
 ---
+
+<details>
+  <summary>Room Details</summary>
+
+<a href="{{site.baseurl}}/moderation/rules_doodle/">Moderation Rules</a>
+
+<p> The page is a place where people can explore themselves creatively and compete to see who has the best doodle. This allows for players to collaborate over their artistic abilities. Our room includes a chat room where players can converse about their creations, a doodle compete area, a place where people can post their art, and winners get crowned every week. This will help add to our classes page by making a fun artistic environment where everyone can collaborate. </p>
+
+
+<a href="{{site.baseurl}}/moderation/chat_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
+  Chat Room
+</a>
+
+<a href="{{site.baseurl}}/moderation/artpost_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
+  Art Post
+</a>
+
+
+</details>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Canvas</title>
+    <style>
+        body { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        canvas { border: 2px solid #444; cursor: crosshair; margin-top: 10px; }
+        .color-button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="drawingCanvas" width="600" height="400"></canvas>
+
+<script>
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let currentColor = '#ad3636';
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mousemove', draw);
+
+    function startDrawing(event) {
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+    }
+
+    function stopDrawing() {
+        drawing = false;
+        ctx.closePath();
+    }
+
+    function draw(event) {
+        if (!drawing) return;
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = currentColor;
+        ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+        ctx.stroke();
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function changeColor(color) {
+        currentColor = color;
+    }
+</script>
+
+<div>
+    <button onclick="clearCanvas()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Clear Drawing</button>
+</div>
+
+<div style="margin-top: 10px;">
+        <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
+        <button style="background-color: #3a63e8!important;  display:inline-block" onclick="changeColor('#3a63e8')">Blue</button>
+        <button style="background-color: #3c7d2c!important;  display:inline-block" onclick="changeColor('#3c7d2c')">Green</button>
+        <button style="background-color: #992222!important;  display:inline-block" onclick="changeColor('#992222')">Red</button>
+        <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
+</div>
+
+</body>
 
 <head>
     <meta charset="UTF-8">
@@ -13,151 +105,3 @@ author: Alex, Arshia, Prajna, and Mirabelle
     <title>Doodle Animation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>🎨 Doodle Animation 🎨</h1>
-        <div class="canvas-container">
-            <canvas id="doodleCanvas" width="800" height="600"></canvas>
-        </div>
-        <div class="controls">
-            <button id="playBtn">Play Animation</button>
-            <button id="clearBtn">Clear</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-<style>
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f0ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: #4b0082;
-}
-.container {
-    text-align: center;
-    background-color: #e6d7f2;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-.canvas-container {
-    margin: 20px 0;
-    border: 2px solid #9b59b6;
-    border-radius: 10px;
-}
-canvas {
-    border-radius: 10px;
-    background-color: white;
-}
-button {
-    background-color: #9b59b6;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s;
-}
-button:hover {
-    background-color: #8e44ad;
-}
-</style>
-<script>
-const canvas = document.getElementById('doodleCanvas');
-const ctx = canvas.getContext('2d');
-const playBtn = document.getElementById('playBtn');
-const clearBtn = document.getElementById('clearBtn');
-let drawing = false;
-let doodleData = [];
-let currentPath = [];
-// Mouse event listeners for drawing
-canvas.addEventListener('mousedown', (e) => {
-    drawing = true;
-    ctx.beginPath();
-    ctx.moveTo(e.offsetX, e.offsetY);
-    currentPath.push({ x: e.offsetX, y: e.offsetY });
-});
-canvas.addEventListener('mousemove', (e) => {
-    if (drawing) {
-        ctx.strokeStyle = '#800080'; // Purple color
-        ctx.lineWidth = 5;
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        currentPath.push({ x: e.offsetX, y: e.offsetY });
-    }
-});
-canvas.addEventListener('mouseup', () => {
-    drawing = false;
-    ctx.closePath();
-    if (currentPath.length > 0) {
-        doodleData.push(currentPath);
-        currentPath = [];
-    }
-});
-canvas.addEventListener('mouseout', () => {
-    drawing = false;
-    ctx.closePath();
-});
-// Play the animation
-playBtn.addEventListener('click', () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    playDoodleAnimation();
-});
-// Clear the canvas
-clearBtn.addEventListener('click', () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    doodleData = [];
-});
-// Function to play the doodle animation
-function playDoodleAnimation() {
-    let index = 0;
-    function animate() {
-        if (index < doodleData.length) {
-            const path = doodleData[index];
-            ctx.beginPath();
-            ctx.moveTo(path[0].x, path[0].y);
-            for (let i = 1; i < path.length; i++) {
-                ctx.lineTo(path[i].x, path[i].y);
-            }
-            ctx.strokeStyle = '#800080'; // Purple color
-            ctx.lineWidth = 5;
-            ctx.stroke();
-            index++;
-            requestAnimationFrame(animate);
-        }
-    }
-    animate();
-}
-</script>
-
-<details>
-  <summary>Room Details</summary>
-
-<a href="{{site.baseurl}}/moderation/rules_doodle/">Moderation Rules</a>
-
-<p> 
-The page is a place where people can explore themselves creatively and compete to see who has the best doodle. This allows for players to collaborate over their artistic abilities. Our room includes a chat room where players can converse about their creations, a doodle compete area, a place where people can post their art, and winners get crowned every week. This will help add to our classes page by making a fun artistic environment where everyone can collaborate. </p>
-
-</details>
-
-<a href="{{site.baseurl}}/moderation/chat_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
-  Chat Room
-</a>
-
-<a href="{{site.baseurl}}/moderation/doodle_competition/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
-  Competition Room
-</a>
-
-<a href="{{site.baseurl}}/moderation/artpost_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
-  Artpost
-</a>

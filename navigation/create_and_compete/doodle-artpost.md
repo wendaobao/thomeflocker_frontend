@@ -2,6 +2,7 @@
 layout: post 
 title: Create and Compete - Doodle
 search_exclude: true
+menu: nav/doodle.html
 permalink: /moderation/artpost_doodle/
 author: Alex, Arshia, Prajna, and Mirabelle 
 ---
