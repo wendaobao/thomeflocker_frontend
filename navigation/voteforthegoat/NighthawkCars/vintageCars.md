@@ -74,7 +74,7 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
 <p>- (Here goes all the information for vintage car pricing)</p>
 
 <h3>Target Market</h3>
-<p>- (Here goes all the information for vintage car target market)</p>
+<p>- (Here goes the sigma ohio rizzler gyatt.)</p>
 
 <h3>Voting</h3>
 <div>
