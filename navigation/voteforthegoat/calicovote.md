@@ -174,7 +174,7 @@ p {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Syvanian Family Restraunt">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Sylvanian Family Restraunt">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/chiyo.png">
     </div>
@@ -237,7 +237,7 @@ p {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Spooky Supprise Haunted">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Spooky Suprise Haunted">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/rin.png">
     </div>
