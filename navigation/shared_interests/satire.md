@@ -3,10 +3,28 @@ layout: base
 title: Satire
 permalink: /shared_interests/satire/
 menu: nav/shared_interests.html
+author: Bailey, Travis, Leon, Anyi
 ---
 
-DNHS Satire Home Page
+<!-- FOR THE NAV MENU AS IT IS NOT WORKING ON YOUR PAGE -->
+<table>
+    <tr>
+        <td id="sharedinterests">
+            <a href="{{site.baseurl}}/shared_interests/home">
+                <img src="{{site.baseurl}}/images/school_logo.png" alt="logo" width="150" height="150">
+            </a>
+        </td>
+        <td id="Limitless Connections"><a href="{{site.baseurl}}/shared_interests/limitconnect">Limitless Connections</a></td>
+        <td id="DNHS Football"><a href="{{site.baseurl}}/shared_interests/football">DNHS Football</a></td>
+        <td id="School Subjects"><a href="{{site.baseurl}}/shared_interests/jupyter/chatroom">School Subjects</a></td>
+        <td id="Music"><a href="{{site.baseurl}}/music/">Music</a></td>
+        <td id="Satire"><a href="{{site.baseurl}}/shared_interests/satire">Satire</a></td>
+        <td id="PLACEHOLDER6"><a href="{{site.baseurl}}/shared_interests/agk.html">AGK</a></td>
+    </tr>
+</table>
+<!-- END OF NAV MENU -->
 
+DNHS Satire Home Page
 <style>
   /* Reset */
   * {
@@ -14,14 +32,12 @@ DNHS Satire Home Page
     padding: 0;
     box-sizing: border-box;
   }
-
   /* Background and text color */
   html {
     font-family: Arial, sans-serif;
     background-color: #1e1e1e; /* Dark background */
     color: #e0e0e0; /* Light text */
   }
-
   /* Container to center everything */
   .container {
     width: 80%;
@@ -31,20 +47,6 @@ DNHS Satire Home Page
     gap: 15px;
     padding: 20px;
   }
-
-  /* Header/Login Bar */
-  .login-bar {
-    background-color: #000000;
-    text-align: right;
-    padding: 10px;
-  }
-
-  .login-bar a {
-    color: #00aaff;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
   /* Banner */
   .banner {
     width: 100%;
@@ -55,8 +57,8 @@ DNHS Satire Home Page
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 15px;
+    border-radius: 10px;
   }
-
   /* Intro Blurb */
   .intro-blurb {
     background-color: #2b2b2b; /* Dark grey */
@@ -64,8 +66,8 @@ DNHS Satire Home Page
     text-align: center;
     font-size: 18px;
     color: #cccccc;
+    border-radius:10px;
   }
-
   /* Main layout - Sidebar and Feed */
   .main-layout {
     display: grid;
@@ -73,7 +75,6 @@ DNHS Satire Home Page
     gap: 15px;
     margin-top: 15px;
   }
-
   /* Left Sidebar */
   .left-sidebar {
     display: flex;
@@ -84,17 +85,23 @@ DNHS Satire Home Page
     background-color: #333333;
     border-radius: 8px;
   }
-
   .add-post {
-    background-color: #ff5722;
+    background-color: #3b5998 !important;
     color: white;
     font-size: 24px;
-    padding: 10px;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    vertical-align: middle;
     border: none;
     border-radius: 50%;
     cursor: pointer;
+    transition: background-color 0.5s;
   }
-
+  .add-post:hover{
+    background-color: #5c79f8 !important;
+  }
   .search-bar input {
     padding: 10px;
     width: 100%;
@@ -103,14 +110,40 @@ DNHS Satire Home Page
     border-radius: 5px;
     color: #ffffff;
   }
-
+  /* Add Post Form */
+  .post-form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #333333;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    width: 100%;
+  }
+  .post-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #444444;
+    color: #ffffff;
+  }
+  .post-form button {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   /* Center Feed */
   .feed {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
-
   .post {
     background-color: #333333;
     padding: 20px;
@@ -118,14 +151,12 @@ DNHS Satire Home Page
     font-size: 18px;
     color: #e0e0e0;
   }
-
   .post-actions {
     display: flex;
     gap: 10px;
     justify-content: center;
     margin-top: 10px;
   }
-
   .post-actions button {
     padding: 10px 15px;
     border: none;
@@ -133,19 +164,15 @@ DNHS Satire Home Page
     cursor: pointer;
     color: #ffffff;
   }
-
   .like {
     background-color: #ff4081;
   }
-
   .comment {
     background-color: #1e88e5;
   }
-
   .share {
     background-color: #7e57c2;
   }
-
   /* Right Sidebar */
   .right-sidebar {
     display: flex;
@@ -155,7 +182,6 @@ DNHS Satire Home Page
     background-color: #444444;
     border-radius: 8px;
   }
-
   .profile {
     background-color: #d81b60;
     padding: 20px;
@@ -163,7 +189,6 @@ DNHS Satire Home Page
     text-align: center;
     color: #ffffff;
   }
-
   .profile-pic {
     width: 80px;
     height: 80px;
@@ -176,11 +201,9 @@ DNHS Satire Home Page
     color: #ffffff;
     margin-bottom: 10px;
   }
-
   .activity, .followers-following {
     width: 100%;
   }
-
   .activity button, .followers-following button {
     width: 100%;
     padding: 10px;
@@ -192,49 +215,48 @@ DNHS Satire Home Page
     margin-bottom: 10px;
   }
 </style>
-
 <!-- HTML Structure -->
 <div class="container">
   <!-- Login Bar -->
   <div class="login-bar">
     <a href="#">Login</a>
   </div>
-
-  <!-- Banner Section -->
-  <div class="banner">
-    Banner
-  </div>
-
   <!-- Intro Blurb -->
   <div class="intro-blurb">
     <h1>DNHS Social Media Home Page</h1>
     <p>Login and explore our social media hub for everything DNHS</p>
   </div>
-
+  <!-- Banner Section -->
+  <div class="banner">
+    Banner
+  </div>
   <!-- Main Layout with Sidebar and Feed -->
   <div class="main-layout">
     
     <!-- Left Sidebar (Add Post and Search Bar) -->
-    <div class="left-sidebar">
-      <button class="add-post">+</button>
+  <div class="left-sidebar">
+      <button class="add-post" onclick="togglePostForm()"><img src="{{site.baseurl}}//images/p1group5images/plusicon.png"></button>
       <p>Add new post</p>
       <div class="search-bar">
         <input type="text" placeholder="Search...">
       </div>
-    </div>
-
+      <!-- Add Post Form -->
+   <div class="post-form" id="postForm">
+        <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+        <button onclick="addPost()">Post</button>
+      </div>
+  </div>
     <!-- Center Feed (Posts) -->
-    <div class="feed">
-      <div class="post">This is a sample post content. Users can post here.</div>
+  <div class="feed" id="feed">
+      <!--<div class="post">This is a sample post content. Users can post here.</div>
       <div class="post-actions">
         <button class="like">Like</button>
         <button class="comment">Comment</button>
         <button class="share">Share</button>
-      </div>
+      </div>-->
     </div>
-
     <!-- Right Sidebar (Profile and Activity) -->
-    <div class="right-sidebar">
+   <div class="right-sidebar">
       <div class="profile">
         <div class="profile-pic">Profile</div>
         <p>Account Information + Satire Score + Age (click profile)</p>
@@ -246,6 +268,44 @@ DNHS Satire Home Page
         <button>Followers/Following</button>
       </div>
     </div>
-
   </div>
 </div>
+<script>
+  function togglePostForm() {
+    const form = document.getElementById("postForm");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+  }
+  function addPost() {
+    const content = document.getElementById("postContent").value;
+    if (content.trim() === "") {
+      alert("Please enter some content for your post!");
+      return;
+    }
+    const feed = document.getElementById("feed");
+    // Create a new post element
+    const newPost = document.createElement("div");
+    newPost.className = "post";
+    newPost.textContent = content;
+    // Add post actions (like, comment, share)
+    const postActions = document.createElement("div");
+    postActions.className = "post-actions";
+    const likeButton = document.createElement("button");
+    likeButton.className = "like";
+    likeButton.textContent = "Like";
+    const commentButton = document.createElement("button");
+    commentButton.className = "comment";
+    commentButton.textContent = "Comment";
+    const shareButton = document.createElement("button");
+    shareButton.className = "share";
+    shareButton.textContent = "Share";
+    postActions.appendChild(likeButton);
+    postActions.appendChild(commentButton);
+    postActions.appendChild(shareButton);
+    // Append actions to the post and post to the feed
+    newPost.appendChild(postActions);
+    feed.prepend(newPost);
+    // Clear the form and hide it
+    document.getElementById("postContent").value = "";
+    togglePostForm();
+  }
+</script>
