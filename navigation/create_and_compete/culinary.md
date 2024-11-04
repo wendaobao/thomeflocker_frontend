@@ -839,11 +839,10 @@ const ingredients = [
 'Yogurt', 'Milk', 'Cream', 'Butter', 'Almonds', 'Cashews', 'Peanuts', 'Pumpkin Seeds', 'Flax Seeds', 'Sunflower Seeds', 
 'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Sage', 'Chives', 'Mint', 'Parsley', 'Cilantro', 'Tarragon',
 'Caraway', 'Cumin', 'Paprika', 'Chili Powder', 'Turmeric', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Cloves', 'Vanilla', 
-'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 
-'Cornstarch', 'Rice Vinegar', 'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 
-'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto', 'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 
-'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk', 'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 
-'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows',
+'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 'Cornstarch', 'Rice Vinegar', 
+'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto',
+'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk',
+'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows',
 'Bacon', 'Eggs', 'Parmesan Cheese', 'Mozzarella', 'Feta Cheese', 'Goat Cheese', 'Blue Cheese', 'Provolone', 'Cheddar Cheese', 'Swiss Cheese',
 'Pineapple', 'Mango', 'Papaya', 'Peaches', 'Plums', 'Apricots', 'Grapes', 'Strawberries', 'Blueberries', 'Raspberries',
 'Blackberries', 'Cranberries', 'Watermelon', 'Cantaloupe', 'Honeydew', 'Oranges', 'Lemons', 'Limes', 'Apples', 'Pears',
@@ -852,14 +851,7 @@ const ingredients = [
 'Napa Cabbage', 'Fennel', 'Butternut Squash', 'Acorn Squash', 'Spaghetti Squash', 'Yellow Squash', 'Hemp Seeds', 'Chia Seeds', 'Buckwheat', 'Millet',
 'Sorghum', 'Farro', 'Barley', 'Bulgur', 'Polenta', 'Couscous', 'Macadamia Nuts', 'Hazelnuts', 'Brazil Nuts', 'Pecans',
 'Walnuts', 'Poppy Seeds', 'Saffron', 'Fenugreek', 'Allspice', 'Cardamom', 'Wasabi', 'Lemongrass', 'Galangal', 'Horseradish',
-'Sriracha', 'Hot Sauce', 'Hoisin Sauce', 'Oyster Sauce', 'Fish Sauce', 'Anchovies', 'Capers', 'Sundried Tomatoes', 'Tomato Paste', 'Clam Juice',
-'Canned Tuna', 'Canned Salmon', 'Sardines', 'Mackerel', 'Crab Meat', 'Lobster Meat', 'Venison', 'Duck', 'Lamb', 'Veal',
-'Quail Eggs', 'Duck Eggs', 'Goose Eggs', 'Oat Milk', 'Almond Milk', 'Soy Milk', 'Rice Milk', 'Coconut Oil', 'Avocado Oil', 'Grape Seed Oil',
-'Truffle Oil', 'Lard', 'Ghee', 'Crème Fraîche', 'Mascarpone', 'Ricotta Cheese', 'Mozzarella Cheese', 'Gelato', 'Sorbet', 'Gelatin',
-'Agar Agar', 'Miso Paste', 'Tahini', 'Hummus', 'Tofu Skin', 'Tempeh', 'Kimchi', 'Sauerkraut', 'Natto', 'Pickled Onions',
-'Pickled Ginger', 'Rice Noodles', 'Soba Noodles', 'Udon Noodles', 'Ramen Noodles', 'Spaghetti', 'Linguine', 'Fettuccine', 'Rigatoni', 'Penne',
-'Macaroni', 'Orzo', 'Gnocchi', 'Matzo Meal', 'Breadcrumbs', 'Croutons', 'Spring Roll Wrappers', 'Wonton Wrappers', 'Phyllo Dough', 'Pie Crust',
-'Tapioca', 'Arrowroot Powder', 'Molasses', 'Agave Syrup', 'Date Syrup', 'Palm Sugar', 'Rapadura', 'Coconut Sugar', 'Cane Sugar', 'Birch Syrup'
+'Sriracha', 'Hot Sauce', 'Hoisin Sauce', 'Oyster Sauce', 'Fish Sauce', 'Anchovies', 'Capers', 'Sundried Tomatoes', 'Tomato Paste', 'Clam Juice'
 ];
      
 
