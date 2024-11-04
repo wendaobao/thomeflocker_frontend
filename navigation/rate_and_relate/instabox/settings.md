@@ -61,6 +61,9 @@ author: Aadi, Aaditya, Aditya, Kanhay
     .settings-card label {
         display: block;
         margin: 10px 0 5px;
+        color: #777;
+    }
+    .settings-card label span{
         color: #bbb;
     }
     .settings-card input[type="text"],
@@ -133,42 +136,55 @@ author: Aadi, Aaditya, Aditya, Kanhay
         <div class="settings-card">
             <h2>Account Settings</h2>
             <!-- Username change -->
-            <label for="username">Change Username:</label>
+            <label for="username"><span>Change Username</span> (optional)</label>
             <input type="text" id="username" placeholder="Enter new username">
             <!-- Divider line -->
-            <div class="divider"></div>
-            <!-- Password change section -->
-            <label for="current-password">Current Password:</label>
-            <input type="password" id="current-password" placeholder="Enter current password">
-            <label for="new-password">New Password:</label>
+            <label for="new-password"><span>Change Password</span> (optional)</label>
             <div class="password-fields">
                 <input type="password" id="new-password" placeholder="New password">
                 <input type="password" id="confirm-password" placeholder="Confirm new password">
             </div>
+            <div class="divider"></div>
+            <!-- Password change section -->
+            <label for="current-password"><span>Current Password</span> (mandatory)</label>
+            <input type="password" id="current-password" placeholder="Enter current password">
             <!-- Save Changes button -->
-            <button class="save-btn" onclick="validatePasswords()">Save Changes</button>
+            <button class="save-btn" onclick="updateInfo()">Save Changes</button>
             <!-- Log Out button -->
             <button class="logout-btn">Log Out</button>
         </div>
     </div>
     <script>
-        function validatePasswords() {
+        function updateInfo() {  
+            const username = document.getElementById("username").value;
             const newPassword = document.getElementById("new-password").value;
             const confirmPassword = document.getElementById("confirm-password").value;
             const currentPassword = document.getElementById("current-password").value;
+            let usernameUpdated = false;
             if (currentPassword === "") {
                 alert("Please enter your current password.");
                 return;
             }
-            if (newPassword === "") {
-                alert("Please enter a new password.");
-                return;
+            if (username != "") {
+                localStorage.setItem("username", username);
+                usernameUpdated = true;
+            }
+            if (newPassword === "" && confirmPassword === "") {
+                if (usernameUpdated) {
+                    alert("Username updated!");
+                    return;
+                }
             }
             if (newPassword !== confirmPassword) {
                 alert("New passwords do not match.");
             } else {
-                alert("Password changed successfully!");
-                // Here, you would handle the form submission to update the user's password
+                if (usernameUpdated) {
+                    alert("Username and password updated!");
+                    return;
+                } else {
+                    alert("Password updated!");
+                    return;
+                }
             }
         }
     </script>
