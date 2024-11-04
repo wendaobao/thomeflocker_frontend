@@ -6,7 +6,7 @@ permalink: /levelthree/
 ---
 
 
-# 🔐 **Cipher Challenge: Level 3**
+# 🔐 **Level 3: Intermediate **
 
 Welcome to **Level 3** of the Cipher Challenge! 🧩 You’re getting the hang of this—keep going to crack this code.
 

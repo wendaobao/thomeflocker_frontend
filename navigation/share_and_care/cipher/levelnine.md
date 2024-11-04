@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelnine/
 ---
 
-# 🔐 **Cipher Challenge: Level 9**
+# 🔐 **Level 9: God ✨**
 
 You’ve reached **Level 9**! 🧩 This level involves a **Transposition Cipher.**
 

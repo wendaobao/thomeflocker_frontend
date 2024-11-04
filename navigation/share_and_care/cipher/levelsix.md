@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelsix/
 ---
 
-# 🔐 **Cipher Challenge: Level 6**
+# 🔐 **Level 6: Master 🔥**
 
 Welcome to Level 6! 🧩 You’re close to reaching the advanced levels, so let’s see how you handle this Caesar Cipher.
 

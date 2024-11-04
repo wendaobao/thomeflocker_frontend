@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelfive/
 ---
 
-# 🔐 **Cipher Challenge: Level 5**
+# 🔐 **Level 5: Expert ⚔️**
 
 Welcome to **Level 5** of the Cipher Challenge! 🧩 The halfway point—keep going strong.
 

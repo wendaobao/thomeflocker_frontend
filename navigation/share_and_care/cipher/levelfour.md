@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelfour/
 ---
 
-# 🔐 **Cipher Challenge: Level 4**
+# 🔐 **Level 4: Pro 🚀**
 
 You’ve reached **Level 4!** 🧩 Let’s see if you can keep decoding.
 

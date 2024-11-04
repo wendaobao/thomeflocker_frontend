@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelseven/
 ---
 
-# 🔐 **Cipher Challenge: Level 7**
+# 🔐 **Level 7: Grand-Master 🏅**
 
 You’ve made it to **Level 7!** 🧩 Now it’s time for a Vigenère Cipher, adding a new level of complexity.
 

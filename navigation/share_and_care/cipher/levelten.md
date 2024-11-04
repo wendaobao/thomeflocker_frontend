@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelten/
 ---
 
-# 🔐 **Cipher Challenge: Level 10**
+# 🔐 **Level 10: SIGMA 🌌**
 
 Welcome to the **final level—Level 10**! 🧩 This last challenge uses a **Substitution Cipher** to test your skill.
 

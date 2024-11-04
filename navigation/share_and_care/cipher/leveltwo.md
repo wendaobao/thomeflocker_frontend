@@ -4,7 +4,7 @@ title: Levelone
 search_exclude: true
 permalink: /leveltwo/
 ---
-# 🔐 **Cipher Challenge: Level 2**
+# 🔐 **Level 2: Novice 💻**
 
 Welcome to **Level** 2 of the Cipher Challenge! 🧩 This level tests your skills with a slightly tougher message. Decode it and advance!
 

@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /leveleight/
 ---
 
-# 🔐 **Cipher Challenge: Level 8**
+# 🔐 **Level 8: Alpha 👑**
 
 Welcome to **Level 8**! 🧩 This time, you’ll need to think backward with a **Reverse Cipher.**
 
