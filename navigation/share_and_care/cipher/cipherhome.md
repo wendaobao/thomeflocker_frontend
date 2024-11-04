@@ -55,7 +55,9 @@ permalink: /cipherhome/
 
 ---
 
-![Cipher Background](https://themepack.me/i/c/749x467/media/g/1555/bill-cipher-theme-gs2.jpg) 
+<div style="display: block; margin-left: auto; margin-right: auto;">
+    <img src="https://pngimg.com/uploads/anonymous_mask/small/anonymous_mask_PNG23.png" alt="Cipher Background" />
+</div>
 ### 🛠 Announcements 🛠
 <div style="background-color: #27293d; padding: 20px; border-radius: 8px; border: 2px solid #ffce00; color: #e0e0e0;">
 🔒 **Current Challenge**: Crack today’s cipher within the hour!  
