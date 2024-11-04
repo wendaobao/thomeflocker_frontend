@@ -7,6 +7,7 @@ description: Vote for your favorite critters here!
 Authors: Maryam, Nora, Kushi, Joanna
 ---
 
+
 <style>
 p, h2, h3, body {
  font-family: "Times New Roman", Times, serif;;
@@ -106,34 +107,65 @@ p, h2, h3, body {
 <img src="{{site.baseurl}}/images/calicocritters/voteheading.png" alt="Calico Critters Voting header">
 
 
-<h2>Moderator Rules for Calico Critters</h2>
-<h3>Rules are put in place to make this page a safe environment!</h3>
 
-<ul>
-    <li>
-        <h3>1. No cussing in the chats</h3>
-        <h4>We want this to be a safe and positive environment for all members!</h4>
-    </li>
-    <li>
-        <h3>2. Stay on topic, Calico Critters only!</h3>
-        <h4>This website is related to the critters, discussions should be only related to this subject!</h4>
-    </li>
-    <li>
-        <h3>3. You have to be part of the DNHS Calico Critters club to join</h3>
-        <h4>You cannot be a part of the page without having membership in the Del Norte High School club.</h4>
-    </li>
-    <li>
-        <h3>4. You must have valid reasoning for your votes</h3>
-        <h4>Do not vote for the critters without proper reasoning or just because the majority wants something, show your unique opinion.</h4>
-    </li>
-    <li>
-        <h3>5. Do not be toxic, negative, or attack others for their opinions.</h3>
-        <h4>This is a safe space that values all members' opinions. We have to keep this page safe and enjoyable for all members.</h4>
-    </li>
-</ul>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Rules</title>
+  <style>
+    /* Position dropdown in top right */
+    .dropdown {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      text-align: right;
+    }
+    /* Style summary */
+    summary {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      display: inline-block;
+      transition: text-shadow 0.3s ease;
+    }
+    summary:hover {
+      text-shadow: 0 0 8px #F5AAF5, 0 0 12px #F5AAF5;
+    }
+    /* Style for dropdown details */
+    details[open] p {
+      margin: 0;
+      padding: 8px;
+      background-color: #CC99CC;
+      border-radius: 10px;
+      border: 1px solid #F5AAF5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+       margin-bottom: 10px;
+    }
+    p {
+      margin: 0;
+    }
+     summary::before {
+      content: '✿'; /* Unicode for vertical ellipsis */
+    }
+  </style>
+</head>
+
+<body>
+    <h2>Moderator Rules for Calico Critters</h2>
+  <details>
+    <summary> Rules are put in place to make this page a safe environment!</summary>
+        <p>1. No cussing in the chats.</p>
+        <p>2. Stay on topic, Calico Critters only!</p>
+        <p>3. You have to be part of the DNHS Calico Critters club to join</p>
+        <p>4. You must have valid reasoning for your votes</p>
+        <p>5. Do not be toxic, negative, or attack others for their opinions.</p>
+  </details>
+
 
 <p class="header-text">Click on a critter below to vote!</p>
-</div>
 
 <div class="container">
 <div class="critter-container" onclick="selectCritter(this)" data-critter="Mizuki" data-house="Adventure Play">
@@ -157,7 +189,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Chiyo 1">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Syvanian Family Restraunt">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/chiyo.png">
     </div>
@@ -178,7 +210,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Emi" data-house="Sylvanian Families Restaurant">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Emi" data-house="Magical Mermaid Castle">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/emi.png">
     </div>
@@ -199,7 +231,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Nory" data-house="Spooky Surprise">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Nory" data-house="Woody School">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/nory.png">
     </div>
@@ -220,7 +252,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Rin 1">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Spooky Supprise Haunted">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/rin.png">
     </div>
@@ -241,7 +273,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Junko" data-house="Junko 1">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Junko" data-house="Brick Oven Bakery">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/junko.png">
     </div>
@@ -287,6 +319,7 @@ p, h2, h3, body {
     <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
     <button onclick="addComment();" class="comment-button">Submit</button>
     <div id="commentList" style="margin-top: 10px;"></div>
+    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
 </div>
 
 
@@ -386,6 +419,12 @@ function displayComments() {
         commentList.appendChild(commentItem);
     });
 }
+
+function clearComments() {
+    localStorage.removeItem('comments'); // Remove comments from local storage
+    displayComments(); // Refresh the comment display
+}
+
 
 // Display comments on page load
 window.onload = displayComments;

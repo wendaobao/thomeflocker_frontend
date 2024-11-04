@@ -16,9 +16,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const submitGuessButton = document.getElementById("submit-guess");
     const guessInput = document.getElementById("guess-input");
     const reasoningInput = document.getElementById("reasoning-input");
-    const feedbackDisplay = document.getElementById("feedback-display");
+    const guessFeedback = document.getElementById("guess-feedback");
+    const explanationFeedback = document.getElementById("explanation-feedback");
     const feedbackModal = document.getElementById("feedback-modal");
     const closeButton = document.querySelector(".close-button");
+
+    // Generate a random color for each feedback message
+    function getRandomColor() {
+        const colors = ['#ff6f61', '#6b5b95', '#88b04b', '#ffb6b9', '#92a8d1', '#034f84', '#f7cac9', '#f7786b', '#b565a7'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
 
     // Generate a random image on button click
     generateImageButton.addEventListener("click", function() {
@@ -26,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const selectedImage = imageList[randomIndex];
         zoomedImage.src = selectedImage;
         zoomedImage.alt = "Zoomed-in image for guessing";
-        feedbackDisplay.innerHTML = ""; // Clear previous feedback on new image generation
+        guessFeedback.innerHTML = ""; // Clear previous guess feedback on new image generation
+        explanationFeedback.innerHTML = ""; // Clear previous explanation feedback on new image generation
     });
 
     // Handle guess submission
@@ -40,12 +48,21 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Display the guess and reasoning
-        feedbackDisplay.innerHTML = `
-            <h3>Your Guess:</h3>
-            <p><strong>Guess:</strong> ${guess}</p>
-            <p><strong>Reasoning:</strong> ${reasoning}</p>
-        `;
+        // Generate a new feedback message element for guess
+        const guessMessage = document.createElement("div");
+        guessMessage.className = "feedback-message";
+        guessMessage.style.color = getRandomColor(); // Apply random color
+        guessMessage.innerHTML = `<p><strong>Guess:</strong> ${guess}</p>`;
+
+        // Generate a new feedback message element for explanation
+        const explanationMessage = document.createElement("div");
+        explanationMessage.className = "feedback-message";
+        explanationMessage.style.color = getRandomColor(); // Apply random color
+        explanationMessage.innerHTML = `<p><strong>Explanation:</strong> ${reasoning}</p>`;
+
+        // Append feedback messages to respective sections
+        guessFeedback.appendChild(guessMessage);
+        explanationFeedback.appendChild(explanationMessage);
 
         // Show confirmation modal
         feedbackModal.style.display = "block";
@@ -66,15 +83,4 @@ document.addEventListener("DOMContentLoaded", function() {
             feedbackModal.style.display = "none";
         }
     });
-
-    // Placeholder function to update the leaderboard
-    const leaderboard = document.getElementById("leaderboard");
-    function updateLeaderboard(name) {
-        const listItem = document.createElement("li");
-        listItem.textContent = name;
-        leaderboard.appendChild(listItem);
-    }
-
-    // Example of adding a name to leaderboard (for testing purposes)
-    // updateLeaderboard("Top Guesser #1");
 });
