@@ -39,7 +39,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
         display: flex;
         justify-content: space-between;
         padding: 20px;
-        height: calc(100vh - 60px); /* Full height minus navbar */
+        height: calc(100vh - 60px);
     }
     /* Added margin for each box */
     .leaderboard-box,
@@ -51,7 +51,6 @@ author: Aadi, Aaditya, Aditya, Kanhay
         border-radius: 10px;
         padding: 10px;
         height: 100%;
-        /* width: 15%; */
         overflow-y: scroll;
         box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     }
@@ -75,13 +74,23 @@ author: Aadi, Aaditya, Aditya, Kanhay
     .instabox p {
         margin: 10px 0;
     }
-    .instabox textarea {
+    .chatinput{
+        background-color: #121212;
+        resize: none;
         width: 100%;
-        height: 60px;
+        height: 85px;
         padding: 10px;
         border-radius: 5px;
         border: none;
         font-size: 16px;
+        overflow: hidden;
+        text-overflow: none;
+    }
+    #charCount {
+        bottom: 5px;
+        right: 10px;
+        font-size: 12px;
+        color: #aaa;
     }
     .leaderboard-box h2 {
         text-align: center;
@@ -128,7 +137,10 @@ author: Aadi, Aaditya, Aditya, Kanhay
                 <p><strong>Me:</strong> Nothing much, just studying for AP Chemistry.</p>
                 <p>You responded one hour and 23 minutes after the notification, with a bonus of -60 points, for a total of 63 points!</p>
             </div>
-            <textarea id="chatInput" placeholder="Type your message..."></textarea>
+            <br>
+            <div class="chatinput" id="chatinput" contenteditable="true"></div>
+            <br>
+            <span id="charCount">100</span>
         </div>
         <!-- Leaderboard box -->
         <div class="leaderboard-box">
@@ -147,17 +159,46 @@ author: Aadi, Aaditya, Aditya, Kanhay
         </div>
     </div>
     <script>
-        // Handle chat input submission
         const instabox = document.getElementById("instabox");
-        const chatInput = document.getElementById("chatInput");
-        chatInput.addEventListener("keypress", function (e) {
+        const chatInput = document.getElementById("chatinput");
+        // Limit input to 100 characters
+        chatInput.addEventListener("input", function () {
+            // Calculate remaining characters
+            const remainingChars = Math.max(100 - chatInput.textContent.length, 0);
+            charCount.textContent = remainingChars;
+            // Change the color if fewer than 10 characters remain
+            charCount.style.color = remainingChars < 10 ? "#ca3433" : "#aaa";
+            // Limit the text to 100 characters
+            if (chatInput.textContent.length > 100) {
+                chatInput.textContent = chatInput.textContent.substring(0, 100);
+                // Move the caret to the end of the text
+                const range = document.createRange();
+                const selection = window.getSelection();
+                range.selectNodeContents(chatInput);
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        });
+        chatInput.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
                 e.preventDefault();
-                const newMessage = document.createElement("p");
-                newMessage.innerHTML = `<strong>Me:</strong> ${chatInput.value}`;
-                instabox.appendChild(newMessage);
-                chatInput.value = "";
-                instabox.scrollTop = instabox.scrollHeight; // Scroll to the latest message
+                // Get the current text content of the chat input
+                const newMessage = chatInput.textContent.trim();
+                // Create a new paragraph element for the message
+                if (newMessage != "") {
+                    const messageElement = document.createElement("p");
+                    messageElement.innerHTML = `<strong>Me:</strong> ${newMessage}`;
+                    // Append the new message to the instabox
+                    instabox.appendChild(messageElement);
+                    // Clear the chat input
+                    chatInput.textContent = "";
+                    // Scroll to the latest message
+                    instabox.scrollTop = instabox.scrollHeight;
+                    // Reset character count to 100
+                    charCount.textContent = "100";
+                    charCount.style.color = "#aaa";
+                }
             }
         });
     </script>
