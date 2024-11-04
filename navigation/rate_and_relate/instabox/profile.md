@@ -53,12 +53,22 @@ author: Aadi, Aaditya, Aditya, Kanhay
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         text-align: center;
         margin-bottom: 20px;
+        position: relative;
+    }
+    .profile-card label {
+        position: relative;
+        display: inline-block;
     }
     .profile-card img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
         margin-bottom: 15px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    .profile-card img:hover {
+        filter: brightness(0.7);
     }
     .profile-card h2 {
         margin: 10px 0;
@@ -66,6 +76,9 @@ author: Aadi, Aaditya, Aditya, Kanhay
     }
     .profile-card p {
         margin: 5px 0;
+    }
+    .file-input {
+        display: none;
     }
     /* Profile stats */
     .stats-card {
@@ -108,7 +121,10 @@ author: Aadi, Aaditya, Aditya, Kanhay
     <div class="container">
         <!-- Profile card -->
         <div class="profile-card">
-            <img src="profile-picture.jpg" alt="Profile Picture">
+            <label for="file-upload">
+                <img id="profile-pic" src="{{site.baseurl}}/images/rate_and_relate/instabox/pfp_placeholder.jpg" alt="Profile Picture">
+            </label>
+            <input id="file-upload" type="file" class="file-input" accept="image/*" onchange="updateProfilePic(event)">
             <h2>Username</h2>
             <p>📍 Location: Hometown</p>
             <p>🌟 Status: "Always pushing the limits!"</p>
@@ -126,4 +142,26 @@ author: Aadi, Aaditya, Aditya, Kanhay
             </ul>
         </div>
     </div>
+    <script>
+        // Load the profile picture from localStorage if available
+        window.onload = function() {
+            const savedImage = localStorage.getItem("profilePicture");
+            if (savedImage) {
+                document.getElementById("profile-pic").src = savedImage;
+            }
+        };
+        function updateProfilePic(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update profile picture on the page
+                    document.getElementById('profile-pic').src = e.target.result;
+                    // Save the image to localStorage
+                    localStorage.setItem("profilePicture", e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
