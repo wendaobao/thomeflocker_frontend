@@ -87,6 +87,36 @@ Authors: Hannah, Rowan, Gaheera, Rhea
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        .comment-box button {
+            padding: 10px 20px;
+            font-size: 14px;
+            margin-left: 10px;
+            background-color: #6C63FF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .comment-box button:hover {
+            background-color: #554FD6;
+        }
+        .comments-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .comments-list li {
+            padding: 10px;
+            background-color: #FFC0CB; /* Black background */
+            color: #FFF; /* White text */
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .username {
+            font-weight: bold;
+            color: #FFDD57; /* Distinct color for usernames */
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
@@ -133,16 +163,6 @@ Authors: Hannah, Rowan, Gaheera, Rhea
     </div>
 
     <script>
-        const channelsMap = {
-            'Rock': ['Classic Rock', 'Alternative Rock', 'Hard Rock'],
-            'Pop': ['Top 40', 'Dance Pop', 'Indie Pop'],
-            'Hip-Hop': ['Old School', 'Trap', 'East Coast'],
-            'Jazz': ['Smooth Jazz', 'Bebop', 'Fusion'],
-            'Classical': ['Baroque', 'Romantic', 'Modern'],
-            'Electronic': ['House', 'Techno', 'Trance']
-        };
-
-        const commentsMap = {};
 
         function vote(genre) {
             alert(genre + " selected!");
