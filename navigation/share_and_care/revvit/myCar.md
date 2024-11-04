@@ -9,8 +9,8 @@ permalink: /share_and_care/revvit/mycar
 
 <html>
   <div class="card">
-    <h4><b>JOHN DOE</b></h4>
-    <img id="pfp" alt="Profile Picture" class="pfp">
+    <h4><b id="name">...</b></h4>
+    <img hidden id="pfp" alt="Profile Picture" class="pfp">
     <div class="container">
       <h5>MY RIDE</h5>
       <p>I will write more about my sick ride here! I will provide the MAKE, MODEL, and YEAR of my vehicle along with any other relavant information I would like to include!</p>
