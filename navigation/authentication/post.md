@@ -47,16 +47,29 @@ search_exclude: true
 
 <div class="container">
     <div class="form-container">
-        <h2>Add New Post</h2>
-        <form id="postForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="comment">comment:</label>
-            <textarea id="comment" name="comment" required></textarea>
+        <h2>Select Group and Channel</h2>
+        <form id="selectionForm">
+            <label for="group_id">Group:</label>
+            <select id="group_id" name="group_id" required>
+                <option value="">Select a group</option>
+            </select>
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
             </select>
+            <button type="submit">Select</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Add New Post</h2>
+        <form id="postForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
             <button type="submit">Add Post</button>
         </form>
     </div>
@@ -76,15 +89,43 @@ search_exclude: true
     // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-    // Fetch channels for dropdown selection
-    async function fetchChannels() {
+    // Fetch groups for dropdown selection
+    async function fetchGroups() {
         try {
-            const response = await fetch(`${pythonURI}/api/channels`, fetchOptions);
+            const response = await fetch(`${pythonURI}/api/groups/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch groups: ' + response.statusText);
+            }
+            const groups = await response.json();
+            const groupSelect = document.getElementById('group_id');
+            groups.forEach(group => {
+                const option = document.createElement('option');
+                option.value = group.id;
+                option.textContent = group.name;
+                groupSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching groups:', error);
+        }
+    }
+
+    // Fetch channels based on selected group
+    async function fetchChannels(groupId) {
+        try {
+            const response = await fetch(`${pythonURI}/api/channels/filter?group_id=${groupId}`, fetchOptions);
             if (!response.ok) {
                 throw new Error('Failed to fetch channels: ' + response.statusText);
             }
             const channels = await response.json();
             const channelSelect = document.getElementById('channel_id');
+            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
             channels.forEach(channel => {
                 const option = document.createElement('option');
                 option.value = channel.id;
@@ -96,21 +137,42 @@ search_exclude: true
         }
     }
 
-    // Handle form submission
+    // Handle group selection change
+    document.getElementById('group_id').addEventListener('change', function() {
+        const groupId = this.value;
+        if (groupId) {
+            fetchChannels(groupId);
+        } else {
+            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+        }
+    });
+
+    // Handle form submission for selection
+    document.getElementById('selectionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const groupId = document.getElementById('group_id').value;
+        const channelId = document.getElementById('channel_id').value;
+        if (groupId && channelId) {
+            fetchData(channelId);
+        } else {
+            alert('Please select both group and channel.');
+        }
+    });
+
+    // Handle form submission for adding a post
     document.getElementById('postForm').addEventListener('submit', async function(event) {
-        // Prevent default from submission
         event.preventDefault();
 
         // Extract data from form
         const title = document.getElementById('title').value;
         const comment = document.getElementById('comment').value;
-        const channel_id = document.getElementById('channel_id').value;
+        const channelId = document.getElementById('channel_id').value;
 
         // Create API payload
         const postData = {
             title: title,
             comment: comment,
-            channel_id: channel_id
+            channel_id: channelId
         };
 
         // Trap errors
@@ -129,11 +191,11 @@ search_exclude: true
                 throw new Error('Failed to add post: ' + response.statusText);
             }
 
-            // Succesfull post
+            // Successful post
             const result = await response.json();
             alert('Post added successfully!');
             document.getElementById('postForm').reset();
-            fetchData();
+            fetchData(channelId);
         } catch (error) {
             // Present alert on error from backend
             console.error('Error adding post:', error);
@@ -141,28 +203,18 @@ search_exclude: true
         }
     });
 
-    // URLs to fetch profile links, user data, and commits
-    const postApiUrl = `${pythonURI}/api/posts`;
-
-    async function fetchData() {
+    // Fetch posts based on selected channel
+    async function fetchData(channelId) {
         try {
-            // Define the fetch requests
-            const postApiRequest = fetch(postApiUrl, fetchOptions);
-
-            // Run all fetch requests concurrently
-            const [postApiResponse] = await Promise.all([
-                postApiRequest
-            ]);
-
-            // Check for errors in the responses
-            if (!postApiResponse.ok) {
-                throw new Error('Failed to fetch post API links: ' + postApiResponse.statusText);
+            const response = await fetch(`${pythonURI}/api/posts?channel_id=${channelId}`, fetchOptions);
+            if (!response.ok) {
+                throw new Error('Failed to fetch posts: ' + response.statusText);
             }
 
             // Parse the JSON data
-            const postData = await postApiResponse.json();
+            const postData = await response.json();
 
-            // Extract commits count
+            // Extract posts count
             const postCount = postData.length || 0;
 
             // Update the HTML elements with the data
@@ -170,6 +222,7 @@ search_exclude: true
 
             // Get the details div
             const detailsDiv = document.getElementById('details');
+            detailsDiv.innerHTML = ''; // Clear previous posts
 
             // Iterate over the postData and create HTML elements for each item
             postData.forEach(postItem => {
@@ -189,7 +242,6 @@ search_exclude: true
         }
     }
 
-    // Fetch when the page loads
-    fetchChannels();
-    fetchData();
+    // Fetch groups when the page loads
+    fetchGroups();
 </script>
