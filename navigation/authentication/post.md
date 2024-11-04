@@ -107,7 +107,7 @@ search_exclude: true
             const groupSelect = document.getElementById('group_id');
             groups.forEach(group => {
                 const option = document.createElement('option');
-                option.value = group.id;
+                option.value = group.name; // Use group name for payload
                 option.textContent = group.name;
                 groupSelect.appendChild(option);
             });
@@ -117,9 +117,16 @@ search_exclude: true
     }
 
     // Fetch channels based on selected group
-    async function fetchChannels(groupId) {
+    async function fetchChannels(groupName) {
         try {
-            const response = await fetch(`${pythonURI}/api/channels/filter?group_id=${groupId}`, fetchOptions);
+            const response = await fetch(`${pythonURI}/api/channels/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ group_name: groupName })
+            });
             if (!response.ok) {
                 throw new Error('Failed to fetch channels: ' + response.statusText);
             }
@@ -139,9 +146,9 @@ search_exclude: true
 
     // Handle group selection change
     document.getElementById('group_id').addEventListener('change', function() {
-        const groupId = this.value;
-        if (groupId) {
-            fetchChannels(groupId);
+        const groupName = this.value;
+        if (groupName) {
+            fetchChannels(groupName);
         } else {
             document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
         }
