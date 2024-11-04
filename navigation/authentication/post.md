@@ -213,7 +213,14 @@ search_exclude: true
     // Fetch posts based on selected channel
     async function fetchData(channelId) {
         try {
-            const response = await fetch(`${pythonURI}/api/posts?channel_id=${channelId}`, fetchOptions);
+            const response = await fetch(`${pythonURI}/api/posts/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ channel_id: channelId })
+            });
             if (!response.ok) {
                 throw new Error('Failed to fetch posts: ' + response.statusText);
             }
