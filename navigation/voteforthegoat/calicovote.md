@@ -410,6 +410,68 @@ function clearComments() {
     displayComments(); // Refresh the comment display
 }
 
+function selectCritter(element) {
+    const critters = document.querySelectorAll('.critter-container');
+    critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
+
+    element.classList.add('selected'); // Highlight the selected critter
+    selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
+    selectedHouse = element.getAttribute('data-house'); // Store corresponding house
+
+    // Remove the previous "Enter House" button if it exists
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
+}
+
+function confirmChoice() {
+    const messageBox = document.getElementById('messageBox');
+    const imageBox = document.getElementById('imageBox');
+    const houseImage = document.getElementById('houseImage'); // Get image element
+
+    if (!selectedCritter || !selectedHouse) {
+        alert("Please select a critter before confirming!"); // Alert if nothing is selected
+        return;
+    }
+
+    // Set the message
+    const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
+    messageBox.innerHTML = message; // Display the message
+    messageBox.style.display = "block"; // Make the message visible
+
+    // Use template literals to construct the image source
+    const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
+    const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
+    houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
+
+    imageBox.style.display = "block"; // Show the image box
+
+    // Optional: Display the comment section after confirmation
+    document.getElementById("commentSection").style.display = "block";
+
+    // Remove any existing "Enter House" button before creating a new one
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
+
+    // Add the dynamic button for entering the house
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    buttonContainer.id = 'houseButtonContainer';
+    const enterHouseButton = document.createElement('button');
+    enterHouseButton.classList.add('button-text');
+    enterHouseButton.textContent = `Enter ${selectedHouse} House`;
+    enterHouseButton.onclick = function() {
+        window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
+    };
+
+    buttonContainer.appendChild(enterHouseButton);
+    document.getElementById('imageBox').appendChild(buttonContainer);
+}
+
+
 
 // Display comments on page load
 window.onload = displayComments;
