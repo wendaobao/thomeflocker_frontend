@@ -52,3 +52,8 @@ menu: nav/create_and_compete.html
     Step into a space where your wildest ideas come to life and face the ultimate test—can they stand up to the challenge? Our **Elevator Pitch** platform invites participants to create and compete by writing pitches for innovative ideas, whether it's an invention, a story, an app, or a business venture. With random prompts to spark creativity, users are pushed to think outside the box. Once ideas are pitched, the game heats up: others can question, critique, and help evolve each concept, fostering both competition and collaboration. This platform isn't just about winning—it's about growing through feedback and transforming initial sparks into something extraordinary. <a href="{{site.baseurl}}/create_and_compete/elevatorpitch">Our page!</a>
 </div>
 
+<div class="group-theme">
+    **Zoom in Guess?!!?!** 
+    The **Zoom in Guess** is all about testing your attention to detail and having fun with friends. In this game, you look at a super close-up photo and try to guess who or what it is based on the small details you can see. Players can make their guesses, explain why they think they’re right, and submit their answers. You can also share your own zoomed-in images for others to guess and rate how tricky each image is. With the "guess and explain" theme, players can see what others guessed, react to answers, and share their thoughts, making it a fun space for friendly competition and conversation. <a href="{{site.baseurl}}/create_and_compete/zoominguess">Our page!</a>
+</div>
+
