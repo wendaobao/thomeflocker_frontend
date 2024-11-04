@@ -19,6 +19,7 @@ permalink: /rateandrelate/update_the_nest/
 }
 
 .textContainer {
+    text-align: left;
     transform: translateY(20px)
 }
 
