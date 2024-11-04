@@ -97,7 +97,7 @@ author: Alex, Arshia, Prajna, and Mirabelle
         <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
         <button style="background-color: #3a63e8!important;  display:inline-block" onclick="changeColor('#3a63e8')">Blue</button>
         <button style="background-color: #3c7d2c!important;  display:inline-block" onclick="changeColor('#3c7d2c')">Green</button>
-        <button style="background-color: #992222!important;  display:inline-block" onclick="changeColor('#992222')">Red</button>
+        <button style="background-color: #452b2b!important;  display:inline-block" onclick="changeColor('#452b2b')">Brown</button>
         <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
 </div>
 
