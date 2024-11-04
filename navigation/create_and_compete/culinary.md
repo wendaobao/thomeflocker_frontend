@@ -1001,3 +1001,5 @@ const randomIngredients = [];
 <a href="http://127.0.0.1:4887/flocker_frontend/create_and_compete/culinaryposts">
   <button class="culinary-posts-btn">Culinary Posts</button>
 </a>
+
+
