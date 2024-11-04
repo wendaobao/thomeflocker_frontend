@@ -32,7 +32,7 @@ author: Alex, Arshia, Prajna, and Mirabelle
             width: 100%;
         }
         .photo-container {
-            background: white;
+            background: purple;
             margin: 10px;
             padding: 10px;
             border-radius: 5px;
