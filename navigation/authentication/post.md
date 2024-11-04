@@ -44,6 +44,7 @@ search_exclude: true
         cursor: pointer;
     }
 </style>
+
 <div class="container">
     <div class="form-container">
         <h2>Add New Post</h2>
@@ -58,6 +59,16 @@ search_exclude: true
             </select>
             <button type="submit">Add Post</button>
         </form>
+    </div>
+</div>
+
+<div class="container">
+    <div id="data" class="data">
+        <div class="left-side">
+            <p id="count"></p>
+        </div>
+        <div class="details" id="details">
+        </div>
     </div>
 </div>
 
@@ -92,7 +103,7 @@ search_exclude: true
 
         // Extract data from form
         const title = document.getElementById('title').value;
-        const comment = document.getElementById('cchannelontent').value;
+        const comment = document.getElementById('comment').value;
         const channel_id = document.getElementById('channel_id').value;
 
         // Create API payload
@@ -122,6 +133,7 @@ search_exclude: true
             const result = await response.json();
             alert('Post added successfully!');
             document.getElementById('postForm').reset();
+            fetchData();
         } catch (error) {
             // Present alert on error from backend
             console.error('Error adding post:', error);
@@ -129,6 +141,55 @@ search_exclude: true
         }
     });
 
-    // Fetch channels when the page loads
+    // URLs to fetch profile links, user data, and commits
+    const postApiUrl = `${pythonURI}/api/posts`;
+
+    async function fetchData() {
+        try {
+            // Define the fetch requests
+            const postApiRequest = fetch(postApiUrl, fetchOptions);
+
+            // Run all fetch requests concurrently
+            const [postApiResponse] = await Promise.all([
+                postApiRequest
+            ]);
+
+            // Check for errors in the responses
+            if (!postApiResponse.ok) {
+                throw new Error('Failed to fetch post API links: ' + postApiResponse.statusText);
+            }
+
+            // Parse the JSON data
+            const postData = await postApiResponse.json();
+
+            // Extract commits count
+            const postCount = postData.length || 0;
+
+            // Update the HTML elements with the data
+            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+
+            // Get the details div
+            const detailsDiv = document.getElementById('details');
+
+            // Iterate over the postData and create HTML elements for each item
+            postData.forEach(postItem => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <h3>${postItem.title}</h3>
+                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
+                    <p><strong>User:</strong> ${postItem.user_name}</p>
+                    <p>${postItem.comment}</p>
+                `;
+                detailsDiv.appendChild(postElement);
+            });
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    // Fetch when the page loads
     fetchChannels();
+    fetchData();
 </script>
