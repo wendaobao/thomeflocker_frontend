@@ -16,7 +16,7 @@ p, h2, h3, body {
     font-size: 40px;
     text-align: center;
 }
-.container {
+.container2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -152,7 +152,7 @@ p {
 
 <p class="header-text">Click on a critter below to vote!</p>
 
-<div class="container">
+<div class="container2">
 <div class="critter-container" onclick="selectCritter(this)" data-critter="Mizuki" data-house="Adventure Play">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/mizuki.png">
@@ -281,7 +281,7 @@ p {
 </div>
 <br>
 
-<div class="container" style="justify-content:center;">
+<div class="container2" style="justify-content:center;">
     <div class="button-container">
         <button id="confirmButton" class="button-text" onclick="confirmChoice();">Confirm</button>
     </div>
