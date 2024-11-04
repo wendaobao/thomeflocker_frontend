@@ -82,7 +82,7 @@ author: Daksha, Zach, Alex, Darsh
 
 <script>
     const recipes = [
-  {
+    {
         name: "Chicken Stir Fry",
         ingredients: ["Chicken", "Broccoli", "Carrots", "Soy Sauce", "Garlic"],
         description: "A quick stir fry with chicken and fresh vegetables.",
@@ -783,7 +783,7 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Chop veggies. 2. Toss with oil and herbs. 3. Roast until tender."
     },
   
-];
+    ];
 
 
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
