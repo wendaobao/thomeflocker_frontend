@@ -74,11 +74,47 @@ author: Aadi, Aaditya, Aditya, Kanhay
         margin: 10px 0;
         color: #6a59a3;
     }
-    .profile-card p {
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+    .info-item {
+        display: flex;
+        align-items: center;
         margin: 5px 0;
+    }
+    .info-item label {
+        font-weight: bold;
+        margin-right: 10px;
+        min-width: 80px; /* Ensures labels are aligned */
+        text-align: right;
+    }
+    .info-item .hometown, .info-item .status {
+        background-color: #121212;
+        resize: none;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        color: white;
     }
     .file-input {
         display: none;
+    }
+    .hometown, .status {
+        background-color: #121212;
+        resize: none;
+        width: calc(100% - 10px); /* Adjusted width */
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        margin-left: 10px; /* Slight offset to center */
     }
     /* Profile stats */
     .stats-card {
@@ -126,8 +162,16 @@ author: Aadi, Aaditya, Aditya, Kanhay
             </label>
             <input id="file-upload" type="file" class="file-input" accept="image/*" onchange="updateProfilePic(event)">
             <h2 id="username">Username</h2>
-            <p>📍 Location: Hometown</p>
-            <p>🌟 Status: "Always pushing the limits!"</p>
+            <div class="info">
+                <div class="info-item">
+                    <label for="hometown">Hometown:</label>
+                    <span id="hometown" class="hometown" contenteditable="true" onkeydown="checkEnter(event)">🌍 Earth</span>
+                </div>
+                <div class="info-item">
+                    <label for="status">Status:</label>
+                    <span id="status" class="status" contenteditable="true" onkeydown="checkEnter(event)">👋 Hello! I am using Instabox.</span>
+                </div>
+            </div>
         </div>
         <!-- Stats card -->
         <div class="stats-card">
@@ -153,19 +197,42 @@ author: Aadi, Aaditya, Aditya, Kanhay
             if (username) {
                 document.getElementById("username").innerText = username;
             }
+            const hometown = localStorage.getItem("hometown");
+            if (hometown) {
+                document.getElementById("hometown").textContent = hometown;
+            }
+            const status = localStorage.getItem("status");
+            if (status) {
+                document.getElementById("status").textContent = status;
+            }
         };
         function updateProfilePic(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // Update profile picture on the page
                     document.getElementById('profile-pic').src = e.target.result;
-                    // Save the image to localStorage
                     localStorage.setItem("profilePicture", e.target.result);
                 };
                 reader.readAsDataURL(file);
             }
+        }
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent adding a new line
+                const statusElement = event.target;
+                statusElement.blur(); // Unfocus the element
+                onHometownUpdate();
+                onStatusUpdate();
+            }
+        }
+        function onHometownUpdate() {
+            const hometownValue = document.getElementById("hometown").textContent;
+            localStorage.setItem("hometown", hometownValue);
+        }
+        function onStatusUpdate() {
+            const statusValue = document.getElementById("status").textContent;
+            localStorage.setItem("status", statusValue);
         }
     </script>
 </body>
