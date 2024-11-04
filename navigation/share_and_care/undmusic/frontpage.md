@@ -5,251 +5,185 @@ description: Share music with others!
 permalink: /undgdmusic/
 ---
 
-<table>
-    <tr>
-        <td><a href="{{site.baseurl}}/undgdmusic/moderation">Moderation</a></td>  
-    </tr>
-</table>
-
-  <title>Underground Rapper Chatroom</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #1b1b1b;
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: #2a2a2a;
-      width: 100%;
-      border-bottom: 4px solid #f2b600;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      color: #f2b600;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #aaa;
-    }
-    main {
-      display: flex;
-      gap: 20px;
-      max-width: 1000px;
-      width: 90%;
-      margin-top: 20px;
-    }
-    #chatroom, #artist-discovery {
-      padding: 15px;
-      border: 2px solid #f2b600;
-      border-radius: 8px;
-      width: 100%;
-      background-color: #2a2a2a;
-    }
-    #chatroom {
-      flex: 2;
-    }
-    #artist-discovery {
-      flex: 1;
-    }
-    #messages {
-      background-color: #333;
-      padding: 10px;
-      border-radius: 8px;
-      max-height: 400px;
-      overflow-y: auto;
-      margin-bottom: 10px;
-    }
-    #messages p {
-      margin-bottom: 8px;
-      padding: 5px;
-      border-radius: 4px;
-      background-color: #444;
-      color: #fff;
-      font-size: 0.9rem;
-    }
-    #messages p .username {
-      font-weight: bold;
-      color: #f2b600;
-    }
-    #messages p .timestamp {
-      font-size: 0.8rem;
-      color: #bbb;
-      float: right;
-    }
-    #chat-form {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    #chat-form input[type="text"] {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 4px;
-      background-color: #444;
-      color: #f0f0f0;
-      font-size: 1rem;
-    }
-    #chat-form button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      background-color: #f2b600;
-      color: #1b1b1b;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    #clear-chat {
-      padding: 8px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 4px;
-      background-color: #f44336;
-      color: #fff;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    #char-count {
-      font-size: 0.8rem;
-      color: #888;
-      margin-left: 10px;
-    }
-    #artist-discovery h2 {
-      margin-bottom: 10px;
-      color: #f2b600;
-    }
-    #artist-discovery ul {
-      list-style: none;
-      margin-top: 10px;
-    }
-    #artist-discovery li {
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-    #artist-discovery a {
-      color: #f2b600;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    #artist-discovery a:hover {
-      color: #fff;
-    }
-    #artist-discovery .artist-info {
-      font-size: 0.85rem;
-      color: #aaa;
-    }
-    footer {
-      margin-top: 20px;
-      text-align: center;
-      padding: 15px;
-      background-color: #2a2a2a;
-      width: 100%;
-    }
-    footer p {
-      font-size: 0.9rem;
-      color: #888;
-    }
-    footer a {
-      color: #f2b600;
-      text-decoration: none;
-    }
-    /* Scrollbar Styling */
-    #messages::-webkit-scrollbar {
-      width: 8px;
-    }
-    #messages::-webkit-scrollbar-thumb {
-      background-color: #555;
-      border-radius: 4px;
-    }
-  </style>
-<body>
-  <header>
-    <h1>Underground Rapper Chatroom</h1>
-    <p>Connect and discuss your favorite underground artists with fewer than 1 million monthly listeners.</p>
-  </header>
-
-  <main>
-    <section id="chatroom">
-      <h2>Live Chat</h2>
-      <div id="messages">
-        <!-- Messages will appear here -->
-        <p><span class="username">User123</span>: Love the new drop from Artist A! <span class="timestamp">[10:24 PM]</span></p>
-        <p><span class="username">HipHopFan42</span>: Totally, their flow has improved so much! <span class="timestamp">[10:25 PM]</span></p>
-      </div>
-      <form id="chat-form">
-        <input type="text" id="username" placeholder="Your Name" required>
-        <input type="text" id="message" placeholder="Type a message..." maxlength="200" required>
-        <button type="submit">Send</button>
-        <span id="char-count">0/200</span>
-      </form>
-      <button id="clear-chat">Clear Chat</button>
-    </section>
-    <section id="artist-discovery">
-      <section id="artist-discovery">
-  <h2>Discover Artists</h2>
-  <ul>
-    <li><a href="https://open.spotify.com/artist/0C8Z52x2g4Tc0cQjC8yT1h" target="_blank">Drake</a><br><span class="artist-info">Top Song: "God's Plan" | Monthly Listeners: 66M</span></li>
-    <li><a href="https://open.spotify.com/artist/06HL4z0CxNuxWcW1wC0YwW" target="_blank">Ariana Grande</a><br><span class="artist-info">Top Song: "7 rings" | Monthly Listeners: 57M</span></li>
-    <li><a href="https://open.spotify.com/artist/3t8h03t8p28l2St1s3TtZZ" target="_blank">The Weeknd</a><br><span class="artist-info">Top Song: "Blinding Lights" | Monthly Listeners: 92M</span></li>
-    <li><a href="https://open.spotify.com/artist/6jJ0s89zZK8Z9j9D5m37n1" target="_blank">Billie Eilish</a><br><span class="artist-info">Top Song: "bad guy" | Monthly Listeners: 61M</span></li>
-    <li><a href="https://open.spotify.com/artist/0EmeKx5U1Jcdk0aKZ2rVna" target="_blank">Post Malone</a><br><span class="artist-info">Top Song: "Circles" | Monthly Listeners: 64M</span></li>
-  </ul>
-</section>
-  <footer>
-    <p>&copy; 2024 Underground Rapper Chatroom | <a href="#">Privacy Policy</a></p>
-  </footer>
-
-  <script>
-    // Scroll to the latest message
-    function scrollToLatestMessage() {
-      const messages = document.getElementById('messages');
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    // Add a new message to the chat
-    document.getElementById('chat-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const usernameInput = document.getElementById('username');
-      const messageInput = document.getElementById('message');
-      const timestamp = new Date().toLocaleTimeString();
-
-      const messageElement = document.createElement('p');
-      messageElement.innerHTML = `<span class="username">${usernameInput.value}</span>: ${messageInput.value} <span class="timestamp">[${timestamp}]</span>`;
-      document.getElementById('messages').appendChild(messageElement);
-
-      // Auto-scroll to the latest message
-      scrollToLatestMessage();
-
-      // Clear message input and update character count
-      messageInput.value = '';
-      document.getElementById('char-count').textContent = '0/200';
-    });
-
-    // Character counter for message input
-    document.getElementById('message').addEventListener('input', function() {
-      const charCount = this.value.length;
-      document.getElementById('char-count').textContent = `${charCount}/200`;
-    });
-
-    // Clear chat history
-    document.getElementById('clear-chat').addEventListener('click', function() {
-      document.getElementById('messages').innerHTML = '';
-    });
-  </script>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underground Rapper Chatroom</title>
+    <style>
+        /* General Styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: #181818; color: #e0e0e0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        header { padding: 20px; width: 100%; background-color: #1f1f1f; text-align: center; border-bottom: 3px solid #f2b600; }
+        header h1 { font-size: 2.5rem; color: #f2b600; margin-bottom: 5px; }
+        header p { color: #888; font-size: 1rem; }
+        #navbar { width: 100%; background-color: #1f1f1f; padding: 15px; display: flex; justify-content: space-around; border-bottom: 1px solid #333; }
+        #navbar a { color: #f2b600; text-decoration: none; font-size: 1.1rem; cursor: pointer; }
+        #navbar a:hover { color: #ffffff; }
+        .content-section { display: none; max-width: 1000px; width: 90%; padding: 20px; background-color: #2b2b2b; border-radius: 8px; margin-top: 20px; }
+        #chatroom, #artist-discovery, #now-playing { display: none; }
+        #messages { background-color: #333; padding: 10px; border-radius: 8px; max-height: 400px; overflow-y: auto; margin-bottom: 10px; }
+        footer { padding: 20px; background-color: #1f1f1f; text-align: center; color: #888; width: 100%; font-size: 0.9rem; }
+        
+        /* Chat Message Styling */
+        #messages p {
+            position: relative;
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #f2b600;
+            border-radius: 8px;
+            background-color: #444;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+        }
+        #messages p .timestamp {
+            position: absolute;
+            right: -70px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* Artist Name Styling with Hover Effect */
+        #artist-list li {
+            color: #f2b600; /* Base color for readability */
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 0px 0px 5px rgba(242, 182, 0, 0.6);
+            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.2s, text-shadow 0.2s, color 0.2s;
+            opacity: 0.9;
+        }
+        #artist-list li:hover {
+            color: #f2b600;
+            text-shadow: 1px 1px 2px rgba(242, 182, 0, 1); /* Clearer, sharper look on hover */
+            transform: scale(1.03);
+            opacity: 1;
+        }
+
+        /* "Now Playing" and Skip Button Styling */
+        #now-playing p, #search-artist {
+            color: #f2b600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        #skip-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f2b600;
+            color: #1b1b1b;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Underground Rapper Chatroom</h1>
+    <p>Connect, share, and discover new artists with the community.</p>
+</header>
+
+<nav id="navbar">
+    <a onclick="showSection('chatroom')">Chatroom</a>
+    <a onclick="showSection('artist-discovery')">Discover Artists</a>
+    <a onclick="showSection('now-playing')">Now Playing</a>
+</nav>
+
+<div id="chatroom" class="content-section">
+    <h2>Live Chat</h2>
+    <div id="messages">
+        <p><span class="username">RapFan101</span>: Love how supportive this community is!<span class="timestamp">[12:03 PM]</span></p>
+        <p><span class="username">UndergroundKing</span>: Have y'all heard the latest drop by Saba? Insane vibes!<span class="timestamp">[12:04 PM]</span></p>
+        <p><span class="username">LyricLover88</span>: I'm always finding new artists here. Thanks, everyone!<span class="timestamp">[12:05 PM]</span></p>
+        <p><span class="username">BeatMaster</span>: MAVI's new track is fire. Perfect to start the day.<span class="timestamp">[12:06 PM]</span></p>
+        <p><span class="username">FlowRider</span>: Can’t believe how many hidden gems are out there.<span class="timestamp">[12:07 PM]</span></p>
+    </div>
+    <form id="chat-form">
+        <input type="text" id="username" placeholder="Your Name" required>
+        <input type="text" id="message" placeholder="Type a message..." maxlength="200" required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<div id="artist-discovery" class="content-section">
+    <h2>Discover Artists</h2>
+    <form id="artist-form">
+        <input type="text" id="search-artist" placeholder="Search for niche artists..." oninput="filterArtists()">
+    </form>
+    <ul id="artist-list">
+        <!-- Hardcoded list of rap niche artists -->
+        <li data-name="JPEGMAFIA">JPEGMAFIA - Top Song: "Baby I'm Bleeding" | 950k listeners</li>
+        <li data-name="Saba">Saba - Top Song: "Busy / Sirens" | 750k listeners</li>
+        <li data-name="MAVI">MAVI - Top Song: "Sense" | 300k listeners</li>
+        <li data-name="Yves Tumor">Yves Tumor - Top Song: "Gospel for a New Century" | 500k listeners</li>
+        <li data-name="Mick Jenkins">Mick Jenkins - Top Song: "Jazz" | 700k listeners</li>
+    </ul>
+</div>
+
+<div id="now-playing" class="content-section">
+    <h2>Now Playing</h2>
+    <p id="now-playing-song">Currently playing: "Baby I'm Bleeding" by JPEGMAFIA</p>
+    <audio id="audio-player" controls>
+        <source id="audio-source" src="https://example.com/sample-audio-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="skip-button" onclick="nextSong()">Skip</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 Underground Rapper Chatroom | Privacy Policy</p>
+</footer>
+
+<script>
+    // Show the selected section and hide others
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => section.style.display = 'none');
+        document.getElementById(sectionId).style.display = 'block';
+    }
+    
+    // Show chatroom by default
+    showSection('chatroom');
+
+    // Filter artist list based on search input
+    function filterArtists() {
+        const searchQuery = document.getElementById('search-artist').value.toLowerCase();
+        const artistList = document.getElementById('artist-list').querySelectorAll('li');
+        
+        artistList.forEach(artist => {
+            const artistName = artist.getAttribute('data-name').toLowerCase();
+            if (artistName.includes(searchQuery)) {
+                artist.style.display = '';
+            } else {
+                artist.style.display = 'none';
+            }
+        });
+    }
+
+    // Array of underground rap songs with URLs (replace with real URLs)
+    const songs = [
+        { name: "JPEGMAFIA", song: "Baby I'm Bleeding", audio: "https://example.com/sample-audio-1.mp3" },
+        { name: "Saba", song: "Busy / Sirens", audio: "https://example.com/sample-audio-2.mp3" },
+        { name: "MAVI", song: "Sense", audio: "https://example.com/sample-audio-3.mp3" },
+        { name: "Yves Tumor", song: "Gospel for a New Century", audio: "https://example.com/sample-audio-4.mp3" },
+        { name: "Mick Jenkins", song: "Jazz", audio: "https://example.com/sample-audio-5.mp3" }
+    ];
+    let currentIndex = 0;
+
+    function nextSong() {
+        currentIndex = (currentIndex + 1) % songs.length;
+        const song = songs[currentIndex];
+        document.getElementById('now-playing-song').innerText = `Currently playing: "${song.song}" by ${song.name}`;
+        document.getElementById('audio-source').src = song.audio;
+        const audioPlayer = document.getElementById('audio-player');
+        audioPlayer.load();
+        audioPlayer.play();
+    }
+</script>
+</body>
+</html>
