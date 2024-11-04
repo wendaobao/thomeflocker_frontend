@@ -5,7 +5,7 @@ search_exclude: true
 permalink: /levelten/
 ---
 
-# 🔐 **Cipher Challenge: Level 1**
+# 🔐 **Cipher Challenge: Level 10**
 
 Welcome to the **final level—Level 10**! 🧩 This last challenge uses a **Substitution Cipher** to test your skill.
 
