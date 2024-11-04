@@ -9,43 +9,54 @@ author: Yash, Nikhil, Rohan, Neil
 TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/realityroom)
 
 <div class="sidebar">
-    <a href="/create_and_compete/realityroom-home" class="sidebar-btn">🏠 Home</a>
+    <a href="/Users/neilchandra/nighthawk/flocker_frontend/navigation/create_and_compete/reality-room-home.md" class="sidebar-btn">🏠 Home</a>
     <a href="/about" class="sidebar-btn">❓ About</a>
     <a href="/terms" class="sidebar-btn">📄 Terms</a>
 </div>
 
 <div class="user-list">
     <h3>Users</h3>
-    <div class="user">
-        <span>Bumerila (You)</span>
-        <p>My dad is Bezos the founder of Amazon.</p>
-    </div>
-    <div class="user">
-        <span>Bumerila</span>
-        <p>My dad is Bezos the founder of Amazon.</p>
-    </div>
-    <div class="user">
-        <span>Bumerila</span>
-        <p>My dad is Bezos the founder of Amazon.</p>
-    </div>
-    <div class="user">
-        <span>Bumerila</span>
-        <p>My dad is Bezos the founder of Amazon.</p>
-    </div>
-    <div class="user">
-        <span>Bumerila</span>
-        <p>My dad is Bezos the founder of Amazon.</p>
-    </div>
+    <table>
+        <tr>
+            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
+            <td>
+                <span class="user-name">Bumerila (You)</span><br>
+                <p>My dad is Bezos the founder of Amazon.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
+            <td>
+                <span class="user-name">Bumerila</span><br>
+                <p>My dad is Bezos the founder of Amazon.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
+            <td>
+                <span class="user-name">Bumerila</span><br>
+                <p>My dad is Bezos the founder of Amazon.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
+            <td>
+                <span class="user-name">Bumerila</span><br>
+                <p>My dad is Bezos the founder of Amazon.</p>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <div class="form-container">
-    <h2>Add New Post</h2>
     <form id="postForm">
-        <label for="title" class="label">Title:</label> <br>
-        <input type="text" id="title" name="title" placeholder="Enter Title Here" required> <br>
-        <label for="content" class="label">Content:</label>
+        <div class="form-inputs">
+            <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
+            <input type="file" id="fileInput" name="fileInput" style="display: none;">
+            <button type="button" onclick="document.getElementById('fileInput').click()" class="file-button">➕</button>
+        </div>
         <textarea id="content" name="content" placeholder="Post Here" required></textarea>
-        <button type="submit">Add Post</button>
+        <button type="submit">Post</button>
     </form>
 </div>
 
@@ -59,7 +70,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         left: 0;
         width: 150px;
         height: 100%;
-        background-color: #333;
+        background-color: #222;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -68,7 +79,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
     }
 
     .sidebar-btn {
-        background-color: gray;
+        background-color: #333;
         color: white;
         border: none;
         margin: 10px 0;
@@ -94,18 +105,26 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         color: black;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
     }
 
     .user-list h3 {
         margin-top: 0;
+        font-weight: bold;
     }
 
-    .user {
-        margin-bottom: 20px;
+    .user-list table {
+        width: 100%;
+        border-collapse: collapse;
     }
 
-    .user span {
+    .user-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .user-name {
         font-weight: bold;
     }
 
@@ -116,31 +135,62 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         padding: 20px;
         background-color: #f4f4f4;
         border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        width: 500px;
+        width: calc(100% - 440px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         font-family: Arial, sans-serif;
     }
 
-    #title, #content {
-        width: 100%;
-        padding: 10px;
+    .form-inputs {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    #title {
+        flex: 1;
+        padding: 12px;
         border-radius: 8px;
         border: 1px solid #ddd;
-        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .file-button {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #content {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        margin-top: 10px;
+        resize: none;
+        height: 100px;
     }
 
     button[type="submit"] {
-        align-self: flex-end;
+        align-self: flex-start;
+        padding: 10px 20px;
         background-color: #1da1f2;
-        color: #ffffff;
+        color: white;
         border: none;
-        border-radius: 20px;
-        padding: 8px 16px;
-        font-size: 14px;
+        border-radius: 8px;
+        font-size: 16px;
         font-weight: bold;
         cursor: pointer;
+        margin-top: 10px;
         transition: background-color 0.2s ease;
     }
 
@@ -148,16 +198,12 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         background-color: #1a91da;
     }
 
-    h2, .label {
-        color: #ff4d4d !important;
-    }
-
     /* Posts Container */
     #posts {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 10px;
+        gap: 20px;
         margin-left: 170px;
         margin-right: 270px;
         padding-top: 20px;
@@ -170,19 +216,17 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         background-color: #ffffff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
-        text-align: center;
-        margin: 10px;
-        vertical-align: top;
+        text-align: left;
     }
 
     .card-title {
-        font-size: 1.5em;
-        margin: 0;
+        font-size: 1.2em;
+        font-weight: bold;
         color: #333;
     }
 
     .card-description {
-        color: #666;
+        color: #555;
         font-size: 1em;
         margin-top: 10px;
     }
@@ -191,7 +235,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         background-color: #ff4d4d;
         color: white;
         border: none;
-        padding: 8px 16px;
+        padding: 8px 12px;
         border-radius: 4px;
         cursor: pointer;
         font-size: 0.9em;
@@ -218,7 +262,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
         try {
             const response = await fetch(`${pythonURI}/api/post`, fetchOptions);
             if (!response.ok) {
-                throw new Error('Failed to fetch groups: ' + response.statusText);
+                throw new Error('Failed to fetch posts: ' + response.statusText);
             }
             const posts = await response.json();
             container.innerHTML = "";
@@ -256,7 +300,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
                 container.appendChild(card);
             });
         } catch (error) {
-            console.error('Error fetching groups:', error);
+            console.error('Error fetching posts:', error);
         }
     }
 
