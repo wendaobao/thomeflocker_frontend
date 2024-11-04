@@ -5,7 +5,6 @@ description: Share music with others!
 permalink: /undgdmusic/
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +24,6 @@ permalink: /undgdmusic/
         #chatroom, #artist-discovery, #now-playing { display: none; }
         #messages { background-color: #333; padding: 10px; border-radius: 8px; max-height: 400px; overflow-y: auto; margin-bottom: 10px; }
         footer { padding: 20px; background-color: #1f1f1f; text-align: center; color: #888; width: 100%; font-size: 0.9rem; }
-        
         /* Chat Message Styling */
         #messages p {
             position: relative;
@@ -45,7 +43,6 @@ permalink: /undgdmusic/
             font-size: 0.8rem;
             color: #aaa;
         }
-
         /* Artist Name Styling with Hover Effect */
         #artist-list li {
             color: #f2b600; /* Base color for readability */
@@ -63,7 +60,6 @@ permalink: /undgdmusic/
             transform: scale(1.03);
             opacity: 1;
         }
-
         /* "Now Playing" and Skip Button Styling */
         #now-playing p, #search-artist {
             color: #f2b600;
