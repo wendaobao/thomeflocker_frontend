@@ -391,25 +391,25 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Sauté onion and beef. 2. Add beans and sauce. 3. Simmer until thick."
     },
     {
-        name: "Caprese Salad",
-        ingredients: ["Tomatoes", "Mozzarella Cheese", "Basil", "Olive Oil", "Balsamic Vinegar"],
-        description: "Fresh salad with tomatoes, mozzarella, and basil.",
-        cookingTime: "10 minutes",
-        cookingProcess: "1. Slice tomatoes and cheese. 2. Layer with basil. 3. Drizzle with oil and vinegar."
+    name: "Classic Fish and Chips",
+    ingredients: ["Cod Fillets", "Potatoes", "Flour", "Baking Powder", "Salt", "Pepper", "Beer", "Oil for Frying"],
+    description: "Crispy battered cod served with golden, fried potatoes.",
+    cookingTime: "45 minutes",
+    cookingProcess: "1. Cut potatoes into fries and soak in water for 30 minutes. 2. Heat oil in a deep fryer. 3. Whisk flour, baking powder, salt, and pepper; add beer to make a batter. 4. Dry potatoes and fry until golden; set aside. 5. Dip cod in batter and fry until crispy and golden. 6. Serve fish with fries."
     },
     {
-        name: "Stuffed Bell Peppers",
-        ingredients: ["Bell Peppers", "Rice", "Ground Turkey", "Tomato Sauce", "Cheese"],
-        description: "Bell peppers filled with savory meat and rice.",
-        cookingTime: "45 minutes",
-        cookingProcess: "1. Preheat oven. 2. Cook filling. 3. Stuff peppers and bake until tender."
+    name: "Crispy Garlic Parmesan Chicken Tenders",
+    ingredients: ["Chicken Tenders", "Breadcrumbs", "Parmesan Cheese", "Garlic Powder", "Salt", "Pepper", "Olive Oil", "Parsley"],
+    description: "Crispy, garlic-infused chicken tenders with a Parmesan crust.",
+    cookingTime: "25 minutes",
+    cookingProcess: "1. Preheat oven to 400°F (200°C). 2. Mix breadcrumbs, Parmesan, garlic powder, salt, and pepper. 3. Coat chicken tenders with olive oil and roll in breadcrumb mixture. 4. Place on a baking sheet and bake for 20-25 minutes until golden and crispy. 5. Garnish with parsley and serve."
     },
     {
-        name: "Baked Ziti",
-        ingredients: ["Ziti Pasta", "Marinara Sauce", "Ricotta Cheese", "Mozzarella Cheese", "Parmesan Cheese"],
-        description: "Pasta baked with cheese and sauce for a comforting dish.",
-        cookingTime: "40 minutes",
-        cookingProcess: "1. Cook ziti. 2. Mix with sauce and cheese. 3. Bake until bubbly."
+    name: "Choco Vanilla Ice Cream Cake",
+    ingredients: ["Chocolate Cake", "Vanilla Ice Cream", "Whipped Cream", "Chocolate Syrup", "Sprinkles"],
+    description: "A layered chocolate cake with vanilla ice cream, topped with whipped cream and chocolate syrup.",
+    cookingTime: "3 hours (including freezing time)",
+    cookingProcess: "1. Bake a chocolate cake layer and let it cool completely. 2. Spread a thick layer of softened vanilla ice cream on top of the cake. 3. Freeze for 2 hours until the ice cream is firm. 4. Top with whipped cream, drizzle with chocolate syrup, and add sprinkles. 5. Serve immediately or keep frozen until ready to enjoy."
     },
     {
         name: "Sushi Rolls",
@@ -426,11 +426,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Sauté pork. 2. Add veggies and sauce. 3. Cook until tender."
     },
     {
-        name: "Chocolate Chip Cookies",
-        ingredients: ["Flour", "Butter", "Sugar", "Chocolate Chips", "Eggs"],
-        description: "Classic cookies loaded with chocolate chips.",
-        cookingTime: "15 minutes",
-        cookingProcess: "1. Cream butter and sugar. 2. Add flour and chips. 3. Bake until golden."
+    name: "Chocolate Chip Waffles",
+    ingredients: ["Flour", "Milk", "Eggs", "Butter", "Sugar", "Chocolate Chips", "Baking Powder", "Salt", "Vanilla Extract"],
+    description: "Crispy, golden waffles with gooey chocolate chips in every bite.",
+    cookingTime: "20 minutes",
+    cookingProcess: "1. In a bowl, mix flour, baking powder, salt, and sugar. 2. In another bowl, whisk eggs, milk, melted butter, and vanilla extract. 3. Combine wet and dry ingredients, then fold in chocolate chips. 4. Pour batter onto a preheated waffle iron and cook until golden and crisp. 5. Serve warm with syrup or whipped cream."
     },
     {
         name: "Pumpkin Pie",
@@ -482,11 +482,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Rice cauliflower. 2. Scramble eggs. 3. Stir-fry with veggies and sauce."
     },
     {
-        name: "Vegetable Curry",
-        ingredients: ["Mixed Vegetables", "Coconut Milk", "Curry Powder", "Onion", "Garlic"],
-        description: "A rich and creamy vegetable curry.",
-        cookingTime: "40 minutes",
-        cookingProcess: "1. Sauté onion and garlic. 2. Add vegetables and curry. 3. Stir in coconut milk and simmer."
+    name: "Margherita Pizza",
+    ingredients: ["Pizza Dough", "Tomatoes", "Mozzarella Cheese", "Basil", "Olive Oil", "Salt"],
+    description: "Classic Margherita pizza with fresh tomatoes, mozzarella, and basil.",
+    cookingTime: "20 minutes",
+    cookingProcess: "1. Preheat oven to 475°F (245°C). 2. Roll out the pizza dough and spread a thin layer of olive oil on top. 3. Add sliced tomatoes and sprinkle with salt. 4. Top with mozzarella cheese. 5. Bake for 10-12 minutes until cheese is melted and bubbly. 6. Garnish with fresh basil leaves before serving."
     },
     {
         name: "Baked Salmon",
@@ -566,18 +566,18 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Cook carrots. 2. Add syrup and butter. 3. Simmer until glazed."
     },
     {
-        name: "Fruit Salad",
-        ingredients: ["Mixed Fruits", "Honey", "Mint", "Lemon Juice"],
-        description: "Refreshing fruit salad drizzled with honey.",
-        cookingTime: "10 minutes",
-        cookingProcess: "1. Chop fruits. 2. Toss with honey and mint. 3. Serve chilled."
+    name: "Classic Cheeseburger",
+    ingredients: ["Ground Beef", "Cheddar Cheese", "Lettuce", "Tomato", "Onion", "Pickles", "Ketchup", "Mustard", "Burger Buns"],
+    description: "A juicy beef patty topped with melted cheddar cheese and fresh toppings.",
+    cookingTime: "20 minutes",
+    cookingProcess: "1. Shape the ground beef into patties. 2. Grill or pan-fry the patties for 4-5 minutes on each side. 3. Add cheese on top during the last minute of cooking to melt. 4. Assemble the burger with lettuce, tomato, onion, pickles, ketchup, and mustard on a bun. 5. Serve immediately."
     },
     {
-        name: "Eggplant Parmesan",
-        ingredients: ["Eggplant", "Marinara Sauce", "Mozzarella Cheese", "Parmesan Cheese", "Basil"],
-        description: "Layers of eggplant with marinara and cheese.",
-        cookingTime: "1 hour",
-        cookingProcess: "1. Preheat oven. 2. Layer ingredients. 3. Bake until bubbly."
+    name: "Classic French Toast",
+    ingredients: ["Bread", "Eggs", "Milk", "Vanilla Extract", "Cinnamon", "Butter", "Maple Syrup"],
+    description: "Golden, buttery French toast with a hint of vanilla and cinnamon, served with maple syrup.",
+    cookingTime: "15 minutes",
+    cookingProcess: "1. Whisk eggs, milk, vanilla, and cinnamon together in a bowl. 2. Dip each slice of bread in the mixture, coating both sides. 3. Heat butter in a skillet over medium heat. 4. Cook bread slices until golden brown on both sides. 5. Serve warm with maple syrup."
     },
     {
         name: "Chicken Fajitas",
@@ -587,11 +587,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Cook chicken with spices. 2. Add veggies. 3. Serve in tortillas."
     },
     {
-        name: "Greek Salad",
-        ingredients: ["Cucumbers", "Tomatoes", "Feta Cheese", "Olives", "Olive Oil"],
-        description: "Traditional Greek salad with fresh veggies.",
-        cookingTime: "15 minutes",
-        cookingProcess: "1. Chop vegetables. 2. Mix with cheese and olives. 3. Drizzle with oil."
+    name: "Avocado Egg Breakfast Sandwich",
+    ingredients: ["Whole Grain Bread", "Avocado", "Eggs", "Spinach", "Feta Cheese"],
+    description: "A hearty breakfast sandwich with creamy avocado, a perfectly cooked egg, fresh spinach, and tangy feta.",
+    cookingTime: "15 minutes",
+    cookingProcess: "1. Toast the bread. 2. Cook the egg to your liking. 3. Mash the avocado and spread it on the toast. 4. Layer with spinach and feta. 5. Top with the egg and serve."
     },
     {
         name: "Peach Cobbler",
@@ -622,11 +622,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Cook tortellini. 2. Mix with veggies and cheese. 3. Drizzle with oil."
     },
     {
-        name: "Pasta Primavera",
-        ingredients: ["Pasta", "Mixed Vegetables", "Olive Oil", "Parmesan Cheese", "Garlic"],
-        description: "Colorful pasta dish with fresh vegetables.",
-        cookingTime: "25 minutes",
-        cookingProcess: "1. Cook pasta. 2. Sauté veggies with garlic. 3. Toss with pasta and cheese."
+    name: "Almond Croissant",
+    ingredients: ["Croissant Dough", "Almond Flour", "Butter", "Powdered Sugar", "Sliced Almonds", "Vanilla Extract", "Egg"],
+    description: "Flaky croissant filled with almond cream and topped with sliced almonds.",
+    cookingTime: "45 minutes",
+    cookingProcess: "1. Preheat oven to 350°F (175°C). 2. Mix almond flour, butter, powdered sugar, vanilla, and egg to make almond cream. 3. Slice croissants in half, fill with almond cream, and close. 4. Top with more almond cream and sliced almonds. 5. Bake for 15-20 minutes until golden. 6. Dust with powdered sugar before serving."
     },
     {
         name: "Banana Bread",
@@ -657,11 +657,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Cook rice. 2. Stir-fry with pineapple and shrimp. 3. Add soy sauce and peas."
     },
     {
-        name: "Beef Tacos",
-        ingredients: ["Ground Beef", "Tortillas", "Lettuce", "Cheese", "Tomatoes"],
-        description: "Delicious beef tacos with fresh toppings.",
-        cookingTime: "20 minutes",
-        cookingProcess: "1. Cook beef. 2. Assemble tacos with toppings. 3. Serve with salsa."
+    name: "Chicago-Style Deep Dish Pizza",
+    ingredients: ["Pizza Dough", "Mozzarella Cheese", "Italian Sausage", "Tomatoes", "Green Bell Peppers", "Onion", "Garlic", "Parmesan Cheese", "Olive Oil", "Basil", "Oregano"],
+    description: "A thick, hearty pizza loaded with cheese, tomatoes, and savory sausage, baked in a deep dish pan.",
+    cookingTime: "1 hour 15 minutes",
+    cookingProcess: "1. Preheat oven to 425°F (220°C). 2. Roll out pizza dough and press into a deep dish pan. 3. Layer mozzarella cheese over the crust. 4. Add a layer of Italian sausage, bell peppers, and onion. 5. In a bowl, mix crushed tomatoes with garlic, basil, and oregano, then spread over the toppings. 6. Sprinkle with Parmesan cheese and drizzle with olive oil. 7. Bake for 30-40 minutes, or until the crust is golden and the cheese is bubbly. 8. Let cool slightly before slicing and serving."
     },
     {
         name: "Caprese Pasta",
@@ -678,11 +678,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Preheat oven. 2. Season chicken. 3. Bake until cooked through."
     },
     {
-        name: "Chocolate Mousse",
-        ingredients: ["Chocolate", "Eggs", "Cream", "Sugar", "Vanilla"],
-        description: "Rich and creamy chocolate mousse for dessert.",
-        cookingTime: "30 minutes",
-        cookingProcess: "1. Melt chocolate. 2. Whip cream. 3. Fold together and chill."
+    name: "Crème Brûlée",
+    ingredients: ["Heavy Cream", "Egg Yolks", "Granulated Sugar", "Vanilla Extract", "Brown Sugar"],
+    description: "A classic French dessert with a creamy custard base and a crispy caramelized sugar topping.",
+    cookingTime: "2 hours (including chilling time)",
+    cookingProcess: "1. Preheat oven to 325°F (160°C). 2. Heat cream and vanilla in a saucepan. 3. Whisk egg yolks and sugar until pale. 4. Gradually add warm cream to yolks, mixing well. 5. Pour mixture into ramekins and bake in a water bath for 40-45 minutes. 6. Chill in the fridge for at least 2 hours. 7. Sprinkle brown sugar on top and caramelize with a torch or broiler before serving."
     },
     {
         name: "Spinach Artichoke Dip",
@@ -713,11 +713,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Mix ingredients. 2. Scoop onto baking sheet. 3. Bake until golden."
     },
     {
-        name: "Lentil Soup",
-        ingredients: ["Lentils", "Carrots", "Celery", "Onions", "Vegetable Broth"],
-        description: "Hearty lentil soup with vegetables.",
-        cookingTime: "40 minutes",
-        cookingProcess: "1. Sauté vegetables. 2. Add lentils and broth. 3. Simmer until cooked."
+    name: "Cinnamon Apple Oatmeal",
+    ingredients: ["Oats", "Apples", "Cinnamon", "Honey", "Walnuts"],
+    description: "Warm oatmeal topped with spiced apples, honey, and crunchy walnuts.",
+    cookingTime: "20 minutes",
+    cookingProcess: "1. Cook oats according to package instructions. 2. In a separate pan, sauté diced apples with cinnamon and honey until soft. 3. Serve oatmeal topped with sautéed apples and walnuts."
     },
     {
         name: "Baked Apples",
@@ -769,11 +769,11 @@ author: Daksha, Zach, Alex, Darsh
         cookingProcess: "1. Chop lettuce. 2. Toss with dressing and croutons. 3. Serve chilled."
     },
     {
-        name: "Baked Salmon",
-        ingredients: ["Salmon", "Lemon", "Garlic", "Dill"],
-        description: "Oven-baked salmon with herbs.",
-        cookingTime: "25 minutes",
-        cookingProcess: "1. Preheat oven. 2. Season salmon. 3. Bake until flaky."
+    name: "Lemon Meringue Pie",
+    ingredients: ["Pie Crust", "Lemons", "Sugar", "Eggs", "Butter", "Cornstarch", "Vanilla Extract"],
+    description: "A tangy lemon filling topped with a fluffy meringue.",
+    cookingTime: "1 hour",
+    cookingProcess: "1. Preheat the oven and bake the pie crust. 2. In a saucepan, mix lemon juice, sugar, cornstarch, and water, then cook until thick. 3. Whisk egg yolks and add to the mixture, then cook for another minute. 4. Pour into the pie crust and let cool. 5. Beat egg whites until stiff, then spread over the lemon filling. 6. Bake until meringue is golden. 7. Cool before serving."
     },
     {
         name: "Roasted Vegetables",
@@ -840,7 +840,7 @@ const ingredients = [
 'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Sage', 'Chives', 'Mint', 'Parsley', 'Cilantro', 'Tarragon',
 'Caraway', 'Cumin', 'Paprika', 'Chili Powder', 'Turmeric', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Cloves', 'Vanilla', 
 'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 'Cornstarch', 'Rice Vinegar', 
-'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto',
+'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 'Sesame Oil', 'Kimchi', 'Cream Cheese', 'Sour Cream', 'Pesto',
 'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk',
 'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows',
 'Bacon', 'Eggs', 'Parmesan Cheese', 'Mozzarella', 'Feta Cheese', 'Goat Cheese', 'Blue Cheese', 'Provolone', 'Cheddar Cheese', 'Swiss Cheese',
