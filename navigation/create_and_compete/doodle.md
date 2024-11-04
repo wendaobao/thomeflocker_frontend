@@ -83,18 +83,15 @@ author: Alex, Arshia, Prajna, and Mirabelle
     function changeColor(color) {
         currentColor = color;
     }
-        function downloadDrawing() {
-        const link = document.createElement('a');
-        link.download = 'my_drawing.png'; 
-        link.href = canvas.toDataURL();  
-        link.click();
+
+    function downloadDrawing() {
+    const link = document.createElement('a');
+    link.download = 'my_drawing.png'; 
+    link.href = canvas.toDataURL();  
+    link.click();
     }
     
 </script>
-
-<div>
-    <button onclick="clearCanvas()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Clear Drawing</button>
-</div>
 
 <div style="margin-top: 10px;">
         <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
@@ -103,6 +100,15 @@ author: Alex, Arshia, Prajna, and Mirabelle
         <button style="background-color: #992222!important;  display:inline-block" onclick="changeColor('#992222')">Red</button>
         <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
 </div>
+
+<div>
+    <button onclick="clearCanvas()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Clear Drawing</button>
+</div>
+
+<div>
+    <button onclick="downloadDrawing()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Save Your Work!</button>
+</div>
+
 
 </body>
 
