@@ -789,30 +789,24 @@ author: Daksha, Zach, Alex, Darsh
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-
+    // Get input ingredients and normalize
     const inputIngredients = document.getElementById('ingredients').value.split(',')
         .map(ingredient => ingredient.trim().toLowerCase());
 
-    console.log("Input Ingredients:", inputIngredients); 
-
+    // Filter recipes that contain ANY of the input ingredients
     const filteredRecipes = recipes.filter(recipe => {
-       
-        const recipeIngredientsLower = recipe.ingredients.map(ingredient => ingredient.toLowerCase());
-        
-        console.log("Recipe Ingredients:", recipeIngredientsLower); 
-        
-       
-        return inputIngredients.some(input => recipeIngredientsLower.includes(input));
+        const recipeIngredientsLower = recipe.ingredients.map(ing => ing.toLowerCase());
+        return inputIngredients.some(input => 
+            recipeIngredientsLower.some(recipeIng => recipeIng.includes(input))
+        );
     });
 
- 
     displayFilteredRecipes(filteredRecipes);
 });
 
-
 function displayFilteredRecipes(filteredRecipes) {
     const resultsContainer = document.getElementById('recipeResults');
-    resultsContainer.innerHTML = ''; 
+    resultsContainer.innerHTML = '';
 
     if (filteredRecipes.length > 0) {
         const recipeResults = filteredRecipes.map(recipe => `
@@ -840,7 +834,7 @@ const ingredients = [
 'Basil', 'Thyme', 'Rosemary', 'Oregano', 'Sage', 'Chives', 'Mint', 'Parsley', 'Cilantro', 'Tarragon',
 'Caraway', 'Cumin', 'Paprika', 'Chili Powder', 'Turmeric', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Cloves', 'Vanilla', 
 'Honey', 'Maple Syrup', 'Brown Sugar', 'Granulated Sugar', 'Baking Powder', 'Baking Soda', 'Yeast', 'Flour', 'Cornstarch', 'Rice Vinegar', 
-'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 'Sesame Oil', 'Kimchi', 'Cream Cheese', 'Sour Cream', 'Pesto',
+'Balsamic Vinegar', 'Apple Cider Vinegar', 'Soy Sauce', 'Olive Oil', 'Vegetable Oil', 'Sesame Oil', 'Butter', 'Cream Cheese', 'Sour Cream', 'Pesto',
 'Chili Sauce', 'Mustard', 'Ketchup', 'Mayonnaise', 'Pickles', 'Relish', 'Nuts', 'Dried Fruit', 'Seeds', 'Coconut Milk',
 'Vegetable Broth', 'Chicken Broth', 'Beef Broth', 'Tomato Sauce', 'Pasta Sauce', 'Salsa', 'Taco Seasoning', 'Coconut Flakes', 'Chocolate Chips', 'Marshmallows',
 'Bacon', 'Eggs', 'Parmesan Cheese', 'Mozzarella', 'Feta Cheese', 'Goat Cheese', 'Blue Cheese', 'Provolone', 'Cheddar Cheese', 'Swiss Cheese',
@@ -855,55 +849,32 @@ const ingredients = [
 ];
      
 
-const randomIngredients = [];
-        for (let i = 0; i < 5; i++) {
-            const randomIndex = Math.floor(Math.random() * ingredients.length);
-            randomIngredients.push(ingredients[randomIndex]);
-        }
-        return randomIngredients;
+    const randomIngredients = [];
+    for (let i = 0; i < 5; i++) {
+        const randomIndex = Math.floor(Math.random() * ingredients.length);
+        randomIngredients.push(ingredients[randomIndex]);
     }
+    return randomIngredients;
+}
 
-    document.getElementById('customRecipeButton').addEventListener('click', () => {
-        const randomIngredients = getRandomIngredients();
-        document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
-    });
+document.getElementById('customRecipeButton').addEventListener('click', () => {
+    const randomIngredients = getRandomIngredients();
+    document.getElementById('randomIngredients').innerHTML = randomIngredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+});
 
-    document.getElementById('ingredientForm').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const inputIngredients = document.getElementById('ingredients').value.split(',').map(ingredient => ingredient.trim().toLowerCase());
-        const filteredRecipes = recipes.filter(recipe =>
-            inputIngredients.every(inputIngredient => recipe.ingredients.includes(inputIngredient))
-);
-        
-        if (filteredRecipes.length > 0) {
-            const recipeResults = filteredRecipes.map(recipe => `
-                <div class="recipe">
-                    <h3>${recipe.name}</h3>
-                    <p>${recipe.description}</p>
-                    <p><strong>Cooking Time:</strong> ${recipe.cookingTime}</p>
-                    <p><strong>Ingredients:</strong> ${recipe.ingredients.join(', ')}</p>
-                    <p><strong>Cooking Process:</strong> ${recipe.cookingProcess}</p>
-                </div>
-            `).join('');
-            document.getElementById('recipeResults').innerHTML = recipeResults;
-        } else {
-            document.getElementById('recipeResults').innerHTML = '<p>No recipes found with the provided ingredients.</p>';
-        }
-    });
-
-    document.getElementById('randomRecipeButton').addEventListener('click', () => {
-        const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-        const recipeResult = `
-            <div class="recipe">
-                <h3>${randomRecipe.name}</h3>
-                <p>${randomRecipe.description}</p>
-                <p><strong>Cooking Time:</strong> ${randomRecipe.cookingTime}</p>
-                <p><strong>Ingredients:</strong> ${randomRecipe.ingredients.join(', ')}</p>
-                <p><strong>Cooking Process:</strong> ${randomRecipe.cookingProcess}</p>
-            </div>
-        `;
-        document.getElementById('recipeResults').innerHTML = recipeResult;
-    });
+document.getElementById('randomRecipeButton').addEventListener('click', () => {
+    const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+    const recipeResult = `
+        <div class="recipe">
+            <h3>${randomRecipe.name}</h3>
+            <p>${randomRecipe.description}</p>
+            <p><strong>Cooking Time:</strong> ${randomRecipe.cookingTime}</p>
+            <p><strong>Ingredients:</strong> ${randomRecipe.ingredients.join(', ')}</p>
+            <p><strong>Cooking Process:</strong> ${randomRecipe.cookingProcess}</p>
+        </div>
+    `;
+    document.getElementById('recipeResults').innerHTML = recipeResult;
+});
 
 </script>
 
