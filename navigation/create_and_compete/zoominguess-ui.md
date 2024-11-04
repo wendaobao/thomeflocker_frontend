@@ -6,7 +6,7 @@ permalink: /create_and_compete/zoominguess/ui
 author: Arhaan, Akshaj, Mihir, Keerthan
 ---
 
-<link rel="stylesheet" href="{{site.baseurl}}/navigation/create_and_compete/style.css">
+<link rel="stylesheet" href="{{site.baseurl}}/navigation/create_and_compete/zoominguess.css">
 <script src="{{site.baseurl}}/navigation/create_and_compete/scripted.js"></script>
 
 <div class="zoomnguess-container">
