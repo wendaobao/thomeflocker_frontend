@@ -871,7 +871,9 @@ const randomIngredients = [];
     document.getElementById('ingredientForm').addEventListener('submit', (event) => {
         event.preventDefault();
         const inputIngredients = document.getElementById('ingredients').value.split(',').map(ingredient => ingredient.trim().toLowerCase());
-        const filteredRecipes = recipes.filter(recipe => recipe.ingredients.some(ingredient => inputIngredients.includes(ingredient)));
+        const filteredRecipes = recipes.filter(recipe =>
+            inputIngredients.every(inputIngredient => recipe.ingredients.includes(inputIngredient))
+);
         
         if (filteredRecipes.length > 0) {
             const recipeResults = filteredRecipes.map(recipe => `
