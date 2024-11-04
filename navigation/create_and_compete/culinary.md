@@ -65,7 +65,7 @@ author: Daksha, Zach, Alex, Darsh
 
 <h2>Ingredient Input</h2>
 <form id="ingredientForm">
-    <input type="text" id="ingredients" placeholder="e.g., Chicken, Rice, Cheese">
+    <input type="text" id="ingredients" placeholder="e.g., chicken, broccoli, rice">
     <button type="submit">Find Recipes</button>
 </form>
 
