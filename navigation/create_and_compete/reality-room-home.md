@@ -6,8 +6,6 @@ permalink: /create_and_compete/realityroom-home
 author: Yash, Nikhil, Rohan, Neil
 ---
 
-TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/realityroom)
-
 <div class="sidebar">
     <a href="/Users/neilchandra/nighthawk/flocker_frontend/navigation/create_and_compete/reality-room-home.md" class="sidebar-btn">🏠 Home</a>
     <a href="/about" class="sidebar-btn">❓ About</a>
@@ -254,30 +252,30 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
     const container = document.getElementById("posts");
 
     function openChatRoom(button) {
-        const postId = button.getAttribute("id");
-        window.location.href = `{{site.baseurl}}/create_and_compete/realityroom?postId=${postId}`;
+        const channelId = button.getAttribute("id");
+        window.location.href = `{{site.baseurl}}/create_and_compete/realityroom?channelId=${channelId}`;
     }
 
-    async function fetchPosts() {
+    async function fetchChannels() {
         try {
-            const response = await fetch(`${pythonURI}/api/post`, fetchOptions);
+            const response = await fetch(`${pythonURI}/api/channels`, fetchOptions);
             if (!response.ok) {
-                throw new Error('Failed to fetch posts: ' + response.statusText);
+                throw new Error('Failed to fetch channels: ' + response.statusText);
             }
-            const posts = await response.json();
+            const channels = await response.json();
             container.innerHTML = "";
 
-            posts.forEach(post => {
+            channels.forEach(channel => {
                 const card = document.createElement("div");
                 card.classList.add("card");
 
                 const title = document.createElement("h3");
                 title.classList.add("card-title");
-                title.textContent = post.title;
+                title.textContent = channel.name;
 
                 const description = document.createElement("p");
                 description.classList.add("card-description");
-                description.textContent = post.content;
+                description.textContent = channel.attributes["content"];
 
                 const deleteButton = document.createElement("button");
                 deleteButton.classList.add("delete-button");
@@ -286,7 +284,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
                 const commentButton = document.createElement("button");
                 commentButton.classList.add("comment-button");
                 commentButton.textContent = "Comment";
-                commentButton.setAttribute("id", post.id);
+                commentButton.setAttribute("id", channel.id);
 
                 commentButton.onclick = function () {
                     openChatRoom(commentButton);
@@ -300,7 +298,7 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
                 container.appendChild(card);
             });
         } catch (error) {
-            console.error('Error fetching posts:', error);
+            console.error('Error fetching channels:', error);
         }
     }
 
@@ -309,35 +307,35 @@ TEMPORARY LINK TO CHATROOM PAGE: [link]({{site.baseurl}}/create_and_compete/real
 
         const title = document.getElementById('title').value;
         const content = document.getElementById('content').value;
-        const group_id = 4;
+        const group_id = 9;
 
-        const postData = {
-            title: title,
-            content: content,
-            group_id: group_id
+        const channelData = {
+            name: title,
+            group_id: group_id,
+            attributes: {"content": content}
         };
 
         try {
-            const response = await fetch(`${pythonURI}/api/post`, {
+            const response = await fetch(`${pythonURI}/api/channel`, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(postData)
+                body: JSON.stringify(channelData)
             });
 
             if (!response.ok) {
-                throw new Error('Failed to add post: ' + response.statusText);
+                throw new Error('Failed to add channel: ' + response.statusText);
             }
 
-            fetchPosts();
+            fetchChannels();
             document.getElementById('postForm').reset();
         } catch (error) {
-            console.error('Error adding post:', error);
-            alert('Error adding post: ' + error.message);
+            console.error('Error adding channel:', error);
+            alert('Error adding channel: ' + error.message);
         }
     });
 
-    fetchPosts();
+    fetchChannels();
 </script>
