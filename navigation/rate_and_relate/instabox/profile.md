@@ -125,7 +125,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
                 <img id="profile-pic" src="{{site.baseurl}}/images/rate_and_relate/instabox/pfp_placeholder.jpg" alt="Profile Picture">
             </label>
             <input id="file-upload" type="file" class="file-input" accept="image/*" onchange="updateProfilePic(event)">
-            <h2>Username</h2>
+            <h2 id="username">Username</h2>
             <p>📍 Location: Hometown</p>
             <p>🌟 Status: "Always pushing the limits!"</p>
         </div>
@@ -148,6 +148,10 @@ author: Aadi, Aaditya, Aditya, Kanhay
             const savedImage = localStorage.getItem("profilePicture");
             if (savedImage) {
                 document.getElementById("profile-pic").src = savedImage;
+            }
+            const username = localStorage.getItem("username");
+            if (username) {
+                document.getElementById("username").innerText = username;
             }
         };
         function updateProfilePic(event) {
