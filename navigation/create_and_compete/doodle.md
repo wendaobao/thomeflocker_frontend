@@ -32,7 +32,7 @@ author: Alex, Arshia, Prajna, and Mirabelle
     <title>Drawing Canvas</title>
     <style>
         body { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        canvas { border: 2px solid #444; cursor: crosshair; margin-top: 10px; }
+        canvas { border: 2px solid #7573e6; cursor: crosshair; margin-top: 10px; }
         .color-button {
             width: 30px;
             height: 30px;
@@ -83,6 +83,13 @@ author: Alex, Arshia, Prajna, and Mirabelle
     function changeColor(color) {
         currentColor = color;
     }
+        function downloadDrawing() {
+        const link = document.createElement('a');
+        link.download = 'my_drawing.png'; 
+        link.href = canvas.toDataURL();  
+        link.click();
+    }
+    
 </script>
 
 <div>
