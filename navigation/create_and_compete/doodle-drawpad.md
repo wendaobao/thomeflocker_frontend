@@ -1,27 +1,12 @@
 ---
-layout: post 
-title: Create and Compete - Doodle
-search_exclude: true
-permalink: /create_and_compete/doodle
+layout: post
+title: Gallery for Doodle
+description: Showcase a gallery of all your doodles
 menu: nav/doodle.html
-author: Alex, Arshia, Prajna, and Mirabelle 
+permalink: /moderation/drawpad_doodle/
+author: Arshia, Prajna, Mirabelle, Alex
 ---
 
-<details>
-  <summary>Room Details</summary>
-
-<a href="{{site.baseurl}}/moderation/rules_doodle/">Moderation Rules</a>
-
-<p> The page is a place where people can explore themselves creatively and compete to see who has the best doodle. This allows for players to collaborate over their artistic abilities. Our room includes a chat room where players can converse about their creations, a doodle compete area, a place where people can post their art, and winners get crowned every week. This will help add to our classes page by making a fun artistic environment where everyone can collaborate. </p>
-
-
-<a href="{{site.baseurl}}/moderation/chat_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
-  Chat Room
-</a>
-
-<a href="{{site.baseurl}}/moderation/artpost_doodle/" style="padding: 10px 20px; font-size: 16px; background-color: #7573e6; color: white; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
-  Art Post
-</a>
 
 
 </details>
@@ -83,32 +68,26 @@ author: Alex, Arshia, Prajna, and Mirabelle
     function changeColor(color) {
         currentColor = color;
     }
-
-    function downloadDrawing() {
-    const link = document.createElement('a');
-    link.download = 'my_drawing.png'; 
-    link.href = canvas.toDataURL();  
-    link.click();
+        function downloadDrawing() {
+        const link = document.createElement('a');
+        link.download = 'my_drawing.png'; 
+        link.href = canvas.toDataURL();  
+        link.click();
     }
     
 </script>
-
-<div style="margin-top: 10px;">
-        <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
-        <button style="background-color: #3a63e8!important;  display:inline-block" onclick="changeColor('#3a63e8')">Blue</button>
-        <button style="background-color: #3c7d2c!important;  display:inline-block" onclick="changeColor('#3c7d2c')">Green</button>
-        <button style="background-color: #452b2b!important;  display:inline-block" onclick="changeColor('#452b2b')">Brown</button>
-        <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
-</div>
 
 <div>
     <button onclick="clearCanvas()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Clear Drawing</button>
 </div>
 
-<div>
-    <button onclick="downloadDrawing()" style="font-size: 18px; background-color: #ad3636; padding: 10px 20px; color: white;">Save Your Work!</button>
+<div style="margin-top: 10px;">
+        <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
+        <button style="background-color: #3a63e8!important;  display:inline-block" onclick="changeColor('#3a63e8')">Blue</button>
+        <button style="background-color: #3c7d2c!important;  display:inline-block" onclick="changeColor('#3c7d2c')">Green</button>
+        <button style="background-color: #992222!important;  display:inline-block" onclick="changeColor('#992222')">Red</button>
+        <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
 </div>
-
 
 </body>
 
