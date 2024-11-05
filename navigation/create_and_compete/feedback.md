@@ -25,6 +25,29 @@ menu: nav/create_and_compete.html
 </div>
 </div>
 
+<!-- Username Modal -->
+<div id="username-modal" class="modal">
+    <div class="modal-content">
+        <h2>Enter Your Username</h2>
+        <input type="text" id="username-input" placeholder="Enter username..." required>
+        <button id="username-submit">Enter Chat</button>
+    </div>
+</div>
+
+<!-- Chat Room Container (Initially Hidden) -->
+<div class="chat-room-container" style="display: none;">
+    <p class="chat-header">Interactive Chat Room</p>
+    <div id="chat-box" class="chat-box"></div>
+    <div class="chat-input">
+        <input type="text" id="chat-message" placeholder="Type your message here...">
+        <button id="send-message" class="send-button">Send</button>
+    </div>
+</div>
+
+<link rel="stylesheet" href="feeback.css">
+<script src="chat.js"></script>
+
+
 <script src="{{site.baseurl}}/navigation/create_and_compete/chat.js"></script>
 
 <style>
