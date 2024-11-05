@@ -48,17 +48,29 @@ permalink: /test/
     <button class="upload_button" onclick="toggleDiv();">Upload Media</button>
 </div>
 
-<!--Make Post
-* Create a menu on the board, have a onclick camera upload button run toggleDiv(), create a text entry box, Create a post media button (leave it empty), Extra credit: create a little x you can click can close the div.
+<!--Make Post (Abby's work from friday)
+* make x functioning button to close div
  -->
 <div class="upload_box">
     <button class="toggle-button" onclick="toggleDiv()">Camera</button>
     <text class="content-div">
     <label for="textInput">Enter caption:</label>
-    <input type="text" id="textInput" placeholder="Type something...">
-    <button class="post-button">post</button>
-    <button class="exit-button">x</button>
+    <input type="text" id="textInput" placeholder="Type something..."> <!--the text has to be able to be stored somewhre for this post/user?? -->
+    <button class="post-button">post</button> <!--on click this will submit the info for the photo, caption, etc for the post -->
+    <button class="exit-button">x</button> 
 </div>
+
+<!-- for exit button-->
+<div id="myDiv" class="content">
+    <button class="exit-button" onclick="closeDiv()">x</button>
+</div>
+
+<script>
+    function closeDiv() { 
+        var div = document.getElementById("myDiv");
+        div.style.display = "none";
+    }
+</script>
 
 <!-- Video containter -->
 <div class="upload_media" id="mediaUploader">
