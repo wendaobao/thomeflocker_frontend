@@ -55,7 +55,7 @@ menu: nav/create_and_compete.html
   overflow-y: scroll;
   padding: 15px;
   font-size: 1.2em;
-  background-color: #fff;
+  background-color: #000;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,7 +65,8 @@ menu: nav/create_and_compete.html
   padding: 5px 10px;
   border-radius: 5px;
   background-color: #eef2f7;
-  color: #444;
+  color: #f5f0f0
+;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
