@@ -16,6 +16,9 @@ permalink: /rateandrelate/update_the_nest/
     border-color: #F5E1E7;
     border-radius: 50px;
     height: 350px;
+    margin-bottom: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .textContainer {
@@ -30,8 +33,8 @@ permalink: /rateandrelate/update_the_nest/
     height: auto;
     display: inline;
     float: left;
-    width: 50%;
-    transform: translateX(20px) translateY(23px);
+    width: 55%;
+    transform: translateX(5px) translateY(50px);
     text-align: center;
 }
 
@@ -46,7 +49,7 @@ permalink: /rateandrelate/update_the_nest/
     background-color: pink;
     text-align: center;
     padding: 100px 0 3px 0;
-    height: 1000px;
+    height: auto;
     font-family: 'Playfair Display', serif;
     float: left;
 }
