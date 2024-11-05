@@ -66,7 +66,7 @@ permalink: /rateandrelate/update_the_nest/
     display: inline;
     width: 15%;
     float: left;
-    transform: translateY(-80px);
+    transform: translateX(30px) translateY(-80px);
   }
 
 .styled-button {
@@ -82,6 +82,7 @@ permalink: /rateandrelate/update_the_nest/
             cursor: pointer;
             border-radius: 12px;
             transition: background-color 0.3s, transform 0.2s;
+            transform: translateX(-70px) translateY(10px);
         }
 
         .styled-button:hover {
@@ -101,10 +102,7 @@ permalink: /rateandrelate/update_the_nest/
         <img src="{{site.baseurl}}/images/about/CSP_LOGO-removebg-preview.png" style="display: block; margin: 0 auto;" alt="Logo">
     </div>
     <div class="headerText">
-        <button class="styled-button"><a href="">Leaderboard</a></button>
         <button class="styled-button"><a href="">Upload Media</a></button>
-        <button class="styled-button"><a href="">Profile</a></button>
-        <button class="styled-button"><a href="">Settings</a></button>
     </div>
 </div>
 
