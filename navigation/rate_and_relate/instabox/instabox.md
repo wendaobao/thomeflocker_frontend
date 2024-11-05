@@ -161,6 +161,14 @@ author: Aadi, Aaditya, Aditya, Kanhay
     <script>
         const instabox = document.getElementById("instabox");
         const chatInput = document.getElementById("chatinput");
+        // Restore all message on window load
+        window.onload = function() {
+            for (let i = 1; i <= parseInt(localStorage.getItem("messageCount")); i++) {
+                const messageElement = document.createElement("p");
+                messageElement.innerHTML = `<strong>Me:</strong> ${localStorage.getItem("message" + JSON.stringify(i))}`;
+                instabox.appendChild(messageElement);
+            }
+        };
         // Limit input to 100 characters
         chatInput.addEventListener("input", function () {
             // Calculate remaining characters
@@ -185,6 +193,12 @@ author: Aadi, Aaditya, Aditya, Kanhay
                 e.preventDefault();
                 // Get the current text content of the chat input
                 const newMessage = chatInput.textContent.trim();
+                if (localStorage.getItem("messageCount")) {
+                    localStorage.setItem("messageCount", parseInt(localStorage.getItem("messageCount")) + 1);
+                } else {
+                    localStorage.setItem("messageCount", 1);
+                }
+                localStorage.setItem("message" + localStorage.getItem("messageCount"), newMessage);
                 // Create a new paragraph element for the message
                 if (newMessage != "") {
                     const messageElement = document.createElement("p");
