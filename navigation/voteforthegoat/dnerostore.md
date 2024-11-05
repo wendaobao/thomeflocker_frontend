@@ -1,25 +1,59 @@
 ---
 layout: post
-title: D'nero Store
-description: D'nero Store
+title: Dnero Store
+description: Dnero Store
+menu: nav/vote_for_the_goat.html
 permalink: /voteforthegoat/dnerostore/
+author: Risha Guha, Vibha Mandayam, Ava Shalon
 comments: true
 ---
 
 
 
-
-
-
 <img src="{{ site.baseurl }}/images/dnerostore/Dnero_Store_Header.png" alt="Title">
 
+<details>
+  <summary>Room Details</summary>
 
-<!-- Moderator Rules Image Link -->
-<div style="display: flex; justify-content: center; margin: 20px 0;">
-  <a href="{{ site.baseurl }}/dnerostore-mod/" target="_blank">
-    <img src="{{ site.baseurl }}/images/dnerostore/mod_rules_button.png" alt="Mod Rules" style="cursor: pointer;">
-  </a>
-</div>
+  <a href="{{ site.baseurl }}/dnerostore-mod/">Moderation Rules</a>
+  <p>Discuss your favorite D'Nero store items here!</p>
+  <h4>D'Nero Store</h4>
+  <ul>
+    <li>Food/Drink</li>
+    <ul>
+      <li>Trail Mix</li>
+      <li>Nutella</li>
+      <li>Famous Amos</li>
+      <li>Chips</li>
+      <li>Sports Drinks</li>
+      <li>Fruit Snacks</li>
+      <li>Water</li>
+    </ul>
+    <li>Pizza</li>
+    <ul>
+      <li>Whole Pizza</li>
+    </ul>
+    <li>Spirit</li>
+    <ul>
+      <li>Morning Song</li>
+      <li>DNHS T-shirt</li>
+      <li>1 Pom Pom</li>
+    </ul>
+    <li>Limited Edition</li>
+    <ul>
+      <li>Candy</li>
+      <li>Squishmallow mini</li>
+      <li>Starbucks SDSU Tumbler</li>
+    </ul>
+    <li>Gift Card</li>
+    <ul>
+      <li>Chik-fil-a</li>
+      <li>Canes</li>
+    </ul>
+  </ul>
+</details>
+
+
 
 
 <div class="container">
@@ -448,9 +482,240 @@ comments: true
     background-color: #444;
   }
 
-
-
-
 </style>
 
 
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .data {
+        display: flex;
+        align-items: flex-start;
+        max-width: 800px;
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 20px;
+    }
+    .details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .post-item {
+        background-color: #34495e;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        color: #ecf0f1;
+    }
+    .post-item h3 {
+        margin: 0 0 5px 0;
+    }
+    .post-item p {
+        margin: 0;
+    }
+</style>
+
+<!-- Analytics Page -->
+<div class="container">
+    <div id="data" class="data">
+        <div class="left-side">
+            <p id="count"></p>
+        </div>
+        <div class="details" id="details">
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
+    // URL to fetch all posts
+    const postApiUrl = `${pythonURI}/api/post`;
+
+    async function fetchData() {
+        try {
+            // Fetch all posts from the backend
+            const postApiResponse = await fetch(postApiUrl, fetchOptions);
+
+            if (!postApiResponse.ok) {
+                throw new Error('Failed to fetch post API links: ' + postApiResponse.statusText);
+            }
+
+            // Parse the JSON data from the response
+            const postData = await postApiResponse.json();
+
+            // Count the total posts and display it
+            const postCount = postData.length || 0;
+            document.getElementById('count').innerHTML = `<h2>Count: ${postCount}</h2>`;
+
+            // Get the details div
+            const detailsDiv = document.getElementById('details');
+            detailsDiv.innerHTML = ''; // Clear previous posts
+
+            // Iterate over postData and create HTML elements for each item
+            postData.forEach(postItem => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <h3>${postItem.title}</h3>
+                    <p><strong>Group:</strong> ${postItem.group_name}</p>
+                    <p><strong>User:</strong> ${postItem.user_name}</p>
+                    <p>${postItem.content}</p>
+                `;
+                detailsDiv.appendChild(postElement);
+            });
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    // Call the fetchData function to load all posts
+    fetchData();
+</script>
+
+
+
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        width: 100%;
+        background-color: #2c3e50;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #ecf0f1;
+    }
+    .form-container label {
+        margin-bottom: 5px;
+    }
+    .form-container input, .form-container textarea, .form-container select {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        width: 100%;
+    }
+    .form-container button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #34495e;
+        color: #ecf0f1;
+        cursor: pointer;
+    }
+</style>
+<div class="container">
+    <div class="form-container">
+        <h2>Add New Post</h2>
+        <form id="postForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea>
+            <label for="group_id">Group:</label>
+            <select id="group_id" name="group_id" required>
+                <option value="">Select a group</option>
+            </select>
+            <button type="submit">Add Post</button>
+        </form>
+    </div>
+</div>
+
+<script type="module">
+    // Import server URI and standard fetch options
+    import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
+    // Fetch groups for dropdown selection
+    async function fetchGroups() {
+        try {
+            const response = await fetch(`${pythonURI}/api/group`, fetchOptions);
+            if (!response.ok) {
+                throw new Error('Failed to fetch groups: ' + response.statusText);
+            }
+            const groups = await response.json();
+            const groupSelect = document.getElementById('group_id');
+            groups.forEach(group => {
+                const option = document.createElement('option');
+                option.value = group.id;
+                option.textContent = group.name;
+                groupSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching groups:', error);
+        }
+    }
+
+    // Handle form submission
+    document.getElementById('postForm').addEventListener('submit', async function(event) {
+        // Prevent default from submission
+        event.preventDefault();
+
+        // Extract data from form
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+        const group_id = document.getElementById('group_id').value;
+
+        // Create API payload
+        const postData = {
+            title: title,
+            content: content,
+            group_id: group_id
+        };
+
+        // Trap errors
+        try {
+            // Send POST request to backend, purpose is to write to database
+            const response = await fetch(`${pythonURI}/api/post`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(postData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add post: ' + response.statusText);
+            }
+
+            // Succesfull post
+            const result = await response.json();
+            alert('Post added successfully!');
+            document.getElementById('postForm').reset();
+        } catch (error) {
+            // Present alert on error from backend
+            console.error('Error adding post:', error);
+            alert('Error adding post: ' + error.message);
+        }
+    });
+
+    // Fetch groups when the page loads
+    fetchGroups();
+</script>
