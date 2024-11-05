@@ -500,27 +500,3 @@ displayComments();
   }
 </style>
 
-<body>
-    <div>
-        <button id="likeButton">👍 Like</button>
-        <span id="likeCount">0</span> likes
-    </div>
-
-    <script>
-        // Initialize count
-        let likeCount = 0;
-
-        // Get elements
-        const likeButton = document.getElementById("likeButton");
-        const likeCountDisplay = document.getElementById("likeCount");
-
-        // Add click event to button
-        likeButton.addEventListener("click", function() {
-            // Increment count
-            likeCount++;
-            // Update the display
-            likeCountDisplay.textContent = likeCount;
-        });
-    </script>
-</body>
-</html>
