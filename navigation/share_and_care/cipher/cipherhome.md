@@ -82,14 +82,15 @@ permalink: /cipherhome/
         - **Use Caesar Shift**: Try shifting letters to reveal patterns.
         - **Frequency Analysis**: Common letters may reveal clues.
     </div>
-
+<div>
     <!-- Level Buttons Section -->
     <div style="flex: 2;">
         <!-- Level Buttons Container -->
         <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;">
           <!-- Level 1 Button -->
+    </div>
 <a href="/flocker_frontend/levelone/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #e1f7d5; color: #005500; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #a0d99a; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #00FF00; color: #005500; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #a0d99a; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 1: Beginner 🌱</strong><br>
             🌐 Intro to basic ciphers.<br>
@@ -101,7 +102,7 @@ permalink: /cipherhome/
 
 <!-- Level 2 Button -->
 <a href="/flocker_frontend/leveltwo/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #d9f1ff; color: #004466; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #8ecae6; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #00FFFF; color: #004466; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #8ecae6; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 2: Novice 💻</strong><br>
             ➡️ Decode harder puzzles.<br>
@@ -113,7 +114,7 @@ permalink: /cipherhome/
 
 <!-- Level 3 Button -->
 <a href="/flocker_frontend/levelthree/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #ffefcc; color: #664400; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ffa500; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #FFA500; color: #664400; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ffa500; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 3: Intermediate 🔐</strong><br>
             🧩 Tackle complex codes.<br>
@@ -125,7 +126,7 @@ permalink: /cipherhome/
 
 <!-- Level 4 Button -->
 <a href="/flocker_frontend/levelfour/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #ffc8c8; color: #550000; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ff6961; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #FF0000; color: #550000; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #ff6961; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 4: Pro 🚀</strong><br>
             ➡️ Advanced encryption skills.<br>
@@ -137,7 +138,7 @@ permalink: /cipherhome/
 
 <!-- Level 5 Button -->
 <a href="/flocker_frontend/levelfive/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #d3d3d3; color: #333333; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #707070; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #d3d3d3; color: #333333; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #0000FF; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 5: Expert ⚔️</strong><br>
             🏆 Master challenging codes.<br>
@@ -149,7 +150,7 @@ permalink: /cipherhome/
 
 <!-- Level 6 Button -->
 <a href="/flocker_frontend/levelsix/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #cce0ff; color: #003366; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #66b2ff; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #008080; color: #003366; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #66b2ff; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 6: Master 🔥</strong><br>
             💥 Conquer supreme puzzles.<br>
@@ -161,7 +162,7 @@ permalink: /cipherhome/
 
 <!-- Level 7 Button -->
 <a href="/flocker_frontend/levelseven/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #e6c9d4; color: #6d003b; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #bc5090; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #FF00FF; color: #6d003b; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #bc5090; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 7: Grand-Master 🏅</strong><br>
             🎖️ Face ultimate codes.<br>
@@ -173,7 +174,7 @@ permalink: /cipherhome/
 
 <!-- Level 8 Button -->
 <a href="/flocker_frontend/leveleight/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #ffbaba; color: #a10000; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #e63946; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #FFFF00; color: #a10000; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #e63946; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 8: Alpha 👑</strong><br>
             🌠 Beyond mastery.<br>
@@ -185,7 +186,7 @@ permalink: /cipherhome/
 
 <!-- Level 9 Button -->
 <a href="/flocker_frontend/levelnine/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #d6d4e0; color: #4e4b9b; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #6a5acd; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #FFC0CB; color: #4e4b9b; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #6a5acd; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 9: God ✨</strong><br>
             ☄️ Celestial cipher powers.<br>
@@ -197,7 +198,7 @@ permalink: /cipherhome/
 
 <!-- Level 10 Button -->
 <a href="/flocker_frontend/levelten/" style="text-decoration: none;">
-    <div style="display: flex; align-items: center; background-color: #0a0a0a; color: #ffd700; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #6b6b6b; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
+    <div style="display: flex; align-items: center; background-color: #0a0a0a; color: #ffd700; width: 100%; padding: 20px; border-radius: 10px; border: 2px solid #FFFF00; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 1.2em;">
         <div style="flex-grow: 1;">
             <strong>Level 10: SIGMA 🌌</strong><br>
             🌟 Final cipher legend.<br>
@@ -207,14 +208,15 @@ permalink: /cipherhome/
     </div>
 </a>
 
-    <!-- Additional Tips Section -->
-    <div style="flex: 1; max-width: 200px; background-color: #1e1f2b; padding: 15px; border-radius: 8px; color: #ffffff;">
+<!-- Cipher Tips Section (moved to the right) -->
+    <div style="flex: 0 0 200px; background-color: #1e1f2b; padding: 15px; border-radius: 8px; color: #ffffff;">
         ### 🔍 Cipher Tips
         - **Patterns Matter**: Look for repeating letter groups.
         - **Letter Pairings**: Some ciphers swap letters.
         - **Use Frequency Tools**: Online tools can help!
     </div>
 </div>
+
 
 ---
 
