@@ -6,14 +6,15 @@ permalink: /voteforthegoat/internetdebates
 menu: nav/vote_for_the_goat.html
 comments: true
 ---
+<script type="module" src="{{site.baseurl}}/navigation/voteforthegoat/debate.js"></script>
 
 <div class="sidebar">
     <h3>Debate Topics</h3>
-    <button class="debate-btn" data-debate="Milk or Cereal First?">Milk or Cereal First?</button>
-    <button class="debate-btn" data-debate="Is a Hot Dog a Sandwich?">Is a Hot Dog a Sandwich?</button>
-    <button class="debate-btn" data-debate="Pineapple on Pizza?">Pineapple on Pizza?</button>
-    <button class="debate-btn" data-debate="Cats or Dogs?">Cats or Dogs?</button>
-    <button class="debate-btn" data-debate="Coffee or Tea?">Coffee or Tea?</button>
+    <button class="debate-btn" data-debate="Milk or Cereal First?" data-channel-id="17">Milk or Cereal First?</button>
+    <button class="debate-btn" data-debate="Is a Hot Dog a Sandwich?" data-channel-id="18">Is a Hot Dog a Sandwich?</button>
+    <button class="debate-btn" data-debate="Pineapple on Pizza?" data-channel-id="19">Pineapple on Pizza?</button>
+    <button class="debate-btn" data-debate="Cats or Dogs?" data-channel-id="20">Cats or Dogs?</button>
+    <button class="debate-btn" data-debate="Coffee or Tea?" data-channel-id="21">Coffee or Tea?</button>
 </div>
 
 <div id="rules-popup" class="modal">
