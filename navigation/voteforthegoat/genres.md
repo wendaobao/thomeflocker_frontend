@@ -1,10 +1,9 @@
 ---
-permalink: /voteforthegoat/genres/
-menu: nav/vote_for_the_goat.html
 layout: post
-title: Genres Of Music
-description: Vote for your favorite genre of music here!
-Authors: Hannah, Rowan, Gaheera, Rhea
+title: Genres
+description: Genres
+permalink: /voteforthegoat/genres/
+comments: true
 ---
 
 <html lang="en">
@@ -19,12 +18,14 @@ Authors: Hannah, Rowan, Gaheera, Rhea
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             margin: 0;
-            background: pink !important;
+            background-color: pink; /* Background stays pink */
+            overflow-y: auto; /* Allows scrolling */
         }
         .container {
             text-align: center;
+            padding: 20px;
+            background-color: transparent;
         }
         .vinyl-grid {
             display: grid;
@@ -36,20 +37,22 @@ Authors: Hannah, Rowan, Gaheera, Rhea
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: transparent !important;
+            background: transparent; /* Ensures transparency */
         }
         .vinyl-item button {
+            background: transparent; /* Removes button background */
             border: none;
             cursor: pointer;
             outline: none;
-            background: transparent !important;
         }
         .vinyl-item img {
-            background-color: #F0F0F0;
             width: 100px;
             height: 100px;
             border-radius: 50%;
+            object-fit: cover;
             transition: transform 0.3s;
+            background-color: transparent; /* Ensures no background color */
+            box-shadow: none; /* Removes shadow if unwanted */
         }
         .vinyl-item img:hover {
             transform: scale(1.1);
@@ -57,33 +60,25 @@ Authors: Hannah, Rowan, Gaheera, Rhea
         .vinyl-item span {
             margin-top: 8px;
             font-size: 16px;
-            color: #FFC0CB;
+            color: #FFF; /* Text color changed to white */
         }
-        .genre-label {
-            margin-top: 5px;
-            font-size: 14px;
-            color: black !important; /* Set text color to black */
-        }
-        .channels {
+        .comments-section {
+            display: none;
             margin-top: 20px;
-            display: none; /* Hidden by default */
+            width: 80%;
+            max-width: 600px;
         }
-        .channel-item {
-            margin: 5px 0;
-            cursor: pointer; /* Change cursor to pointer for clickable items */
-            font-size: 18px;
+        .comments-section h3 {
+            margin-top: 0;
         }
         .comment-box {
-            margin-top: 10px;
-            display: none; /* Hidden by default */
+            display: flex;
+            margin-bottom: 10px;
         }
-        .comment-list {
-            margin-top: 10px;
-            text-align: left;
-        }
-        .comment-item {
-            margin: 5px 0;
-            padding: 5px;
+        .comment-box textarea {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -107,18 +102,35 @@ Authors: Hannah, Rowan, Gaheera, Rhea
         }
         .comments-list li {
             padding: 10px;
-            background-color: #FFC0CB; /* Black background */
-            color: #FFF; /* White text */
+            background-color: #000;
+            color: #FFF;
             border-radius: 5px;
             margin-bottom: 5px;
         }
         .username {
             font-weight: bold;
-            color: #FFDD57; /* Distinct color for usernames */
+            color: #FFDD57;
             margin-right: 5px;
+        }
+        .chatroom-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FF6347;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .chatroom-button:hover {
+            background-color: #FF4500;
         }
     </style>
 </head>
+<a href="/flocker_frontend/Chatroom" class="chatroom-button">Go to Chatroom</a>  
+
 <body>
     <div class="container">
         <div class="vinyl-grid">
@@ -126,157 +138,90 @@ Authors: Hannah, Rowan, Gaheera, Rhea
                 <button onclick="vote('Rock')">
                     <img src="/flocker_frontend/images/vinyl2.png" alt="Rock Vinyl">
                 </button>
-                <span class="genre-label">Rock</span> <!-- Black text for genre -->
+                <span>Rock</span>
             </div>
             <div class="vinyl-item">
                 <button onclick="vote('Pop')">
                     <img src="/flocker_frontend/images/vinyl2.png" alt="Pop Vinyl">
                 </button>
-                <span class="genre-label">Pop</span> <!-- Black text for genre -->
+                <span>Pop</span>
             </div>
             <div class="vinyl-item">
                 <button onclick="vote('Hip-Hop')">
                     <img src="/flocker_frontend/images/vinyl2.png" alt="Hip-Hop Vinyl">
                 </button>
-                <span class="genre-label">Hip-Hop</span> <!-- Black text for genre -->
+                <span>Hip-Hop</span>
             </div>
             <div class="vinyl-item">
                 <button onclick="vote('Jazz')">
                     <img src="/flocker_frontend/images/vinyl2.png" alt="Jazz Vinyl">
                 </button>
-                <span class="genre-label">Jazz</span> <!-- Black text for genre -->
+                <span>Jazz</span>
             </div>
             <div class="vinyl-item">
                 <button onclick="vote('Classical')">
                     <img src="/flocker_frontend/images/vinyl2.png" alt="Classical Vinyl">
                 </button>
-                <span class="genre-label">Classical</span> <!-- Black text for genre -->
+                <span>Classical</span>
             </div>
             <div class="vinyl-item">
                 <button onclick="vote('Electronic')">
                     <img src="/flocker_frontend/images/vinyl2.png" alt="Electronic Vinyl">
                 </button>
-                <span class="genre-label">Electronic</span> <!-- Black text for genre -->
+                <span>Electronic</span>
             </div>
         </div>
-        <div class="channels" id="channels"></div>
+        <label for="genre">Pick Your Favorite Genre Out of These!</label>
+        
+        <!-- Comments Section -->
+        <div class="comments-section" id="comments-section">
+            <h3>Comment Your Opinion!</h3>
+            <div class="comment-box">
+                <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+                <button onclick="addComment()">Submit</button>
+            </div>
+            <ul class="comments-list" id="commentsList"></ul>
+        </div>
     </div>
 
     <script>
-
         function vote(genre) {
             alert(genre + " selected!");
-            displayChannels(genre);
+            // Display the comments section after a genre is selected
+            document.getElementById('comments-section').style.display = 'block';
         }
 
-        function displayChannels(genre) {
-            const channelsDiv = document.getElementById('channels');
-            channelsDiv.innerHTML = ''; // Clear previous channels
-            const channels = channelsMap[genre];
-
-            if (channels) {
-                channels.forEach(channel => {
-                    const channelItem = document.createElement('div');
-                    channelItem.className = 'channel-item';
-                    channelItem.textContent = channel;
-                    channelItem.onclick = () => showCommentBox(channel);
-                    channelsDiv.appendChild(channelItem);
-                });
-                channelsDiv.style.display = 'block'; // Show the channels div
-            }
+        function getRandomUsername() {
+            const adjectives = ["Mysterious", "Cool", "Chill", "Groovy", "Silent"];
+            const animals = ["Penguin", "Fox", "Tiger", "Panda", "Eagle"];
+            const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+            const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+            const randomNumber = Math.floor(Math.random() * 1000);
+            return `${randomAdjective}${randomAnimal}${randomNumber}`;
         }
 
-        function showCommentBox(channel) {
-            const channelsDiv = document.getElementById('channels');
-            const existingCommentBox = document.querySelector('.comment-box');
-            
-            // If comment box already exists for this channel, toggle it
-            if (existingCommentBox && existingCommentBox.dataset.channel === channel) {
-                existingCommentBox.style.display = existingCommentBox.style.display === 'none' ? 'block' : 'none';
-                return;
-            }
-
-            // Create a new comment box
-            const commentBoxDiv = document.createElement('div');
-            commentBoxDiv.className = 'comment-box';
-            commentBoxDiv.dataset.channel = channel; // Store the channel name
-            commentBoxDiv.innerHTML = `
-                <textarea placeholder="Write a comment..." rows="4" cols="50"></textarea>
-                <br>
-                <button onclick="submitComment('${channel}')">Submit</button>
-                <div class="comment-list" id="${channel}-comments"></div>
-            `;
-            channelsDiv.appendChild(commentBoxDiv);
-            commentBoxDiv.style.display = 'block'; // Show the comment box
-        }
-
-          function showCommentBox(channel) {
-            const channelsDiv = document.getElementById('channels');
-            
-            // Check if a comment box already exists for this channel
-            const existingCommentBox = document.querySelector(`.comment-box[data-channel='${channel}']`);
-            
-            if (existingCommentBox) {
-                // If it exists, toggle its visibility
-                existingCommentBox.style.display = existingCommentBox.style.display === 'none' ? 'block' : 'none';
-                return;
-            }
-
-            // Create a new comment box since it doesn't exist
-            const commentBoxDiv = document.createElement('div');
-            commentBoxDiv.className = 'comment-box';
-            commentBoxDiv.dataset.channel = channel; // Store the channel name
-            commentBoxDiv.innerHTML = `
-                <textarea placeholder="Write a comment..." rows="4" cols="50"></textarea>
-                <br>
-                <button onclick="submitComment('${channel}')">Submit</button>
-                <div class="comment-list" id="${channel}-comments"></div>
-            `;
-            channelsDiv.appendChild(commentBoxDiv);
-            commentBoxDiv.style.display = 'block'; // Show the comment box
-        }
-
-   function submitComment(channel) {
-            const commentBox = document.querySelector(`.comment-box[data-channel='${channel}'] textarea`);
-            const commentText = commentBox.value;
-            if (!commentText) {
-                alert('Please enter a comment!');
-                return;
-            }
-
-            // Add the comment to the comments map
-            if (!commentsMap[channel]) {
-                commentsMap[channel] = [];
-            }
-            commentsMap[channel].push(commentText);
-            displayComments(channel);
-            commentBox.value = ''; // Clear the comment box
-        }
-
-        function displayComments(channel) {
-            const commentListDiv = document.getElementById(`${channel}-comments`);
-            commentListDiv.innerHTML = ''; // Clear previous comments
-
-            if (commentsMap[channel]) {
-                commentsMap[channel].forEach(comment => {
-                    const commentItem = document.createElement('div');
-                    commentItem.className = 'comment-item';
-                    commentItem.textContent = comment;
-
-                    // Like button
-                    const likeButton = document.createElement('button');
-                    likeButton.textContent = 'Like';
-                    likeButton.onclick = () => alert('You liked this comment!'); // Placeholder for like functionality
-
-                    // Reply button
-                    const replyButton = document.createElement('button');
-                    replyButton.textContent = 'Reply';
-                    replyButton.onclick = () => alert('Reply functionality not implemented yet.'); // Placeholder for reply functionality
-
-                    commentItem.appendChild(likeButton);
-                    commentItem.appendChild(replyButton);
-                    commentListDiv.appendChild(commentItem);
-                });
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+            if (commentText !== "") {
+                const commentItem = document.createElement('li');
+                
+                // Create username element
+                const usernameSpan = document.createElement('span');
+                usernameSpan.classList.add('username');
+                usernameSpan.textContent = getRandomUsername() + ": ";
+                
+                // Append username and comment text
+                commentItem.appendChild(usernameSpan);
+                commentItem.appendChild(document.createTextNode(commentText));
+                
+                // Add comment to the comments list
+                document.getElementById('commentsList').appendChild(commentItem);
+                
+                // Clear input field
+                commentInput.value = '';
+            } else {
+                alert("Please enter a comment before submitting.");
             }
         }
     </script>
