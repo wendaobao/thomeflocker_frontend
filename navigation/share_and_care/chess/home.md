@@ -3,6 +3,7 @@ layout: post
 title: Chess [Home Page]
 permalink: /chess/home
 comments: true
+authors: Ahaan, Xavier, Spencer, Vasanth
 ---
 
 Welcome to the Chess Forum!
