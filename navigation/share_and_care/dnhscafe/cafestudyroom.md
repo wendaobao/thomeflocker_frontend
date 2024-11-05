@@ -19,7 +19,7 @@ permalink: /dnhscafestudyroom/
         flex-direction: column;
         max-width: 800px;
         width: 100%;
-        background-color: #2c3e50;
+        background-color: #a68877;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -46,24 +46,22 @@ permalink: /dnhscafestudyroom/
 </style>
 <div class="container">
     <div class="form-container">
-        <h2>Add New Post</h2>
+        <h2>☆*: .｡. Add New Post ☕.｡.:*☆</h2>
         <form id="postForm">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
-            <label for="content">Content:</label>
+            <label for="content">Message:</label>
             <textarea id="content" name="content" required></textarea>
             <label for="group_id">Group:</label>
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
-                <option value="">Math ÷ ×</option>
-                <option value="">Chemistry 👩🏻‍🔬🧑🏻‍🔬🧪</option>
+                <option value="">Math 📓🖋️</option>
+                <option value="">Chemistry 👩🏻‍🔬🧪</option>
                 <option value="">Biology 🧬🔬</option>
                 <option value="">English 🍎📝</option>
             </select>
             <button type="submit">Add Post</button>
         </form>
-    </div>
-</div>
 
 <script type="module">
     // Import server URI and standard fetch options
