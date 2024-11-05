@@ -307,9 +307,7 @@ p {
     <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
 </div>
 <script>
-<<<<<<< HEAD
   
-=======
 let selectedCritter = null;
 let selectedHouse = null;
 
@@ -478,4 +476,3 @@ function confirmChoice() {
 window.onload = displayComments;
 
 </script>
->>>>>>> 9e0aee351e3d272be4fb7b9434558ef5d1f418f1
