@@ -71,5 +71,5 @@ We're excited to bring you "Vote for the GOAT," a fun and interactive project fr
 
 <div class="group-theme">
     **Thomas's Group: Beverage debate**
-    Fed up with the same old drinks at school? While we can’t promise a menu change, we can offer some fun! Welcome to Thomas's group beverage debate, where your votes pick the unofficial favorite. From cool classics to creative concoctions, choose the drink that you think deserves the spotlight. It’s all about seeing which flavors the students love most—cast your vote and make your voice heard!
+    Fed up with the same old drinks at school? While we can’t promise a menu change, we can offer some fun! Welcome to our group beverage debate, where your votes pick the unofficial favorite. From classics to creative drinks, choose the drink that you think deserves the spotlight. It’s all about seeing which flavors the students love most—cast your vote and make your voice heard!
 </div>
