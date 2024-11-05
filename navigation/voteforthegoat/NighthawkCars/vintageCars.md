@@ -113,15 +113,6 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
         </tr>
     </table>
 </div>    
-<p>2. Subaru BRZ </p> 
-<p>3. Toyota GR86 </p> 
-<p>4. Honda Accord </p> 
-<p>5. Honda CRV </p> 
-<p>6. Ford Maverick </p> 
-<p>7. Chevrolet Trax </p> 
-<p>8. Toyota Prius </p> 
-<p>9. Mazda CX-30 </p> 
-<p>10. Mazda 3 </p> 
 
 <h3>Helpful tip</h3>
 <p>   </p>
