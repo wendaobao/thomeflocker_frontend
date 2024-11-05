@@ -89,7 +89,10 @@ search_exclude: true
     // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-    // Fetch groups for dropdown selection
+    /**
+     * Fetch groups for dropdown selection
+     * User picks from dropdown
+     */
     async function fetchGroups() {
         try {
             const response = await fetch(`${pythonURI}/api/groups/filter`, {
@@ -116,7 +119,10 @@ search_exclude: true
         }
     }
 
-    // Fetch channels based on selected group
+    /**
+     * Fetch channels based on selected group
+     * User picks from dropdown
+     */
     async function fetchChannels(groupName) {
         try {
             const response = await fetch(`${pythonURI}/api/channels/filter`, {
@@ -144,7 +150,10 @@ search_exclude: true
         }
     }
 
-    // Handle group selection change
+    /**
+      * Handle group selection change
+      * Channel Dropdown refresh to match group_id change
+      */
     document.getElementById('group_id').addEventListener('change', function() {
         const groupName = this.value;
         if (groupName) {
@@ -154,7 +163,10 @@ search_exclude: true
         }
     });
 
-    // Handle form submission for selection
+    /**
+     * Handle form submission for selection
+     * Select Button: Computer fetches and displays posts
+     */
     document.getElementById('selectionForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const groupId = document.getElementById('group_id').value;
@@ -166,7 +178,10 @@ search_exclude: true
         }
     });
 
-    // Handle form submission for adding a post
+    /**
+     * Handle form submission for adding a post
+     * Add Form Button: Computer handles form submission with request
+     */
     document.getElementById('postForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -210,7 +225,10 @@ search_exclude: true
         }
     });
 
-    // Fetch posts based on selected channel
+    /**
+     * Fetch posts based on selected channel
+     * Handle response: Fetch and display posts
+     */
     async function fetchData(channelId) {
         try {
             const response = await fetch(`${pythonURI}/api/posts/filter`, {
