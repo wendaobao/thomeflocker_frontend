@@ -7,7 +7,6 @@ description: Vote for your favorite critters here!
 Authors: Maryam, Nora, Kushi, Joanna
 ---
 
-
 <style>
 p, h2, h3, body {
  font-family: "Times New Roman", Times, serif;;
@@ -399,8 +398,73 @@ function confirmChoice() {
     houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
 
     imageBox.style.display = "block"; // Show the image box
+
+    // Optional: Display the comment section after confirmation
+    document.getElementById("commentSection").style.display = "block";
 }
 
+
+
+// Add a comment to the comment list and store it in local storage
+function addComment() {
+    const usernameInput = document.getElementById('usernameInput');
+    const commentInput = document.getElementById('commentInput');
+
+    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+        alert("Please enter both a username and a comment.");
+        return;
+    }
+
+    // Include the selected house in the username
+    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    const newComment = {
+        username: fullUsername, // Store the modified username
+        text: commentInput.value.trim()
+    };
+
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    usernameInput.value = '';
+    commentInput.value = '';
+
+    displayComments();
+}
+
+
+// Display the list of comments from local storage
+function displayComments() {
+    const commentList = document.getElementById('commentList');
+    commentList.innerHTML = '';
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    comments.forEach(comment => {
+        const commentItem = document.createElement('div');
+        commentItem.style.marginBottom = '10px';
+        commentItem.style.borderBottom = '1px solid #ddd';
+        commentItem.style.paddingBottom = '5px';
+
+        const header = document.createElement('div');
+        header.style.fontWeight = 'bold';
+        header.textContent = comment.username;
+
+        const textElement = document.createElement('p');
+        textElement.textContent = comment.text;
+
+        commentItem.appendChild(header);
+        commentItem.appendChild(textElement);
+        commentList.appendChild(commentItem);
+    });
+}
+
+function clearComments() {
+    localStorage.removeItem('comments'); // Remove comments from local storage
+    displayComments(); // Refresh the comment display
+}
 
 function selectCritter(element) {
     const critters = document.querySelectorAll('.critter-container');
