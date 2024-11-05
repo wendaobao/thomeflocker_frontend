@@ -6,8 +6,6 @@ permalink: /create_and_compete/reality_game
 author: Yash, Nikhil, Rohan, Neil
 ---
 
-
-
 <table class="sub-menu">
     <tr>
         <td>
@@ -89,6 +87,15 @@ author: Yash, Nikhil, Rohan, Neil
         margin: 5px 0;
         max-width: 80%;
         word-wrap: break-word;
+    }
+    .ai-bubble {
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 5px 0;
+        max-width: 80%;
+        word-wrap: break-word;
+        color: #333;
     }
     .cell {
         display: flex;
@@ -198,95 +205,73 @@ author: Yash, Nikhil, Rohan, Neil
 </style>
 
 <script>
-    // chat functionality
-    document.getElementById('messageBox').addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault() // prevent page refresh
-            var inputValue = event.target.value; // get da content of the message
-            var messageContent = inputValue;
-            const fileInput = document.getElementById('file-input');
-            const file = fileInput.files[0];
+    // Function to send message to Gemini API and display response
+    async function sendToGeminiAPI(userMessage) {
+    const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBOUekV-txUye0_jpkGlfRe3PMk7Q9GHic";
 
-            const apiUrl = `https://api.api-ninjas.com/v1/profanityfilter?text=${encodeURIComponent(inputValue)}`;
-
-            fetch(apiUrl, {
-                method: 'GET',
-                headers: {
-                    'X-Api-Key': 'uZQcFwYU/4Ttvkv9wmSYpQ==ERhuZfToEn2rmGWJ'
-                }
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{ text: userMessage }]
+                }]
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`Error: ${response.status}`);
-                }
-            })
-            .then(data => {
-                if (data.has_profanity) {
-                    console.log('Profanity detected!');
-                    console.log('Censored message:', data.censored);
+        });
 
-                    messageContent = data.censored;
-                } else {
-                    console.log('No profanity');
-                }
-
-                var paragraph = document.createElement('p');
-                paragraph.textContent = messageContent;
-                paragraph.classList.add('message-bubble');
-                document.getElementById('outputDiv').appendChild(paragraph);
-                event.target.value = ''; // clear box
-
-                const messagesDiv = document.getElementById('outputDiv');
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-                const boomSound = new Audio('../images/boom.mp3');
-                if (messageContent.toLowerCase() === 'boom') {
-                    boomSound.play();
-                    document.body.classList.add('flash');
-                    setTimeout(() => {
-                        document.body.classList.remove('flash');
-                    }, 500); // Remove the flash effect after 0.5s
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
         }
-    });
-</script>
 
-<script>
-    async function fetchPosts() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('postId');
-        console.log(postId)
-        console.log("test")
-
-        try {
-            const response = await fetch(`${pythonURI}/api/post`, fetchOptions);
-            if (!response.ok) {
-                throw new Error('Failed to fetch groups: ' + response.statusText);
-            }
-            const posts = await response.json();
-            console.log(posts)
-
-        } catch (error) {
-            console.error('Error fetching groups:', error);
-        }
+        const data = await response.json();
+        return data.candidates[0].content.parts[0].text; // Adjusted to match Postman response structure
+    } catch (error) {
+        console.error('Error communicating with Gemini API:', error);
+        return "An error occurred while communicating with the AI.";
     }
-    fetchPosts();
+    }
 
-    // file upload functionality
+    // Chat functionality
+    document.getElementById('messageBox').addEventListener('keypress', async function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent page refresh
+        const userMessage = event.target.value;
+
+        // Display user message in chat
+        const userMessageElement = document.createElement('p');
+        userMessageElement.classList.add('message-bubble');
+        userMessageElement.textContent = userMessage;
+        document.getElementById('outputDiv').appendChild(userMessageElement);
+
+        event.target.value = ''; // Clear input box
+
+        // Get response from Gemini API
+        const aiResponse = await sendToGeminiAPI(userMessage);
+
+        // Display AI response in chat
+        const aiMessageElement = document.createElement('p');
+        aiMessageElement.classList.add('ai-bubble');
+        aiMessageElement.textContent = aiResponse;
+        document.getElementById('outputDiv').appendChild(aiMessageElement);
+
+        // Scroll to the bottom of the chat
+        const messagesDiv = document.getElementById('outputDiv');
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+    });
+
+    // Additional existing JavaScript code (e.g., file upload, redirect toggle)
     function triggerFileUpload() {
-        document.getElementById('file-input').click();
+    document.getElementById('file-input').click();
     }
 
     function toggleRedirect() {
-        const checkbox = document.getElementById('toggle-switch');
-        if (checkbox.checked) {
-            window.location.href = '{{site.baseurl}}/create_and_compete/realityroom';
-        }
+    const checkbox = document.getElementById('toggle-switch');
+    if (checkbox.checked) {
+        window.location.href = '{{site.baseurl}}/create_and_compete/realityroom';
+    }
     }
 </script>
