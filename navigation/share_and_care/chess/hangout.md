@@ -7,23 +7,22 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 ---
 
 
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chess Hangout Zone</title>
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/88dpz+q8MBn5E2p3zFcTtv1z5JyyprjSAz5gUm" crossorigin="anonymous">
+    <title>Chess Hangout Zone - Chess Game with Chat</title>
     <style>
+        /* Styles */
         body {
             background-color: #1B1B1B;
             color: #F0F0F0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
-        .container {
-            margin-top: 30px;
-        }
+        .container { margin-top: 30px; }
         .chessboard {
             display: grid;
             grid-template-columns: repeat(8, 100px);
@@ -40,33 +39,21 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             align-items: center;
             font-size: 50px;
             font-weight: bold;
-            font-family: 'Segoe UI Symbol', sans-serif;
             cursor: pointer;
+            color: #3E3E3E;
         }
-        .orange {
-            background-color: #F39C12;
-        }
-        .yellow {
-            background-color: #F7DC6F;
-        }
-        .chat-container {
-            display: flex;
-            justify-content: space-between;
-        }
+        .orange { background-color: #F39C12; }
+        .yellow { background-color: #F7DC6F; }
+        .chat-container { display: flex; justify-content: space-between; }
         .chat-box {
-            width: 30%;
+            width: 40%;
             background-color: #1A1A1A;
             padding: 20px;
             border-radius: 8px;
             border: 2px solid #444;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
-        .chat-box h4 {
-            color: #F7DC6F;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-        }
+        .chat-box h4 { color: #F7DC6F; font-weight: bold; text-align: center; margin-bottom: 15px; }
         .chat-messages {
             height: 400px;
             overflow-y: scroll;
@@ -76,58 +63,33 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             padding: 10px;
             border-radius: 10px;
         }
-        .message {
-            padding: 10px 15px;
-            border-radius: 10px;
-            margin: 8px 0;
-            font-size: 16px;
-            word-wrap: break-word;
-            display: inline-block;
-            max-width: 80%;
-            color: #F0F0F0;
-            border: 1px solid #444;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .user-message {
-            text-align: right;
-            margin-left: auto;
-            border-radius: 15px 15px 0 15px;
-        }
-        .bot-message {
-            background-color: #B29800;
-            text-align: left;
-            margin-right: auto;
-            border-radius: 15px 15px 15px 0;
-        }
-        .bot-message::after {
-            content: " :robot_face:";
-        }
-        .message-input {
-            display: flex;
-            gap: 5px;
-        }
-        .message-input input {
-            flex-grow: 1;
-            background-color: #2A2A2A;
-            border: 1px solid #555;
-            color: #F0F0F0;
-        }
-        .send-btn {
-            background-color: #444;
-            color: #F0F0F0;
-        }
-        .send-btn:hover {
-            background-color: #555;
-        }
+        .message { padding: 10px 15px; border-radius: 10px; margin: 8px 0; font-size: 16px; display: inline-block; max-width: 80%; color: #F0F0F0; border: 1px solid #444; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+        .user-message { text-align: right; margin-left: auto; border-radius: 15px 15px 0 15px; }
+        .bot-message { background-color: #B29800; text-align: left; margin-right: auto; border-radius: 15px 15px 15px 0; }
+        .message-input { display: flex; gap: 5px; }
+        .message-input input { flex-grow: 1; background-color: #2A2A2A; border: 1px solid #555; color: #F0F0F0; }
+        .send-btn { background-color: #444; color: #F0F0F0; }
+        .send-btn:hover { background-color: #555; }
+        .captured-pieces { text-align: center; margin-top: 20px; }
+        .turn-popup { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; background-color: #444; color: #F0F0F0; border: 2px solid #F39C12; border-radius: 5px; font-size: 18px; font-weight: bold; display: none; }
+        .game-mode { text-align: center; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="text-center">Chess Hangout Zone</h2>
+        <div class="game-mode">
+            <button onclick="startGame('human')" class="btn btn-primary">Play Against Human</button>
+            <button onclick="startGame('bot')" class="btn btn-secondary">Play Against Bot</button>
+        </div>
+        <div class="captured-pieces">
+            <h4>White's Captured Pieces</h4>
+            <div id="whiteCaptured"></div>
+            <h4>Black's Captured Pieces</h4>
+            <div id="blackCaptured"></div>
+        </div>
         <div class="chat-container">
-            <!-- Chessboard -->
             <div class="chessboard" id="chessboard"></div>
-            <!-- Chat Section -->
             <div class="chat-box">
                 <h4>Chess-Themed Chat Room</h4>
                 <div id="chatMessages" class="chat-messages"></div>
@@ -137,15 +99,11 @@ authors: Ahaan, Xavier, Spencer, Vasanth
                 </div>
             </div>
         </div>
+        <div class="turn-popup" id="turnPopup">White's Turn</div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <!-- JS for Chessboard functionality -->
+
     <script>
-        const pieces = {
-            'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
-            'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
-        };
+        const pieces = { 'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;', 'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;' };
         const boardLayout = [
             ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
             ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
@@ -157,7 +115,24 @@ authors: Ahaan, Xavier, Spencer, Vasanth
             ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
         ];
         const chessboard = document.getElementById('chessboard');
+        const turnPopup = document.getElementById('turnPopup');
+        const whiteCaptured = document.getElementById('whiteCaptured');
+        const blackCaptured = document.getElementById('blackCaptured');
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
         let selectedSquare = null;
+        let turn = 'white';
+        let gameMode = 'human';
+        let botMessages = ["Nice move!", "You're doing great!", "Keep it up!", "This is a tough game!", "Impressive!"];
+        
+        function startGame(mode) {
+            gameMode = mode;
+            generateBoard();
+            displayTurnPopup();
+            addMessage(`You are playing against ${mode === 'bot' ? 'the bot!' : 'another player!'}`, 'bot-message');
+        }
+        
         function generateBoard() {
             chessboard.innerHTML = '';
             let isYellow = true;
@@ -177,6 +152,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
                 isYellow = !isYellow;
             }
         }
+
         function handleSquareClick(row, col, square) {
             if (selectedSquare) {
                 movePiece(selectedSquare, row, col);
@@ -185,102 +161,81 @@ authors: Ahaan, Xavier, Spencer, Vasanth
                 selectedSquare = { row, col, square };
             }
         }
+
         function movePiece(selected, row, col) {
             const piece = boardLayout[selected.row][selected.col];
+            const target = boardLayout[row][col];
+            if (target) {
+                if (turn === 'white') {
+                    blackCaptured.innerHTML += pieces[target];
+                } else {
+                    whiteCaptured.innerHTML += pieces[target];
+                }
+            }
             boardLayout[selected.row][selected.col] = '';
             boardLayout[row][col] = piece;
+            turn = turn === 'white' ? 'black' : 'white';
             generateBoard();
-        }
-        generateBoard();
-    </script>
-    <!-- JS for Chat and Moderation Bot functionality -->
-    <script>
-        const chatMessages = document.getElementById('chatMessages');
-        const messageInput = document.getElementById('messageInput');
-        const sendBtn = document.getElementById('sendBtn');
-        let userColors = {};
-        let userIdCounter = 0;
-        // List of offensive words (expand this list as needed)
-        const offensiveWords = ["offensiveWord1", "offensiveWord2", "curseWord1"];
-        // Function to get a random color
-        function getRandomColor() {
-            const colors = ["#8A7B6D", "#77665C", "#634944", "#504238", "#3D3832", "#6B665A", "#D9AE7D"];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-        // Function to add a message to the chat
-        function addMessage(text, isBot = false) {
-            const msgElement = document.createElement('p');
-            msgElement.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
-            msgElement.textContent = text;
-            if (!isBot) {
-                const userId = `user_${userIdCounter++}`;
-                if (!userColors[userId]) {
-                    userColors[userId] = getRandomColor();
-                }
-                msgElement.style.backgroundColor = userColors[userId];
+            displayTurnPopup();
+            if (gameMode === 'bot' && turn === 'black') {
+                setTimeout(botMove, 5000); // 5 seconds delay for bot move
             }
-            chatMessages.appendChild(msgElement);
+        }
+
+        function botMove() {
+            let validMoves = [];
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const piece = boardLayout[row][col];
+                    if (piece && piece === piece.toLowerCase()) {
+                        validMoves.push(...getLegalMoves(piece, row, col));
+                    }
+                }
+            }
+            if (validMoves.length > 0) {
+                const move = validMoves[Math.floor(Math.random() * validMoves.length)];
+                movePiece({ row: move.startRow, col: move.startCol }, move.endRow, move.endCol);
+                sendBotMessage();
+            }
+        }
+
+        function getLegalMoves(piece, startRow, startCol) {
+            const moves = [];
+            // Add move logic here
+            return moves.filter(move => isLegalMove(move));
+        }
+
+        function isLegalMove(move) {
+            return true; // Add legality check
+        }
+
+        function sendBotMessage() {
+            addMessage(botMessages[Math.floor(Math.random() * botMessages.length)], 'bot-message');
+        }
+
+        function addMessage(text, type) {
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            chatMessages.appendChild(message);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-        // Function to handle user messages
-        function handleUserMessage() {
-            const userMessage = messageInput.value.trim();
-            if (userMessage) {
-                if (isMessageOffensive(userMessage)) {
-                    addMessage("Your message contains inappropriate language and cannot be sent.", true);
-                } else {
-                    addMessage(userMessage, false);
-                    messageInput.value = '';
-                    respondToUserMessage(userMessage);
-                }
-            }
-        }
-        // Function to check for offensive words
-        function isMessageOffensive(message) {
-            const lowerCaseMessage = message.toLowerCase();
-            return offensiveWords.some(word => lowerCaseMessage.includes(word));
-        }
-        // Function to respond to user messages
-        function respondToUserMessage(userMessage) {
-            setTimeout(() => {
-                const responses = [
-                    "Interesting point! What are your thoughts on that?",
-                    "That's a great insight! How did you come to that conclusion?",
-                    "I'm glad you shared that. Let's keep the discussion lively!",
-                    "Wow, that's quite the move! Are you planning your next one?",
-                    "Chess is all about strategy. What's your favorite opening?"
-                ];
-                const botResponse = responses[Math.floor(Math.random() * responses.length)];
-                addMessage(botResponse, true);
-            }, 1000);
-        }
-        sendBtn.addEventListener('click', handleUserMessage);
-        messageInput.addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                handleUserMessage();
+
+        sendBtn.addEventListener('click', () => {
+            const text = messageInput.value.trim();
+            if (text) {
+                addMessage(text, 'user-message');
+                messageInput.value = '';
             }
         });
+
+        function displayTurnPopup() {
+            turnPopup.textContent = turn === 'white' ? "White's Turn" : "Black's Turn";
+            turnPopup.style.display = 'block';
+            setTimeout(() => turnPopup.style.display = 'none', 2000);
+        }
+
+        generateBoard();
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

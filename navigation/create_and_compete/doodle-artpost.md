@@ -2,13 +2,11 @@
 layout: post 
 title: Create and Compete - Doodle
 search_exclude: true
+menu: nav/doodle.html
 permalink: /moderation/artpost_doodle/
 author: Alex, Arshia, Prajna, and Mirabelle 
 ---
 
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +32,7 @@ author: Alex, Arshia, Prajna, and Mirabelle
             width: 100%;
         }
         .photo-container {
-            background: white;
+            background: purple;
             margin: 10px;
             padding: 10px;
             border-radius: 5px;
@@ -125,4 +123,4 @@ author: Alex, Arshia, Prajna, and Mirabelle
         });
     </script>
 </body>
-</html>
+
