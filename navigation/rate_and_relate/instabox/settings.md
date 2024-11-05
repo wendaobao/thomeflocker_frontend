@@ -151,10 +151,11 @@ author: Aadi, Aaditya, Aditya, Kanhay
             <!-- Save Changes button -->
             <button class="save-btn" onclick="updateInfo()">Save Changes</button>
             <!-- Log Out button -->
-            <button class="logout-btn">Log Out</button>
+            <button class="logout-btn" onclick="logOut()">Log Out</button>
         </div>
     </div>
     <script>
+        // Updates username or password if current password is entered
         function updateInfo() {  
             const username = document.getElementById("username").value;
             const newPassword = document.getElementById("new-password").value;
@@ -166,7 +167,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
                 return;
             }
             if (username != "") {
-                localStorage.setItem("username", username);
+                localStorage.setItem("username", username.trim());
                 usernameUpdated = true;
             }
             if (newPassword === "" && confirmPassword === "") {
@@ -186,6 +187,13 @@ author: Aadi, Aaditya, Aditya, Kanhay
                     return;
                 }
             }
+        }
+        // Clear saved data and reload page
+        function logOut() {
+            const usernameString = localStorage.getItem("username");
+            localStorage.clear();
+            location.reload();
+            alert("You have been logged out from " + usernameString + ".");
         }
     </script>
 </body>
