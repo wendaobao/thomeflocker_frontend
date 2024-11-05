@@ -12,11 +12,7 @@ menu: nav/create_and_compete.html
 <p>Share your feedback, discuss guesses, and chat with others in real time!</p>
 
 <!-- Chat Box -->
-<div id="chat-box" class="chat-box">
-    <!-- Chat messages will be displayed here -->
-    <div class="message">User1: This is a sample message.</div>
-    <div class="message">User2: This is another sample message.</div>
-</div>
+<div id="chat-box" class="chat-box"></div>
 
 <!-- Chat Input -->
 <div class="chat-input">
