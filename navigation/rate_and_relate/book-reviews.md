@@ -129,7 +129,7 @@ function replyToComment(index) {
 }
 
 // Like button toggle and add likes
-<script>
+ <script>
         // Initialize the state
         let liked = false;
         let likeCount = 11; // Start count at 11
@@ -139,7 +139,7 @@ function replyToComment(index) {
             liked = !liked;
             document.getElementById('heart').innerText = liked ? '❤️' : '♡';
 
-            // Update like count only if liked
+            // Update like count based on liked state
             if (liked) {
                 likeCount++;
             } else {
@@ -149,6 +149,11 @@ function replyToComment(index) {
             // Display the updated like count
             document.getElementById('likeCount').innerText = likeCount;
         }
+
+        // Wait until the DOM is fully loaded before setting initial values
+        window.onload = function() {
+            document.getElementById('likeCount').innerText = likeCount;
+        };
     </script>
 
 // Rate book function to change star colors and set current rating
