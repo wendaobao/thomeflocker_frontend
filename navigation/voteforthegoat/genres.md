@@ -116,7 +116,7 @@ comments: true
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
-            background-color: #FF6347;
+            background-color: #fa82f8;
             color: #fff;
             border: none;
             border-radius: 8px;
