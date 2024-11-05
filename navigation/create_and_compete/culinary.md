@@ -8,22 +8,22 @@ author: Daksha, Zach, Alex, Darsh
 ---
 
 <style>
-    /* General body styling */
+   
     body {
         font-family: Arial, sans-serif;
-        background-color: #e0f7fa; /* Light blue background */
+        background-color: #e0f7fa; 
         color: #2c3e50;
         margin: 0;
         padding: 20px;
         line-height: 1.6;
     }
 
-    /* Header styling */
+    
     h1, h2 {
-        color: #00796b; /* Deep teal for headers */
+        color: #00796b; 
     }
 
-    /* Form styling */
+    
     form {
         margin: 20px 0;
         background-color: #ffffff;
@@ -32,32 +32,32 @@ author: Daksha, Zach, Alex, Darsh
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 
-    /* Input field styling */
+    
     input[type="text"] {
         width: calc(100% - 150px);
         padding: 10px;
-        border: 1px solid #4db6ac; /* Soft teal border */
+        border: 1px solid #4db6ac; 
         border-radius: 5px;
         background-color: #ffffff;
         color: #2c3e50;
     }
 
-    /* Button styling */
+    
     button {
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #00796b; /* Deep teal button */
+        background-color: #00796b; 
         color: white;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
     button:hover {
-        background-color: #004d40; /* Darker teal on hover */
+        background-color: #004d40; 
     }
 
-    /* Recipe and category sections */
+    
     .recipe-category {
         margin-top: 40px;
         color: #34495e;
@@ -65,7 +65,7 @@ author: Daksha, Zach, Alex, Darsh
     }
 
     .recipe {
-        border: 1px solid #b2ebf2; /* Light teal border */
+        border: 1px solid #b2ebf2; 
         border-radius: 8px;
         padding: 15px;
         margin: 15px 0;
@@ -74,27 +74,27 @@ author: Daksha, Zach, Alex, Darsh
         color: #2c3e50;
     }
 
-    /* Suggestions and additional sections */
+    
     .suggestions {
         margin: 20px 0;
         padding: 15px;
-        background-color: #b2dfdb; /* Very light teal */
+        background-color: #b2dfdb;
         border-radius: 5px;
     }
 
-    /* Scrollbar styling */
+    
     ::-webkit-scrollbar {
         width: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #e0f7fa; /* Matches the light blue background */
+        background: #e0f7fa; 
     }
     ::-webkit-scrollbar-thumb {
-        background: #00796b; /* Deep teal */
+        background: #00796b; 
         border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: #004d40; /* Dark teal on hover */
+        background: #004d40; 
     }
 </style>
 
@@ -827,11 +827,11 @@ author: Daksha, Zach, Alex, Darsh
 document.getElementById('ingredientForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    // Get input ingredients and normalize
+   
     const inputIngredients = document.getElementById('ingredients').value.split(',')
         .map(ingredient => ingredient.trim().toLowerCase());
 
-    // Filter recipes that contain ANY of the input ingredients
+
     const filteredRecipes = recipes.filter(recipe => {
         const recipeIngredientsLower = recipe.ingredients.map(ing => ing.toLowerCase());
         return inputIngredients.some(input => 
@@ -1010,5 +1010,4 @@ document.getElementById('randomRecipeButton').addEventListener('click', () => {
 <a href="http://127.0.0.1:4887/flocker_frontend/create_and_compete/culinaryposts">
   <button class="culinary-posts-btn">Culinary Posts</button>
 </a>
-
 
