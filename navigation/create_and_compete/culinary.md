@@ -10,22 +10,17 @@ author: Daksha, Zach, Alex, Darsh
 <style>
     /* General body styling */
     body {
-        font-family: "Verdana", sans-serif;
-        background: linear-gradient(to bottom right, #6a8daf, #b0d4e3);
+        font-family: Arial, sans-serif;
+        background-color: #e0f7fa; /* Light blue background */
         color: #2c3e50;
         margin: 0;
         padding: 20px;
-        line-height: 1.8;
+        line-height: 1.6;
     }
 
     /* Header styling */
     h1, h2 {
-        color: #2e4057;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-bottom: 3px solid #5d92b0;
-        padding-bottom: 8px;
-        margin-bottom: 20px;
+        color: #00796b; /* Deep teal for headers */
     }
 
     /* Form styling */
@@ -39,44 +34,38 @@ author: Daksha, Zach, Alex, Darsh
 
     /* Input field styling */
     input[type="text"] {
-        width: calc(100% - 130px);
+        width: calc(100% - 150px);
         padding: 10px;
-        border: 2px solid #a5c5d9;
+        border: 1px solid #4db6ac; /* Soft teal border */
         border-radius: 5px;
-        background-color: #f9fbfd;
+        background-color: #ffffff;
         color: #2c3e50;
-        font-family: "Verdana", sans-serif;
-        font-size: 1rem;
-        margin-right: 10px;
     }
 
     /* Button styling */
     button {
-        padding: 10px 20px;
-        font-weight: bold;
+        padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #5d92b0;
+        background-color: #00796b; /* Deep teal button */
         color: white;
         cursor: pointer;
-        transition: background-color 0.3s, transform 0.1s;
+        transition: background-color 0.3s;
     }
 
     button:hover {
-        background-color: #46788f;
-        transform: scale(1.05);
+        background-color: #004d40; /* Darker teal on hover */
     }
 
     /* Recipe and category sections */
     .recipe-category {
-        margin-top: 30px;
+        margin-top: 40px;
         color: #34495e;
         font-weight: bold;
-        font-size: 1.2rem;
     }
 
     .recipe {
-        border: 1px solid #a8c7d8;
+        border: 1px solid #b2ebf2; /* Light teal border */
         border-radius: 8px;
         padding: 15px;
         margin: 15px 0;
@@ -89,24 +78,23 @@ author: Daksha, Zach, Alex, Darsh
     .suggestions {
         margin: 20px 0;
         padding: 15px;
-        background-color: #e6f0f7;
-        border-left: 4px solid #5d92b0;
+        background-color: #b2dfdb; /* Very light teal */
         border-radius: 5px;
     }
 
-    /* Scrollbar styling for aesthetic cohesion */
+    /* Scrollbar styling */
     ::-webkit-scrollbar {
         width: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #b0d4e3;
+        background: #e0f7fa; /* Matches the light blue background */
     }
     ::-webkit-scrollbar-thumb {
-        background: #5d92b0;
+        background: #00796b; /* Deep teal */
         border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: #46788f;
+        background: #004d40; /* Dark teal on hover */
     }
 </style>
 
