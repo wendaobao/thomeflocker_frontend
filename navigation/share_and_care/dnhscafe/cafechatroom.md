@@ -19,8 +19,8 @@ permalink: /dnhscafestudyroom/
             margin: 0;
         }
         .chat-container {
-            width: 3000px;
-            height: 4000px;
+            width: 850px;
+            height: 900px;
             display: flex;
             flex-direction: column;
             border: 1px solid #ccc;
