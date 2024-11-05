@@ -2,6 +2,7 @@
 layout: post
 title: Voting Chatroom
 permalink: /chatroom
+comments: true
 ---
 <html lang="en">
 <head>
