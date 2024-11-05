@@ -201,26 +201,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             position: relative;
         }
 
-        /* Add or update these styles */
-        nav {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: transparent;
-        }
-
-        nav a, .DNHS-title {
-            background: rgba(0, 0, 0, 0.5);
-            color: #00c6ff;
-            padding: 12px 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-        }
-
         nav a:hover, .DNHS-title:hover {
             background: rgba(0, 0, 0, 0.7);
             color: #00e6ff;
