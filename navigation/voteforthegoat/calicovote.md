@@ -165,7 +165,7 @@ p {
         </details>
         <details>
             <summary>Description</summary>
-                <div class="dropdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit.</div>
+                <div class="dropdown">In an elegant baby blue gown with hints of yellow, Mizuki is kind and generous and offers an apple as a token of friendship</div>
         </details>
         <details>
             <summary>Collection</summary>
@@ -186,7 +186,7 @@ p {
         </details>
         <details>
             <summary>Description</summary>
-                <div class="dropdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit.</div>
+                <div class="dropdown">Always on time and only focuses on schoolwork. Only thing more important than good grades is staying hydrated.</div>
         </details>
         <details>
             <summary>Collection</summary>
@@ -207,7 +207,7 @@ p {
         </details>
         <details>
             <summary>Description</summary>
-                <div class="dropdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit.</div>
+                <div class="dropdown">She carries the heart of the sea and maintains peace with the land animals</div>
         </details>
         <details>
             <summary>Collection</summary>
@@ -228,7 +228,7 @@ p {
         </details>
         <details>
             <summary>Description</summary>
-                <div class="dropdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit.</div>
+                <div class="dropdown">Always looks her best and shares everything. She's always prepared and has everything in her handy backpack.</div>
         </details>
         <details>
             <summary>Collection</summary>
@@ -249,7 +249,7 @@ p {
         </details>
         <details>
             <summary>Description</summary>
-                <div class="dropdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit.</div>
+                <div class="dropdown">Keeps her fur pure white and fluffy, but easily gets lost.Luckily, she wears a bell to be found easily.</div>
         </details>
         <details>
             <summary>Collection</summary>
@@ -270,7 +270,7 @@ p {
         </details>
         <details>
             <summary>Description</summary>
-                <div class="dropdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit.</div>
+                <div class="dropdown">Found in the kitchen baking a sweet treat, lives in an organized mess at all times</div>
         </details>
         <details>
             <summary>Collection</summary>
