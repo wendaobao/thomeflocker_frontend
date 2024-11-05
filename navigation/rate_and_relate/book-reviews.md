@@ -129,7 +129,18 @@ function replyToComment(index) {
 }
 
 // Like button toggle and add likes
- <script>
+<body>
+    <div style="text-align: center;">
+        <h2>Book Title</h2>
+        <!-- Add the id 'heart' to the button and initialize with "♡" -->
+        <button id="heart" onclick="toggleLike()">♡</button>
+        <div>
+            <!-- Initialize the like count display here -->
+            <span id="likeCount">11</span> likes
+        </div>
+    </div>
+
+    <script>
         // Initialize the state
         let liked = false;
         let likeCount = 11; // Start count at 11
@@ -152,9 +163,11 @@ function replyToComment(index) {
 
         // Wait until the DOM is fully loaded before setting initial values
         window.onload = function() {
+            // Set the initial like count
             document.getElementById('likeCount').innerText = likeCount;
         };
     </script>
+</body>
 
 // Rate book function to change star colors and set current rating
 function rateBook(rating) {
