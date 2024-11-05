@@ -40,6 +40,7 @@ Authors: Hannah, Rowan, Gaheera, Rhea
             background: transparent !important;
         }
         .vinyl-item button {
+            background: transparent !important; /* Removes button background */
             border: none;
             cursor: pointer;
             outline: none;
@@ -149,7 +150,7 @@ Authors: Hannah, Rowan, Gaheera, Rhea
             </div>
             <div class="vinyl-item">
                 <button onclick="vote('Classical')">
-                    <img src="/flocker_frontend/images/vinyl2.png" alt="Classical Vinyl">
+                    <img src="/flocker_frontend/images/vinyl2.png" alt="Classical Vinyl"> 
                 </button>
                 <span class="genre-label">Classical</span> <!-- Black text for genre -->
             </div>
@@ -298,4 +299,6 @@ Authors: Hannah, Rowan, Gaheera, Rhea
     </script>
 </body>
 </html>
+
+<head><style> body { background-color: pink !important; } </style></head>
 
