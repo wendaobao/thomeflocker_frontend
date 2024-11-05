@@ -9,108 +9,6 @@ author: Arshia, Prajna, Mirabelle, Alex
 
 
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Room</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0f2f5;
-      height: 100vh;
-      margin: 0;
-    }
-    #mainContainer {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    #sidebar {
-      width: 30%;
-      background-color: #ffffff;
-      border-right: 1px solid #ddd;
-      padding: 10px;
-      overflow-y: auto;
-    }
-    .chatBox {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      cursor: pointer;
-    }
-    .chatBox:hover {
-      background-color: #f0f2f5;
-    }
-    .chatBox h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #333;
-    }
-    .chatBox p {
-      margin: 4px 0 0;
-      color: #777;
-      font-size: 14px;
-    }
-    #chatContainer {
-      flex: 1;
-      padding: 10px;
-      background-color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    #doodleImage {
-      width: 100%;
-      max-height: 200px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      object-fit: cover;
-    }
-    #messages {
-      flex: 1;
-      overflow-y: auto;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .message {
-      margin: 5px 0;
-      padding: 5px;
-      border-radius: 5px;
-      background-color: #d0e6f5;
-      color: #333;
-    }
-    #inputContainer {
-      display: flex;
-    }
-    #inputMessage {
-      flex: 1;
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    #sendButton {
-      padding: 8px 12px;
-      margin-left: 5px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
 
 <div id="mainContainer">
   <div id="sidebar">
@@ -140,7 +38,172 @@ author: Arshia, Prajna, Mirabelle, Alex
       <button id="sendButton">Send</button>
     </div>
   </div>
+  <button id="fullscreenButton" onclick="toggleFullscreen()">&#x26F6;</button>
+  <button id="exitFullscreenButton" onclick="toggleFullscreen()">X</button>
 </div>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', sans-serif;
+  }
+  body {
+    background-color: #f7f4f9;
+  }
+  #mainContainer {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border: 3px solid #ffcbdb;
+    background-image: url('https://via.placeholder.com/150'), url('https://via.placeholder.com/150');
+    background-position: top left, bottom right;
+    background-repeat: no-repeat;
+  }
+  #sidebar {
+    width: 30%;
+    background: #ffe4e1;
+    padding: 20px;
+    overflow-y: auto;
+    background-image: url('https://via.placeholder.com/100x100'), url('https://via.placeholder.com/100x100');
+    background-position: 20px 20px, right 20px bottom 20px;
+    background-repeat: no-repeat;
+  }
+  .chatBox {
+    padding: 20px;
+    margin: 10px 0;
+    background-color: rgba(255, 248, 220, 0.9);
+    border-radius: 8px;
+    border: 2px dashed #ffcbdb;
+    transition: transform 0.2s ease, background-color 0.3s;
+    color: #2f4858;
+    cursor: pointer;
+  }
+  .chatBox:hover {
+    background-color: #ffdde1;
+    transform: scale(1.05);
+  }
+  #chatContainer {
+    flex: 1;
+    padding: 20px;
+    background-color: #fdf6e3;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url('https://via.placeholder.com/100x100');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+  }
+  #doodleImage {
+    width: 100%;
+    max-height: 180px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ffcbdb;
+  }
+  #messages {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.05);
+    border: 2px dashed #ffcbdb;
+  }
+  .message {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    max-width: 70%;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    color: #2f4858;
+    background-color: #fbe8e7;
+  }
+  .message:nth-child(odd) {
+    background-color: #ffe4e1;
+  }
+  .message:nth-child(even) {
+    background-color: #ffdde1;
+    align-self: flex-end;
+  }
+  #inputContainer {
+    display: flex;
+    gap: 10px;
+  }
+  #inputMessage {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px dashed #ffcbdb;
+    border-radius: 8px;
+    outline: none;
+    background-color: #fff4f7;
+    color: #2f4858;
+    transition: box-shadow 0.3s;
+  }
+  #inputMessage:focus {
+    box-shadow: 0px 0px 8px rgba(255, 123, 123, 0.5);
+  }
+  #sendButton {
+    padding: 12px 18px;
+    font-size: 16px;
+    background-color: #ff869a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  #sendButton:hover {
+    background-color: #ff7184;
+    transform: translateY(-2px);
+  }
+  #fullscreenButton, #exitFullscreenButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #ff7184;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 100;
+  }
+  #fullscreenButton:hover, #exitFullscreenButton:hover {
+    background-color: #ff869a;
+  }
+  #exitFullscreenButton {
+    display: none;
+  }
+  .fullscreen #mainContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: #f7f4f9;
+  }
+  .fullscreen #fullscreenButton {
+    display: none;
+  }
+  .fullscreen #exitFullscreenButton {
+    display: block;
+  }
+</style>
 
 <script>
   const messages = document.getElementById('messages');
@@ -185,8 +248,9 @@ author: Arshia, Prajna, Mirabelle, Alex
     if (e.key === 'Enter') sendButton.click();
   });
 
+  function toggleFullscreen() {
+    document.body.classList.toggle('fullscreen');
+  }
+
   loadConversation('Alex');
 </script>
-
-</body>
-</html>
