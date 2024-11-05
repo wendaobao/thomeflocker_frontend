@@ -8,6 +8,7 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
 
 <table>
     <tr>
+        <td id="homepage"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars">Nighthawk Cars (Home Page)</a></td>
         <td id="internetdebates"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/luxuryCars">Luxury Cars</a></td>
         <td id="calicovote"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/vintageCars">Vintage Cars</a></td>
         <td id="dnerostore"><a href="{{site.baseurl}}/voteforthegoat/nighthawkCars/studentCars">Student Cars</a></td>
@@ -77,7 +78,7 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
 <p>- (Here goes the sigma)</p>
 
 <h3>Target Market</h3>
-<p>- (Here goes all the information for vintage car target market)</p>
+<p>- (Here goes the sigma ohio rizzler gyatt.)</p>
 
 <h3>Voting</h3>
 <div>
