@@ -47,7 +47,7 @@ author: Yash, Nikhil, Rohan, Neil
 </div>
 
 <div class="form-container">
-    <form id="postForm">
+    <form id="channelForm">
         <div class="form-inputs">
             <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
             <input type="file" id="fileInput" name="fileInput" style="display: none;">
@@ -58,7 +58,7 @@ author: Yash, Nikhil, Rohan, Neil
     </form>
 </div>
 
-<div id="posts"></div>
+<div id="channels"></div>
 
 <style>
     /* Sidebar */
@@ -196,8 +196,8 @@ author: Yash, Nikhil, Rohan, Neil
         background-color: #1a91da;
     }
 
-    /* Posts Container */
-    #posts {
+    /* Channels Container */
+    #channels {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
@@ -249,7 +249,7 @@ author: Yash, Nikhil, Rohan, Neil
 
 <script type="module">
     import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
-    const container = document.getElementById("posts");
+    const container = document.getElementById("channels");
 
     function openChatRoom(button) {
         const channelId = button.getAttribute("id");
@@ -302,7 +302,7 @@ author: Yash, Nikhil, Rohan, Neil
         }
     }
 
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
+    document.getElementById('channelForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const title = document.getElementById('title').value;
@@ -330,7 +330,7 @@ author: Yash, Nikhil, Rohan, Neil
             }
 
             fetchChannels();
-            document.getElementById('postForm').reset();
+            document.getElementById('channelForm').reset();
         } catch (error) {
             console.error('Error adding channel:', error);
             alert('Error adding channel: ' + error.message);
