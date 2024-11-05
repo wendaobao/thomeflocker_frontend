@@ -8,93 +8,131 @@ author: Daksha, Zach, Alex, Darsh
 ---
 
 <style>
-   
     body {
-        font-family: Arial, sans-serif;
-        background-color: #e0f7fa; 
-        color: #2c3e50;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.1" fill-rule="evenodd"/%3E%3C/svg%3E');
+        color: #333;
         margin: 0;
         padding: 20px;
         line-height: 1.6;
+        min-height: 100vh;
     }
 
-    
     h1, h2 {
-        color: #00796b; 
+        color: #2c3e50;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 1em;
     }
 
-    
     form {
         margin: 20px 0;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        backdrop-filter: blur(5px);
     }
 
-    
     input[type="text"] {
         width: calc(100% - 150px);
-        padding: 10px;
-        border: 1px solid #4db6ac; 
-        border-radius: 5px;
-        background-color: #ffffff;
-        color: #2c3e50;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 16px;
+        transition: all 0.3s ease;
     }
 
-    
+    input[type="text"]:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 8px rgba(52,152,219,0.3);
+        outline: none;
+    }
+
     button {
-        padding: 10px;
+        padding: 12px 25px;
         border: none;
-        border-radius: 5px;
-        background-color: #00796b; 
+        border-radius: 8px;
+        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
         color: white;
+        font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     button:hover {
-        background-color: #004d40; 
-    }
-
-    
-    .recipe-category {
-        margin-top: 40px;
-        color: #34495e;
-        font-weight: bold;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, #2980b9 0%, #2573a7 100%);
     }
 
     .recipe {
-        border: 1px solid #b2ebf2; 
-        border-radius: 8px;
-        padding: 15px;
-        margin: 15px 0;
-        background-color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        color: #2c3e50;
-    }
-
-    
-    .suggestions {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 25px;
         margin: 20px 0;
-        padding: 15px;
-        background-color: #b2dfdb;
-        border-radius: 5px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
     }
 
-    
-    ::-webkit-scrollbar {
-        width: 8px;
+    .recipe:hover {
+        transform: translateY(-5px);
     }
-    ::-webkit-scrollbar-track {
-        background: #e0f7fa; 
+
+    .suggestions {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 25px 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        backdrop-filter: blur(5px);
     }
-    ::-webkit-scrollbar-thumb {
-        background: #00796b; 
-        border-radius: 8px;
+
+    .culinary-posts-btn {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
     }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #004d40; 
+
+    .culinary-posts-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    }
+
+    /* Add a container for better content organization */
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Style for recipe headings */
+    .recipe h3 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Style for recipe description */
+    .recipe p {
+        color: #34495e;
+        line-height: 1.6;
+    }
+
+    /* Style for cooking time and ingredients */
+    .recipe strong {
+        color: #2980b9;
     }
 </style>
 
@@ -918,55 +956,130 @@ document.getElementById('randomRecipeButton').addEventListener('click', () => {
 
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
-        color: #fff;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.1" fill-rule="evenodd"/%3E%3C/svg%3E');
+        color: #333;
         margin: 0;
         padding: 20px;
         line-height: 1.6;
         min-height: 100vh;
     }
+
     h1, h2 {
-        color: #ddd;
+        color: #2c3e50;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 1em;
     }
+
     form {
         margin: 20px 0;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        backdrop-filter: blur(5px);
     }
+
     input[type="text"] {
         width: calc(100% - 150px);
-        padding: 10px;
-        border: 1px solid #555;
-        border-radius: 5px;
-        background-color: #333;
-        color: #fff;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: white;
+        color: #333;
+        font-size: 16px;
+        transition: all 0.3s ease;
     }
+
+    input[type="text"]:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 8px rgba(52,152,219,0.3);
+        outline: none;
+    }
+
     button {
-        padding: 10px;
+        padding: 12px 25px;
         border: none;
-        border-radius: 5px;
-        background-color: #28A745;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
         color: white;
+        font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+
     button:hover {
-        background-color: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, #2980b9 0%, #2573a7 100%);
     }
-    .recipe-category {
-        margin-top: 40px;
-    }
+
     .recipe {
-        border: 1px solid #555;
-        border-radius: 5px;
-        padding: 15px;
-        margin: 10px 0;
-        background-color: rgba(34, 34, 34, 0.8);
-    }
-    .suggestions {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 25px;
         margin: 20px 0;
-        padding: 10px;
-        background-color: rgba(68, 68, 68, 0.8);
-        border-radius: 5px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .recipe:hover {
+        transform: translateY(-5px);
+    }
+
+    .suggestions {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 25px 0;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        backdrop-filter: blur(5px);
+    }
+
+    .culinary-posts-btn {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+    }
+
+    .culinary-posts-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    }
+
+    /* Add a container for better content organization */
+    .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Style for recipe headings */
+    .recipe h3 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    /* Style for recipe description */
+    .recipe p {
+        color: #34495e;
+        line-height: 1.6;
+    }
+
+    /* Style for cooking time and ingredients */
+    .recipe strong {
+        color: #2980b9;
     }
 </style>
 
