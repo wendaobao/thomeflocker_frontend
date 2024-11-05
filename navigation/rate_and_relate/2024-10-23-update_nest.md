@@ -87,16 +87,7 @@ permalink: /rateandrelate/update_the_nest/
             transition: background-color 0.3s, transform 0.2s;
             transform: translateX(-70px) translateY(10px);
         }
-
-        .styled-button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
-
-        .styled-button:active {
-            background-color: #3e8e41;
-            transform: scale(0.95);
-        }
+        
 </style>
 
 <div style="text-align: center;" class="header">
