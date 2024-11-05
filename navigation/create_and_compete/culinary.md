@@ -9,54 +9,91 @@ author: Daksha, Zach, Alex, Darsh
 
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #000;
-        color: #fff;
+        font-family: "Georgia", serif;
+        background-color: #f2e6d9;
+        color: #333;
         margin: 0;
         padding: 20px;
-        line-height: 1.6;
+        line-height: 1.8;
     }
+    
     h1, h2 {
-        color: #ddd;
+        color: #8b4513;
+        font-family: "Baskerville", serif;
+        border-bottom: 2px solid #8b4513;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
     }
+    
     form {
         margin: 20px 0;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     input[type="text"] {
         width: calc(100% - 150px);
-        padding: 10px;
-        border: 1px solid #555;
+        padding: 12px;
+        border: 2px solid #c69c6d;
         border-radius: 5px;
-        background-color: #333;
-        color: #fff;
+        background-color: #f9f5f0;
+        color: #333;
+        font-family: "Courier New", monospace;
     }
+    
     button {
-        padding: 10px;
+        padding: 10px 15px;
+        font-weight: bold;
         border: none;
         border-radius: 5px;
-        background-color: #28A745;
-        color: white;
+        background-color: #8b4513;
+        color: #fff;
         cursor: pointer;
         transition: background-color 0.3s;
     }
+    
     button:hover {
-        background-color: #218838;
+        background-color: #a05d1a;
     }
+    
     .recipe-category {
         margin-top: 40px;
+        font-weight: bold;
+        color: #5a3e1b;
     }
+
     .recipe {
-        border: 1px solid #555;
-        border-radius: 5px;
+        border: 1px solid #d3b8a3;
+        border-radius: 8px;
         padding: 15px;
         margin: 10px 0;
-        background-color: #222;
+        background-color: #fdf7f0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+    
     .suggestions {
         margin: 20px 0;
-        padding: 10px;
-        background-color: #444;
+        padding: 15px;
+        background-color: #faf2e5;
+        border-left: 4px solid #8b4513;
         border-radius: 5px;
+    }
+
+    /* Scroll bar customization */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f0e1d1;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #c69c6d;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #8b4513;
     }
 </style>
 
