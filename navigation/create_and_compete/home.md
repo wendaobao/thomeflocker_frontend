@@ -57,3 +57,17 @@ menu: nav/create_and_compete.html
     The **Zoom in Guess** is all about testing your attention to detail and having fun with friends. In this game, you look at a super close-up photo and try to guess who or what it is based on the small details you can see. Players can make their guesses, explain why they think they’re right, and submit their answers. You can also share your own zoomed-in images for others to guess and rate how tricky each image is. With the "guess and explain" theme, players can see what others guessed, react to answers, and share their thoughts, making it a fun space for friendly competition and conversation. <a href="{{site.baseurl}}/create_and_compete/zoominguess">Our page!</a> Presented to you by Arhaan, Mihir, Akshaj, and Keerthan
 </div>
 
+<div class="group-theme">
+
+**Riddle Room!**
+
+Welcome to the Riddle Room, where critical thinking and collaboration come together for an engaging challenge! Each day, a new riddle will be presented, which you can pin to the top of our channel for easy access. Answers will be revealed at the end of the day, giving you time to discuss and strategize with your fellow members in our dedicated chat box. If someone solves the riddle, our AI will promptly share the answer; otherwise, it will be revealed at day’s end to keep the suspense alive. To ensure a friendly atmosphere, any profanity will be automatically censored. Join us for a fun and thought-provoking experience! <a href="{{site.baseurl}}/create_and_compete/riddle">Our page!</a> Presented to you by Kush, Tarun, Nolan, Vincent
+
+</div>
+
+<div class="group-theme">
+    **Doodle Game!** 
+    The **Doodle Game** is a place where people can explore themselves creatively and compete to see who has the best doodle. This allows for players to collaborate over their artistic abilities. Our room includes a chat room where players can converse about their creations, a doodle compete area, a place where people can post their art, and winners get crowned every week. This will help add to our classes page by making a fun artistic environment where everyone can collaborate. <a href="{{site.baseurl}}/create_and_compete/doodle">Our page!</a> Coded by Arshia Deb Roy, Prajna Raj, Mirabelle Anderson, Alex Rubio
+</div>
+
+
