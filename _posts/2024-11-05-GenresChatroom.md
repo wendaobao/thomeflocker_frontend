@@ -1,4 +1,5 @@
 ---
+toc: true
 layout: post
 title: Voting Chatroom
 permalink: /chatroom
