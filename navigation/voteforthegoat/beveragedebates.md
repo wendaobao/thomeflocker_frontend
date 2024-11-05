@@ -47,7 +47,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
             margin: auto;
         }
         .voting-container:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
         /* Header Styling */
         .voting-container h2 {
@@ -318,6 +318,8 @@ Our group has chosen to focus on discussions about which drinks should be added 
                 <button class="option-button" onclick="selectOption('Coconut water')">Coconut water</button>
                 <div class="selected-option" id="selectedOption">Your Choice: None</div>
                 <button class="submit-button" onclick="submitVote()">Submit Vote</button>
+                <input type="text" id="suggestionInput" placeholder="Suggest a new beverage" style="margin-top: 20px; padding: 10px; border-radius: 8px; border: 1px solid #00c6ff; background: rgba(255, 255, 255, 0.2); color: #ffffff; font-size: 16px; outline: none;">
+                <button class="submit-button" onclick="submitSuggestion()">Submit Suggestion</button>
             </div>
             
             <div class="details-container">
@@ -390,6 +392,16 @@ Our group has chosen to focus on discussions about which drinks should be added 
             }
         }
 
+        function submitSuggestion() {
+            const suggestion = document.getElementById('suggestionInput').value;
+            if (suggestion.trim()) {
+                alert('Thank you for your suggestion: ' + suggestion);
+                document.getElementById('suggestionInput').value = ''; // Clear the input field
+            } else {
+                alert('Please enter a suggestion before submitting.');
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const modal = document.getElementById("guidelinesModal");
             const closeModal = document.getElementById("closeModal");
@@ -405,3 +417,5 @@ Our group has chosen to focus on discussions about which drinks should be added 
     </script>
 </body>
 </html>
+
+
