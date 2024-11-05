@@ -22,6 +22,44 @@ comments: true
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Cars</title>
     <style>
+            .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .popup-content {
+            background-color: black;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .popup-content h3 {
+            margin-top: 0;
+            color: #ff5050;
+        }
+        .popup-content button {
+            background-color: #ff5050;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
         body {
             background-color: white;
             color: rgb(255, 80, 80);
@@ -74,7 +112,33 @@ A set of pages created by Lars Andre Lindain, Arnav Mittal, Weston Gardener, and
 Here is a game to keep you entertained:
 
 <iframe src="https://voyager162.github.io/carGame/index.html"
-        width="1000" 
-        height="1000" 
-        frameborder="0">
+        width="1200" 
+        height="1200" 
+        frameborder="0" 
+        allowfullscreen>
 </iframe>
+
+<div class="popup-overlay" id="popup">
+    <div class="popup-content">
+        <h3>Welcome to Nighthawk Cars!</h3>
+        <p>Please read and accept the following rules:</p>
+        <ul style="text-align: left; padding-left: 20px;">
+            <li>Respect other users' opinions on cars.</li>
+            <li>No spamming or irrelevant links.</li>
+            <li>Use appropriate language at all times.</li>
+        </ul>
+        <button onclick="closePopup()">I Agree</button>
+    </div>
+</div>
+
+<script>
+    // Show popup on page load
+    window.onload = function() {
+        document.getElementById('popup').classList.add('active');
+    };
+
+    // Close popup function
+    function closePopup() {
+        document.getElementById('popup').classList.remove('active');
+    }
+</script>
