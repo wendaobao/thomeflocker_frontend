@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Send message function
-    sendMessageButton.addEventListener("click", function() {
+    // Function to send the message
+    function sendMessage() {
         const message = chatMessage.value.trim();
 
         if (message !== "") {
@@ -38,6 +38,17 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Clear the input field
             chatMessage.value = "";
+        }
+    }
+
+    // Send message when the Send button is clicked
+    sendMessageButton.addEventListener("click", sendMessage);
+
+    // Send message when Enter key is pressed in the chat input
+    chatMessage.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevents newline in the input field
+            sendMessage();
         }
     });
 });
