@@ -129,7 +129,7 @@ comments: true
         }
     </style>
 </head>
-<a href="/flocker_frontend/Chatroom" class="chatroom-button">Go to Chatroom</a>  
+<a href="/flocker_frontend/chatroom" class="chatroom-button">Go to Chatroom</a>  
 
 <body>
     <div class="container">
