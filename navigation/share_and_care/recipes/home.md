@@ -12,7 +12,7 @@ author: Ryan, Jowan, Gabriela, Michelle
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: 'Calibri', sans-serif; 
+            font-family: 'Calibri', sans-serif;
             background-color: #f8f9fa;
             display: flex;
             flex-direction: column;
@@ -44,8 +44,8 @@ author: Ryan, Jowan, Gabriela, Michelle
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             background-color: #fff7e6;
-            max-width: 1200px; 
-            margin: 20px auto; 
+            max-width: 1200px;
+            margin: 20px auto;
         }
         .image-row img {
             width: 300px;
@@ -142,11 +142,11 @@ author: Ryan, Jowan, Gabriela, Michelle
         }
         .about-header,
         .rules-header {
-            color: #DFAF8A; /* Pastel orange */
+            color: #DFAF8A;
         }
         .about-paragraph,
         .rules-paragraph {
-            color: #C88F66; /* Darker pastel orange */
+            color: #C88F66;
         }
         .link-row {
             display: flex;
@@ -163,34 +163,33 @@ author: Ryan, Jowan, Gabriela, Michelle
         }
         .link-row a {
             text-decoration: none;
-            color: #6A0DAD; /* Text color */
-            font-size: 20px; /* Font size */
+            color: #6A0DAD; 
+            font-size: 20px;
         }
         h1 {
             color: #ff8c00; 
         }
         .collapsible {
-    background-color: #333; /* Black background */
-    color: white; /* White text */
-    cursor: pointer;
-    padding: 15px; 
-    width: 80%; /* Set width to 80% for alignment */
-    margin: 10px auto; /* Center it horizontally */
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 40px; 
-    transition: 0.4s;
-    border-radius: 5px; 
-    font-family: 'Calibri', sans-serif; /* Set font to Calibri */
-}
-
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            padding: 15px; 
+            width: 80%;
+            margin: 10px auto; 
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 40px; 
+            transition: 0.4s;
+            border-radius: 5px; 
+            font-family: 'Calibri', sans-serif; 
+        }
         .content {
             padding: 0 18px;
             display: none;
             overflow: hidden;
-            background-color: #222; /* Darker background for content */
-            color: white; /* White text for content */
+            background-color: #222;
+            color: white;
         }
     </style>
 </head>
@@ -209,16 +208,34 @@ author: Ryan, Jowan, Gabriela, Michelle
     <p class="rules-paragraph">6. Do NOT impersonate people.</p>
 </div>
 
+<div>
+    <h3>Select a Group</h3>
+    <select id="group_id">
+        <option value="" disabled selected>Select a group</option>
+    </select>
+</div>
+
+<!-- Add Post Form -->
+<div class="form-container">
+    <h2>☆*: .｡. Add New Post :coffee:.｡.:*☆</h2>
+    <form id="postForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="content">Message:</label>
+        <textarea id="content" name="content" required></textarea>
+        <label for="group_id">Group:</label>
+        <select id="group_id" name="group_id" required>
+            <option value="">Select a group</option>
+            <!-- Options will be dynamically populated -->
+        </select>
+        <button type="submit">Add Post</button>
+    </form>
+</div>
+
 <div class="image-row">
     <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
     <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
     <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
-</div>
-
-<div class="image-row">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s" alt="Image 1">
-    <img src="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg" alt="Image 2">
-    <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg" alt="Image 3">
 </div>
 
 <div class="chat-container">
@@ -244,185 +261,103 @@ author: Ryan, Jowan, Gabriela, Michelle
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
-        <strong>Board And Brew (Del Sur)</strong>
-        <span class="heart" onclick="toggleHeart(this)">♡</span>
-    </li>
-    <li class="restaurant-item">
-        <strong>Luna Grill (Del Sur)</strong>
-        <span class="heart" onclick="toggleHeart(this)">♡</span>
-    </li>
-    <li class="restaurant-item">
-        <strong>Piacere Mio Del Sur</strong>
+        <strong>California Pizza Kitchen</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
 </ul>
 
-
 <script>
-    async function fetchMessages() {
-        const response = await fetch('http://localhost:5000/messages');
-        const messages = await response.json();
-        messages.forEach(message => {
-            displayMessage(message);
+    async function fetchGroups(sectionName) {
+        const response = await fetch('http://localhost:5000/api/groups/filter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ section_name: sectionName })
         });
-    }
 
-    async function sendMessage() {
-        const userName = document.getElementById("userName").value.trim();
-        const inputText = document.getElementById("userInput").value.trim();
-
-        if (inputText !== "" && userName !== "") {
-            const response = await fetch('http://localhost:5000/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ user: userName, text: inputText }),
-            });
-            const message = await response.json();
-            displayMessage(message);
-            document.getElementById("userInput").value = ''; // Clear input box
+        if (response.ok) {
+            const groups = await response.json();
+            populateGroupDropdown(groups);
         } else {
-            alert("Please enter both your name and a message.");
+            const error = await response.json();
+            alert(error.error || "An error occurred while fetching groups.");
         }
     }
 
-    function displayMessage(message) {
-        const messageDiv = document.createElement("div");
-        messageDiv.classList.add("chat-message");
-        messageDiv.innerHTML = `<strong>${message.user}</strong>: ${message.text}`; // Bold user name
+    function populateGroupDropdown(groups) {
+        const groupSelect = document.getElementById('group_id');
+        groupSelect.innerHTML = "<option value='' disabled selected>Select a group</option>"; // Clear existing options
 
-        document.getElementById("chatBox").appendChild(messageDiv);
-        document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight; // Scroll to the bottom
-    }
-
-    // Fetch existing messages when the page loads
-    window.onload = fetchMessages;
-
-    function toggleHeart(element) {
-        element.classList.toggle('liked');
-        element.textContent = element.classList.contains('liked') ? '❤️' : '♡';
-    }
-
-    // Collapsible functionality for moderation rules
-    const coll = document.getElementsByClassName("collapsible");
-    for (let i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+        groups.forEach(group => {
+            const option = document.createElement('option');
+            option.value = group.id;
+            option.textContent = group.name;
+            groupSelect.appendChild(option);
         });
     }
-</script>
 
-</html>
+    function sendMessage() {
+        const name = document.getElementById("userName").value;
+        const message = document.getElementById("userInput").value;
+        const chatBox = document.getElementById("chatBox");
 
+        if (name && message) {
+            const chatMessage = document.createElement("div");
+            chatMessage.classList.add("chat-message");
+            chatMessage.textContent = `${name}: ${message}`;
+            chatBox.appendChild(chatMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll to the latest message
 
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Chat</title>
-  
-  <!-- Link to Google Fonts for Comfortaa font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
-  
-  <style>
-    body { 
-      font-family: 'Comfortaa', sans-serif; 
-      display: flex; 
-      justify-content: center; 
-      background-color: #fafafa;
-    }
-    #chat-container { 
-      width: 400px; 
-      border: 2px solid #FFECB3; /* Pale yellow border */
-      padding: 20px; 
-      border-radius: 10px;
-      background-color: #ffffff;
-    }
-    #chat-container h2 {
-      color: black; /* Changed title color to black */
-    }
-    #messages { 
-      height: 300px; 
-      overflow-y: scroll; 
-      border: 1px solid #FFECB3; /* Pale yellow border */
-      padding: 10px; 
-      margin-bottom: 10px; 
-      border-radius: 5px;
-      background-color: #fff8e1;
-    }
-    .message { 
-      margin-bottom: 10px; 
-      padding: 5px; 
-      background: #fff8e1; /* Light yellow background */
-      border-radius: 8px; 
-      color: black; /* Message text color set to black */
-    }
-    .user { 
-      font-weight: bold; 
-      color: #333; 
-    }
-  </style>
-</head>
-<body>
-
-<div id="chat-container">
-  <h2>Food Chat Box</h2>
-
-  <div id="messages"></div>
-
-  <form id="chat-form">
-    <input type="text" id="username" placeholder="Your name" required style="width: 100%; margin-bottom: 5px;">
-    <textarea id="message" placeholder="Type a message" required style="width: 100%; height: 50px; margin-bottom: 5px;"></textarea>
-    <input type="file" id="image" accept="image/*" style="width: 100%; margin-bottom: 5px;">
-    <button type="submit" style="width: 100%;">Send</button>
-  </form>
-</div>
-
-<script>
-  const messagesContainer = document.getElementById('messages');
-  const chatForm = document.getElementById('chat-form');
-
-  chatForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const message = document.getElementById('message').value;
-    const imageFile = document.getElementById('image').files[0];
-
-    // Create the message element
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-    messageElement.innerHTML = `<span class="user">${username}:</span> ${message}`;
-
-    // Add image if uploaded
-    if (imageFile) {
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        const img = document.createElement('img');
-        img.src = event.target.result;
-        img.style.maxWidth = '100%';
-        img.style.marginTop = '5px';
-        messageElement.appendChild(img);
-      };
-      reader.readAsDataURL(imageFile);
+            // Clear input fields after sending
+            document.getElementById("userName").value = "";
+            document.getElementById("userInput").value = "";
+        } else {
+            alert("Please enter both your name and a message!");
+        }
     }
 
-    // Add the message element to messages container
-    messagesContainer.appendChild(messageElement);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll to latest message
+    window.onload = function() {
+        fetchGroups("Home Page");
+    }
 
-    // Clear form inputs
-    chatForm.reset();
-  });
+    function toggleHeart(heart) {
+        heart.classList.toggle("liked");
+    }
+
+    const coll = document.querySelector(".collapsible");
+    coll.addEventListener("click", function() {
+        const content = this.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+    });
+
+    document.getElementById("postForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const postData = {
+            title: document.getElementById("title").value,
+            content: document.getElementById("content").value,
+            group_id: document.getElementById("group_id").value,
+        };
+
+        const response = await fetch('http://localhost:5000/api/post', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData)
+        });
+
+        if (response.ok) {
+            alert('Post created successfully!');
+        } else {
+            const error = await response.json();
+            alert(error.error || 'Failed to create post.');
+        }
+    });
 </script>
 
 </body>
+<a href="favorites.md" class="link-button">Go to Favorite Restaurants</a>
 </html>
+
