@@ -8,92 +8,106 @@ author: Daksha, Zach, Alex, Darsh
 ---
 
 <style>
+    /* General body styling */
     body {
-        font-family: "Georgia", serif;
-        background-color: #f2e6d9;
-        color: #333;
+        font-family: "Verdana", sans-serif;
+        background-color: #f7f3e9;
+        color: #2c3e50;
         margin: 0;
         padding: 20px;
         line-height: 1.8;
     }
-    
+
+    /* Header styling */
     h1, h2 {
-        color: #8b4513;
-        font-family: "Baskerville", serif;
-        border-bottom: 2px solid #8b4513;
-        padding-bottom: 10px;
+        color: #d35400;
+        font-family: "Verdana", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 3px solid #e67e22;
+        padding-bottom: 8px;
         margin-bottom: 20px;
     }
-    
+
+    /* Form styling */
     form {
         margin: 20px 0;
-        background-color: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 
+    /* Input field styling */
     input[type="text"] {
-        width: calc(100% - 150px);
-        padding: 12px;
-        border: 2px solid #c69c6d;
+        width: calc(100% - 130px);
+        padding: 10px;
+        border: 2px solid #bdc3c7;
         border-radius: 5px;
-        background-color: #f9f5f0;
-        color: #333;
-        font-family: "Courier New", monospace;
+        background-color: #fdfdfd;
+        color: #2c3e50;
+        font-family: "Verdana", sans-serif;
+        font-size: 1rem;
+        margin-right: 10px;
     }
-    
+
+    /* Button styling */
     button {
-        padding: 10px 15px;
+        padding: 10px 20px;
         font-weight: bold;
         border: none;
         border-radius: 5px;
-        background-color: #8b4513;
-        color: #fff;
+        background-color: #e67e22;
+        color: white;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s, transform 0.1s;
     }
-    
+
     button:hover {
-        background-color: #a05d1a;
+        background-color: #d35400;
+        transform: scale(1.05);
     }
-    
+
+    /* Recipe and category sections */
     .recipe-category {
-        margin-top: 40px;
+        margin-top: 30px;
+        color: #34495e;
         font-weight: bold;
-        color: #5a3e1b;
+        font-size: 1.2rem;
     }
 
     .recipe {
-        border: 1px solid #d3b8a3;
+        border: 1px solid #ecf0f1;
         border-radius: 8px;
         padding: 15px;
-        margin: 10px 0;
-        background-color: #fdf7f0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 15px 0;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: #2c3e50;
     }
-    
+
+    /* Suggestions and additional sections */
     .suggestions {
         margin: 20px 0;
         padding: 15px;
-        background-color: #faf2e5;
-        border-left: 4px solid #8b4513;
+        background-color: #fcf3e6;
+        border-left: 4px solid #e67e22;
         border-radius: 5px;
     }
 
-    /* Scroll bar customization */
+    /* Scrollbar styling for aesthetic cohesion */
     ::-webkit-scrollbar {
         width: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #f0e1d1;
+        background: #f7f3e9;
     }
     ::-webkit-scrollbar-thumb {
-        background: #c69c6d;
-        border-radius: 10px;
+        background: #d35400;
+        border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: #8b4513;
+        background: #e67e22;
     }
 </style>
 
