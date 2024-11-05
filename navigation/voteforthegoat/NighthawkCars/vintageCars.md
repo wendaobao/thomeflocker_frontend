@@ -108,8 +108,7 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
         <tr style="width:200px">
             <td><img src="https://hagerty.co.uk/wp-content/uploads/2023/03/Electrogenic-electric-Porsche-911-scaled.jpg" alt="Porshe"></td>
             <td><img src="https://cdn.dealeraccelerate.com/survivor/1/1101/98727/1920x1440/1990-mazda-miata-mx-5" alt="Miata"></td>
-            <td><img src="https://www.usnews.com/object/image/0000018b-ad27-d133-a3ff-bdef0b130000/https-cars-dms-usnews-com-static-uploads-images-auto-custom-14688-original-2022-honda-civic-touring-sedan-49.jpg?update-time=1633551144000&size=responsiveGallery" alt="Image 5"></td>
-            <td><img src="https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/Ta5EqC0j6ectUHJL0AOuhQvosp8kvtSmViDLexcp.jpg" alt="Image 6"></td>
+            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ6gqdzhunUvo-FAR4h8mEm8x49L3oteY7Ig&s" alt="Dodge"></td>
         </tr>
     </table>
 </div>    
@@ -122,7 +121,7 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
 <p> - Note about above comment: Use reliable sites to do your research (Edmunds, Car and Driver, KBB, TrueCar, etc) </p>
 <p> - Once you get your car, drive safely and have fun! </p>
 
-<h2>Submit which car you have here!</h2>
+<h2>Submit which car you like the best</h2>
 
 <head>
     <meta charset="UTF-8">
@@ -148,36 +147,10 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
 <br><br>
 <select id="optionSelect">
     <option value="">Select an option</option>
-    <option value="Toyota">Toyota</option>
-    <option value="Ford">Ford</option>
-    <option value="Chevrolet">Chevrolet</option>
-    <option value="Honda">Honda</option>
-    <option value="Nissan">Nissan</option>
-    <option value="Jeep">Jeep</option>
-    <option value="Hyundai">Hyundai</option>
-    <option value="KIA">KIA</option>
-    <option value="RAM">RAM</option>
-    <option value="Subaru">Subaru</option>
-    <option value="GMC">GMC</option>
-    <option value="Volkswagen">Volkswagen</option>
-    <option value="BMW">BMW</option>
-    <option value="Mazda">Mazda</option>
-    <option value="Mercedes-Benz">Mercedes-Benz</option>
-    <option value="Lexus">Lexus</option>
-    <option value="Tesla">Tesla</option>
+    <option value="Porshe">Porshe</option>
+    <option value="Miata">Miata</option>
     <option value="Dodge">Dodge</option>
-    <option value="Audi">Audi</option>
-    <option value="Buick">Buick</option>
-    <option value="Acura">Acura</option>
-    <option value="Volvo">Volvo</option>
-    <option value="Cadillac">Cadillac</option>
-    <option value="Chrysler">Chrysler</option>
-    <option value="Mitsubishi">Mitsubishi</option>
-    <option value="Land Rover">Land Rover</option>
-    <option value="Lincoln">Lincoln</option>
-    <option value="Porsche">Porsche</option>
-    <option value="Infiniti">Infiniti</option>
-    <option value="Mini Cooper">Mini Cooper</option>
+    <option value="Honda">Honda</option>
     <option value="Other">Other</option>
 </select>
 <br><br>
