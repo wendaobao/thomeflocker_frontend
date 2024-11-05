@@ -115,106 +115,50 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
 </div>    
 
 <h3>Pricing</h3>
+<p>Some prices are incorrect and some prices are affected by variables like pre owned, rarity, mods, or limited models.</p>
 <table>
     <tr>
         <td><p></p></td>
-        <td><p>Average Price</p></td>
         <td><p>Lowest Price</p></td>
+        <td><p>Average Price</p></td>
         <td><p>Highest Price</p></td>
     </tr>
     <tr>
-        <td><p>Lamborghini</p></td>
-        <td><p>$212,000</p></td>
-        <td><p>$209,000</p></td>
-        <td><p>$8,300,000</p></td>
+        <td><p>Porshe</p></td>
+        <td><p>$36,000</p></td>
+        <td><p>$341,000</p></td>
+        <td><p>$850,000</p></td>
     </tr>
     <tr>
-        <td><p>Bugatti</p></td>
-        <td><p>$2,990,000</p></td>
-        <td><p>$1,900,000</p></td>
-        <td><p>$35,000,000</p></td>
+        <td><p>Miata</p></td>
+        <td><p>$11,000</p></td>
+        <td><p>$36,000</p></td>
+        <td><p>$62,000</p></td>
     </tr>
     <tr>
-        <td><p>Ferrari</p></td>
-        <td><p>$230,950</p></td>
-        <td><p>$50,000</p></td>
-        <td><p>$70,000,000</p></td>
+        <td><p>Dodge</p></td>
+        <td><p>$23,000</p></td>
+        <td><p>$90,000</p></td>
+        <td><p>$210,000</p></td>
     </tr>
     <tr>
-        <td><p>McLaren</p></td>
-        <td><p>$310,500</p></td>
-        <td><p>$195,000</p></td>
-        <td><p>$3,500,000</p></td>
+        <td><p>Toyota</p></td>
+        <td><p>$28,000</p></td>
+        <td><p>$88,000</p></td>
+        <td><p>$230,000</p></td>
     </tr>
-<h2>Submit which car you like the best</h2>
+</table>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown Submission with Name and Comment</title>
-    <style>
-        .message-box1 {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-top: 10px;
-            max-width: 400px;
-        }
-        .message-box1 p {
-            margin: 5px 0;
-        }
-    </style>
-</head>
 <body>
 
-<h3>Select an Option</h3>
-<p>   </p>
-<input type="text" id="nameInput" placeholder="Enter your name">
-<br><br>
-<select id="optionSelect">
-    <option value="">Select an option</option>
-    <option value="Porshe">Porshe</option>
-    <option value="Miata">Miata</option>
-    <option value="Dodge">Dodge</option>
-    <option value="Toyota">Toyota</option>
-    <option value="Other">Other</option>
-</select>
-<br><br>
-<textarea id="commentInput" placeholder="Enter car make, year, specifics..."></textarea>
-<br><br>
-<button onclick="submitOption()"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Submit Option</p></button>
-
-<div class="message-box1" id="messageBox1">
-    <p><strong>Selections:</strong></p>
+<h3>Voting</h3>
+<div>
+    <button style="width:175px;"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd;">Porshe</p></button>
+    <button style="width:175px"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Miata</p></button>
+    <button style="width:175px"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Dodge</p></button>
+    <button style="width:175px"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Toyota</p></button>
 </div>
 
-<script>
-function submitOption() {
-    // Get the values of the name, selected option, and additional comment
-    const name = document.getElementById("nameInput").value;
-    const option = document.getElementById("optionSelect").value;
-    const comment1 = document.getElementById("commentInput").value;
-
-    // Check if the name and option are not empty
-    if (name.trim() !== "" && option.trim() !== "") {
-        // Create a new paragraph element for the submission
-        const newNameAndOption = document.createElement("p");
-        newNameAndOption.textContent = `- ${name}: ${option}`;
-        const newSpecifics = document.createElement("p");
-        newSpecifics.textContent = `  Specifics: ${comment1}`;
-
-        // Add the new submission to the message box
-        document.getElementById("messageBox1").appendChild(newNameAndOption);
-        document.getElementById("messageBox1").appendChild(newSpecifics);
-
-        // Clear the input fields
-        document.getElementById("nameInput").value = "";
-        document.getElementById("optionSelect").value = "Select"; // Reset to select option
-        document.getElementById("commentInput").value = "";
-    } else {
-        alert("Please enter your name and select an option.");
-    }
-}
-</script>
 
 <h3>Discussion</h3>
 <p>   </p>
