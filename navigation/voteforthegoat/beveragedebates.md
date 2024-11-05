@@ -309,7 +309,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
     </div>
 
     <div class="voting-container">
-        <h2>Choose Your an Beverage that you would like to be added to Del Norte Cafeteria</h2>
+        <h2>Choose Your Beverage that you would like to be added to Del Norte Cafeteria</h2>
         <div class="voting-layout">
             <div class="options-container">
                 <button class="option-button" onclick="selectOption('Coke')">Coke</button>
