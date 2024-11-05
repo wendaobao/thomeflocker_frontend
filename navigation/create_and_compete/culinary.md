@@ -11,7 +11,7 @@ author: Daksha, Zach, Alex, Darsh
     /* General body styling */
     body {
         font-family: "Verdana", sans-serif;
-        background-color: #f7f3e9;
+        background: linear-gradient(to bottom right, #6a8daf, #b0d4e3);
         color: #2c3e50;
         margin: 0;
         padding: 20px;
@@ -20,11 +20,10 @@ author: Daksha, Zach, Alex, Darsh
 
     /* Header styling */
     h1, h2 {
-        color: #d35400;
-        font-family: "Verdana", sans-serif;
+        color: #2e4057;
         text-transform: uppercase;
         letter-spacing: 1px;
-        border-bottom: 3px solid #e67e22;
+        border-bottom: 3px solid #5d92b0;
         padding-bottom: 8px;
         margin-bottom: 20px;
     }
@@ -42,9 +41,9 @@ author: Daksha, Zach, Alex, Darsh
     input[type="text"] {
         width: calc(100% - 130px);
         padding: 10px;
-        border: 2px solid #bdc3c7;
+        border: 2px solid #a5c5d9;
         border-radius: 5px;
-        background-color: #fdfdfd;
+        background-color: #f9fbfd;
         color: #2c3e50;
         font-family: "Verdana", sans-serif;
         font-size: 1rem;
@@ -57,14 +56,14 @@ author: Daksha, Zach, Alex, Darsh
         font-weight: bold;
         border: none;
         border-radius: 5px;
-        background-color: #e67e22;
+        background-color: #5d92b0;
         color: white;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.1s;
     }
 
     button:hover {
-        background-color: #d35400;
+        background-color: #46788f;
         transform: scale(1.05);
     }
 
@@ -77,7 +76,7 @@ author: Daksha, Zach, Alex, Darsh
     }
 
     .recipe {
-        border: 1px solid #ecf0f1;
+        border: 1px solid #a8c7d8;
         border-radius: 8px;
         padding: 15px;
         margin: 15px 0;
@@ -90,8 +89,8 @@ author: Daksha, Zach, Alex, Darsh
     .suggestions {
         margin: 20px 0;
         padding: 15px;
-        background-color: #fcf3e6;
-        border-left: 4px solid #e67e22;
+        background-color: #e6f0f7;
+        border-left: 4px solid #5d92b0;
         border-radius: 5px;
     }
 
@@ -100,14 +99,14 @@ author: Daksha, Zach, Alex, Darsh
         width: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #f7f3e9;
+        background: #b0d4e3;
     }
     ::-webkit-scrollbar-thumb {
-        background: #d35400;
+        background: #5d92b0;
         border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: #e67e22;
+        background: #46788f;
     }
 </style>
 
