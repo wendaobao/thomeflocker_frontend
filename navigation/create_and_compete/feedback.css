@@ -1,3 +1,18 @@
+/* Full-Page Background with Strong Glowing Effect */
+body {
+    background: linear-gradient(135deg, #1254f0, hsla(277, 87%, 54%, 0.632), #0ee070, #5a67d8); /* Vibrant gradient colors */
+    background-size: 400% 400%;
+    animation: glowingBackground 20s ease infinite; /* Slower animation for a smoother effect */
+    font-family: Arial, sans-serif;
+    color: #fff; /* Light text color for contrast */
+}
+
+/* Glowing Animation for Background */
+@keyframes glowingBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 /* General Container Styling */
 .chat-room-container {
     max-width: 800px;
