@@ -5,6 +5,7 @@ description: Share music with others!
 permalink: /undgdmusic/
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -92,13 +93,7 @@ permalink: /undgdmusic/
 
 <div id="chatroom" class="content-section">
     <h2>Live Chat</h2>
-    <div id="messages">
-        <p><span class="username">RapFan101</span>: Love how supportive this community is!<span class="timestamp">[12:03 PM]</span></p>
-        <p><span class="username">UndergroundKing</span>: Have y'all heard the latest drop by Saba? Insane vibes!<span class="timestamp">[12:04 PM]</span></p>
-        <p><span class="username">LyricLover88</span>: I'm always finding new artists here. Thanks, everyone!<span class="timestamp">[12:05 PM]</span></p>
-        <p><span class="username">BeatMaster</span>: MAVI's new track is fire. Perfect to start the day.<span class="timestamp">[12:06 PM]</span></p>
-        <p><span class="username">FlowRider</span>: Can’t believe how many hidden gems are out there.<span class="timestamp">[12:07 PM]</span></p>
-    </div>
+    <div id="messages"></div>
     <form id="chat-form">
         <input type="text" id="username" placeholder="Your Name" required>
         <input type="text" id="message" placeholder="Type a message..." maxlength="200" required>
@@ -112,7 +107,6 @@ permalink: /undgdmusic/
         <input type="text" id="search-artist" placeholder="Search for niche artists..." oninput="filterArtists()">
     </form>
     <ul id="artist-list">
-        <!-- Hardcoded list of rap niche artists -->
         <li data-name="JPEGMAFIA">JPEGMAFIA - Top Song: "Baby I'm Bleeding" | 950k listeners</li>
         <li data-name="Saba">Saba - Top Song: "Busy / Sirens" | 750k listeners</li>
         <li data-name="MAVI">MAVI - Top Song: "Sense" | 300k listeners</li>
@@ -146,6 +140,26 @@ permalink: /undgdmusic/
     // Show chatroom by default
     showSection('chatroom');
 
+    // Load saved messages from localStorage on page load
+    document.addEventListener("DOMContentLoaded", async function () {
+        const savedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+        const messagesDiv = document.getElementById("messages");
+        savedMessages.forEach(msg => messagesDiv.innerHTML += msg);
+
+        // Load messages from backend for cross-device access
+        try {
+            const response = await fetch("https://your-backend-url/api/chat/loadMessages");
+            if (response.ok) {
+                const messages = await response.json();
+                messages.forEach(msg => addMessageToChat(msg.username, msg.text, msg.timestamp));
+            } else {
+                console.error("Failed to load messages from backend");
+            }
+        } catch (error) {
+            console.error("Error loading messages from backend:", error);
+        }
+    });
+
     // Filter artist list based on search input
     function filterArtists() {
         const searchQuery = document.getElementById('search-artist').value.toLowerCase();
@@ -159,6 +173,51 @@ permalink: /undgdmusic/
                 artist.style.display = 'none';
             }
         });
+    }
+
+    // Handle form submission for chat messages
+    document.getElementById('chat-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const message = document.getElementById('message').value;
+        const timestamp = new Date().toLocaleTimeString();
+
+        // Add message to chat UI and save to localStorage
+        addMessageToChat(username, message, timestamp);
+        saveMessageToLocalStorage(username, message, timestamp);
+
+        // Send message to backend for cross-device persistence
+        try {
+            const response = await fetch("https://your-backend-url/api/chat/saveMessage", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, message, timestamp })
+            });
+            if (!response.ok) {
+                throw new Error("Failed to save message to backend");
+            }
+        } catch (error) {
+            console.error("Error saving message to backend:", error);
+        }
+
+        // Clear message input field
+        document.getElementById('message').value = '';
+    });
+
+    // Add message to chat UI
+    function addMessageToChat(username, message, timestamp) {
+        const messagesDiv = document.getElementById("messages");
+        const messageHtml = `<p><span class="username">${username}</span>: ${message}<span class="timestamp">[${timestamp}]</span></p>`;
+        messagesDiv.innerHTML += messageHtml;
+    }
+
+    // Save message to localStorage
+    function saveMessageToLocalStorage(username, message, timestamp) {
+        const savedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+        const messageHtml = `<p><span class="username">${username}</span>: ${message}<span class="timestamp">[${timestamp}]</span></p>`;
+        savedMessages.push(messageHtml);
+        localStorage.setItem("chatMessages", JSON.stringify(savedMessages));
     }
 
     // Array of underground rap songs with URLs (replace with real URLs)
@@ -183,236 +242,3 @@ permalink: /undgdmusic/
 </script>
 </body>
 </html>
-
-<div class="container">
-    <div class="form-container">
-        <h2>Select Group and Channel</h2>
-        <form id="selectionForm">
-            <label for="group_id">Group:</label>
-            <select id="group_id" name="group_id" required>
-                <option value="">Select a group</option>
-            </select>
-            <label for="channel_id">Channel:</label>
-            <select id="channel_id" name="channel_id" required>
-                <option value="">Select a channel</option>
-            </select>
-            <button type="submit">Select</button>
-        </form>
-    </div>
-</div>
-
-<div class="container">
-    <div class="form-container">
-        <h2>Add New Post</h2>
-        <form id="postForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="comment">Comment:</label>
-            <textarea id="comment" name="comment" required></textarea>
-            <button type="submit">Add Post</button>
-        </form>
-    </div>
-</div>
-
-<div class="container">
-    <div id="data" class="data">
-        <div class="left-side">
-            <p id="count"></p>
-        </div>
-        <div class="details" id="details">
-        </div>
-    </div>
-</div>
-
-<script type="module">
-    // Import server URI and standard fetch options
-    import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
-
-    /**
-     * Fetch groups for dropdown selection
-     * User picks from dropdown
-     */
-    async function fetchGroups() {
-        try {
-            const response = await fetch(`${pythonURI}/api/groups/filter`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch groups: ' + response.statusText);
-            }
-            const groups = await response.json();
-            const groupSelect = document.getElementById('group_id');
-            groups.forEach(group => {
-                const option = document.createElement('option');
-                option.value = group.name; // Use group name for payload
-                option.textContent = group.name;
-                groupSelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Error fetching groups:', error);
-        }
-    }
-
-    /**
-     * Fetch channels based on selected group
-     * User picks from dropdown
-     */
-    async function fetchChannels(groupName) {
-        try {
-            const response = await fetch(`${pythonURI}/api/channels/filter`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ group_name: groupName })
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch channels: ' + response.statusText);
-            }
-            const channels = await response.json();
-            const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
-            channels.forEach(channel => {
-                const option = document.createElement('option');
-                option.value = channel.id;
-                option.textContent = channel.name;
-                channelSelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Error fetching channels:', error);
-        }
-    }
-
-    /**
-      * Handle group selection change
-      * Channel Dropdown refresh to match group_id change
-      */
-    document.getElementById('group_id').addEventListener('change', function() {
-        const groupName = this.value;
-        if (groupName) {
-            fetchChannels(groupName);
-        } else {
-            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
-        }
-    });
-
-    /**
-     * Handle form submission for selection
-     * Select Button: Computer fetches and displays posts
-     */
-    document.getElementById('selectionForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const groupId = document.getElementById('group_id').value;
-        const channelId = document.getElementById('channel_id').value;
-        if (groupId && channelId) {
-            fetchData(channelId);
-        } else {
-            alert('Please select both group and channel.');
-        }
-    });
-
-    /**
-     * Handle form submission for adding a post
-     * Add Form Button: Computer handles form submission with request
-     */
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        // Extract data from form
-        const title = document.getElementById('title').value;
-        const comment = document.getElementById('comment').value;
-        const channelId = document.getElementById('channel_id').value;
-
-        // Create API payload
-        const postData = {
-            title: title,
-            comment: comment,
-            channel_id: channelId
-        };
-
-        // Trap errors
-        try {
-            // Send POST request to backend, purpose is to write to database
-            const response = await fetch(`${pythonURI}/api/post`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to add post: ' + response.statusText);
-            }
-
-            // Successful post
-            const result = await response.json();
-            alert('Post added successfully!');
-            document.getElementById('postForm').reset();
-            fetchData(channelId);
-        } catch (error) {
-            // Present alert on error from backend
-            console.error('Error adding post:', error);
-            alert('Error adding post: ' + error.message);
-        }
-    });
-
-    /**
-     * Fetch posts based on selected channel
-     * Handle response: Fetch and display posts
-     */
-    async function fetchData(channelId) {
-        try {
-            const response = await fetch(`${pythonURI}/api/posts/filter`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ channel_id: channelId })
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch posts: ' + response.statusText);
-            }
-
-            // Parse the JSON data
-            const postData = await response.json();
-
-            // Extract posts count
-            const postCount = postData.length || 0;
-
-            // Update the HTML elements with the data
-            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
-
-            // Get the details div
-            const detailsDiv = document.getElementById('details');
-            detailsDiv.innerHTML = ''; // Clear previous posts
-
-            // Iterate over the postData and create HTML elements for each item
-            postData.forEach(postItem => {
-                const postElement = document.createElement('div');
-                postElement.className = 'post-item';
-                postElement.innerHTML = `
-                    <h3>${postItem.title}</h3>
-                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
-                    <p><strong>User:</strong> ${postItem.user_name}</p>
-                    <p>${postItem.comment}</p>
-                `;
-                detailsDiv.appendChild(postElement);
-            });
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-
-    // Fetch groups when the page loads
-    fetchGroups();
-</script>
