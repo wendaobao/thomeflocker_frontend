@@ -184,7 +184,7 @@ author: Manas, Lalita, Shriya, Ethan
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
+                body: JSON.stringify({ section_name: "Elevator Pitch" }) // Adjust the section name as needed
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
@@ -221,7 +221,7 @@ author: Manas, Lalita, Shriya, Ethan
             }
             const channels = await response.json();
             const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+            channelSelect.innerHTML = '<option value="">Select a Day</option>'; // Reset channels
             channels.forEach(channel => {
                 const option = document.createElement('option');
                 option.value = channel.id;
