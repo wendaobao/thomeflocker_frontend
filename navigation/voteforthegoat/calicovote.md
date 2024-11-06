@@ -16,7 +16,7 @@ p, h2, h3, body {
     font-size: 40px;
     text-align: center;
 }
-.container {
+.container2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -75,18 +75,6 @@ p, h2, h3, body {
     display:none;
     font-size: 20px;
 }
-.comment-section {
-    display: none; 
-    max-width: 600px; 
-    margin: 20px auto; 
-    padding: 10px; 
-    border: 1px solid #ddd; 
-    border-radius: 5px;
-}
-.comment-button {
-    padding: 8px; 
-    margin-top: 5px;
-}
 .message-box {
     display:none; 
     text-align:center; 
@@ -101,60 +89,79 @@ p, h2, h3, body {
     margin-top:15px;
     justify-content: center;
 }
+/* Style summary */
+summary {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+    transition: text-shadow 0.3s ease;
+}
+summary:hover {
+    text-shadow: 0 0 8px #F5AAF5, 0 0 12px #F5AAF5;
+}
+/* Style for dropdown details */
+details[open] p {
+    margin: 0;
+    padding: 8px;
+    background-color: #CC99CC;
+    border-radius: 10px;
+    border: 1px solid #F5AAF5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 10px;
+}
+p {
+    margin: 0;
+}
+    summary::before {
+    content: '✿'; /* Unicode for vertical ellipsis */
+}
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #ecf0f1;
+}
+.form-container label {
+    margin-bottom: 5px;
+}
+.form-container input, .form-container textarea, .form-container select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+.form-container button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #34495e;
+    color: #ecf0f1;
+    cursor: pointer;
+}
 </style>
 
 <div>
 <img src="{{site.baseurl}}/images/calicocritters/voteheading.png" alt="Calico Critters Voting header">
+</div>
 
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Media Rules</title>
-  <style>
-    /* Position dropdown in top right */
-    .dropdown {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      text-align: right;
-    }
-    /* Style summary */
-    summary {
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      list-style: none;
-      display: inline-block;
-      transition: text-shadow 0.3s ease;
-    }
-    summary:hover {
-      text-shadow: 0 0 8px #F5AAF5, 0 0 12px #F5AAF5;
-    }
-    /* Style for dropdown details */
-    details[open] p {
-      margin: 0;
-      padding: 8px;
-      background-color: #CC99CC;
-      border-radius: 10px;
-      border: 1px solid #F5AAF5;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: left;
-       margin-bottom: 10px;
-    }
-    p {
-      margin: 0;
-    }
-     summary::before {
-      content: '✿'; /* Unicode for vertical ellipsis */
-    }
-  </style>
-</head>
-
-<body>
-    <h2>Moderator Rules for Calico Critters</h2>
+<h2>Moderator Rules for Calico Critters</h2>
   <details>
     <summary> Rules are put in place to make this page a safe environment!</summary>
         <p>1. No cussing in the chats.</p>
@@ -164,10 +171,13 @@ p, h2, h3, body {
         <p>5. Do not be toxic, negative, or attack others for their opinions.</p>
   </details>
 
+<a href="{{site.baseurl}}/voteforthegoat/calicoworkflow">See our workflow here!</a>
+
+
 
 <p class="header-text">Click on a critter below to vote!</p>
 
-<div class="container">
+<div class="container2">
 <div class="critter-container" onclick="selectCritter(this)" data-critter="Mizuki" data-house="Adventure Play">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/mizuki.png">
@@ -189,7 +199,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Syvanian Family Restraunt">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Chiyo" data-house="Sylvanian Family Restraunt">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/chiyo.png">
     </div>
@@ -252,7 +262,7 @@ p, h2, h3, body {
     </div>
 </div>
 
-<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Spooky Supprise Haunted">
+<div class="critter-container" onclick="selectCritter(this)" data-critter="Rin" data-house="Spooky Suprise Haunted">
     <div class="image-container">
         <img src="{{site.baseurl}}/images/calicocritters/rin.png">
     </div>
@@ -296,7 +306,7 @@ p, h2, h3, body {
 </div>
 <br>
 
-<div class="container" style="justify-content:center;">
+<div class="container2" style="justify-content:center;">
     <div class="button-container">
         <button id="confirmButton" class="button-text" onclick="confirmChoice();">Confirm</button>
     </div>
@@ -314,14 +324,46 @@ p, h2, h3, body {
     <img id="houseImage" src="" alt="House Image" style="max-width:300px; border-radius:15px;">
 </div>
 
-<div class="comment-section" id="commentSection">
-    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
-    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
-    <button onclick="addComment();" class="comment-button">Submit</button>
-    <div id="commentList" style="margin-top: 10px;"></div>
-    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Select Group and Channel</h2>
+        <form id="selectionForm">
+            <label for="group_id">Group:</label>
+            <select id="group_id" name="group_id" required>
+                <option value="">Select a group</option>
+            </select>
+            <label for="channel_id">Channel:</label>
+            <select id="channel_id" name="channel_id" required>
+                <option value="">Select a channel</option>
+            </select>
+            <button type="submit">Select</button>
+        </form>
+    </div>
 </div>
 
+<div class="container">
+    <div class="form-container">
+        <h2>Add New Post</h2>
+        <form id="postForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
+            <button type="submit">Add Post</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div id="data" class="data">
+        <div class="left-side">
+            <p id="count"></p>
+        </div>
+        <div class="details" id="details">
+        </div>
+    </div>
+</div>
 
 <script>
 let selectedCritter = null;
@@ -357,76 +399,243 @@ function confirmChoice() {
     houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
 
     imageBox.style.display = "block"; // Show the image box
-
-    // Optional: Display the comment section after confirmation
-    document.getElementById("commentSection").style.display = "block";
 }
 
 
+function selectCritter(element) {
+    const critters = document.querySelectorAll('.critter-container');
+    critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
 
-// Add a comment to the comment list and store it in local storage
-function addComment() {
-    const usernameInput = document.getElementById('usernameInput');
-    const commentInput = document.getElementById('commentInput');
+    element.classList.add('selected'); // Highlight the selected critter
+    selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
+    selectedHouse = element.getAttribute('data-house'); // Store corresponding house
 
-    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
-        alert("Please enter both a username and a comment.");
+    // Remove the previous "Enter House" button if it exists
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
+}
+
+function confirmChoice() {
+    const messageBox = document.getElementById('messageBox');
+    const imageBox = document.getElementById('imageBox');
+    const houseImage = document.getElementById('houseImage'); // Get image element
+
+    if (!selectedCritter || !selectedHouse) {
+        alert("Please select a critter before confirming!"); // Alert if nothing is selected
         return;
     }
 
-    // Include the selected house in the username
-    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+    // Set the message
+    const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
+    messageBox.innerHTML = message; // Display the message
+    messageBox.style.display = "block"; // Make the message visible
 
-    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    // Use template literals to construct the image source
+    const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
+    const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
+    houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
 
-    const newComment = {
-        username: fullUsername, // Store the modified username
-        text: commentInput.value.trim()
+    imageBox.style.display = "block"; // Show the image box
+
+    // Optional: Display the comment section after confirmation
+    document.getElementById("commentSection").style.display = "block";
+
+    // Remove any existing "Enter House" button before creating a new one
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
+
+    // Add the dynamic button for entering the house
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    buttonContainer.id = 'houseButtonContainer';
+    const enterHouseButton = document.createElement('button');
+    enterHouseButton.classList.add('button-text');
+    enterHouseButton.textContent = `Enter ${selectedHouse} House`;
+    enterHouseButton.onclick = function() {
+        window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
     };
 
-    comments.push(newComment);
-    localStorage.setItem('comments', JSON.stringify(comments));
-
-    usernameInput.value = '';
-    commentInput.value = '';
-
-    displayComments();
+    buttonContainer.appendChild(enterHouseButton);
+    document.getElementById('imageBox').appendChild(buttonContainer);
 }
 
+</script>
 
-// Display the list of comments from local storage
-function displayComments() {
-    const commentList = document.getElementById('commentList');
-    commentList.innerHTML = '';
+<script type="module">
+    // Import server URI and standard fetch options
+    import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    // Fetch groups for dropdown selection
+    async function fetchGroups() {
+        try {
+            const response = await fetch(`${pythonURI}/api/groups/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch groups: ' + response.statusText);
+            }
+            const groups = await response.json();
+            const groupSelect = document.getElementById('group_id');
+            groups.forEach(group => {
+                const option = document.createElement('option');
+                option.value = group.name; // Use group name for payload
+                option.textContent = group.name;
+                groupSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching groups:', error);
+        }
+    }
 
-    comments.forEach(comment => {
-        const commentItem = document.createElement('div');
-        commentItem.style.marginBottom = '10px';
-        commentItem.style.borderBottom = '1px solid #ddd';
-        commentItem.style.paddingBottom = '5px';
+    // Fetch channels based on selected group
+    async function fetchChannels(groupName) {
+        try {
+            const response = await fetch(`${pythonURI}/api/channels/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ group_name: groupName })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch channels: ' + response.statusText);
+            }
+            const channels = await response.json();
+            const channelSelect = document.getElementById('channel_id');
+            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+            channels.forEach(channel => {
+                const option = document.createElement('option');
+                option.value = channel.id;
+                option.textContent = channel.name;
+                channelSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching channels:', error);
+        }
+    }
 
-        const header = document.createElement('div');
-        header.style.fontWeight = 'bold';
-        header.textContent = comment.username;
-
-        const textElement = document.createElement('p');
-        textElement.textContent = comment.text;
-
-        commentItem.appendChild(header);
-        commentItem.appendChild(textElement);
-        commentList.appendChild(commentItem);
+    // Handle group selection change
+    document.getElementById('group_id').addEventListener('change', function() {
+        const groupName = this.value;
+        if (groupName) {
+            fetchChannels(groupName);
+        } else {
+            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+        }
     });
-}
 
-function clearComments() {
-    localStorage.removeItem('comments'); // Remove comments from local storage
-    displayComments(); // Refresh the comment display
-}
+    // Handle form submission for selection
+    document.getElementById('selectionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const groupId = document.getElementById('group_id').value;
+        const channelId = document.getElementById('channel_id').value;
+        if (groupId && channelId) {
+            fetchData(channelId);
+        } else {
+            alert('Please select both group and channel.');
+        }
+    });
 
+    // Handle form submission for adding a post
+    document.getElementById('postForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
 
-// Display comments on page load
-window.onload = displayComments;
+        // Extract data from form
+        const title = document.getElementById('title').value;
+        const comment = document.getElementById('comment').value;
+        const channelId = document.getElementById('channel_id').value;
 
+        // Create API payload
+        const postData = {
+            title: title,
+            comment: comment,
+            channel_id: channelId
+        };
+
+        // Trap errors
+        try {
+            // Send POST request to backend, purpose is to write to database
+            const response = await fetch(`${pythonURI}/api/post`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(postData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add post: ' + response.statusText);
+            }
+
+            // Successful post
+            const result = await response.json();
+            alert('Post added successfully!');
+            document.getElementById('postForm').reset();
+            fetchData(channelId);
+        } catch (error) {
+            // Present alert on error from backend
+            console.error('Error adding post:', error);
+            alert('Error adding post: ' + error.message);
+        }
+    });
+
+    // Fetch posts based on selected channel
+    async function fetchData(channelId) {
+        try {
+            const response = await fetch(`${pythonURI}/api/posts/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ channel_id: channelId })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch posts: ' + response.statusText);
+            }
+
+            // Parse the JSON data
+            const postData = await response.json();
+
+            // Extract posts count
+            const postCount = postData.length || 0;
+
+            // Update the HTML elements with the data
+            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+
+            // Get the details div
+            const detailsDiv = document.getElementById('details');
+            detailsDiv.innerHTML = ''; // Clear previous posts
+
+            // Iterate over the postData and create HTML elements for each item
+            postData.forEach(postItem => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <h3>${postItem.title}</h3>
+                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
+                    <p><strong>User:</strong> ${postItem.user_name}</p>
+                    <p>${postItem.comment}</p>
+                `;
+                detailsDiv.appendChild(postElement);
+            });
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    // Fetch groups when the page loads
+    fetchGroups();
 </script>

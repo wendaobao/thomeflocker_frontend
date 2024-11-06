@@ -37,17 +37,15 @@ permalink: /dnhscafestore/
   Creamy vanilla meets rich caramel for a truly indulgent treat.  
   **Price:** 11 dneros  
 
--
-
 ### Points: <span id="userPoints">50</span> dneros
 
-| Coffee        | Cost (dneros) | Action   |
-|---------------|---------------|----------|
-| **Classic Espresso**  | 15            | <button class="buy-button" onclick="buyCoffee(15)">Buy</button> |
-| **Pumpkin Spice Latte**     | 20            | <button class="buy-button" onclick="buyCoffee(20)">Buy</button> |
-| **Cappuccino**| 18            | <button class="buy-button" onclick="buyCoffee(18)">Buy</button> |
-| **Mocha Latte**     | 22            | <button class="buy-button" onclick="buyCoffee(22)">Buy</button> |
-| **Vanilla Caramel Macchiato** | 25            | <button class="buy-button" onclick="buyCoffee(25)">Buy</button> |
+| Image                          | Coffee                        | Cost (dneros) | Action   |
+|--------------------------------|-------------------------------|---------------|----------|
+| ![Classic Espresso](Espresso.png) | **Classic Espresso**          | 15            | <button class="buy-button" onclick="buyCoffee(15)">Buy</button> |
+| ![Pumpkin Spice Latte](Pumpkin.png) | **Pumpkin Spice Latte**       | 20            | <button class="buy-button" onclick="buyCoffee(20)">Buy</button> |
+| ![Cappuccino](Cap.png) | **Cappuccino**                | 18            | <button class="buy-button" onclick="buyCoffee(18)">Buy</button> |
+| ![Mocha Latte](Mocha.png) | **Mocha Latte**               | 22            | <button class="buy-button" onclick="buyCoffee(22)">Buy</button> |
+| ![Vanilla Caramel Macchiato](Vanilla.png) | **Vanilla Caramel Macchiato** | 25            | <button class="buy-button" onclick="buyCoffee(25)">Buy</button> |
 
 ---
 
@@ -73,17 +71,15 @@ function buyCoffee(cost) {
 updatePointsDisplay(); // Initial display update
 </script>
 
-<<<<<<< HEAD
+
 1. Choose your favorite drink(s).
+
 2. Message us to confirm your order.
+
 3. Enjoy the cozy vibes and delicious flavors of DNHS Cafe!
 
 *Thank you for visiting DNHS Cafe! We hope our cozy corner brings you a taste of joy and warmth.*
 
-<a href="{{site.baseurl}}/dnhscafestudyroom">
-<button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>
-</a>
-=======
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -106,20 +102,39 @@ th, td {
 th {
     background-color: #F0E5D8;
 }
+img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 .buy-button {
-    padding: 8px 12px;
-    background-color: #D2691E;
+    padding: 10px 15px;
+    background-color: #4682B4;
     color: white;
-    border: none;
+    border: 2px solid #0056b3;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.buy-button:hover {
+    background-color: #5A9BD4;
+    transform: scale(1.05);
+}
+
+.buy-button:active {
+    transform: scale(0.95);
+}
+
 .buy-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
 </style>
+
 
 <a href="{{site.baseurl}}/dnhscafestudyroom">
 <button style="background-color: #e4bc84; color: white; padding: 10px"> Take Me To DNHS Cafe Study Room! </button>

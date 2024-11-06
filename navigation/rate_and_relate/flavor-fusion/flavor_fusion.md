@@ -1,8 +1,10 @@
 ---
-permalink: /flavor-fusion/
 layout: post
 title: Flavor Fusion
-description: Flavor Fusion main page
+search_exclude: true
+permalink: rate_and_relate/flavor_fusion/
+menu: nav/rate_and_relate.html
+author: Nolan, Jacob, Claire
 ---
 
 <style>
@@ -248,7 +250,7 @@ description: Flavor Fusion main page
         slot.textContent = getRandomEmoji(); // Set the final emoji
       }
 
-    let mainCode = `<h1>Flavor Fusion</h1>
+    let mainCode = `
         <div class="left">
             <h2>Combos4U</h2>
             <div class="combo">
