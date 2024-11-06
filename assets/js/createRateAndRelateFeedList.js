@@ -18,8 +18,8 @@ async function generateImage(int) {
         const postData = await postApiRequest.json();
         return postData
     } catch (error) {
+        // Catches errors
         console.error('Error fetching data:', error);
-
     }
 }
 
