@@ -5,7 +5,7 @@ title: Voting Chatroom
 permalink: /chatroom
 comments: true
 ---
-<html lang="en">s
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,9 +74,11 @@ comments: true
 </head>
 <body>
     <div class="container">
+        <h1>Voting Chatroom</h1>
 
         <!-- Group and Channel Selection -->
         <div class="card">
+            <h2>Select Group and Channel</h2>
             <label for="group">Group:</label>
             <select id="group">
                 <option value="general">General</option>
@@ -98,6 +100,7 @@ comments: true
 
         <!-- Post Creation -->
         <div class="card">
+            <h2>Add New Post</h2>
             <label for="title">Title:</label>
             <input type="text" id="title" placeholder="Enter title...">
 
@@ -109,6 +112,7 @@ comments: true
 
         <!-- Post Feed -->
         <div class="card" id="post-feed">
+            <h2>Posts</h2>
             <div id="posts"></div>
         </div>
     </div>
@@ -178,6 +182,8 @@ comments: true
             const postDiv = document.createElement('div');
             postDiv.classList.add('post-item');
             postDiv.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.comment}</p>
                 <small>Posted on: ${post.timestamp}</small>
             `;
             postFeedDiv.appendChild(postDiv);
