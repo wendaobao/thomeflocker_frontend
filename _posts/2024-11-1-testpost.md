@@ -51,26 +51,16 @@ permalink: /test/
 <!--Make Post (Abby's work from friday)
 * make x functioning button to close div
  -->
-<div class="upload_box">
+<div class="upload_box" id="upload_box">
     <button class="toggle-button" onclick="toggleDiv()">Camera</button>
-    <text class="content-div">
+    <text class="content-div"></text>
     <label for="textInput">Enter caption:</label>
-    <input type="text" id="textInput" placeholder="Type something..."> <!--the text has to be able to be stored somewhre for this post/user?? -->
+    <input type="text" id="textInput" placeholder="Type something..."></input> <!--the text has to be able to be stored somewhre for this post/user?? -->
     <button class="post-button">post</button> <!--on click this will submit the info for the photo, caption, etc for the post -->
-    <button class="exit-button">x</button> 
+    <button class="exit-button" onclick="closeDiv('upload_box')">x</button>
+
 </div>
 
-<!-- for exit button-->
-<div id="myDiv" class="content">
-    <button class="exit-button" onclick="closeDiv()">x</button>
-</div>
-
-<script>
-    function closeDiv() { 
-        var div = document.getElementById("myDiv");
-        div.style.display = "none";
-    }
-</script>
 
 <!-- Video containter -->
 <div class="upload_media" id="mediaUploader">
@@ -84,6 +74,9 @@ permalink: /test/
 </div>
 
 <script>
+    // exit button stuff
+    function closeDiv(divId) { var div = document.getElementById(divId); div.style.display = "none"; }
+
     // Iniital decleration of variables
     const myDiv = document.getElementById("mediaUploader");
     const video = document.getElementById('video');
