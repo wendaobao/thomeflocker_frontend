@@ -91,12 +91,24 @@ permalink: /rateandrelate/update_the_nest/
     position: fixed;            
     top: 50%;                   
     left: 50%;                
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
     background-color: #FBC3C3;
     padding: 20px;
     border: 1px solid #ccc;
+    border-radius: 50px;
+    height: auto;
     text-align: center;
 }
+
+.upload_box #textInput {
+    width: 100%; 
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    margin-bottom: 10px; 
+}
+
 </style>
 
 <div style="text-align: center;" class="header">
@@ -126,12 +138,13 @@ permalink: /rateandrelate/update_the_nest/
 </div>
 
 <div class="upload_box">
-    <button class="toggle-button" onclick="toggleDiv()">Camera</button>
-    <text class="content-div">
+    <button class="toggle-button" onclick="toggleDiv()">Camera</button> <br>
+    <text class="content-div"></text>
     <label for="textInput">Enter caption:</label>
     <input type="text" id="textInput" placeholder="Type something...">
     <button class="post-button">post</button>
     <button class="exit-button">x</button>
+</div>
 
 <script type="module">
 import { createImagePost } from '{{site.baseurl}}/assets/js/createRateAndRelateFeedList.js';
