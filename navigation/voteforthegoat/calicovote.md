@@ -302,49 +302,187 @@ p {
     <div id="commentList" style="margin-top: 10px;"></div>
     <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
 </div>
+
 <script>
-  
 let selectedCritter = null;
 let selectedHouse = null;
 
 function selectCritter(element) {
-    const critters = document.querySelectorAll('.critter-container');
-    critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
+const critters = document.querySelectorAll('.critter-container');
+critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
 
-    element.classList.add('selected'); // Highlight the selected critter
-    selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
-    selectedHouse = element.getAttribute('data-house'); // Store corresponding house
+element.classList.add('selected'); // Highlight the selected critter
+selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
+selectedHouse = element.getAttribute('data-house'); // Store corresponding house
 }
 
 function confirmChoice() {
-    const messageBox = document.getElementById('messageBox');
-    const imageBox = document.getElementById('imageBox');
-    const houseImage = document.getElementById('houseImage'); // Get image element
+const messageBox = document.getElementById('messageBox');
+const imageBox = document.getElementById('imageBox');
+const houseImage = document.getElementById('houseImage'); // Get image element
 
-    if (!selectedCritter || !selectedHouse) {
-        alert("Please select a critter before confirming!"); // Alert if nothing is selected
-        return;
-    }
+if (!selectedCritter || !selectedHouse) {
+    alert("Please select a critter before confirming!"); // Alert if nothing is selected
+    return;
+}
 
-    // Set the message
-    const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
-    messageBox.innerHTML = message; // Display the message
-    messageBox.style.display = "block"; // Make the message visible
+// Set the message
+const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
+messageBox.innerHTML = message; // Display the message
+messageBox.style.display = "block"; // Make the message visible
 
-    // Use template literals to construct the image source
-    const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
-    const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
-    houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
+// Use template literals to construct the image source
+const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
+const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
+houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
 
-    imageBox.style.display = "block"; // Show the image box
+imageBox.style.display = "block"; // Show the image box
 
-    // Optional: Display the comment section after confirmation
-    document.getElementById("commentSection").style.display = "block";
+// Optional: Display the comment section after confirmation
+document.getElementById("commentSection").style.display = "block";
 }
 
 
 
 // Add a comment to the comment list and store it in local storage
+function addComment() {
+const usernameInput = document.getElementById('usernameInput');
+const commentInput = document.getElementById('commentInput');
+
+if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+    alert("Please enter both a username and a comment.");
+    return;
+}
+
+// Include the selected house in the username
+const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+
+let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+const newComment = {
+    username: fullUsername, // Store the modified username
+    text: commentInput.value.trim()
+};
+
+comments.push(newComment);
+localStorage.setItem('comments', JSON.stringify(comments));
+
+usernameInput.value = '';
+commentInput.value = '';
+
+displayComments();
+}
+
+
+// Display the list of comments from local storage
+function displayComments() {
+const commentList = document.getElementById('commentList');
+commentList.innerHTML = '';
+
+let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+comments.forEach(comment => {
+    const commentItem = document.createElement('div');
+    commentItem.style.marginBottom = '10px';
+    commentItem.style.borderBottom = '1px solid #ddd';
+    commentItem.style.paddingBottom = '5px';
+
+    const header = document.createElement('div');
+    header.style.fontWeight = 'bold';
+    header.textContent = comment.username;
+
+    const textElement = document.createElement('p');
+    textElement.textContent = comment.text;
+
+    commentItem.appendChild(header);
+    commentItem.appendChild(textElement);
+    commentList.appendChild(commentItem);
+});
+}
+
+function clearComments() {
+localStorage.removeItem('comments'); // Remove comments from local storage
+displayComments(); // Refresh the comment display
+}
+
+function selectCritter(element) {
+const critters = document.querySelectorAll('.critter-container');
+critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
+
+element.classList.add('selected'); // Highlight the selected critter
+selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
+selectedHouse = element.getAttribute('data-house'); // Store corresponding house
+
+// Remove the previous "Enter House" button if it exists
+const existingButtonContainer = document.querySelector('#houseButtonContainer');
+if (existingButtonContainer) {
+    existingButtonContainer.remove();
+}
+}
+
+function confirmChoice() {
+const messageBox = document.getElementById('messageBox');
+const imageBox = document.getElementById('imageBox');
+const houseImage = document.getElementById('houseImage'); // Get image element
+
+if (!selectedCritter || !selectedHouse) {
+    alert("Please select a critter before confirming!"); // Alert if nothing is selected
+    return;
+}
+
+// Set the message
+const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
+messageBox.innerHTML = message; // Display the message
+messageBox.style.display = "block"; // Make the message visible
+
+// Use template literals to construct the image source
+const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
+const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
+houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
+
+imageBox.style.display = "block"; // Show the image box
+
+// Optional: Display the comment section after confirmation
+document.getElementById("commentSection").style.display = "block";
+
+// Remove any existing "Enter House" button before creating a new one
+const existingButtonContainer = document.querySelector('#houseButtonContainer');
+if (existingButtonContainer) {
+    existingButtonContainer.remove();
+}
+
+// Add the dynamic button for entering the house
+const buttonContainer = document.createElement('div');
+buttonContainer.classList.add('button-container');
+buttonContainer.id = 'houseButtonContainer';
+const enterHouseButton = document.createElement('button');
+enterHouseButton.classList.add('button-text');
+enterHouseButton.textContent = `Enter ${selectedHouse} House`;
+enterHouseButton.onclick = function() {
+    window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
+};
+
+buttonContainer.appendChild(enterHouseButton);
+document.getElementById('imageBox').appendChild(buttonContainer);
+}
+
+
+
+// Display comments on page load
+window.onload = displayComments;
+
+</script>
+
+<div class="comment-section" id="commentSection">
+    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
+    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
+    <button onclick="addComment();" class="comment-button">Submit</button>
+    <div id="commentList" style="margin-top: 10px;"></div>
+    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
+</div>
+
+<script>
+// Function to add a comment
 function addComment() {
     const usernameInput = document.getElementById('usernameInput');
     const commentInput = document.getElementById('commentInput');
@@ -361,7 +499,8 @@ function addComment() {
 
     const newComment = {
         username: fullUsername, // Store the modified username
-        text: commentInput.value.trim()
+        text: commentInput.value.trim(),
+        likes: 0 // Initialize the likes count
     };
 
     comments.push(newComment);
@@ -373,15 +512,14 @@ function addComment() {
     displayComments();
 }
 
-
-// Display the list of comments from local storage
+// Function to display comments
 function displayComments() {
     const commentList = document.getElementById('commentList');
     commentList.innerHTML = '';
 
     let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
-    comments.forEach(comment => {
+    comments.forEach((comment, index) => {
         const commentItem = document.createElement('div');
         commentItem.style.marginBottom = '10px';
         commentItem.style.borderBottom = '1px solid #ddd';
@@ -394,81 +532,257 @@ function displayComments() {
         const textElement = document.createElement('p');
         textElement.textContent = comment.text;
 
+        // Create Like Button and Display Like Count
+        const likeButton = document.createElement('button');
+        likeButton.textContent = `Like (${comment.likes})`;
+        likeButton.style.marginTop = '5px';
+        likeButton.onclick = function() {
+            likeComment(index); // Pass the index to the like function
+        };
+
         commentItem.appendChild(header);
         commentItem.appendChild(textElement);
+        commentItem.appendChild(likeButton);
         commentList.appendChild(commentItem);
     });
 }
 
+// Function to handle liking a comment
+function likeComment(index) {
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    // Increase the like count
+    comments[index].likes++;
+
+    // Save the updated comments array to local storage
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    // Refresh the comment list to update the like count
+    displayComments();
+}
+
+// Function to clear all comments
 function clearComments() {
     localStorage.removeItem('comments'); // Remove comments from local storage
     displayComments(); // Refresh the comment display
 }
 
-function selectCritter(element) {
-    const critters = document.querySelectorAll('.critter-container');
-    critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
+// Display comments on page load
+window.onload = displayComments;
+</script>
 
-    element.classList.add('selected'); // Highlight the selected critter
-    selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
-    selectedHouse = element.getAttribute('data-house'); // Store corresponding house
+<div class="comment-section" id="commentSection">
+    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
+    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
+    <button onclick="addComment();" class="comment-button">Submit</button>
+    <div id="commentList" style="margin-top: 10px;"></div>
+    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
+</div>
 
-    // Remove the previous "Enter House" button if it exists
-    const existingButtonContainer = document.querySelector('#houseButtonContainer');
-    if (existingButtonContainer) {
-        existingButtonContainer.remove();
-    }
-}
+<script>
+// Function to add a comment
+function addComment() {
+    const usernameInput = document.getElementById('usernameInput');
+    const commentInput = document.getElementById('commentInput');
 
-function confirmChoice() {
-    const messageBox = document.getElementById('messageBox');
-    const imageBox = document.getElementById('imageBox');
-    const houseImage = document.getElementById('houseImage'); // Get image element
-
-    if (!selectedCritter || !selectedHouse) {
-        alert("Please select a critter before confirming!"); // Alert if nothing is selected
+    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+        alert("Please enter both a username and a comment.");
         return;
     }
 
-    // Set the message
-    const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
-    messageBox.innerHTML = message; // Display the message
-    messageBox.style.display = "block"; // Make the message visible
+    // Include the selected house in the username
+    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
 
-    // Use template literals to construct the image source
-    const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
-    const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
-    houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
-    imageBox.style.display = "block"; // Show the image box
-
-    // Optional: Display the comment section after confirmation
-    document.getElementById("commentSection").style.display = "block";
-
-    // Remove any existing "Enter House" button before creating a new one
-    const existingButtonContainer = document.querySelector('#houseButtonContainer');
-    if (existingButtonContainer) {
-        existingButtonContainer.remove();
-    }
-
-    // Add the dynamic button for entering the house
-    const buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('button-container');
-    buttonContainer.id = 'houseButtonContainer';
-    const enterHouseButton = document.createElement('button');
-    enterHouseButton.classList.add('button-text');
-    enterHouseButton.textContent = `Enter ${selectedHouse} House`;
-    enterHouseButton.onclick = function() {
-        window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
+    const newComment = {
+        username: fullUsername, // Store the modified username
+        text: commentInput.value.trim(),
+        likes: 0 // Initialize the likes count to 0 (no null or undefined)
     };
 
-    buttonContainer.appendChild(enterHouseButton);
-    document.getElementById('imageBox').appendChild(buttonContainer);
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    usernameInput.value = '';
+    commentInput.value = '';
+
+    displayComments();
 }
 
+// Function to display comments
+function displayComments() {
+    const commentList = document.getElementById('commentList');
+    commentList.innerHTML = ''
 
+<div class="comment-section" id="commentSection">
+    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
+    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
+    <button onclick="addComment();" class="comment-button">Submit</button>
+    <div id="commentList" style="margin-top: 10px;"></div>
+    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
+</div>
 
-// Display comments on page load
-window.onload = displayComments;
+<script>
+// Function to add a comment
+function addComment() {
+    const usernameInput = document.getElementById('usernameInput');
+    const commentInput = document.getElementById('commentInput');
 
-</script>
+    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+        alert("Please enter both a username and a comment.");
+        return;
+    }
+
+    // Include the selected house in the username
+    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    const newComment = {
+        username: fullUsername, // Store the modified username
+        text: commentInput.value.trim(),
+        likes: 0, // Initialize the likes count to 0 (no null or undefined)
+        liked: false // Add a liked flag to track the like status
+    };
+
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    usernameInput.value = '';
+    commentInput.value = '';
+
+    displayComments();
+}
+
+// Function to display comments
+function displayComments() {
+    const commentList = document.getElementById('commentList');
+    commentList.innerHTML = '';
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    comments.forEach((comment, index) => {
+        // Ensure likes are always 0 if undefined or null
+        comment.likes = comment.likes || 0;
+
+        const commentItem = document.createElement('div');
+        commentItem.style.marginBottom = '10px';
+        commentItem.style.borderBottom = '1px solid #ddd';
+        commentItem.style.paddingBottom = '5px';
+
+        const header = document.createElement('div');
+        header.style.fontWeight = 'bold';
+        header.textContent = comment.username;
+
+        const textElement = document.createElement('p');
+        textElement.textContent = comment.text;
+
+        // Create Like Button and Display Like Count
+        const likeButton = document.createElement('button');
+        likeButton.textContent = comment.liked ? `Unlike (${comment.likes})` : `Like (${comment.likes})`;
+        likeButton.style.marginTop = '5px';
+        likeButton.onclick = function() {
+            toggleLike(index); // Toggle like/unlike on click
+        };
+
+        commentItem.appendChild(header);
+        commentItem.appendChild(textElement);
+        commentItem.appendChild(likeButton);
+        commentList.appendChild(commentItem);
+    });
+}
+
+<div class="comment-section" id="commentSection">
+    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
+    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
+    <button onclick="addComment();" class="comment-button">Submit</button>
+    <div id="commentList" style="margin-top: 10px;"></div>
+    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
+</div>
+
+<script>
+// Function to add a comment
+function addComment() {
+    const usernameInput = document.getElementById('usernameInput');
+    const commentInput = document.getElementById('commentInput');
+
+    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+        alert("Please enter both a username and a comment.");
+        return;
+    }
+
+    // Include the selected house in the username
+    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    const newComment = {
+        username: fullUsername, // Store the modified username
+        text: commentInput.value.trim(),
+        likes: 0, // Initialize the likes count to 0 (no null or undefined)
+        liked: false // Add a liked flag to track the like status
+    };
+
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    usernameInput.value = '';
+    commentInput.value = '';
+
+    displayComments();
+}
+
+<div class="comment-item" id="comment1">
+    <div class="comment-header">
+        <strong>Username</strong>
+        <button class="like-button" onclick="toggleLike('comment1')">Like</button>
+        <button class="unlike-button" onclick="toggleUnlike('comment1')" style="display: none;">Unlike</button>
+    </div>
+    <p>This is a comment.</p>
+</div>
+
+<script>
+    // Function to toggle the like/unlike behavior
+    function toggleLike(commentId) {
+        const likeButton = document.querySelector(`#${commentId} .like-button`);
+        const unlikeButton = document.querySelector(`#${commentId} .unlike-button`);
+
+        // Toggle "Like" state
+        likeButton.style.display = "none"; // Hide the like button
+        unlikeButton.style.display = "inline-block"; // Show the unlike button
+        // You could store this state in localStorage or your data structure if needed
+    }
+
+    // Function to undo the like (unlike)
+    function toggleUnlike(commentId) {
+        const likeButton = document.querySelector(`#${commentId} .like-button`);
+        const unlikeButton = document.querySelector(`#${commentId} .unlike-button`);
+
+        // Toggle "Unlike" state
+        likeButton.style.display = "inline-block"; // Show the like button
+        unlikeButton.style.display = "none"; // Hide the unlike button
+        // You could store this state in localStorage or your data structure if needed
+    }
+
+function toggleLike(index) {
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    let comment = comments[index];
+    comment.liked = !comment.liked;
+    if (comment.liked) {
+        comment.likes++;
+    } else {
+        comment.likes--;
+    }
+    localStorage.setItem('comments', JSON.stringify(comments));
+    displayComments(); // Re-render the comments with updated like count
+}
+
+function toggleUnlike(index) {
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    let comment = comments[index];
+    comment.liked = false;
+    comment.likes--;
+    localStorage.setItem('comments', JSON.stringify(comments));
+    displayComments(); // Re-render the comments with updated like count
+}
