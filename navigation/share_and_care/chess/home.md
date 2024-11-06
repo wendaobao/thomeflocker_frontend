@@ -15,7 +15,3 @@ Welcome to the Chess Forum!
 
 - <a href="{{site.baseurl}}/chess/rules">Daily Tactics</a>
 
-<a href="/chess/rules">
-    <img src="path_to_your_image/image.png" alt="Daily Tactics" style="width:100px; height:auto;">
-</a>
-![alt text](image.png)
