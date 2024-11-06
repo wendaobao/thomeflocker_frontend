@@ -45,12 +45,6 @@ author: Manas, Lalita, Shriya, Ethan
     <div id="feedback-display"></div>
 </section>
 
-<!-- Leaderboard Section -->
-<section id="leaderboard-section">
-    <h2>Top Contributors</h2>
-    <ul id="leaderboard"></ul>
-</section>
-
 <!-- Feedback Modal -->
 <div id="feedback-modal" class="modal">
     <div class="modal-content">
