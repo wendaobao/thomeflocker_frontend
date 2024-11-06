@@ -6,61 +6,6 @@ menu: nav/doodle.html
 permalink: /moderation/chat_doodle/
 author: Arshia, Prajna, Mirabelle, Alex
 ---
-
-<script>
-vasync function fetchMessages(roomId) {
-    const response = await fetch(`${pythonURI}/api/chat/${roomId}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    const messagesData = await response.json();
-    messagesData.forEach(message => {
-        const messageElement = document.createElement('div');
-        messageElement.className = 'message-item';
-        messageElement.innerHTML = `
-            <p><strong>${message.user_name}</strong>: ${message.content}</p>
-            <small>${new Date(message.timestamp).toLocaleString()}</small>
-        `;
-        detailsDiv.appendChild(messageElement);
-    });
-}
-
-// Function to post a new message to the chat room
-async function postMessage(roomId, userName, messageContent) {
-    const response = await fetch(`${pythonURI}/api/chat/${roomId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ user_name: userName, content: messageContent })
-    });
-    const newMessage = await response.json();
-    // Add the new message to the chat display
-    const messageElement = document.createElement('div');
-    messageElement.className = 'message-item';
-    messageElement.innerHTML = `
-        <p><strong>${newMessage.user_name}</strong>: ${newMessage.content}</p>
-        <small>${new Date(newMessage.timestamp).toLocaleString()}</small>
-    `;
-    detailsDiv.appendChild(messageElement);
-}
-
-// Example usage:
-const roomId = 'exampleRoomId'; // Set this to the specific chat room ID
-fetchMessages(roomId);
-
-// To post a new message
-const userName = 'user123';
-const messageContent = 'Hello, everyone!';
-postMessage(roomId, userName, messageContent);
-
-</script>
-
-
-
-
 <div id="mainContainer">
   <div id="sidebar">
     <div class="chatBox" onclick="loadConversation('Alex')">
@@ -81,17 +26,19 @@ postMessage(roomId, userName, messageContent);
     </div>
   </div>
 
-  <<div id="chatContainer">
-  <div id="doodleImageContainer">
-  <img id="doodleImage" src="{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png" alt="Doodle Image">
+  <div id="chatContainer">
+    <div id="doodleImageContainer">
+      <img id="doodleImage" src="{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png" alt="Doodle Image">
+    </div>
+    <div id="messages"></div>
+    <div id="inputContainer">
+      <!-- File upload input for the image -->
+      <input type="file" id="imageUpload" accept="image/*" />
+      <input type="text" id="inputMessage" placeholder="Type a message..." />
+      <button id="sendButton">Send</button>
+    </div>
   </div>
-  <div id="messages"></div>
-  <div id="inputContainer">
-    <input type="text" id="inputMessage" placeholder="Type a message..." />
-    <button id="sendButton">Send</button>
-  </div>
-</div>
-  
+
   <button id="fullscreenButton" onclick="toggleFullscreen()">&#x26F6;</button>
   <button id="exitFullscreenButton" onclick="toggleFullscreen()">X</button>
 </div>
@@ -116,12 +63,18 @@ postMessage(roomId, userName, messageContent);
     background-color: #fff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border: 3px solid #ffcbdb;
+    background-image: url('https://via.placeholder.com/150'), url('https://via.placeholder.com/150');
+    background-position: top left, bottom right;
+    background-repeat: no-repeat;
   }
   #sidebar {
     width: 30%;
     background: #ffe4e1;
     padding: 20px;
     overflow-y: auto;
+    background-image: url('https://via.placeholder.com/100x100'), url('https://via.placeholder.com/100x100');
+    background-position: 20px 20px, right 20px bottom 20px;
+    background-repeat: no-repeat;
   }
   .chatBox {
     padding: 20px;
@@ -147,22 +100,27 @@ postMessage(roomId, userName, messageContent);
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-image: url('https://via.placeholder.com/100x100');
+    background-position: bottom left;
+    background-repeat: no-repeat;
   }
   #doodleImageContainer {
-  width: 100%; /* Ensure the container takes up the full width available */
-  max-height: 180px; /* Limit the height of the image box */
-  overflow: hidden; /* Hide any part of the image that overflows the container */
+    width: 100%;
+    max-height: 180px;
+    overflow: hidden;
   }
+
   #doodleImage {
-  width: 100%; /* Ensures the image takes up the full width of the container */
-  height: 100%; /* Ensures the image is constrained to the height of the container */
-  object-fit: contain; /* Ensures the entire image fits within the box without distortion */
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid #ffcbdb;
-  display: block; /* Ensures image does not have unwanted gaps */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ffcbdb;
+    display: block;
   }
+
   #messages {
     flex: 1;
     overflow-y: auto;
@@ -264,6 +222,7 @@ postMessage(roomId, userName, messageContent);
   const inputMessage = document.getElementById('inputMessage');
   const sendButton = document.getElementById('sendButton');
   const doodleImage = document.getElementById('doodleImage');
+  const imageUpload = document.getElementById('imageUpload');
 
   const conversations = {
     'Alex': ["Alex: Check out this doodle!", "You: Wow! Did you use ink?", "Alex: Yes, and some shading too."],
@@ -272,11 +231,21 @@ postMessage(roomId, userName, messageContent);
     'Mirabelle': ["Mirabelle: Look at the details on this one!", "You: That’s so intricate!", "Mirabelle: Thanks! It took ages."]
   };
 
+  // Handle the file upload
+  imageUpload.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        doodleImage.src = e.target.result;  // Update the image source to the uploaded file
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
   function loadConversation(chatName) {
     messages.innerHTML = '';
     const chatMessages = conversations[chatName] || [];
-    doodleImage.src = "{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png"; // Ensure image always reloads
-
     chatMessages.forEach((msg) => {
       addMessage(msg);
     });
