@@ -47,7 +47,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
             margin: auto;
         }
         .voting-container:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
         /* Header Styling */
         .voting-container h2 {
