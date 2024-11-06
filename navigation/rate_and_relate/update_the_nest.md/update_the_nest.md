@@ -110,6 +110,14 @@ menu: nav/rate_and_relate.html
     margin-bottom: 10px; 
 }
 
+.upload_box .post-button {
+   transform: translateX(150px)
+}
+
+.upload_box .exit-button {
+   transform: translateX(125px) translateY(-100px);
+}
+
 </style>
 
 <div style="text-align: center;" class="header">
