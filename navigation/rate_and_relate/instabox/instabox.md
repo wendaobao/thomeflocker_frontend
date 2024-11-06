@@ -51,7 +51,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
         border-radius: 10px;
         padding: 10px;
         height: 100%;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
         box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     }
     .instabox-box {
