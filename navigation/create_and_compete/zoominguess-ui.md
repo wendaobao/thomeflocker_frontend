@@ -18,8 +18,6 @@ author: Arhaan, Akshaj, Mihir, Keerthan
 
 <!-- Random Image Section -->
 <div class="zoom-image-section">
-   <button id="generate-image" class="submit-button">Generate Zoomed Image</button>
-   <div id="image-display" class="zoom-image-box">
        <!-- Random zoomed-in image will be displayed here -->
        <img id="einstein.jpg" src="{{site.baseurl}}/images/zoomin-guess/einstein.jpg" alt="Zoomed Image" class="zoom-image">
    </div>
