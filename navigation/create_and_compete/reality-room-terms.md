@@ -29,18 +29,18 @@ author: Yash, Nikhil, Rohan, Neil
         left: 0;
         width: 150px;
         height: 100%;
-        background-color: #222;
+        background-color: #121212 !important;
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 20px;
         color: white;
+        border-right: 1px solid gray;
     }
-
     .sidebar-btn {
-        background-color: #333;
-        color: white;
-        border: none;
+        background-color: #121212;
+        color: white !important;
+        border: 2px solid gray;
         margin: 10px 0;
         padding: 10px;
         border-radius: 8px;

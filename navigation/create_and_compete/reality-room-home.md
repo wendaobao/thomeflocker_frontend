@@ -105,17 +105,18 @@ author: Yash, Nikhil, Rohan, Neil
         left: 0;
         width: 150px;
         height: 100%;
-        background-color: #222;
+        background-color: #121212 !important;
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 20px;
         color: white;
+        border-right: 1px solid gray;
     }
     .sidebar-btn {
-        background-color: #333;
-        color: white;
-        border: none;
+        background-color: #121212;
+        color: white !important;
+        border: 2px solid gray;
         margin: 10px 0;
         padding: 10px;
         border-radius: 8px;
@@ -196,7 +197,7 @@ author: Yash, Nikhil, Rohan, Neil
         padding: 20px;
         background-color: #f4f4f4;
         border-radius: 12px;
-        width: calc(100% - 440px);
+        width: calc(100% - 10px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         font-family: Arial, sans-serif;
     }
