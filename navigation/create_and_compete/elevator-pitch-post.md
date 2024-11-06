@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Add a Post
-permalink: /post
+permalink: /create_and_compete/elevatorpitchpost
 menu: nav/home.html
 search_exclude: true
 ---

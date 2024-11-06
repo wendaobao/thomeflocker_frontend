@@ -93,4 +93,5 @@ author: Manas, Lalita, Shriya, Ethan
 <!-- Link to Custom CSS and Script -->
 <link rel="stylesheet" href="{{site.baseurl}}/navigation/create_and_compete/style.css">
 <script src="{{site.baseurl}}/navigation/create_and_compete/script.js"></script>
+<a href="{{site.baseurl}}/navigation/create_and_compete/elevatorpitchpost/">Channel</a>
 
