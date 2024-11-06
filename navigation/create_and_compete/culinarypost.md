@@ -88,10 +88,8 @@ author: Daksha, Alex, Darsh, Zach
 </div>
 
 <script type="module">
-    // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-    // Fetch groups for dropdown selection
     async function fetchGroups() {
         try {
             const response = await fetch(`${pythonURI}/api/groups/filter`, {
@@ -100,7 +98,7 @@ author: Daksha, Alex, Darsh, Zach
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
+                body: JSON.stringify({ section_name: "Home Page" }) 
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
@@ -109,7 +107,7 @@ author: Daksha, Alex, Darsh, Zach
             const groupSelect = document.getElementById('group_id');
             groups.forEach(group => {
                 const option = document.createElement('option');
-                option.value = group.name; // Use group name for payload
+                option.value = group.name; 
                 option.textContent = group.name;
                 groupSelect.appendChild(option);
             });
@@ -118,7 +116,6 @@ author: Daksha, Alex, Darsh, Zach
         }
     }
 
-    // Fetch channels based on selected group
     async function fetchChannels(groupName) {
         try {
             const response = await fetch(`${pythonURI}/api/channels/filter`, {
@@ -134,7 +131,7 @@ author: Daksha, Alex, Darsh, Zach
             }
             const channels = await response.json();
             const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+            channelSelect.innerHTML = '<option value="">Select a channel</option>'; 
             channels.forEach(channel => {
                 const option = document.createElement('option');
                 option.value = channel.id;
@@ -146,17 +143,15 @@ author: Daksha, Alex, Darsh, Zach
         }
     }
 
-    // Handle group selection change
     document.getElementById('group_id').addEventListener('change', function() {
         const groupName = this.value;
         if (groupName) {
             fetchChannels(groupName);
         } else {
-            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; 
         }
     });
 
-    // Handle form submission for selection
     document.getElementById('selectionForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const groupId = document.getElementById('group_id').value;
@@ -168,25 +163,20 @@ author: Daksha, Alex, Darsh, Zach
         }
     });
 
-    // Handle form submission for adding a post
     document.getElementById('postForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        // Extract data from form
         const title = document.getElementById('title').value;
         const comment = document.getElementById('comment').value;
         const channelId = document.getElementById('channel_id').value;
 
-        // Create API payload
         const postData = {
             title: title,
             comment: comment,
             channel_id: channelId
         };
 
-        // Trap errors
         try {
-            // Send POST request to backend, purpose is to write to database
             const response = await fetch(`${pythonURI}/api/post`, {
                 ...fetchOptions,
                 method: 'POST',
@@ -200,19 +190,16 @@ author: Daksha, Alex, Darsh, Zach
                 throw new Error('Failed to add post: ' + response.statusText);
             }
 
-            // Successful post
             const result = await response.json();
             alert('Post added successfully!');
             document.getElementById('postForm').reset();
             fetchData(channelId);
         } catch (error) {
-            // Present alert on error from backend
             console.error('Error adding post:', error);
             alert('Error adding post: ' + error.message);
         }
     });
 
-    // Fetch posts based on selected channel
     async function fetchData(channelId) {
         try {
             const response = await fetch(`${pythonURI}/api/posts/filter`, {
@@ -227,20 +214,15 @@ author: Daksha, Alex, Darsh, Zach
                 throw new Error('Failed to fetch posts: ' + response.statusText);
             }
 
-            // Parse the JSON data
             const postData = await response.json();
 
-            // Extract posts count
             const postCount = postData.length || 0;
 
-            // Update the HTML elements with the data
             document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
 
-            // Get the details div
             const detailsDiv = document.getElementById('details');
-            detailsDiv.innerHTML = ''; // Clear previous posts
+            detailsDiv.innerHTML = ''; 
 
-            // Iterate over the postData and create HTML elements for each item
             postData.forEach(postItem => {
                 const postElement = document.createElement('div');
                 postElement.className = 'post-item';
@@ -258,7 +240,6 @@ author: Daksha, Alex, Darsh, Zach
         }
     }
 
-    // Fetch groups when the page loads
     fetchGroups();
 </script>
 
