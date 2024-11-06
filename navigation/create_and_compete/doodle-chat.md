@@ -81,14 +81,16 @@ postMessage(roomId, userName, messageContent);
     </div>
   </div>
 
-  <div id="chatContainer">
-    <img id="doodleImage" src="{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png" alt="Doodle Image">
-    <div id="messages"></div>
-    <div id="inputContainer">
-      <input type="text" id="inputMessage" placeholder="Type a message..." />
-      <button id="sendButton">Send</button>
-    </div>
+  <<div id="chatContainer">
+  <div id="doodleImageContainer">
+  <img id="doodleImage" src="{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png" alt="Doodle Image">
   </div>
+  <div id="messages"></div>
+  <div id="inputContainer">
+    <input type="text" id="inputMessage" placeholder="Type a message..." />
+    <button id="sendButton">Send</button>
+  </div>
+</div>
   
   <button id="fullscreenButton" onclick="toggleFullscreen()">&#x26F6;</button>
   <button id="exitFullscreenButton" onclick="toggleFullscreen()">X</button>
@@ -146,14 +148,20 @@ postMessage(roomId, userName, messageContent);
     flex-direction: column;
     height: 100%;
   }
+  #doodleImageContainer {
+  width: 100%; /* Ensure the container takes up the full width available */
+  max-height: 180px; /* Limit the height of the image box */
+  overflow: hidden; /* Hide any part of the image that overflows the container */
+  }
   #doodleImage {
-  width: 100%;
-  max-height: 180px;
+  width: 100%; /* Ensures the image takes up the full width of the container */
+  height: 100%; /* Ensures the image is constrained to the height of the container */
+  object-fit: contain; /* Ensures the entire image fits within the box without distortion */
   border-radius: 10px;
   margin-bottom: 15px;
-  object-fit: contain; /* Ensure the entire image fits within the box */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border: 2px solid #ffcbdb;
+  display: block; /* Ensures image does not have unwanted gaps */
   }
   #messages {
     flex: 1;
