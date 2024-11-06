@@ -130,47 +130,10 @@ function replyToComment(index) {
 
 // Like button toggle and add likes
 
-<script>
-        // Initialize the state
-        let liked = false;
-        let likeCount = 11; // Start count at 11
-
-        // Function to toggle the like and update the counter
-        function toggleLike() {
-            // Toggle the liked state
-            liked = !liked;
-
-            // Update the heart icon and like count based on liked state
-            heart.innerText = liked ? '❤️' : '♡';
-            likeCount = liked ? likeCount + 1 : likeCount - 1;
-            likeCountDisplay.innerText = `${likeCount} Likes`;
-        }
-
-        // Create and set up the like button and counter display on page load
-        window.onload = function() {
-            // Create the button element
-            const likeButton = document.createElement('button');
-            likeButton.onclick = toggleLike;
-
-            // Create the heart icon element
-            const heart = document.createElement('span');
-            heart.id = 'heart';
-            heart.innerText = '♡';
-
-            // Add the heart icon to the button
-            likeButton.appendChild(heart);
-
-            // Create the like count display
-            const likeCountDisplay = document.createElement('span');
-            likeCountDisplay.id = 'likeCount';
-            likeCountDisplay.innerText = `${likeCount} Likes`;
-
-            // Add the button and the like count display to the page
-            document.body.appendChild(likeButton);
-            document.body.appendChild(likeCountDisplay);
-        };
-    </script>
-</body>
+function toggleLike() {
+  liked = !liked;
+  document.getElementById('heart').innerText = liked ? '❤️' : '♡';
+} 
 
 // Rate book function to change star colors and set current rating
 function rateBook(rating) {
