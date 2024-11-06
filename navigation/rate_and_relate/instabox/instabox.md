@@ -133,9 +133,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
         <div class="instabox-box">
             <h2>Instabox 💬</h2>
             <div class="instabox" id="instabox">
-                <p><strong>Shish Kabob:</strong> Hey bro! What’s good [1 hr ago]</p>
-                <p><strong>Me:</strong> Nothing much, just studying for AP Chemistry.</p>
-                <p>You responded one hour and 23 minutes after the notification, with a bonus of -60 points, for a total of 63 points!</p>
+                <p>You have no system messages.</p>
             </div>
             <br>
             <div class="chatinput" id="chatinput" contenteditable="true"></div>
