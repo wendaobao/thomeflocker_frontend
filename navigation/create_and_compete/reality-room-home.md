@@ -6,130 +6,159 @@ permalink: /create_and_compete/realityroom-home
 author: Yash, Nikhil, Rohan, Neil
 ---
 
-<div class="sidebar">
-    <a href="/Users/neilchandra/nighthawk/flocker_frontend/navigation/create_and_compete/reality-room-home.md" class="sidebar-btn">🏠 Home</a>
-    <a href="/about" class="sidebar-btn">❓ About</a>
-    <a href="/terms" class="sidebar-btn">📄 Terms</a>
-</div>
-
-<div class="user-list">
-    <h3>Users</h3>
-    <table>
-        <tr>
-            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
-            <td>
-                <span class="user-name">Bumerila (You)</span><br>
-                <p>My dad is Bezos the founder of Amazon.</p>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
-            <td>
-                <span class="user-name">Bumerila</span><br>
-                <p>My dad is Bezos the founder of Amazon.</p>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
-            <td>
-                <span class="user-name">Bumerila</span><br>
-                <p>My dad is Bezos the founder of Amazon.</p>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Image" class="user-img"></td>
-            <td>
-                <span class="user-name">Bumerila</span><br>
-                <p>My dad is Bezos the founder of Amazon.</p>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div class="form-container">
-    <form id="channelForm">
-        <div class="form-inputs">
-            <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
-            <input type="file" id="fileInput" name="fileInput" style="display: none;">
-            <button type="button" onclick="document.getElementById('fileInput').click()" class="file-button">➕</button>
+<div class="main">
+    <div id="sidebar"></div>
+    <div class="content">
+        <h2>Channels</h2>
+        <div class="friends-container">
+            <div class="friend">
+                <div class="profile-pic"><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Irma"></div>
+                <p>Irma</p>
+                <span class="live-badge">Live</span>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amanda"></div>
+                <p>Amanda</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luiz"></div>
+                <p>Luiz</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adam"></div>
+                <p>Nina</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1496672254107-b07a26403885?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Irma"></div>
+                <p>Izaa</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Irma"></div>
+                <p>Irma</p>
+                <span class="live-badge">Live</span>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amanda"></div>
+                <p>Amanda</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luiz"></div>
+                <p>Luiz</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adam"></div>
+                <p>Nina</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1496672254107-b07a26403885?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Irma"></div>
+                <p>Izaa</p>
+            </div>
+           <div class="friend">
+                <div class="profile-pic"><img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Irma"></div>
+                <p>Irma</p>
+                <span class="live-badge">Live</span>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Amanda"></div>
+                <p>Amanda</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luiz"></div>
+                <p>Luiz</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adam"></div>
+                <p>Nina</p>
+            </div>
+            <div class="friend">
+                <div class="profile-pic"><img src="https://images.unsplash.com/photo-1496672254107-b07a26403885?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Irma"></div>
+                <p>Izaa</p>
+            </div>
         </div>
-        <textarea id="content" name="content" placeholder="Post Here" required></textarea>
-        <button type="submit">Post</button>
-    </form>
+        <div class="form-container">
+            <form id="channelForm">
+                <div class="form-inputs">
+                    <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
+                    <input type="file" id="fileInput" name="fileInput" style="display: none;">
+                    <button type="button" onclick="document.getElementById('fileInput').click()" class="file-button">➕</button>
+                </div>
+                <textarea id="textArea" name="textArea" placeholder="Post Here" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+        <div id="channels"></div>
+    <div>
 </div>
-
-<div id="channels"></div>
 
 <style>
-    /* Sidebar */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 150px;
-        height: 100%;
-        background-color: #222;
+    .main {
+        display: flex;
+    }
+    .content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 20px;
-        color: white;
+        justify-content: center;
+        width: 100%;
+        /* padding-left: 180px; */
     }
 
-    .sidebar-btn {
-        background-color: #333;
-        color: white;
-        border: none;
-        margin: 10px 0;
+    .friends-container {
+        display: flex;
+        overflow-x: auto; /* horizontal scrolling */
         padding: 10px;
-        border-radius: 8px;
-        font-size: 16px;
-        width: 120px;
-        text-align: center;
-        cursor: pointer;
-        text-decoration: none;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        gap: 10px; 
+        scrollbar-width: thin;
+        scrollbar-color: #ccc transparent; /* Color for scrollbar */
+        width: 500px;
     }
 
-    /* User List on the Right */
-    .user-list {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 250px;
-        height: 100%;
-        background-color: #f4f4f4;
-        padding: 20px;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-        color: black;
+    .friend {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 80px; /* Set a width for each profile card */
+        text-align: center;
+        font-family: Arial, sans-serif;
     }
 
-    .user-list h3 {
-        margin-top: 0;
-        font-weight: bold;
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; /* Makes the image round */
+        overflow: hidden;
+        border: 2px solid #ddd;
     }
 
-    .user-list table {
+    .profile-pic img {
         width: 100%;
-        border-collapse: collapse;
+        height: 100%;
+        object-fit: cover;
     }
 
-    .user-img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
+    .friend p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #333;
     }
 
-    .user-name {
+    .live-badge {
+        position: absolute;
+        top: -5px;
+        left: 15px;
+        background-color: #000;
+        color: #fff;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 12px;
         font-weight: bold;
     }
 
     /* Form Styling */
     .form-container {
-        margin-left: 170px;
-        margin-right: 270px;
         padding: 20px;
         background-color: #f4f4f4;
         border-radius: 12px;
@@ -167,7 +196,7 @@ author: Yash, Nikhil, Rohan, Neil
         justify-content: center;
     }
 
-    #content {
+    #textArea {
         width: 100%;
         padding: 12px;
         border-radius: 8px;
@@ -202,8 +231,6 @@ author: Yash, Nikhil, Rohan, Neil
         flex-wrap: wrap;
         justify-content: flex-start;
         gap: 20px;
-        margin-left: 170px;
-        margin-right: 270px;
         padding-top: 20px;
     }
 
@@ -256,9 +283,31 @@ author: Yash, Nikhil, Rohan, Neil
         window.location.href = `{{site.baseurl}}/create_and_compete/realityroom?channelId=${channelId}`;
     }
 
+    async function fetchUser() {
+        const response = await fetch(`${pythonURI}/api/user`, fetchOptions);
+        const user = await response.json();
+        console.log(user);
+        return user;
+    }
+
+    const user = fetchUser();
+
     async function fetchChannels() {
         try {
-            const response = await fetch(`${pythonURI}/api/channels`, fetchOptions);
+            const groupName = 'Reality Room';
+            const responseData = {
+                group_name: groupName,
+            };
+            // add filter to get only messages from this channel
+            const response = await fetch(`${pythonURI}/api/channels/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(responseData)
+            });
+
             if (!response.ok) {
                 throw new Error('Failed to fetch channels: ' + response.statusText);
             }
@@ -306,7 +355,7 @@ author: Yash, Nikhil, Rohan, Neil
         event.preventDefault();
 
         const title = document.getElementById('title').value;
-        const content = document.getElementById('content').value;
+        const content = document.getElementById('textArea').value;
         const group_id = 9;
 
         const channelData = {
