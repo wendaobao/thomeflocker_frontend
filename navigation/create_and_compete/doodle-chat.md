@@ -7,6 +7,57 @@ permalink: /moderation/chat_doodle/
 author: Arshia, Prajna, Mirabelle, Alex
 ---
 
+<script>
+vasync function fetchMessages(roomId) {
+    const response = await fetch(`${pythonURI}/api/chat/${roomId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const messagesData = await response.json();
+    messagesData.forEach(message => {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message-item';
+        messageElement.innerHTML = `
+            <p><strong>${message.user_name}</strong>: ${message.content}</p>
+            <small>${new Date(message.timestamp).toLocaleString()}</small>
+        `;
+        detailsDiv.appendChild(messageElement);
+    });
+}
+
+// Function to post a new message to the chat room
+async function postMessage(roomId, userName, messageContent) {
+    const response = await fetch(`${pythonURI}/api/chat/${roomId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ user_name: userName, content: messageContent })
+    });
+    const newMessage = await response.json();
+    // Add the new message to the chat display
+    const messageElement = document.createElement('div');
+    messageElement.className = 'message-item';
+    messageElement.innerHTML = `
+        <p><strong>${newMessage.user_name}</strong>: ${newMessage.content}</p>
+        <small>${new Date(newMessage.timestamp).toLocaleString()}</small>
+    `;
+    detailsDiv.appendChild(messageElement);
+}
+
+// Example usage:
+const roomId = 'exampleRoomId'; // Set this to the specific chat room ID
+fetchMessages(roomId);
+
+// To post a new message
+const userName = 'user123';
+const messageContent = 'Hello, everyone!';
+postMessage(roomId, userName, messageContent);
+
+</script>
+
 
 <html lang="en">
 <head>
