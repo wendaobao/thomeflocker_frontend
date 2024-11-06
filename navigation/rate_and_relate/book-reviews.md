@@ -129,7 +129,8 @@ function replyToComment(index) {
 }
 
 // Like button toggle and add likes
-    <script>
+
+<script>
         // Initialize the state
         let liked = false;
         let likeCount = 11; // Start count at 11
@@ -139,20 +140,37 @@ function replyToComment(index) {
             // Toggle the liked state
             liked = !liked;
 
-            // Update the heart icon based on the liked state
-            document.getElementById('heart').innerText = liked ? '❤️' : '♡';
-
-            // Update like count based on liked state
-            if (liked) {
-                likeCount++;
-            } else {
-                likeCount--;
-            }
-
-            // Display the updated like count each time the button is clicked
-            document.getElementById('likeCount').innerText = likeCount;
+            // Update the heart icon and like count based on liked state
+            heart.innerText = liked ? '❤️' : '♡';
+            likeCount = liked ? likeCount + 1 : likeCount - 1;
+            likeCountDisplay.innerText = `${likeCount} Likes`;
         }
+
+        // Create and set up the like button and counter display on page load
+        window.onload = function() {
+            // Create the button element
+            const likeButton = document.createElement('button');
+            likeButton.onclick = toggleLike;
+
+            // Create the heart icon element
+            const heart = document.createElement('span');
+            heart.id = 'heart';
+            heart.innerText = '♡';
+
+            // Add the heart icon to the button
+            likeButton.appendChild(heart);
+
+            // Create the like count display
+            const likeCountDisplay = document.createElement('span');
+            likeCountDisplay.id = 'likeCount';
+            likeCountDisplay.innerText = `${likeCount} Likes`;
+
+            // Add the button and the like count display to the page
+            document.body.appendChild(likeButton);
+            document.body.appendChild(likeCountDisplay);
+        };
     </script>
+</body>
 
 // Rate book function to change star colors and set current rating
 function rateBook(rating) {
