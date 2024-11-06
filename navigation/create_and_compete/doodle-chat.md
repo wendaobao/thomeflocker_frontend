@@ -31,13 +31,14 @@ author: Arshia, Prajna, Mirabelle, Alex
   </div>
 
   <div id="chatContainer">
-    <img id="doodleImage" src="https://via.placeholder.com/400" alt="Doodle Image">
+    <img id="doodleImage" src="{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png" alt="Doodle Image">
     <div id="messages"></div>
     <div id="inputContainer">
       <input type="text" id="inputMessage" placeholder="Type a message..." />
       <button id="sendButton">Send</button>
     </div>
   </div>
+  
   <button id="fullscreenButton" onclick="toggleFullscreen()">&#x26F6;</button>
   <button id="exitFullscreenButton" onclick="toggleFullscreen()">X</button>
 </div>
@@ -62,18 +63,12 @@ author: Arshia, Prajna, Mirabelle, Alex
     background-color: #fff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border: 3px solid #ffcbdb;
-    background-image: url('https://via.placeholder.com/150'), url('https://via.placeholder.com/150');
-    background-position: top left, bottom right;
-    background-repeat: no-repeat;
   }
   #sidebar {
     width: 30%;
     background: #ffe4e1;
     padding: 20px;
     overflow-y: auto;
-    background-image: url('https://via.placeholder.com/100x100'), url('https://via.placeholder.com/100x100');
-    background-position: 20px 20px, right 20px bottom 20px;
-    background-repeat: no-repeat;
   }
   .chatBox {
     padding: 20px;
@@ -89,6 +84,9 @@ author: Arshia, Prajna, Mirabelle, Alex
     background-color: #ffdde1;
     transform: scale(1.05);
   }
+  .chatBox h3, .chatBox p {
+    color: black;
+  }
   #chatContainer {
     flex: 1;
     padding: 20px;
@@ -96,18 +94,15 @@ author: Arshia, Prajna, Mirabelle, Alex
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url('https://via.placeholder.com/100x100');
-    background-position: bottom left;
-    background-repeat: no-repeat;
   }
   #doodleImage {
-    width: 100%;
-    max-height: 180px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    object-fit: cover;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border: 2px solid #ffcbdb;
+  width: 100%;
+  max-height: 180px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  object-fit: contain; /* Ensure the entire image fits within the box */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ffcbdb;
   }
   #messages {
     flex: 1;
@@ -221,7 +216,7 @@ author: Arshia, Prajna, Mirabelle, Alex
   function loadConversation(chatName) {
     messages.innerHTML = '';
     const chatMessages = conversations[chatName] || [];
-    doodleImage.src = "https://via.placeholder.com/400"; // Replace with specific images per chat if available
+    doodleImage.src = "{{site.baseurl}}/images/notebooks/foundation/doodle-images/doodle.png"; // Ensure image always reloads
 
     chatMessages.forEach((msg) => {
       addMessage(msg);
