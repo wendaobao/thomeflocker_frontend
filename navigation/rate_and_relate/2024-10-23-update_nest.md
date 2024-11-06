@@ -109,6 +109,15 @@ permalink: /rateandrelate/update_the_nest/
     </div>
 </div>
 
+<div class="upload_box">
+    <button class="toggle-button" onclick="toggleDiv()">Camera</button>
+    <text class="content-div">
+    <label for="textInput">Enter caption:</label>
+    <input type="text" id="textInput" placeholder="Type something...">
+    <button class="post-button">post</button>
+    <button class="exit-button">x</button>
+</div>
+
 <div class="feed">
     <div class="feedContainer" id="feedContainer">
     <h1> Feed </h1>
