@@ -7,23 +7,51 @@ menu: nav/create_and_compete.html
 author: Yash, Nikhil, Rohan, Neil
 ---
 
+<div class="sidebar">
+    <a href="/flocker_frontend/create_and_compete/realityroom-home" class="sidebar-btn">🏠 Home</a>
+    <a href="/flocker_frontend/create_and_compete/reality_game" class="sidebar-btn">🎮 Game</a>
+    <a href="/flocker_frontend/create_and_compete/reality-room-about" class="sidebar-btn">❓ About</a>
+    <a href="/flocker_frontend/create_and_compete/reality-room-terms" class="sidebar-btn">📄 Terms</a>
+</div>
 
-<details>
-  <summary>Room Details</summary>
+<style>
+    body {
+        background-image: url("../../images/background9674.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
-  <a href="{{site.baseurl}}/moderation/rules_realityroom/">Moderation Rules</a>
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 100%;
+        background-color: #222;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        color: white;
+    }
 
-  <p>The idea behind reality room is that the discussion of real and fake topics will be brought up.</p>
-
-  <p>Room includes:</p>
-  <ul>
-    <li>Mini game - Am I talking to a human or an AI chatbot?</li>
-    <li>Posts that people can make about a certain topic, such as an AI generated image, and ask people if its AI generated or real, who will then comment on their choice.</li>
-    <li>In order to fit in with the "rate and relate" theme, people could rate how believable/unbelievable the post topic was and how if it fooled them or not. Then they could relate with others who also thought of a similar opinion</li>
-  </ul>
-
-</details>
-
+    .sidebar-btn {
+        background-color: #333;
+        color: white;
+        border: none;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        width: 120px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+</style>
 
 <table class="sub-menu">
     <tr>
