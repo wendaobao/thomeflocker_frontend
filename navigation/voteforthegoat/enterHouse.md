@@ -54,9 +54,31 @@ Authors: Maryam, Nora, Kushi, Joanna
             background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
             transition: background-color 0.3s ease;
+            margin-bottom: 10px;
         }
         .button:hover {
             background-color: rgba(255, 255, 255, 0.4);
+        }
+        /* Post Container */
+        .post-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            text-align: left;
+            width: 100%;
+        }
+        .post-button {
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #444;
+            color: #fff;
+        }
+        .post-button:hover {
+            background-color: #666;
         }
     </style>
 </head>
@@ -64,57 +86,83 @@ Authors: Maryam, Nora, Kushi, Joanna
     <div class="content">
         <div id="houseInfo" class="house-info">Loading...</div>
         <div id="message" class="message">Please wait...</div>
+        <button id="addPostButton" class="button">Add Post</button>
         <button id="backButton" class="button">Go Back</button>
+        <div id="postsContainer"></div>
     </div>
     <script>
-        // Function to get the most recent vote from localStorage
-        function getLatestVote() {
-            const votes = JSON.parse(localStorage.getItem('votes') || '[]');
-            return votes.length > 0 ? votes[votes.length - 1] : null;
-        }
-        const selectedHouse = getLatestVote();
-        const houseInfo = document.getElementById('houseInfo');
-        const message = document.getElementById('message');
-        const backButton = document.getElementById('backButton');
-        // Function to set the background color and content based on the selected house
-        function renderHousePage(house) {
-            // Clear any previous content
-            houseInfo.textContent = "";
-            message.textContent = "";
-            // Set styles and content based on the selected house
+        // Retrieve the selected house from local storage
+        window.onload = function() {
+            const savedHouse = localStorage.getItem('selectedHouse');
+            const houseInfo = document.getElementById('houseInfo');
+            const message = document.getElementById('message');
+            console.log(`Stored house value: ${savedHouse}`); // Debug line
+            if (savedHouse) {
+                console.log(`Setting background color for ${savedHouse}`); // Debug line
+                setBackground(savedHouse);
+                renderHousePage(savedHouse);
+                houseInfo.textContent = `You selected: ${savedHouse} House`;
+            } else {
+                houseInfo.textContent = "No house selected.";
+                message.textContent = "Please go back and select a house.";
+            }
+            displayPosts(); // Display posts on page load
+        };
+        // Function to set the background color based on the selected house
+        function setBackground(house) {
             switch (house) {
                 case 'Adventure Play':
                     document.body.style.backgroundColor = 'green';
+                    break;
+                case 'Sylvanian Family Restaurant':
+                    document.body.style.backgroundColor = 'blue';
+                    break;
+                case 'Magical Mermaid Castle':
+                    document.body.style.backgroundColor = 'purple';
+                    break;
+                case 'Woody School':
+                    document.body.style.backgroundColor = 'goldenrod';
+                    break;
+                case 'Spooky Surprise Haunted':
+                    document.body.style.backgroundColor = 'darkred';
+                    break;
+                case 'Brick Oven Bakery':
+                    document.body.style.backgroundColor = 'orange';
+                    break;
+                default:
+                    document.body.style.backgroundColor = 'white';
+            }
+        }
+        // Function to set the content based on the selected house
+        function renderHousePage(house) {
+            const houseInfo = document.getElementById('houseInfo');
+            const message = document.getElementById('message');
+            switch (house) {
+                case 'Adventure Play':
                     houseInfo.textContent = "Welcome to the Adventure Play House!";
                     message.textContent = "Explore and have fun!";
                     break;
                 case 'Sylvanian Family Restaurant':
-                    document.body.style.backgroundColor = 'blue';
                     houseInfo.textContent = "Welcome to the Sylvanian Family Restaurant House!";
                     message.textContent = "Join us for a delightful meal!";
                     break;
                 case 'Magical Mermaid Castle':
-                    document.body.style.backgroundColor = 'purple';
                     houseInfo.textContent = "Welcome to the Magical Mermaid Castle!";
                     message.textContent = "Dive into an enchanting experience!";
                     break;
                 case 'Woody School':
-                    document.body.style.backgroundColor = 'goldenrod';
                     houseInfo.textContent = "Welcome to the Woody School House!";
                     message.textContent = "Get ready to learn and grow!";
                     break;
                 case 'Spooky Surprise Haunted':
-                    document.body.style.backgroundColor = 'darkred';
                     houseInfo.textContent = "Welcome to the Spooky Surprise Haunted House!";
                     message.textContent = "Dare to enter the haunted halls!";
                     break;
                 case 'Brick Oven Bakery':
-                    document.body.style.backgroundColor = 'orange';
                     houseInfo.textContent = "Welcome to the Brick Oven Bakery House!";
                     message.textContent = "Smell the freshly baked goodies!";
                     break;
                 default:
-                    document.body.style.backgroundColor = 'white';
                     houseInfo.textContent = "House not found.";
                     message.textContent = "Please go back and select a house.";
             }
@@ -124,13 +172,48 @@ Authors: Maryam, Nora, Kushi, Joanna
             window.history.back(); // Navigate to the previous page
         }
         // Set up the "Go Back" button event listener
-        backButton.addEventListener('click', goBack);
-        // Run the function only if `selectedHouse` exists
-        if (selectedHouse) {
-            renderHousePage(selectedHouse);
-        } else {
-            houseInfo.textContent = "No house selected.";
-            message.textContent = "Please go back and select a house.";
+        document.getElementById('backButton').addEventListener('click', goBack);
+        // Add post functionality
+        document.getElementById('addPostButton').addEventListener('click', function() {
+            const postContainer = document.createElement('div');
+            postContainer.classList.add('post-container');
+            const textArea = document.createElement('textarea');
+            textArea.style.width = '100%';
+            textArea.style.height = '100px';
+            textArea.placeholder = 'Write your post here...';
+            const postButton = document.createElement('button');
+            postButton.textContent = 'Post';
+            postButton.classList.add('post-button');
+            postButton.onclick = function() {
+                savePost(textArea.value);
+                displayPosts();
+                postContainer.remove();
+            };
+            postContainer.appendChild(textArea);
+            postContainer.appendChild(postButton);
+            document.body.appendChild(postContainer);
+        });
+        // Save post to local storage
+        function savePost(content) {
+            if (!content.trim()) {
+                alert('Post content cannot be empty!');
+                return;
+            }
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push({ content: content.trim(), timestamp: new Date().toISOString() });
+            localStorage.setItem('posts', JSON.stringify(posts));
+        }
+        // Display posts from local storage
+        function displayPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = '';
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.classList.add('post-container');
+                postDiv.textContent = `${new Date(post.timestamp).toLocaleString()}: ${post.content}`;
+                postsContainer.appendChild(postDiv);
+            });
         }
     </script>
 </body>

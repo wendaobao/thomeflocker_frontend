@@ -610,24 +610,92 @@ function addComment() {
     displayComments();
 }
 
-// Function to display comments
-function displayComments() {
-    const commentList = document.getElementById('commentList');
-    commentList.innerHTML = ''
+// Load the selected critter and house from local storage on page load
+window.onload = function() {
+    displayComments(); // Display comments from local storage
 
-<div class="comment-section" id="commentSection">
-    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
-    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
-    <button onclick="addComment();" class="comment-button">Submit</button>
-    <div id="commentList" style="margin-top: 10px;"></div>
-    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
-</div>
+    const savedCritter = localStorage.getItem('selectedCritter');
+    const savedHouse = localStorage.getItem('selectedHouse');
 
-<script>
-// Function to add a comment
+    if (savedCritter && savedHouse) {
+        const critters = document.querySelectorAll('.critter-container');
+        critters.forEach(critter => {
+            if (critter.getAttribute('data-critter') === savedCritter) {
+                critter.classList.add('selected'); // Highlight the saved critter
+                selectedCritter = savedCritter;
+                selectedHouse = savedHouse;
+            }
+        });
+        // Log the selected house to the console
+        console.log(`Selected house is ${selectedHouse}`);
+    }
+};
+
+// Ensure data persists even when switching to another markdown file
+window.addEventListener('beforeunload', () => {
+    localStorage.setItem('selectedCritter', selectedCritter);
+    localStorage.setItem('selectedHouse', selectedHouse);
+});
+
+// Add a comment to the comment list and store it in local storage
 function addComment() {
     const usernameInput = document.getElementById('usernameInput');
     const commentInput = document.getElementById('commentInput');
+
+    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+        alert("Please enter both a username and a comment.");
+        return;
+    }
+
+    // Include the selected house in the username
+    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    const newComment = {
+        username: fullUsername, // Store the modified username
+        text: commentInput.value.trim()
+    };
+
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+
+    usernameInput.value = '';
+    commentInput.value = '';
+
+    displayComments();
+}
+
+// Display the list of comments from local storage
+function displayComments() {
+    const commentList = document.getElementById('commentList');
+    commentList.innerHTML = '';
+
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    comments.forEach(comment => {
+        const commentItem = document.createElement('div');
+        commentItem.style.marginBottom = '10px';
+        commentItem.style.borderBottom = '1px solid #ddd';
+        commentItem.style.paddingBottom = '5px';
+
+        const header = document.createElement('div');
+        header.style.fontWeight = 'bold';
+        header.textContent = comment.username;
+
+        const textElement = document.createElement('p');
+        textElement.textContent = comment.text;
+
+        commentItem.appendChild(header);
+        commentItem.appendChild(textElement);
+        commentList.appendChild(commentItem);
+    });
+}
+
+function clearComments() {
+    localStorage.removeItem('comments'); // Remove comments from local storage
+    displayComments(); // Refresh the comment display
+}
 
     if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
         alert("Please enter both a username and a comment.");
