@@ -136,15 +136,11 @@ p {
 <img src="{{site.baseurl}}/images/calicocritters/voteheading.png" alt="Calico Critters Voting header">
 </div>
 
-<h2>Moderator Rules for Calico Critters</h2>
-  <details>
-    <summary> Rules are put in place to make this page a safe environment!</summary>
-        <p>1. No cussing in the chats.</p>
-        <p>2. Stay on topic, Calico Critters only!</p>
-        <p>3. You have to be part of the DNHS Calico Critters club to join</p>
-        <p>4. You must have valid reasoning for your votes</p>
-        <p>5. Do not be toxic, negative, or attack others for their opinions.</p>
-  </details>
+
+
+<a href = "{{site.baseurl}}/moderation/calico_critter/">Moderator rules here!</a>
+
+<br>
 
 <a href="{{site.baseurl}}/voteforthegoat/calicoworkflow">See our workflow here!</a>
 
