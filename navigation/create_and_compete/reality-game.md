@@ -9,6 +9,7 @@ author: Yash, Nikhil, Rohan, Neil
 <div class="sidebar">
     <a href="/flocker_frontend/create_and_compete/realityroom-home" class="sidebar-btn">🏠 Home</a>
     <a href="/flocker_frontend/create_and_compete/reality_game" class="sidebar-btn">🎮 Game</a>
+    <a href="/flocker_frontend/create_and_compete/realityroom" class="sidebar-btn">💬 Chat</a>
     <a href="/flocker_frontend/create_and_compete/reality-room-about" class="sidebar-btn">❓ About</a>
     <a href="/flocker_frontend/create_and_compete/reality-room-terms" class="sidebar-btn">📄 Terms</a>
 </div>
