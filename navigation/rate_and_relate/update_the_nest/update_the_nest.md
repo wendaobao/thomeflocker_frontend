@@ -11,6 +11,7 @@ author: Justin, Abby, Shriya, Nathan
 
 
 .textContainer {
+    /**/
     transform: translateY(20px)
 }
 
