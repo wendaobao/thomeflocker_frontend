@@ -68,3 +68,8 @@ We're excited to bring you "Vote for the GOAT," a fun and interactive project fr
     **Noah's Group: NFL GOATs Debate**  
     Noah’s group is here for all the NFL fans, especially those who love a good debate about the greatest players of all time. With a focus on the Green Bay Packers, this one’s bound to get exciting. Whether you’re in it for local pride or just love the game, join in to share your take on the GOATs of the NFL.
 </div>
+
+<div class="group-theme">
+    **Thomas's Group: Beverage debate**
+    Fed up with the same old drinks at school? While we can’t promise a menu change, we can offer some fun! Welcome to our group beverage debate, where your votes pick the unofficial favorite. From classics to creative drinks, choose the drink that you think deserves the spotlight. It’s all about seeing which flavors the students love most—cast your vote and make your voice heard!
+</div>
