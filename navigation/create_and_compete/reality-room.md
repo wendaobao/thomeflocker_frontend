@@ -7,6 +7,12 @@ menu: nav/create_and_compete.html
 author: Yash, Nikhil, Rohan, Neil
 ---
 
+<div class="sidebar">
+    <a href="/flocker_frontend/create_and_compete/realityroom-home" class="sidebar-btn">🏠 Home</a>
+    <a href="/flocker_frontend/create_and_compete/reality_game" class="sidebar-btn">🎮 Game</a>
+    <a href="/flocker_frontend/create_and_compete/reality-room-about" class="sidebar-btn">❓ About</a>
+    <a href="/flocker_frontend/create_and_compete/reality-room-terms" class="sidebar-btn">📄 Terms</a>
+</div>
 
 <details>
   <summary>Room Details</summary>
@@ -108,6 +114,34 @@ author: Yash, Nikhil, Rohan, Neil
 </div>
 
 <style>
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 100%;
+        background-color: #222;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        color: white;
+    }
+
+    .sidebar-btn {
+        background-color: #333;
+        color: white;
+        border: none;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        width: 120px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
