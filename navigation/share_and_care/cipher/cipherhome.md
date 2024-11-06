@@ -7,7 +7,6 @@ permalink: /cipherhome/
 
 # 🔐 **Cipher Team**
 
-
 > *"Unlocking secrets, one cipher at a time."*
 
 <!-- Rules Button -->
@@ -28,8 +27,6 @@ permalink: /cipherhome/
             <li>Help others in the community when possible.</li>
             <li>No sharing answers to level!</li>
             <li>Have fun and enjoy decoding!</li>
-            
-
         </ul>
         <button id="closeModal" style="padding: 5px 10px; background-color: #ff6b6b; color: #ffffff; border: none; border-radius: 5px; cursor: pointer; position: absolute; top: 10px; right: 10px;">✖️ Close</button>
     </div>
@@ -58,12 +55,49 @@ permalink: /cipherhome/
 <div style="display: block; margin-left: auto; margin-right: auto;">
     <img src="https://pngimg.com/uploads/anonymous_mask/small/anonymous_mask_PNG23.png" alt="Cipher Background" />
 </div>
+
 ### 🛠 Announcements 🛠
 <div style="background-color: #27293d; padding: 20px; border-radius: 8px; border: 2px solid #ffce00; color: #e0e0e0;">
 🔒 **Current Challenge**: Crack today’s cipher within the hour!  
 🕒 **Next Update**: New challenge releases every hour!  
 💡 **Hint**: Pay attention to every detail...
 </div>
+
+---
+
+
+<div style="display: flex; justify-content: center; gap: 40px; padding: 20px;">
+    <!-- Coding Tips Section -->
+
+
+    <!-- Level Buttons Section -->
+    <div style="flex: 2;">
+        <!-- Level Buttons Container -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;">
+            <!-- Add your level buttons here as shown in the original code for each level -->
+
+        </div>
+    </div>
+</div>
+
+---
+
+## **Instructions**
+
+1. **Level Up**: Solve challenges to progress.
+2. **Adding Levels**: To add a level, copy any of the above blocks, change the details, and place it in the sequence.
+
+---
+
+## 🔗 Useful Links
+
+- [Cipher Resources](https://example.com/resources)
+- [Challenge Archive](https://example.com/archive)
+- [Community Forum](https://example.com/forum)
+
+---
+
+**Stay Sharp, Cipher Specialist!** 🧩
 
 ---
 
@@ -207,32 +241,15 @@ permalink: /cipherhome/
         <div style="font-size: 2em; padding-left: 20px;"></div>
     </div>
 </a>
+</div>   
 
-<!-- Cipher Tips Section (moved to the right) -->
-    <div style="flex: 0 0 200px; background-color: #1e1f2b; padding: 15px; border-radius: 8px; color: #ffffff;">
+
+</div>
+
+
+<div style="flex: 0 0 200px; background-color: #1e1f2b; padding: 15px; border-radius: 8px; color: #ffffff;">
         ### 🔍 Cipher Tips
         - **Patterns Matter**: Look for repeating letter groups.
         - **Letter Pairings**: Some ciphers swap letters.
         - **Use Frequency Tools**: Online tools can help!
-    </div>
 </div>
-
-
----
-
-**Instructions:**
-
-1. **Level Up**: Solve challenges to progress.
-2. **Adding Levels**: To add a level, copy any of the above blocks, change the details, and place it in the sequence.
-
----
-
-### 🔗 Useful Links 🔗
-
-- [Cipher Resources](https://example.com/resources) <!-- Replace with actual URLs -->
-- [Challenge Archive](https://example.com/archive) 
-- [Community Forum](https://example.com/forum) 
-
----
-
-**Stay Sharp, Cipher Specialist!** 🧩
