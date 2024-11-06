@@ -25,7 +25,6 @@ Authors: Maryam, Nora, Kushi, Joanna
             align-items: center;
             flex-direction: column;
         }
-
         /* Content Container */
         .content {
             padding: 20px;
@@ -35,19 +34,16 @@ Authors: Maryam, Nora, Kushi, Joanna
             text-align: center;
             background: rgba(0, 0, 0, 0.5);
         }
-
         /* House Information */
         .house-info {
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 15px;
         }
-
         .message {
             font-size: 20px;
             margin-bottom: 20px;
         }
-
         /* Button Styles */
         .button {
             padding: 10px 20px;
@@ -59,7 +55,6 @@ Authors: Maryam, Nora, Kushi, Joanna
             color: #fff;
             transition: background-color 0.3s ease;
         }
-
         .button:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
@@ -71,25 +66,21 @@ Authors: Maryam, Nora, Kushi, Joanna
         <div id="message" class="message">Please wait...</div>
         <button id="backButton" class="button">Go Back</button>
     </div>
-
     <script>
         // Function to get the most recent vote from localStorage
         function getLatestVote() {
             const votes = JSON.parse(localStorage.getItem('votes') || '[]');
             return votes.length > 0 ? votes[votes.length - 1] : null;
         }
-
         const selectedHouse = getLatestVote();
         const houseInfo = document.getElementById('houseInfo');
         const message = document.getElementById('message');
         const backButton = document.getElementById('backButton');
-
         // Function to set the background color and content based on the selected house
         function renderHousePage(house) {
             // Clear any previous content
             houseInfo.textContent = "";
             message.textContent = "";
-
             // Set styles and content based on the selected house
             switch (house) {
                 case 'Adventure Play':
@@ -128,15 +119,12 @@ Authors: Maryam, Nora, Kushi, Joanna
                     message.textContent = "Please go back and select a house.";
             }
         }
-
         // Function to handle the "Go Back" button click
         function goBack() {
             window.history.back(); // Navigate to the previous page
         }
-
         // Set up the "Go Back" button event listener
         backButton.addEventListener('click', goBack);
-
         // Run the function only if `selectedHouse` exists
         if (selectedHouse) {
             renderHousePage(selectedHouse);
