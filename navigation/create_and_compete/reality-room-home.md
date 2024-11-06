@@ -112,7 +112,7 @@ author: Yash, Nikhil, Rohan, Neil
         gap: 10px; 
         scrollbar-width: thin;
         scrollbar-color: #ccc transparent; /* Color for scrollbar */
-        width: 500px;
+        width: 750px;
     }
 
     .friend {
