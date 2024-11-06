@@ -17,7 +17,8 @@ author: Alex, Arshia, Prajna, and Mirabelle
 <a href="{{site.baseurl}}/moderation/chat_doodle/" class="button">Chat Room</a>
 <a href="{{site.baseurl}}/moderation/artpost_doodle/" class="button">Art Post</a>
 </details>
-<canvas id="drawingCanvas" width="600" height="400" style="border: 2px solid #7573e6; cursor: crosshair; margin-top: 10px;"></canvas>
+
+<canvas id="drawingCanvas" width="600" height="400" style="border: 6px solid #7573e6; cursor: crosshair; margin-top: 10px;"></canvas>
 
 <style>
     .button {
@@ -30,19 +31,6 @@ author: Alex, Arshia, Prajna, and Mirabelle
         text-decoration: none;
         display: inline-block;
     }
-    .color-button {
-        font-size: 18px;
-        padding: 10px 20px;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .black { background-color: #524e4e !important; }
-    .blue { background-color: #3a63e8 !important; }
-    .green { background-color: #3c7d2c !important; }
-    .red { background-color: #992222 !important; }
-    .pink { background-color: #db74db !important; }
 </style>
 
 <script>
@@ -122,24 +110,14 @@ author: Alex, Arshia, Prajna, and Mirabelle
         }
     }
 </script>
-
-<div style="margin-top: 10px;">
-        <button style="background-color: #524e4e!important;  display:inline-block" onclick="changeColor('#524e4e')">Black</button>
-        <button style="background-color: #3a63e8!important;  display:inline-block" onclick="changeColor('#3a63e8')">Blue</button>
-        <button style="background-color: #3c7d2c!important;  display:inline-block" onclick="changeColor('#3c7d2c')">Green</button>
-        <button style="background-color: #992222!important;  display:inline-block" onclick="changeColor('#992222')">Red</button>
-        <button style="background-color: #db74db!important;  display:inline-block" onclick="changeColor('#db74db')">Pink</button>
-</div>
-
-<div style="margin-top: 10px;">
-    <button class="action-button" onclick="activateEraser()">Eraser</button>
-    <button class="action-button" onclick="undoLastAction()">Undo</button>
-</div>
-
-<div style="margin-top: 10px;">
-    <button class="action-button clear-button" onclick="clearCanvas()">Clear Drawing</button>
-</div>
-
-<div style="margin-top: 10px;">
-    <button class="action-button download-button" onclick="downloadDrawing()">Save Your Work!</button>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+    <button style="background-color: #524e4e !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="changeColor('#524e4e')">Black</button>
+    <button style="background-color: #3a63e8 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="changeColor('#3a63e8')">Blue</button>
+    <button style="background-color: #3c7d2c !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="changeColor('#3c7d2c')">Green</button>
+    <button style="background-color: #992222 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="changeColor('#992222')">Red</button>
+    <button style="background-color: #db74db !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="changeColor('#db74db')">Pink</button>
+    <button style="background-color: #7573e6 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="activateEraser()">Eraser</button>
+    <button style="background-color: #7573e6 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="undoLastAction()">Undo</button>
+    <button style="background-color: #7573e6 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="clearCanvas()">Clear Drawing</button>
+    <button style="background-color: #ad3636 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="downloadDrawing()">Save Your Work!</button>
 </div>
