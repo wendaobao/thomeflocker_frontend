@@ -5,7 +5,7 @@ title: Voting Chatroom
 permalink: /chatroom
 comments: true
 ---
-<html lang="en">
+<html lang="en">s
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,53 +74,117 @@ comments: true
 </head>
 <body>
     <div class="container">
-        <h1>Add a Post</h1>
 
         <!-- Group and Channel Selection -->
         <div class="card">
-            <h2>Select Group and Channel</h2>
             <label for="group">Group:</label>
             <select id="group">
                 <option value="general">General</option>
                 <option value="private">Private</option>
-                <!-- Add more group options here -->
             </select>
 
             <label for="channel">Channel:</label>
             <select id="channel">
-                <option value="announcements">Announcements</option>
-                <option value="discussion">Discussion</option>
-                <!-- Add more channel options here -->
+                <option value="Pop">Pop</option>
+                <option value="Rock">Rock</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Hip-Hop">Hip-Hop</option>
+                <option value="Classical">Classical</option>
             </select>
 
-            <button class="button">Select</button>
+            <button class="button" onclick="loadPosts()">Select</button>
         </div>
 
         <!-- Post Creation -->
         <div class="card">
-            <h2>Add New Post</h2>
             <label for="title">Title:</label>
             <input type="text" id="title" placeholder="Enter title...">
 
             <label for="comment">Comment:</label>
             <textarea id="comment" rows="4" placeholder="Enter your comment..."></textarea>
 
-            <button class="button">Add Post</button>
+            <button class="button" onclick="addPost()">Add Post</button>
         </div>
 
-        <!-- Post Feed (Example of what a post might look like) -->
-        <div class="card">
-            <h2>Count 2</h2>
-            <p><strong>Added Group and Channel Select</strong></p>
-            <p>Channel: Announcements</p>
-            <p>User: Thomas Edison</p>
-            <p>The page picks Section, here we can select Group and Channel to allow blog filtering.</p>
-
-            <p><strong>JSON content saving through "content" field in database</strong></p>
-            <p>Channel: Announcements</p>
-            <p>User: Thomas Edison</p>
+        <!-- Post Feed -->
+        <div class="card" id="post-feed">
+            <div id="posts"></div>
         </div>
     </div>
+
+    <script>
+        const postFeedDiv = document.getElementById('posts');
+        const titleInput = document.getElementById('title');
+        const commentInput = document.getElementById('comment');
+        const groupSelect = document.getElementById('group');
+        const channelSelect = document.getElementById('channel');
+
+        // Load posts from localStorage when the page loads
+        const posts = JSON.parse(localStorage.getItem('chatPosts')) || {};
+
+        // Function to add a new post
+        function addPost() {
+            const title = titleInput.value.trim();
+            const comment = commentInput.value.trim();
+            const group = groupSelect.value;
+            const channel = channelSelect.value;
+
+            if (title === '' || comment === '') {
+                alert("Please enter both a title and a comment.");
+                return;
+            }
+
+            const newPost = {
+                title: title,
+                comment: comment,
+                timestamp: new Date().toLocaleString(),
+            };
+
+            // Initialize group and channel if not already present
+            if (!posts[group]) posts[group] = {};
+            if (!posts[group][channel]) posts[group][channel] = [];
+
+            // Add the new post to the appropriate group and channel
+            posts[group][channel].push(newPost);
+            localStorage.setItem('chatPosts', JSON.stringify(posts));
+
+            // Display the new post immediately
+            displayPost(newPost);
+
+            // Clear the input fields
+            titleInput.value = '';
+            commentInput.value = '';
+        }
+
+        // Function to load posts for the selected group and channel
+        function loadPosts() {
+            const group = groupSelect.value;
+            const channel = channelSelect.value;
+
+            // Clear the post feed display
+            postFeedDiv.innerHTML = '';
+
+            // Display posts for the selected group and channel
+            if (posts[group] && posts[group][channel]) {
+                posts[group][channel].forEach(post => displayPost(post));
+            } else {
+                postFeedDiv.innerHTML = '<p>No posts available for this channel. Be the first to add one!</p>';
+            }
+        }
+
+        // Function to display a single post
+        function displayPost(post) {
+            const postDiv = document.createElement('div');
+            postDiv.classList.add('post-item');
+            postDiv.innerHTML = `
+                <small>Posted on: ${post.timestamp}</small>
+            `;
+            postFeedDiv.appendChild(postDiv);
+        }
+
+        // Initial load of posts
+        loadPosts();
+    </script>
 </body>
 </html>
-
