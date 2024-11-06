@@ -51,7 +51,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
         border-radius: 10px;
         padding: 10px;
         height: 100%;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
         box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     }
     .instabox-box {
@@ -133,9 +133,7 @@ author: Aadi, Aaditya, Aditya, Kanhay
         <div class="instabox-box">
             <h2>Instabox 💬</h2>
             <div class="instabox" id="instabox">
-                <p><strong>Shish Kabob:</strong> Hey bro! What’s good [1 hr ago]</p>
-                <p><strong>Me:</strong> Nothing much, just studying for AP Chemistry.</p>
-                <p>You responded one hour and 23 minutes after the notification, with a bonus of -60 points, for a total of 63 points!</p>
+                <p>You have no system messages.</p>
             </div>
             <br>
             <div class="chatinput" id="chatinput" contenteditable="true"></div>
@@ -161,6 +159,14 @@ author: Aadi, Aaditya, Aditya, Kanhay
     <script>
         const instabox = document.getElementById("instabox");
         const chatInput = document.getElementById("chatinput");
+        // Restore all message on window load
+        window.onload = function() {
+            for (let i = 1; i <= parseInt(localStorage.getItem("messageCount")); i++) {
+                const messageElement = document.createElement("p");
+                messageElement.innerHTML = `<strong>Me:</strong> ${localStorage.getItem("message" + JSON.stringify(i))}`;
+                instabox.appendChild(messageElement);
+            }
+        };
         // Limit input to 100 characters
         chatInput.addEventListener("input", function () {
             // Calculate remaining characters
@@ -185,6 +191,12 @@ author: Aadi, Aaditya, Aditya, Kanhay
                 e.preventDefault();
                 // Get the current text content of the chat input
                 const newMessage = chatInput.textContent.trim();
+                if (localStorage.getItem("messageCount")) {
+                    localStorage.setItem("messageCount", parseInt(localStorage.getItem("messageCount")) + 1);
+                } else {
+                    localStorage.setItem("messageCount", 1);
+                }
+                localStorage.setItem("message" + localStorage.getItem("messageCount"), newMessage);
                 // Create a new paragraph element for the message
                 if (newMessage != "") {
                     const messageElement = document.createElement("p");
