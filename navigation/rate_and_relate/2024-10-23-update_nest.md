@@ -87,7 +87,16 @@ permalink: /rateandrelate/update_the_nest/
             transition: background-color 0.3s, transform 0.2s;
             transform: translateX(-70px) translateY(10px);
         }
-        
+ .upload_box {
+    position: fixed;            
+    top: 50%;                   
+    left: 50%;                
+    transform: translate(-50%, -50%);
+    background-color: #FBC3C3;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
 </style>
 
 <div style="text-align: center;" class="header">
