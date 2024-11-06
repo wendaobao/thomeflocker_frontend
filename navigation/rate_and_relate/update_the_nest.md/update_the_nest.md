@@ -3,7 +3,8 @@ toc: true
 layout: post
 title: Update the Nest
 description:
-permalink: /rateandrelate/update_the_nest/
+permalink: /rate_and_relate/update_the_nest/
+menu: nav/rate_and_relate.html
 ---
 <style>
 .feedContainer {
