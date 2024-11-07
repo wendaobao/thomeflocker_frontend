@@ -36,7 +36,7 @@ author: Alex, Arshia, Prajna, and Mirabelle
   details summary {
     font-size: 1.2em;
     font-weight: bold;
-    color: #7b4b9f;
+    color: #a4bbe0;
     cursor: pointer;
     padding-bottom: 8px;
   }
@@ -175,3 +175,4 @@ author: Alex, Arshia, Prajna, and Mirabelle
     <button style="background-color: #7573e6 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="clearCanvas()">Clear Drawing</button>
     <button style="background-color: #ad3636 !important; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" onclick="downloadDrawing()">Save Your Work!</button>
 </div>
+
