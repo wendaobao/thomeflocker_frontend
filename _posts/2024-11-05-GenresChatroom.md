@@ -19,11 +19,11 @@ comments: true
             padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center !important;
         }
 
         .container {
-            width: 80%;
+            width: 300%;
             max-width: 800px;
         }
 
@@ -33,10 +33,11 @@ comments: true
         }
 
         .card {
-            background-color: #2e3a4d;
+            background-color: pink;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
+            margin-right: 200px;
         }
 
         .card h2 {
@@ -72,7 +73,7 @@ comments: true
         }
 
         .post-item {
-            background-color: #3a4c67;
+            background-color: #DE3163;
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
