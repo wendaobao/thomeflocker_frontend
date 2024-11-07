@@ -3,6 +3,7 @@ layout: base
 title: Create and Compete - Reality Room
 search_exclude: true
 permalink: /create_and_compete/realityroom-home
+menu: nav/create_and_compete.html
 author: Yash, Nikhil, Rohan, Neil
 ---
 
@@ -197,7 +198,7 @@ author: Yash, Nikhil, Rohan, Neil
         padding: 20px;
         background-color: #f4f4f4;
         border-radius: 12px;
-        width: calc(100% - 10px);
+        width: calc(100% - 400px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         font-family: Arial, sans-serif;
     }
@@ -264,7 +265,7 @@ author: Yash, Nikhil, Rohan, Neil
     #channels {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: center;
         gap: 20px;
         padding-top: 20px;
     }
@@ -272,6 +273,7 @@ author: Yash, Nikhil, Rohan, Neil
     /* Post Cards Styling */
     .card {
         width: calc(50% - 20px);
+        min-width: 300px;
         padding: 20px;
         background-color: #ffffff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
