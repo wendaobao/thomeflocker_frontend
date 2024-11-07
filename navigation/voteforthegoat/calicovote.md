@@ -189,12 +189,8 @@ p {
 
 
  <div class="sidebar">
-        <a href="https://example.com" class="sidebar-button">Mizuki</a>
-        <a href="https://example.com" class="sidebar-button">Chiyo</a>
-        <a href="https://example.com" class="sidebar-button">Emi</a>
-        <a href="https://example.com" class="sidebar-button">Nory</a>
-        <a href="https://example.com" class="sidebar-button">Rin</a>
-        <a href="https://example.com" class="sidebar-button">Junko</a>
+        <a href = "{{site.baseurl}}/moderation/calico_critter/" class = "sidebar-button">Moderator rules</a>
+        <a href="{{site.baseurl}}/voteforthegoat/calicoworkflow" class="sidebar-button">Workflow diagram</a>
     </div>
 
 <style>
@@ -207,23 +203,23 @@ p {
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #8B3D8A;
+    color: #f9f9f9;
     margin: 0;
 }
 
 .sidebar {
     position: fixed;
     top: 0;
-    right: 75px;
-    height: 300px;
-    width: 100px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    right: 50px;
+    height: 200px;
+    width: 150px;
+    background-color: #D9AAE2;
+    border: 3px solid #D9AAE2;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 20px; 
+    border-radius: 20px;
     padding-top: 20px;
-    margin-top: 150px; 
+    margin-top: 150px;
     overflow: hidden;
 }
 
@@ -231,14 +227,15 @@ body {
     display: block;
     padding: 10px 20px;
     text-decoration: none;
-    color: #333;
+    color: #E4BCFF;
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
+    transition: box-shadow 0.3s, color 0.3s, border-radius 0.3s;
 }
 
 .sidebar-button:hover {
-    background-color: #ffb6c1;
+    box-shadow: 0 0 15px 5px #FFB6C1; 
     color: #fff;
+    border-radius: 15px; 
 }
 
 a {
@@ -246,13 +243,12 @@ a {
 }
 </style>
 
+
 <div>
 <img src="{{site.baseurl}}/images/calicocritters/voteheading.png" alt="Calico Critters Voting header">
 </div>
 
-<a href = "{{site.baseurl}}/moderation/calico_critter/">Moderator rules here!</a>
-<br>
-<a href="{{site.baseurl}}/voteforthegoat/calicoworkflow">See our workflow here!</a>
+
 
 <p class="header-text">Click on a critter below to vote!</p>
 
