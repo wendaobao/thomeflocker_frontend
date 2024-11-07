@@ -33,13 +33,13 @@ p, h2, h3, body {
     width: 200px;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid white;
+    border: 4px solid white;
     border-radius: 20px;
     cursor: pointer;
 }
 .critter-container.selected {
-    border-color: #007BFF;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Glow effect */
+    border-color: #FFC7FA;
+    box-shadow: 0 0 10px rgba(255, 199, 250, 0.7); /* Glow effect */
 }
 .image-container {
     width: auto;
@@ -128,6 +128,79 @@ p {
 }
     summary::before {
     content: '✿'; /* Unicode for vertical ellipsis */
+}
+
+.cute-link {
+  color: #ff69b4; 
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.cute-link:hover {
+  color: #ff1493;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.8),
+               0 0 15px rgba(255, 20, 147, 0.6),
+               0 0 20px rgba(255, 20, 147, 0.5);
+}
+</style>
+
+
+
+ <div class="sidebar">
+        <a href="https://example.com" class="sidebar-button">Mizuki</a>
+        <a href="https://example.com" class="sidebar-button">Chiyo</a>
+        <a href="https://example.com" class="sidebar-button">Emi</a>
+        <a href="https://example.com" class="sidebar-button">Nory</a>
+        <a href="https://example.com" class="sidebar-button">Rin</a>
+        <a href="https://example.com" class="sidebar-button">Junko</a>
+    </div>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 75px;
+    height: 300px;
+    width: 100px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px; 
+    padding-top: 20px;
+    margin-top: 150px; 
+    overflow: hidden;
+}
+
+.sidebar-button {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-button:hover {
+    background-color: #ffb6c1;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
 }
 </style>
 
