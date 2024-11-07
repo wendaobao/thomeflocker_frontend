@@ -131,7 +131,7 @@ This is a basic chat box rendered with HTML inside Markdown.
   }
 
   function nextLevel() {
-    window.location.href = '/next-level-url'; 
+    window.location.href = '/flocker_frontend/leveltwo/'; 
   }
   
   sendButton.addEventListener('click', submitAnswer);
