@@ -318,9 +318,41 @@ function confirmChoice() {
         return;
     }
 
-    // Save selectedHouse in local storage for later reference
+    // Save selectedHouse and description in local storage for later reference
     localStorage.setItem('selectedHouse', selectedHouse);
     console.log(`House saved to local storage: ${selectedHouse}`); // Log confirmation for saved house
+
+    // Add a description for each house
+    let houseDescription = "";
+    switch (selectedHouse) {
+        case 'Adventure Play':
+            houseDescription = 'A place for fun and exploration, filled with adventures.';
+            break;
+        case 'Sylvanian Family Restaurant':
+            houseDescription = 'A cozy restaurant known for delicious meals and warm gatherings.';
+            break;
+        case 'Magical Mermaid Castle':
+            houseDescription = 'An enchanting underwater castle full of wonder and magic.';
+            break;
+        case 'Woody School':
+            houseDescription = 'A learning environment where growth and knowledge are celebrated.';
+            break;
+        case 'Spooky Surprise Haunted':
+            houseDescription = 'A haunted house filled with spooky surprises and eerie charm.';
+            break;
+        case 'Brick Oven Bakery':
+            houseDescription = 'A delightful bakery with the aroma of freshly baked goods.';
+            break;
+        default:
+            houseDescription = 'An undefined house with its own unique qualities.';
+    }
+
+    localStorage.setItem('houseDescription', houseDescription);
+    console.log(`Description saved to local storage: ${houseDescription}`); // Log confirmation for saved description
+
+    // Save selectedCritter in local storage for later reference
+    localStorage.setItem('selectedCritter', selectedCritter);
+    console.log(`Critter saved to local storage: ${selectedCritter}`); // Log confirmation for saved critter
 
     // Set the message
     const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
@@ -358,6 +390,7 @@ function confirmChoice() {
     buttonContainer.appendChild(enterHouseButton);
     document.getElementById('imageBox').appendChild(buttonContainer);
 }
+
 
 
 // Add a comment to the comment list and store it in local storage
