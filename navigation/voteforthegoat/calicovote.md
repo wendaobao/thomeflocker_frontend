@@ -136,15 +136,9 @@ p {
 <img src="{{site.baseurl}}/images/calicocritters/voteheading.png" alt="Calico Critters Voting header">
 </div>
 
-
-
 <a href = "{{site.baseurl}}/moderation/calico_critter/">Moderator rules here!</a>
-
 <br>
-
 <a href="{{site.baseurl}}/voteforthegoat/calicoworkflow">See our workflow here!</a>
-
-
 
 <p class="header-text">Click on a critter below to vote!</p>
 
@@ -289,7 +283,6 @@ p {
 </div>
 -->
 
-
 <div class="message-box" id="messageBox" style="color: #ffffff;"></div>
 <div id="imageBox" class="image-box">
     <img id="houseImage" src="" alt="House Image" style="max-width:300px; border-radius:15px;">
@@ -346,124 +339,137 @@ document.getElementById("commentSection").style.display = "block";
 
 // Add a comment to the comment list and store it in local storage
 function addComment() {
-const usernameInput = document.getElementById('usernameInput');
-const commentInput = document.getElementById('commentInput');
+    const usernameInput = document.getElementById('usernameInput');
+    const commentInput = document.getElementById('commentInput');
 
-if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
-    alert("Please enter both a username and a comment.");
-    return;
-}
+    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
+        alert("Please enter both a username and a comment.");
+        return;
+    }
 
-// Include the selected house in the username
-const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
+    // Include the selected house in the username
+    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
 
-let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
-const newComment = {
-    username: fullUsername, // Store the modified username
-    text: commentInput.value.trim()
-};
+     const newComment = {
+        username: fullUsername, // Store the modified username
+        text: commentInput.value.trim(),
+        likes: 0, // Initialize the likes count to 0 (no null or undefined)
+        liked: false // Add a liked flag to track the like status
+    };
 
-comments.push(newComment);
-localStorage.setItem('comments', JSON.stringify(comments));
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
 
-usernameInput.value = '';
-commentInput.value = '';
+    usernameInput.value = '';
+    commentInput.value = '';
 
-displayComments();
+    displayComments();
 }
 
 
 // Display the list of comments from local storage
 function displayComments() {
-const commentList = document.getElementById('commentList');
-commentList.innerHTML = '';
+    const commentList = document.getElementById('commentList');
+    commentList.innerHTML = '';
 
-let comments = JSON.parse(localStorage.getItem('comments')) || [];
+    let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
-comments.forEach(comment => {
-    const commentItem = document.createElement('div');
-    commentItem.style.marginBottom = '10px';
-    commentItem.style.borderBottom = '1px solid #ddd';
-    commentItem.style.paddingBottom = '5px';
+    comments.forEach((comment, index) => {
+        comment.likes = comment.likes || 0;
 
-    const header = document.createElement('div');
-    header.style.fontWeight = 'bold';
-    header.textContent = comment.username;
+        const commentItem = document.createElement('div');
+        commentItem.style.marginBottom = '10px';
+        commentItem.style.borderBottom = '1px solid #ddd';
+        commentItem.style.paddingBottom = '5px';
 
-    const textElement = document.createElement('p');
-    textElement.textContent = comment.text;
+        const header = document.createElement('div');
+        header.style.fontWeight = 'bold';
+        header.textContent = comment.username;
 
-    commentItem.appendChild(header);
-    commentItem.appendChild(textElement);
-    commentList.appendChild(commentItem);
-});
+        const textElement = document.createElement('p');
+        textElement.textContent = comment.text;
+
+        // Create Like Button and Display Like Count
+        const likeButton = document.createElement('button');
+        likeButton.textContent = `Like (${comment.likes})`;
+        likeButton.style.marginTop = '5px';
+        likeButton.onclick = function() {
+            likeComment(index); // Pass the index to the like function
+        };
+
+        commentItem.appendChild(header);
+        commentItem.appendChild(textElement);
+        commentItem.appendChild(likeButton);
+        commentList.appendChild(commentItem);
+    });
 }
 
 function clearComments() {
-localStorage.removeItem('comments'); // Remove comments from local storage
-displayComments(); // Refresh the comment display
+    localStorage.removeItem('comments'); // Remove comments from local storage
+    displayComments(); // Refresh the comment display
 }
 
 function selectCritter(element) {
-const critters = document.querySelectorAll('.critter-container');
-critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
+    const critters = document.querySelectorAll('.critter-container');
+    critters.forEach(critter => critter.classList.remove('selected')); // Remove selection from others
 
-element.classList.add('selected'); // Highlight the selected critter
-selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
-selectedHouse = element.getAttribute('data-house'); // Store corresponding house
+    element.classList.add('selected'); // Highlight the selected critter
+    selectedCritter = element.getAttribute('data-critter'); // Store selected critter name
+    selectedHouse = element.getAttribute('data-house'); // Store corresponding house
 
-// Remove the previous "Enter House" button if it exists
-const existingButtonContainer = document.querySelector('#houseButtonContainer');
-if (existingButtonContainer) {
-    existingButtonContainer.remove();
-}
+    // Remove the previous "Enter House" button if it exists
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
 }
 
 function confirmChoice() {
-const messageBox = document.getElementById('messageBox');
-const imageBox = document.getElementById('imageBox');
-const houseImage = document.getElementById('houseImage'); // Get image element
+    const messageBox = document.getElementById('messageBox');
+    const imageBox = document.getElementById('imageBox');
+    const houseImage = document.getElementById('houseImage'); // Get image element
 
-if (!selectedCritter || !selectedHouse) {
-    alert("Please select a critter before confirming!"); // Alert if nothing is selected
-    return;
-}
+    if (!selectedCritter || !selectedHouse) {
+        alert("Please select a critter before confirming!"); // Alert if nothing is selected
+        return;
+    }
 
-// Set the message
-const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
-messageBox.innerHTML = message; // Display the message
-messageBox.style.display = "block"; // Make the message visible
+    // Set the message
+    const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
+    messageBox.innerHTML = message; // Display the message
+    messageBox.style.display = "block"; // Make the message visible
 
-// Use template literals to construct the image source
-const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
-const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
-houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
+    // Use template literals to construct the image source
+    const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
+    const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
+    houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
 
-imageBox.style.display = "block"; // Show the image box
+    imageBox.style.display = "block"; // Show the image box
 
-// Optional: Display the comment section after confirmation
-document.getElementById("commentSection").style.display = "block";
+    // Optional: Display the comment section after confirmation
+    document.getElementById("commentSection").style.display = "block";
 
-// Remove any existing "Enter House" button before creating a new one
-const existingButtonContainer = document.querySelector('#houseButtonContainer');
-if (existingButtonContainer) {
-    existingButtonContainer.remove();
-}
+    // Remove any existing "Enter House" button before creating a new one
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
 
-// Add the dynamic button for entering the house
-const buttonContainer = document.createElement('div');
-buttonContainer.classList.add('button-container');
-buttonContainer.id = 'houseButtonContainer';
-const enterHouseButton = document.createElement('button');
-enterHouseButton.classList.add('button-text');
-enterHouseButton.textContent = `Enter ${selectedHouse} House`;
-enterHouseButton.onclick = function() {
-    window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
-};
+    // Add the dynamic button for entering the house
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    buttonContainer.id = 'houseButtonContainer';
+    const enterHouseButton = document.createElement('button');
+    enterHouseButton.classList.add('button-text');
+    enterHouseButton.textContent = `Enter ${selectedHouse} House`;
+    enterHouseButton.onclick = function() {
+        window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
+    };
 
-buttonContainer.appendChild(enterHouseButton);
-document.getElementById('imageBox').appendChild(buttonContainer);
+    buttonContainer.appendChild(enterHouseButton);
+    document.getElementById('imageBox').appendChild(buttonContainer);
 }
 
 
@@ -799,18 +805,8 @@ function addComment() {
     commentInput.value = '';
 
     displayComments();
-}
 
-<div class="comment-item" id="comment1">
-    <div class="comment-header">
-        <strong>Username</strong>
-        <button class="like-button" onclick="toggleLike('comment1')">Like</button>
-        <button class="unlike-button" onclick="toggleUnlike('comment1')" style="display: none;">Unlike</button>
-    </div>
-    <p>This is a comment.</p>
-</div>
 
-<script>
     // Function to toggle the like/unlike behavior
     function toggleLike(commentId) {
         const likeButton = document.querySelector(`#${commentId} .like-button`);
@@ -854,3 +850,4 @@ function toggleUnlike(index) {
     localStorage.setItem('comments', JSON.stringify(comments));
     displayComments(); // Re-render the comments with updated like count
 }
+</script>
