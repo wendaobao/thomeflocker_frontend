@@ -123,12 +123,10 @@ permalink: /UndgdMusic/
 
     async function fetchPosts() {
         try {
-            const response = await fetch(`${pythonURI}/api/posts`, {
-                ...fetchOptions,
-                method: 'GET'
-            });
-            if (!response.ok) throw new Error("Failed to fetch posts");
-
+            const response = await fetch(`${pythonURI}/api/posts`, fetchOptions);
+            if (!response.ok) {
+                throw new Error("Failed to fetch posts from the backend.");
+            }
             const posts = await response.json();
             renderPosts(posts);
         } catch (error) {
@@ -137,105 +135,65 @@ permalink: /UndgdMusic/
     }
 
     function renderPosts(posts) {
-        document.getElementById('postsWrapper').innerHTML = posts.map(post => `
-            <div class="post" data-post-id="${post.id}">
-                <div class="post-header">
-                    <span class="post-username">${post.username}</span>
-                </div>
-                <p>${post.content}</p>
-                <div class="reaction-icons">
-                    <span class="emoji" onclick="addReaction('${post.id}', 'thumbsUp')">👍 <span class="thumbsUp-count">${post.thumbsUp || 0}</span></span>
-                    <span class="emoji" onclick="addReaction('${post.id}', 'heart')">❤️ <span class="heart-count">${post.heart || 0}</span></span>
-                    <span class="emoji" onclick="addReaction('${post.id}', 'fire')">🔥 <span class="fire-count">${post.fire || 0}</span></span>
-                </div>
-            </div>
-        `).join('');
+        document.getElementById('postsWrapper').innerHTML = posts.map(post => {
+            const username = post.username || "Anonymous"; // Default to "Anonymous" if undefined
+            const content = typeof post.content === 'string' ? post.content : JSON.stringify(post.content); // Display content as JSON if it's an object
+
+            return `
+                <div class="post" data-post-id="${post.id}">
+                    <div class="post-header">
+                        <span class="post-username">${username}</span>
+                    </div>
+                    <p>${content}</p>
+                    <div class="reaction-icons">
+                        <span class="emoji" onclick="addReaction('${post.id}', 'thumbsUp')">👍 <span class="thumbsUp-count">0</span></span>
+                        <span class="emoji" onclick="addReaction('${post.id}', 'heart')">❤️ <span class="heart-count">0</span></span>
+                        <span class="emoji" onclick="addReaction('${post.id}', 'fire')">🔥 <span class="fire-count">0</span></span>
+                    </div>
+                </div>`;
+        }).join('');
     }
 
-    async function addReaction(postId, reactionType) {
-        try {
-            const response = await fetch(`${pythonURI}/api/posts/${postId}/reaction`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ reactionType })
-            });
-            if (!response.ok) throw new Error("Failed to add reaction");
-
-            fetchPosts();
-        } catch (error) {
-            console.error("Error adding reaction:", error);
-        }
-    }
-
-    async function fetchMessages() {
-        try {
-            const response = await fetch(`${pythonURI}/api/messages`, {
-                ...fetchOptions,
-                method: 'GET'
-            });
-            if (!response.ok) throw new Error("Failed to fetch messages");
-
-            const messages = await response.json();
-            renderMessages(messages);
-        } catch (error) {
-            console.error("Error fetching messages:", error);
-        }
-    }
-
-    function renderMessages(messages) {
-        document.getElementById("messages").innerHTML = messages.map(message => `
-            <p><span class="username">${message.username}</span>: ${message.text}<span class="timestamp">[${message.timestamp}]</span></p>
-        `).join('');
-    }
-
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
+    async function addPost(event) {
         event.preventDefault();
-        const username = document.getElementById('usernameInput').value;
+        const username = document.getElementById('usernameInput').value || "Anonymous";
         const content = document.getElementById('postInput').value;
+        const postData = { username, content };
 
         try {
             const response = await fetch(`${pythonURI}/api/posts`, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, content })
+                body: JSON.stringify(postData)
             });
-            if (!response.ok) throw new Error("Failed to post message");
-
-            fetchPosts();
-            event.target.reset();
+            if (!response.ok) {
+                throw new Error("Failed to add post to the backend.");
+            }
+            document.getElementById('postForm').reset();
+            fetchPosts(); // Refresh posts after adding a new one
         } catch (error) {
-            console.error("Error posting message:", error);
+            console.error("Error adding post:", error);
         }
-    });
+    }
 
-    document.getElementById('chat-form').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const text = document.getElementById('message').value;
-
-        try {
-            const response = await fetch(`${pythonURI}/api/messages`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, text })
-            });
-            if (!response.ok) throw new Error("Failed to send message");
-
-            fetchMessages();
-            event.target.reset();
-        } catch (error) {
-            console.error("Error sending message:", error);
-        }
-    });
-
-    // Load posts and messages on page load
     document.addEventListener('DOMContentLoaded', () => {
         fetchPosts();
-        fetchMessages();
+        
+        document.getElementById('postForm').addEventListener('submit', addPost);
+
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value || "Anonymous";
+            const message = document.getElementById('message').value;
+            const timestamp = new Date().toLocaleTimeString();
+            const messageHtml = `<p><span class="username">${username}</span>: ${message} <span class="timestamp">[${timestamp}]</span></p>`;
+            document.getElementById("messages").innerHTML += messageHtml;
+            event.target.reset();
+        });
     });
+
 </script>
+
 </body>
 </html>
