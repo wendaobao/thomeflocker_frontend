@@ -73,3 +73,8 @@ We're excited to bring you "Vote for the GOAT," a fun and interactive project fr
     <strong>Thomas's Group: Beverage debate</strong>
     Fed up with the same old drinks at school? While we can’t promise a menu change, we can offer some fun! Welcome to our group beverage debate, where your votes pick the unofficial favorite. From classics to creative drinks, choose the drink that you think deserves the spotlight. It’s all about seeing which flavors the students love most—cast your vote and make your voice heard!
 </div>
+
+<div class="group-theme">
+    **Gaheera's Group: Genres**
+    Dive into a world where music lovers connect, explore, and share their favorite genres. Our site offers a unique space to vote on genres, discover new music, and join a lively chatroom where you can vibe with others who share your taste. Whether you’re into rock, jazz, pop, or electronic, this is the place to express your music passions and connect with a community that gets it. Join us now and be part of the rhythm!
+</div>
