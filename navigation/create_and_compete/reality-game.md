@@ -73,7 +73,26 @@ author: Yash, Nikhil, Rohan, Neil
             <input placeholder="Enter message to send:" type="text" id="messageBox" name="message">
         </form>
     </div>
+    <!-- Instructions Frame with Buttons Below -->
+    <div class="instructions-frame">
+        <div class="instructions-box">
+            <h3>Game Instructions</h3>
+            <p>Welcome to the Reality Room Game! Here are the instructions to get you started:</p>
+            <ul>
+                <li>Use the chat to interact with the AI.</li>
+                <li>Try to figure out if you're chatting with a human or an AI!</li>
+                <li>Submit your guess at the end of the game.</li>
+                <li>Have fun and see if you can outsmart the AI!</li>
+            </ul>
+        </div>
+        <!-- Options: Human or AI (Now Outside of the White Box) -->
+        <div class="guess-options">
+            <button class="guess-button" onclick="submitGuess('human')">Human</button>
+            <button class="guess-button" onclick="submitGuess('ai')">AI</button>
+        </div>
+    </div>
 </div>
+
 
 <style>
     table, th, td {
@@ -166,6 +185,70 @@ author: Yash, Nikhil, Rohan, Neil
     }
     input[type="file"] {
         display: none;
+    }
+    /* Instructions Box */
+    .instructions-box {
+        width: 250px;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        color: #333;
+        height: 430px; /* Adjust this value as needed */
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+    .instructions-box h3 {
+        margin-top: 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .instructions-box p, .instructions-box ul {
+        font-size: 0.9em;
+        color: #333;
+    }
+    
+    .instructions-box ul {
+        padding-left: 20px;
+    }
+
+    .guess-options {
+        display: flex;
+        gap: 0; /* Remove gap between buttons */
+        margin-top: 10px;
+        padding-top: 10px;
+        width: 100%; /* Make the container fill the full width */
+    }
+
+    .guess-button {
+        flex: 1;
+        padding: 8px 0;
+        background-color: #007bff !important;
+        color: white !important;
+        border: none;
+        border-radius: 0;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition: background-color 0.3s ease !important;
+    }
+
+    .guess-button:first-child {
+        border-radius: 6px 0 0 6px;
+    }
+
+    .guess-button:last-child {
+        border-radius: 0 6px 6px 0;
+    }
+
+    .guess-button:hover {
+        background-color: #0056b3 !important;
+    }
+
+    .guess-button:active {
+        background-color: #003f7f !important;
     }
 </style>
 
