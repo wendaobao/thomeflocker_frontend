@@ -7,13 +7,13 @@ menu: nav/create_and_compete.html
 author: Kush, Tarun, Vincent, and Nolan
 ---
 
+<link rel="stylesheet" href="{{site.baseurl}}/navigation/create_and_compete/riddle.css">
 
 <details>
-<br>
+  <br>
   <summary>Room Details</summary>
 
   <a href="{{site.baseurl}}/moderation/rules_riddle/">Moderation Rules</a>
-
 
   <p>The main purpose of our riddle room is to have people think critically and collaborate with the other members of the channel to solve the riddle as fast as possible.</p>
 
@@ -27,142 +27,103 @@ author: Kush, Tarun, Vincent, and Nolan
   </ul>
 </details>
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Riddle</title>
-  <style>
-    /* Optional styling for better visibility */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: 50px;
-      margin-top: 50px;
-    }
-    #riddle-container {
-      display: inline-block;
-      text-align: 50px;
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    #riddle {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #333;
-    }
-  </style>
-</head>
-<body>
-  <div id="riddle-container">
-    <button id="riddleButton" onclick="displayRiddle()">Get Today's Riddle</button>
-  </div>
 
-  <script>
-    // Array of riddles
-    const riddles = [
-      "What has keys but can't open locks? (A piano)",
-      "What has a head, a tail, but no body? (A coin)",
-      "What comes once in a minute, twice in a moment, but never in a thousand years? (The letter 'M')",
-      "I'm tall when I'm young, and I'm short when I'm old. What am I? (A candle)",
-      "What has to be broken before you can use it? (An egg)"
-    ];
+<div id="riddle-container">
+    <h4 style="text-align: center;">Riddle of the Day</h4>
+    <p id="riddle-text"></p>
+</div>
 
-    // Function to check and display today's riddle
-    function displayRiddle() {
-      const date = new Date().toDateString(); // Get the current date as a string
-      const savedRiddle = localStorage.getItem('todayRiddle');
-      const savedDate = localStorage.getItem('riddleDate');
-      const riddleButton = document.getElementById('riddleButton');
-
-      if (savedDate === date && savedRiddle) {
-        // If a riddle is already set for today, use the saved one
-        riddleButton.innerText = savedRiddle;
-      } else {
-        // Otherwise, generate a new riddle and save it
-        const riddleIndex = new Date().getDate() % riddles.length;
-        const todayRiddle = riddles[riddleIndex];
-        riddleButton.innerText = todayRiddle;
-        
-        // Save the riddle and date to localStorage
-        localStorage.setItem('todayRiddle', todayRiddle);
-        localStorage.setItem('riddleDate', date);
-      }
-    }
-  </script>
-</body>
-</html>
-
-
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chat Box</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black; /* Set the body background to black */
-            color: white; /* Set text color to white */
-            padding: 20px;
-        }
-        #chat-box {
-            border: 1px solid #444; /* Darker border for contrast */
-            padding: 10px;
-            height: 300px;
-            overflow-y: scroll;
-            background-color: #222; /* Dark gray background for chat box */
-        }
-        #message-input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: 1px solid #444; /* Dark border for input */
-            background-color: #333; /* Dark background for input */
-            color: white; /* White text for input */
-        }
-        .message {
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-            background-color: #555; /* Dark background for messages */
-        }
-    </style>
-</head>
-<body>
-
-    <h3>Riddle Room Chat</h3>
-
-    <br>
-    
+<div id="chat-container">
     <div id="chat-box"></div>
+    <div id="users-list">
+        <h4 style="color: #4A4848;" >Users</h4>
+        <ul id="userList">
+            <li>System</li>
+        </ul>
+    </div>
+</div>
+
+<div class="input-group">
     <input type="text" id="message-input" placeholder="Type your message...">
+    <button id="send-button" onclick="sendMessage()">Send</button>
+</div>
 
-    <script>
-        const chatBox = document.getElementById('chat-box');
-        const messageInput = document.getElementById('message-input');
+<div class="input-group">
+    <input type="text" id="answer-input" placeholder="Enter your answer(with no extra characters)...">
+    <button id="check-answer" onclick="checkAnswer()">Check Answer</button>
+</div>
 
-        messageInput.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                const messageText = messageInput.value;
-                if (messageText.trim() !== '') {
-                    displayMessage(messageText);
-                    messageInput.value = ''; // Clear the input
-                }
+<script>
+    const chatBox = document.getElementById('chat-box');
+    const messageInput = document.getElementById('message-input');
+    const answerInput = document.getElementById('answer-input');
+    const userList = document.getElementById('userList');
+    const riddleText = document.getElementById('riddle-text');
+    const users = new Set(['System']);
+    let username;
+    let currentRiddle;
+
+    function displayRiddle() {
+        const riddles = [
+            { question: "What has keys but can't open locks?", answer: "piano" },
+            { question: "What has a head, a tail, but no body?", answer: "coin" },
+            { question: "What comes once in a minute, twice in a moment, but never in a thousand years?", answer: "m" },
+            { question: "I'm tall when I'm young, and I'm short when I'm old. What am I?", answer: "candle" },
+            { question: "What has to be broken before you can use it?", answer: "egg" }
+        ];
+        const riddleIndex = new Date().getDate() % riddles.length;
+        currentRiddle = riddles[riddleIndex];
+        riddleText.textContent = currentRiddle.question;
+    }
+
+    function requestUsername() {
+        while (true) {
+            const enteredUsername = prompt("Enter your username:");
+            if (enteredUsername && !users.has(enteredUsername)) {
+                username = enteredUsername;
+                addUser(username);
+                displayMessage(`You have joined as ${username}.`, true);
+                break;
+            } else {
+                alert("Username is taken or invalid. Please try again.");
             }
-        });
-
-        function displayMessage(message) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            messageElement.textContent = message;
-            chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
         }
-    </script>
+    }
 
-</body>
-</html>
+    function displayMessage(message, isSystem = false) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', isSystem ? 'system-message' : 'user-message');
+        messageElement.textContent = message;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function addUser(newUsername) {
+        users.add(newUsername);
+        const userItem = document.createElement('li');
+        userItem.textContent = newUsername;
+        userList.appendChild(userItem);
+    }
+
+    function sendMessage() {
+        const messageText = messageInput.value.trim();
+        if (messageText !== '') {
+            displayMessage(`${username}: ${messageText}`);
+            messageInput.value = '';
+        }
+    }
+
+    function checkAnswer() {
+        const userAnswer = answerInput.value.trim().toLowerCase();
+        if (userAnswer === currentRiddle.answer) {
+            displayMessage(`${username} got it right!`, true);
+        } else {
+            displayMessage(`${username} guessed wrong! Try again.`, true);
+        }
+        answerInput.value = '';
+    }
+
+    displayMessage("Welcome to the Riddle Room Chat!", true);
+    requestUsername();
+    displayRiddle();
+</script>

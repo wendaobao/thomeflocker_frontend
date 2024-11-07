@@ -3,263 +3,408 @@ layout: post
 title: Chess Hangout
 permalink: /chess/hangout
 comments: true
+authors: Ahaan, Xavier, Spencer, Vasanth
 ---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Hangout Zone - Chess Game with Chat</title>
+    <style>
+      /* General Styles */
+      body {
+        background-color: #f7dc6f;
+        color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .container {
+        text-align: center;
+        margin-top: 20px;
+      }
+      h2 {
+        color: #333;
+      }
+      .game-mode {
+        margin-bottom: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: #444;
+        color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+      }
+      .btn:hover {
+        background-color: #555;
+      }
+      .chessboard {
+        display: grid;
+        grid-template-columns: repeat(8, 60px);
+        grid-template-rows: repeat(8, 60px);
+        border: 2px solid #444;
+        margin: 20px auto;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      .chessboard div {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .yellow {
+        background-color: #f7dc6f;
+      }
+      .orange {
+        background-color: #f39c12;
+      }
+      .chat-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+      }
+      .chat-box {
+        width: 40%;
+        background-color: #1a1a1a;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #444;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+      .chat-messages {
+        height: 300px;
+        overflow-y: auto;
+        background-color: #1b1b1b;
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid #444;
+      }
+      .message {
+        margin: 5px 0;
+        padding: 5px;
+        font-size: 14px;
+        color: #f0f0f0;
+      }
+      .message.user-message {
+        background-color: #444;
+        border-radius: 15px;
+        text-align: right;
+      }
+      .message.bot-message {
+        background-color: #b29800;
+        border-radius: 15px;
+        text-align: left;
+      }
+      .channel-select {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+   
+      <div class="game-mode">
+        <button onclick="startGame('human')" class="btn">
+          Play Against Human
+        </button>
+        <button onclick="startGame('bot')" class="btn">Play Against Bot</button>
+      </div>
+
+      <div class="chat-container">
+        <div class="chessboard" id="chessboard"></div>
+        <div class="chat-box">
+          <h4>Chess-Themed Chat Room</h4>
+          <div class="channel-select">
+            <label for="channel">Channel:</label>
+            <select id="channel" onchange="changeChannel()">
+              <option value="general">General</option>
+              <option value="chess-tips">Chess Tips</option>
+              <option value="game-updates">Game Updates</option>
+            </select>
+          </div>
+          <div id="chatMessages" class="chat-messages"></div>
+          <div class="message-input">
+            <input
+              type="text"
+              id="messageInput"
+              placeholder="Type your message"
+            />
+            <button id="sendBtn" class="btn">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const pieces = {
+        R: "♖",
+        N: "♘",
+        B: "♗",
+        Q: "♕",
+        K: "♔",
+        P: "♙",
+        r: "♜",
+        n: "♞",
+        b: "♝",
+        q: "♛",
+        k: "♚",
+        p: "♟",
+      };
+      const boardLayout = [
+        ["r", "n", "b", "q", "k", "b", "n", "r"],
+        ["p", "p", "p", "p", "p", "p", "p", "p"],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
+        ["P", "P", "P", "P", "P", "P", "P", "P"],
+        ["R", "N", "B", "Q", "K", "B", "N", "R"],
+      ];
+
+      let selectedSquare = null;
+      let gameMode = "human";
+      const chatMessages = document.getElementById("chatMessages");
+      const chessboard = document.getElementById("chessboard");
+      let currentChannel = "general";
+
+      function drawBoard() {
+        chessboard.innerHTML = "";
+        boardLayout.forEach((row, rowIndex) => {
+          row.forEach((piece, colIndex) => {
+            const square = document.createElement("div");
+            square.classList.add((rowIndex + colIndex) % 2 === 0 ? "yellow" : "orange");
+            square.textContent = pieces[piece] || "";
+            square.addEventListener("click", () => selectSquare(rowIndex, colIndex));
+            chessboard.appendChild(square);
+          });
+        });
+      }
+
+      function startGame(mode) {
+        gameMode = mode;
+        drawBoard();
+        addMessage("bot", `Starting game against ${mode === "human" ? "Human" : "Bot"}!`);
+      }
+
+      function selectSquare(row, col) {
+        const piece = boardLayout[row][col];
+        if (selectedSquare) {
+          movePiece(row, col);
+          selectedSquare = null;
+        } else if (piece) {
+          selectedSquare = { row, col, piece };
+        }
+      }
+
+      function movePiece(newRow, newCol) {
+        const { row, col, piece } = selectedSquare;
+        if (isMoveValid(row, col, newRow, newCol)) {
+          boardLayout[newRow][newCol] = piece;
+          boardLayout[row][col] = "";
+          drawBoard();
+          addMessage("bot", `Moved ${piece} to (${newRow}, ${newCol})`);
+          if (gameMode === "bot") botMove();
+        }
+      }
+
+      function isMoveValid(fromRow, fromCol, toRow, toCol) {
+        // Placeholder for more advanced validation
+        return boardLayout[toRow][toCol] === ""; // Basic rule: allow moves to empty squares only
+      }
+
+      function botMove() {
+        // Placeholder: Bot will make a random move
+        addMessage("bot", "Bot made a move.");
+      }
+
+      function addMessage(sender, message) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${sender === "user" ? "user-message" : "bot-message"}`;
+        messageDiv.textContent = message;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function changeChannel() {
+        currentChannel = document.getElementById("channel").value;
+        addMessage("bot", `Switched to channel: ${currentChannel}`);
+      }
+
+      document.getElementById("sendBtn").addEventListener("click", () => {
+        const messageInput = document.getElementById("messageInput");
+        const message = messageInput.value.trim();
+        if (message) {
+          addMessage("user", `[${currentChannel}] ${message}`);
+          messageInput.value = "";
+          if (gameMode === "bot") addMessage("bot", "I'm thinking...");
+        }
+      });
+
+      drawBoard();
+    </script>
+  </body>
+</html>
+
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chess Hangout Zone</title>
-
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/88dpz+q8MBn5E2p3zFcTtv1z5JyyprjSAz5gUm" crossorigin="anonymous">
-    
+    <title>Create Post with Group Selection</title>
     <style>
-        body {
-            background-color: #1b1b1b;
-            color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
-        }
+        /* Container and form styling */
         .container {
-            margin-top: 30px;
-        }
-        .chessboard {
-            display: grid;
-            grid-template-columns: repeat(8, 100px);
-            grid-template-rows: repeat(8, 100px);
-            border: 2px solid #444;
-            margin: 20px auto;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        .chessboard div {
-            width: 100px;
-            height: 100px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            font-weight: bold;
-            font-family: 'Segoe UI Symbol', sans-serif;
-            cursor: pointer;
-        }
-        .orange {
-            background-color: #f39c12;
-        }
-        .yellow {
-            background-color: #f7dc6f;
-        }
-        .chat-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .chat-box {
-            width: 30%;
-            background-color: #1a1a1a;
+            width: 100%;
+            max-width: 1200px;
             padding: 20px;
-            border-radius: 8px;
-            border: 2px solid #444;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
         }
-        .chat-box h4 {
-            color: #f7dc6f;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .chat-messages {
-            height: 400px;
-            overflow-y: scroll;
-            background-color: #1b1b1b;
-            border: 2px solid #444;
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .message {
-            padding: 10px 15px;
-            border-radius: 10px;
-            margin: 8px 0;
-            font-size: 16px;
-            word-wrap: break-word;
-            display: inline-block;
-            max-width: 80%;
-            color: #f0f0f0;
-            border: 1px solid #444;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        .user-message {
-            text-align: right;
-            margin-left: auto;
-            border-radius: 15px 15px 0 15px;
-        }
-        .bot-message {
-            background-color: #b29800;
-            text-align: left;
-            margin-right: auto;
-            border-radius: 15px 15px 15px 0;
-        }
-        .bot-message::after {
-            content: " 🤖";
-        }
-        .message-input {
+        .form-container {
             display: flex;
-            gap: 5px;
+            flex-direction: column;
+            max-width: 800px;
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #ecf0f1;
         }
-        .message-input input {
-            flex-grow: 1;
-            background-color: #2a2a2a;
-            border: 1px solid #555;
-            color: #f0f0f0;
+        .form-container label {
+            margin-bottom: 5px;
         }
-        .send-btn {
-            background-color: #444;
-            color: #f0f0f0;
+        /* Style for the dropdown */
+        .form-container select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            background-color: #34495e;
+            color: #ecf0f1;
+            font-size: 16px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
         }
-        .send-btn:hover {
-            background-color: #555;
+        /* Button styling */
+        .form-container button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #34495e;
+            color: #ecf0f1;
+            cursor: pointer;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <h2 class="text-center">Chess Hangout Zone</h2>
-        <div class="chat-container">
-            <!-- Chessboard -->
-            <div class="chessboard" id="chessboard"></div>
-
-            <!-- Chat Section -->
-            <div class="chat-box">
-                <h4>Chess-Themed Chat Room</h4>
-                <div id="chatMessages" class="chat-messages"></div>
-
-                <div class="message-input">
-                    <input type="text" id="messageInput" class="form-control" placeholder="Type your message">
-                    <button id="sendBtn" class="btn send-btn">Send</button>
-                </div>
-            </div>
+        <div class="form-container">
+            <h2>Select Group and Create Post</h2>
+            <form id="postForm">
+                <label for="group_id">Group:</label>
+                <select id="group_id" name="group_id" required>
+                    <option value="">Select a group</option>
+                </select>
+                
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+                
+                <button type="submit">Add Post</button>
+            </form>
+            <div id="details"></div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <!-- JS for Chessboard functionality -->
-    <script>
-        const pieces = {
-            'R': '&#9814;', 'N': '&#9816;', 'B': '&#9815;', 'Q': '&#9813;', 'K': '&#9812;', 'P': '&#9817;',
-            'r': '&#9820;', 'n': '&#9822;', 'b': '&#9821;', 'q': '&#9819;', 'k': '&#9818;', 'p': '&#9823;'
+    <script type="module">
+        // Import server URI and standard fetch options
+        const pythonURI = "https://flocker.nighthawkcodingsociety.com";
+        const fetchOptions = {
+            headers: {
+                'Authorization': 'Bearer YOUR_AUTH_TOKEN' // Replace with actual auth token if required
+            }
         };
 
-        const boardLayout = [
-            ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
-            ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-            ['', '', '', '', '', '', '', ''],
-            ['', '', '', '', '', '', '', ''],
-            ['', '', '', '', '', '', '', ''],
-            ['', '', '', '', '', '', '', ''],
-            ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-            ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
-        ];
-
-        const chessboard = document.getElementById('chessboard');
-        let selectedSquare = null;
-
-        function generateBoard() {
-            chessboard.innerHTML = '';
-            let isYellow = true;
-            for (let row = 0; row < 8; row++) {
-                for (let col = 0; col < 8; col++) {
-                    const square = document.createElement('div');
-                    square.className = isYellow ? 'yellow' : 'orange';
-                    square.dataset.row = row;
-                    square.dataset.col = col;
-
-                    if (boardLayout[row][col]) {
-                        square.innerHTML = pieces[boardLayout[row][col]];
-                    }
-
-                    square.addEventListener('click', () => handleSquareClick(row, col, square));
-                    chessboard.appendChild(square);
-                    isYellow = !isYellow;
+        // Function to fetch groups for dropdown selection
+        async function fetchGroups() {
+            try {
+                const response = await fetch(`${pythonURI}/api/groups`, fetchOptions);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch groups: ' + response.statusText);
                 }
-                isYellow = !isYellow;
+                const groups = await response.json();
+                const groupSelect = document.getElementById('group_id');
+                groups.forEach(group => {
+                    const option = document.createElement('option');
+                    option.value = group.id;
+                    option.textContent = group.name;
+                    groupSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error fetching groups:', error);
             }
         }
 
-        function handleSquareClick(row, col, square) {
-            if (selectedSquare) {
-                movePiece(selectedSquare, row, col);
-                selectedSquare = null;
-            } else if (boardLayout[row][col]) {
-                selectedSquare = { row, col, square };
-            }
-        }
+        // Handle form submission
+        document.getElementById('postForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
 
-        function movePiece(selected, row, col) {
-            const piece = boardLayout[selected.row][selected.col];
-            boardLayout[selected.row][selected.col] = '';
-            boardLayout[row][col] = piece;
-            generateBoard();
-        }
+            // Extract data from form
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const group_id = document.getElementById('group_id').value;
 
-        generateBoard();
-    </script>
+            // Create API payload
+            const postData = {
+                title: title,
+                content: content,
+                group_id: group_id
+            };
 
-    <!-- JS for Chat and Moderation Bot functionality -->
-    <script>
-        const chatMessages = document.getElementById('chatMessages');
-        const messageInput = document.getElementById('messageInput');
-        const sendBtn = document.getElementById('sendBtn');
+            try {
+                // Send POST request to backend to add the new post
+                const response = await fetch(`${pythonURI}/api/post`, {
+                    ...fetchOptions,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(postData)
+                });
 
-        let userColors = {};
-        let userIdCounter = 0;
-
-        function getRandomColor() {
-            const colors = ["#8a7b6d", "#77665c", "#634944", "#504238", "#3d3832", "#6b665a", "#d9ae7d"];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-
-        function addMessage(text, isBot = false) {
-            const msgElement = document.createElement('p');
-            msgElement.className = `message ${isBot ? 'bot-message' : 'user-message'}`;
-            msgElement.textContent = text;
-
-            if (!isBot) {
-                const userId = `user_${userIdCounter++}`;
-                if (!userColors[userId]) {
-                    userColors[userId] = getRandomColor();
+                if (!response.ok) {
+                    throw new Error('Failed to add post: ' + response.statusText);
                 }
-                msgElement.style.backgroundColor = userColors[userId];
-            }
 
-            chatMessages.appendChild(msgElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function handleUserMessage() {
-            const userMessage = messageInput.value.trim();
-            if (userMessage) {
-                addMessage(userMessage, false);
-                messageInput.value = '';
-                respondToUserMessage(userMessage);
-            }
-        }
-
-        function respondToUserMessage(userMessage) {
-            setTimeout(() => {
-                const botResponse = "Thanks for sharing! Let's keep the conversation going.";
-                addMessage(botResponse, true);
-            }, 1000);
-        }
-
-        sendBtn.addEventListener('click', handleUserMessage);
-        messageInput.addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                handleUserMessage();
+                alert('Post added successfully!');
+                document.getElementById('postForm').reset();
+            } catch (error) {
+                console.error('Error adding post:', error);
+                alert('Error adding post: ' + error.message);
             }
         });
+
+        // Fetch groups when the page loads
+        fetchGroups();
     </script>
 </body>
 </html>
