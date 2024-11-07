@@ -207,5 +207,7 @@ author: Arhaan, Akshaj, Mihir, Keerthan
 
 </style>
 
-
-
+<!-- Feedback Button -->
+<div class="feedback-button-section">
+    <a href="https://forms.gle/kFaEN46ypWGhVfbw5" target="_blank" class="submit-button">Leave Feedback</a>
+</div>

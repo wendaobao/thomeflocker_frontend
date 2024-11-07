@@ -1,92 +1,11 @@
 ---
 layout: post 
-title: Create and Compete - Elevator Pitch
+title: Create and Compete - Culinary
 search_exclude: true
-permalink: /create_and_compete/elevatorpitch
-menu: nav/create_and_compete.html
-author: Manas, Lalita, Shriya, Ethan
+permalink: /create_and_compete/culinaryposts
+author: Daksha, Alex, Darsh, Zach
 ---
 
-<details>
-  <summary>Room Details</summary>
-
-<a href="{{site.baseurl}}/moderation/rules_elevatorpitch/">Moderation Rules</a>
-
-<p> Imagine a platform where creativity meets competition—this is the essence of our project. Under the theme of Create and Compete, we’re designing a space where participants can pitch creative ideas, whether for inventions, stories, apps, or even business ventures. The twist? These ideas are sparked by random prompts, pushing users to think outside the box.  
-</p>
-
-<p>Once an idea is pitched, the real fun begins. Other participants engage with the pitch by challenging it with insightful questions, offering constructive feedback, and suggesting improvements. The focus here isn’t just on competing to create the best idea but also on fostering collaboration and creativity. Participants learn from one another, pushing the boundaries of their original concepts to create something even more innovative.
-</p>
-
-<p>Whether you’re a writer, designer, entrepreneur, or problem-solver, this platform encourages you to compete by creating and evolving by collaborating.
-</p>
-
-</details>
-
-<p>Where creativity meets competition and collaboration.</p>
-
-<!-- Prompt Generation Section -->
-<button id="generate-prompt">Generate Random Prompt</button>
-<div id="prompt-display"></div>
-
-<!-- Pitch Submission Section -->
-<section id="pitch-section">
-    <h2>Your Pitch</h2>
-    <textarea id="pitch-input" placeholder="Write your pitch here..."></textarea>
-    <button id="submit-pitch">Submit Pitch</button>
-    <div id="pitch-display"></div>
-</section>
-
-<!-- Feedback Section -->
-<section id="feedback-section">
-    <h2>Feedback & Challenges</h2>
-    <textarea id="feedback-input" placeholder="Offer feedback or ask a question..."></textarea>
-    <button id="submit-feedback">Submit Feedback</button>
-    <div id="feedback-display"></div>
-</section>
-
-<!-- Feedback Modal -->
-<div id="feedback-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2>Feedback Submitted!</h2>
-        <p>Your feedback has been submitted successfully.</p>
-    </div>
-</div>
-
-<!-- Styles for Modal -->
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.4);
-    }
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 50%;
-        text-align: center;
-    }
-    .close-button {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-</style>
-
-<!-- Link to Custom CSS and Script -->
-<link rel="stylesheet" href="{{site.baseurl}}/navigation/create_and_compete/style.css">
-<script src="{{site.baseurl}}/navigation/create_and_compete/script.js"></script>
 
 <style>
     .container {
@@ -169,13 +88,8 @@ author: Manas, Lalita, Shriya, Ethan
 </div>
 
 <script type="module">
-    // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-    /**
-     * Fetch groups for dropdown selection
-     * User picks from dropdown
-     */
     async function fetchGroups() {
         try {
             const response = await fetch(`${pythonURI}/api/groups/filter`, {
@@ -184,7 +98,7 @@ author: Manas, Lalita, Shriya, Ethan
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ section_name: "Elevator Pitch" }) // Adjust the section name as needed
+                body: JSON.stringify({ section_name: "Home Page" }) 
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
@@ -193,7 +107,7 @@ author: Manas, Lalita, Shriya, Ethan
             const groupSelect = document.getElementById('group_id');
             groups.forEach(group => {
                 const option = document.createElement('option');
-                option.value = group.name; // Use group name for payload
+                option.value = group.name; 
                 option.textContent = group.name;
                 groupSelect.appendChild(option);
             });
@@ -202,10 +116,6 @@ author: Manas, Lalita, Shriya, Ethan
         }
     }
 
-    /**
-     * Fetch channels based on selected group
-     * User picks from dropdown
-     */
     async function fetchChannels(groupName) {
         try {
             const response = await fetch(`${pythonURI}/api/channels/filter`, {
@@ -221,7 +131,7 @@ author: Manas, Lalita, Shriya, Ethan
             }
             const channels = await response.json();
             const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a Day</option>'; // Reset channels
+            channelSelect.innerHTML = '<option value="">Select a channel</option>'; 
             channels.forEach(channel => {
                 const option = document.createElement('option');
                 option.value = channel.id;
@@ -233,23 +143,15 @@ author: Manas, Lalita, Shriya, Ethan
         }
     }
 
-    /**
-      * Handle group selection change
-      * Channel Dropdown refresh to match group_id change
-      */
     document.getElementById('group_id').addEventListener('change', function() {
         const groupName = this.value;
         if (groupName) {
             fetchChannels(groupName);
         } else {
-            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; 
         }
     });
 
-    /**
-     * Handle form submission for selection
-     * Select Button: Computer fetches and displays posts
-     */
     document.getElementById('selectionForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const groupId = document.getElementById('group_id').value;
@@ -261,28 +163,20 @@ author: Manas, Lalita, Shriya, Ethan
         }
     });
 
-    /**
-     * Handle form submission for adding a post
-     * Add Form Button: Computer handles form submission with request
-     */
     document.getElementById('postForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
-        // Extract data from form
         const title = document.getElementById('title').value;
         const comment = document.getElementById('comment').value;
         const channelId = document.getElementById('channel_id').value;
 
-        // Create API payload
         const postData = {
             title: title,
             comment: comment,
             channel_id: channelId
         };
 
-        // Trap errors
         try {
-            // Send POST request to backend, purpose is to write to database
             const response = await fetch(`${pythonURI}/api/post`, {
                 ...fetchOptions,
                 method: 'POST',
@@ -296,22 +190,16 @@ author: Manas, Lalita, Shriya, Ethan
                 throw new Error('Failed to add post: ' + response.statusText);
             }
 
-            // Successful post
             const result = await response.json();
             alert('Post added successfully!');
             document.getElementById('postForm').reset();
             fetchData(channelId);
         } catch (error) {
-            // Present alert on error from backend
             console.error('Error adding post:', error);
             alert('Error adding post: ' + error.message);
         }
     });
 
-    /**
-     * Fetch posts based on selected channel
-     * Handle response: Fetch and display posts
-     */
     async function fetchData(channelId) {
         try {
             const response = await fetch(`${pythonURI}/api/posts/filter`, {
@@ -326,20 +214,15 @@ author: Manas, Lalita, Shriya, Ethan
                 throw new Error('Failed to fetch posts: ' + response.statusText);
             }
 
-            // Parse the JSON data
             const postData = await response.json();
 
-            // Extract posts count
             const postCount = postData.length || 0;
 
-            // Update the HTML elements with the data
             document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
 
-            // Get the details div
             const detailsDiv = document.getElementById('details');
-            detailsDiv.innerHTML = ''; // Clear previous posts
+            detailsDiv.innerHTML = ''; 
 
-            // Iterate over the postData and create HTML elements for each item
             postData.forEach(postItem => {
                 const postElement = document.createElement('div');
                 postElement.className = 'post-item';
@@ -357,8 +240,6 @@ author: Manas, Lalita, Shriya, Ethan
         }
     }
 
-    // Fetch groups when the page loads
     fetchGroups();
 </script>
-
 
