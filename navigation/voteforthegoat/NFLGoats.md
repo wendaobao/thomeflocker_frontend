@@ -439,7 +439,7 @@ There are five different polls where you vote for the greatest Quarterback, Wide
     <h3>Leave a Comment (Running Backs):</h3>
     <input type="text" id="usernameInputRB" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
     <input type="text" id="commentInputRB" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
-    <button onclick="addComment('Rb');" class="comment-button">Submit</button>
+    <button onclick="addComment('RB');" class="comment-button">Submit</button>
     <div class="comment-list" id="commentListRB" style="margin-top: 10px;"></div>
 </div>
 
