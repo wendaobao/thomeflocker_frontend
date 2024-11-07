@@ -215,6 +215,12 @@ author: Ryan, Jowan, Gabriela, Michelle
     <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
 </div>
 
+<div class="image-row">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s" alt="Image 1">
+    <img src="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg" alt="Image 2">
+    <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg" alt="Image 3">
+</div>
+
 <div class="chat-container">
     <div class="chat-label">Chat Box</div>
     <div class="chat-box" id="chatBox">
@@ -251,11 +257,6 @@ author: Ryan, Jowan, Gabriela, Michelle
     </li>
 </ul>
 
-<div class="image-row">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAt_iSo2fSLH7dyuHxy4y-wsdsJ5dvH3FfQ&s" alt="Image 1">
-    <img src="https://www.theglowwellness.com/wp-content/uploads/2022/03/208e6e4a-8cb0-1aca-65b2-29883634b00a-1080x1080.jpg" alt="Image 2">
-    <img src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-yerba-mate-1296x728-feature.jpg" alt="Image 3">
-</div>
 
 <script>
     async function fetchMessages() {
@@ -324,6 +325,7 @@ author: Ryan, Jowan, Gabriela, Michelle
 
 
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -346,6 +348,9 @@ author: Ryan, Jowan, Gabriela, Michelle
       padding: 20px; 
       border-radius: 10px;
       background-color: #ffffff;
+    }
+    #chat-container h2 {
+      color: black; /* Changed title color to black */
     }
     #messages { 
       height: 300px; 
