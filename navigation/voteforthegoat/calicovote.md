@@ -8,6 +8,7 @@ Authors: Maryam, Nora, Kushi, Joanna
 ---
 
 <style>
+    
 p, h2, h3, body {
  font-family: "Times New Roman", Times, serif;
 }
@@ -169,6 +170,20 @@ p {
                0 0 15px rgba(255, 20, 147, 0.6),
                0 0 20px rgba(255, 20, 147, 0.5);
 }
+.button-text {
+    font-size: 30px;
+    text-align: center;
+    background-color: #bd3a63 !important; /* Set button color to purple with high priority */
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.button-text:hover {
+    background-color: #992b4e !important; /* Darker purple on hover */
+}
+
 </style>
 
 
@@ -545,8 +560,4 @@ function confirmChoice() {
     buttonContainer.appendChild(enterHouseButton);
     document.getElementById('imageBox').appendChild(buttonContainer);
 }
-
-// Display comments on page load
-window.onload = displayComments;
-
 </script>
