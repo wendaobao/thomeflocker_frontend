@@ -6,11 +6,12 @@ title: Entering The House
 description: Enter the houses of your favorite critters
 Authors: Maryam, Nora, Kushi, Joanna
 ---
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Page</title>
+    <title id="pageTitle">House Page</title>
     <style>
         /* Base Styles */
         body {
@@ -116,12 +117,16 @@ Authors: Maryam, Nora, Kushi, Joanna
             const savedHouse = localStorage.getItem('selectedHouse');
             const houseInfo = document.getElementById('houseInfo');
             const message = document.getElementById('message');
+            const pageTitle = document.getElementById('pageTitle');
             console.log(`Stored house value: ${savedHouse}`);
             if (savedHouse) {
-                console.log(`Setting background color for ${savedHouse}`);
+                console.log(`Setting background color and content for ${savedHouse}`);
                 setBackground(savedHouse);
                 renderHousePage(savedHouse);
                 houseInfo.textContent = `You selected: ${savedHouse} House`;
+                // Update page title and description based on the house
+                pageTitle.textContent = `${savedHouse} House Page`;
+                document.querySelector('meta[name="description"]').setAttribute('content', `Explore the ${savedHouse} House and its activities.`);
             } else {
                 houseInfo.textContent = "No house selected.";
                 message.textContent = "Please go back and select a house.";
@@ -219,10 +224,11 @@ Authors: Maryam, Nora, Kushi, Joanna
             };
             postContainer.appendChild(textArea);
             postContainer.appendChild(imageInput);
-            postContainer.appendChild(imagePreview);
+                       postContainer.appendChild(imagePreview);
             postContainer.appendChild(postButton);
             document.body.appendChild(postContainer);
-        });        function savePost(content, imageSrc) {
+        });
+        function savePost(content, imageSrc) {
             if (!content.trim() && !imageSrc) {
                 alert('Post content or image cannot be empty!');
                 return;
@@ -251,4 +257,4 @@ Authors: Maryam, Nora, Kushi, Joanna
     </script>
 </body>
 </html>
-
+ 
