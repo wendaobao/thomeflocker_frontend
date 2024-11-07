@@ -133,7 +133,9 @@ function replyToComment(index) {
 function toggleLike() {
   liked = !liked;
   document.getElementById('heart').innerText = liked ? '❤️' : '♡';
-} 
+  isLiked = !isLiked;
+  document.getElementById("like-count").innerHTML = likeCount + (likeCount === 1 ? " Like" : " Likes");
+  } 
 
 // Rate book function to change star colors and set current rating
 function rateBook(rating) {
