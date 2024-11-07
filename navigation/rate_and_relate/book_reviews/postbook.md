@@ -2,7 +2,6 @@
 layout: post 
 title: Add a Post
 permalink: /postbook
-menu: nav/home.html
 search_exclude: true
 ---
 <style>
@@ -52,10 +51,16 @@ search_exclude: true
             <label for="group_id">Group:</label>
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
+                <option value="book_reviews">Book Reviews</option>
+                <option value="instabox">Instabox</option>
+                <option value="flavor_fusion">Flavor Fusion</option>
+                <option value="update_nest">Update the Nest</option>
             </select>
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
+                <option value="fiction_books">Fiction Books</option>
+                <option value="nonfiction_books">Nonfiction Books</option>
             </select>
             <button type="submit">Select</button>
         </form>

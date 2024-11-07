@@ -314,3 +314,10 @@ updateLikeButton();
     color: #325771; /* Color for replies */
   }
 </style>
+<br>
+<br>
+<br>
+ <a href="{{site.baseurl}}/postbook"
+       style="background-color: rgb(135, 206, 250); color: white; padding: 20px 40px; text-align: center; text-decoration: none; border-radius: 5px; font-size: 16px;">
+        Click to Post
+    </a>
