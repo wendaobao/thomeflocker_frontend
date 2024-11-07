@@ -322,109 +322,92 @@ author: Ryan, Jowan, Gabriela, Michelle
 </body>
 </html>
 
-<!-- Post Submission Form -->
-<div class="post-form-container">
-    <h3>Add a New Post</h3>
-    <form id="postForm">
-        <input type="text" id="usernameInput" placeholder="Enter your name" required />
-        <textarea id="postInput" placeholder="What's on your mind?" required></textarea>
-        <button type="submit">Post</button>
-    </form>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; }
+    #chat-container { width: 400px; border: 1px solid #ccc; padding: 20px; }
+    #messages { height: 300px; overflow-y: scroll; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+    .message { margin-bottom: 10px; padding: 5px; background: #f9f9f9; border-radius: 8px; }
+    .user { font-weight: bold; color: #333; }
+    .reactions { margin-top: 5px; }
+    .reaction-btn { cursor: pointer; margin-right: 5px; }
+  </style>
+</head>
+<body>
+
+<div id="chat-container">
+  <h2>Food Chat Box</h2>
+
+  <div id="messages"></div>
+
+  <form id="chat-form">
+    <input type="text" id="username" placeholder="Your name" required style="width: 100%; margin-bottom: 5px;">
+    <textarea id="message" placeholder="Type a message" required style="width: 100%; height: 50px; margin-bottom: 5px;"></textarea>
+    <input type="file" id="image" accept="image/*" style="width: 100%; margin-bottom: 5px;">
+    <button type="submit" style="width: 100%;">Send</button>
+  </form>
 </div>
+
 <script>
-    function getReactions() {
-        const reactions = localStorage.getItem('reactions');
-        return reactions ? JSON.parse(reactions) : {};
+  const messagesContainer = document.getElementById('messages');
+  const chatForm = document.getElementById('chat-form');
+  const foodReactions = ["🍕", "🍔", "🍣", "🍪", "🍎"];
+
+  chatForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const message = document.getElementById('message').value;
+    const imageFile = document.getElementById('image').files[0];
+
+    // Create the message element
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.innerHTML = `<span class="user">${username}:</span> ${message}`;
+
+    // Add image if uploaded
+    if (imageFile) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = document.createElement('img');
+        img.src = event.target.result;
+        img.style.maxWidth = '100%';
+        img.style.marginTop = '5px';
+        messageElement.appendChild(img);
+      };
+      reader.readAsDataURL(imageFile);
     }
-    function saveReactions(reactions) {
-        localStorage.setItem('reactions', JSON.stringify(reactions));
-    }
-    function getPosts() {
-        const posts = localStorage.getItem('posts');
-        return posts ? JSON.parse(posts) : [];
-    }
-    function savePosts(posts) {
-        localStorage.setItem('posts', JSON.stringify(posts));
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-        const reactions = getReactions();
-        const posts = getPosts();
-        // Load posts from localStorage
-        posts.forEach(post => {
-            createPostElement(post.username, post.content, post.id);
-        });
-        document.querySelectorAll('.post').forEach(postElement => {
-            const postId = postElement.getAttribute('data-post-id');
-            const postReactions = reactions[postId] || { thumbsUp: 0, heart: 0, fire: 0 };
-            postElement.querySelector('.thumbsUp-count').textContent = postReactions.thumbsUp;
-            postElement.querySelector('.heart-count').textContent = postReactions.heart;
-            postElement.querySelector('.fire-count').textContent = postReactions.fire;
-        });
+
+    // Add reactions section
+    const reactionsDiv = document.createElement('div');
+    reactionsDiv.classList.add('reactions');
+    foodReactions.forEach(food => {
+      const reactionBtn = document.createElement('span');
+      reactionBtn.classList.add('reaction-btn');
+      reactionBtn.textContent = food;
+      reactionBtn.addEventListener('click', () => {
+        messageElement.innerHTML += ` ${food}`;
+      });
+      reactionsDiv.appendChild(reactionBtn);
     });
-    function addReaction(postId, reactionType) {
-        const reactions = getReactions();
-        if (!reactions[postId]) {
-            reactions[postId] = { thumbsUp: 0, heart: 0, fire: 0 };
-        }
-        reactions[postId][reactionType]++;
-        saveReactions(reactions);
-        const postElement = document.querySelector(`[data-post-id="${postId}"]`);
-        const countElement = postElement.querySelector(`.${reactionType}-count`);
-        countElement.textContent = reactions[postId][reactionType];
-    }
-    function createPostElement(username, content, postId) {
-        // Create a new post element
-        const newPost = document.createElement('div');
-        newPost.className = 'post';
-        newPost.setAttribute('data-post-id', postId);
-        newPost.innerHTML = `
-            <div class="post-header">
-                <div class="post-icon"></div>
-                <span class="post-username">${username}</span>
-            </div>
-            <p>${content}</p>
-            <div class="reaction-icons">
-                <span class="emoji" onclick="addReaction('${postId}', 'thumbsUp')">:+1: <span class="thumbsUp-count">0</span></span>
-                <span class="emoji" onclick="addReaction('${postId}', 'heart')">:heart: <span class="heart-count">0</span></span>
-                <span class="emoji" onclick="addReaction('${postId}', 'fire')">:fire: <span class="fire-count">0</span></span>
-            </div>
-        `;
-        // Append the new post to the posts wrapper
-        document.getElementById('postsWrapper').prepend(newPost); // Add to the top
-    }
-    // Handle post submission
-    document.getElementById('postForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent page refresh
-        const usernameInput = document.getElementById('usernameInput');
-        const postInput = document.getElementById('postInput');
-        const username = usernameInput.value.trim(); // Get typed name
-        const newPostContent = postInput.value;
-        if (username === "") {
-            alert("Please enter your name.");
-            return; // Don't allow posting without a name
-        }
-        // Create a unique ID based on timestamp
-        const newPostId = Date.now();
-        // Save the new post to localStorage
-        const posts = getPosts();
-        posts.push({ id: newPostId, username: username, content: newPostContent });
-        savePosts(posts);
-        // Create and display the new post
-        createPostElement(username, newPostContent, newPostId);
-        // Clear the input
-        usernameInput.value = '';
-        postInput.value = '';
-    });
-    // Handle message submission
-    document.getElementById('messageForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const messageInput = document.getElementById('messageInput');
-        const messageContent = messageInput.value;
-        // Create a new message element
-        const newMessage = document.createElement('div');
-        newMessage.textContent = messageContent;
-        document.getElementById('chatArea').appendChild(newMessage);
-        // Clear the input field
-        messageInput.value = '';
-    });
+    messageElement.appendChild(reactionsDiv);
+
+    // Add the message element to messages container
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll to latest message
+
+    // Clear form inputs
+    chatForm.reset();
+  });
 </script>
+
+</body>
+</html>
+
