@@ -9,8 +9,18 @@ Authors: Maryam, Nora, Kushi, Joanna
 
 <style>
 p, h2, h3, body {
- font-family: "Times New Roman", Times, serif;;
+ font-family: "Times New Roman", Times, serif;
 }
+ body {
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 10000;
+            margin: 0;
+            background: #d4637e !important;
+        }
 .header-text {
     font-size: 40px;
     text-align: center;
@@ -69,6 +79,15 @@ p, h2, h3, body {
 .button-text {
     font-size: 30px;
     text-align: center;
+    background-color: #C71585; /* Change button color to dark pink */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.button-text:hover {
+    background-color: #A0136B; /* Darker shade of dark pink on hover */
 }
 .hidden-example {
     display:none;
@@ -83,8 +102,16 @@ p, h2, h3, body {
     border-radius: 5px;
 }
 .comment-button {
-    padding: 8px; 
+    padding: 8px;
     margin-top: 5px;
+    background-color: #C71585; /* Change button color to dark pink */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.comment-button:hover {
+    background-color: #A0136B; /* Darker shade of dark pink on hover */
 }
 .message-box {
     display:none; 
@@ -360,14 +387,6 @@ a {
     <img id="houseImage" src="" alt="House Image" style="max-width:300px; border-radius:15px;">
 </div>
 
-<div class="comment-section" id="commentSection">
-    <input type="text" id="usernameInput" placeholder="Enter your username" style="width: 80%; padding: 8px; margin-bottom: 5px;">
-    <input type="text" id="commentInput" placeholder="Enter your comment" style="width: 80%; padding: 8px;">
-    <button onclick="addComment();" class="comment-button">Submit</button>
-    <div id="commentList" style="margin-top: 10px;"></div>
-    <button onclick="clearComments();" class="comment-button">Clear All Comments</button>
-</div>
-
 <script>
 let selectedCritter = null;
 let selectedHouse = null;
@@ -439,9 +458,6 @@ function confirmChoice() {
 
     imageBox.style.display = "block"; // Show the image box
 
-    // Optional: Display the comment section after confirmation
-    document.getElementById("commentSection").style.display = "block";
-
     // Remove any existing "Enter House" button before creating a new one
     const existingButtonContainer = document.querySelector('#houseButtonContainer');
     if (existingButtonContainer) {
@@ -462,80 +478,6 @@ function confirmChoice() {
 
     buttonContainer.appendChild(enterHouseButton);
     document.getElementById('imageBox').appendChild(buttonContainer);
-}
-
-// Add a comment to the comment list and store it in local storage
-function addComment() {
-    const usernameInput = document.getElementById('usernameInput');
-    const commentInput = document.getElementById('commentInput');
-
-    if (usernameInput.value.trim() === "" || commentInput.value.trim() === "") {
-        alert("Please enter both a username and a comment.");
-        return;
-    }
-
-    // Include the selected house in the username
-    const fullUsername = `${usernameInput.value.trim()} from ${selectedHouse}`;
-
-    let comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-     const newComment = {
-        username: fullUsername, // Store the modified username
-        text: commentInput.value.trim(),
-        likes: 0, // Initialize the likes count to 0 (no null or undefined)
-        liked: false // Add a liked flag to track the like status
-    };
-
-    comments.push(newComment);
-    localStorage.setItem('comments', JSON.stringify(comments));
-
-    usernameInput.value = '';
-    commentInput.value = '';
-
-    displayComments();
-}
-
-
-// Display the list of comments from local storage
-function displayComments() {
-    const commentList = document.getElementById('commentList');
-    commentList.innerHTML = '';
-
-    let comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-    comments.forEach((comment, index) => {
-        comment.likes = comment.likes || 0;
-
-        const commentItem = document.createElement('div');
-        commentItem.style.marginBottom = '10px';
-        commentItem.style.borderBottom = '1px solid #ddd';
-        commentItem.style.paddingBottom = '5px';
-
-        const header = document.createElement('div');
-        header.style.fontWeight = 'bold';
-        header.textContent = comment.username;
-
-        const textElement = document.createElement('p');
-        textElement.textContent = comment.text;
-
-        // Create Like Button and Display Like Count
-        const likeButton = document.createElement('button');
-        likeButton.textContent = `Like (${comment.likes})`;
-        likeButton.style.marginTop = '5px';
-        likeButton.onclick = function() {
-            likeComment(index); // Pass the index to the like function
-        };
-
-        commentItem.appendChild(header);
-        commentItem.appendChild(textElement);
-        commentItem.appendChild(likeButton);
-        commentList.appendChild(commentItem);
-    });
-}
-
-function clearComments() {
-    localStorage.removeItem('comments'); // Remove comments from local storage
-    displayComments(); // Refresh the comment display
 }
 
 function selectCritter(element) {
@@ -581,9 +523,6 @@ function confirmChoice() {
     houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
 
     imageBox.style.display = "block"; // Show the image box
-
-    // Optional: Display the comment section after confirmation
-    document.getElementById("commentSection").style.display = "block";
 
     // Remove any existing "Enter House" button before creating a new one
     const existingButtonContainer = document.querySelector('#houseButtonContainer');
