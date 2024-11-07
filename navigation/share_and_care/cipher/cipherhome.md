@@ -93,7 +93,7 @@ permalink: 1
 
 - [Cipher Resources](https://example.com/resources)
 - [Challenge Archive](https://example.com/archive)
-- [Community Forum](https://example.com/forum)
+- [Community Forum](/flocker_frontend/share_and_care/cipherdiscussion)
 
 ---
 

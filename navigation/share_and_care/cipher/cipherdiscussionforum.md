@@ -1,3 +1,9 @@
+---
+layout: base
+title: CipherDiscussion
+search_exclude: true
+permalink: share_and_care/cipherdiscussion
+---
 <html lang="en">
 <head>
     <meta charset="UTF-8">
