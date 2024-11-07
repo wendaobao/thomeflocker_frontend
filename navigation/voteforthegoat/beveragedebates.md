@@ -311,17 +311,18 @@ Our group has chosen to focus on discussions about which drinks should be added 
 </style>
 </head>
     <div class="voting-container">
-        <h2>Choose Your Beverage that you would like to be added to Del Norte Cafeteria</h2>
+        <h2>Del Norte Cafeteria Beverage Options</h2>
+        
+        <!-- Voting Section -->
         <div class="voting-layout">
             <div class="options-container">
+                <h3>Vote for a Beverage</h3>
                 <button class="option-button" onclick="selectOption('Coke')">Coke</button>
                 <button class="option-button" onclick="selectOption('Gatorade')">Gatorade</button>
                 <button class="option-button" onclick="selectOption('Banana milk')">Banana milk</button>
                 <button class="option-button" onclick="selectOption('Coconut water')">Coconut water</button>
                 <div class="selected-option" id="selectedOption">Your Choice: None</div>
                 <button class="submit-button" onclick="submitVote()">Submit Vote</button>
-                <input type="text" id="suggestionInput" placeholder="Suggest a new beverage" style="margin-top: 20px; padding: 10px; border-radius: 8px; border: 1px solid #00c6ff; background: rgba(255, 255, 255, 0.2); color: #ffffff; font-size: 16px; outline: none;">
-                <button class="submit-button" onclick="submitSuggestion()">Submit Suggestion</button>
             </div>
             <div class="details-container">
                 <div id="coke-details" class="beverage-details">
@@ -342,11 +343,20 @@ Our group has chosen to focus on discussions about which drinks should be added 
                 </div>
             </div>
         </div>
-        <!-- Reasoning Input Container -->
+
+        <!-- Reasoning Container -->
         <div class="reasoning-container" id="reasoningContainer">
             <h3>Why did you choose this beverage?</h3>
             <textarea id="reasoningText" placeholder="Enter your reasoning here..."></textarea>
             <button class="reasoning-submit" onclick="submitReasoning()">Submit Reasoning</button>
+        </div>
+
+        <!-- New Separate Suggestion Section -->
+        <div class="suggestion-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+            <h3>Suggest a New Beverage</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">Don't see your preferred drink? Suggest it below!</p>
+            <input type="text" id="suggestionInput" placeholder="Enter your beverage suggestion" style="margin-bottom: 10px; padding: 10px; border-radius: 8px; border: 1px solid #00c6ff; background: rgba(255, 255, 255, 0.2); color: #ffffff; font-size: 16px; outline: none; width: 100%; max-width: 300px;">
+            <button class="submit-button" onclick="submitSuggestion()">Submit Suggestion</button>
         </div>
     </div>
     <script>
