@@ -196,29 +196,31 @@ body {
         displayPosts(savedHouse);
     };
     function setBackground(house) {
-        switch (house) {
-            case 'Adventure Play':
-                document.body.style.backgroundColor = 'green';
-                break;
-            case 'Sylvanian Family Restaurant':
-                document.body.style.backgroundColor = 'blue';
-                break;
-            case 'Magical Mermaid Castle':
-                document.body.style.backgroundColor = 'purple';
-                break;
-            case 'Woody School':
-                document.body.style.backgroundColor = 'goldenrod';
-                break;
-            case 'Spooky Surprise Haunted':
-                document.body.style.backgroundColor = 'darkred';
-                break;
-            case 'Brick Oven Bakery':
-                document.body.style.backgroundColor = 'orange';
-                break;
-            default:
-                document.body.style.backgroundColor = 'white';
-        }
+    let color;
+    switch (house) {
+        case 'Adventure Play':
+            color = 'goldenrod';
+            break;
+        case 'Sylvanian Family Restaurant':
+            color = 'blue';
+            break;
+        case 'Magical Mermaid Castle':
+            color = 'purple';
+            break;
+        case 'Woody School':
+            color = 'green';
+            break;
+        case 'Spooky Surprise Haunted':
+            color = 'red';
+            break;
+        case 'Brick Oven Bakery':
+            color = 'orange';
+            break;
+        default:
+            color = 'white';
     }
+    document.body.style.cssText = `background: ${color} !important; transition: background-color 0.5s ease;`;
+}
     function renderHousePage(house) {
         const houseInfo = document.getElementById('houseInfo');
         const message = document.getElementById('message');
