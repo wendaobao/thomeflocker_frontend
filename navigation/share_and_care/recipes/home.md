@@ -324,20 +324,49 @@ author: Ryan, Jowan, Gabriela, Michelle
 
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Chat</title>
+  
+  <!-- Link to Google Fonts for Comfortaa font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap">
+  
   <style>
-    body { font-family: Arial, sans-serif; display: flex; justify-content: center; }
-    #chat-container { width: 400px; border: 1px solid #ccc; padding: 20px; }
-    #messages { height: 300px; overflow-y: scroll; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
-    .message { margin-bottom: 10px; padding: 5px; background: #f9f9f9; border-radius: 8px; }
-    .user { font-weight: bold; color: #333; }
-    .reactions { margin-top: 5px; }
-    .reaction-btn { cursor: pointer; margin-right: 5px; }
+    body { 
+      font-family: 'Comfortaa', sans-serif; 
+      display: flex; 
+      justify-content: center; 
+      background-color: #fafafa;
+    }
+    #chat-container { 
+      width: 400px; 
+      border: 2px solid #FFECB3; /* Pale yellow border */
+      padding: 20px; 
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    #messages { 
+      height: 300px; 
+      overflow-y: scroll; 
+      border: 1px solid #FFECB3; /* Pale yellow border */
+      padding: 10px; 
+      margin-bottom: 10px; 
+      border-radius: 5px;
+      background-color: #fff8e1;
+    }
+    .message { 
+      margin-bottom: 10px; 
+      padding: 5px; 
+      background: #fff8e1; /* Light yellow background */
+      border-radius: 8px; 
+      color: black; /* Message text color set to black */
+    }
+    .user { 
+      font-weight: bold; 
+      color: #333; 
+    }
   </style>
 </head>
 <body>
@@ -358,7 +387,6 @@ author: Ryan, Jowan, Gabriela, Michelle
 <script>
   const messagesContainer = document.getElementById('messages');
   const chatForm = document.getElementById('chat-form');
-  const foodReactions = ["🍕", "🍔", "🍣", "🍪", "🍎"];
 
   chatForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -385,20 +413,6 @@ author: Ryan, Jowan, Gabriela, Michelle
       reader.readAsDataURL(imageFile);
     }
 
-    // Add reactions section
-    const reactionsDiv = document.createElement('div');
-    reactionsDiv.classList.add('reactions');
-    foodReactions.forEach(food => {
-      const reactionBtn = document.createElement('span');
-      reactionBtn.classList.add('reaction-btn');
-      reactionBtn.textContent = food;
-      reactionBtn.addEventListener('click', () => {
-        messageElement.innerHTML += ` ${food}`;
-      });
-      reactionsDiv.appendChild(reactionBtn);
-    });
-    messageElement.appendChild(reactionsDiv);
-
     // Add the message element to messages container
     messagesContainer.appendChild(messageElement);
     messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll to latest message
@@ -410,4 +424,3 @@ author: Ryan, Jowan, Gabriela, Michelle
 
 </body>
 </html>
-
