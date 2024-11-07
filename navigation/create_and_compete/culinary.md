@@ -302,7 +302,7 @@ author: Daksha, Zach, Alex, Darsh
 }
 </style>
 
-<a href="{{site.base}}/create_and_compete/culinaryposts">
+<a href="{{site.baseurl}}/create_and_compete/culinaryposts">
   <button class="culinary-posts-btn">Culinary Posts</button>
 </a>
 

@@ -6,240 +6,259 @@ permalink: /create_and_compete/culinaryposts
 author: Daksha, Alex, Darsh, Zach
 ---
 
+<div class="main">
+    <div class="content">
+        <div class="form-container">
+            <form id="channelForm">
+                <div class="form-inputs">
+                    <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
+                    <input type="file" id="fileInput" name="fileInput" style="display: none;">
+                </div>
+                <textarea id="textArea" name="textArea" placeholder="Post Here" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+        <div id="channels"></div>
+    <div>
+</div>
 
 <style>
-    .container {
+    .main {
         display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 1200px;
-        padding: 20px;
-        box-sizing: border-box;
     }
-    .form-container {
+    .content {
         display: flex;
         flex-direction: column;
-        max-width: 800px;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        background-color: #2c3e50;
+        /* padding-left: 180px; */
+    }
+
+    /* Form Styling */
+    .form-container {
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        color: #ecf0f1;
+        background-color: #f4f4f4;
+        border-radius: 12px;
+        width: calc(100% - 400px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
     }
-    .form-container label {
-        margin-bottom: 5px;
+
+    .form-inputs {
+        display: flex;
+        gap: 10px;
+        align-items: center;
     }
-    .form-container input, .form-container textarea, .form-container select {
-        margin-bottom: 10px;
+
+    #title {
+        flex: 1;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+    }
+
+    .file-button {
         padding: 10px;
-        border-radius: 5px;
+        background-color: #333;
+        color: white;
         border: none;
-        width: 100%;
-    }
-    .form-container button {
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        background-color: #34495e;
-        color: #ecf0f1;
+        border-radius: 50%;
+        font-size: 18px;
         cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #textArea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        margin-top: 10px;
+        resize: none;
+        height: 100px;
+    }
+
+    button[type="submit"] {
+        align-self: flex-start;
+        padding: 10px 20px;
+        background-color: #1da1f2;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #1a91da;
+    }
+
+    /* Channels Container */
+    #channels {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 20px;
+    }
+
+    /* Post Cards Styling */
+    .card {
+        width: calc(50% - 20px);
+        min-width: 300px;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: left;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card-description {
+        color: #555;
+        font-size: 1em;
+        margin-top: 10px;
+    }
+
+    .delete-button, .comment-button {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+        margin-right: 5px;
+    }
+
+    .delete-button:hover, .comment-button:hover {
+        background-color: #ff1a1a;
     }
 </style>
 
-<div class="container">
-    <div class="form-container">
-        <h2>Select Group and Channel</h2>
-        <form id="selectionForm">
-            <label for="group_id">Group:</label>
-            <select id="group_id" name="group_id" required>
-                <option value="">Select a group</option>
-            </select>
-            <label for="channel_id">Channel:</label>
-            <select id="channel_id" name="channel_id" required>
-                <option value="">Select a channel</option>
-            </select>
-            <button type="submit">Select</button>
-        </form>
-    </div>
-</div>
-
-<div class="container">
-    <div class="form-container">
-        <h2>Add New Post</h2>
-        <form id="postForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="comment">Comment:</label>
-            <textarea id="comment" name="comment" required></textarea>
-            <button type="submit">Add Post</button>
-        </form>
-    </div>
-</div>
-
-<div class="container">
-    <div id="data" class="data">
-        <div class="left-side">
-            <p id="count"></p>
-        </div>
-        <div class="details" id="details">
-        </div>
-    </div>
-</div>
-
 <script type="module">
-    import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+    import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
+    const container = document.getElementById("channels");
 
-    async function fetchGroups() {
-        try {
-            const response = await fetch(`${pythonURI}/api/groups/filter`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ section_name: "Home Page" }) 
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch groups: ' + response.statusText);
-            }
-            const groups = await response.json();
-            const groupSelect = document.getElementById('group_id');
-            groups.forEach(group => {
-                const option = document.createElement('option');
-                option.value = group.name; 
-                option.textContent = group.name;
-                groupSelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Error fetching groups:', error);
-        }
+    async function fetchUser() {
+        const response = await fetch(`${pythonURI}/api/user`, fetchOptions);
+        const user = await response.json();
+        console.log(user);
+        return user;
     }
 
-    async function fetchChannels(groupName) {
+    const user = fetchUser();
+
+    async function fetchChannels() {
         try {
+            const groupName = 'Culinary Posts';
+            const responseData = {
+                group_name: groupName,
+            };
+            // add filter to get only messages from this channel
             const response = await fetch(`${pythonURI}/api/channels/filter`, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ group_name: groupName })
+                body: JSON.stringify(responseData)
             });
+
             if (!response.ok) {
                 throw new Error('Failed to fetch channels: ' + response.statusText);
             }
             const channels = await response.json();
-            const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a channel</option>'; 
+            container.innerHTML = "";
+
             channels.forEach(channel => {
-                const option = document.createElement('option');
-                option.value = channel.id;
-                option.textContent = channel.name;
-                channelSelect.appendChild(option);
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                const title = document.createElement("h3");
+                title.classList.add("card-title");
+                title.textContent = channel.name;
+
+                const description = document.createElement("p");
+                description.classList.add("card-description");
+                description.textContent = channel.attributes["content"];
+
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("delete-button");
+                deleteButton.textContent = "Delete";
+
+                const commentButton = document.createElement("button");
+                commentButton.classList.add("comment-button");
+                commentButton.textContent = "Comment";
+                commentButton.setAttribute("id", channel.id);
+
+                commentButton.onclick = function () {
+                    openChatRoom(commentButton);
+                };
+
+                card.appendChild(title);
+                card.appendChild(description);
+                card.appendChild(deleteButton);
+                card.appendChild(commentButton);
+
+                container.appendChild(card);
             });
         } catch (error) {
             console.error('Error fetching channels:', error);
         }
     }
 
-    document.getElementById('group_id').addEventListener('change', function() {
-        const groupName = this.value;
-        if (groupName) {
-            fetchChannels(groupName);
-        } else {
-            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; 
-        }
-    });
-
-    document.getElementById('selectionForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const groupId = document.getElementById('group_id').value;
-        const channelId = document.getElementById('channel_id').value;
-        if (groupId && channelId) {
-            fetchData(channelId);
-        } else {
-            alert('Please select both group and channel.');
-        }
-    });
-
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
+    document.getElementById('channelForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const title = document.getElementById('title').value;
-        const comment = document.getElementById('comment').value;
-        const channelId = document.getElementById('channel_id').value;
+        const content = document.getElementById('textArea').value;
+        const group_id = 9;
 
-        const postData = {
-            title: title,
-            comment: comment,
-            channel_id: channelId
+        const channelData = {
+            name: title,
+            group_id: group_id,
+            attributes: {"content": content}
         };
 
         try {
-            const response = await fetch(`${pythonURI}/api/post`, {
+            const response = await fetch(`${pythonURI}/api/channel`, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(postData)
+                body: JSON.stringify(channelData)
             });
 
             if (!response.ok) {
-                throw new Error('Failed to add post: ' + response.statusText);
+                throw new Error('Failed to add channel: ' + response.statusText);
             }
 
-            const result = await response.json();
-            alert('Post added successfully!');
-            document.getElementById('postForm').reset();
-            fetchData(channelId);
+            fetchChannels();
+            document.getElementById('channelForm').reset();
         } catch (error) {
-            console.error('Error adding post:', error);
-            alert('Error adding post: ' + error.message);
+            console.error('Error adding channel:', error);
+            alert('Error adding channel: ' + error.message);
         }
     });
 
-    async function fetchData(channelId) {
-        try {
-            const response = await fetch(`${pythonURI}/api/posts/filter`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ channel_id: channelId })
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch posts: ' + response.statusText);
-            }
-
-            const postData = await response.json();
-
-            const postCount = postData.length || 0;
-
-            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
-
-            const detailsDiv = document.getElementById('details');
-            detailsDiv.innerHTML = ''; 
-
-            postData.forEach(postItem => {
-                const postElement = document.createElement('div');
-                postElement.className = 'post-item';
-                postElement.innerHTML = `
-                    <h3>${postItem.title}</h3>
-                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
-                    <p><strong>User:</strong> ${postItem.user_name}</p>
-                    <p>${postItem.comment}</p>
-                `;
-                detailsDiv.appendChild(postElement);
-            });
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-
-    fetchGroups();
+    fetchChannels();
 </script>
-
