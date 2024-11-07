@@ -318,9 +318,7 @@ author: Ryan, Jowan, Gabriela, Michelle
         });
     }
 </script>
-</body>
-<a href="favorites.md" class="link-button">Go to Favorite Restaurants</a>
-</body>
+
 </html>
 
 
