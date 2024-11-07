@@ -47,7 +47,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
             margin: auto;
         }
         .voting-container:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
         /* Header Styling */
         .voting-container h2 {
@@ -258,21 +258,58 @@ Our group has chosen to focus on discussions about which drinks should be added 
             background-color: #00e6ff;
         }
     </style>
-</head>
-<body>
+        <!-- Community Guidelines Modal -->
     <div id="guidelinesModal" class="modal">
         <div class="modal-content">
-            <h2>Community Rules/Guidelines</h2>
+            <h2>Community Guidelines</h2>
+            <p>Welcome to the Beverage Debates! To maintain a respectful and productive discussion, please adhere to the following guidelines:</p>
             <ul>
-                <li>Be Respectful: Keep things light and friendly.</li>
-                <li>Keep it Family-Friendly: Use clean language.</li>
-                <li>Stay On-Topic: Focus on the debate question.</li>
-                <li>Vote Honestly: Vote once per debate.</li>
-                <li>One Account Only: Just one account per person.</li>
+                <li>Be respectful of others' opinions.</li>
+                <li>Refrain from using offensive language.</li>
+                <li>Focus on constructive feedback and sharing your preferences.</li>
+                <li>Stay on topic and avoid unrelated discussions.</li>
             </ul>
-            <button id="closeModal">I have read and acknowledged the rules</button>
+            <button id="closeModal">I Agree</button>
         </div>
     </div>
+<style>
+    /* Updated styles with purple gradient background and orange text/button */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+        background: linear-gradient(135deg, #4b0082, #6a0dad); /* Purple gradient background */
+        margin: 15% auto;
+        padding: 20px;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+        text-align: center;
+        color: white; /* Default color as fallback */
+    }
+    #closeModal {
+        background: linear-gradient(135deg, #FFA500, #FF4500); /* Orange gradient button */
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+    #closeModal:hover {
+        background: linear-gradient(135deg, #FF4500, #FFA500); /* Reverse gradient on hover */
+    }
+</style>
+</head>
     <div class="voting-container">
         <h2>Choose Your Beverage that you would like to be added to Del Norte Cafeteria</h2>
         <div class="voting-layout">
@@ -412,7 +449,6 @@ Our group has chosen to focus on discussions about which drinks should be added 
             }
         });
     </script>
-</body>
 </html>
 
 
