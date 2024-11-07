@@ -309,31 +309,55 @@ selectedHouse = element.getAttribute('data-house'); // Store corresponding house
 }
 
 function confirmChoice() {
-const messageBox = document.getElementById('messageBox');
-const imageBox = document.getElementById('imageBox');
-const houseImage = document.getElementById('houseImage'); // Get image element
+    const messageBox = document.getElementById('messageBox');
+    const imageBox = document.getElementById('imageBox');
+    const houseImage = document.getElementById('houseImage'); // Get image element
 
-if (!selectedCritter || !selectedHouse) {
-    alert("Please select a critter before confirming!"); // Alert if nothing is selected
-    return;
+    if (!selectedCritter || !selectedHouse) {
+        alert("Please select a critter before confirming!"); // Alert if nothing is selected
+        return;
+    }
+
+    // Save selectedHouse in local storage for later reference
+    localStorage.setItem('selectedHouse', selectedHouse);
+    console.log(`House saved to local storage: ${selectedHouse}`); // Log confirmation for saved house
+
+    // Set the message
+    const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
+    messageBox.innerHTML = message; // Display the message
+    messageBox.style.display = "block"; // Make the message visible
+
+    // Use template literals to construct the image source
+    const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
+    const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
+    houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
+
+    imageBox.style.display = "block"; // Show the image box
+
+    // Optional: Display the comment section after confirmation
+    document.getElementById("commentSection").style.display = "block";
+
+    // Remove any existing "Enter House" button before creating a new one
+    const existingButtonContainer = document.querySelector('#houseButtonContainer');
+    if (existingButtonContainer) {
+        existingButtonContainer.remove();
+    }
+
+    // Add the dynamic button for entering the house
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    buttonContainer.id = 'houseButtonContainer';
+    const enterHouseButton = document.createElement('button');
+    enterHouseButton.classList.add('button-text');
+    enterHouseButton.textContent = `Enter ${selectedHouse} House`;
+    enterHouseButton.onclick = function() {
+        console.log(`Navigating to the ${selectedHouse} House page`); // Log navigation action
+        window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
+    };
+
+    buttonContainer.appendChild(enterHouseButton);
+    document.getElementById('imageBox').appendChild(buttonContainer);
 }
-
-// Set the message
-const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
-messageBox.innerHTML = message; // Display the message
-messageBox.style.display = "block"; // Make the message visible
-
-// Use template literals to construct the image source
-const baseURL = "{{site.baseurl}}/images/calicocritters/"; // Base URL for images
-const houseImageFile = `${selectedCritter.toLowerCase()}house.png`; // Constructing the image file name
-houseImage.src = `${baseURL}${houseImageFile}`; // Set the image source
-
-imageBox.style.display = "block"; // Show the image box
-
-// Optional: Display the comment section after confirmation
-document.getElementById("commentSection").style.display = "block";
-}
-
 
 
 // Add a comment to the comment list and store it in local storage
@@ -424,7 +448,6 @@ function selectCritter(element) {
         existingButtonContainer.remove();
     }
 }
-
 function confirmChoice() {
     const messageBox = document.getElementById('messageBox');
     const imageBox = document.getElementById('imageBox');
@@ -434,6 +457,14 @@ function confirmChoice() {
         alert("Please select a critter before confirming!"); // Alert if nothing is selected
         return;
     }
+
+    // Save selectedHouse in local storage for later reference
+    localStorage.setItem('selectedHouse', selectedHouse);
+    console.log(`House saved to local storage: ${selectedHouse}`); // Log confirmation for saved house
+
+    // Save selectedCritter in local storage for later reference
+    localStorage.setItem('selectedCritter', selectedCritter);
+    console.log(`Critter saved to local storage: ${selectedCritter}`); // Log confirmation for saved critter
 
     // Set the message
     const message = `Congrats! You picked ${selectedCritter} and are in the ${selectedHouse} House!<br>Connect with others in the ${selectedHouse} House.`;
@@ -464,14 +495,13 @@ function confirmChoice() {
     enterHouseButton.classList.add('button-text');
     enterHouseButton.textContent = `Enter ${selectedHouse} House`;
     enterHouseButton.onclick = function() {
+        console.log(`Navigating to the ${selectedHouse} House page`); // Log navigation action
         window.location.href = '{{site.baseurl}}/voteforthegoat/calicovote/house'; 
     };
 
     buttonContainer.appendChild(enterHouseButton);
     document.getElementById('imageBox').appendChild(buttonContainer);
 }
-
-
 
 // Display comments on page load
 window.onload = displayComments;

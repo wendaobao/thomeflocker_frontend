@@ -6,7 +6,6 @@ title: Entering The House
 description: Enter the houses of your favorite critters
 Authors: Maryam, Nora, Kushi, Joanna
 ---
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
