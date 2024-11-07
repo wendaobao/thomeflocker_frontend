@@ -70,15 +70,49 @@ comments: true
             cursor: pointer;
             margin-top: 10px;
         }
+
+        .post-item {
+            background-color: #3a4c67;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+        }
+
+        .post-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .post-item p {
+            margin: 10px 0;
+            color: #ddd;
+        }
+
+        .post-item small {
+            color: #aaa;
+        }
+
+        .like-button {
+            background: none;
+            border: none;
+            color: #ff69b4;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .like-button span {
+            margin-left: 5px;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Voting Chatroom</h1>
 
         <!-- Group and Channel Selection -->
         <div class="card">
-            <h2>Select Group and Channel</h2>
             <label for="group">Group:</label>
             <select id="group">
                 <option value="general">General</option>
@@ -100,7 +134,7 @@ comments: true
 
         <!-- Post Creation -->
         <div class="card">
-            <h2>Add New Post</h2>
+
             <label for="title">Title:</label>
             <input type="text" id="title" placeholder="Enter title...">
 
@@ -125,7 +159,7 @@ comments: true
         const channelSelect = document.getElementById('channel');
 
         // Load posts from localStorage when the page loads
-        const posts = JSON.parse(localStorage.getItem('chatPosts')) || {};
+        let posts = JSON.parse(localStorage.getItem('chatPosts')) || {};
 
         // Function to add a new post
         function addPost() {
@@ -143,6 +177,8 @@ comments: true
                 title: title,
                 comment: comment,
                 timestamp: new Date().toLocaleString(),
+                likes: 0,
+                likedByUser: false, // Track if the post has been liked by the current user
             };
 
             // Initialize group and channel if not already present
@@ -153,12 +189,12 @@ comments: true
             posts[group][channel].push(newPost);
             localStorage.setItem('chatPosts', JSON.stringify(posts));
 
-            // Display the new post immediately
-            displayPost(newPost);
-
             // Clear the input fields
             titleInput.value = '';
             commentInput.value = '';
+
+            // Reload posts
+            loadPosts();
         }
 
         // Function to load posts for the selected group and channel
@@ -171,22 +207,52 @@ comments: true
 
             // Display posts for the selected group and channel
             if (posts[group] && posts[group][channel]) {
-                posts[group][channel].forEach(post => displayPost(post));
+                posts[group][channel].forEach(post => {
+                    const postDiv = document.createElement('div');
+                    postDiv.classList.add('post-item');
+                    postDiv.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <p>${post.comment}</p>
+                        <small>Posted on: ${post.timestamp}</small><br>
+                        <button class="like-button" onclick="likePost(event)">
+                            ${post.likedByUser ? '❤️' : '🤍'} <span id="like-count-${post.timestamp}">${post.likes}</span>
+                        </button>
+                    `;
+                    postFeedDiv.appendChild(postDiv);
+                });
             } else {
                 postFeedDiv.innerHTML = '<p>No posts available for this channel. Be the first to add one!</p>';
             }
         }
 
-        // Function to display a single post
-        function displayPost(post) {
-            const postDiv = document.createElement('div');
-            postDiv.classList.add('post-item');
-            postDiv.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.comment}</p>
-                <small>Posted on: ${post.timestamp}</small>
-            `;
-            postFeedDiv.appendChild(postDiv);
+        // Function to like or unlike a post
+        function likePost(event) {
+            const postDiv = event.target.closest('.post-item');
+            const postTitle = postDiv.querySelector('h3').innerText;
+
+            const group = groupSelect.value;
+            const channel = channelSelect.value;
+
+            let post = posts[group][channel].find(p => p.title === postTitle);
+
+            // Toggle like state
+            if (post.likedByUser) {
+                post.likes--;
+                post.likedByUser = false;
+            } else {
+                post.likes++;
+                post.likedByUser = true;
+            }
+
+            // Update the like count and button
+            const likeCount = postDiv.querySelector('span');
+            const likeButton = postDiv.querySelector('button');
+
+            likeCount.textContent = post.likes;
+            likeButton.innerHTML = post.likedByUser ? '❤️ <span>' + post.likes + '</span>' : '🤍 <span>' + post.likes + '</span>';
+
+            // Save the updated post
+            localStorage.setItem('chatPosts', JSON.stringify(posts));
         }
 
         // Initial load of posts
