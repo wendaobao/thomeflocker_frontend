@@ -9,7 +9,7 @@ comments: true
 ---
 
 <img src="{{ site.baseurl }}/images/dnerostore/Dnero_Store_Header.png" alt="Dnero Store Header" style="width: 100%; height: auto;">
-<a href="{{ site.baseurl }}/dnerostore-mod/" class="mod-rules-button">Mod Rules</a>
+<h2><a href="{{ site.baseurl }}/dnerostore-mod/" class="mod-rules-button"> Mod Rules </a></h2> 
 
 <details>
   <summary style="color: white;">Room Details</summary>
@@ -158,14 +158,6 @@ comments: true
     document.getElementById('group-select').value = 'Dnero Store';
     document.getElementById('channel-select').value = category;
   }
-
-  // Handle form submission
-  document.getElementById('postForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const title = document.getElementById('title').value;
-    const comment = document.getElementById('comment').value;
-    alert('Post added successfully! Title: ' + title + ' Comment: ' + comment);
-  });
 </script>
 
 <style>
@@ -230,3 +222,86 @@ comments: true
     margin-top: 20px;
   }
 </style>
+
+<script type="module">
+  import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
+  const argumentContainer = document.getElementById('argument-container');
+
+  // Fetch all arguments for a specific channel
+  async function fetchArguments(channelId) {
+    try {
+      const response = await fetch(`${pythonURI}/api/posts/filter`, {
+        ...fetchOptions,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ channel_id: channelId })
+      });
+
+      if (!response.ok) throw new Error('Failed to fetch arguments: ' + response.statusText);
+
+      const argumentsData = await response.json();
+      argumentContainer.innerHTML = ""; // Clear existing arguments
+
+      argumentsData.forEach(arg => {
+        const card = document.createElement("div");
+        card.classList.add("argument-card");
+
+        const text = document.createElement("p");
+        text.innerHTML = `<strong>${arg.user_name}:</strong> ${arg.comment}`; // Adjusted to match backend response structure
+
+        card.appendChild(text);
+        argumentContainer.appendChild(card);
+      });
+    } catch (error) {
+      console.error('Error fetching arguments:', error);
+    }
+  }
+
+  // Handle item selection
+  function selectItem(button, type, category) {
+    const color = type === 'most' ? 'green' : 'red';
+    button.style.backgroundColor = color;
+    button.style.color = 'white';
+
+    // Create a post when an item is selected
+    if (type === 'most') {
+      document.getElementById('group-select').value = "Dnero Store";
+      document.getElementById('channel-select').value = category;
+
+      const postForm = document.getElementById('post-form');
+      postForm.style.display = "block"; // Display post form
+    }
+  }
+
+  // Handle form submission
+  document.getElementById('postForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const comment = document.getElementById('comment').value;
+    const group = document.getElementById('group-select').value;
+    const channel = document.getElementById('channel-select').value;
+
+    const postData = {
+      title: title,
+      comment: comment,
+      channel_id: 22
+    }
+
+    try {
+      const response = await fetch(`${pythonURI}/api/post`, {
+        ...fetchOptions,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData)
+      });
+
+      if (!response.ok) throw new Error('Failed to add post: ' + response.statusText);
+      alert("Post added successfully!");
+
+    } catch (error) {
+      console.error('Error adding post:', error);
+    }
+  });
+</script>
