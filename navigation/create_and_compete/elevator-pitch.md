@@ -184,7 +184,7 @@ author: Manas, Lalita, Shriya, Ethan
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ section_name: "Elevator Pitch" }) // Adjust the section name as needed
+                body: JSON.stringify({ section_name: "Create and Compete" }) // Adjust the section name as needed
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
@@ -221,7 +221,7 @@ author: Manas, Lalita, Shriya, Ethan
             }
             const channels = await response.json();
             const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a Day</option>'; // Reset channels
+            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
             channels.forEach(channel => {
                 const option = document.createElement('option');
                 option.value = channel.id;
@@ -262,46 +262,101 @@ author: Manas, Lalita, Shriya, Ethan
     });
 
     /**
-     * Fetch data based on selected channel
+     * Handle form submission for adding a post
+     * Add Form Button: Computer handles form submission with request
+     */
+    document.getElementById('postForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        // Extract data from form
+        const title = document.getElementById('title').value;
+        const comment = document.getElementById('comment').value;
+        const channelId = document.getElementById('channel_id').value;
+
+        // Create API payload
+        const postData = {
+            title: title,
+            comment: comment,
+            channel_id: channelId
+        };
+
+        // Trap errors
+        try {
+            // Send POST request to backend, purpose is to write to database
+            const response = await fetch(`${pythonURI}/api/post`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(postData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add post: ' + response.statusText);
+            }
+
+            // Successful post
+            const result = await response.json();
+            alert('Post added successfully!');
+            document.getElementById('postForm').reset();
+            fetchData(channelId);
+        } catch (error) {
+            // Present alert on error from backend
+            console.error('Error adding post:', error);
+            alert('Error adding post: ' + error.message);
+        }
+    });
+
+    /**
+     * Fetch posts based on selected channel
+     * Handle response: Fetch and display posts
      */
     async function fetchData(channelId) {
         try {
             const response = await fetch(`${pythonURI}/api/posts/filter`, {
                 ...fetchOptions,
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({ channel_id: channelId })
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch posts: ' + response.statusText);
             }
-            const data = await response.json();
-            document.getElementById('count').textContent = `Total Posts: ${data.length}`;
-            displayPosts(data);
+
+            // Parse the JSON data
+            const postData = await response.json();
+
+            // Extract posts count
+            const postCount = postData.length || 0;
+
+            // Update the HTML elements with the data
+            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+
+            // Get the details div
+            const detailsDiv = document.getElementById('details');
+            detailsDiv.innerHTML = ''; // Clear previous posts
+
+            // Iterate over the postData and create HTML elements for each item
+            postData.forEach(postItem => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <h3>${postItem.title}</h3>
+                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
+                    <p><strong>User:</strong> ${postItem.user_name}</p>
+                    <p>${postItem.comment}</p>
+                `;
+                detailsDiv.appendChild(postElement);
+            });
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     }
 
-    /**
-     * Display posts in the details section
-     */
-    function displayPosts(posts) {
-        const details = document.getElementById('details');
-        details.innerHTML = ''; // Clear previous posts
-        posts.forEach(post => {
-            const postDiv = document.createElement('div');
-            postDiv.classList.add('post');
-            postDiv.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.comment}</p>
-                <p><strong>Submitted by:</strong> ${post.author}</p>
-            `;
-            details.appendChild(postDiv);
-        });
-    }
-
-    /**
-     * Initialize the page with groups
-     */
+    // Fetch groups when the page loads
     fetchGroups();
 </script>
