@@ -52,8 +52,7 @@ author: Arshia, Prajna, Mirabelle, Alex
   }
   body {
     background-color: #f7f4f9;
-  }
-  #mainContainer {
+  }#mainContainer {
     width: 90vw;
     height: 90vh;
     display: flex;
@@ -63,18 +62,12 @@ author: Arshia, Prajna, Mirabelle, Alex
     background-color: #fff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     border: 3px solid #ffcbdb;
-    background-image: url('https://via.placeholder.com/150'), url('https://via.placeholder.com/150');
-    background-position: top left, bottom right;
-    background-repeat: no-repeat;
   }
   #sidebar {
     width: 30%;
     background: #ffe4e1;
     padding: 20px;
     overflow-y: auto;
-    background-image: url('https://via.placeholder.com/100x100'), url('https://via.placeholder.com/100x100');
-    background-position: 20px 20px, right 20px bottom 20px;
-    background-repeat: no-repeat;
   }
   .chatBox {
     padding: 20px;
@@ -100,9 +93,6 @@ author: Arshia, Prajna, Mirabelle, Alex
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url('https://via.placeholder.com/100x100');
-    background-position: bottom left;
-    background-repeat: no-repeat;
   }
   #doodleImageContainer {
     width: 100%;
