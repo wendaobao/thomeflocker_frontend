@@ -20,7 +20,7 @@ Authors: Maryam, Nora, Kushi, Joanna
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            display: flex;
+            display: flex; 
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -130,7 +130,7 @@ Authors: Maryam, Nora, Kushi, Joanna
                 houseInfo.textContent = "No house selected.";
                 message.textContent = "Please go back and select a house.";
             }
-            displayPosts();
+            displayPosts(savedHouse);
         };
         function setBackground(house) {
             switch (house) {
@@ -194,6 +194,11 @@ Authors: Maryam, Nora, Kushi, Joanna
         }
         document.getElementById('backButton').addEventListener('click', goBack);
         document.getElementById('addPostButton').addEventListener('click', function() {
+            const savedHouse = localStorage.getItem('selectedHouse');
+            if (!savedHouse) {
+                alert('Please select a house first!');
+                return;
+            }
             const postContainer = document.createElement('div');
             postContainer.classList.add('post-container');
             const textArea = document.createElement('textarea');
@@ -217,29 +222,33 @@ Authors: Maryam, Nora, Kushi, Joanna
             postButton.textContent = 'Post';
             postButton.classList.add('post-button');
             postButton.onclick = function() {
-                savePost(textArea.value, imagePreview.src);
-                displayPosts();
+                savePost(savedHouse, textArea.value, imagePreview.src);
+                displayPosts(savedHouse);
                 postContainer.remove();
             };
             postContainer.appendChild(textArea);
             postContainer.appendChild(imageInput);
-                       postContainer.appendChild(imagePreview);
+            postContainer.appendChild(imagePreview);
             postContainer.appendChild(postButton);
             document.body.appendChild(postContainer);
         });
-        function savePost(content, imageSrc) {
+        function savePost(house, content, imageSrc) {
             if (!content.trim() && !imageSrc) {
                 alert('Post content or image cannot be empty!');
                 return;
             }
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
-            posts.push({ content: content.trim(), image: imageSrc, timestamp: new Date().toISOString() });
-            localStorage.setItem('posts', JSON.stringify(posts));
+            let postsByHouse = JSON.parse(localStorage.getItem('postsByHouse')) || {};
+            if (!postsByHouse[house]) {
+                postsByHouse[house] = [];
+            }
+            postsByHouse[house].push({ content: content.trim(), image: imageSrc, timestamp: new Date().toISOString() });
+            localStorage.setItem('postsByHouse', JSON.stringify(postsByHouse));
         }
-        function displayPosts() {
+        function displayPosts(house) {
             const postsContainer = document.getElementById('postsContainer');
             postsContainer.innerHTML = '';
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            let postsByHouse = JSON.parse(localStorage.getItem('postsByHouse')) || {};
+            let posts = postsByHouse[house] || [];
             posts.forEach(post => {
                 const postDiv = document.createElement('div');
                 postDiv.classList.add('post-container');
@@ -256,4 +265,4 @@ Authors: Maryam, Nora, Kushi, Joanna
     </script>
 </body>
 </html>
- 
+
