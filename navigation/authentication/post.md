@@ -5,7 +5,6 @@ permalink: /post
 menu: nav/home.html
 search_exclude: true
 ---
-
 <style>
     .container {
         display: flex;
@@ -45,6 +44,7 @@ search_exclude: true
         cursor: pointer;
     }
 </style>
+
 <div class="container">
     <div class="form-container">
         <h2>Select Group and Channel</h2>
@@ -61,6 +61,7 @@ search_exclude: true
         </form>
     </div>
 </div>
+
 <div class="container">
     <div class="form-container">
         <h2>Add New Post</h2>
@@ -73,6 +74,7 @@ search_exclude: true
         </form>
     </div>
 </div>
+
 <div class="container">
     <div id="data" class="data">
         <div class="left-side">
@@ -82,16 +84,18 @@ search_exclude: true
         </div>
     </div>
 </div>
+
 <script type="module">
     // Import server URI and standard fetch options
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
     /**
      * Fetch groups for dropdown selection
      * User picks from dropdown
      */
     async function fetchGroups() {
         try {
-            const response = await fetch(`${pythonURI}/api/groups/filter`, {
+            const response = await fetch(${pythonURI}/api/groups/filter, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -114,13 +118,14 @@ search_exclude: true
             console.error('Error fetching groups:', error);
         }
     }
+
     /**
      * Fetch channels based on selected group
      * User picks from dropdown
      */
     async function fetchChannels(groupName) {
         try {
-            const response = await fetch(`${pythonURI}/api/channels/filter`, {
+            const response = await fetch(${pythonURI}/api/channels/filter, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -144,6 +149,7 @@ search_exclude: true
             console.error('Error fetching channels:', error);
         }
     }
+
     /**
       * Handle group selection change
       * Channel Dropdown refresh to match group_id change
@@ -156,6 +162,7 @@ search_exclude: true
             document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
         }
     });
+
     /**
      * Handle form submission for selection
      * Select Button: Computer fetches and displays posts
@@ -170,26 +177,30 @@ search_exclude: true
             alert('Please select both group and channel.');
         }
     });
+
     /**
      * Handle form submission for adding a post
      * Add Form Button: Computer handles form submission with request
      */
     document.getElementById('postForm').addEventListener('submit', async function(event) {
         event.preventDefault();
+
         // Extract data from form
         const title = document.getElementById('title').value;
         const comment = document.getElementById('comment').value;
         const channelId = document.getElementById('channel_id').value;
+
         // Create API payload
         const postData = {
             title: title,
             comment: comment,
             channel_id: channelId
         };
+
         // Trap errors
         try {
             // Send POST request to backend, purpose is to write to database
-            const response = await fetch(`${pythonURI}/api/post`, {
+            const response = await fetch(${pythonURI}/api/post, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -197,9 +208,11 @@ search_exclude: true
                 },
                 body: JSON.stringify(postData)
             });
+
             if (!response.ok) {
                 throw new Error('Failed to add post: ' + response.statusText);
             }
+
             // Successful post
             const result = await response.json();
             alert('Post added successfully!');
@@ -211,13 +224,14 @@ search_exclude: true
             alert('Error adding post: ' + error.message);
         }
     });
+
     /**
      * Fetch posts based on selected channel
      * Handle response: Fetch and display posts
      */
     async function fetchData(channelId) {
         try {
-            const response = await fetch(`${pythonURI}/api/posts/filter`, {
+            const response = await fetch(${pythonURI}/api/posts/filter, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -228,15 +242,20 @@ search_exclude: true
             if (!response.ok) {
                 throw new Error('Failed to fetch posts: ' + response.statusText);
             }
+
             // Parse the JSON data
             const postData = await response.json();
+
             // Extract posts count
             const postCount = postData.length || 0;
+
             // Update the HTML elements with the data
-            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+            document.getElementById('count').innerHTML = <h2>Count ${postCount}</h2>;
+
             // Get the details div
             const detailsDiv = document.getElementById('details');
             detailsDiv.innerHTML = ''; // Clear previous posts
+
             // Iterate over the postData and create HTML elements for each item
             postData.forEach(postItem => {
                 const postElement = document.createElement('div');
@@ -249,10 +268,18 @@ search_exclude: true
                 `;
                 detailsDiv.appendChild(postElement);
             });
+            
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     }
+
     // Fetch groups when the page loads
     fetchGroups();
 </script>
+
+
+
+
+
+
