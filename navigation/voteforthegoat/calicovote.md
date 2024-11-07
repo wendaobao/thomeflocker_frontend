@@ -348,7 +348,7 @@ function confirmChoice() {
     }
 
     localStorage.setItem('houseDescription', houseDescription);
-    console.log(`Description saved to local storage: ${houseDescription}`); // Log confirmation for saved description
+    console.log(`House description saved to local storage: ${houseDescription}`); // Log confirmation for saved description
 
     // Save selectedCritter in local storage for later reference
     localStorage.setItem('selectedCritter', selectedCritter);
@@ -390,8 +390,6 @@ function confirmChoice() {
     buttonContainer.appendChild(enterHouseButton);
     document.getElementById('imageBox').appendChild(buttonContainer);
 }
-
-
 
 // Add a comment to the comment list and store it in local storage
 function addComment() {
