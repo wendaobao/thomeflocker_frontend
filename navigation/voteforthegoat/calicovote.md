@@ -214,8 +214,8 @@ body {
     right: 50px;
     height: 200px;
     width: 150px;
-    background-color: #D9AAE2;
-    border: 3px solid #D9AAE2;
+    background-color: #FFDFF7 !important;
+    border: 4px solid #BBDB9B;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding-top: 20px;
@@ -227,19 +227,19 @@ body {
     display: block;
     padding: 10px 20px;
     text-decoration: none;
-    color: #E4BCFF;
+    color: #EBA9D9 !important;
     font-weight: bold;
     transition: box-shadow 0.3s, color 0.3s, border-radius 0.3s;
 }
 
 .sidebar-button:hover {
-    box-shadow: 0 0 15px 5px #FFB6C1; 
-    color: #fff;
+    box-shadow: 0 0 15px 5px #5E8636; 
+    color: #9C5F8C !important;
     border-radius: 15px; 
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 </style>
 
