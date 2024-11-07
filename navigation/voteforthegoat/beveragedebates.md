@@ -257,6 +257,33 @@ Our group has chosen to focus on discussions about which drinks should be added 
         #closeModal:hover {
             background-color: #00e6ff;
         }
+        /* Results Section Styling */
+        .results-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+        .results-chart {
+            margin: 20px 0;
+        }
+        .beverage-result {
+            margin: 10px 0;
+        }
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
     </style>
         <!-- Community Guidelines Modal -->
     <div id="guidelinesModal" class="modal">
@@ -358,6 +385,15 @@ Our group has chosen to focus on discussions about which drinks should be added 
             <input type="text" id="suggestionInput" placeholder="Enter your beverage suggestion" style="margin-bottom: 10px; padding: 10px; border-radius: 8px; border: 1px solid #00c6ff; background: rgba(255, 255, 255, 0.2); color: #ffffff; font-size: 16px; outline: none; width: 100%; max-width: 300px;">
             <button class="submit-button" onclick="submitSuggestion()">Submit Suggestion</button>
         </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <h3>Current Results</h3>
+            <div id="votingResults" class="results-chart">
+                <!-- Results will be populated here -->
+            </div>
+            <button class="submit-button" onclick="refreshResults()">Refresh Results</button>
+        </div>
     </div>
     <script>
         let selectedBeverage = null;
@@ -402,6 +438,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
                     // Hide the reasoning input section after submission
                     document.getElementById('reasoningContainer').style.display = 'none';
                     document.getElementById('reasoningText').value = ''; // Clear the text area
+                    refreshResults(); // Refresh results after successful vote
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -448,6 +485,44 @@ Our group has chosen to focus on discussions about which drinks should be added 
                     console.error('Error:', error);
                 });
         }
+        function refreshResults() {
+            fetch('http://127.0.0.1:8887/api/results')
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error fetching results. Please try again.');
+                });
+        }
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('votingResults');
+            resultsContainer.innerHTML = ''; // Clear existing results
+
+            // Calculate total votes for percentage
+            const totalVotes = Object.values(data).reduce((a, b) => a + b, 0);
+
+            // Create bar for each beverage
+            for (const [beverage, votes] of Object.entries(data)) {
+                const percentage = (votes / totalVotes * 100).toFixed(1);
+                
+                const beverageResult = document.createElement('div');
+                beverageResult.className = 'beverage-result';
+                beverageResult.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>${beverage}</span>
+                        <span>${votes} votes (${percentage}%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percentage}%"></div>
+                    </div>
+                `;
+                resultsContainer.appendChild(beverageResult);
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const modal = document.getElementById("guidelinesModal");
             const closeModal = document.getElementById("closeModal");
@@ -457,6 +532,9 @@ Our group has chosen to focus on discussions about which drinks should be added 
             closeModal.onclick = function() {
                 modal.style.display = "none";
             }
+
+            // Load initial results
+            refreshResults();
         });
     </script>
 </html>
