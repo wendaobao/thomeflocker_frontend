@@ -61,6 +61,6 @@ menu: nav/shared_interests.html
        <div class="section">
            <h2>Chatroom</h2>
            <p>Make connections</p>
-           <button onclick="window.location.href='navigation/categories/overall'">Connect</button>
+           <button onclick="location.href='{{site.baseurl}}/navigation/shared_interests/overall'">Connect</button>
        </div>
 </div>
