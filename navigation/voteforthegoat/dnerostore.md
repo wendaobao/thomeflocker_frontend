@@ -23,25 +23,25 @@ comments: true
     <div id="food-drink-items" class="item-list-container" style="display: none;">
       <p>Please select your favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Trail Mix</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Nutella</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Famous Amos</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Chips</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Sports Drinks</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Fruit Snacks</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Water</button>
-        <button onclick="selectItem(this, 'most', 'Food and Drink')">Pizza</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Trail Mix</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Nutella</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Famous Amos</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Chips</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Sports Drinks</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Fruit Snacks</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Water</button>
+        <button onclick="selectItem(this, 'most', 'Food and Drink')" data-channel-id="28">Pizza</button>
       </div>
       <p>Please select your LEAST favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Trail Mix</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Nutella</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Famous Amos</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Chips</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Sports Drinks</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Fruit Snacks</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Water</button>
-        <button onclick="selectItem(this, 'least', 'Food and Drink')">Pizza</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Trail Mix</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Nutella</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Famous Amos</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Chips</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Sports Drinks</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Fruit Snacks</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Water</button>
+        <button onclick="selectItem(this, 'least', 'Food and Drink')" data-channel-id="28">Pizza</button>
       </div>
     </div>
   </div>
@@ -52,15 +52,15 @@ comments: true
     <div id="spirit-items" class="item-list-container" style="display: none;">
       <p>Please select your favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'most', 'Spirit')">Morning Song</button>
-        <button onclick="selectItem(this, 'most', 'Spirit')">DNHS T-shirt</button>
-        <button onclick="selectItem(this, 'most', 'Spirit')">1 Pom Pom</button>
+        <button onclick="selectItem(this, 'most', 'Spirit')" data-channel-id="29">Morning Song</button>
+        <button onclick="selectItem(this, 'most', 'Spirit')" data-channel-id="29">DNHS T-shirt</button>
+        <button onclick="selectItem(this, 'most', 'Spirit')" data-channel-id="29">1 Pom Pom</button>
       </div>
       <p>Please select your LEAST favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'least', 'Spirit')">Morning Song</button>
-        <button onclick="selectItem(this, 'least', 'Spirit')">DNHS T-shirt</button>
-        <button onclick="selectItem(this, 'least', 'Spirit')">1 Pom Pom</button>
+        <button onclick="selectItem(this, 'least', 'Spirit')" data-channel-id="29">Morning Song</button>
+        <button onclick="selectItem(this, 'least', 'Spirit')" data-channel-id="29">DNHS T-shirt</button>
+        <button onclick="selectItem(this, 'least', 'Spirit')" data-channel-id="29">1 Pom Pom</button>
       </div>
     </div>
   </div>
@@ -71,15 +71,15 @@ comments: true
     <div id="limited-edition-items" class="item-list-container" style="display: none;">
       <p>Please select your favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'most', 'Limited Edition')">Candy</button>
-        <button onclick="selectItem(this, 'most', 'Limited Edition')">Squishmallow mini</button>
-        <button onclick="selectItem(this, 'most', 'Limited Edition')">Starbucks SDSU Tumbler</button>
+        <button onclick="selectItem(this, 'most', 'Limited Edition')" data-channel-id="30">Candy</button>
+        <button onclick="selectItem(this, 'most', 'Limited Edition')" data-channel-id="30">Squishmallow mini</button>
+        <button onclick="selectItem(this, 'most', 'Limited Edition')" data-channel-id="30">Starbucks SDSU Tumbler</button>
       </div>
       <p>Please select your LEAST favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'least', 'Limited Edition')">Candy</button>
-        <button onclick="selectItem(this, 'least', 'Limited Edition')">Squishmallow mini</button>
-        <button onclick="selectItem(this, 'least', 'Limited Edition')">Starbucks SDSU Tumbler</button>
+        <button onclick="selectItem(this, 'least', 'Limited Edition')" data-channel-id="30">Candy</button>
+        <button onclick="selectItem(this, 'least', 'Limited Edition')" data-channel-id="30">Squishmallow mini</button>
+        <button onclick="selectItem(this, 'least', 'Limited Edition')" data-channel-id="30">Starbucks SDSU Tumbler</button>
       </div>
     </div>
   </div>
@@ -90,13 +90,13 @@ comments: true
     <div id="gift-card-items" class="item-list-container" style="display: none;">
       <p>Please select your favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'most', 'Gift Cards')">Chik-fil-a</button>
-        <button onclick="selectItem(this, 'most', 'Gift Cards')">Canes</button>
+        <button onclick="selectItem(this, 'most', 'Gift Cards')" data-channel-id="31">Chik-fil-a</button>
+        <button onclick="selectItem(this, 'most', 'Gift Cards')" data-channel-id="31">Canes</button>
       </div>
       <p>Please select your LEAST favorite item from this list:</p>
       <div class="item-list">
-        <button onclick="selectItem(this, 'least', 'Gift Cards')">Chik-fil-a</button>
-        <button onclick="selectItem(this, 'least', 'Gift Cards')">Canes</button>
+        <button onclick="selectItem(this, 'least', 'Gift Cards')" data-channel-id="31">Chik-fil-a</button>
+        <button onclick="selectItem(this, 'least', 'Gift Cards')" data-channel-id="31">Canes</button>
       </div>
     </div>
   </div>
@@ -157,6 +157,9 @@ comments: true
     // Set the group to "Dnero Store" and set the category for the dropdown
     document.getElementById('group-select').value = 'Dnero Store';
     document.getElementById('channel-select').value = category;
+
+    const channelID = button.getAttribute('data-channel-id');
+    document.getElementById('postForm').setAttribute('data-channel-id', channelID); // Save the channel ID to the form
   }
 </script>
 
@@ -226,8 +229,6 @@ comments: true
 <script type="module">
   import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
 
-  const argumentContainer = document.getElementById('argument-container');
-
   // Fetch all arguments for a specific channel
   async function fetchArguments(channelId) {
     try {
@@ -282,11 +283,11 @@ comments: true
     const comment = document.getElementById('comment').value;
     const group = document.getElementById('group-select').value;
     const channel = document.getElementById('channel-select').value;
-
+    const channelID = document.getElementById('postForm').getAttribute('data-channel-id'); // Retrieve the saved channel ID
     const postData = {
       title: title,
       comment: comment,
-      channel_id: 22
+      channel_id: channelID
     }
 
     try {
