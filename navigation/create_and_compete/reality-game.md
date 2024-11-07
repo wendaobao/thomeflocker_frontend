@@ -258,13 +258,31 @@ author: Yash, Nikhil, Rohan, Neil
 </script>
 
 <script>
+    async function fetchPosts() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('postId');
+        console.log(postId)
+        console.log("test")
+
+        try {
+            const response = await fetch(`${pythonURI}/api/post`, fetchOptions);
+            if (!response.ok) {
+                throw new Error('Failed to fetch groups: ' + response.statusText);
+            }
+            const posts = await response.json();
+            console.log(posts)
+
+        } catch (error) {
+            console.error('Error fetching groups:', error);
+        }
+    }
+    fetchPosts();
+
     // file upload functionality
     function triggerFileUpload() {
         document.getElementById('file-input').click();
     }
-</script>
 
-<script>
     function toggleRedirect() {
         const checkbox = document.getElementById('toggle-switch');
         if (checkbox.checked) {
