@@ -22,7 +22,7 @@ permalink: 1
         <h2 style="margin-top: 0;">Rules of the Cipher Forum</h2>
         <ul>
             <li>Respect all members and their opinions.</li>
-            <li>No spamming or irrelevant content.</li>
+            <li>No spamming or irrelevant content!</li>
             <li>Stay on topic and keep discussions related to ciphers.</li>
             <li>Help others in the community when possible.</li>
             <li>No sharing answers to level!</li>
@@ -50,6 +50,7 @@ permalink: 1
     };
 </script>
 
+
 ---
 
 <div style="display: block; margin-left: auto; margin-right: auto;">
@@ -58,7 +59,7 @@ permalink: 1
 
 ### 🛠 Announcements 🛠
 <div style="background-color: #27293d; padding: 20px; border-radius: 8px; border: 2px solid #ffce00; color: #e0e0e0;">
-🔒 **Current Challenge**: Crack today’s cipher within the hour!  
+🔒 **Current Challenges**: Crack today’s cipher within the hour!  
 🕒 **Next Update**: New challenge releases every hour!  
 💡 **Hint**: Pay attention to every detail...
 </div>
