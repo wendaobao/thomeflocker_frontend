@@ -47,7 +47,12 @@ author: Arhaan, Akshaj, Mihir, and Keerthan
    </div>
 
    <!-- Feedback Button -->
-   <button id="feedback-button" class="feedback-button" onclick="window.location.href='{{site.baseurl}}/create_and_compete/feedback'">Feedback</button>
+   <button id="feedback-button" class="feedback-button" onclick="window.location.href='{{site.baseurl}}/create_and_compete/feedback'">Interactive Chat</button>
+
+    <!-- Comments Button -->
+   <button onclick="window.location.href= 'https://github.com/ArhaanM123/Arhaan_2025/issues/11'" class="Comment-button">
+       Feedback
+   </button>
 
    <!-- Leaderboard Section -->
    <section id="leaderboard-section">
