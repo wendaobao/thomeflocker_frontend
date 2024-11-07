@@ -11,4 +11,6 @@ Welcome to the Chess Forum!
 ## Zones
 - <a href="{{site.baseurl}}/chess/hangout">Hangout Zone</a>
 
-- <a href="{{site.baseurl}}/chess/rules">Rules</a>
+- <a href="{{site.baseurl}}/chess/rules">Moderation Rules</a>
+
+
