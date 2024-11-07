@@ -319,8 +319,8 @@ Our group has chosen to focus on discussions about which drinks should be added 
                 <h3>Vote for a Beverage</h3>
                 <button class="option-button" onclick="selectOption('Coke')">Coke</button>
                 <button class="option-button" onclick="selectOption('Gatorade')">Gatorade</button>
-                <button class="option-button" onclick="selectOption('Banana milk')">Banana milk</button>
-                <button class="option-button" onclick="selectOption('Coconut water')">Coconut water</button>
+                <button class="option-button" onclick="selectOption('Slushie')">Slushie</button>
+                <button class="option-button" onclick="selectOption('Sparkling water')">Sparkling water</button>
                 <div class="selected-option" id="selectedOption">Your Choice: None</div>
                 <button class="submit-button" onclick="submitVote()">Submit Vote</button>
             </div>
@@ -333,13 +333,13 @@ Our group has chosen to focus on discussions about which drinks should be added 
                     <img src="https://www.kroger.com/product/images/large/right/0005200012324" alt="Gatorade">
                     <p>Ingredients: Water, Sugar, Dextrose, Citric Acid, Natural and Artificial Flavor, Salt, Sodium Citrate, Monopotassium Phosphate, Modified Food Starch, Red 40</p>
                 </div>
-                <div id="banana-milk-details" class="beverage-details">
-                    <img src="https://m.media-amazon.com/images/I/6177MtlTnkL.jpg" alt="Banana Milk">
-                    <p>Ingredients: Milk, Banana Puree, Sugar, Natural Flavors, Vitamins A & D</p>
+                <div id="slushie-details" class="beverage-details">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcKttWx6W8_lfSWn8x7b7Yi1yByHLRYpiARA&s" alt="Slushie">
+                    <p>Ingredients: Water, High Fructose Corn Syrup, Natural and Artificial Flavors, Citric Acid, Food Coloring</p>
                 </div>
-                <div id="coconut-water-details" class="beverage-details">
-                    <img src="https://pics.walgreens.com/prodimg/476175/450.jpg" alt="Coconut Water">
-                    <p>Ingredients: 100% Natural Coconut Water, No Added Sugar or Preservatives</p>
+                <div id="sparkling-water-details" class="beverage-details">
+                    <img src="https://m.media-amazon.com/images/I/81NJpYOskkL.jpg" alt="Sparkling Water">
+                    <p>Ingredients: Carbonated Water, Natural Flavors</p>
                 </div>
             </div>
         </div>
