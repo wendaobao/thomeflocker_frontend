@@ -2,7 +2,7 @@
 layout: base
 title: CipherHome
 search_exclude: true
-permalink: /cipherhome/
+permalink: 1
 ---
 
 # 🔐 **Cipher Team**
