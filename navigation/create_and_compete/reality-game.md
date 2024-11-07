@@ -52,17 +52,6 @@ author: Yash, Nikhil, Rohan, Neil
     }
 </style>
 
-<table class="sub-menu">
-    <tr>
-        <td>
-            <label class="switch">
-                <input type="checkbox" id="toggle-switch" onclick="toggleRedirect()">
-                <span class="slider round"></span>
-            </label>
-        </td>
-    </tr>
-</table>
-
 <div id="main-content">
     <div id="chatPanel">
         <h3>Game</h3>
@@ -336,31 +325,31 @@ author: Yash, Nikhil, Rohan, Neil
 <script>
     // Function to send message to Gemini API and display response
     async function sendToGeminiAPI(userMessage) {
-    const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBOUekV-txUye0_jpkGlfRe3PMk7Q9GHic";
+        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBOUekV-txUye0_jpkGlfRe3PMk7Q9GHic";
 
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{ text: userMessage }]
-                }]
-            })
-        });
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: `You are pretending to be a human as a part of a game, respond like one to this message. Use incorrect punctuation sometimes, acronyms, slang, etc. Minimal emojis and if user asks content question that is above 10th grade level explain that you don't know. Pretend to be male. ${userMessage}` }]
+                    }]
+                })
+            });
 
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.candidates[0].content.parts[0].text; // Adjusted to match Postman response structure
+        } catch (error) {
+            console.error('Error communicating with Gemini API:', error);
+            return "An error occurred while communicating with the AI.";
         }
-
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text; // Adjusted to match Postman response structure
-    } catch (error) {
-        console.error('Error communicating with Gemini API:', error);
-        return "An error occurred while communicating with the AI.";
-    }
     }
 
     // Chat functionality
