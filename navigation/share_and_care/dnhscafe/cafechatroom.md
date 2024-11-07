@@ -5,9 +5,20 @@ permalink: /dnhscafestudyroom
 menu: nav/home.html
 search_exclude: true
 ---
-## Choose the share and care group, and select the subject channel you'd like to contribute to!
+<h2> Choose the share and care group, and select the subject channel you'd like to contribute to! </h2>
 
 <style>
+    body { 
+    background: linear-gradient(135deg, #a17a64, #452f22); /* Dark brown to light brown */
+    background-attachment: fixed; /* Keeps background fixed */
+    color: #333333; /* Darker text color for better readability */
+    font-family: Arial, sans-serif; 
+    min-height: 100vh; /* Ensures it covers the viewport height */ 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
     .container {
         display: flex;
         justify-content: center;
@@ -21,7 +32,7 @@ search_exclude: true
         flex-direction: column;
         max-width: 800px;
         width: 100%;
-        background-color: #2C3E50;
+        background-color: #ba9163;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
