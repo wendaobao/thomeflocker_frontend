@@ -325,7 +325,6 @@ author: Ryan, Jowan, Gabriela, Michelle
 
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
