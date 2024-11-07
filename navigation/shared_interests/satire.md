@@ -275,11 +275,6 @@ DNHS Satire Home Page
 </style>
 
 <!-- HTML Structure -->
-<div class="container">
-  <!-- Login Bar -->
-  <div class="login-bar">
-    <a href="#">Login</a>
-  </div>
 
   <!-- Intro Blurb -->
   <div class="intro-blurb">
@@ -295,7 +290,7 @@ DNHS Satire Home Page
   <!-- Main Layout with Sidebar and Feed -->
   <div class="main-layout">
     
-    <!-- Left Sidebar (Add Post and Search Bar) -->
+  <!-- Left Sidebar (Add Post and Search Bar) -->
   <div class="left-sidebar">
       <button class="add-post" onclick="togglePostForm()"><img src="{{site.baseurl}}//images/p1group5images/plusicon.png"></button>
       <p>Add new post</p>
@@ -303,14 +298,84 @@ DNHS Satire Home Page
         <input type="text" placeholder="Search...">
       </div>
 
-      <!-- Add Post Form -->
-   <div class="post-form" id="postForm">
-        <textarea id="postContent" placeholder="What's on your mind?"></textarea>
-        <button onclick="addPost()" id="postButton">Post</button>
-      </div>
+<!-- Add Post Form -->
+<div class="post-form" id="postForm">
+  <textarea id="postContent" placeholder="What's on your mind?"></textarea>
+  <button onclick="addPost()" id="postButton">Post</button>
+  <button onclick="toggleHashtags()" id="hashtagButton"># Hashtag</button>
+  
+  <!-- Hashtag List (Hidden by default) -->
+  <div id="hashtagList" style="display: none;">
+    <button onclick="addHashtag('#Satire')">#Satire</button>
+    <button onclick="addHashtag('#DNHS')">#DNHS</button>
+    <button onclick="addHashtag('#Fun')">#Fun</button>
+    <button onclick="addHashtag('#Community')">#Community</button>
+    <!-- Add more hashtags as needed -->
   </div>
+</div>
+</div>
 
-    <!-- Center Feed (Posts) -->
+<script>
+  function togglePostForm() {
+    const form = document.getElementById("postForm");
+    form.style.display = form.style.display === "flex" ? "none" : "flex";
+  }
+
+  function toggleHashtags() {
+    const hashtagList = document.getElementById("hashtagList");
+    hashtagList.style.display = hashtagList.style.display === "none" ? "block" : "none";
+  }
+
+  function addHashtag(hashtag) {
+    const postContent = document.getElementById("postContent");
+    postContent.value += " " + hashtag; // Add the hashtag to the post content
+  }
+
+  function addPost() {
+    const content = document.getElementById("postContent").value;
+    if (content.trim() === "") {
+      alert("Please enter some content for your post!");
+      return;
+    }
+
+    const feed = document.getElementById("feed");
+
+    // Create a new post element
+    const newPost = document.createElement("div");
+    newPost.className = "post";
+    newPost.textContent = content;
+
+    // Add post actions (like, comment, share)
+    const postActions = document.createElement("div");
+    postActions.className = "post-actions";
+
+    const likeButton = document.createElement("button");
+    likeButton.className = "like";
+    likeButton.textContent = "Like";
+
+    const commentButton = document.createElement("button");
+    commentButton.className = "comment";
+    commentButton.textContent = "Comment";
+
+    const shareButton = document.createElement("button");
+    shareButton.className = "share";
+    shareButton.textContent = "Share";
+
+    postActions.appendChild(likeButton);
+    postActions.appendChild(commentButton);
+    postActions.appendChild(shareButton);
+
+    // Append actions to the post and post to the feed
+    newPost.appendChild(postActions);
+    feed.prepend(newPost);
+
+    // Clear the form and hide it
+    document.getElementById("postContent").value = "";
+    togglePostForm();
+  }
+</script>
+
+  <!-- Center Feed (Posts) -->
   <div class="feed" id="feed">
       <!--<div class="post">This is a sample post content. Users can post here.</div>
       <div class="post-actions">
@@ -320,7 +385,7 @@ DNHS Satire Home Page
       </div>-->
     </div>
 
-    <!-- Right Sidebar (Profile and Activity) -->
+  <!-- Right Sidebar (Profile and Activity) -->
    <div class="right-sidebar">
       <div class="profile">
         <div class="profile-pic">Profile</div>
@@ -333,7 +398,6 @@ DNHS Satire Home Page
         <button>Followers/Following</button>
       </div>
     </div>
-
   </div>
 </div>
 
