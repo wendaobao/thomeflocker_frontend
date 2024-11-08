@@ -24,8 +24,6 @@ author: Bailey, Travis, Leon, Anyi
 </table>
 <!-- END OF NAV MENU -->
 
-DNHS Satire Home Page
-
 <style>
   /* Reset */
   * {
@@ -312,7 +310,6 @@ DNHS Satire Home Page
     <button onclick="addHashtag('#Community')">#Community</button>
     <!-- Add more hashtags as needed -->
   </div>
-</div>
 </div>
 
 <script>
