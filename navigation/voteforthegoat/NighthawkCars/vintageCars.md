@@ -100,14 +100,6 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
             overflow-y: auto; /* Scrollable */
             margin-top: 40px; /* Space above message box */
         }
-        .box11{
-            background-color: #000000;
-            border: 4px solid #ffffff; /* Light gray border */
-            padding: 10px; /* Padding inside the box */
-            max-height: 200px; /* Maximum height */
-            overflow-y: auto; /* Scrollable */
-            margin-top: 10px; /* Space above message box */
-        }
         #comment {
             width: 100%;      /* Full width of the container */
             height: 200px;    /* Height of the textarea */
