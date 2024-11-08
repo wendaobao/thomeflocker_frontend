@@ -176,6 +176,7 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
         }
     </style>
 </head>
+
 <body>
 
 <h3>Examples</h3>
@@ -189,7 +190,6 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
     <p>Chevorlet Trax</p>
     <img src="https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2024/suvs/trax/masthead/02-images/2024-trax-mov-masthead.png?imwidth=960" alt="Trax" style="width:450px;height:200px;">
 </div>
-
 
 <h3>Pricing</h3>
 <table>
@@ -223,7 +223,6 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
         <td><p>$21,495</p></td>
         <td><p>$24,000</p></td>
     </tr>
-
 </table>
 
 <h3>Voting</h3>
@@ -236,31 +235,10 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
 
 <h2>Discussion</h2>
 <textarea placeholder="Enter your thoughts or comments here..." id="comment"></textarea>
-<button onclick="addComment()"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Add Comment</p></button>
+<button onclick="addComment(22)"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Add Comment</p></button>
 
 <div class="message-box" id="messageBox">
     <p><strong>Messages:</strong></p>
 </div>
-
-<script>
-function addComment() {
-    // Get the value of the textarea
-    const comment = document.getElementById("comment").value;
-
-    // Check if the comment is not empty
-    if (comment.trim() !== "") {
-        // Create a new paragraph element for the comment
-        const newComment = document.createElement("p");
-        newComment.textContent = `- You: ${comment}`;
-
-        // Add the new comment to the message box
-        document.getElementById("messageBox").appendChild(newComment);
-
-        // Clear the textarea
-        document.getElementById("comment").value = "";
-    }
-    else {
-        alert("Please say something")
-    }
-}
-</script>
+</body>
+</html>

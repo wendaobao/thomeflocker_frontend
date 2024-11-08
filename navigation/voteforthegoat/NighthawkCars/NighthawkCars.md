@@ -80,24 +80,7 @@ comments: true
             cursor: pointer;
         }
         body {
-            background-color: white;
-            color: rgb(255, 80, 80);
-            font-family: Helvetica, sans-serif;
-        }
-        h2, h3 {
-            color: rgb(255, 80, 80);
-            border-bottom: 2px solid rgb(255, 80, 80);
-            font-weight: bold; /* Bold text */
-            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8),  /* White shadow */
-                         2px 2px 0 rgba(255, 255, 255, 0.6); /* Lighter shadow */
-            border-radius: 10px; /* Rounded effect */
-            padding: 10px; /* Space around the text */
-        }
-        p {
-            color: white;   
-        }
-        body {
-            background: linear-gradient(135deg, #333333, #ff4d4d, #ffffff); /* 180deg for top-to-bottom gradient */
+            background: linear-gradient(180deg, #333333, #ff4d4d, #ffffff); /* 180deg for top-to-bottom gradient */
             color: #ffffff;
             font-family: Arial, sans-serif;
             min-height: 100vh;
@@ -169,65 +152,13 @@ comments: true
             max-height: 150px;
             object-fit: cover;
         }
-        .message-box1 {
-            background-color: #000000;
-            border: 4px solid #ffffff; /* Light gray border */
-            padding: 10px; /* Padding inside the box */
-            height: 150px; /* Fixed height */
-            overflow-y: auto; /* Scrollable */
-            margin-top: 40px; /* Space above message box */
+        .iframe-container {
+            align-items: center;
+            padding-top: 20px; /* Add padding if you want to adjust vertical centering */
         }
-        .message-box1p{
-            background-color: #000000;
-            border: 4px solid #ffffff; /* Light gray border */
-            padding: 10px; /* Padding inside the box */
-            height: 150px; /* Fixed height */
-            overflow-y: auto; /* Scrollable */
-            margin-top: 40px; /* Space above message box */
-        }
-        .box11{
-            background-color: #000000;
-            border: 4px solid #ffffff; /* Light gray border */
-            padding: 10px; /* Padding inside the box */
-            max-height: 200px; /* Maximum height */
-            overflow-y: auto; /* Scrollable */
-            margin-top: 10px; /* Space above message box */
-        }
-        #comment {
-            width: 100%;      /* Full width of the container */
-            height: 200px;    /* Height of the textarea */
-            padding: 15px;    /* Padding inside the box */
-            font-size: 16px;  /* Larger font size for better readability */
-            border-radius: 8px; /* Rounded corners */
-            border: 3px solid #C0C0C0; /* Border color */
-            resize: vertical; /* Allows users to adjust height but not width */
-        }
-        #commentInput {
-            width: 100%;      /* Full width of the container */
-            height: 90px;    /* Height of the textarea */
-            padding: 15px;    /* Padding inside the box */
-            font-size: 16px;  /* Larger font size for better readability */
-            border-radius: 8px; /* Rounded corners */
-            border: 3px solid #C0C0C0; /* Border color */
-            resize: vertical; /* Allows users to adjust height but not width */
-        }
-        #nameInput {
-            width: 100%;      /* Full width of the container */
-            height: 59px;    /* Height of the textarea */
-            padding: 15px;    /* Padding inside the box */
-            font-size: 16px;  /* Larger font size for better readability */
-            border-radius: 8px; /* Rounded corners */
-            border: 3px solid #C0C0C0; /* Border color */
-            resize: vertical; /* Allows users to adjust height but not width */
-        }
-        #optionSelect {
-            width: 50%;      /* Full width of the container */
-            height: 58px;    /* Height of the textarea */
-            padding: 15px;    /* Padding inside the box */
-            font-size: 16px;  /* Larger font size for better readability */
-            border-radius: 8px; /* Rounded corners */
-            border: 3px solid #C0C0C0; /* Border color */
-            resize: vertical; /* Allows users to adjust height but not width */
+        iframe {
+            display: center;
+            margin: 0 auto;
         }
     </style>
 </head>
