@@ -250,16 +250,21 @@ author: Nolan, Jacob, Claire
     console.log(__data);
   }
 
+  let posts = [];
   async function getPosts() {
-    const rawData = await fetch(`${pythonURI}/api/posts/`, {
+    const rawData = await fetch(`${pythonURI}/api/posts`, {
       ...fetchOptions,
     });
 
     let dat = await rawData.json();
     console.log("dat", dat);
+
+    dat.forEach(da => {
+      if(da.channel_name === "Combos") posts.push(da);
+    })
   }
 
-  console.log("getting posts");
+  console.log("getting posts (fix) 2x");
   getPosts();
 
   function addComment(id) {
