@@ -244,24 +244,39 @@ author: Ryan, Jowan, Gabriela, Michelle
 <h1 class="about-header">ABOUT THIS HANGOUT:</h1>
 <p class="about-paragraph">This is a hangout all about people's favorite food, restaurants, and more! Explore and have fun!</p>
 
-<button class="collapsible">MODERATION RULES</button>
-<div class="content">
-    <p class="rules-paragraph">1. Please do not use profanity in the hangout.</p>
-    <p class="rules-paragraph">2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
-    <p class="rules-paragraph">3. Reminder that your data is stored in a (local) backend.</p>
-    <p class="rules-paragraph">4. Please do NOT spam flood the chat.</p>
-    <p class="rules-paragraph">5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
-    <p class="rules-paragraph">6. Do NOT impersonate people.</p>
+<!-- Moderation Rules Dropdown -->
+<div class="dropdown">
+    <button class="collapsible">MODERATION RULES</button>
+    <div class="content">
+        <p class="rules-paragraph">1. Please do not use profanity in the hangout.</p>
+        <p class="rules-paragraph">2. Please be respectful of others. Think before you chat or use any of the interactive features.</p>
+        <p class="rules-paragraph">3. Reminder that your data is stored in a (local) backend.</p>
+        <p class="rules-paragraph">4. Please do NOT spam flood the chat.</p>
+        <p class="rules-paragraph">5. Stay on task. This hangout is for people to talk about food, recipes, and restaurants.</p>
+        <p class="rules-paragraph">6. Do NOT impersonate people.</p>
+    </div>
 </div>
 
-<!-- Image Section Re-integrated -->
+<!-- Image Row Section -->
 <div class="image-row">
     <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
     <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
     <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
 </div>
 
-<!-- Restaurant List Section with Heart Toggle -->
+<!-- Chat and Restaurant Section -->
+<div class="chat-container">
+    <div class="chat-label">Chat Box</div>
+    <div class="chat-box" id="chatBox">
+        <!-- Messages will appear here -->
+    </div>
+    <div class="input-box">
+        <input type="text" id="userName" placeholder="Enter your name..." />
+        <input type="text" id="userInput" placeholder="Share a recipe or restaurant..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
 <h1>Local Restaurants</h1>
 <ul class="restaurant-list">
     <li class="restaurant-item">
@@ -269,7 +284,11 @@ author: Ryan, Jowan, Gabriela, Michelle
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
-        <strong>Chick-fil-A</strong>
+        <strong>Chick-fil-A (Del Sur)</strong>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <strong>California Pizza Kitchen</strong>
         <span class="heart" onclick="toggleHeart(this)">♡</span>
     </li>
     <li class="restaurant-item">
@@ -307,8 +326,41 @@ author: Ryan, Jowan, Gabriela, Michelle
             heartElement.innerText = '♡';
         }
     }
+
+    // Chat functionality
+    function sendMessage() {
+        const name = document.getElementById("userName").value;
+        const message = document.getElementById("userInput").value;
+        const chatBox = document.getElementById("chatBox");
+
+        if (name && message) {
+            const chatMessage = document.createElement("div");
+            chatMessage.classList.add("chat-message");
+            chatMessage.textContent = `${name}: ${message}`;
+            chatBox.appendChild(chatMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            document.getElementById("userName").value = "";
+            document.getElementById("userInput").value = "";
+        } else {
+            alert("Please enter both your name and a message!");
+        }
+    }
+
+    // Collapsible Moderation Rules Dropdown
+    var collapsibles = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < collapsibles.length; i++) {
+        collapsibles[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
 </script>
 
 </body>
 </html>
-
