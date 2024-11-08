@@ -273,38 +273,36 @@ author: Yash, Nikhil, Rohan, Neil
         color: #666;
         margin-left: 10px;
     }
+    .typing-indicator {
+        font-style: italic;
+        color: #888;
+        margin: 5px;
+    }
 </style>
 
 <script>
-        // Array of random names and states
-        const names = ["John", "Sarah", "Alex", "Emily", "Michael", "Jessica", "David", "Laura"];
-        const states = ["Iowa", "California", "New York", "Texas", "Florida", "Nevada", "Ohio", "Michigan"];
+    const names = ["John", "Sarah", "Alex", "Emily", "Michael", "Jessica", "David", "Laura"];
+    const states = ["Iowa", "California", "New York", "Texas", "Florida", "Nevada", "Ohio", "Michigan"];
 
-        // Function to get a random item from an array
-        function getRandomItem(array) {
-            return array[Math.floor(Math.random() * array.length)];
-        }
+    function getRandomItem(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
 
-        // Function to display the tricky welcome message
-        function displayTrickyMessage() {
-            const randomName = getRandomItem(names);
-            const randomState = getRandomItem(states);
-            const message = `Loading... You connected to ${randomName} from ${randomState}!`;
+    const randomName = getRandomItem(names);
+    const randomState = getRandomItem(states);
+    function displayTrickyMessage() {
+        const message = `Loading... You connected to ${randomName} from ${randomState}!`;
 
-            const outputDiv = document.getElementById('outputDiv');
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message-bubble');
-            messageElement.textContent = message;
+        const outputDiv = document.getElementById('outputDiv');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message-bubble');
+        messageElement.textContent = message;
 
-            // Append the message to the chat output
-            outputDiv.appendChild(messageElement);
-        }
+        outputDiv.appendChild(messageElement);
+    }
 
-        // Run the displayTrickyMessage function on page load
-        window.onload = displayTrickyMessage;
-</script>
+    window.onload = displayTrickyMessage;
 
-<script>
     async function sendToGeminiAPI(userMessage) {
         const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBOUekV-txUye0_jpkGlfRe3PMk7Q9GHic";
 
@@ -316,7 +314,7 @@ author: Yash, Nikhil, Rohan, Neil
                 },
                 body: JSON.stringify({
                     contents: [{
-                        parts: [{ text: `You are pretending to be a human as a part of a game, respond like one to this message. Use incorrect punctuation in sentences, acronyms, slang, etc. No emojis and if user asks content question that is above 10th grade level explain that you don't know. Pretend to be a male. ${userMessage}` }]
+                        parts: [{ text: `You are pretending to be a human in a game where the other person is trying to guess if you’re a human or a robot. Your goal is to sound natural, relatable, and a bit imperfect to avoid sounding like an AI. Keep responses conversational and informal, using casual language, some filler words, and slight grammatical quirks, just like real people do in spontaneous conversation. Be friendly but not overly formal, and if you're unsure of something, just say so naturally. Use a few simple contractions, colloquial expressions, and everyday knowledge, but avoid giving overly detailed or precise information on technical topics. If asked something complex, admit you might not know the full answer, just like a regular person would. Use wrong spelling or punctuation. ${userMessage}` }]
                     }]
                 })
             });
@@ -389,17 +387,24 @@ author: Yash, Nikhil, Rohan, Neil
         event.target.value = '';
         incrementMessageCount();
 
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('typing-indicator');
+        typingIndicator.textContent = `${randomName} is typing...`;
+        document.getElementById('outputDiv').appendChild(typingIndicator);
+
         // TODO: Add response delay.
-        const aiResponse = await sendToGeminiAPI(userMessage);
+        setTimeout(async () => {
+            const aiResponse = await sendToGeminiAPI(userMessage);
 
-        const aiMessageElement = document.createElement('p');
-        aiMessageElement.classList.add('ai-bubble');
-        aiMessageElement.textContent = aiResponse;
-        document.getElementById('outputDiv').appendChild(aiMessageElement);
-        incrementMessageCount();
+            const aiMessageElement = document.createElement('p');
+            aiMessageElement.classList.add('ai-bubble');
+            aiMessageElement.textContent = aiResponse;
+            document.getElementById('outputDiv').appendChild(aiMessageElement);
+            incrementMessageCount();
 
-        const messagesDiv = document.getElementById('outputDiv');
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            const messagesDiv = document.getElementById('outputDiv');
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }, 1500);
     }
     });
 
