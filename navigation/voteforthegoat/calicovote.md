@@ -201,7 +201,7 @@ p {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Times New Roman", sans-serif;
     line-height: 1.6;
     background-color: #8B3D8A;
     color: #f9f9f9;
