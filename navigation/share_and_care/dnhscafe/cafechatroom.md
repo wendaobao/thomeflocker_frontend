@@ -65,15 +65,21 @@ search_exclude: true
             <label for="group_id">Group:</label>
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
+                <option value="">DNHS Cafe ☕️</option>
             </select>
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
+                 <option value="">Mathematics 📓📈</option>
+                <option value="">Chemistry 👩🏻‍🔬🧪</option>
+                <option value="">Biology 🧬🔬</option>
+                <option value="">English 🍎📝</option>
+                <option value="">Coding 💻👾</option>
+                <option value="">History 📚🏛️</option>
             </select>
+        <form>
             <button type="submit">Select</button>
         </form>
-    </div>
-</div>
 
 <div class="container">
     <div class="form-container">
