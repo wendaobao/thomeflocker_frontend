@@ -94,7 +94,7 @@ author: Manas, Lalita, Shriya, Ethan
             <input type="text" id="title" name="title" required>
             <label for="comment">Comment:</label>
             <textarea id="comment" name="comment" required></textarea>
-            <button type="submit">Add Post</button>
+            <button type="submit">Send Pitch</button>
         </form>
     </div>
 </div>
