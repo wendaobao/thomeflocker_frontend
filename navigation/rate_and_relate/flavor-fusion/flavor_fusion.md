@@ -201,30 +201,6 @@ author: Nolan, Jacob, Claire
     headers: { "Content-Type": "application/json", "X-Origin": "client" },
   };
 
-  async function createPost(postStuff) {
-    console.log("bob!");
-    let url = `${pythonURI}/api/post`;
-    let __data = await fetch(url, {
-      ...fetchOptions,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        channel_id: 29,
-        title: postStuff.title,
-        comment: postStuff.description,
-        content: {
-          ratings: [],
-          comments: [],
-          ingredients: postStuff.ingr,
-        },
-      }),
-    });
-
-    console.log(__data);
-  }
-
   // getting our channel id dynamically
   window.channel_id = 2;
 
@@ -243,12 +219,45 @@ author: Nolan, Jacob, Claire
     let channels = await __response.json();
     console.log(channels);
 
-    channels.forEach(channel => {
+    channels.forEach((channel) => {
       if (channel.name === "Combos") window.channel_id = channel.id;
-    })
+    });
   }
 
   getChannelID();
+
+  async function createPost(postStuff) {
+    console.log("bob!");
+    let url = `${pythonURI}/api/post`;
+    let __data = await fetch(url, {
+      ...fetchOptions,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        channel_id: window.channel_id,
+        title: postStuff.title,
+        comment: postStuff.description,
+        content: {
+          ratings: [],
+          comments: [],
+          ingredients: postStuff.ingr,
+        },
+      }),
+    });
+
+    console.log(__data);
+  }
+
+  async function getPosts() {
+    const rawData = await fetch(`${pythonURI}/api/posts/`, {
+      ...fetchOptions,
+    });
+
+    let dat = await rawData.json();
+    console.log("dat", dat);
+  }
 
   function addComment(id) {
     let element = document.querySelector(`form[data-postid="${id}"]`);
