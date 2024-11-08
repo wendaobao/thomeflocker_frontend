@@ -405,14 +405,10 @@ author: Nolan, Jacob, Claire
     document.getElementById("beingCreated").innerText += _creariv;
   }
   function submitCombo() {
-    const _slot1 = document.getElementById("slot1");
-    const _slot2 = document.getElementById("slot2");
-    const _slot3 = document.getElementById("slot3");
-
     let subStuff = {
       title: document.getElementById("title").innerText,
       description: document.getElementById("description").innerText,
-      ingr: [_slot1.innerText, _slot2.innerText, _slot3.innerText],
+      ingr: document.getElementById("beingCreated").innerText.split(": ")[1],
     };
 
     console.log(subStuff);
