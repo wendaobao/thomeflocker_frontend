@@ -154,16 +154,16 @@ body {
 }
 .sidebar::-webkit-scrollbar-thumb {
     background-color: transparent;
-}
+    }
 </style>
 
  <div class="sidebar">
-        <button class="sidebar-button" data-house="Adventure Play House" data-channel-id="22">Adventure Play House</button>
-        <button class="sidebar-button" data-house="Sylvanian Family Restraunt House" data-channel-id="23">Sylvanian Family Restraunt House</button>
-        <button class="sidebar-button" data-house="Magical Mermaid Castle House" data-channel-id="24">Magical Mermaid Castle House</button>
-        <button class="sidebar-button" data-house="Woody School House" data-channel-id="25">Woody School House</button>
-        <button class="sidebar-button" data-house="Spooky Suprise Haunted House" data-channel-id="26">Spooky Suprise Haunted House</button>
-        <button class="sidebar-button" data-house="Brick Oven Bakery House" data-channel-id="27">Brick Oven Bakery House</button>
+        <button class="sidebar-button" data-house="Adventure Play House" data-channel-id="22" id="adventure-play-house">Adventure Play House</button>
+        <button class="sidebar-button" data-house="Sylvanian Family Restraunt House" data-channel-id="23" id="sylvanian-restaurant-house">Sylvanian Family Restraunt House</button>
+        <button class="sidebar-button" data-house="Magical Mermaid Castle House" data-channel-id="24" id="magical-mermaid-castle">Magical Mermaid Castle House</button>
+        <button class="sidebar-button" data-house="Woody School House" data-channel-id="25" id="woody-school">Woody School House</button>
+        <button class="sidebar-button" data-house="Spooky Suprise Haunted House" data-channel-id="26" id="spooky-surprise-haunted">Spooky Suprise Haunted House</button>
+        <button class="sidebar-button" data-house="Brick Oven Bakery House" data-channel-id="27" id="brick-oven-bakery">Brick Oven Bakery House</button>
     </div>
 
 <div class="content">
@@ -174,8 +174,28 @@ body {
     <div id="postsContainer"></div>
 </div>
 
+<div class="container">
+    <div class="form-container">
+        <form id="selectionForm">
+            <input type="hidden" id="group_id" name="group_id" value="Calico Vote">
+            <label for="channel_id">Channel:</label>
+            <select id="channel_id" name="channel_id" required>
+                <option value="">Select a channel</option>
+                <option value="" data-channel-id="22">Adventure Play House</option>
+                <option value="" data-channel-id="23">Sylvanian Family Restraunt House</option>
+                <option value="" data-channel-id="24">Magical Mermaid Castle House</option>
+                <option value="" data-channel-id="25">Woody School House</option>
+                <option value="" data-channel-id="26">Spooky Suprise Haunted House</option>
+                <option value="" data-channel-id="27">Brick Oven Bakery House</option>
+            </select>
+            <button type="submit">Select</button>
+        </form>
+    </div>
+</div>
+
 <script>
-    window.onload = function() {
+        const groupId = "Calico Vote";
+        window.onload = function() {
         const savedHouse = localStorage.getItem('selectedHouse');
         const houseInfo = document.getElementById('houseInfo');
         const message = document.getElementById('message');
@@ -193,6 +213,7 @@ body {
             houseInfo.textContent = "No house selected.";
             message.textContent = "Please go back and select a house.";
         }
+        fetchChannels(); // Fetch and populate channels dynamically
         displayPosts(savedHouse);
     };
     function setBackground(house) {
@@ -217,7 +238,7 @@ body {
             color = 'orange';
             break;
         default:
-            color = 'white';
+            color = 'black';
     }
     document.body.style.cssText = `background: ${color} !important; transition: background-color 0.5s ease;`;
 }
@@ -327,5 +348,15 @@ body {
             postsContainer.appendChild(postDiv);
         });
     }
+    document.addEventListener('DOMContentLoaded', () => {
+    const selectedHouse = localStorage.getItem('selectedHouse');
+    if (selectedHouse) {
+        renderHousePage(selectedHouse);
+        displayPosts(selectedHouse);
+    } else {
+        renderDefaultPage(); // Or redirect to a selection page if no house is selected
+    }
+});
+
 </script>
 
