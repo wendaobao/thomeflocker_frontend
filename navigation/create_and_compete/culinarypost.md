@@ -6,6 +6,21 @@ permalink: /create_and_compete/culinaryposts
 author: Daksha, Alex, Darsh, Zach
 ---
 
+<div class="main">
+    <div class="content">
+        <div class="form-container">
+            <form id="channelForm">
+                <div class="form-inputs">
+                    <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
+                    <input type="file" id="fileInput" name="fileInput" style="display: none;">
+                </div>
+                <textarea id="textArea" name="textArea" placeholder="Post Here" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+        <div id="channels"></div>
+    <div>
+</div>
 
 <style>
     .main {
