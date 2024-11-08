@@ -22,7 +22,8 @@ comments: true
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Cars</title>
     <style>
-            .popup-overlay {
+        /* Popup Overlay and Popup Content Styles */
+        .popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -60,64 +61,11 @@ comments: true
             border-radius: 5px;
             cursor: pointer;
         }
-        body {
-            background-color: white;
-            color: rgb(255, 80, 80);
-            font-family: Helvetica, sans-serif;
-        }
-        h2, h3 {
-            color: rgb(255, 80, 80);
-            border-bottom: 2px solid rgb(255, 80, 80);
-            font-weight: bold; /* Bold text */
-            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8),  /* White shadow */
-                         2px 2px 0 rgba(255, 255, 255, 0.6); /* Lighter shadow */
-            border-radius: 10px; /* Rounded effect */
-            padding: 10px; /* Space around the text */
-        }
-        p {
-            color: white;   
-        }
-        button {
-            background-color: rgb(255, 80, 80);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 15px; /* Rounded corners */
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: rgb(220, 60, 60); /* Slightly darker on hover */
-        }
-        div {
-            margin: 20px 0;
-        }
-        .message-box {
-            border: 1px solid rgb(200, 200, 200); /* Light gray border */
-            border-radius: 10px; /* Rounded corners */
-            padding: 10px; /* Padding inside the box */
-            height: 150px; /* Fixed height */
-            overflow-y: auto; /* Scrollable */
-            margin-top: 10px; /* Space above message box */
-        }
     </style>
 </head>
 <body>
 
-<h2> Welcome to the Nighthawk Cars Page! </h2>
-<p>   </p>
-A set of pages created by Lars Andre Lindain, Arnav Mittal, Weston Gardener, and Shaurya Singh
-<p>   </p>
-Here is a game to keep you entertained:
-
-<iframe src="https://voyager162.github.io/carGame/index.html"
-        width="1200" 
-        height="1200" 
-        frameborder="0" 
-        allowfullscreen>
-</iframe>
-
+<!-- Popup Overlay -->
 <div class="popup-overlay" id="popup">
     <div class="popup-content">
         <h3>Welcome to Nighthawk Cars!</h3>
@@ -127,18 +75,46 @@ Here is a game to keep you entertained:
             <li>No spamming or irrelevant links.</li>
             <li>Use appropriate language at all times.</li>
         </ul>
-        <button onclick="closePopup()">I Agree</button>
+        <input type="text" id="usernameInput" placeholder="Enter your name" style="padding: 8px; margin-top: 15px;">
+        <button onclick="setUsername()" style="margin-top: 10px;">I Agree</button>
     </div>
 </div>
 
+<h2> Welcome to the Nighthawk Cars Page! </h2>
+<p>A set of pages created by Lars Andre Lindain, Arnav Mittal, Weston Gardener, and Shaurya Singh</p>
+<p>Here is a game to keep you entertained:</p>
+
+<iframe src="https://voyager162.github.io/carGame/index.html"
+        width="1200" 
+        height="1200" 
+        frameborder="0" 
+        allowfullscreen>
+</iframe>
+
+<!-- Include the popup script at the bottom -->
 <script>
-    // Show popup on page load
+    // Show the popup when the page loads
     window.onload = function() {
-        document.getElementById('popup').classList.add('active');
+        if (!localStorage.getItem('ifEnteredUsernameCars')) {
+            document.getElementById('popup').classList.add('active');
+        }
+        else {
+            alert("collected data" + localStorage.getItem('username'))  
+        }
     };
 
-    // Close popup function
-    function closePopup() {
-        document.getElementById('popup').classList.remove('active');
+    // Function to set username when the user agrees
+    function setUsername() {
+        const usernameInput = document.getElementById('usernameInput').value.trim();
+        if (usernameInput) {
+            localStorage.setItem('CarsUsername', usernameInput); // Store in localStorage
+            localStorage.setItem('ifEnteredUsernameCars', true)
+            document.getElementById('popup').classList.remove('active'); // Close the popup
+        } else {
+            alert("Please enter a valid name!");
+        }
     }
 </script>
+
+</body>
+</html>

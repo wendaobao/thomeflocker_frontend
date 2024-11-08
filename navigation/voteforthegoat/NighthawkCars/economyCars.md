@@ -5,6 +5,7 @@ description: Economy Car Information and Chatroom
 permalink: /voteforthegoat/nighthawkCars/economyCars/
 ---
 
+<script type="module" src="{{site.baseurl}}/navigation/voteforthegoat/NighthawkCars/Functions.js"></script>
 
 <table>
     <tr>
@@ -30,19 +31,19 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
         h2, h3 {
             color: rgb(255, 80, 80);
             border-bottom: 2px solid rgb(255, 80, 80);
-            font-weight: bold; /* Bold text */
+            font-weight: bold;
             text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8),  /* White shadow */
                          2px 2px 0 rgba(255, 255, 255, 0.6); /* Lighter shadow */
-            border-radius: 10px; /* Rounded effect */
-            padding: 10px; /* Space around the text */
+            border-radius: 10px;
+            padding: 10px;
         }
         p {
             color: rgb(255, 80, 80);
-            font-weight: bold; /* Bold text */
+            font-weight: bold;
             text-shadow: 1px 0 rgba(255, 255, 255, 0.8),  /* White shadow */
                          1px 0 rgba(255, 255, 255, 0.6); /* Lighter shadow */
-            border-radius: 10px; /* Rounded effect */
-            padding: 10px; /* Space around the text */
+            border-radius: 10px;
+            padding: 10px;
         }
         button {
             background-color: rgb(255, 80, 80);
@@ -51,55 +52,54 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
             padding: 10px 15px;
             margin: 5px;
             cursor: pointer;
-            border-radius: 15px; /* Rounded corners */
+            border-radius: 15px;
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: rgb(220, 60, 60); /* Slightly darker on hover */
+            background-color: rgb(220, 60, 60);
         }
         div {
             margin: 20px 0;
         }
         .message-box {
-            border: 1px solid rgb(200, 200, 200); /* Light gray border */
-            border-radius: 10px; /* Rounded corners */
-            padding: 10px; /* Padding inside the box */
-            height: 150px; /* Fixed height */
-            overflow-y: auto; /* Scrollable */
-            margin-top: 10px; /* Space above message box */
+            border: 1px solid rgb(200, 200, 200);
+            border-radius: 10px;
+            padding: 10px;
+            height: 500px;
+            overflow-y: auto;
+            margin-top: 10px;
         }
-        /* Style the textarea */
-    #comment {
-        width: 100%;
-        height: 80px;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        resize: vertical;
-    }
-    button {
-        margin-top: 10px;
-        padding: 8px 16px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        background-color: rgb(255, 80, 80);
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    button:hover {
-        background-color: #45a049;
-    }
-    .message-box {
-        margin-top: 20px;
-        padding: 10px;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        background-color: rgb(255, 80, 80);
-    }
+        #comment {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            resize: vertical;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(255, 80, 80);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background-color: rgb(0, 0, 0);
+        }
     </style>
 </head>
 <body>
@@ -115,7 +115,6 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
     <p>Chevorlet Trax</p>
     <img src="https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2024/suvs/trax/masthead/02-images/2024-trax-mov-masthead.png?imwidth=960" alt="Trax" style="width:450px;height:200px;">
 </div>
-
 
 <h3>Pricing</h3>
 <table>
@@ -149,7 +148,6 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
         <td><p>$21,495</p></td>
         <td><p>$24,000</p></td>
     </tr>
-
 </table>
 
 <h3>Voting</h3>
@@ -162,31 +160,10 @@ permalink: /voteforthegoat/nighthawkCars/economyCars/
 
 <h2>Discussion</h2>
 <textarea placeholder="Enter your thoughts or comments here..." id="comment"></textarea>
-<button onclick="addComment()"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Add Comment</p></button>
+<button onclick="addComment(22)"><p style="background-color: rgb(255, 80, 80);border: 2px solid #ddd">Add Comment</p></button>
 
 <div class="message-box" id="messageBox">
     <p><strong>Messages:</strong></p>
 </div>
-
-<script>
-function addComment() {
-    // Get the value of the textarea
-    const comment = document.getElementById("comment").value;
-
-    // Check if the comment is not empty
-    if (comment.trim() !== "") {
-        // Create a new paragraph element for the comment
-        const newComment = document.createElement("p");
-        newComment.textContent = `- You: ${comment}`;
-
-        // Add the new comment to the message box
-        document.getElementById("messageBox").appendChild(newComment);
-
-        // Clear the textarea
-        document.getElementById("comment").value = "";
-    }
-    else {
-        alert("Please say something")
-    }
-}
-</script>
+</body>
+</html>
