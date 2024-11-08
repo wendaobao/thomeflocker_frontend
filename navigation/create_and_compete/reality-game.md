@@ -58,7 +58,7 @@ author: Yash, Nikhil, Rohan, Neil
         <div id="outputDiv"></div>
         <form>
             <button class="plus-button" onclick="triggerFileUpload()">+</button>
-            <input type="file" id="file-input">
+            <input type="file" id="file-input" onchange="handleFileUpload(event)">
             <input placeholder="Enter message to send:" type="text" id="messageBox" name="message">
         </form>
     </div>
@@ -314,7 +314,7 @@ author: Yash, Nikhil, Rohan, Neil
                 },
                 body: JSON.stringify({
                     contents: [{
-                        parts: [{ text: `You are pretending to be a human in a game where the other person is trying to guess if you’re a human or a robot. Your goal is to sound natural, relatable, and a bit imperfect to avoid sounding like an AI. Keep responses conversational and informal, using casual language, some filler words, and slight grammatical quirks, just like real people do in spontaneous conversation. Be friendly but not overly formal, and if you're unsure of something, just say so naturally. Use a few simple contractions, colloquial expressions, and everyday knowledge, but avoid giving overly detailed or precise information on technical topics. If asked something complex, admit you might not know the full answer, just like a regular person would. Use wrong spelling or punctuation. ${userMessage}` }]
+                        parts: [{ text: `You are pretending to be a human in a game where the other person is trying to guess if you’re a human or a robot. Your name is ${randomName}. Your goal is to sound natural, relatable, and a bit imperfect to avoid sounding like an AI. Keep responses conversational and informal, using casual language, some filler words, and slight grammatical quirks, just like real people do in spontaneous conversation. Be friendly but not overly formal, and if you're unsure of something, just say so naturally. Use a few simple contractions, colloquial expressions, and everyday knowledge, but avoid giving overly detailed or precise information on technical topics. If asked something complex, admit you might not know the full answer, just like a regular person would. Use wrong spelling or punctuation. ${userMessage}` }]
                     }]
                 })
             });
@@ -409,18 +409,30 @@ author: Yash, Nikhil, Rohan, Neil
     });
 
     function triggerFileUpload() {
+        event.preventDefault();
         document.getElementById('file-input').click();
+    }
+
+    function handleFileUpload(event) {
         const file = event.target.files[0];
+        messageContent = document.getElementById('messageBox').text;
         if (file) {
-            displayFileMessage(file);
+            console.log(`Selected file: ${file.name}`);
+            displayFileMessage(file, messageContent);
         }
     }
 
-    function displayFileMessage(file) {
+    function displayFileMessage(file, message='') {
         const outputDiv = document.getElementById('outputDiv');
 
         const messageElement = document.createElement('div');
         messageElement.classList.add('message-bubble');
+
+        if (message) {
+            const textElement = document.createElement('p');
+            textElement.innerHTML = `${message} <span class="timestamp">${getCurrentTime()}</span>`;
+            messageElement.appendChild(textElement);
+        }
 
         if (file.type.startsWith("image/")) {
             const img = document.createElement('img');
