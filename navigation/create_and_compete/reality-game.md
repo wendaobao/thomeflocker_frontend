@@ -52,17 +52,6 @@ author: Yash, Nikhil, Rohan, Neil
     }
 </style>
 
-<table class="sub-menu">
-    <tr>
-        <td>
-            <label class="switch">
-                <input type="checkbox" id="toggle-switch" onclick="toggleRedirect()">
-                <span class="slider round"></span>
-            </label>
-        </td>
-    </tr>
-</table>
-
 <div id="main-content">
     <div id="chatPanel">
         <h3>Game</h3>
@@ -73,7 +62,26 @@ author: Yash, Nikhil, Rohan, Neil
             <input placeholder="Enter message to send:" type="text" id="messageBox" name="message">
         </form>
     </div>
+    <!-- Instructions Frame with Buttons Below -->
+    <div class="instructions-frame">
+        <div class="instructions-box">
+            <h3>Game Instructions</h3>
+            <p>Welcome to the Reality Room Game! Here are the instructions to get you started:</p>
+            <ul>
+                <li>Use the chat to interact with the AI.</li>
+                <li>Try to figure out if you're chatting with a human or an AI!</li>
+                <li>Submit your guess at the end of the game.</li>
+                <li>Have fun and see if you can outsmart the AI!</li>
+            </ul>
+        </div>
+        <!-- Options: Human or AI (Now Outside of the White Box) -->
+        <div class="guess-options">
+            <button class="guess-button" onclick="submitGuess('human')">Human</button>
+            <button class="guess-button" onclick="submitGuess('ai')">AI</button>
+        </div>
+    </div>
 </div>
+
 
 <style>
     table, th, td {
@@ -167,6 +175,70 @@ author: Yash, Nikhil, Rohan, Neil
     input[type="file"] {
         display: none;
     }
+    /* Instructions Box */
+    .instructions-box {
+        width: 250px;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        color: #333;
+        height: 430px; /* Adjust this value as needed */
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+    .instructions-box h3 {
+        margin-top: 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .instructions-box p, .instructions-box ul {
+        font-size: 0.9em;
+        color: #333;
+    }
+    
+    .instructions-box ul {
+        padding-left: 20px;
+    }
+
+    .guess-options {
+        display: flex;
+        gap: 0; /* Remove gap between buttons */
+        margin-top: 10px;
+        padding-top: 10px;
+        width: 100%; /* Make the container fill the full width */
+    }
+
+    .guess-button {
+        flex: 1;
+        padding: 8px 0;
+        background-color: #007bff !important;
+        color: white !important;
+        border: none;
+        border-radius: 0;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition: background-color 0.3s ease !important;
+    }
+
+    .guess-button:first-child {
+        border-radius: 6px 0 0 6px;
+    }
+
+    .guess-button:last-child {
+        border-radius: 0 6px 6px 0;
+    }
+
+    .guess-button:hover {
+        background-color: #0056b3 !important;
+    }
+
+    .guess-button:active {
+        background-color: #003f7f !important;
+    }
 </style>
 
 <style>
@@ -253,31 +325,31 @@ author: Yash, Nikhil, Rohan, Neil
 <script>
     // Function to send message to Gemini API and display response
     async function sendToGeminiAPI(userMessage) {
-    const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBOUekV-txUye0_jpkGlfRe3PMk7Q9GHic";
+        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBOUekV-txUye0_jpkGlfRe3PMk7Q9GHic";
 
-    try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{ text: userMessage }]
-                }]
-            })
-        });
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: `You are pretending to be a human as a part of a game, respond like one to this message. Use incorrect punctuation sometimes, acronyms, slang, etc. Minimal emojis and if user asks content question that is above 10th grade level explain that you don't know. Pretend to be male. ${userMessage}` }]
+                    }]
+                })
+            });
 
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.candidates[0].content.parts[0].text; // Adjusted to match Postman response structure
+        } catch (error) {
+            console.error('Error communicating with Gemini API:', error);
+            return "An error occurred while communicating with the AI.";
         }
-
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text; // Adjusted to match Postman response structure
-    } catch (error) {
-        console.error('Error communicating with Gemini API:', error);
-        return "An error occurred while communicating with the AI.";
-    }
     }
 
     // Chat functionality
