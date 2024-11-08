@@ -183,22 +183,29 @@ author: Nolan, Jacob, Claire
   </div>
 </div>
 
-<script type="module">
-  import {
-    pythonURI,
-    fetchOptions,
-  } from "{{ site.baseurl }}/assets/js/api/config.js";
-  window.pythonURI = pythonURI;
-  window.fetchOptions = fetchOptions;
-</script>
-
 <script>
-  const groupName = "Flavor Fusion";
+  let pythonURI;
+  if (location.hostname === "localhost") {
+    pythonURI = "http://localhost:8887";
+  } else if (location.hostname === "127.0.0.1") {
+    pythonURI = "http://127.0.0.1:8887";
+  } else {
+    pythonURI = "https://flocker.nighthawkcodingsociety.com";
+  }
+
+  const fetchOptions = {
+    method: "GET",
+    mode: "cors",
+    cache: "default",
+    credentials: "include",
+    headers: { "Content-Type": "application/json", "X-Origin": "client" },
+  };
+
   async function createPost(postStuff) {
     console.log("bob!");
-    let url = `${window.pythonURI}/api/post`;
+    let url = `${pythonURI}/api/post`;
     let __data = await fetch(url, {
-      ...window.fetchOptions,
+      ...fetchOptions,
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -218,7 +225,30 @@ author: Nolan, Jacob, Claire
     console.log(__data);
   }
 
-  async function getPosts() {}
+  // getting our channel id dynamically
+  window.channel_id = 2;
+
+  async function getChannelID() {
+    console.log("getting id");
+
+    const __response = await fetch(`${pythonURI}/api/channels/filter`, {
+      ...fetchOptions,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ group_name: "Flavor Fusion" }),
+    });
+
+    let channels = await __response.json();
+    console.log(channels);
+
+    channels.forEach(channel => {
+      if (channel.name === "Combos") window.channel_id = channel.id;
+    })
+  }
+
+  getChannelID();
 
   function addComment(id) {
     let element = document.querySelector(`form[data-postid="${id}"]`);
@@ -226,7 +256,7 @@ author: Nolan, Jacob, Claire
     let newComment = {
       comboId: id,
       comment: comment.value,
-      commenter: userId,
+      html,
     };
     console.log(newComment);
   }
@@ -406,12 +436,12 @@ author: Nolan, Jacob, Claire
   }
   function submitCombo() {
     let subStuff = {
-      title: document.getElementById("title").innerText,
-      description: document.getElementById("description").innerText,
-      ingr: document.getElementById("beingCreated").innerText.split(": ")[1],
+      title: document.getElementById("title").value,
+      description: document.getElementById("description").value,
+      ingr: document.getElementById("beingCreated").innerText.split(":")[1],
     };
 
-    console.log(subStuff);
+    createPost(subStuff);
   }
 
   let profileCode = `    <div class="left">
