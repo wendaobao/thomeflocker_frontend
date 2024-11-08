@@ -18,38 +18,6 @@ author: Daksha, Alex, Darsh, Zach
         min-height: 100vh;
     }
 
-    h1, h2 {
-        color: #2c3e50;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        margin-bottom: 1em;
-    }
-
-    form {
-        margin: 20px 0;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        backdrop-filter: blur(5px);
-    }
-
-    input[type="text"] {
-        width: calc(100% - 150px);
-        padding: 12px 15px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        background-color: white;
-        color: #333;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
-
-    input[type="text"]:focus {
-        border-color: #3498db;
-        box-shadow: 0 0 8px rgba(52,152,219,0.3);
-        outline: none;
-    }
-
     button {
         position: relative;
         padding: 15px 30px;
@@ -165,103 +133,6 @@ author: Daksha, Alex, Darsh, Zach
         flex-wrap: wrap;
         margin: 20px 0;
     }
-
-    .recipe {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 25px;
-        margin: 20px 0;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-
-    .recipe:hover {
-        transform: translateY(-5px);
-    }
-
-    .suggestions {
-        background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-        border-radius: 15px;
-        padding: 25px;
-        margin: 25px 0;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        backdrop-filter: blur(5px);
-        border: 1px solid #3a4257;
-        color: #ffffff;
-    }
-
-    .suggestions h2 {
-        color: #ffffff;
-        margin-bottom: 15px;
-        font-size: 1.5em;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 10px;
-    }
-
-    #randomIngredients {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    #randomIngredients li {
-        padding: 10px 15px;
-        margin: 8px 0;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        font-size: 1.1em;
-        transition: all 0.3s ease;
-        border-left: 3px solid #3498db;
-    }
-
-    #randomIngredients li:hover {
-        transform: translateX(5px);
-        background: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    .culinary-posts-btn {
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-        padding: 15px 30px;
-        border-radius: 10px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        transition: all 0.3s ease;
-    }
-
-    .culinary-posts-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
-    }
-
-    /* Add a container for better content organization */
-    .content-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    /* Style for recipe headings */
-    .recipe h3 {
-        color: #2c3e50;
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-    }
-
-    /* Style for recipe description */
-    .recipe p {
-        color: #34495e;
-        line-height: 1.6;
-    }
-
-    /* Style for cooking time and ingredients */
-    .recipe strong {
-        color: #2980b9;
-    }
 </style>
 
 <style>
@@ -269,11 +140,11 @@ author: Daksha, Alex, Darsh, Zach
   position: relative;
   font-size: 1.2em;
   padding: 0.7em 1.4em;
-  background-color: #BF0426;
+  background-color: #000000;
   text-decoration: none;
   border: none;
   border-radius: 0.5em;
-  color: #DEDEDE;
+  color: #000000;
   box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
 }
 
@@ -370,7 +241,7 @@ author: Daksha, Alex, Darsh, Zach
         align-self: flex-start;
         padding: 10px 20px;
         background-color: #1da1f2;
-        color: white;
+        color: black;
         border: none;
         border-radius: 8px;
         font-size: 16px;
@@ -381,7 +252,7 @@ author: Daksha, Alex, Darsh, Zach
     }
 
     button[type="submit"]:hover {
-        background-color: #1a91da;
+        background-color: #000000;
     }
 
     /* Channels Container */
