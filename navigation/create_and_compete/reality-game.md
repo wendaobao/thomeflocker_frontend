@@ -268,6 +268,11 @@ author: Yash, Nikhil, Rohan, Neil
         color: black;
         border-radius: 20px;
     }
+    .timestamp {
+        font-size: 0.75em;
+        color: #666;
+        margin-left: 10px;
+    }
 </style>
 
 <script>
@@ -362,17 +367,25 @@ author: Yash, Nikhil, Rohan, Neil
         document.getElementById('guessPrompt').style.display = 'none';
     }
 
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function addMessageToChat(message, isAI = false) {
+        const messageElement = document.createElement('p');
+        messageElement.classList.add(isAI ? 'ai-bubble' : 'message-bubble');
+        messageElement.innerHTML = `${message} <span class="timestamp">${getCurrentTime()}</span>`;
+        document.getElementById('outputDiv').appendChild(messageElement);
+    }
+
     // Chat functionality
     document.getElementById('messageBox').addEventListener('keypress', async function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         const userMessage = event.target.value;
 
-        const userMessageElement = document.createElement('p');
-        userMessageElement.classList.add('message-bubble');
-        userMessageElement.textContent = userMessage;
-        document.getElementById('outputDiv').appendChild(userMessageElement);
-
+        addMessageToChat(userMessage);
         event.target.value = '';
         incrementMessageCount();
 
@@ -385,7 +398,6 @@ author: Yash, Nikhil, Rohan, Neil
         document.getElementById('outputDiv').appendChild(aiMessageElement);
         incrementMessageCount();
 
-        // Scroll to the bottom of the chat
         const messagesDiv = document.getElementById('outputDiv');
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
