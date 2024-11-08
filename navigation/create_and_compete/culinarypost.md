@@ -12,13 +12,12 @@ author: Daksha, Alex, Darsh, Zach
             <form id="channelForm">
                 <div class="form-inputs">
                     <input type="text" id="title" name="title" placeholder="Enter Title Here" required>
-                    <input type="file" id="fileInput" name="fileInput" style="display: none;">
                 </div>
                 <textarea id="textArea" name="textArea" placeholder="Post Here" required></textarea>
                 <button type="submit">Post</button>
             </form>
         </div>
-        <div id="channels"></div>
+        <div id="culinaryposts"></div>
     <div>
 </div>
 
@@ -59,21 +58,6 @@ author: Daksha, Alex, Darsh, Zach
         font-size: 16px;
     }
 
-    .file-button {
-        padding: 10px;
-        background-color: #333;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 18px;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     #textArea {
         width: 100%;
         padding: 12px;
@@ -104,7 +88,7 @@ author: Daksha, Alex, Darsh, Zach
     }
 
     /* Channels Container */
-    #channels {
+    #culinaryposts {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -134,28 +118,11 @@ author: Daksha, Alex, Darsh, Zach
         font-size: 1em;
         margin-top: 10px;
     }
-
-    .delete-button, .comment-button {
-        background-color: #ff4d4d;
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.9em;
-        margin-top: 15px;
-        transition: background-color 0.3s ease;
-        margin-right: 5px;
-    }
-
-    .delete-button:hover, .comment-button:hover {
-        background-color: #ff1a1a;
-    }
 </style>
 
 <script type="module">
     import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
-    const container = document.getElementById("channels");
+    const container = document.getElementById("culinaryposts");
 
     async function fetchUser() {
         const response = await fetch(`${pythonURI}/api/user`, fetchOptions);
@@ -200,10 +167,6 @@ author: Daksha, Alex, Darsh, Zach
                 description.classList.add("card-description");
                 description.textContent = channel.attributes["content"];
 
-                commentButton.onclick = function () {
-                    openChatRoom(commentButton);
-                };
-
                 card.appendChild(title);
                 card.appendChild(description);
 
@@ -219,7 +182,7 @@ author: Daksha, Alex, Darsh, Zach
 
         const title = document.getElementById('title').value;
         const content = document.getElementById('textArea').value;
-        const group_id = 9;
+        const group_id = 13;
 
         const channelData = {
             name: title,
