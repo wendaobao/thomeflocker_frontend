@@ -254,52 +254,61 @@ author: Ryan, Jowan, Gabriela, Michelle
     <p class="rules-paragraph">6. Do NOT impersonate people.</p>
 </div>
 
+<!-- Image Section Re-integrated -->
+<div class="image-row">
+    <img src="image1.jpg" alt="Image 1" />
+    <img src="image2.jpg" alt="Image 2" />
+    <img src="image3.jpg" alt="Image 3" />
+</div>
+
+<!-- Restaurant List Section with Heart Toggle -->
+<h1>Local Restaurants</h1>
+<ul class="restaurant-list">
+    <li class="restaurant-item">
+        <strong>Burger Lounge (Del Sur)</strong>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <strong>Chick-fil-A</strong>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <strong>La Jolla Village Market</strong>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+    <li class="restaurant-item">
+        <strong>Shake Shack</strong>
+        <span class="heart" onclick="toggleHeart(this)">♡</span>
+    </li>
+</ul>
+
 <!-- Create Post Form Section -->
 <div class="container">
     <div class="form-container">
         <h2>Select Group and Create Post</h2>
         <form id="postForm">
             <label for="group_id">Group:</label>
-            <select id="group_id" name="group_id" required>
-                <option value="">Select a group</option>
+            <select id="group_id" name="group_id">
+                <option value="group_1">Food Lovers</option>
+                <option value="group_2">Restaurant Enthusiasts</option>
             </select>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" required></textarea>
             <button type="submit">Create Post</button>
         </form>
     </div>
 </div>
 
-<!-- Chat Box Section (Removed backend code for the chatbox) -->
-<div class="chat-container">
-    <div class="chat-box">
-        <div class="chat-message">
-            <span>Welcome to the Hunger Games Chat!</span>
-        </div>
-    </div>
-    <div class="input-box">
-        <input type="text" placeholder="Type a message..." id="chat-input" />
-        <button id="chat-send">Send</button>
-    </div>
-</div>
-
 <script>
-    document.getElementById('chat-send').addEventListener('click', function() {
-        const input = document.getElementById('chat-input');
-        const message = input.value.trim();
-        if (message) {
-            const chatBox = document.querySelector('.chat-box');
-            const newMessage = document.createElement('div');
-            newMessage.classList.add('chat-message');
-            newMessage.textContent = message;
-            chatBox.appendChild(newMessage);
-            input.value = '';  // Clear the input field
-            chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to the bottom of the chatbox
+    // Toggle the heart icon when clicked
+    function toggleHeart(heartElement) {
+        heartElement.classList.toggle('liked');
+        if (heartElement.classList.contains('liked')) {
+            heartElement.innerText = '♥';
+        } else {
+            heartElement.innerText = '♡';
         }
-    });
+    }
 </script>
 
 </body>
 </html>
+
