@@ -267,106 +267,38 @@ author: Ryan, Jowan, Gabriela, Michelle
             <input type="text" id="title" name="title" required>
             <label for="content">Content:</label>
             <textarea id="content" name="content" required></textarea>
-            <button type="submit">Add Post</button>
+            <button type="submit">Create Post</button>
         </form>
     </div>
 </div>
 
-<!-- Existing Chat and Local Restaurant Features -->
+<!-- Chat Box Section (Removed backend code for the chatbox) -->
 <div class="chat-container">
-    <div class="chat-label">Chat Box</div>
-    <div class="chat-box" id="chatBox">
-        <!-- Messages will appear here -->
+    <div class="chat-box">
+        <div class="chat-message">
+            <span>Welcome to the Hunger Games Chat!</span>
+        </div>
     </div>
     <div class="input-box">
-        <input type="text" id="userName" placeholder="Enter your name..." />
-        <input type="text" id="userInput" placeholder="Share a recipe or restaurant..." />
-        <button onclick="sendMessage()">Send</button>
+        <input type="text" placeholder="Type a message..." id="chat-input" />
+        <button id="chat-send">Send</button>
     </div>
 </div>
 
-<h1>Local Restaurants</h1>
-<ul class="restaurant-list">
-    <li class="restaurant-item">
-        <strong>Burger Lounge (Del Sur)</strong>
-        <span class="heart" onclick="toggleHeart(this)">♡</span>
-    </li>
-    <li class="restaurant-item">
-        <strong>Chick-fil-A (Del Sur)</strong>
-        <span class="heart" onclick="toggleHeart(this)">♡</span>
-    </li>
-    <li class="restaurant-item">
-        <strong>California Pizza Kitchen</strong>
-        <span class="heart" onclick="toggleHeart(this)">♡</span>
-    </li>
-</ul>
-
 <script>
-    // Fetching groups to populate dropdown
-    async function fetchGroups() {
-        const response = await fetch('http://localhost:5000/api/groups');
-        if (response.ok) {
-            const groups = await response.json();
-            const groupSelect = document.getElementById('group_id');
-            groups.forEach(group => {
-                const option = document.createElement('option');
-                option.value = group.id;
-                option.textContent = group.name;
-                groupSelect.appendChild(option);
-            });
-        } else {
-            alert("Failed to fetch groups");
-        }
-    }
-    fetchGroups();
-
-    // Handle post form submission
-    document.getElementById('postForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const postData = {
-            title: document.getElementById('title').value,
-            content: document.getElementById('content').value,
-            group_id: document.getElementById('group_id').value,
-        };
-        const response = await fetch('http://localhost:5000/api/post', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData)
-        });
-        if (response.ok) {
-            alert('Post created successfully!');
-        } else {
-            const error = await response.json();
-            alert(error.error || 'Failed to create post.');
+    document.getElementById('chat-send').addEventListener('click', function() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        if (message) {
+            const chatBox = document.querySelector('.chat-box');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('chat-message');
+            newMessage.textContent = message;
+            chatBox.appendChild(newMessage);
+            input.value = '';  // Clear the input field
+            chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to the bottom of the chatbox
         }
     });
-
-    // Chat functionality
-    function sendMessage() {
-        const name = document.getElementById("userName").value;
-        const message = document.getElementById("userInput").value;
-        const chatBox = document.getElementById("chatBox");
-
-        if (name && message) {
-            const chatMessage = document.createElement("div");
-            chatMessage.classList.add("chat-message");
-            chatMessage.textContent = `${name}: ${message}`;
-            chatBox.appendChild(chatMessage);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            document.getElementById("userName").value = "";
-            document.getElementById("userInput").value = "";
-        } else {
-            alert("Please enter both your name and a message!");
-        }
-    }
-
-    // Toggle heart icon
-    function toggleHeart(heart) {
-        heart.classList.toggle("liked");
-    }
 </script>
 
 </body>
