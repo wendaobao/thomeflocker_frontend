@@ -71,7 +71,7 @@ author: Manas, Lalita, Shriya, Ethan
 
 <div class="container">
     <div class="form-container">
-        <h2>Select Group and Channel</h2>
+        <h2>Select Group and Day</h2>
         <form id="selectionForm">
             <label for="group_id">Group:</label>
             <select id="group_id" name="group_id" required>
@@ -79,7 +79,7 @@ author: Manas, Lalita, Shriya, Ethan
             </select>
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
-                <option value="">Select a channel</option>
+                <option value="">Select a Day</option>
             </select>
             <button type="submit">Select</button>
         </form>
@@ -88,13 +88,13 @@ author: Manas, Lalita, Shriya, Ethan
 
 <div class="container">
     <div class="form-container">
-        <h2>Add New Post</h2>
+        <h2>Submit Your Pitch Here</h2>
         <form id="postForm">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
             <label for="comment">Comment:</label>
             <textarea id="comment" name="comment" required></textarea>
-            <button type="submit">Add Post</button>
+            <button type="submit">Send Pitch</button>
         </form>
     </div>
 </div>
