@@ -259,6 +259,9 @@ author: Nolan, Jacob, Claire
     console.log("dat", dat);
   }
 
+  console.log("getting posts");
+  getPosts();
+
   function addComment(id) {
     let element = document.querySelector(`form[data-postid="${id}"]`);
     let comment = element.getElementsByClassName("commenttext")[0];
