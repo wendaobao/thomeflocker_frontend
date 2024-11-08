@@ -155,10 +155,7 @@ comments: true
         .iframe-container {
             align-items: center;
             padding-top: 20px; /* Add padding if you want to adjust vertical centering */
-        }
-        iframe {
-            display: center;
-            margin: 0 auto;
+            transform: translateX(-50px);
         }
     </style>
 </head>
@@ -172,8 +169,8 @@ Here is a game to keep you entertained:
 
 <div class="iframe-container">
     <iframe src="https://voyager162.github.io/carGame/index.html"
-            width="1200" 
-            height="1200" 
+            width="1000" 
+            height="800" 
             frameborder="0" 
             allowfullscreen>
     </iframe>
