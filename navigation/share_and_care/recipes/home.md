@@ -192,7 +192,7 @@ author: Ryan, Jowan, Gabriela, Michelle
             background-color: #222;
             color: white;
         }
-        /* Container and form styling for post creation */
+        /* Post Form */
         .container {
             display: flex;
             justify-content: center;
@@ -264,7 +264,7 @@ author: Ryan, Jowan, Gabriela, Michelle
     <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
 </div>
 
-<!-- Chat and Restaurant Section -->
+<!-- Chat Section -->
 <div class="chat-container">
     <div class="chat-label">Chat Box</div>
     <div class="chat-box" id="chatBox">
@@ -301,66 +301,129 @@ author: Ryan, Jowan, Gabriela, Michelle
     </li>
 </ul>
 
-<!-- Create Post Form Section -->
+<!-- Post Creation Form -->
 <div class="container">
     <div class="form-container">
         <h2>Select Group and Create Post</h2>
         <form id="postForm">
             <label for="group_id">Group:</label>
-            <select id="group_id" name="group_id">
-                <option value="group_1">Food Lovers</option>
-                <option value="group_2">Restaurant Enthusiasts</option>
+            <select id="group_id" name="group_id" required>
+                <option value="">Select a group</option>
             </select>
-            <button type="submit">Create Post</button>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea>
+            <button type="submit">Add Post</button>
         </form>
+        <div id="details"></div>
     </div>
 </div>
 
 <script>
-    // Toggle the heart icon when clicked
-    function toggleHeart(heartElement) {
-        heartElement.classList.toggle('liked');
-        if (heartElement.classList.contains('liked')) {
-            heartElement.innerText = '♥';
-        } else {
-            heartElement.innerText = '♡';
-        }
+// Toggle the heart icon when clicked
+function toggleHeart(heartElement) {
+    heartElement.classList.toggle('liked');
+    if (heartElement.classList.contains('liked')) {
+        heartElement.innerText = '♥';
+    } else {
+        heartElement.innerText = '♡';
     }
+}
 
-    // Chat functionality
-    function sendMessage() {
-        const name = document.getElementById("userName").value;
-        const message = document.getElementById("userInput").value;
-        const chatBox = document.getElementById("chatBox");
+// Chat functionality
+function sendMessage() {
+    const name = document.getElementById("userName").value;
+    const message = document.getElementById("userInput").value;
+    const chatBox = document.getElementById("chatBox");
 
-        if (name && message) {
-            const chatMessage = document.createElement("div");
-            chatMessage.classList.add("chat-message");
-            chatMessage.textContent = `${name}: ${message}`;
-            chatBox.appendChild(chatMessage);
-            chatBox.scrollTop = chatBox.scrollHeight;
+    if (name && message) {
+        const chatMessage = document.createElement("div");
+        chatMessage.classList.add("chat-message");
+        chatMessage.textContent = `${name}: ${message}`;
+        chatBox.appendChild(chatMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
 
-            document.getElementById("userName").value = "";
-            document.getElementById("userInput").value = "";
-        } else {
-            alert("Please enter both your name and a message!");
-        }
+        document.getElementById("userName").value = "";
+        document.getElementById("userInput").value = "";
+    } else {
+        alert("Please enter both your name and a message!");
     }
+}
 
-    // Collapsible Moderation Rules Dropdown
-    var collapsibles = document.getElementsByClassName("collapsible");
-    for (var i = 0; i < collapsibles.length; i++) {
-        collapsibles[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+// Collapsible Moderation Rules Dropdown
+var collapsibles = document.getElementsByClassName("collapsible");
+for (var i = 0; i < collapsibles.length; i++) {
+    collapsibles[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+}
+
+// Fetch groups for dropdown selection
+async function fetchGroups() {
+    const pythonURI = "https://flocker.nighthawkcodingsociety.com";
+    const fetchOptions = {
+        headers: {
+            'Authorization': 'Bearer YOUR_AUTH_TOKEN'
+        }
+    };
+    try {
+        const response = await fetch(`${pythonURI}/api/groups`, fetchOptions);
+        if (!response.ok) {
+            throw new Error('Failed to fetch groups: ' + response.statusText);
+        }
+        const groups = await response.json();
+        const groupSelect = document.getElementById('group_id');
+        groups.forEach(group => {
+            const option = document.createElement('option');
+            option.value = group.id;
+            option.textContent = group.name;
+            groupSelect.appendChild(option);
         });
+    } catch (error) {
+        console.error('Error fetching groups:', error);
     }
-</script>
+}
 
+// Handle post form submission
+document.getElementById('postForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const group_id = document.getElementById('group_id').value;
+    const postData = {
+        title: title,
+        content: content,
+        group_id: group_id
+    };
+    try {
+        const response = await fetch("https://flocker.nighthawkcodingsociety.com/api/post", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer YOUR_AUTH_TOKEN'
+            },
+            body: JSON.stringify(postData)
+        });
+        if (!response.ok) {
+            throw new Error('Failed to add post: ' + response.statusText);
+        }
+        alert('Post added successfully!');
+        document.getElementById('postForm').reset();
+    } catch (error) {
+        console.error('Error adding post:', error);
+        alert('Error adding post: ' + error.message);
+    }
+});
+
+// Fetch groups when the page loads
+fetchGroups();
+</script>
 </body>
 </html>
