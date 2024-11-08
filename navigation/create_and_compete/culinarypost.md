@@ -185,23 +185,12 @@ author: Daksha, Alex, Darsh, Zach
                 description.classList.add("card-description");
                 description.textContent = channel.attributes["content"];
 
-                const deleteButton = document.createElement("button");
-                deleteButton.classList.add("delete-button");
-                deleteButton.textContent = "Delete";
-
-                const commentButton = document.createElement("button");
-                commentButton.classList.add("comment-button");
-                commentButton.textContent = "Comment";
-                commentButton.setAttribute("id", channel.id);
-
                 commentButton.onclick = function () {
                     openChatRoom(commentButton);
                 };
 
                 card.appendChild(title);
                 card.appendChild(description);
-                card.appendChild(deleteButton);
-                card.appendChild(commentButton);
 
                 container.appendChild(card);
             });
