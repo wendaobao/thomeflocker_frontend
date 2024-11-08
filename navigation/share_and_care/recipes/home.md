@@ -10,6 +10,7 @@ author: Ryan, Jowan, Gabriela, Michelle
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hungry Games</title>
     <style>
         body {
             font-family: 'Calibri', sans-serif;
@@ -17,7 +18,7 @@ author: Ryan, Jowan, Gabriela, Michelle
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
             min-height: 100vh;
             margin: 0;
         }
@@ -59,8 +60,8 @@ author: Ryan, Jowan, Gabriela, Michelle
             transform: scale(1.1);
         }
         .chat-container {
-            width: 1000px;  
-            height: 600px; 
+            width: 1000px;
+            height: 600px;
             display: flex;
             flex-direction: column;
             border: 2px solid #ff8c00;
@@ -69,7 +70,7 @@ author: Ryan, Jowan, Gabriela, Michelle
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             background-color: #fff3e0;
             margin-top: 20px;
-            text-align: center; 
+            text-align: center;
         }
         .chat-box {
             flex: 1;
@@ -87,8 +88,8 @@ author: Ryan, Jowan, Gabriela, Michelle
             background-color: #ffcc80;
             word-wrap: break-word;
             max-width: 80%;
-            position: relative; 
-            color: #000; 
+            position: relative;
+            color: #000;
         }
         .chat-label {
             color: #333;
@@ -128,10 +129,10 @@ author: Ryan, Jowan, Gabriela, Michelle
             justify-content: space-between;
             align-items: center;
             margin: 10px 0;
-            font-weight: bold; 
+            font-weight: bold;
         }
         .heart {
-            margin-left: 15px; 
+            margin-left: 15px;
             font-size: 50px;
             color: grey;
             cursor: pointer;
@@ -154,35 +155,35 @@ author: Ryan, Jowan, Gabriela, Michelle
             align-items: center;
             gap: 20px;
             padding: 20px;
-            border: 10px solid #D7C9E5; 
+            border: 10px solid #D7C9E5;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background-color: #fff7e6; 
+            background-color: #fff7e6;
             max-width: 90%;
             margin: 20px 0;
         }
         .link-row a {
             text-decoration: none;
-            color: #6A0DAD; 
+            color: #6A0DAD;
             font-size: 20px;
         }
         h1 {
-            color: #ff8c00; 
+            color: #ff8c00;
         }
         .collapsible {
             background-color: #333;
             color: white;
             cursor: pointer;
-            padding: 15px; 
+            padding: 15px;
             width: 80%;
-            margin: 10px auto; 
+            margin: 10px auto;
             border: none;
             text-align: left;
             outline: none;
-            font-size: 40px; 
+            font-size: 40px;
             transition: 0.4s;
-            border-radius: 5px; 
-            font-family: 'Calibri', sans-serif; 
+            border-radius: 5px;
+            font-family: 'Calibri', sans-serif;
         }
         .content {
             padding: 0 18px;
@@ -191,12 +192,57 @@ author: Ryan, Jowan, Gabriela, Michelle
             background-color: #222;
             color: white;
         }
+        /* Container and form styling for post creation */
+        .container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            width: 100%;
+            background-color: #2C3E50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #ECF0F1;
+        }
+        .form-container label {
+            margin-bottom: 5px;
+        }
+        .form-container select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            background-color: #34495E;
+            color: #ECF0F1;
+            font-size: 16px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+        }
+        .form-container button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #34495E;
+            color: #ECF0F1;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
 <h1 class="about-header">ABOUT THIS HANGOUT:</h1>
-<p class="about-paragraph">This is a hangout all about people's favorite food, restaurants, and more! We have a (local) backend running that stores chat messages in a database. We have a list of local restaurants where you can browse. Explore and have fun!</p>
+<p class="about-paragraph">This is a hangout all about people's favorite food, restaurants, and more! Explore and have fun!</p>
 
 <button class="collapsible">MODERATION RULES</button>
 <div class="content">
@@ -208,36 +254,25 @@ author: Ryan, Jowan, Gabriela, Michelle
     <p class="rules-paragraph">6. Do NOT impersonate people.</p>
 </div>
 
-<div>
-    <h3>Select a Group</h3>
-    <select id="group_id">
-        <option value="" disabled selected>Select a group</option>
-    </select>
+<!-- Create Post Form Section -->
+<div class="container">
+    <div class="form-container">
+        <h2>Select Group and Create Post</h2>
+        <form id="postForm">
+            <label for="group_id">Group:</label>
+            <select id="group_id" name="group_id" required>
+                <option value="">Select a group</option>
+            </select>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea>
+            <button type="submit">Add Post</button>
+        </form>
+    </div>
 </div>
 
-<!-- Add Post Form -->
-<div class="form-container">
-    <h2>☆*: .｡. Add New Post :coffee:.｡.:*☆</h2>
-    <form id="postForm">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="content">Message:</label>
-        <textarea id="content" name="content" required></textarea>
-        <label for="group_id">Group:</label>
-        <select id="group_id" name="group_id" required>
-            <option value="">Select a group</option>
-            <!-- Options will be dynamically populated -->
-        </select>
-        <button type="submit">Add Post</button>
-    </form>
-</div>
-
-<div class="image-row">
-    <img src="https://cdn.prod.website-files.com/56f03b1536442f6b27f0f08c/5f03324cbb2506842953d137_worlds-best-foods-pizza.jpg" alt="Pizza">
-    <img src="https://www.eatingwell.com/thmb/iCdLRBC1BMcDYKRYMTyyToQ8mRs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8401873-ad2429ae1858464a92229875c91c093d.jpg" alt="Pasta">
-    <img src="https://thatdeliciousdish.com/wp-content/uploads/2020/07/Garlic-Mushroom-Noodles-Recipe-web1-1-800x840.jpg" alt="Ramen">
-</div>
-
+<!-- Existing Chat and Local Restaurant Features -->
 <div class="chat-container">
     <div class="chat-label">Chat Box</div>
     <div class="chat-box" id="chatBox">
@@ -245,7 +280,7 @@ author: Ryan, Jowan, Gabriela, Michelle
     </div>
     <div class="input-box">
         <input type="text" id="userName" placeholder="Enter your name..." />
-        <input type="text" id="userInput" placeholder="Share a recipe or restaurant...">
+        <input type="text" id="userInput" placeholder="Share a recipe or restaurant..." />
         <button onclick="sendMessage()">Send</button>
     </div>
 </div>
@@ -267,36 +302,48 @@ author: Ryan, Jowan, Gabriela, Michelle
 </ul>
 
 <script>
-    async function fetchGroups(sectionName) {
-        const response = await fetch('http://localhost:5000/api/groups/filter', {
+    // Fetching groups to populate dropdown
+    async function fetchGroups() {
+        const response = await fetch('http://localhost:5000/api/groups');
+        if (response.ok) {
+            const groups = await response.json();
+            const groupSelect = document.getElementById('group_id');
+            groups.forEach(group => {
+                const option = document.createElement('option');
+                option.value = group.id;
+                option.textContent = group.name;
+                groupSelect.appendChild(option);
+            });
+        } else {
+            alert("Failed to fetch groups");
+        }
+    }
+    fetchGroups();
+
+    // Handle post form submission
+    document.getElementById('postForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const postData = {
+            title: document.getElementById('title').value,
+            content: document.getElementById('content').value,
+            group_id: document.getElementById('group_id').value,
+        };
+        const response = await fetch('http://localhost:5000/api/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ section_name: sectionName })
+            body: JSON.stringify(postData)
         });
-
         if (response.ok) {
-            const groups = await response.json();
-            populateGroupDropdown(groups);
+            alert('Post created successfully!');
         } else {
             const error = await response.json();
-            alert(error.error || "An error occurred while fetching groups.");
+            alert(error.error || 'Failed to create post.');
         }
-    }
+    });
 
-    function populateGroupDropdown(groups) {
-        const groupSelect = document.getElementById('group_id');
-        groupSelect.innerHTML = "<option value='' disabled selected>Select a group</option>"; // Clear existing options
-
-        groups.forEach(group => {
-            const option = document.createElement('option');
-            option.value = group.id;
-            option.textContent = group.name;
-            groupSelect.appendChild(option);
-        });
-    }
-
+    // Chat functionality
     function sendMessage() {
         const name = document.getElementById("userName").value;
         const message = document.getElementById("userInput").value;
@@ -307,9 +354,8 @@ author: Ryan, Jowan, Gabriela, Michelle
             chatMessage.classList.add("chat-message");
             chatMessage.textContent = `${name}: ${message}`;
             chatBox.appendChild(chatMessage);
-            chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll to the latest message
+            chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Clear input fields after sending
             document.getElementById("userName").value = "";
             document.getElementById("userInput").value = "";
         } else {
@@ -317,47 +363,11 @@ author: Ryan, Jowan, Gabriela, Michelle
         }
     }
 
-    window.onload = function() {
-        fetchGroups("Home Page");
-    }
-
+    // Toggle heart icon
     function toggleHeart(heart) {
         heart.classList.toggle("liked");
     }
-
-    const coll = document.querySelector(".collapsible");
-    coll.addEventListener("click", function() {
-        const content = this.nextElementSibling;
-        content.style.display = content.style.display === "block" ? "none" : "block";
-    });
-
-    document.getElementById("postForm").addEventListener("submit", async function(e) {
-        e.preventDefault();
-
-        const postData = {
-            title: document.getElementById("title").value,
-            content: document.getElementById("content").value,
-            group_id: document.getElementById("group_id").value,
-        };
-
-        const response = await fetch('http://localhost:5000/api/post', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData)
-        });
-
-        if (response.ok) {
-            alert('Post created successfully!');
-        } else {
-            const error = await response.json();
-            alert(error.error || 'Failed to create post.');
-        }
-    });
 </script>
 
 </body>
-<a href="favorites.md" class="link-button">Go to Favorite Restaurants</a>
 </html>
-
