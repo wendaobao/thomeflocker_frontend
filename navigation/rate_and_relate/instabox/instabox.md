@@ -238,22 +238,15 @@ author: Aadi, Aaditya, Aditya, Kanhay
 
 <script type="module">
     import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
-    window.pythonURI = pythonURI;
-    window.fetchOptions = fetchOptions;
-
-    // nolan h was here :) and fixed aditya k's broken code
-</script>
-
-<script>
     // fetch and display chat messages
     function fetchMessages() {
-        fetch(`${window.pythonURI}/api/messages`, {
-            ...window.fetchMessages,
-            method: "POST",
+        fetch(`${pythonURI}/api/messages`, {
+            ...fetchMessages,
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ channel_id: 2 })
+            }
+            // body: JSON.stringify({ channel_id: 2 })
         }) // fetch
             .then(response => response.json())
             .then(data => {
