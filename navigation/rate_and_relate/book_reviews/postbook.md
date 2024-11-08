@@ -103,7 +103,7 @@ search_exclude: true
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
+                body: JSON.stringify({ section_name: "Rate and Relate" }) // Adjust the section name as needed
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
