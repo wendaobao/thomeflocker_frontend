@@ -2,12 +2,14 @@
 layout: post
 title: Shared Interests - AGK
 search_exclude: true
-permalink: /shared_interests/agk/agk
+permalink: /shared_interests/agk/agk.html
 menu: nav/shared_interests.html
 author: Mihir, Pradyun, Derek, Ansh
 ---
-
-<style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -31,163 +33,140 @@ author: Mihir, Pradyun, Derek, Ansh
             border-radius: 8px;
             background-color: #001F3F;
             color: white;
+            position: relative; 
         }
         .post {
             margin: 10px 0;
             padding: 15px;
             border: 1px solid #C5B358;
             border-radius: 5px;
-            background-color: #4CAF50; 
+            background-color: #121212; 
         }
         .chatroom-link {
-            display: block;
-            text-align: center;
-            margin: 20px 0;
+            position: absolute;
+            top: 640px;
+            right: 460px;
             padding: 10px;
-            background-color: #FFD700;
+            background-color: #1A2A6C;
             color: black;
             text-decoration: none;
             border-radius: 5px;
         }
         .chatroom-link:hover {
             background-color: #C5B358;
+            color: black;
         }
-</style>
-
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #FDF5E6;
-    }
-    .chatroom-container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 2px solid #C5B358;
-        border-radius: 8px;
-        background-color: #001F3F;
-    }
-    .chatroom-header {
-        text-align: center;
-        color: #FFD700;
-    }
-    .chat-area {
-        height: 400px;
-        overflow-y: auto;
-        background-color: #228B22;
-        border: 2px solid #C5B358;
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 20px;
-        color: white;
-        display: flex;
-        flex-direction: column; /* Align messages vertically */
-    }
-    .message {
-        max-width: 80%;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 20px;
-        position: relative;
-    }
-    .message.sent {
-        background-color: #FFD700;
-        color: black;
-        align-self: flex-end;
-        position: relative;
-        margin-bottom: 0px;
-    }
-    .message-form {
-        display: flex;
-    }
-    #messageInput {
-        flex: 1;
-        padding: 10px;
-        border: 2px solid #C5B358;
-        border-radius: 5px;
-    }
-    button {
-        background-color: #FFD700;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #C5B358;
-    }
-</style>
-<div class="chatroom-container">
-        <header class="chatroom-header">
-            <h1>Activity Chatroom</h1>
-            <p>Discuss your favorite activities!</p>
-        </header>
-        <div class="chat-area" id="chatArea">
-            <!-- Messages will appear here -->
-        </div>
-        <form class="message-form" id="messageForm">
-            <input type="text" id="messageInput" placeholder="Enter your message..." required>
-            <button type="submit">Send</button>
-        </form>
-</div>
-<script>
-    const chatArea = document.getElementById('chatArea');
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = document.getElementById('messageInput');
-    messageForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const messageText = messageInput.value.trim();
-        if (messageText !== "") {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', 'sent');
-            messageElement.textContent = messageText;
-            chatArea.appendChild(messageElement);
-            messageInput.value = "";
-            chatArea.scrollTop = chatArea.scrollHeight; // Auto-scroll to the newest message
+        .form-container {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #C5B358;
+            border-radius: 8px;
+            background-color: #001F3F;
+            color: white;
         }
-    });
-</script>
+        .form-container h2 {
+            margin-bottom: 15px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #C5B358;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #FFD700;
+            border: none;
+            color: black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-container button:hover {
+            background-color: #C5B358;
+        }
+        .data {
+            display: flex;
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #C5B358;
+            border-radius: 8px;
+            background-color: #001F3F;
+            color: white;
+        }
+        .left-side {
+            width: 50%;
+            padding-right: 20px;
+        }
+        .details {
+            width: 50%;
+        }
+    </style>
+</head>
 
-<div class="container">
-    <div class="form-container">
-        <h2>Select Group and Channel</h2>
-        <form id="selectionForm">
-            <label for="group_id">Group:</label>
-            <select id="group_id" name="group_id" required>
-                <option value="">Select a group</option>
-            </select>
-            <label for="channel_id">Channel:</label>
-            <select id="channel_id" name="channel_id" required>
-                <option value="">Select a channel</option>
-            </select>
-            <button type="submit">Select</button>
-        </form>
+<body>
+    <div class="header">
+        <h1>Welcome to AGK</h1>
+        <p>Your platform for exploring extracurricular activities!</p>
     </div>
-</div>
-
-<div class="container">
-    <div class="form-container">
-        <h2>Add New Post</h2>
-        <form id="postForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="comment">Comment:</label>
-            <textarea id="comment" name="comment" required></textarea>
-            <button type="submit">Add Post</button>
-        </form>
-    </div>
-</div>
-
-<div class="container">
-    <div id="data" class="data">
-        <div class="left-side">
-            <p id="count"></p>
+    <div class="container">
+        <div class="category">
+            <h2>Cyber Patriot Club</h2>
+            <div class="post">
+                <h3>Weekly Meeting Update</h3>
+                <p>Join us every Thursday at 4 PM in Room 101 to discuss upcoming competitions.</p>
+            </div>
+            <div class="post">
+                <h3>New Competition Announced!</h3>
+                <p>We're excited to announce that the next Cyber Patriot competition will be held on March 15th. Prepare your teams!</p>
+            </div>
         </div>
-        <div class="details" id="details">
+        <a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the Chatroom!</a>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <h2>Select Group and Channel</h2>
+            <form id="selectionForm">
+                <label for="group_id">Group:</label>
+                <select id="group_id" name="group_id" required>
+                    <option value="">Select a group</option>
+                </select>
+                <label for="channel_id">Channel:</label>
+                <select id="channel_id" name="channel_id" required>
+                    <option value="">Select a channel</option>
+                </select>
+                <button type="submit">Select</button>
+            </form>
         </div>
     </div>
-</div>
+    <div class="container">
+        <div class="form-container">
+            <h2>Add New Post</h2>
+            <form id="postForm">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" required></textarea>
+                <button type="submit">Add Post</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div id="data" class="data">
+            <div class="left-side">
+                <p id="count"></p>
+            </div>
+            <div class="details" id="details">
+            </div>
+        </div>
+    </div>
+</body>
 
 <script type="module">
     // Import server URI and standard fetch options
