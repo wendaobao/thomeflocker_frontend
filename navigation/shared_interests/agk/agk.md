@@ -151,29 +151,62 @@ author: Mihir, Pradyun, Derek, Ansh
 
 <div class="container">
     <div class="form-container">
-        <form id="postForm">
-            <br/>
-            <label>Please select a group:</label>
+        <h2>Select Group and Channel</h2>
+        <form id="selectionForm">
+            <label for="group_id">Group:</label>
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
             </select>
-            <br/>
-            <label>Please select a channel:</label>
+            <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
             </select>
-            <button type="submit">Show Posts</button> 
+            <button type="submit">Select</button>
         </form>
     </div>
 </div>
 
-<script type="module">
-    import { pythonURI, fetchOptions } from '/flocker_frontend/assets/js/api/config.js';
+<div class="container">
+    <div class="form-container">
+        <h2>Add New Post</h2>
+        <form id="postForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
+            <button type="submit">Add Post</button>
+        </form>
+    </div>
+</div>
 
-   
+<div class="container">
+    <div id="data" class="data">
+        <div class="left-side">
+            <p id="count"></p>
+        </div>
+        <div class="details" id="details">
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    // Import server URI and standard fetch options
+    import { pythonURI, fetchOptions } from '{{ site.baseurl }}/assets/js/api/config.js';
+
+    /**
+     * Fetch groups for dropdown selection
+     * User picks from dropdown
+     */
     async function fetchGroups() {
         try {
-            const response = await fetch(`${pythonURI}/api/groups`, fetchOptions);
+            const response = await fetch(`${pythonURI}/api/groups/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ section_name: "Shared Interest" }) // Adjust the section name as needed
+            });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
             }
@@ -181,134 +214,102 @@ author: Mihir, Pradyun, Derek, Ansh
             const groupSelect = document.getElementById('group_id');
             groups.forEach(group => {
                 const option = document.createElement('option');
-                option.value = group.id;
+                option.value = group.name; // Use group name for payload
                 option.textContent = group.name;
                 groupSelect.appendChild(option);
             });
-
-            const s = await fetch(`${pythonURI}/api/channels`, fetchOptions);
-            if (!s.ok) {
-                throw new Error('Failed to fetch channels: ' + s.statusText);
-            }
-            const g = await s.json();
-            const groupS = document.getElementById('channel_id');
-            g.forEach(group => {
-                const opt = document.createElement('option');
-                opt.value = group.id;
-                opt.textContent = group.name;
-                groupS.appendChild(opt);
-            });
-        
         } catch (error) {
             console.error('Error fetching groups:', error);
         }
     }
-const channelId=1;
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const loginData = {
-    uId: 'toby',
-    password: '123Toby!'
-};
-        //const loginResponse = await fetch(`${pythonURI}/api/authenticate?uid=toby&password=123Toby!`, fetchOptions);
-//const loginDt = await loginResponse.json();
 
-        const response = await fetch(`${pythonURI}/api/posts`,fetchOptions);
-//   {,  method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ channel_id: channelId })
-// });
-const postData = await response.json();
-const detailsDiv = document.getElementById('messages');
-
-postData.forEach(postItem => {
-    const postElement = document.createElement('div');
-    postElement.className = 'post-item';
-    postElement.innerHTML = `
-        <h3>${postItem.title}</h3>
-        <p><strong>Channel:</strong> ${postItem.channel_name}</p>
-        <p><strong>User:</strong> ${postItem.user_name}</p>
-        <p>${postItem.comment}</p>
-    `;
-    detailsDiv.appendChild(postElement);
-});
-    });
-
-    fetchGroups();
-</script>
-
-<div class="messages" id="messages"></div>
-
-<script>
-    const sendButton = document.getElementById('sendButton');
-    const messageInput = document.getElementById('messageInput');
-    const messagesContainer = document.getElementById('messages');
-    async function PostMessages() {
-         // Extract data from form
-        
-         const title = document.getElementById('messageInput');; //document.getElementById('title').value;
-        const content = document.getElementById('messageInput');; //document.getElementById('content').value;
-        const group_id = 1; //document.getElementById('group_id').value;
-       
-        const comment = document.getElementById('messageInput');; //document.getElementById('content').value;
-        const channel_id = 1; //document.getElementById('group_id').value;
-        const messageText = messageInput.value;
-        if (messageText.trim() !== '') {
-            const messageElement = document.createElement('div');
-            messageElement.textContent = messageText;
-            messagesContainer.appendChild(messageElement);
-            messageInput.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight; 
-        }
-// messageInput.addEventListener('keypress', (e) => {
-    //     if (e.key === 'Enter') {
-    //         sendButton.click();
-    //     }
-    // });
-        // Create API payload
-        const postData = {
-            // title: title,
-            // content: content,
-            // group_id: group_id
-            title: title,
-            comment: comment,
-            channel_id: channel_id
-
-        };
-        const loginData = {
-            uid:'toby',
-            password:'123Toby!'
-        };
-        // Trap errors
+    /**
+     * Fetch channels based on selected group
+     * User picks from dropdown
+     */
+    async function fetchChannels(groupName) {
         try {
-            // Send POST request to backend, purpose is to write to database
-            if (location.hostname === "localhost") {
-        pythonURI = "http://localhost:8887";
-} else if (location.hostname === "127.0.0.1") {
-       pythonURI = "http://127.0.0.1:8887";
-} else {
-        pythonURI =  "https://flocker.nighthawkcodingsociety.com";
-}
-
-const loginResponse = await fetch(`${pythonURI}/api/authenticate?uid=Toby&password=123Toby!`,{
+            const response = await fetch(`${pythonURI}/api/channels/filter`, {
+                ...fetchOptions,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                 body: JSON.stringify(loginData)
+                body: JSON.stringify({ group_name: groupName })
             });
-//const loginDt = await loginResponse.json();
+            if (!response.ok) {
+                throw new Error('Failed to fetch channels: ' + response.statusText);
+            }
+            const channels = await response.json();
+            const channelSelect = document.getElementById('channel_id');
+            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+            channels.forEach(channel => {
+                const option = document.createElement('option');
+                option.value = channel.id;
+                option.textContent = channel.name;
+                channelSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error fetching channels:', error);
+        }
+    }
+
+    /**
+      * Handle group selection change
+      * Channel Dropdown refresh to match group_id change
+      */
+    document.getElementById('group_id').addEventListener('change', function() {
+        const groupName = this.value;
+        if (groupName) {
+            fetchChannels(groupName);
+        } else {
+            document.getElementById('channel_id').innerHTML = '<option value="">Select a channel</option>'; // Reset channels
+        }
+    });
+
+    /**
+     * Handle form submission for selection
+     * Select Button: Computer fetches and displays posts
+     */
+    document.getElementById('selectionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const groupId = document.getElementById('group_id').value;
+        const channelId = document.getElementById('channel_id').value;
+        if (groupId && channelId) {
+            fetchData(channelId);
+        } else {
+            alert('Please select both group and channel.');
+        }
+    });
+
+    /**
+     * Handle form submission for adding a post
+     * Add Form Button: Computer handles form submission with request
+     */
+    document.getElementById('postForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        // Extract data from form
+        const title = document.getElementById('title').value;
+        const comment = document.getElementById('comment').value;
+        const channelId = document.getElementById('channel_id').value;
+
+        // Create API payload
+        const postData = {
+            title: title,
+            comment: comment,
+            channel_id: channelId
+        };
+
+        // Trap errors
+        try {
+            // Send POST request to backend, purpose is to write to database
             const response = await fetch(`${pythonURI}/api/post`, {
-                               method: 'POST',
-                              mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'include', // include, same-origin, omit
-    headers: {
-        'Content-Type': 'application/json',
-        'X-Origin': 'client' // New custom header to identify source
-    },
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(postData)
             });
 
@@ -316,20 +317,67 @@ const loginResponse = await fetch(`${pythonURI}/api/authenticate?uid=Toby&passwo
                 throw new Error('Failed to add post: ' + response.statusText);
             }
 
-            // Succesfull post
+            // Successful post
             const result = await response.json();
             alert('Post added successfully!');
             document.getElementById('postForm').reset();
+            fetchData(channelId);
         } catch (error) {
             // Present alert on error from backend
             console.error('Error adding post:', error);
             alert('Error adding post: ' + error.message);
         }
-        
-    
+    });
+
+    /**
+     * Fetch posts based on selected channel
+     * Handle response: Fetch and display posts
+     */
+    async function fetchData(channelId) {
+        try {
+            const response = await fetch(`${pythonURI}/api/posts/filter`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ channel_id: channelId })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch posts: ' + response.statusText);
+            }
+
+            // Parse the JSON data
+            const postData = await response.json();
+
+            // Extract posts count
+            const postCount = postData.length || 0;
+
+            // Update the HTML elements with the data
+            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+
+            // Get the details div
+            const detailsDiv = document.getElementById('details');
+            detailsDiv.innerHTML = ''; // Clear previous posts
+
+            // Iterate over the postData and create HTML elements for each item
+            postData.forEach(postItem => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-item';
+                postElement.innerHTML = `
+                    <h3>${postItem.title}</h3>
+                    <p><strong>Channel:</strong> ${postItem.channel_name}</p>
+                    <p><strong>User:</strong> ${postItem.user_name}</p>
+                    <p>${postItem.comment}</p>
+                `;
+                detailsDiv.appendChild(postElement);
+            });
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
 
-    sendButton.addEventListener('click', PostMessages);
-
-
+    // Fetch groups when the page loads
+    fetchGroups();
 </script>
