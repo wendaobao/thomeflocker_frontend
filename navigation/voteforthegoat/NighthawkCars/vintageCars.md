@@ -12,7 +12,7 @@ permalink: /voteforthegoat/nighthawkCars/vintageCars/
     <title>Student Cars</title>
     <style>
         body {
-            background: linear-gradient(135deg, #333333, #ff4d4d, #ffffff); /* 180deg for top-to-bottom gradient */
+            background: linear-gradient(135deg, #333333, #008000, #ffffff); /* 180deg for top-to-bottom gradient */
             color: #ffffff;
             font-family: Arial, sans-serif;
             min-height: 100vh;
