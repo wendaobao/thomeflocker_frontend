@@ -173,7 +173,6 @@ menu: nav/shared_interests.html
     <div class="posts-wrapper" id="postsWrapper">
         <!-- Posts will be dynamically loaded here -->
     </div>
-
     <!-- Chatroom Section on the Right -->
     <div class="chatroom-container">
         <header class="chatroom-header">
