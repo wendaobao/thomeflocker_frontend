@@ -1,203 +1,10 @@
 ---
-layout: base
-title: Football
-permalink: /shared_interests/football/
-menu: nav/shared_interests.html
+layout: post
+title: Add a Post
+permalink: /postbook
+menu: nav/home.html
+search_exclude: true
 ---
-
-<!-- FOR THE NAV MENU AS IT IS NOT WORKING ON YOUR PAGE -->
-<table>
-    <tr>
-        <td id="sharedinterests">
-            <a href="{{site.baseurl}}/shared_interests/home">
-                <img src="{{site.baseurl}}/images/school_logo.png" alt="logo" width="150" height="150">
-            </a>
-        </td>
-        <td id="Limitless Connections"><a href="{{site.baseurl}}/shared_interests/limitconnect">Limitless Connections</a></td>
-        <td id="DNHS Football"><a href="{{site.baseurl}}/shared_interests/football">DNHS Football</a></td>
-        <td id="School Subjects"><a href="{{site.baseurl}}/shared_interests/jupyter/chatroom">School Subjects</a></td>
-        <td id="Music"><a href="{{site.baseurl}}/music/">Music</a></td>
-        <td id="Satire"><a href="{{site.baseurl}}/shared_interests/satire">Satire</a></td>
-        <td id="AGK"><a href="{{site.baseurl}}/shared_interests/agk/agk.html">AGK</a></td>
-    </tr>
-</table>
-<!-- END OF NAV MENU -->
-
-<style>
-    .page-header {
-        text-align: center;
-        padding: 20px;
-        background-color: #001F3F;
-        color: #FFD700;
-        border-radius: 8px;
-        border: 2px solid #C5B358;
-    }
-
-    .main-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .posts-wrapper {
-        width: 45%;
-    }
-
-    .post {
-        border: 2px solid #C5B358;
-        border-radius: 8px;
-        background-color: #008504;
-        padding: 15px;
-        margin-bottom: 15px;
-        color: white;
-    }
-
-    .post-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-
-    .post-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #FFD700;
-        display: inline-block;
-        margin-right: 10px;
-    }
-
-    .post-username {
-        font-weight: bold;
-        color: #FFD700;
-    }
-
-    .reaction-icons {
-        margin-top: 10px;
-        cursor: pointer;
-    }
-
-    .chatroom-container {
-        width: 45%;
-        border: 2px solid #C5B358;
-        border-radius: 8px;
-        background-color: #001F3F;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        max-height: 725px;
-        overflow: hidden;
-    }
-
-    .chatroom-header {
-        text-align: center;
-        color: #FFD700;
-        margin-bottom: 10px;
-    }
-
-    .chat-area {
-        flex-grow: 1;
-        min-height: 450px;
-        max-height: 450px;
-        overflow-y: auto;
-        background-color: #008504;
-        border: 2px solid #C5B358;
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 10px;
-        color: white;
-    }
-
-    .message-form {
-        display: flex;
-        align-items: center;
-    }
-
-    #messageInput {
-        flex: 1;
-        padding: 10px;
-        border: 2px solid #C5B358;
-        border-radius: 5px;
-        margin-right: 10px;
-    }
-
-    button {
-        background-color: #FFD700;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #C5B358;
-    }
-
-    /* Styles for Post Submission Form */
-    .post-form-container {
-        border: 2px solid #C5B358;
-        border-radius: 8px;
-        background-color: #008504;
-        padding: 15px;
-        margin-top: 20px;
-    }
-
-    #roleSelect {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #C5B358;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-
-    #postInput {
-        width: 100%;
-        height: 100px;
-        padding: 10px;
-        border: 2px solid #C5B358;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        resize: none;
-    }
-</style>
-
-<!-- Page Header -->
-<div class="page-header">
-    <h1>Welcome to the Football Flocker Room</h1>
-    <p>View announcements, posts, or engage with others in the chat!</p>
-</div>
-
-<div class="main-container">
-    <!-- Posts Section on the Left -->
-    <div class="posts-wrapper" id="postsWrapper">
-        <!-- Posts will be dynamically loaded here -->
-    </div>
-    <!-- Chatroom Section on the Right -->
-    <div class="chatroom-container">
-        <header class="chatroom-header">
-            <h2>Flocker Chatroom</h2>
-        </header>
-        <div class="chat-area" id="chatArea">
-            <!-- Messages will appear here -->
-        </div>
-        <form class="message-form" id="messageForm">
-            <input type="text" id="messageInput" placeholder="Enter your message..." required>
-            <button type="submit">Send</button>
-        </form>
-    </div>
-</div>
-
-
-
-
-
-<!-- POST -->
-
-
-
-
-
 <style>
     .container {
         display: flex;
@@ -212,11 +19,11 @@ menu: nav/shared_interests.html
         flex-direction: column;
         max-width: 800px;
         width: 100%;
-        background-color: #2c3e50;
+        background-color: #2C3E50;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        color: #ecf0f1;
+        color: #ECF0F1;
     }
     .form-container label {
         margin-bottom: 5px;
@@ -232,8 +39,8 @@ menu: nav/shared_interests.html
         padding: 10px;
         border-radius: 5px;
         border: none;
-        background-color: #34495e;
-        color: #ecf0f1;
+        background-color: #34495E;
+        color: #ECF0F1;
         cursor: pointer;
     }
 </style>
@@ -245,10 +52,13 @@ menu: nav/shared_interests.html
             <label for="group_id">Group:</label>
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
+                <option value="">Book Reviews</option>
             </select>
             <label for="channel_id">Channel:</label>
             <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
+                <option value="">Fiction</option>
+                <option value="">Non-Fiction</option>
             </select>
             <button type="submit">Select</button>
         </form>
@@ -288,13 +98,13 @@ menu: nav/shared_interests.html
      */
     async function fetchGroups() {
         try {
-            const response = await fetch(`${pythonURI}/api/groups/filter`, {
+            const response = await fetch(${pythonURI}/api/groups/filter, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ section_name: "Shared Interest" }) // Adjust the section name as needed
+                body: JSON.stringify({ section_name: "Home Page" }) // Adjust the section name as needed
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch groups: ' + response.statusText);
@@ -318,7 +128,7 @@ menu: nav/shared_interests.html
      */
     async function fetchChannels(groupName) {
         try {
-            const response = await fetch(`${pythonURI}/api/channels/filter`, {
+            const response = await fetch(${pythonURI}/api/channels/filter, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -393,7 +203,7 @@ menu: nav/shared_interests.html
         // Trap errors
         try {
             // Send POST request to backend, purpose is to write to database
-            const response = await fetch(`${pythonURI}/api/post`, {
+            const response = await fetch(${pythonURI}/api/post, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -424,7 +234,7 @@ menu: nav/shared_interests.html
      */
     async function fetchData(channelId) {
         try {
-            const response = await fetch(`${pythonURI}/api/posts/filter`, {
+            const response = await fetch(${pythonURI}/api/posts/filter, {
                 ...fetchOptions,
                 method: 'POST',
                 headers: {
@@ -443,7 +253,7 @@ menu: nav/shared_interests.html
             const postCount = postData.length || 0;
 
             // Update the HTML elements with the data
-            document.getElementById('count').innerHTML = `<h2>Count ${postCount}</h2>`;
+            document.getElementById('count').innerHTML = <h2>Count ${postCount}</h2>;
 
             // Get the details div
             const detailsDiv = document.getElementById('details');
@@ -461,7 +271,7 @@ menu: nav/shared_interests.html
                 `;
                 detailsDiv.appendChild(postElement);
             });
-
+            
         } catch (error) {
             console.error('Error fetching data:', error);
         }
