@@ -4,6 +4,7 @@ title: Underground Music
 description: Share music with others!
 permalink: /undgdmusic/
 ---
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -80,8 +81,18 @@ permalink: /undgdmusic/
             cursor: pointer;
             text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
         }
-        .reaction-icons { margin-top: 10px; }
-        .emoji { cursor: pointer; margin-right: 15px; }
+        .delete-button {
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .delete-button:hover {
+            background-color: #ff1c1c;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +132,7 @@ permalink: /undgdmusic/
 <script type="module">
     import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
 
+    // Post-Related Functions
     async function fetchPosts() {
         try {
             const response = await fetch(`${pythonURI}/api/posts`, fetchOptions);
@@ -136,22 +148,34 @@ permalink: /undgdmusic/
 
     function renderPosts(posts) {
         document.getElementById('postsWrapper').innerHTML = posts.map(post => {
-            const username = post.username || "Anonymous"; // Default to "Anonymous" if undefined
-            const content = typeof post.content === 'string' ? post.content : JSON.stringify(post.content); // Display content as JSON if it's an object
+            const username = post.username || "Anonymous";
+            const content = typeof post.content === 'string' ? post.content : JSON.stringify(post.content);
 
             return `
                 <div class="post" data-post-id="${post.id}">
                     <div class="post-header">
                         <span class="post-username">${username}</span>
+                        <button onclick="deletePost('${post.id}')" class="delete-button">Delete</button>
                     </div>
                     <p>${content}</p>
-                    <div class="reaction-icons">
-                        <span class="emoji" onclick="addReaction('${post.id}', 'thumbsUp')">👍 <span class="thumbsUp-count">0</span></span>
-                        <span class="emoji" onclick="addReaction('${post.id}', 'heart')">❤️ <span class="heart-count">0</span></span>
-                        <span class="emoji" onclick="addReaction('${post.id}', 'fire')">🔥 <span class="fire-count">0</span></span>
-                    </div>
                 </div>`;
         }).join('');
+    }
+
+    async function deletePost(postId) {
+        try {
+            const response = await fetch(`${pythonURI}/api/posts/${postId}`, {
+                ...fetchOptions,
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (!response.ok) {
+                throw new Error("Failed to delete the post.");
+            }
+            fetchPosts();
+        } catch (error) {
+            console.error("Error deleting post:", error);
+        }
     }
 
     async function addPost(event) {
@@ -171,28 +195,85 @@ permalink: /undgdmusic/
                 throw new Error("Failed to add post to the backend.");
             }
             document.getElementById('postForm').reset();
-            fetchPosts(); // Refresh posts after adding a new one
+            fetchPosts();
         } catch (error) {
             console.error("Error adding post:", error);
         }
     }
 
+    // Message-Related Functions
+    async function fetchMessages() {
+        try {
+            const response = await fetch(`${pythonURI}/api/messages`, {
+                ...fetchOptions,
+                method: 'GET',
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch messages: ' + response.statusText);
+            }
+            const messages = await response.json();
+            const messagesContainer = document.getElementById("messages");
+            messagesContainer.innerHTML = "";
+
+            messages.forEach(message => {
+                const messageCard = document.createElement("div");
+                messageCard.classList.add("message-card");
+
+                const title = document.createElement("h3");
+                title.textContent = message.title;
+
+                const content = document.createElement("p");
+                content.textContent = message.content;
+
+                messageCard.appendChild(title);
+                messageCard.appendChild(content);
+                messagesContainer.appendChild(messageCard);
+            });
+        } catch (error) {
+            console.error('Error fetching messages:', error);
+        }
+    }
+
+    async function sendMessage(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value || "Anonymous";
+        const content = document.getElementById('message').value;
+
+        const messageData = {
+            title: `Message from ${username}`,
+            content: content,
+        };
+
+        try {
+            const response = await fetch(`${pythonURI}/api/messages`, {
+                ...fetchOptions,
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(messageData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send message: ' + response.statusText);
+            }
+
+            // Refresh messages after sending a new one
+            fetchMessages();
+
+            // Clear input field
+            document.getElementById('message').value = '';
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
+    }
+
+    // Initialize content on page load
     document.addEventListener('DOMContentLoaded', () => {
         fetchPosts();
-        
+        fetchMessages();
         document.getElementById('postForm').addEventListener('submit', addPost);
-
-        document.getElementById('chat-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value || "Anonymous";
-            const message = document.getElementById('message').value;
-            const timestamp = new Date().toLocaleTimeString();
-            const messageHtml = `<p><span class="username">${username}</span>: ${message} <span class="timestamp">[${timestamp}]</span></p>`;
-            document.getElementById("messages").innerHTML += messageHtml;
-            event.target.reset();
-        });
+        document.getElementById('chat-form').addEventListener('submit', sendMessage);
     });
-
 </script>
 
 </body>
