@@ -1,5 +1,5 @@
 ---
-layout: post 
+layout: post
 title: Add a Post
 permalink: /post
 menu: nav/home.html
@@ -19,11 +19,11 @@ search_exclude: true
         flex-direction: column;
         max-width: 800px;
         width: 100%;
-        background-color: #2c3e50;
+        background-color: #2C3E50;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        color: #ecf0f1;
+        color: #ECF0F1;
     }
     .form-container label {
         margin-bottom: 5px;
@@ -39,8 +39,8 @@ search_exclude: true
         padding: 10px;
         border-radius: 5px;
         border: none;
-        background-color: #34495e;
-        color: #ecf0f1;
+        background-color: #34495E;
+        color: #ECF0F1;
         cursor: pointer;
     }
 </style>
@@ -268,7 +268,7 @@ search_exclude: true
                 `;
                 detailsDiv.appendChild(postElement);
             });
-
+            
         } catch (error) {
             console.error('Error fetching data:', error);
         }
