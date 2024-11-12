@@ -1,249 +1,228 @@
 ---
 layout: post
-title: Internet debates
-description: internet debates
+title: Internet Debates
+description: internet Debates
 permalink: /voteforthegoat/internetdebates
+menu: nav/vote_for_the_goat.html
 comments: true
 ---
+<script type="module" src="{{site.baseurl}}/navigation/voteforthegoat/debate.js"></script>
 
+<div class="sidebar">
+    <h3>Debate Topics</h3>
+    <button class="debate-btn" data-debate="Milk or Cereal First?" data-channel-id="17">Milk or Cereal First?</button>
+    <button class="debate-btn" data-debate="Is a Hot Dog a Sandwich?" data-channel-id="18">Is a Hot Dog a Sandwich?</button>
+    <button class="debate-btn" data-debate="Pineapple on Pizza?" data-channel-id="19">Pineapple on Pizza?</button>
+    <button class="debate-btn" data-debate="Cats or Dogs?" data-channel-id="20">Cats or Dogs?</button>
+    <button class="debate-btn" data-debate="Coffee or Tea?" data-channel-id="21">Coffee or Tea?</button>
+</div>
+<div class="rulebar">
+    <a href="{{site.baseurl}}/voteforthegoat/internetdebatesrules">
+        <button class="rule-btn">Rules</button>
+    </a>
+</div>
 
-# Community Rules/Guidelines:
-- Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.
-- Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.
-- Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.
-- Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.
-- One Account Only: Just one account per person—no extra accounts to sway votes.
-- Use Timer Debates Effectively: In Timer Debate mode, share quick, concise arguments on a timer. Stick to your turn, keep responses short, and follow the time limit.
-- Respect Moderators: Moderators are here to help things run smoothly. Follow their lead if they give you a reminder.
-- Report Issues: If you see spam or anything inappropriate, use the report feature to help us keep things fun for everyone.
-
-<head>
-    <title>Futuristic Debate Forum</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0d0d0d;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 1rem;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: #00e5ff;
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
-        }
-
-        #debate-selection h2, #arguments-list h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 2rem;
-        }
-
-        .side-btn {
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #00e5ff, #0099cc);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
-            transition: background 0.3s ease;
-        }
-
-        .side-btn:hover {
-            background: linear-gradient(45deg, #0099cc, #006699);
-        }
-
-        #argument-section {
-            margin-top: 2rem;
-        }
-
-        #argument-input {
-            width: 100%;
-            height: 100px;
-            border: 2px solid #00e5ff;
-            border-radius: 10px;
-            background: #0a0a0a;
-            color: #fff;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            resize: none;
-        }
-
-        .submit-btn {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #00e5ff, #0099cc);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-
-        li {
-            background: #1a1a1a;
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 10px;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        li .rate {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-        }
-
-        .rate button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin: 0 0.5rem;
-            color: #00e5ff;
-            border-radius: 50px;
-            padding: 0.2rem 0.5rem;
-            background-color: rgba(0, 229, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Choose Your Side</h1>
-        </header>
-
-        <section id="debate-selection">
-            <h2>Current Debate: Milk or Cereal First?</h2>
-            <div class="buttons">
-                <button id="milkFirst" class="side-btn">Milk First</button>
-                <button id="cerealFirst" class="side-btn">Cereal First</button>
-            </div>
-        </section>
-
-        <section id="argument-section" class="hidden">
-            <h2 id="selected-side">Your Side:</h2>
-            <textarea id="argument-input" placeholder="Submit your argument"></textarea>
-            <button id="submit-argument" class="submit-btn">Submit Argument</button>
-        </section>
-
-        <section id="arguments-list" class="hidden">
-            <h2>Arguments</h2>
-            <ul id="argument-container"></ul>
-        </section>
+<div id="rules-popup" class="modal">
+    <div class="modal-content">
+        <h2>Community Rules/Guidelines</h2>
+        <ul>
+            <li>Be Respectful: Keep things light and friendly. Make sure to respect others' views, and avoid any rude or offensive comments.</li>
+            <li>Keep it Family-Friendly: Use clean language—no offensive words, hate speech, or harassment allowed.</li>
+            <li>Stay On-Topic: Focus on the debate question. Stick to points that add to the discussion.</li>
+            <li>Vote Honestly: Vote once per debate, whether it’s in the main chat or Timer Debate. All votes are anonymous.</li>
+            <li>One Account Only: Just one account per person—no extra accounts to sway votes.</li>
+        </ul>
+        <button id="acknowledge-rules" class="acknowledge-btn">I have read and acknowledged the rules</button>
     </div>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const milkButton = document.getElementById('milkFirst');
-            const cerealButton = document.getElementById('cerealFirst');
-            const argumentSection = document.getElementById('argument-section');
-            const argumentsList = document.getElementById('arguments-list');
-            const argumentInput = document.getElementById('argument-input');
-            const submitButton = document.getElementById('submit-argument');
-            const argumentContainer = document.getElementById('argument-container');
-            const selectedSideText = document.getElementById('selected-side');
+<div class="container">
+    <h1>Choose Your Side</h1>
 
-            let selectedSide = '';
+    <section id="debate-selection">
+        <h2 id="current-debate">Current Debate: Milk or Cereal First?</h2>
+        <div class="buttons">
+            <button id="side1" class="side-btn">Milk First</button>
+            <button id="side2" class="side-btn">Cereal First</button>
+        </div>
+    </section>
 
-            milkButton.addEventListener('click', () => {
-                selectedSide = 'Milk First';
-                showArgumentSection();
-            });
+    <section id="argument-section" class="hidden">
+        <h2 id="selected-side">Your Side:</h2>
+        <textarea id="argument-input" placeholder="Submit your argument"></textarea>
+        <button id="submit-argument" class="submit-btn">Submit Argument</button>
+    </section>
 
-            cerealButton.addEventListener('click', () => {
-                selectedSide = 'Cereal First';
-                showArgumentSection();
-            });
+    <section id="arguments-list" class="hidden">
+        <h2>Arguments</h2>
+        <ul id="argument-container"></ul>
+    </section>
+</div>
 
-            function showArgumentSection() {
-                argumentSection.classList.remove('hidden');
-                selectedSideText.textContent = `Your Side: ${selectedSide}`;
-            }
+<style>
+    .sidebar {
+        width: 200px;
+        background: #222;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 50px; 
+        left: 20px;
+    }
 
-            submitButton.addEventListener('click', () => {
-                const argumentText = argumentInput.value.trim();
-                if (argumentText) {
-                    const argumentElement = document.createElement('li');
-                    let upvotes = 0;
-                    let downvotes = 0;
-                    let hasVoted = false;
+    .sidebar h3 {
+        color: #00e5ff;
+    }
+    .rulebar {
+        width: 200px;
+        height: 80px;
+        background: #000000;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 650px; 
+        left: 20px;
+    }
 
-                    argumentElement.innerHTML = `
-                        <p><strong>${selectedSide}:</strong> ${argumentText}</p>
-                        <div class="rate">
-                            <button class="upvote">👍 <span class="upvote-count">0</span></button>
-                            <button class="downvote">👎 <span class="downvote-count">0</span></button>
-                        </div>
-                    `;
+    .debate-btn {
+        display: block;
+        background: #00e5ff;
+        color: #fff;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
 
-                    argumentContainer.appendChild(argumentElement);
-                    argumentInput.value = '';
+    .rule-btn {
+        display: block;
+        background: #00e5ff;
+        color: #fff;
+        width:166px;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
 
-                    argumentsList.classList.remove('hidden');
+    .debate-btn:hover {
+        background: #0099cc;
+    }
 
-                    const upvoteBtn = argumentElement.querySelector('.upvote');
-                    const downvoteBtn = argumentElement.querySelector('.downvote');
-                    const upvoteCount = argumentElement.querySelector('.upvote-count');
-                    const downvoteCount = argumentElement.querySelector('.downvote-count');
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to right, #013b54, #4b1f30);
+        color: #fff;
+        margin: 0; /* Remove default margin */
+        min-height: 100vh; /* Ensure the body takes full height */
+        display: flex;
+        flex-direction: column;
+    }
 
-                    upvoteBtn.addEventListener('click', () => {
-                        if (!hasVoted) {
-                            upvotes++;
-                            upvoteCount.textContent = upvotes;
-                            hasVoted = true;
-                        }
-                    });
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 
-                    downvoteBtn.addEventListener('click', () => {
-                        if (!hasVoted) {
-                            downvotes++;
-                            downvoteCount.textContent = downvotes;
-                            hasVoted = true;
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-</body>
+    .modal-content {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(26, 26, 26, 0.9); /* Slightly transparent to see the background */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #00e5ff;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .side-btn, .submit-btn, .acknowledge-btn {
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        color: #fff;
+        transition: background 0.3s ease;
+        background: linear-gradient(45deg, #00e5ff, #0099cc);
+        border-radius: 10px;
+    }
+
+    .side-btn:hover {
+        background: linear-gradient(45deg, #0099cc, #006699);
+    }
+
+    #argument-input {
+        width: 100%;
+        height: 100px;
+        border: 2px solid #00e5ff;
+        border-radius: 10px;
+        background: #0a0a0a;
+        color: #fff;
+        padding: 1rem;
+        resize: none;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        background: #1a1a1a;
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    li .rate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .rate button {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        color: #00e5ff;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
