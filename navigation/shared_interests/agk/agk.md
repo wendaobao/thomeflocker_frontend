@@ -16,8 +16,8 @@ author: Mihir, Pradyun, Derek, Ansh
             background-color: #FDF5E6;
         }
         .header {
-            background: linear-gradient(to right,#001F3F, #073461); 
-            color: #ff4747;
+            background-color: #001F3F; 
+            color: #FFD700;
             text-align: center;
             padding: 20px;
         }
@@ -29,16 +29,16 @@ author: Mihir, Pradyun, Derek, Ansh
         .category {
             margin: 20px 0;
             padding: 15px;
-            border: 2px solid #ff7a7a;
+            border: 2px solid #C5B358;
             border-radius: 8px;
-            background: linear-gradient(to right,#001F3F, #073461);
+            background-color: #001F3F;
             color: white;
             position: relative; 
         }
         .post {
             margin: 10px 0;
             padding: 15px;
-            border: 1px solid #ff7a7a;
+            border: 1px solid #C5B358;
             border-radius: 5px;
             background-color: #121212; 
         }
@@ -59,9 +59,9 @@ author: Mihir, Pradyun, Derek, Ansh
         .form-container {
             margin: 20px 0;
             padding: 15px;
-            border: 2px solid #ff7a7a;
+            border: 2px solid #C5B358;
             border-radius: 8px;
-            background: linear-gradient(to right,#001F3F, #073461);
+            background-color: #001F3F;
             color: white;
         }
         .form-container h2 {
@@ -77,7 +77,7 @@ author: Mihir, Pradyun, Derek, Ansh
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
-            border: 1px solid #ff7a7a;
+            border: 1px solid #C5B358;
             border-radius: 5px;
         }
         .form-container button {
@@ -95,9 +95,9 @@ author: Mihir, Pradyun, Derek, Ansh
             display: flex;
             margin: 20px 0;
             padding: 15px;
-            border: 2px solid #ff7a7a;
+            border: 2px solid #C5B358;
             border-radius: 8px;
-            background: linear-gradient(to right,#001F3F, #073461);
+            background-color: #001F3F;
             color: white;
         }
         .left-side {
@@ -106,6 +106,28 @@ author: Mihir, Pradyun, Derek, Ansh
         }
         .details {
             width: 50%;
+        }
+        .reactions {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .reaction-button {
+            background-color: #001F3F;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .reaction-button:hover {
+            color: #001F3F; 
+        }
+        .reaction-button:focus {
+            outline: none;
+        }
+        .clicked {
+            color: gray; /* Change color to show it's clicked */
+            cursor: not-allowed; /* Change cursor to indicate it's disabled */
         }
     </style>
 </head>
@@ -117,29 +139,25 @@ author: Mihir, Pradyun, Derek, Ansh
     </div>
     <div class="container">
         <div class="category">
-            <h2>Cyber</h2>
+            <h2>Cyber Patriot Club</h2>
             <div class="post">
                 <h3>Weekly Meeting Update</h3>
-                <p>Join us every Monday at 4 PM in Room A101 to discuss upcoming events.</p>
+                <p>Join us every Thursday at 4 PM in Room 101 to discuss upcoming competitions.</p>
+                <div class="reactions">
+                    <button class="reaction-button" onclick="react(this)">👍</button>
+                    <span class="reaction-count">0</span> <!-- Using class instead of ID -->
+                </div>
             </div>
             <div class="post">
                 <h3>New Competition Announced!</h3>
-                <p>We're excited to announce that the next CyberPatriot competition will be held on January 25th. Prepare your teams!</p>
+                <p>We're excited to announce that the next Cyber Patriot competition will be held on March 15th. Prepare your teams!</p>
+                <div class="reactions">
+                    <button class="reaction-button" onclick="react(this)">👍</button>
+                    <span class="reaction-count">0</span> <!-- Using class instead of ID -->
+                </div>
             </div>
         </div>
-        <br>
-        <div class="category">
-            <h2>Robotics</h2>
-            <div class="post">
-                <h3>Weekly Meeting Update</h3>
-                <p>Join us every Tuesday immediately after school in Room A107 (Mr. Campillo's) to discuss upcoming events and work on improving the robot.</p>
-            </div>
-            <div class="post">
-                <h3>New Competition Announced!</h3>
-                <p>We're excited to announce that the next FRC competition will be held on December 12th. Prepare your robots!</p>
-            </div>
-        </div>
-        <!--<a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the currently available chatrooms!</a>-->
+        <a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the currently available chatrooms!</a>
     </div>
     <div class="container">
         <div class="form-container">
@@ -157,6 +175,18 @@ author: Mihir, Pradyun, Derek, Ansh
             </form>
         </div>
     </div>
+    <script>
+        function react(button) {
+            let countElement = button.nextElementSibling;
+            if (countElement && countElement.classList.contains('reaction-count')) {
+                let currentCount = parseInt(countElement.innerText);
+                countElement.innerText = currentCount + 1; 
+                // Disable the button after click and change its appearance
+                button.disabled = true;
+                button.classList.add('clicked'); 
+            }
+        }
+    </script>
     <div class="container">
         <div class="form-container">
             <h2>Add New Post</h2>
