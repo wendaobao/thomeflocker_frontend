@@ -2,7 +2,7 @@
 layout: post
 title: Shared Interests - AGK Chatroom
 search_exclude: true
-permalink: /shared_interests/agk/agk-chatroom
+permalink: /shared_interests/agk/agk-chatroom.html
 menu: nav/shared_interests.html
 author: Mihir, Pradyun, Derek, Ansh
 ---
@@ -70,6 +70,19 @@ author: Mihir, Pradyun, Derek, Ansh
     button:hover {
         background-color: #C5B358;
     }
+    .chatroom-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #FFD700;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    .chatroom-link:hover {
+        background-color: #C5B358;
+    }
 </style>
 <div class="chatroom-container">
         <header class="chatroom-header">
@@ -83,6 +96,7 @@ author: Mihir, Pradyun, Derek, Ansh
             <input type="text" id="messageInput" placeholder="Enter your message..." required>
             <button type="submit">Send</button>
         </form>
+        <a href="{{site.baseurl}}/shared_interests/agk/agk.html" class="chatroom-link">Back to Home</a>
 </div>
 <script>
     const chatArea = document.getElementById('chatArea');
