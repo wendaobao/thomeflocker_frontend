@@ -291,7 +291,7 @@ author: Bailey, Travis, Leon, Anyi
   <!-- Left Sidebar (Add Post and Search Bar) -->
   <div class="left-sidebar">
       <button class="add-post" onclick="togglePostForm()"><img src="{{site.baseurl}}//images/p1group5images/plusicon.png"></button>
-      <p>Add new post</p>
+      <p>Add new temporary post</p>
       <div class="search-bar">
         <input type="text" placeholder="Search...">
       </div>
@@ -501,19 +501,6 @@ author: Bailey, Travis, Leon, Anyi
                 <option value="">Select a channel</option>
             </select>
             <button type="submit">Select</button>
-        </form>
-    </div>
-</div>
-
-<div class="container">
-    <div class="form-container">
-        <h2>Add New Post</h2>
-        <form id="postForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="comment">Comment:</label>
-            <textarea id="comment" name="comment" required></textarea>
-            <button type="submit">Add Post</button>
         </form>
     </div>
 </div>
