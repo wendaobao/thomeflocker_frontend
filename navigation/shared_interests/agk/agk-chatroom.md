@@ -28,7 +28,7 @@ author: Mihir, Pradyun, Derek, Ansh
     .chat-area {
         height: 400px;
         overflow-y: auto;
-        background-color: #228B22;
+        background-color: linear-gradient(to right,#001F3F, #073461);
         border: 2px solid #C5B358;
         border-radius: 8px;
         padding: 10px;
