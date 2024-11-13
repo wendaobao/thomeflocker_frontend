@@ -105,8 +105,8 @@ comments: true
             border: none !important; /* Remove borders from table cells */
         }
         .button {
-            background-color: #ff4d4d; /* Light red */
-            color: #ffffff; /* White text */
+            background-color: white; /* Light red */
+            color: black !important; /* White text */
             text-decoration: none;
             font-weight: bold;
             font-family: Arial, sans-serif;
@@ -118,11 +118,13 @@ comments: true
         }
         .button:hover {
             transform: scale(1.05); /* Slightly larger on hover */
-            background-color: #e60000; /* Darker red on hover */
+            background-color: lightgrey; /* Darker red on hover */
+            color: black !important;
         }
         .button:active {
             transform: scale(0.95); /* Shrinks a bit on click */
-            background-color: #b30000; /* Even darker red on click */
+            background-color: grey; /* Even darker red on click */
+            color: black !important;
         }
         div {
             margin: 20px 0;

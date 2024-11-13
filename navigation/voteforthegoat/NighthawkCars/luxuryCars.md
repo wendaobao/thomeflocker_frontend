@@ -67,8 +67,8 @@ permalink: /voteforthegoat/nighthawkCars/luxuryCars/
             border: none !important; /* Remove borders from table cells */
         }
         .button {
-            background-color: #ff4d4d; /* Light red */
-            color: #ffffff; /* White text */
+            background-color: white; /* Light red */
+            color: black !important; /* White text */
             text-decoration: none;
             font-weight: bold;
             font-family: Arial, sans-serif;
@@ -80,11 +80,13 @@ permalink: /voteforthegoat/nighthawkCars/luxuryCars/
         }
         .button:hover {
             transform: scale(1.05); /* Slightly larger on hover */
-            background-color: #e60000; /* Darker red on hover */
+            background-color: lightgrey; /* Darker red on hover */
+            color: black !important;
         }
         .button:active {
             transform: scale(0.95); /* Shrinks a bit on click */
-            background-color: #b30000; /* Even darker red on click */
+            background-color: grey; /* Even darker red on click */
+            color: black !important;
         }
         div {
             margin: 20px 0;
@@ -187,10 +189,11 @@ permalink: /voteforthegoat/nighthawkCars/luxuryCars/
         }
         .regularButton:hover {
             background-color: lightgray !important; /* Light gray on hover */
+            transform: scale(1.05);
         }
         .regularButton:active {
             background-color: grey !important; /* Slightly darker gray when clicked */
-            transform: scale(0.98); /* Slight scale-down effect on click */
+            transform: scale(0.95); /* Slight scale-down effect on click */
         }
         .buttonP {
             all: unset !important;
