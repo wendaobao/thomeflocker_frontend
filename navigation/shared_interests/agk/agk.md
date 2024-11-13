@@ -29,7 +29,7 @@ author: Mihir, Pradyun, Derek, Ansh
         .category {
             margin: 20px 0;
             padding: 15px;
-            border: 2px solid #C5B358;
+            border: 2px solid #ff7a7a;
             border-radius: 8px;
             background: linear-gradient(to right,#001F3F, #073461);
             color: white;
@@ -38,7 +38,7 @@ author: Mihir, Pradyun, Derek, Ansh
         .post {
             margin: 10px 0;
             padding: 15px;
-            border: 1px solid #C5B358;
+            border: 1px solid #ff7a7a;
             border-radius: 5px;
             background-color: #121212; 
         }
@@ -59,7 +59,7 @@ author: Mihir, Pradyun, Derek, Ansh
         .form-container {
             margin: 20px 0;
             padding: 15px;
-            border: 2px solid #C5B358;
+            border: 2px solid #ff7a7a;
             border-radius: 8px;
             background: linear-gradient(to right,#001F3F, #073461);
             color: white;
@@ -77,7 +77,7 @@ author: Mihir, Pradyun, Derek, Ansh
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
-            border: 1px solid #C5B358;
+            border: 1px solid #ff7a7a;
             border-radius: 5px;
         }
         .form-container button {
@@ -95,7 +95,7 @@ author: Mihir, Pradyun, Derek, Ansh
             display: flex;
             margin: 20px 0;
             padding: 15px;
-            border: 2px solid #C5B358;
+            border: 2px solid #ff7a7a;
             border-radius: 8px;
             background: linear-gradient(to right,#001F3F, #073461);
             color: white;
