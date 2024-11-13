@@ -75,7 +75,7 @@ author: Mihir, Pradyun, Derek, Ansh
             text-align: center;
             margin: 20px 0;
             padding: 10px;
-            background-color: #FFD700;
+            background-color: #1A2A6C;
             color: black;
             text-decoration: none;
             border-radius: 5px;
