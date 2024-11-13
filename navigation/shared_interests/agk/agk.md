@@ -17,7 +17,7 @@ author: Mihir, Pradyun, Derek, Ansh
         }
         .header {
             background: linear-gradient(to right,#001F3F, #073461); 
-            color: #FFD700;
+            color: #ff4747;
             text-align: center;
             padding: 20px;
         }
