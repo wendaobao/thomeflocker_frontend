@@ -117,7 +117,7 @@ author: Mihir, Pradyun, Derek, Ansh
     </div>
     <div class="container">
         <div class="category">
-            <h2>Cyber Club</h2>
+            <h2>Cyber</h2>
             <div class="post">
                 <h3>Weekly Meeting Update</h3>
                 <p>Join us every Monday at 4 PM in Room A101 to discuss upcoming events.</p>
@@ -129,7 +129,7 @@ author: Mihir, Pradyun, Derek, Ansh
         </div>
         <br>
         <div class="category">
-            <h2>Robotics Club</h2>
+            <h2>Robotics</h2>
             <div class="post">
                 <h3>Weekly Meeting Update</h3>
                 <p>Join us every Tuesday immediately after school in Room A107 (Mr. Campillo's) to discuss upcoming events and work on improving the robot.</p>
@@ -139,7 +139,7 @@ author: Mihir, Pradyun, Derek, Ansh
                 <p>We're excited to announce that the next FRC competition will be held on December 12th. Prepare your robots!</p>
             </div>
         </div>
-        <a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the currently available chatrooms!</a>
+        <!--<a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the currently available chatrooms!</a>-->
     </div>
     <div class="container">
         <div class="form-container">
