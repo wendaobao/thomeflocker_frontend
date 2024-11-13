@@ -127,7 +127,7 @@ author: Mihir, Pradyun, Derek, Ansh
                 <p>We're excited to announce that the next Cyber Patriot competition will be held on March 15th. Prepare your teams!</p>
             </div>
         </div>
-        <a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the Chatroom!</a>
+        <a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the currently available chatrooms!</a>
     </div>
     <div class="container">
         <div class="form-container">
