@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Nighthawk Cars
 description: A site all about cars
 permalink: /voteforthegoat/nighthawkCars/
