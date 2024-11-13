@@ -4,7 +4,6 @@ title: Underground Music
 description: Share music with others!
 permalink: /undgdmusic/
 ---
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,29 +15,29 @@ permalink: /undgdmusic/
         body {
             font-family: Arial, sans-serif;
             background-color: #181818;
-            color: #e0e0e0;
+            color: #E0E0E0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
         }
-        header { 
+        header {
             padding: 20px;
             width: 100%;
             max-width: 1000px;
-            background-color: #1f1f1f;
+            background-color: #1F1F1F;
             text-align: center;
-            border-bottom: 3px solid #f2b600;
+            border-bottom: 3px solid #F2B600;
         }
-        header h1 { 
-            font-size: 2.5rem; 
-            color: #f2b600; 
+        header h1 {
+            font-size: 2.5rem;
+            color: #F2B600;
             text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
         }
-        header p { 
-            color: #888; 
-            font-size: 1rem; 
+        header p {
+            color: #888;
+            font-size: 1rem;
         }
         .top-sections-wrapper {
             display: flex;
@@ -49,14 +48,14 @@ permalink: /undgdmusic/
             margin-top: 20px;
         }
         .posts-wrapper, .post-form-container, .chatroom-container {
-            background-color: #2b2b2b;
+            background-color: #2B2B2B;
             padding: 20px;
             border-radius: 8px;
-            border: 2px solid #f2b600;
+            border: 2px solid #F2B600;
             flex: 1;
         }
         .posts-wrapper h2, .post-form-container h3, .chatroom-container h2 {
-            color: #f2b600;
+            color: #F2B600;
             text-align: center;
             margin-bottom: 10px;
             text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
@@ -68,21 +67,21 @@ permalink: /undgdmusic/
             border-radius: 4px;
             border: 1px solid #333;
             background-color: #333;
-            color: #e0e0e0;
+            color: #E0E0E0;
         }
         .post-form-container button, .message-form button {
             width: 100%;
             padding: 10px;
             border: none;
             border-radius: 4px;
-            background-color: #f2b600;
-            color: #1b1b1b;
+            background-color: #F2B600;
+            color: #1B1B1B;
             font-weight: bold;
             cursor: pointer;
             text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
         }
         .delete-button {
-            background-color: #ff4c4c;
+            background-color: #FF4C4C;
             color: white;
             border: none;
             border-radius: 4px;
@@ -91,17 +90,15 @@ permalink: /undgdmusic/
             margin-left: 10px;
         }
         .delete-button:hover {
-            background-color: #ff1c1c;
+            background-color: #FF1C1C;
         }
     </style>
 </head>
 <body>
-
 <header>
     <h1>Welcome to the Underground Vibes!</h1>
     <p>Share your thoughts, discover artists, and chat with others!</p>
 </header>
-
 <div class="top-sections-wrapper">
     <div class="posts-wrapper" id="postsWrapper">
         <h2>Flocker Posts</h2>
@@ -116,7 +113,6 @@ permalink: /undgdmusic/
         </form>
     </div>
 </div>
-
 <div class="chatroom-container">
     <h2>Flocker Chatroom</h2>
     <div class="chat-area" id="messages">
@@ -128,10 +124,8 @@ permalink: /undgdmusic/
         <button type="submit">Send</button>
     </form>
 </div>
-
 <script type="module">
     import { pythonURI, fetchOptions } from '../assets/js/api/config.js';
-
     // Post-Related Functions
     async function fetchPosts() {
         try {
@@ -145,12 +139,10 @@ permalink: /undgdmusic/
             console.error("Error fetching posts:", error);
         }
     }
-
     function renderPosts(posts) {
         document.getElementById('postsWrapper').innerHTML = posts.map(post => {
             const username = post.username || "Anonymous";
             const content = typeof post.content === 'string' ? post.content : JSON.stringify(post.content);
-
             return `
                 <div class="post" data-post-id="${post.id}">
                     <div class="post-header">
@@ -161,7 +153,6 @@ permalink: /undgdmusic/
                 </div>`;
         }).join('');
     }
-
     async function deletePost(postId) {
         try {
             const response = await fetch(`${pythonURI}/api/posts/${postId}`, {
@@ -177,13 +168,11 @@ permalink: /undgdmusic/
             console.error("Error deleting post:", error);
         }
     }
-
     async function addPost(event) {
         event.preventDefault();
         const username = document.getElementById('usernameInput').value || "Anonymous";
         const content = document.getElementById('postInput').value;
         const postData = { username, content };
-
         try {
             const response = await fetch(`${pythonURI}/api/posts`, {
                 ...fetchOptions,
@@ -200,7 +189,6 @@ permalink: /undgdmusic/
             console.error("Error adding post:", error);
         }
     }
-
     // Message-Related Functions
     async function fetchMessages() {
         try {
@@ -208,24 +196,19 @@ permalink: /undgdmusic/
                 ...fetchOptions,
                 method: 'GET',
             });
-
             if (!response.ok) {
                 throw new Error('Failed to fetch messages: ' + response.statusText);
             }
             const messages = await response.json();
             const messagesContainer = document.getElementById("messages");
             messagesContainer.innerHTML = "";
-
             messages.forEach(message => {
                 const messageCard = document.createElement("div");
                 messageCard.classList.add("message-card");
-
                 const title = document.createElement("h3");
                 title.textContent = message.title;
-
                 const content = document.createElement("p");
                 content.textContent = message.content;
-
                 messageCard.appendChild(title);
                 messageCard.appendChild(content);
                 messagesContainer.appendChild(messageCard);
@@ -234,17 +217,14 @@ permalink: /undgdmusic/
             console.error('Error fetching messages:', error);
         }
     }
-
     async function sendMessage(event) {
         event.preventDefault();
         const username = document.getElementById('username').value || "Anonymous";
         const content = document.getElementById('message').value;
-
         const messageData = {
             title: `Message from ${username}`,
             content: content,
         };
-
         try {
             const response = await fetch(`${pythonURI}/api/messages`, {
                 ...fetchOptions,
@@ -252,21 +232,17 @@ permalink: /undgdmusic/
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(messageData)
             });
-
             if (!response.ok) {
                 throw new Error('Failed to send message: ' + response.statusText);
             }
-
             // Refresh messages after sending a new one
             fetchMessages();
-
             // Clear input field
             document.getElementById('message').value = '';
         } catch (error) {
             console.error('Error sending message:', error);
         }
     }
-
     // Initialize content on page load
     document.addEventListener('DOMContentLoaded', () => {
         fetchPosts();
@@ -275,6 +251,5 @@ permalink: /undgdmusic/
         document.getElementById('chat-form').addEventListener('submit', sendMessage);
     });
 </script>
-
 </body>
 </html>
