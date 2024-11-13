@@ -117,14 +117,26 @@ author: Mihir, Pradyun, Derek, Ansh
     </div>
     <div class="container">
         <div class="category">
-            <h2>Cyber Patriot Club</h2>
+            <h2>Cyber Club</h2>
             <div class="post">
                 <h3>Weekly Meeting Update</h3>
-                <p>Join us every Thursday at 4 PM in Room 101 to discuss upcoming competitions.</p>
+                <p>Join us every Monday at 4 PM in Room A101 to discuss upcoming events.</p>
             </div>
             <div class="post">
                 <h3>New Competition Announced!</h3>
-                <p>We're excited to announce that the next Cyber Patriot competition will be held on March 15th. Prepare your teams!</p>
+                <p>We're excited to announce that the next CyberPatriot competition will be held on January 25th. Prepare your teams!</p>
+            </div>
+        </div>
+        <br>
+        <div class="category">
+            <h2>Robotics Club</h2>
+            <div class="post">
+                <h3>Weekly Meeting Update</h3>
+                <p>Join us every Tuesday immediately after school in Room A107 (Mr. Campillo's) to discuss upcoming events and work on improving the robot.</p>
+            </div>
+            <div class="post">
+                <h3>New Competition Announced!</h3>
+                <p>We're excited to announce that the next FRC competition will be held on December 12th. Prepare your robots!</p>
             </div>
         </div>
         <a href="{{site.baseurl}}/shared_interests/agk/agk-chatroom.html" class="chatroom-link">Join the currently available chatrooms!</a>
