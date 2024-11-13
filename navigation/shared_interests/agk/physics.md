@@ -2,7 +2,7 @@
 layout: post
 title: Shared Interests - AGK
 search_exclude: true
-permalink: /shared_interests/agk/agk
+permalink: /shared_interests/agk/physics
 menu: nav/shared_interests.html
 author: Mihir, Pradyun, Derek, Ansh
 ---
