@@ -162,7 +162,6 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 </head>
 <body>
   <div class="container">
-    <h2>Chess Hangout Zone</h2>
     <p class="intro">Freely test out your Chess Skills with drills and experimenting your moves to become a chess champion.</p>
     <p id="turnIndicator">Turn: White</p>
 
