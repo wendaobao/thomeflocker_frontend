@@ -155,12 +155,13 @@ permalink: /undgdmusic/
     }
 </style>
 
-
+<a href="{{ site.baseurl }}/undgdmusic/moderation/" style="color: #FFD700; text-decoration: none; font-size: 1rem;">Moderation Page</a>
 </head>
 <body>
 <header>
     <h1>Welcome to the Underground Vibes!</h1>
     <p>Chat with others in real-time!</p>
+
 </header>
 
 <div class="chatroom-container">
