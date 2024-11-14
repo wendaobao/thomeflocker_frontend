@@ -60,11 +60,17 @@ This is a basic chat box rendered with HTML inside Markdown.
   <button id="send-button" style="padding: 8px; background-color: #007bff; color: white; border: none; border-radius: 5px;">Send</button>
 </div>
 
+<div id="feedback" style="margin-top: 10px;"></div>
+<div id="feedback" style="margin-top: 10px;"></div>
+
 <script>
   const chatMessages = document.getElementById('chat-messages');
   const chatInput = document.getElementById('chat-input');
   const sendButton = document.getElementById('send-button');
-  const correctAnswer = 'Well, Is it clear now? You have the key to the end!'; // Define the correct answer here
+  const feedback = document.getElementById('feedback');
+  const correctAnswer = 'Well, Is it clear now? You have the key to the end!';
+  let attemptsLeft = 3;
+  let isLocked = false;
 
   function addMessage(text, className) {
     const messageElement = document.createElement('div');
@@ -78,7 +84,7 @@ This is a basic chat box rendered with HTML inside Markdown.
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-function addCorrectMessage(text, className) {
+  function addCorrectMessage(text, className) {
     const messageElement = document.createElement('div');
     messageElement.className = className;
     messageElement.textContent = text;
@@ -90,30 +96,82 @@ function addCorrectMessage(text, className) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  sendButton.addEventListener('click', () => {
-    const userMessage = chatInput.value.trim();
-    if (userMessage) {
-      addMessage(`Your answer is: ${userMessage}`, 'user-message');
-      chatInput.value = '';
+  function submitAnswer() {
+    if (isLocked) return;
 
-      // Check if the message is correct
-      if (userMessage === correctAnswer) {
-        setTimeout(() => {
-          
-          addCorrectMessage("Correct answer! Now you can move on!", 'bot-message');
-        }, 1000);
-      } else {
-        setTimeout(() => {
-          addMessage("Try again!", 'bot-message');
-        }, 1000);
+    const userAnswer = chatInput.value.trim();
+    if (userAnswer === '') return;
+
+    addMessage(`Your answer is: ${userAnswer}`, 'user-message');
+
+    if (userAnswer === correctAnswer) {
+      addCorrectMessage("Correct answer! Now you can move on!", 'bot-message');
+      showNextLevelButton();
+    } else {
+      attemptsLeft--;
+      addMessage(`Incorrect. Attempts left: ${attemptsLeft}`, 'bot-message');
+
+      if (attemptsLeft <= 0) {
+        isLocked = true;
+        showRetryButton();
       }
     }
-  });
+    chatInput.value = '';
+  }
 
+  function showRetryButton() {
+    feedback.innerHTML = '<button class="button retry" onclick="retry()">Retry Level Seven</button>';
+  }
+
+  function showNextLevelButton() {
+    feedback.innerHTML = '<button class="button next-level" onclick="nextLevel()">Next Level</button>';
+  }
+
+  function retry() {
+    window.location.href = '/flocker_frontend/levelseven/';
+  }
+
+  function nextLevel() {
+    window.location.href = '/flocker_frontend/leveleight/'; 
+  }
+  
+  sendButton.addEventListener('click', submitAnswer);
   chatInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendButton.click();
+    if (e.key === 'Enter') submitAnswer();
   });
 </script>
+
+<!-- Buttons Styling for Retry and Next Level -->
+<style>
+  .button {
+    padding: 12px 24px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .retry {
+    background-color: #ff4c4c;
+    border: 2px solid #c80000;
+  }
+  .next-level {
+    background-color: #4caf50;
+    border: 2px solid #2e7d32;
+    box-shadow: 0 4px 10px rgba(0, 150, 0, 0.3);
+  }
+  .button:hover {
+    transform: scale(1.05);
+  }
+  .next-level:hover {
+    background-color: #66bb6a;
+    box-shadow: 0 6px 12px rgba(0, 180, 0, 0.4);
+  }
+</style>
+
 
 
 This is a simple interactive chat box. Type a message and hit "Send" or press "Enter" to see it displayed.
