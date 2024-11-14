@@ -425,3 +425,179 @@ async function fetchChannels(groupName) {
     // Fetch groups when the page loads
     fetchGroups();
 </script>
+
+<!-- Discover New Artists Tab Content -->
+<div class="tab-content" id="discover">
+    <div class="chatroom-container">
+        <h2>Discover New Artists</h2>
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchQuery" placeholder="Search for more underground artists..." />
+            <button onclick="searchGoogle()">Search</button>
+        </div>
+        
+        <ul class="artist-list">
+            <li class="artist-item">
+                <strong>Artist Name:</strong> Lil Xtra <br>
+                <span class="description">
+                    Most Listened Track: "Under Pressure"<br>
+                    Latest Album: *Lost in the Vibe*<br>
+                    Monthly Listeners: 150,000<br>
+                    Known for mixing emo with rap vibes.<br>
+                    <a href="https://open.spotify.com/track/47DlkXm0LgQcJcz4nry9Gw" target="_blank">Listen on Spotify</a>
+                </span>
+            </li>
+            <li class="artist-item">
+                <strong>Artist Name:</strong> Sad Frosty <br>
+                <span class="description">
+                    Most Listened Track: "ADHD"<br>
+                    Latest Album: *Graveyard Shift*<br>
+                    Monthly Listeners: 200,000<br>
+                    A unique sound with heavy beats and dark lyrics.<br>
+                    <a href="https://open.spotify.com/artist/4VQjfdCN5W8jvwy4AvEnin" target="_blank">Listen on Spotify</a>
+                </span>
+            </li>
+            <li class="artist-item">
+                <strong>Artist Name:</strong> Tokyo's Revenge <br>
+                <span class="description">
+                    Most Listened Track: "GOODMORNINGTOKYO!"<br>
+                    Latest Album: *From the Shadows*<br>
+                    Monthly Listeners: 500,000<br>
+                    Bringing aggressive energy and experimental rap.<br>
+                    <a href="https://open.spotify.com/artist/spotify-artist-link" target="_blank">Listen on Spotify</a>
+                </span>
+            </li>
+            <li class="artist-item">
+                <strong>Artist Name:</strong> Powfu <br>
+                <span class="description">
+                    Most Listened Track: "Death Bed"<br>
+                    Latest Album: *Poems of the Past*<br>
+                    Monthly Listeners: 3,000,000<br>
+                    Known for blending lo-fi beats with heartfelt lyrics.<br>
+                    <a href="https://open.spotify.com/artist/spotify-artist-link" target="_blank">Listen on Spotify</a>
+                </span>
+            </li>
+            <li class="artist-item">
+                <strong>Artist Name:</strong> Shinigami <br>
+                <span class="description">
+                    Most Listened Track: "Lovers and Friends"<br>
+                    Latest Album: *Eternal Nightmare*<br>
+                    Monthly Listeners: 100,000<br>
+                    Combines rap and emotional lyrics with a dark, gothic style.<br>
+                    <a href="https://open.spotify.com/artist/spotify-artist-link" target="_blank">Listen on Spotify</a>
+                </span>
+            </li>
+            <!-- Add more artists as needed -->
+        </ul>
+    </div>
+</div>
+
+<style>
+    .chatroom-container h2 {
+        font-size: 2rem;
+        color: #FFD700;
+        text-align: center;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 12px rgba(255, 215, 0, 0.8);
+    }
+    /* Search Bar Styling */
+    .search-bar {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .search-bar input[type="text"] {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #FFD700;
+        border-radius: 6px 0 0 6px;
+        background-color: #333;
+        color: #FFD700;
+        outline: none;
+    }
+    .search-bar button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 0 6px 6px 0;
+        background-color: #FFD700;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .search-bar button:hover {
+        background-color: #FFC700;
+    }
+
+    .artist-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .artist-item {
+        background: rgba(15, 15, 15, 0.9); /* Dark background */
+        border: 1px solid #FFD700;
+        color: #FFD700;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        backdrop-filter: blur(4px); /* Adds slight blur to the background */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .artist-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 215, 0, 0.1); /* Yellow overlay */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .artist-item:hover::before {
+        opacity: 1;
+    }
+    .artist-item:hover {
+        transform: scale(1.05); /* Grows slightly on hover */
+        background: rgba(255, 215, 0, 0.1); /* Slight yellow tint on hover */
+        box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.3); /* Glow effect */
+    }
+    .artist-item:hover .description {
+        opacity: 1;
+        transform: translateY(0); /* Slides in the description */
+    }
+    .description {
+        display: block;
+        margin-top: 5px;
+        color: #AAA; /* Slightly lighter color for description */
+        font-size: 0.9rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .description a {
+        color: #FFD700;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .description a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<script>
+    function searchGoogle() {
+        const query = document.getElementById('searchQuery').value;
+        if (query) {
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}+underground+artists`;
+            window.open(googleSearchUrl, '_blank'); // Opens Google search in a new tab
+        } else {
+            alert("Please enter a search term."); // Alert if search is empty
+        }
+    }
+</script>
