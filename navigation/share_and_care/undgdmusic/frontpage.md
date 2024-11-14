@@ -197,9 +197,17 @@ permalink: /undgdmusic/
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
             </select>
-            <label for="channel_id">Channel:</label>
-            <select id="channel_id" name="channel_id" required>
+            <label for="Artists">Channel:</label>
+            <select id="Artists" name="Artists" required>
                 <option value="">Select a channel</option>
+            </select>
+             <label for="Songs">Channel:</label>
+            <select id="Songs" name="Songs" required>
+                <option value="">Select a channel</option>
+             <label for="Genres">Channel:</label>
+            <select id="Genres" name="Genres" required>
+                <option value="">Select a channel</option>
+            </select>
             </select>
             <button type="submit">Select</button>
         </form>
