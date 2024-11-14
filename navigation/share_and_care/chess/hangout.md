@@ -7,6 +7,7 @@ authors: Ahaan, Xavier, Spencer, Vasanth
 ---
 
 
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -234,7 +235,6 @@ authors: Ahaan, Xavier, Spencer, Vasanth
       if (selectedSquare) {
         movePiece(row, col);
         selectedSquare = null;
-        shareFunFact();
       } else if (
         piece &&
         ((turn === "white" && piece === piece.toUpperCase()) ||
@@ -256,6 +256,8 @@ authors: Ahaan, Xavier, Spencer, Vasanth
       boardLayout[row][col] = "";
       drawBoard();
 
+      checkCheckAndCheckmate();
+
       turn = turn === "white" ? "black" : "white";
       turnIndicator.textContent = `Turn: ${turn.charAt(0).toUpperCase() + turn.slice(1)}`;
     }
@@ -263,37 +265,15 @@ authors: Ahaan, Xavier, Spencer, Vasanth
     function capturePiece(piece) {
       if (piece === piece.toUpperCase()) {
         blackCapturedPieces.push(piece);
-        blackCaptured.textContent = blackCapturedPieces.map(p => pieces[p]).join(" ");
+        blackCaptured.textContent = blackCapturedPieces.join(" ");
       } else {
         whiteCapturedPieces.push(piece);
-        whiteCaptured.textContent = whiteCapturedPieces.map(p => pieces[p]).join(" ");
+        whiteCaptured.textContent = whiteCapturedPieces.join(" ");
       }
     }
 
-    document.getElementById("sendBtn").addEventListener("click", () => {
-      const userMessage = document.getElementById("messageInput").value;
-      if (userMessage) {
-        sendMessage(userMessage, "user");
-        document.getElementById("messageInput").value = "";
-      }
-    });
-
-    function sendMessage(message, type = "user") {
-      const messageElement = document.createElement("div");
-      messageElement.classList.add("message", `${type}-message`);
-      messageElement.textContent = message;
-      document.getElementById("chatMessages").appendChild(messageElement);
-    }
-
-    function shareFunFact() {
-      const facts = [
-        "Did you know? The longest chess game possible is 5,949 moves!",
-        "Fun Fact: The word 'checkmate' comes from the Persian phrase 'Shah Mat,' which means 'the king is dead.'",
-        "Chess Fun: The first mechanical chess clock was invented in 1883.",
-        "Fun Fact: The number of possible unique chess games is greater than the number of electrons in the universe!"
-      ];
-      const randomFact = facts[Math.floor(Math.random() * facts.length)];
-      sendMessage(randomFact, "bot");
+    function checkCheckAndCheckmate() {
+      // Check and checkmate logic will be implemented here
     }
 
     drawBoard();
