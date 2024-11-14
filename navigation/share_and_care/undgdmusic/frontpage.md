@@ -197,17 +197,9 @@ permalink: /undgdmusic/
             <select id="group_id" name="group_id" required>
                 <option value="">Select a group</option>
             </select>
-            <label for="Artists">Channel:</label>
-            <select id="Artists" name="Artists" required>
+            <label for="channel_id">Channel:</label>
+            <select id="channel_id" name="channel_id" required>
                 <option value="">Select a channel</option>
-            </select>
-             <label for="Songs">Channel:</label>
-            <select id="Songs" name="Songs" required>
-                <option value="">Select a channel</option>
-             <label for="Genres">Channel:</label>
-            <select id="Genres" name="Genres" required>
-                <option value="">Select a channel</option>
-            </select>
             </select>
             <button type="submit">Select</button>
         </form>
@@ -607,5 +599,185 @@ async function fetchChannels(groupName) {
         } else {
             alert("Please enter a search term."); // Alert if search is empty
         }
+    }
+</script>
+
+<!-- Mini AI Assistant -->
+<div class="ai-assistant">
+    <h3>Your Music Assistant</h3>
+    <div class="chat-window" id="chat-window">
+        <!-- Messages will appear here -->
+    </div>
+    
+    <!-- Predefined Response Buttons -->
+    <div class="response-buttons">
+        <button onclick="sendPredefinedMessage('recommend a song')">Recommend a Song</button>
+        <button onclick="sendPredefinedMessage('suggest an artist')">Suggest an Artist</button>
+        <button onclick="sendPredefinedMessage('lo-fi recommendation')">Lo-fi Recommendation</button>
+        <button onclick="sendPredefinedMessage('recommend a rap artist')">Recommend a Rap Artist</button>
+        <button onclick="sendPredefinedMessage('dark theme music')">Dark Theme Music</button>
+        <button onclick="sendPredefinedMessage('tell me about underground music')">About Underground Music</button>
+        <button onclick="sendPredefinedMessage('good playlist')">Good Playlist</button>
+    </div>
+</div>
+
+<style>
+    /* AI Assistant Styling */
+    .ai-assistant {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        background-color: #1A1A1A;
+        color: #FFD700;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        font-family: Arial, sans-serif;
+    }
+    .ai-assistant h3 {
+        margin: 0 0 10px 0;
+        color: #FFD700;
+        text-align: center;
+    }
+    .chat-window {
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        color: #FFF;
+    }
+    .chat-window p {
+        margin: 5px 0;
+    }
+    .user-message {
+        color: #FFD700;
+        font-weight: bold;
+    }
+    .assistant-message {
+        color: #FFF;
+        margin-left: 10px;
+    }
+    /* Response Buttons Styling */
+    .response-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+    }
+    .response-buttons button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 6px;
+        background-color: #FFD700;
+        color: #000;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .response-buttons button:hover {
+        background-color: #FFC700;
+    }
+    .follow-up-buttons {
+        margin-top: 5px;
+        display: flex;
+        gap: 5px;
+    }
+    .follow-up-buttons button {
+        padding: 4px 8px;
+        border: none;
+        border-radius: 4px;
+        background-color: #FFD700;
+        color: #000;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: background-color 0.3s ease;
+    }
+    .follow-up-buttons button:hover {
+        background-color: #FFC700;
+    }
+</style>
+
+<script>
+    // Define possible responses for each type of question
+    const responses = {
+        "recommend a song": [
+            "I recommend checking out 'Under Pressure' by Lil Xtra!",
+            "How about 'Sad!' by XXXTentacion?",
+            "Try listening to 'Moonlight' by XXXTentacion."
+        ],
+        "suggest an artist": [
+            "You might like Sad Frosty if you're into dark lyrics with heavy beats.",
+            "Check out Powfu for lo-fi vibes and heartfelt lyrics.",
+            "Tokyo's Revenge has some aggressive energy and experimental rap."
+        ],
+        "lo-fi recommendation": [
+            "Try listening to Powfu's 'Death Bed' if you enjoy lo-fi vibes.",
+            "You might enjoy 'Lofi Beats' on Spotify for chill, relaxing tracks.",
+            "Check out 'Cold Nights' by Saib for some smooth lo-fi vibes."
+        ],
+        "recommend a rap artist": [
+            "Tokyo's Revenge brings a lot of energy and unique style in rap.",
+            "Sad Frosty has some unique dark rap beats.",
+            "Lil Darkie is experimental with a unique sound in underground rap."
+        ],
+        "dark theme music": [
+            "Shinigami's 'Lovers and Friends' has a dark, gothic style that fits the vibe.",
+            "'Stressed Out' by Twenty One Pilots has a melancholic, dark feel.",
+            "Try 'Hurt' by Oliver Tree for a darker theme."
+        ],
+        "tell me about underground music": [
+            "Underground music is often created by independent artists. It's a space for raw, unique styles!",
+            "Underground music is usually outside the mainstream, with artists experimenting with different sounds.",
+            "It's where unique sounds flourish, often without commercial influence."
+        ],
+        "good playlist": [
+            "Check out 'Chill Rap' on Spotify for some mellow beats and chill vibes.",
+            "'Lofi Chill & Study' on Spotify is great for relaxing background music.",
+            "Try 'Rap Caviar' on Spotify for a mix of popular and underground hits."
+        ]
+    };
+
+    // Track the current index of responses for each type of message
+    const responseIndex = {};
+
+    // Function to send a predefined message and cycle through responses
+    function sendPredefinedMessage(message) {
+        const chatWindow = document.getElementById('chat-window');
+        
+        // Display user message
+        const userMessage = document.createElement('p');
+        userMessage.className = 'user-message';
+        userMessage.innerText = "You: " + message;
+        chatWindow.appendChild(userMessage);
+        
+        // Get the response list and cycle through it
+        const responseList = responses[message];
+        if (!responseIndex[message]) responseIndex[message] = 0;
+        const response = responseList[responseIndex[message]];
+        responseIndex[message] = (responseIndex[message] + 1) % responseList.length; // Cycle to the next response
+
+        // Display AI response
+        const assistantMessage = document.createElement('p');
+        assistantMessage.className = 'assistant-message';
+        assistantMessage.innerHTML = "AI Assistant: " + response;
+        chatWindow.appendChild(assistantMessage);
+        
+        // Add follow-up options
+        const followUp = document.createElement('div');
+        followUp.className = 'follow-up-buttons';
+        followUp.innerHTML = `
+            <button onclick="sendPredefinedMessage('${message}')">Another suggestion</button>
+            <button onclick="sendPredefinedMessage('tell me about underground music')">Tell me about underground music</button>
+        `;
+        chatWindow.appendChild(followUp);
+        
+        // Scroll to the latest message
+        chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 </script>
