@@ -603,7 +603,7 @@ async function fetchChannels(groupName) {
 </script>
 
 <!-- Mini AI Assistant -->
-<div class="ai-assistant">
+<div class="ai-assistant" id="aiAssistant">
     <h3>Your Music Assistant</h3>
     <div class="chat-window" id="chat-window">
         <!-- Messages will appear here -->
@@ -635,11 +635,13 @@ async function fetchChannels(groupName) {
         padding: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         font-family: Arial, sans-serif;
+        cursor: move; /* Indicate draggable area */
     }
     .ai-assistant h3 {
         margin: 0 0 10px 0;
         color: #FFD700;
         text-align: center;
+        cursor: move;
     }
     .chat-window {
         max-height: 200px;
@@ -704,6 +706,50 @@ async function fetchChannels(groupName) {
 </style>
 
 <script>
+    // Make the AI Assistant draggable
+    dragElement(document.getElementById("aiAssistant"));
+
+    function dragElement(el) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        // Mouse down event on the header to start dragging
+        el.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            // Get the mouse cursor position at startup
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            // Call a function whenever the cursor moves
+            document.onmousemove = elementDrag;
+            document.onmouseup = closeDragElement;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+
+            // Calculate the new cursor position
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+
+            // Set the element's new position
+            el.style.top = (el.offsetTop - pos2) + "px";
+            el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // Stop moving when mouse button is released
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
     // Define possible responses for each type of question
     const responses = {
         "recommend a song": [
