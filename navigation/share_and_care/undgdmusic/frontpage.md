@@ -430,13 +430,11 @@ async function fetchChannels(groupName) {
 <div class="tab-content" id="discover">
     <div class="chatroom-container">
         <h2>Discover New Artists</h2>
-        
         <!-- Search Bar -->
         <div class="search-bar">
             <input type="text" id="searchQuery" placeholder="Search for more underground artists..." />
             <button onclick="searchGoogle()">Search</button>
         </div>
-        
         <ul class="artist-list">
             <li class="artist-item">
                 <strong>Artist Name:</strong> Lil Xtra <br>
@@ -608,7 +606,6 @@ async function fetchChannels(groupName) {
     <div class="chat-window" id="chat-window">
         <!-- Messages will appear here -->
     </div>
-    
     <!-- Predefined Response Buttons -->
     <div class="response-buttons">
         <button onclick="sendPredefinedMessage('recommend a song')">Recommend a Song</button>
