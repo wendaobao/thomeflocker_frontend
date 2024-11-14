@@ -9,72 +9,153 @@ permalink: /undgdmusic/
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underground Music Vibes</title>
-    <style>
-        /* General Styling */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #181818;
-            color: #E0E0E0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        header {
-            padding: 20px;
-            width: 100%;
-            max-width: 1000px;
-            background-color: #1F1F1F;
-            text-align: center;
-            border-bottom: 3px solid #F2B600;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            color: #F2B600;
-            text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
-        }
-        header p {
-            color: #888;
-            font-size: 1rem;
-        }
-        .chatroom-container {
-            background-color: #2B2B2B;
-            padding: 20px;
-            border-radius: 8px;
-            border: 2px solid #F2B600;
-            margin-top: 20px;
-            max-width: 600px;
-            width: 100%;
-        }
-        .chatroom-container h2 {
-            color: #F2B600;
-            text-align: center;
-            margin-bottom: 10px;
-            text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
-        }
-        #username, #message {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 4px;
-            border: 1px solid #333;
-            background-color: #333;
-            color: #E0E0E0;
-        }
-        .message-form button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #F2B600;
-            color: #1B1B1B;
-            font-weight: bold;
-            cursor: pointer;
-            text-shadow: 0px 2px 8px rgba(255, 209, 102, 0.6);
-        }
-    </style>
+   <style>
+    /* General Styling */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+        color: #FFD700;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+    header {
+        padding: 20px;
+        width: 100%;
+        max-width: 900px;
+        background-color: #1F1F1F;
+        text-align: center;
+        border-bottom: 3px solid #FFD700;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    header h1 {
+        font-size: 2.5rem;
+        color: #FFD700;
+        text-shadow: 0px 2px 8px rgba(255, 215, 0, 0.6);
+    }
+    header p {
+        color: #AAA;
+        font-size: 1.1rem;
+    }
+    /* Chatroom Container */
+    .chatroom-container {
+        background-color: #1A1A1A;
+        padding: 25px;
+        border-radius: 10px;
+        border: 2px solid #FFD700;
+        margin-bottom: 30px;
+        max-width: 800px;
+        width: 100%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+    .chatroom-container h2 {
+        color: #FFD700;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    #messages {
+        height: 250px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #0D0D0D;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border: 1px solid #FFD700;
+    }
+    #username, #message {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #FFD700;
+        background-color: #333;
+        color: #FFD700;
+    }
+    .message-form button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 6px;
+        border: none;
+        background-color: #FFD700;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .message-form button:hover {
+        background-color: #FFC700;
+    }
+    /* Form Container */
+    .container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 30px;
+    }
+    .form-container {
+        background-color: #1A1A1A;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        border: 2px solid #FFD700;
+    }
+    .form-container label {
+        color: #FFD700;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 6px;
+        border: 1px solid #FFD700;
+        background-color: #333;
+        color: #FFD700;
+    }
+    .form-container button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border-radius: 6px;
+        border: none;
+        background-color: #FFD700;
+        color: #000;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .form-container button:hover {
+        background-color: #FFC700;
+    }
+    /* Data Display Area */
+    .data {
+        background-color: #1A1A1A;
+        padding: 25px;
+        border-radius: 10px;
+        border: 2px solid #FFD700;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        margin-top: 20px;
+        max-width: 800px;
+        width: 100%;
+    }
+    .post-item {
+        background-color: #0D0D0D;
+        border: 1px solid #FFD700;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+
 </head>
 <body>
 <header>
@@ -107,48 +188,6 @@ permalink: /undgdmusic/
         });
     });
 </script>
-</body>
-</html>
-<style>
-    .container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 1200px;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-    .form-container {
-        display: flex;
-        flex-direction: column;
-        max-width: 800px;
-        width: 100%;
-        background-color: #2c3e50;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        color: #ecf0f1;
-    }
-    .form-container label {
-        margin-bottom: 5px;
-    }
-    .form-container input, .form-container textarea, .form-container select {
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        width: 100%;
-    }
-    .form-container button {
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        background-color: #34495e;
-        color: #ecf0f1;
-        cursor: pointer;
-    }
-</style>
-
 <div class="container">
     <div class="form-container">
         <h2>Select Group and Channel</h2>
@@ -227,33 +266,37 @@ permalink: /undgdmusic/
      * Fetch channels based on selected group
      * User picks from dropdown
      */
-    async function fetchChannels(groupName) {
-        try {
-            const response = await fetch(`${pythonURI}/api/channels/filter`, {
-                ...fetchOptions,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ group_name: groupName })
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch channels: ' + response.statusText);
-            }
-            const channels = await response.json();
-            const channelSelect = document.getElementById('channel_id');
-            channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset channels
-            channels.forEach(channel => {
-                const option = document.createElement('option');
-                option.value = channel.id;
-                option.textContent = channel.name;
-                channelSelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Error fetching channels:', error);
+async function fetchChannels(groupName) {
+    try {
+        console.log("Fetching channels for group:", groupName);
+        const response = await fetch(`${pythonURI}/api/channels/filter`, {
+            ...fetchOptions,
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ group_name: groupName })
+        });
+        
+        if (!response.ok) {
+            console.error('Failed to fetch channels:', response.statusText);
+            return;
         }
+        
+        const channels = await response.json();
+        console.log("Fetched channels:", channels);
+        
+        const channelSelect = document.getElementById('channel_id');
+        channelSelect.innerHTML = '<option value="">Select a channel</option>'; // Reset
+        
+        channels.forEach(channel => {
+            const option = document.createElement('option');
+            option.value = channel.id;
+            option.textContent = channel.name;
+            channelSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error fetching channels:', error);
     }
-
+}
     /**
       * Handle group selection change
       * Channel Dropdown refresh to match group_id change
