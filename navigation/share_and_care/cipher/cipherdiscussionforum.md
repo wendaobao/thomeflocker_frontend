@@ -24,11 +24,11 @@ permalink: share_and_care/cipherdiscussion
             flex-direction: column;
             max-width: 800px;
             width: 100%;
-            background-color: #2C3E50;
+            background-color: #2c3e50;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: #ECF0F1;
+            color: #ecf0f1;
         }
         .form-container label {
             margin-bottom: 5px;
@@ -40,8 +40,8 @@ permalink: share_and_care/cipherdiscussion
             border-radius: 5px;
             border: none;
             width: 100%;
-            background-color: #34495E;
-            color: #ECF0F1;
+            background-color: #34495e;
+            color: #ecf0f1;
             font-size: 16px;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -53,8 +53,8 @@ permalink: share_and_care/cipherdiscussion
             padding: 10px;
             border-radius: 5px;
             border: none;
-            background-color: #34495E;
-            color: #ECF0F1;
+            background-color: #34495e;
+            color: #ecf0f1;
             cursor: pointer;
         }
     </style>
@@ -68,15 +68,19 @@ permalink: share_and_care/cipherdiscussion
                 <select id="group_id" name="group_id" required>
                     <option value="">Select a group</option>
                 </select>
+                
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required>
+                
                 <label for="content">Content:</label>
                 <textarea id="content" name="content" required></textarea>
+                
                 <button type="submit">Add Post</button>
             </form>
             <div id="details"></div>
         </div>
     </div>
+
     <script type="module">
         // Import server URI and standard fetch options
         const pythonURI = "https://flocker.nighthawkcodingsociety.com";
@@ -85,6 +89,7 @@ permalink: share_and_care/cipherdiscussion
                 'Authorization': 'Bearer YOUR_AUTH_TOKEN' // Replace with actual auth token if required
             }
         };
+
         // Function to fetch groups for dropdown selection
         async function fetchGroups() {
             try {
@@ -104,19 +109,23 @@ permalink: share_and_care/cipherdiscussion
                 console.error('Error fetching groups:', error);
             }
         }
+
         // Handle form submission
         document.getElementById('postForm').addEventListener('submit', async function(event) {
             event.preventDefault();
+
             // Extract data from form
             const title = document.getElementById('title').value;
             const content = document.getElementById('content').value;
             const group_id = document.getElementById('group_id').value;
+
             // Create API payload
             const postData = {
                 title: title,
                 content: content,
                 group_id: group_id
             };
+
             try {
                 // Send POST request to backend to add the new post
                 const response = await fetch(`${pythonURI}/api/post`, {
@@ -127,9 +136,11 @@ permalink: share_and_care/cipherdiscussion
                     },
                     body: JSON.stringify(postData)
                 });
+
                 if (!response.ok) {
                     throw new Error('Failed to add post: ' + response.statusText);
                 }
+
                 alert('Post added successfully!');
                 document.getElementById('postForm').reset();
             } catch (error) {
@@ -137,6 +148,7 @@ permalink: share_and_care/cipherdiscussion
                 alert('Error adding post: ' + error.message);
             }
         });
+
         // Fetch groups when the page loads
         fetchGroups();
     </script>
