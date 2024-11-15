@@ -487,13 +487,19 @@ Our group has chosen to focus on discussions about which drinks should be added 
         }
         function refreshResults() {
             fetch('http://127.0.0.1:8887/api/results')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
+                    console.log('Received data:', data);  // Debug log
                     displayResults(data);
                 })
                 .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error fetching results. Please try again.');
+                    console.error('Detailed error:', error);  // More detailed error logging
+                    alert('Unable to fetch results. Please check if the server is running.');
                 });
         }
 
