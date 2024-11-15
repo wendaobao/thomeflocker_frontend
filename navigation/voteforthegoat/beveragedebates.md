@@ -438,7 +438,7 @@ Our group has chosen to focus on discussions about which drinks should be added 
                     // Hide the reasoning input section after submission
                     document.getElementById('reasoningContainer').style.display = 'none';
                     document.getElementById('reasoningText').value = ''; // Clear the text area
-                    refreshResults(); // Refresh results after successful vote
+                    refreshResults(); //j Refresh results after successful vote
                 })
                 .catch(error => {
                     console.error('Error:', error);
