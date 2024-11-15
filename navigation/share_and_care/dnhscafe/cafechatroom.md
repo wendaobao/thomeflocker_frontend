@@ -1,11 +1,43 @@
 ---
-layout: post
-title: DNHS Study Room
-permalink: /dnhscafestudyroom
-menu: nav/home.html
-search_exclude: true
+layout: page
+title: DNHS Cafe Study Room
+description: Help out your peers with school work to earn d'neros!
+permalink: /dnhscafestudyroom/
 ---
-## Choose the share and care group, and select the subject channel you'd like to contribute to!
+<style>
+body { 
+    background: linear-gradient(135deg, #a17a64, #452f22); /* Dark brown to light brown */
+    background-attachment: fixed; /* Keeps background fixed */
+    color: #333333; /* Darker text color for better readability */
+    font-family: Arial, sans-serif; 
+    min-height: 100vh; /* Ensures it covers the viewport height */ 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.collapsible {
+  background-color: #825B41;
+  color: #ffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.active, .collapsible:hover {
+  background-color: #825B41;
+}
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #AB8265;
+}
+</style>
 
 <style>
     .container {
@@ -279,9 +311,3 @@ search_exclude: true
     // Fetch groups when the page loads
     fetchGroups();
 </script>
-
-
-
-
-
-
